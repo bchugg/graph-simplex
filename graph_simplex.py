@@ -1,5 +1,7 @@
 import networkx as nx
 import numpy as np
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
 
 def laplacian_decomposition(G):
 	# Compute the eigendecomposition of the Laplacian of the connected graph G
@@ -37,12 +39,43 @@ def simplex_vertices(evals, evecs):
 
 	return S
 
-G = nx.complete_graph(10)
+def plot_simplex(S, d):
+	# Plot simplex in two or three dimensions
+	# S contains simplex vertices, d is dimension
+	if not d==2 and not d==3: 
+		print('Dimension must be two or three, brah')
+	xdata = S[:,0]
+	ydata = S[:,1]
+	if d==3: 
+		zdata = S[:,2]
+		ax = plt.axes(projection='3d')
+		for i in range(0,4):
+			for j in range(1,4):
+				if not i == j:
+					x = [xdata[i], xdata[j]]
+					y = [ydata[i], ydata[j]]
+					z = [zdata[i], zdata[j]]
+					ax.plot(x,y,z, '-o')
+
+		#ax.plot(xdata, ydata, zdata, '-o')
+		plt.show()
+	else: 
+		plt.plot(xdata, ydata, '-')
+		plt.show()
+
+
+
+
+
+
+G = nx.complete_graph(4)
 w,v = laplacian_decomposition(G)
 print('Eigenvalues:', w) 
 print('Eigenvectors:', v)
 
 S = simplex_vertices(w, v)
 print('Simplex vertices', S)
+
+plot_simplex(S,3)
 
 
