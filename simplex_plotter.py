@@ -89,22 +89,23 @@ def plot_simplex_helper2D(xdata, ydata, c='r'):
 
 
 
-def plot_rw(x, S, fig):
+def plot_rw(x, S, fig, style='r.'):
 	# Plot the random walk as points in simplex
 	# In particular, each x[i] is a barycentric coordinate of simplex
 	# described by vertices in S. 
 
+	color = np.random.rand(3) # Generate random color
 	N = len(x[0,:])
 	St = np.transpose(S) 
 	if N == 4: 
 		for i in range(len(x[:,0])):
 			coords = np.dot(St, x[i,:])
-			fig.plot([coords[0]], [coords[1]], [coords[2]], 'r.')
+			fig.plot([coords[0]], [coords[1]], [coords[2]], color=color, marker='.')
 	elif N == 3: 
 		for i in range(len(x[:,0])):
 			coords = np.dot(St, x[i,:])
-			fig.plot([coords[0]], [coords[1]])
+			fig.plot([coords[0]], [coords[1]], color=color, marker='.')
 
-	fig.show()
-	#return fig
+	#fig.show()
+	return fig
 

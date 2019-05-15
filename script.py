@@ -14,10 +14,21 @@ if d == 2:
 	G.add_edge(1,2)
 	G.add_edge(2,3)
 
+
 	#G = nx.complete_graph(3)
-	evals,evecs = laplacian_decomposition(G, True)
+	evals,evecs = laplacian_decomposition(G)
 	S, Sinv = simplex_vertices(evals, evecs)
-	plot_simplex([S,Sinv],2, ['b', 'r'])
+	f = plot_simplex([S],2, ['k'])
+
+	c = centroid(S)
+	print(c)
+
+	inits = [[1,0,0], [1,1,0], [1,1,1]]
+	its,  eps = 10, 0.1
+	# for i in range(its):
+	# 	inits.append([1, eps*np.random.rand(), eps*np.random.rand()])
+
+
 elif d== 3:
 	#G = nx.complete_graph(4)
 	G = nx.Graph()
@@ -26,33 +37,35 @@ elif d== 3:
 	G.add_edge(2,3)
 	G.add_edge(3,4)
 	G.add_edge(1,4)
-	evals,evecs = laplacian_decomposition(G, True)
+	evals,evecs = laplacian_decomposition(G)
 	S, Sinv = simplex_vertices(evals, evecs)
-	f = plot_simplex([S],3, ['b'])
-	#f.show()
+	f = plot_simplex([S],3, ['k'])
+	
+	inits = [[1,0,0,0], 
+			[0,1,0,0], 
+			[0,0,1,1], 
+			[0,1,1,1]]
+
+	
+
+iters = 10000
+#styles = ['r.', 'b.', 'g.', 'y.']
+for i,x in enumerate(inits): 
+	s = sum(x)
+	x0 = list(map(lambda i: i/float(s), x))
+	x = ctrw(G, x0, iters)
+	#print(x[iters-1,:])
+	f = plot_rw(x[::250,:], S, f)
 
 
-#G = nx.binomial_graph(30,0.6)
-#print('Simplex vertices', S)
-#print('Inverse vertices', Sinv)
+f.title('Dynamics for Cycle')
+fig = plt.gcf()
+f.show()
+fig.savefig('plots/rw_d=3_cycle.png')
+
 
 #print('Centroid', centroid(S))
 
-# Test random walk 
 
-#N = 4
-#G = nx.complete_graph(N)
-iters = 10000
-#x0 = np.random.rand(d+1)
-x0 = [1, 0,0, 0]
-s = sum(x0)
-x0 = list(map(lambda i: i/float(s), x0))
-
-x = ctrw(G, x0, iters)
-print(x[iters-1,:])
-
-
-fig = plot_rw(x[::250,:], S, f)
-#fig.show()
 
 
