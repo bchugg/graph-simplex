@@ -2,10 +2,11 @@ import networkx as nx
 import numpy as np
 from graph_simplex import *
 from simplex_plotter import *
+import matplotlib.pyplot as plt 
 
 
 
-d = 4
+d = 3
 
 if d == 2: 
 	G = nx.Graph()
@@ -27,7 +28,8 @@ elif d== 3:
 	G.add_edge(1,4)
 	evals,evecs = laplacian_decomposition(G, True)
 	S, Sinv = simplex_vertices(evals, evecs)
-	plot_simplex([S,Sinv],3, ['b', 'r'])
+	f = plot_simplex([S],3, ['b'])
+	#f.show()
 
 
 #G = nx.binomial_graph(30,0.6)
@@ -38,14 +40,19 @@ elif d== 3:
 
 # Test random walk 
 
-N = 20
-G = nx.complete_graph(N)
+#N = 4
+#G = nx.complete_graph(N)
 iters = 10000
-x0 = np.random.rand(N)
+#x0 = np.random.rand(d+1)
+x0 = [1, 0,0, 0]
 s = sum(x0)
 x0 = list(map(lambda i: i/float(s), x0))
 
 x = ctrw(G, x0, iters)
 print(x[iters-1,:])
+
+
+fig = plot_rw(x[::250,:], S, f)
+#fig.show()
 
 

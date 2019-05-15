@@ -1,11 +1,15 @@
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
+import numpy as np  
 
 
 def plot_simplex(A, d, colors):
 	# Plot simplex in two or three dimensions
 	# A is array of simplices, d is dimension
 	# color is color in which simplex is plotted
+	f = plt.figure()
+	#f.add_subplot(111)
+
 	if (not d==2 and not d==3) or not len(colors) == len(A): 
 		print('Dimension must be two or three, and supply colors')
 		return
@@ -21,8 +25,9 @@ def plot_simplex(A, d, colors):
 			plot_simplex_helper3D(xdata, ydata, zdata, ax, colors[i])
 		else: 
 			plot_simplex_helper2D(xdata, ydata, c=colors[i])
-		
-	plt.show()
+
+	
+	return plt
 
 def plot_simplex_helper3D(xdata, ydata, zdata, ax, c):
 	# Helper method for plot_simplex, for R^3 case
@@ -81,4 +86,25 @@ def plot_simplex_helper2D(xdata, ydata, c='r'):
 	for i in range(3):
 		plt.text(xdata[i], ydata[i]+eps,
 			i, size=12, color=c)
+
+
+
+def plot_rw(x, S, fig):
+	# Plot the random walk as points in simplex
+	# In particular, each x[i] is a barycentric coordinate of simplex
+	# described by vertices in S. 
+
+	N = len(x[0,:])
+	St = np.transpose(S) 
+	if N == 4: 
+		for i in range(len(x[:,0])):
+			coords = np.dot(St, x[i,:])
+			fig.plot([coords[0]], [coords[1]], [coords[2]], 'r.')
+	elif N == 3: 
+		for i in range(len(x[:,0])):
+			coords = np.dot(St, x[i,:])
+			fig.plot([coords[0]], [coords[1]])
+
+	fig.show()
+	#return fig
 
