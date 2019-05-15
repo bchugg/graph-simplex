@@ -5,7 +5,7 @@ from simplex_plotter import *
 
 
 
-d = 3
+d = 4
 
 if d == 2: 
 	G = nx.Graph()
@@ -24,6 +24,7 @@ elif d== 3:
 	G.add_edge(1,2)
 	G.add_edge(2,3)
 	G.add_edge(3,4)
+	G.add_edge(1,4)
 	evals,evecs = laplacian_decomposition(G, True)
 	S, Sinv = simplex_vertices(evals, evecs)
 	plot_simplex([S,Sinv],3, ['b', 'r'])
@@ -34,5 +35,17 @@ elif d== 3:
 #print('Inverse vertices', Sinv)
 
 #print('Centroid', centroid(S))
+
+# Test random walk 
+
+N = 20
+G = nx.complete_graph(N)
+iters = 10000
+x0 = np.random.rand(N)
+s = sum(x0)
+x0 = list(map(lambda i: i/float(s), x0))
+
+x = ctrw(G, x0, iters)
+print(x[iters-1,:])
 
 

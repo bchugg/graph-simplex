@@ -48,14 +48,32 @@ def simplex_vertices(evals, evecs):
 
 def centroid(S):
 	# Compute centroid of simplex S
+	# Vertices are encoded in matrix S, S(i,j) is j-th component of i-th vector
 	cent = np.zeros(len(S[0,:]))
 	for i in range(len(cent)):
 		cent[i] = sum(S[:,i])
 	return cent / float(len(cent)+1) # Normalize by n
 
 
+def ctrw(G, x0, iters):
+	# Compute dynamics of continuous time random walk on graph G
+	# x0 is initial distribution
+	# iters is number of iterations
 
+	N = nx.number_of_nodes(G)
+	L = nx.laplacian_matrix(G).todense()
+	Winv = list(map(lambda i: 1/float(L[i,i]), range(N)))
 
+	M = np.matmul(np.diag(Winv), L)
+
+	h = 0.001
+	x = np.zeros((iters, N))
+	x[0,:] = x0
+
+	for i in range(1,iters):
+		x[i,:] = x[i-1,:] - h * np.dot(x[i-1,:],M)
+
+	return x
 
 
 
