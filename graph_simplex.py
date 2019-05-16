@@ -63,7 +63,6 @@ def ctrw(G, x0, iters):
 	N = nx.number_of_nodes(G)
 	L = nx.laplacian_matrix(G).todense()
 	Winv = list(map(lambda i: 1/float(L[i,i]), range(N)))
-
 	M = np.matmul(np.diag(Winv), L)
 
 	h = 0.001
@@ -72,6 +71,27 @@ def ctrw(G, x0, iters):
 
 	for i in range(1,iters):
 		x[i,:] = x[i-1,:] - h * np.dot(x[i-1,:],M)
+
+	return x
+
+def dtrw(G, x0, iters):
+	# Compute dynamics of discrete time random walk on graph G
+	# x0 is initial distribution
+	# iters is number of iterations
+
+	N = nx.number_of_nodes(G)
+	A = nx.adjacency_matrix(G).todense()
+	L = nx.laplacian_matrix(G)
+	Winv = list(map(lambda i: 1/float(L[i,i]), range(N)))
+
+	# Compute transition matrix
+	T = np.matmul(np.diag(Winv), A) 
+
+	x = np.zeros((iters, N))
+	x[0,:] = x0
+
+	for i in range(1,iters):
+		x[i,:] = np.dot(x[i-1,:], T)
 
 	return x
 
