@@ -1,0 +1,51 @@
+\documentclass[11pt, oneside]{book}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage{physics}
+\usepackage{color}
+\usepackage{xspace}
+\usepackage{mathtools}
+%\usepackage{tgpagella}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\usepackage[intoc]{nomencl}
+\usepackage{etoolbox}
+
+
+
+% Macros and formatting
+\input{macros}
+\input{formatting}
+
+
+
+\title{Graph-Simplex}
+\author{Ben Chugg}
+\date{}
+\makenomenclature
+
+
+
+\begin{document}
+
+% Front matter
+%\frontmatterstyling
+%\maketitle
+%\tableofcontents
+%\input{frontmatter/nomenclature.tex}
+%\printnomenclature
+
+% Mid matter
+\midmatterstyling
+\include{introduction}
+\include{background}
+\include{correspondence}
+\include{algorithmic_implications}
+
+
+\backmatterstyling
+\bibliographystyle{alpha}
+\bibliography{ref.bib}
+
+\end{document}

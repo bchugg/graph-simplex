@@ -1,0 +1,55 @@
+This is BibTeX, Version 0.99d (TeX Live 2016)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: main.aux
+A level-1 auxiliary file: introduction.aux
+A level-1 auxiliary file: background.aux
+A level-1 auxiliary file: correspondence.aux
+A level-1 auxiliary file: algorithmic_implications.aux
+The style file: alpha.bst
+Database file #1: ref.bib.bib
+Warning--there's a number but no series in chung1997spectral
+Warning--there's a number but no series in fiedler2011matrices
+Warning--can't use both volume and number fields in penrose1955generalized
+Warning--can't use both volume and number fields in penrose1956best
+You've used 20 entries,
+            2543 wiz_defined-function locations,
+            689 strings with 7152 characters,
+and the built_in function-call counts, 7763 in all, are:
+= -- 804
+> -- 305
+< -- 18
++ -- 101
+- -- 96
+* -- 534
+:= -- 1258
+add.period$ -- 65
+call.type$ -- 20
+change.case$ -- 111
+chr.to.int$ -- 20
+cite$ -- 24
+duplicate$ -- 331
+empty$ -- 582
+format.name$ -- 124
+if$ -- 1602
+int.to.chr$ -- 1
+int.to.str$ -- 0
+missing$ -- 23
+newline$ -- 104
+num.names$ -- 60
+pop$ -- 95
+preamble$ -- 1
+purify$ -- 134
+quote$ -- 0
+skip$ -- 277
+stack$ -- 0
+substring$ -- 466
+swap$ -- 61
+text.length$ -- 18
+text.prefix$ -- 9
+top$ -- 0
+type$ -- 148
+warning$ -- 4
+while$ -- 81
+width$ -- 21
+write$ -- 265
+(There were 4 warnings)

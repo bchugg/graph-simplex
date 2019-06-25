@@ -36,8 +36,7 @@ elif d== 3:
 	G.add_edge(1,2)
 	G.add_edge(2,3)
 	G.add_edge(3,4)
-	#G.add_edge(1,4)
-	G.add_edge(1,3)
+	G.add_edge(4,2)
 	#G = nx.complete_graph(4)
 	evals,evecs = laplacian_decomposition(G)
 	S, Sinv = simplex_vertices(evals, evecs)
@@ -52,18 +51,18 @@ elif d== 3:
 
 iters = 20
 #styles = ['r.', 'b.', 'g.', 'y.']
-for i,x in enumerate(inits): 
-	s = sum(x)
-	x0 = list(map(lambda i: i/float(s), x))
-	x = dtrw(G, x0, iters)
-	print(x)
-	f = plot_rw(x[::1,:], S, f)
+# for i,x in enumerate(inits): 
+# 	s = sum(x)
+# 	x0 = list(map(lambda i: i/float(s), x))
+# 	x = dtrw(G, x0, iters)
+# 	print(x)
+# 	f = plot_rw(x[::1,:], S, f)
 
 
-f.title('Dynamics for K4 - (2,4) and (1,4)')
+#f.title('Simplex of K4')
 fig = plt.gcf()
 f.show()
-fig.savefig('plots/dtrw_d=3_k4-2.png')
+fig.savefig('plots/d3_simplex.png')
 
 
 #print('Centroid', centroid(S))

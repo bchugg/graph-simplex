@@ -1,0 +1,230 @@
+\chapter{Algorithmic Implications}
+
+\section{Computational Complexity}
+
+\paragraph{Independent Set}
+Let $I\subset V$ be an independent set in $G$, i.e., if $i,j\in I$ then $(i,j)\notin E$. Consider 
+\begin{align*}
+    \Lf(\chi_I) = \sum_{i\sim j}w(i,j)(\chi_I(i)-\chi_I(j))^2 = \sum_{i\in I}\sum_{j:j\sim i} w(i,j) = \sum_{i\in I}w(i)=W(\delta I),
+\end{align*}
+where the second and fourth inequalities follows from the fact that $I$ is an independent set. 
+
+Suppose we assign each vertex $i$ a weight $f(i)\geq 0$. The \mwis problem consists of maximizing $f(I)\equiv \sum_{i\in I}f(i)$ over all independent sets $I$. Clearly \mwis is NP-hard, seeing as it reduces to the usual independent set maximization problem by taking $f(i)=1$ for all $i$. 
+
+Suppose $f(i)=\alpha w(i)$ for all $i$, i.e., we assign the vertex weights as a linear function of their total edge weight. For an independent set $I$ we have 
+\begin{align*}
+    f(I) = \alpha w(I)= \alpha W(\delta I) = \alpha \frac{|I|}{\norm{c(\splx_I)}_2^2}.
+\end{align*}
+In the simplex, the criteria that $I$ is an independent set translates to the property that $\la \sv_i,\sv_j\ra =0$ for all $i,j\in I$. We can thus say something \TODO \note{What? Need to decide whether problem is easy or hard} about the constrained optimization problem 
+\begin{alignat*}{2}
+    \min_I & \quad && \frac{\norm{c(\splx_I)}_2^2}{|I|} \\
+    \text{s.t.} & && \la \sv_i,\sv_j\ra =0, \;i,j\in I.
+\end{alignat*}
+
+The normalized Laplacian, meanwhile, removes the weights from consideration. For an independent set $I$ and a vertex $i\in I$ note that $W(\delta(i)\cap I^c)=w(i)$ since $\delta(i)\cap I^c=\delta(i)$ by definition of an independent set. Therefore, Equation \eqref{eq:Lnf(chiU)} yields 
+\begin{align*}
+    \Lnf(\chi_I)=\sum_{i\in I}\frac{W(\delta(i)\cap I^c)}{w(i)} = |I|,
+\end{align*}
+implying that 
+\[\norm{c(\splxn_I)}_2^2=\frac{1}{|I|^2}\Lnf(\chi_I)=\frac{1}{|I|}.\]
+Since maximizing the cardinality of an independent set is an NP-hard problem, we have that 
+
+\begin{alignat*}{2}
+\max_I & \quad &&  \norm{c(\splxn_I)}_2^2 \\
+ \text{s.t.}&  &&  \la \sv_i,\sv_j\ra=0,\; i,j\in I,
+\end{alignat*}
+is an NP-hard problem.
+
+
+\begin{theorem}
+Deciding whether two polytopes are isomorphic is Graph-Isomorphism-Hard. Moreover, subpolytope isomorphism is NP-hard. 
+\end{theorem}
+
+The first result was also proved in \cite{kaibel2008complexity}. 
+
+\note{Formulate MST in terms of hyperacute simplices. Seems somewhat surprising that this high-dimensional geometric problem is solvable in poly time. On the other hand, what seems like a related problem in "geometric" space, Hamiltonian cycle/path, is hard. Probably worth mentioning but not thinking too much about.}
+
+\section{Embeddings}
+Johnson-Lindenstrauss Lemma~\cite{johnson1984extensions,dasgupta2003elementary}: 
+
+\begin{theorem}[Johnson-Lindenstrauss Lemma]
+Let $E\subset \R^k$ be a set of $n$ points, for some $k\in\N$. For any $\eps>0$ and $d\geq 8\log(n)\eps^{-2}$ there exists a map $g_\eps:\R^k\to\R^d$ such that 
+\begin{equation*}
+    (1-\eps)\norm{\u-\v}_2^2 \leq \norm{g_\eps(\u) - g_\eps(\v)}_2^2 \leq (1+\eps)\norm{\u-\v}_2^2,
+\end{equation*}
+for all $\u,\v\in E$. 
+\end{theorem}
+
+\begin{theorem}[\cite{spielman2011graph}]
+For any $\eps>0$ and graph $G=(V,E,w)$, there exists an algorithm which computes a matrix $\widetilde{\Reff}\in\R^{O(\log(n)\eps^{-2})\times n}$ such that 
+\begin{equation*}
+    (1-\eps)r(i,j) \leq \norm{\widetilde{\Reff}(\bchi_i-\bchi_j)}_2^2 \leq (1+\eps) r(i,j).
+\end{equation*}
+The algorithm runs in time $\widetilde{O}( |E|\log (r)/\eps^2)$, where 
+\[r=\frac{\max_{i,j}w(i,j)}{\min_{i,j}w(i,j)}.\]
+\end{theorem}
+
+Consider inverse simplex for which we have $\norm{\sv_i^+-\sv_j^+}_2^2=r(i,j)$ where $r(i,j)$ is the effective resistance between vertices $i$ and $j$. Add a point $\o$ which is the centroid of these points. Thus $\norm{\sv_i^+-\o}_2^2 = \L_G^+(i,i)$ for all $i$. Note that we can compute this in linear time since 
+\[\norm{\sv_i^+-\o}_2^2 = \norm{\sv_i^+}_2^2 = \frac{1}{W(\delta(\{i\}))}=\frac{1}{w(i)}.\]
+
+Applying JL transform to obtain $n+1$ points in $\R^d$, for $d=O(\log(n)/\eps^2)$. Let $f$ be the mapping, e.g., $\sv_i^+$ mapped to $f(\sv_i^+)$. By JL, have 
+
+\[(1-\eps)\norm{\x-\y}_2^2\leq  \norm{f(\x) -f(\y)}_2^2\leq (1+\eps)\norm{\x-\y}_2^2, \]
+for all $\x,\y\in \{\sv_1^+,\dots,\sv_n^+,\o\}$. 
+Apply a linear transformation to the points so that $f(\o)$ coincides with the origin $\zero\in\R^d$. Note that this does not affect the distances between the points themselves, and does not damage the approximation. Update $f$ to reflect this transformation. Then, 
+\[\norm{f(\sv_i^+)}_2^2 = \norm{f(\sv_i^+)-f(\o)}_2^2 = (1+\eps_{i,\o})\norm{\sv_i^+-\o}_2^2 = (1+\eps_{i,\o})\L_G^+(i,i).\]
+Hence, 
+\begin{align*}
+    \norm{f(\sv_i^+)-f(\sv_j+)}_2^2 &= \la f(\sv_i^+)-f(\sv_j^+),f(\sv_i^+)-f(\sv_j+)\ra \\
+    &= \norm{f(\sv_i^+)}_2^2 + \norm{f(\sv_j^+)}_2^2 - 2\la f(\sv_i^+),f(\sv_j^+)\ra,  
+\end{align*}
+implying that 
+\begin{align*}
+    \la f(\sv_i^+),f(\sv_j^+) \ra &= -\frac{1}{2} \bigg((1+\eps_{i,j})\norm{\sv_i^+-\sv_j^+}_2^2 - (1+\eps_{i,\o})\L_G^+(i,i) - (1+\eps_{j,\o})\L_G^+(j,j)\bigg) \\
+    &= -\frac{1}{2}((1+\eps_{i,j})r(i,j) - (1+\eps_{i,\o})\L_G^+(i,i) - (1+\eps_{j,\o})\L_G^+(j,j)) \\
+    &= -\frac{1}{2}((1+\eps_{i,j})(\L_G^+(i,i) - \L_G^+(j,j) - 2\L_G^+(i,j)) \\
+    &\hspace{2cm}- (1+\eps_{i,\o})\L_G^+(i,i) - (1+\eps_{j,\o})\L_G^+(j,j))\\
+    &= (1+\eps_{i,j})\L_G^+(i,j) + \varepsilon(i,j),
+\end{align*}
+where 
+\[\varepsilon(i,j)\equiv \frac{1}{2}(\eps_{i,\o}-\eps_{i,j})\L_G^+(i,i) + (\eps_{j,\o}-\eps_{i,j})\L_G^+(i,j),\]
+is an error term dictated by $\eps_{i,j}, \eps_{i,\o}$ and $\eps_{j,\o}$. Setting 
+\[M\equiv \max_i \L_G^+(i,i),\]
+we can bound the error term via repeated applications of the triangle inequality: 
+\begin{align*}
+    |\varepsilon(i,j)|& \leq \frac{1}{2}\bigg(|(\eps_{i,\o}-\eps_{i,j})\L_G^+(i,i)| + |(\eps_{j,\o}-\eps_{i,j})\L_G^+(i,j|\bigg) \\
+    & \leq \frac{1}{2}\bigg([|\eps_{i,j}|+|\eps_{i,\o}|]\L_G^+(i,i) + [|\eps_{i,j}|+|\eps_{j,\o}|]\L_G^+(j,j)\bigg) \\
+    &\leq \frac{1}{2} ( 2\eps\L_G^+(i,i) + 2\eps\L_G^+(j,j) ) \leq 2\eps M,
+\end{align*}
+since $|\eps_{i,j}|, |\eps_{i,\o}|,|\eps_{j,\o}|\leq |\eps|$. Setting $f(\Sv^+) = (f(\sv_1^+),\dots,f(\sv_n^+))\in \R^{d\times n}$, this approximation implies that 
+\begin{equation*}
+    \L_G^+ - O(\eps M)\I \leq f(\Sv^+)^\tp f(\Sv^+) \leq \L_G^+ + O(\eps M)\I. 
+\end{equation*}
+In other words, we can approximately recover the Gram matrix $\L_G^+=\Sv^+\Sv^+$ using the lower dimensional matrix $f(\Sv^+)$. 
+
+Given a graph $G=(V,E,w)$, we can compute all the approximate distances $\norm{\sv_i^+-\sv_j^+}_2^2=r(i,j)$ in time \[\widetilde{O}(|E|\log (r)/\eps^2)+O(|E| \log(n)/\eps^2)=\widetilde{O}(|E|/\eps^2),\]
+assuming $r=O(1)$. Note that we can compute a single effective resistance in time $O(\log n/\eps^2)$, since it involves simply computing the $\ell_2$ norm the vector $\widetilde{\Reff}(\bchi_i-\bchi_j)$ which is simply the difference of two columns of $\widetilde{\Reff}$. 
+\note{Question: Does JL Lemma work with approximate distances??} 
+
+\note{Possible reduction techniques: (1) Projection of simplex onto subspace $\R^k\subset \R^n$, probably either the subspace corresponding to largest or smallest eigenvalues. (2) Graph Sparsification: Keeps the same dimension, but removes many edges, i.e., many vertices becomes orthogonal. (3) JL Lemma approach. }
+
+\note{Obviously the JL embedding approach does not maintain the fact that the dot product between non-neighbours is zero. But does it approximate this information? I.e., is the dot product smaller for non-neighbours than it is for neighbours?}
+
+\note{For example, it maintains approximate information about random spanning trees. We know that 
+\[\norm{\sv_i^+-\sv_j^+}_2^2 = \frac{1}{w(i,j)} \Pr_{T\sim \mu}[(i,j)\in T],\]
+where $\mu$ is the uniform distribution over all spanning trees. Hence the new JL body approximately maintains this information. 
+}
+
+
+\note{Another thought, about how to do the embedding quickly:  Karel says that replacing $\lambda_j$ with $\lambda_j^{1/2}$ still yields a Laplacian,  i.e., $f(\L_G) = \Eig f(\Eval)\Eig^\tp = \sum_i f(\lambda_i)\vp_i\vp_i^\tp$
+with $f(x)=\sqrt{x}$ is still a Laplacian. What's the graph which corresponds to this Laplacian?  Can we get to that graph from  the original graph, without calculating eigendecomposition?
+Let this  graph be $G'$. Then  $\L^+_{G'}=\L_G^{+/2}$,  implying that by Spielman Teng we can get a good approximation of $\L_G^{+/2}$  (if we can compute  $G'$ quickly). Thus, we can get an approximate resistive embedding. Perhaps we can  then  get an approximate simplex from the  resistive embedding by projection onto appropriate  subspace (really need to figure out what  this subspace  is). 
+}
+
+\section{Electrical Flows}
+Given an undirected, weighted graph $G=(V,E,w)$, orient the edges of $G$ arbitrarily and encode this information in the matrix $\B$, as in Section ??. For an edge $e=(i,j)$ oriented from $i$ to $j$, denote $e^+=i$ and $e^-=j$. 
+We will consider $G$ as an electrical network. To do this, we imagine placing a resistor of resistance $1/w(e)$ on each edge $e$. Edges thus carry current between the nodes and, in general, higher weighted edges will carry more current.  
+An \emph{electrical flow $\f:E\to\R_{\geq 0}$} on $G$ assigns a current to each edge $e$ and respects, roughly speaking, Kirchoff's current law and Ohm's law. More precisely, let $\e$ be a vector describing the amount of current injected at each node. By Kirchoff's law, the amount of current passing through a vertex $i$ must be conserved. That is, 
+\[\sum_{e:i=e^+}f(e) - \sum_{e:i=e-}f(e) = e(i),\]
+or, more succinctly, 
+\begin{equation}
+\label{eq:kirchoff}
+    \B^\tp \f=\e. 
+\end{equation}
+Note that this property is also called \emph{flow conversation} in the network flow literature. 
+By Ohm's law, the amount of flow across an edge is proportional to the difference of potential at its endpoints. The constant of proportionality is the inverse of the resistance of that edge, i.e., the weight of the edge. Let $\brho:V\to\R_{\geq 0}$ describe the potential at each vertex. For $e=(i,j)$ with $i=e^+$, $j=e^-$, $\brho$ is defined by the relationship 
+\begin{equation*}
+    f(e) = w(e)(\rho(i)-\rho(j)) = w(e) (\B(e,i)\rho(i) + \B(e,j)\rho(j)),
+\end{equation*}
+so that
+\begin{equation}
+\label{eq:ohms_law}
+    \f=\W\B\brho.
+\end{equation}
+Combining \eqref{eq:kirchoff} and \eqref{eq:ohms_law} we see that $\e=\B^\tp \f=\B^\tp \W\B \brho = \L_G\brho$, and so $\brho = \L_G^+\e$ whenever $\la \e,\one\ra$ (recall that $\L_G^+$ is the inverse of $\L_G$ in the space $\spn(\one)^\tp$).  
+
+The \emph{effective resistance} of an edge $e=(i,j)$ is the potential difference induced across the edge when one unit of current is injected at $i$ and extracted at $j$. That is, for $\e=\bchi_i-\bchi_j$, we want to measure $\rho(i)-\rho(j)$. We do this by noticing that 
+\[\rho(i)-\rho(j) = \la \bchi_i,\brho\ra - \la \bchi_j,\brho\ra = \la \bchi_i,\bchi_j,\L_G^+\e=\Lf_G^+(\bchi_i-\bchi_j).\]
+Note that here we've relied on the fact that $\bchi_i-\bchi_j\perp \one$. 
+
+
+\begin{definition}
+The \emph{effective resistance} between nodes $i$ and $j$ is $\effr(i,j) \equiv \Lf_G^+(\bchi_i-\bchi_j)$.  
+\end{definition}
+
+Notice that the effective resistance is encoded naturally by the simplex $\splx(G)$: 
+\[\effr(i,j) = \la \bchi_i-\bchi_j,\L_G^+(\bchi_i-\bchi_j\ra = \la \Sv^+(\bchi_i,\bchi_j),\Sv^+(\bchi_i-\bchi_j)\ra = \norm{\sv_i^+-\sv_j^+}_2^2.\]
+That is, the distance between the vertices of the inverse simplex are precisely the effective resistances. 
+
+\subsection{Resistive Embedding}
+
+Consider the vertices $\bmu_i=\L_G^{+/2}\bchi_i\in\R^n$, for $i\in[n]$. This yields $n$ points in $\R^n$, also with pairwise squared distances equal to the effective resistance of the graph: 
+
+\begin{equation*}
+    \norm{\bmu_i-\bmu_j}_2^2 = \norm{\L_G^{+/2}(\bchi_i-\bchi_j)}_2^2 =  (\bchi_i-\bchi_j)^\tp \L_G^+(\bchi_i-\bchi_j)=\effr(i,j).
+\end{equation*}
+
+\begin{claim}
+\note{Sort this out. Seems true but should make sure.} The polytope defined by the vertices $\{\bmu_i\}$ sits in an $n-1$ dimensional subspace. That  is, there exists a linear map $\T:\R^n\to\R^{n-1}$ such that $\T\bmu\subset\R^{n-1}$ is a simplex.
+\end{claim}
+
+Based on above, should have  that $\T\bmu$ is a shifted/rotated/reflected copy of $\splx$. So there exists a map $\M:\R^{n-1}\to\R^{n-1}$ such that $\M\T\bmu=\Sv$. 
+
+We have 
+\begin{align*}
+    \mu_i(\ell) = \L_G^{+/2}(\ell,i) = \sum_{j\in[n]}\lambda_j^{-1/2}\vp_j\vp_j^\tp(\ell,i) = \sum_{j\in[n]}\lambda_j^{-1/2}\vp_j(\ell)\vp_j(i).
+\end{align*}
+Recalling the formula for the vertices of the inverse simplex $\splx^+$ demonstrates that 
+\begin{equation*}
+    \mu_i(\ell) = \sum_{j\in[n]}\sv_\ell^+(j)\vp_j(i) = \sum_{j\in[n]}\sv_i^+(j)\vp_j(\ell).
+\end{equation*}
+
+Moreover,
+
+\begin{align*}
+    \la \bmu_i,\bmu_j\ra &=\sum_{\ell\in[n]} \L_G^{+/2}(\ell,i)\L_G^{+/2}(\ell,j) = \la \L_G^{+/2}(\cdot,i),\L_G^{+/2}(\cdot,j)\ra =\la \L_G^{+/2}(\cdot,i),\L_G^{+/2}(j,\cdot)\ra= \L_G^+(i,j),
+    % &= \sum_{\ell\in[n]}\bigg(\sum_{r\in[n]}\lambda_r^{-1/2}\vp_r(\ell)\vp_r(i)\sum_{s\in[n]}\lambda_s^{-1/2}\vp_s(\ell)\vp_s(j)\bigg)\\
+    % &= \sum_{\ell\in[n]}\sum_{r\in[n]}\sum_{s\in[n]}\lambda_r^{-1/2}\lambda_s^{-1/2}\vp_r(\ell)\vp_r(i)\vp_s(\ell)\vp_s(j) \\
+    % &= \sum_{r\in[n]}\sum_{s\in[n]}\lambda_r^{-1/2}\lambda_s^{-1/2}\vp_r(i)\vp_s(j)\sum_{\ell\in[n]}\vp_r(\ell)\vp_s(\ell)\\
+    % &= \sum_{r\in[n]}\sum_{s\in[n]}\lambda_r^{-1/2}\lambda_s^{-1/2}\vp_r(i)\vp_s(j)\delta_{r,s}\\
+    % &= \sum_{r\in[n]}\lambda_r^{-1}\vp_r(j)\vp_r(i)\\ 
+    % &=  \sum_{r\in[n]}\lambda_r^{-1}\vp_r\vp_r^\tp(i,j) = \L_G^+(i,j).
+\end{align*}
+since $\L_G^{+/2}$ is symmetric and  $\L_G^{+/2}\L_G^{+/2}=\L_G^+$.  We can also see this from recalling that 
+\[\effr(i,j) = \L_G^+(i,i) + \L_G^+(j,j) - \frac{1}{2}\L_G^+(i,j),\]
+combined with the facts that $\norm{\bmu_i-\bmu_j}_2^2 = \effr(i,j)$ and $\norm{\bmu_i}_2^2 = \L_G^+(i,i)$. 
+
+
+
+\note{If we can  figure  out the map which  projects the polyhedron onto the correct subspace,  the relationships of the simplex will hold and we can maybe use this to discover interesting eigenvector/eigenvalue properties. } 
+
+Let $\re=\conv(\bmu_1,\dots,\bmu_n)$ be the convex polygon defined by the vertices $\{\bmu_i\}$.  Note that $\L_G^{+/2}$ is $\re$'s associated vertex matrix. 
+
+The centroid of $\re$ coincides with the origin  of $\R^n$: 
+\begin{equation*}
+    \cent(\re) = \frac{1}{n}\L_G^{+/2}\one = \frac{1}{n}\sum_{i\in[n-1]}\lambda_i^{-1/2}\vp_i\vp_i^\tp \one = \zero.
+\end{equation*}
+
+\begin{lemma}
+The all ones vector is orthogonal to $\re$. 
+\end{lemma}
+\begin{proof}
+We need to show that for all $\p,\q\in\re$, $\la \one,\p-\q\ra=0$. As usual, let $\x$ and $\y$ be the barycentric coordinates of $\p$ and $\q$ so that $\p=\L_G^{+/2}\x$ and $\q=\L_G^{+/2}\y$. We have
+\begin{align*}
+    \la \one,\p\ra &= \sum_{\ell\in[n]} (\L_G^{+/2}\x)(\ell) = \sum_{\ell\in[n]} \sum_{j\in [n]}\L_G^{+/2}(\ell,j)x(j) = \sum_{j\in[n]}x(j) \sum_{\ell\in[n]}\L_G^{+/2}(\ell,j),
+\end{align*}
+where for any $j$, 
+\[\sum_{\ell\in[n]}\L_G^{+/2}(\ell,j)= \one^\tp \L_G^{+/2}\bchi_j=\sum_{\ell\in[n-1]} \lambda_\ell^{-1/2}\one^\tp \vp_\ell\vp_\ell^\tp\bchi_j=0,\]
+since $\vp_i\in\spn(\one)^\perp$  for all $i<n$. Hence  $\la \one,\p\ra=0$ meaning that $\la \one,\p-\q\ra=0$ as well. 
+\end{proof}
+
+The relationship between $\re$ and $\splx$ gives us an alternate way to prove equalities such as \eqref{eq:c(S_U)}. Indeed, there exists an isometry between $\re$ and $\splx$; therefore, 
+\begin{equation*}
+    \norm{\cent(\splx_U)}_2^2 = \norm{\cent(\re_U)}_2^2 = \frac{1}{|U|^2} \norm{\L_G^{+/2}\bchi_U}_2^2 = \frac{1}{|U|^2}w(\delta^+ U).
+\end{equation*}
+
+
+\note{What is the ``inverse'' of $\re$?? This inverse will relate to a lot of graph properties. If we can obtain a closed form analytical expression this could yield new relationships}. 
+
+\note{Answer: Inverse simply has vertices $\L_G^{1/2}\bchi_i$}. 
+

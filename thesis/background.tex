@@ -1,0 +1,400 @@
+\chapter{Background and Fundamentals}
+
+\section{General Notation}
+\label{sec:background_general}
+Let $[n]=\{1,2,\dots,n\}$. By $\diag(x_1,x_2,\dots,x_n)$ we mean the $n\times n$ matrix $\D$ entries $\D(i,i)=x_i$ and $\D(i,j)=0$ for $i\neq j$. Given vectors $\v_1,\dots,\v_n$, we will often denote by $(\v_1,\dots,\v_n)$ the matrix whose $i$-th column is $\v_i$. We let $x(i)$ denote the $i$-th component of a vector $\x$. For $1\leq p<\infty$, the \emph{$p$-norm} of $\x\in \R^d$ is 
+\[\norm{\x}_p = \bigg(\sum_{i=1}^d x_i^p\bigg)^{1/p},\]
+while the \emph{0-norm} of $\x$ is the number of non-zero entries of $\x$, and is denoted by $\norm{\x}_0$. 
+
+\section{Linear Algebra}
+\label{sec:background_linear}
+The results derived in this section can be found in any self-contained reference on spectral graph theory (see e.g., \cite{spielman2009spectral,chung1997spectral}). What's not graph-theoretic in nature---dimension, kernel, similarity, for example---may be found in a generic reference on linear algebra (e.g.,  \cite{axler1997linear}). 
+
+\begin{lemma}
+\label{lem:bi-orthogonal_bases}
+Let $\v_1,\dots,\v_k$ be a set of linearly independent vectors in $\R^n$. There exists a set of vectors, $\u_1,\dots,\u_k$ such that $\la \v_i,\u_j\ra = \delta_{ij}$ for all $i,j\in[k]$. The collections $\{\v_i\}$ and $\{\u_i\}$ are called \emph{biorthogonal} or \emph{dual} bases.  
+\end{lemma}
+
+We present a simple observation which will be useful in later sections. 
+
+\begin{observation}
+\label{obs:bi-orthogonal_unique}
+Let $\{\v_1,\dots,\v_n\}\subset\R^n$ be a set of linearly independent vectors. The complimentary set of vectors $\{\u_i\}$ given by Lemma \ref{lem:bi-orthogonal_bases} are unique. 
+\end{observation}
+\begin{proof}
+Suppose $\{\u_i\}$ and $\{\w_i\}$ are two such sets of vectors. Fix $i\in[n]$. By independence, $\spn(\v_1,\dots,\v_{i-1},\v_{i+1},\dots,\v_n)$ is a hyperplane---that is, $\dim(\spn(\v_1,\dots,\v_{i-1},\v_{i+1},\dots,\v_n))^\perp=1$. Both $\u_i$ and $\w_i$ are orthogonal to this hyperplane (since they orthogonal to $\v_j$ for all $j\neq i$), thus are either parallel or anti-parallel. Therefore, there exists some $\alpha\in\R$ such that $\v_i=\alpha\w_i$. By definition, $\la \v_i,\u_i\ra = \la \v_i,\w_i\ra =1$, hence $\la \v_i,\alpha \w_i\ra = \la \v_i,\w_i\ra$ implying that $\alpha=1$. This demonstrates that $\u_i=\w_i$ for all $i$. 
+\end{proof}
+
+Let $\M\in\R^{n\times n}$ matrix. We recall that a vector $\eig$ satisfying $\M\eig=\lambda\eig$ is an \emph{eigenvector} of $\M$, and call $\lambda$ the associated \emph{eigenvalue}. It's clear that if $\eig$ is an eigenvector then so it $c\eig$ for any constant $c\in \R$. If $\M$ is Hermitian, then the Spectral theorem dictates that there exists an orthonormal basis consisting of eigenvectors $\{\eig_1,\eig_2,\dots,\eig_n\}$ of $\M$ whose corresponding eigenvalues $\{\lambda_1,\dots,\lambda_n\}$ are all real. Let $\Eig=(\eig_1,\eig_2,\dots,\eig_n)$ be the matrix whose $i$-th column is the $i$-th eigenvector of $\M$, and set $\Eval=\diag(\lambda_1,\dots,\lambda_n)$. Observe that 
+\begin{equation}
+\label{eq:eig_decomp}
+\M\Eig=\M(\eig_1,\dots,\eig_n)=(\M\eig_1,\dots,\M\eig_n)=(\lambda_1\eig_1,\dots,\lambda_n\eig_n)=\Eig\Eval.
+\end{equation}
+Moreover, if $\{\eig_i\}_i$ are assumed to be orthonormal then $\Eval\Eval^\intercal=\I$ from which it follows from $\eqref{eq:eig_decomp}$ that \begin{equation}
+    \label{eq:eig_decomp2}
+    \M=\Eig\Eval\Eig^\tp = \sum_{i\in[n]}\lambda_i\eig_i\eig_i^\tp,
+\end{equation}
+which is called the \emph{eigendecomposition} of $\M$. 
+
+A symmetric matrix $\vb*{Q}\in\R^{n\times n}$ is \emph{positive semidefinite (PSD)} if $\x^\tp\Q\x \geq 0$ for all $\x\in\R^n$. If $\Q$ is PSD, then we define 
+\begin{equation*}
+    \Q^{1/2} \equiv \Eig\Eval\Eig^\tp = \sum_{i\in[n]}\sqrt{\lambda_i}\vp_i\vp_i^\tp.
+\end{equation*}
+
+\subsection{Pseudoinverse}
+Moore-Penrose pseudo-inverse: Nice overview by Barata~\cite{barata2012moore}. Introduced by Moore~\cite{moore1920reciprocal}, rediscovered by Penrose~\cite{penrose1955generalized,penrose1956best}. Pseudoinverse of Laplacian discussed by Van Meighem \etal~\cite{van2017pseudoinverse}. 
+
+\TODO introduce properties and defns of pseudo inverse.
+
+\begin{definition}[\cite{barata2012moore}]
+\label{def:pseudoinverse}
+Let $\M\in\C^{n\times m}$ for some $n,m\in\N$. We call a matrix $\M^+\in\C^{m\times n}$ satisfying both
+\begin{enumerate}
+    \item[(i).] $\M\M^+\M=\M$ and $\M^+\M\M^+=\M^+$;
+    \item[(ii).] $\M\M^+$ and $\M^+\M$ are hermitian, i.e., $\M\M^+=(\M\M^+)^\tp $, $\M^+\M=(\M^+\M)^\tp$; 
+\end{enumerate}
+the \emph{Moore-Penrose Pseudoinverse} of $\M$. 
+\end{definition}
+
+\begin{lemma}[\cite{barata2012moore}]
+Let $\M\in \C^{n\times m}$. There exists a unique Pseudoinverse of $\M^+$ of $\M$. Moreover, the following properties hold: 
+\begin{enumerate}
+    \item[(i).] $\M\M^+$ is an orthogonal projector obeying $\range(\M\M^+)=\range(\M)$; and 
+    \item[(ii).] $\M^+\M$ is an orthogonal projector obeying $\range(\M^+\M)=\range(\M^+)$. 
+\end{enumerate}
+\end{lemma}
+
+\note{Change this from $\L_G$ to general matrix}. 
+Since $\L_G$ and $\Ln_G$ are both symmetric, $\range(\L^\tp)=\range(\L)=\R^n \setminus \ker(\L)=\R^n \setminus \spn(\{\one\})$, and $\range(\Ln^\tp)=\range(\Ln)=\R^n \setminus \ker(\Ln)=\R^n \setminus \spn(\{\W^{1/2}\one\})$. It follows that the pseudo-inverses of these two Laplacians satisfy
+\begin{equation}
+    \L_G(\L_G)^+ = (\L_G)^+\L_G = \I - \frac{1}{n}\one\one^\tp,\label{eq:LL+}|
+\end{equation}
+and 
+\begin{equation*}
+    \Ln_G(\Ln_G)^+ = (\Ln_G)^+\Ln_G = \I - \frac{1}{n}\D_G^{1/2}\one(\D_G^{1/2}\one)^\tp.
+\end{equation*}
+
+\begin{lemma}
+Suppose $\M\in\C^{m\times m}$ admits the eigendecomposition 
+\[\M=\sum_{i=1}^k \lambda_i \vp_i\vp_i^\tp,\]
+where $\lambda_i$, $1\leq i\leq k$ are the non-zero eigenvalues of $\M$ with corresponding orthornomal eigenvectors $\vp_1,\dots,\vp_k$. Then the pseudoinverse of $\M$ is 
+\begin{equation}
+    \label{eq:pseudoinverse}
+    \M^+=\sum_{i=1}^k \frac{1}{\lambda_i}\vp_i\vp_i^\tp.
+\end{equation}
+\end{lemma}
+\begin{proof}
+Put $\vb{Q}=\sum_{i=1}^k \lambda_i^{-1}\vp_i\vp_I^\tp$. Since the pseudoinverse is unique, it suffices to show that $\vb{Q}$ satisfies the condition of Definition \ref{def:pseudoinverse}.
+Since the eigenvectors are orthonormal by assumption, $\vp_i^\tp\vp_j=\delta_{i,j}$ for all $i,j$. Hence,  
+\begin{align*}
+    \M\vb{Q}&= \sum_{i=1}^k \lambda_i\vp_i\vp_i^\tp \sum_{j=1}^k \lambda_j^{-1}\vp_j\vp_j^\tp = \sum_{i,j=1}^k \lambda_i\lambda_j^{-1} \vp_i\vp_i^\tp \vp_j\vp_j^\tp \\
+    &= \sum_{i=1}^k \lambda_i\lambda_i^{-1} \vp_i\vp_i^\tp\vp_i\vp_i^\tp 
+    = \sum_{i=1}^k \vp_i\vp_i^\tp = \vb{Q}\M.
+\end{align*}
+Performing a similar computation then demonstrates that 
+\[\M\vb{Q}\M = \sum_{i=1}^k \vp_i\vp_i^\tp \sum_{j=1}^k \lambda_j\vp_j\vp_j^\tp=\sum_{i,j=1}\lambda_i \vp_i\vp_i^\tp\vp_j\vp_j^\tp=\sum_{i=1}^k \lambda_i \vp_i\vp_i^\tp =\M,\]
+and similarly, $\vb{Q}\M\vb{Q}=\vb{Q}$. Moreover, $\vp_i\vp_i^\tp (k,\ell)=\vp_i(k)\vp_i(\ell)=\vp_i(\ell)\vp_i(k)=(\vp_i\vp_i^\tp)^\tp (k,\ell)$ implying that $\vp_i\vp_i^\tp=(\vp_i\vp_i^\tp)^\tp$, so 
+\[(\vb{Q}\M)^\tp=(\M\vb{Q})^\tp =\bigg(\sum_{i=1}^k \vp_i\vp_i^\tp )\bigg)^\tp = \sum_{i=1}^k (\vp_i\vp_i^\tp)^\tp = \sum_{i=1}^k \vp_i\vp_i^\tp=\M\vb{Q}=\vb{Q}\M,\]
+so both required conditions hold, and we conclude that $\vb{Q}=\M^+$. 
+\end{proof}
+
+
+
+\section{Spectral Graph Theory}
+\label{sec:background_spectral}
+
+We begin with basic graph theory. 
+We denote a \emph{graph} by a triple $G=(V,E,w)$ where $V$ is the \emph{vertex set}, $E\subset V\times V$ is the \emph{edge set} and $w:V\times V\to\R_{\geq0}$ (the non-negative reals) a \emph{weight function}. We let the domain of $w$ be $V\times V$ for convenience; for $(i,j)\notin E$ we have $w((i,j))=0$. We call $G$ \emph{unweighted} if $w((i,j))=\chi_{(i,j)\in E}$ for all $i,j$. In this case, we may omit the weight function and simply write $G=(V,E)$. 
+We will typically take $V=[n]$ for simplicity. For a  vertex $i\in V$, we denote the set of its neighbours by 
+\[\delta(i) = \{j\in V:w(i,j)>0\},\]
+a set we call that \emph{neighbourhood} of $i$. The \emph{degree of $i$} if $\deg(i)\equiv |\delta(i)|$. The \emph{weight of $i$} if $w(i)\equiv \sum_{j\in \delta(i)}w(i,j)$. Note that if $G$ is unweighted, then $w(i)=\deg(i)$. 
+
+Abusing notation, we extend the weight function $w$ to sets of edges or vertices by setting $w(A)=\sum_{a\in A}w(a)$. 
+
+Unless otherwise stated, we will assume that graphs are \emph{undirected}---that is, there is no orientation on the edges. Consequently, we identify each tuple $(i,j)$ with its sister pair $(j,i)$. This implies, for example, that when summing over all edges $(i,j)\in E$ we are \emph{not} summing over all vertices and their neighbours. Indeed, this latter summation double counts the edges: $\sum_{(i,j)\in E}=\frac{1}{2}\sum_{i}\sum_{j\in\delta(i)}$. We will often write $i\sim j$ to denote an edge $(i,j)$; so, for example, $\sum_{i\sim j}=\sum_{(i,j)\in E}$. 
+
+
+For a vertex $i\in V$, we let $\delta(i)$ denote the neighbours of $i$, i.e., $\delta(i)=\{j\in V:(i,j)\in E\}$. 
+
+
+
+\subsection{Laplacian Matrices}
+Survey of Laplacian: ~\cite{merris1994laplacian}.  
+Let $G=(V,E,w)$ be a graph, with $V=[n]$ and $|E|=m$. 
+Let $\W$ be the \emph{weight matrix} of $G$, i.e., $\W=\diag(w(1),w(2),\dots,w(n))$. 
+The \emph{degree matrix} of $G$ is $\diag(\deg(1),\deg(2),\dots,\deg(n))$. The \emph{adjacency matrix} of $G$ encodes the edge relations, namely, $\A_G(i,j)=w((i,j))$ for all $i\neq j$, and $\A_G(i,i)=0$ for all $i$. Notice that (for undirected graphs) $\A_G$ is symmetric.  If $G$ is unweighted, then $\W_G$ is also called the \emph{degree matrix of $G$}. 
+The \emph{combinatorial Laplacian} of $G$ is the matrix 
+\[\L_G=\W_G-\A_G.\]
+There are several useful representations of the Laplacian. Let $\L_{i,j}=w(i,j)(\chi_i-\chi_j) (\chi_i-\chi_j)^\tp\in \R^{V\times V}$, i.e., 
+\[\L_{i,j}(a,b)=\begin{cases}
+w(i,j)&a=b\in\{i,j\},\\
+-w(i,j),&(a,b)=(i,j),\\
+0,&\text{otherwise}.
+\end{cases}\]
+Then 
+\begin{equation}
+\label{eq:Lsum}
+    \L_G=\sum_{i\sim j}\L_{i,j}.
+\end{equation}
+Another representation comes via the \emph{incidence matrix} of $G$, $\B_G\in \R^{E\times V}$, defined as follows. Place an arbitrary orientation on the edges of $G$ (say, for example, $(i,j)$ is directed from $i$ to $j$ iff $i<j$), and for an edge $e$, let $e^-\in V$ denote the vertex at which $e$ begins, and $e^+$ the vertex at which it ends. Set 
+\[\B_G(e,i)=\begin{cases}
+\sqrt{w(e)}&\text{if }i=e^-,\\
+-\sqrt{w(e)}&\text{if }i=e^+,\\
+0&\text{otherwise},
+\end{cases}\]
+or, equivalently, $\B_G(e,i) = \sqrt{w(e)}(\chi_{(i=e^-)}-\chi_{(i=e^+)})$. Then,
+\begin{equation*}
+   ( \B_G^\tp\B_G)(i,j)=\sum_{e\in E} \B_G^\tp(i,e)\B_G(e,j)=\sum_{e\in E}w(e)(\chi_{i=e^-}-\chi_{i=e^+})(\chi_{j=e^-}-\chi_{j=e^+}).
+\end{equation*}
+Let $\alpha(e)=(\chi_{i=e^-}-\chi_{i=e^+})(\chi_{j=e^-}-\chi_{j=e^+})$. If $i=j$, then $\alpha(e)=1$ iff $e$ is incident to $i$, and 0 otherwise. If $i\neq j$, then $\alpha(e)=1$ for $e=(i,j)$ and 0 otherwise, regardless of whether $i=e^-$ and $j=e^+$ or vice versa (this is precisely what ensures that the orientation we chose for the edges is inconsequential). Consequently, 
+\begin{align*}
+(\B_G^\tp\B_G)(i,j) = 
+\begin{cases}
+\sum_{e\ni i} w(e),&\text{if } i=j,\\
+-w((i,j)),&\text{otherwise}, 
+\end{cases}
+\end{align*}
+which is precisely $\L_G(i,j)$. That is, we have 
+ \begin{equation}
+ \label{eq:L=BTB}
+ \L_G=\B_G^\tp\B_G.
+ \end{equation}
+ We associate with $\L_G$ the quadratic form $\Lop_G:\R^V\to \R$ which acts on function $f:V\to \R$ as 
+\begin{equation*}
+ f\xmapsto{\Lop_G} f^\tp \L_G f.
+\end{equation*}
+The Laplacian quadratic form will be crucial in our study of the geometry of graphs. Luckily for us then, its action on a vector is captured by an elegant closed-form formula. 
+Computing 
+\begin{equation*}
+    \L_{i,j}f = w(i,j)(\bchi_i -\bchi_j)(\bchi_i-\bchi_j)^\tp f = w(i,j)(f(i)-f(j))(\bchi_i-\bchi_j).
+\end{equation*}
+we find that 
+\[f^\tp \L_{i,j} f = w(i,j)(f(i)-f(j))^2.\]
+Therefore, applying Equation \ref{eq:Lsum} yields 
+\begin{equation}
+\label{eq:Lop}
+    \Lop_G(f) = f^\tp \bigg(\sum_{i\sim j} \L_{i,j}\bigg) f = \sum_{i\sim j}f^\tp \L_{i,j} f= \sum_{i\sim j} w(i,j)(f(i)-f(j))^2.
+\end{equation}
+
+The \emph{symmetric normalized Laplacian} or simply the \emph{normalized Laplacian} of $G$ is given by \begin{equation*}
+    \Ln_G = \W_G^{-1/2} \L_G\W_G^{-1/2} = \I - \W_G^{-1/2} \A_G\W_{G}^{-1/2}.
+\end{equation*} 
+To investigate $\Ln_G$ we may carry out a similar procedure to above. In particular, if we define $\Ln_{i,j}=\W_G^{-1/2} \L_{i,j}\W_G^{1/2}$ then we obtain the equivalent of Equation \ref{eq:Lsum} for the normalized Laplacian:
+\begin{equation}
+\label{eq:Lnsum}
+    \Ln_G = \sum_{i\sim j}\Ln_{i,j}.
+\end{equation}
+Likewise, defining $\Bn_G\in \R^{E\times V}$ by $\Bn_G=\B_G\W_G^{-1/2}$ gives 
+\begin{equation*}
+   \Bn_G^\tp \Bn_G = \W_G^{-1/2}\B_G^\tp \B_G\W_G^{-1/2} = \W_G^{-1/2}\L_G\W_G^{1/2}=\Ln_G
+\end{equation*}
+As we've done here, we will typically emphasize the associate of elements associated to the normalized Laplacian with a hat.
+Using Equation \eqref{eq:Lnsum}, we see that 
+the quadratic form $\Lnf_G$ associated with $\Ln_G$ acts as 
+\begin{equation*}
+    \Lnf_G(f) = \sum_{i\sim j} w(i,j)\bigg(\frac{f(i)}{\sqrt{w(i)}}-\frac{f(j)}{\sqrt{w(j)}}\bigg)^2.
+\end{equation*}
+
+
+
+\subsection{The Laplacian Spectrum}
+Both the combinatorial and normalized Laplacian of an undirected graph $G$ are real, symmetric matrices. By the spectral theorem therefore, they both admit a basis of orthonormal eigenfunctions corresponding to real eigenvalues. Focus for the moment on the combinatorial Laplacian  $\L_G$, with eigenvalues $\lambda_1\geq \lambda_2\geq \dots \geq \lambda_n$ and corresponding orthonormal eigenfunctions $\vp_1,\dots,\vp_n$. A straightforward consequence of Equation \ref{eq:L=BTB} is that all eigenvalues of $\L_G$ are non-negative. Let $\lambda$ be an eigenvalue with (unit) eigenvector $\vp$. Then,  \begin{equation*}
+    \lambda = \lambda\la \vp,\vp\ra = \la \lambda \vp,\vp\ra = \la \L_G\vp,\vp\ra = \la \B_G^\tp \B_G\vp,\vp\ra = \la \B_G\vp,\B_G\vp\ra =\norm{\B_G\vp}_2^2 \geq 0.
+\end{equation*}
+Let $V_1,\dots,V_k\subset V$, $V_i\cap V_j= \emptyset$ for $i\neq j$ be the disjoint vertex sets of the distinct connected components of $G$. (If $G$ is connected then $k=1$.) The quadratic form satisfies
+\[\Lf_G(f) = \sum_{\ell=1}^k \sum_{i\sim j, i,j\in V_\ell} w(i,j)(f(i)-f(j))^2. \]
+Suppose $\L\vp=\zero$. Then $\vp^\tp\L\vp=\Lf(\vp)=0$, which implies that $\vp(i)=\vp(j)$ for all $i,j\in V_\ell$. We can immediately see $k$ orthonormal vectors which satisfy this condition, namely \[\frac{1}{\sqrt{|V_1|}} \bchi_{V_1},\dots, \frac{1}{\sqrt{|V_k|}} \bchi_{V_k}.\]
+On the other hand, consider a non-zero vector $\vp$ which is orthogonal to all of the above vectors. Then 
+\[0=\sum_{i=1}^k \la \vp,\bchi_{V_i}\ra = \la \vp,\one \ra=\sum_{i=1}^k \vp(i),\]
+implying that there exists $\ell\in[k]$ such that $\vp(i)\neq\vp(j)$ for some $i,j\in V_\ell$. Hence, $\L(\vp)>0$ and so $\L\vp\neq 0$. Therefore, there are no other linearly independent eigenfunctions corresponding to the zero eigenvalue.  
+We have thus shown that 0 is an eigenvalue of $\L$ with multiplicity equal to the number of connected components and 
+\[\ker(\L)=\spn(\{\bchi_{V_1},\dots,\bchi_{V_k}\}).\]
+For the most part this thesis will deal with connected graphs, in which case $\ker(\L)=\spn(\{\one\})$.  
+
+A similar analysis holds for the normalized Laplacian. Using the same argument but replacing $\B$ with $\Bn$ demonstrates that its eigenvalues are non-negative. Its kernel can be determined as follows. For any eigenfunction $\vp$ of $\L$ corresponding to the zero eigenvalue, observe that 
+\[\Ln\W^{1/2}\vp = \W^{-1/2}\L\W^{-1/2}\W^{1/2}\vp = \W^{-1/2}\L\vp = \zero,\]
+so $\W^{1/2}\bchi_{V_1},\dots,\W^{1/2}\bchi_{V_k}$ lie in the kernel of $\Ln$.
+Conversely, if $\vp\in\ker(\Ln)$, define $vp'$ such that $\vp=\W^{1/2}\vp'$ (this is possible because $\W^{1/2}$ is diagonal---we simply factor out $\sqrt{w(i)}$ from $\vp(i)$ to obtain $\vp'(i)$). Then 
+\[\zero =\Ln\vp = \W^{-1/2}\L \W^{-1/2}\W^{1/2}\vp = \W^{-1/2}\L\vp,\]
+so $\L\vp=\zero$ (since $w(i)>0$ for all $i$). That is, each element in the kernel of $\Ln$ takes the form $\W^{1/2}\vp$ for $\vp\in\ker(\L)$. We conclude that 
+\[\ker(\Ln)=\spn(\{\W^{1/2}\bchi_{V_1},\dots,\W^{1/2}\bchi_{V_k}\}).\]
+
+
+
+
+\note{Why did I do this?}
+\begin{lemma}
+$\ker(\L^+)\subset\ker(\L)$ and $\ker(\Ln^+)\subset\ker(\Ln)$.  
+\end{lemma}
+\begin{proof}
+Let $\x\in\ker(\L^+)$, so $\L^+\x=\zero$. Multiplying by $\L$ and using Equation \eqref{eq:LL+} gives $\zero=\L\L^+\x=(\I-\one\one^\tp/n)\x$, implying that $\x=\one \cdot \norm{\x}_1/n$, i.e., $\x\in\spn(\{\one\})=\ker(\L)$. The argument for the other inclusion is similar.
+\end{proof}
+
+\section{Simplices}
+\TODO Introduce simplex with defns, etc. 
+
+Define hyperplane $\H_i$ (maybe $\H_{\{i\}^c}$) which contains $\splx_{\{i\}^c}$ and corresponding halfspaces $\H_i^+$ and $\H_i^-$. 
+
+\begin{definition}
+A set of points $\x_1,\dots,\x_k$ are said to be \emph{affinely independent} if, for each $j$,  the set $\{\x_j-\x_i\}_{i\neq j}$ is linearly independent. 
+\end{definition}
+
+\begin{definition}
+A \emph{simplex} $\splx$ in $\R^{n-1}$ is the convex hull of $n$ affinely independent vectors $\sv_1,\dots,\sv_n$. That is, 
+\begin{equation*}
+    \splx = \bigg\{\sum_{i=1}^n \sv_i \alpha_i: \alpha_i\geq 0,\; \sum_{i=1}^n \alpha_i=1\bigg\}. 
+\end{equation*}
+\end{definition}
+
+If we gather the vertices of the simplex $\splx$ into the \emph{vertex matrix} $\Sv=(\sv_1,\dots,\sv_n)$ whose columns are the vertex vectors of $\splx$, then we can write the simplex as 
+\begin{equation*}
+    \splx = \{\Sv \x:\x\geq \zero, \; \norm{\x}_1=1\}.
+\end{equation*}
+Given a point $\p=\Sv\x\in\splx$, $\x$ is called the \emph{barycentric coordinate} of $\p$.  
+
+As is illustrated in two and three dimensions by the triangle and the tetrahedron, the projection of the simplex onto spaces spanned by subsets of its vertices yields simplices of lower dimensions. Let $U\subset [n]$. The \emph{face of $\splx$ corresponding to $U$} is 
+\begin{equation*}
+    \splx\restriction_U \equiv \{\Sv\x: \x\geq 0,\;\norm{\x}_1=1,\;x(i)=0\text{ for all }i\in U^c\}.
+\end{equation*}
+We will typically omit the restriction symbol from the notation and simply write $\splx_U=\splx\restriction_U$. 
+
+\note{Bunch of stuff commented out here. No sure what's needed.}
+
+%\begin{observation}
+%\label{obs:p-q}
+%Every vector parallel to the face $\splx_U$ is parallel to a vector of the form $\p-\q$ for $\p,\q\in\splx_U$. 
+%\end{observation}
+
+
+
+%\TODO Give intuition for what's about to happen. And give figures.
+%
+%\begin{lemma}
+% $\spn(\{\sv_1-\sv_j\}_{j\in U})$ is parallel to $\splx_U$. 
+%\end{lemma}
+%Fix $i\in[n]$. By virtue of the fact that the vertex vectors are affinely independent, it follows that 
+%\[\dim(\spn(\{\sv_1-\sv_j\}_{j\geq 2,j\neq i})=n-2,\]
+%meaning the set of vectors $\{\sv_1-\sv_j\}_{j\neq i}$ forms a hyperplane which passes through the origin. Let $\w$ be the normal direction of this hyperplane, so that $\la \w,\v\ra=0$ for all \begin{equation}
+%\label{eq:v_in_span}
+%    \v=\sum_{j\geq 2,j\neq i}\alpha_j(\sv_1-\sv_j)\in\spn_\R(\{\sv_1-\sv_j\}_{j\geq 2,j\neq i})
+%\end{equation} it holds that  $\la \w,\v\ra=0$. Let $\p,\q\in\splx_\ic$, so that $\p-\q$ is parallel so $\splx_\ic$. Let $\x$ and $\y$ be the barycentric coordinates of $\p$ and $\q$. Observe that 
+%\begin{align*}
+%    \p-\q&= \Sv(\x-\y) 
+%    = \sum_{j\neq i} (x(i) - y(i))\sv_j \\
+%    &= \bigg(1-\sum_{\ell}x(\ell) - 1 + \sum_\ell y(\ell)\bigg)\sv_1 + \sum_{j\geq 2;j\neq i}(x(j)-y(j))\sv_j \\
+%    &= \sum_{j\geq 2,j\neq i} (y(j)-x(j))(\sv_1-\sv_j). 
+%\end{align*}
+%The inequality on the second line follows from the fact that $\x$ and $\y$ are barycentric coordinates and hence sum to one. Taking $\alpha_j = y(j)=x(j)$ in \eqref{eq:v_in_span} shows that $\la \w,\p-\q\ra =0$. Combined with Claim \ref{claim:p-q}, this demonstrates that $\spn_\R(\{\sv_1-\sv_j\}_{j\neq i})$ is parallel to $\splx_\ic$. 
+%
+%\begin{lemma}
+%$\splx_U\subset \spn(\{\sv_1-\sv_j\}_{j\in U}) + \cent(\splx_U)$. 
+%\end{lemma}
+%
+%For each $i\in[n]$ we therefore define the \emph{hyperplane associated with the facet $\splx_\ic$} as 
+%\begin{equation}
+%    \H_\ic \equiv \spn(\{\sv_1-\sv_j\}_{j\neq i,j>1}) + \cent(\splx_\ic).
+%\end{equation}
+%In other words, $\H_\ic$ is the affine space of dimension $n-2$ in which $\splx_\ic$ lies.
+%
+%\begin{lemma}
+%For any proper subset $U\subsetneq[n]$, 
+%$\dim(\spn_\R(\{\sv_j\}_{j\in U}))=|U|$. 
+%\end{lemma}
+%\begin{proof}
+%It's immediate that 
+%\[|U|\geq \dim(\spn(\{\sv_j\}_{j\in U})) \geq \dim(\spn_\R(\{\sv_1-\sv_j\}_{j\in U}))=|U|-1,\]
+%by linear independence of the set $\{\sv_1-\sv_j\}$. Therefore, to demonstrate that the dimension is indeed $|U|$, it suffices to find a point $\x\in\spn(\{\sv_j\}_{j\in U})\setminus \spn_\R(\{\sv_1-\sv_j\}_{j\in U})$. 
+%\end{proof}
+%
+%\note{Unclear where this stuff goes/whether it's needed}
+%\begin{lemma}
+%\label{lem:svi_independent}
+%Let $G=(V,E)$ be a graph, and let $U\subsetneq V$ (i.e., $|U|<n)$. Then 
+%\[\dim(\spn_\R(\{\sv_i\}_{i\in U}))=\dim(\spn_\R(\{\sv_i^+\}_{i\in U}))=|U|.\]
+%\end{lemma}
+%
+%\begin{lemma}
+%\label{lem:face_shift}
+%Let $U\subsetneq V$. For each $i\in U$ set $\bgam_i = \sv_i - c_U$ where $c_U=c(\splx_U)$ is the centroid of the face $\splx_U$. Then 
+%\[\dim(\spn_\R(\{\bgam_i\}_{i\in U}))=|U|-1,\]
+%and every vector in $\spn(\{\bgam_i\}_{i\in U}))^\perp$, i.e., the orthogonal complement of $ \spn(\{\bgam_i\}_{i\in U}))$, is perpendicular to $\splx_{U}$. 
+%\end{lemma}
+%\begin{proof}
+%For notational convenience, put $\X=\spn(\{\bgam_i\}_{i\in U})$. We begin by considering $\dim(\X)$. Notice that 
+%\[\sum_{i\in U}\bgam_i = \sum_{i\in U}\bigg(\sv_i - \frac{1}{|U|}\sum_{j\in U}\sv_j\bigg) = \sum_{i\in U}\sv_i - \sum_{j\in U}\sv_i\sum_{i\in U}\frac{1}{|U|}=\zero,\]
+%which demonstrates that $\{\bgam_i\}$ are linearly dependent. Hence $\dim(\X)<|U|$. Now, suppose wlog that $U=[k]$ for some $k<n$. Since $\{\bgam_1,\dots,\bgam_k\}$ are linearly dependent, we have that $\spn(\{\bgam_1,\dots,\bgam_k\})=\spn(\{\bgam_1,\dots,\bgam_{k-1}\})$. Suppose now that $\bgam_1,\dots,\bgam_{k-1}$ are again dependent, and take $\alpha_1,\dots,\alpha_{k-1}\in \R$ such that 
+%\[\zero = \sum_{i=1}^{k-1}\alpha_i\bgam_i = \sum_{i=1}^{k-1}\alpha _i \sv_i + c_U\sum_{i=1}^{k-1}\alpha_i = \sum_{i=1}^{k-1}\alpha_i\sv_i + \frac{\beta}{|U|}\sum_{i=1}^k \sv_i = \sum_{i=1}^{k-1}\sv_i\bigg(\alpha_i+\frac{\beta}{|U|}\bigg) + \frac{\beta}{|U|}\sv_k, \]
+%where $\beta=\sum_{i=1}^{k-1}\alpha_i$. But this implies that $\{\sv_i\}_{i\in U}$ are linearly dependent, contradicting Lemma \ref{lem:svi_independent}. We now move onto the second assertion. Let $\vb{v}\in \X^\perp$, so $\v$ is orthogonal to every vector in $\X$. Therefore, for all $\alpha_1,\dots,\alpha_{k-1}\in \R$, 
+%\begin{align}
+%    0&=\bigg\la \vb{v},\sum_{i=1}^{k-1} \alpha_i\bgam_i\bigg\ra = \bigg\la \vb{v}, \sum_{i=1}^{k-1}\alpha_i\sv_i - \sum_{i=1}^{k-1}\frac{\alpha_i}{k}\sum_{j=1} ^{k}\sv_j\bigg\ra \notag \\
+%    &= \bigg\la \vb{v},\sum_{i=1}^{k-1}\sv_i\bigg[\alpha_i -\sum_{j=1}^{k-1}\frac{\alpha_j}{k}\bigg] - \left(\sum_{i=1}^{k-1} \frac{\alpha_i}{k}\right)\sv_k\bigg\ra.\label{eq:lem_face_shift_1}
+%\end{align}
+%(Notice that the sum runs only until $k-1$ because of the discussion above.) Let $\p,\q\in \splx_{U}$, so $\p=\sum_{i\in U}x_i\sv_i=\sum_{i=1}^k x_i\sv_i $ for some $x_1,\dots,x_k\in\R$ with $\sum_i x_i=1$ and similarly, $\q=\sum_{i=1}^k y_i \sv_i$ with $\sum_iy_i=1$. The vector $\p-\q$ lies in $\splx_U$, so we must demonstrate that $\la \v,\p-\q\ra =\la \v,\sum_{i=1}^k \sv_i(x_i-y_i)\ra = 0$. By Equation \ref{eq:lem_face_shift_1} it suffices to demonstrate that we may choose $\alpha_1,\dots,\alpha_{k-1}\in \R$ such that $\alpha_i-\sum_{j=1}^{k-1}\alpha_j/k=(x_i-y_i)$ for all $i\in[k-1]$ and $-\sum_{i=1}^{k-1}\alpha_i/k=(x_k-y_k)$. Since this is a system of $k$ equations in $k-1$ unknowns, it is not obvious a priori that a solution exists. However, the final constraint is immediately satisfied by virtue of the fact that $\{x_i\}$ and $\{y_i\}$ are barycentric coordinates. Assuming the first $k-1$ constraints are satisfied (i.e., those for $x_i-y_i$, $i\in[k-1]$), observe 
+%\begin{align*}    
+%x_k-y_k &= 1 - \sum_{i=1}^{k-1}x_i -1 + \sum_{i=1}^{k-1}y_i = - \sum_{i=1}^{k-1}(x_i-y_i)  
+%    = -\sum_{i=1}^{k-1} \bigg(\frac{k-1}{k}\alpha_i -\sum_{j=1,j\neq i}^{k-1}\frac{\alpha_j}{k}\bigg) \\
+%    &= -\frac{k-1}{k}\sum_{i=1}^{k-1}\sum_{i=1}^{k-1}\alpha_i +\frac{1}{k} \sum_{i=1}^{k-1}\sum_{j=1,j\neq i}^{k-1}\alpha_j 
+%    = -\frac{k-1}{k}\sum_{i=1}^{k-1}\sum_{i=1}^{k-1}\alpha_i +\frac{1}{k} \sum_{j=1 i}^{k-1}(k-2)\alpha_j \\
+%    &= -\frac{1}{k}\sum_{i=1}^{k-1}\alpha_i.
+%\end{align*}
+%Therefore, it remains to show that the first $k-1$ constraints can be satisfied.
+%Letting $\beta_i=x_i-y_i$ and $\bbeta=(\beta_1,\dots,\beta_{k-1})$ we can write the constraints succinctly as 
+%\begin{equation*}
+%    (\I_{k-1}-\frac{1}{k}\J_{k-1}^\tp )\balpha=\bbeta,
+%\end{equation*}
+%where the subscript $k-1$ signifies that the relevant matrices are square and of size $k-1$. To demonstrate that there exists some $\balpha$ which satisfies the above, it suffies to show that $\I_{k-1}-k^{-1}\J_{k-1}^\tp$ has rank $k-1$, or equivalently that its kernel has dimension zero. Let $\vp\in \ker(\I_{k-1}-k^{-1}\J_{k-1}^\tp)$. Then $\vp=k^{-1}\one\one^\tp \vp=(\norm{\vp}_1/k)\cdot\one$, implying that $\vp$ is a constant vector, say $\vp=a\cdot \one$. We require that 
+%\[a\cdot\one = \frac{\norm{a\cdot \one}_1}{k}\one = \frac{a(k-1)}{k}\one,\]
+%which is only satisfied for $a=0$. Hence $\vp=\zero$, and  $\ker(\I_{k-1}-k^{-1}\J_{k-1}^\tp)=\{0\}$ as desired. Consequently, we may choose $\alpha_1,\dots,\alpha_{k-1}$ to satisfy the constraints and finally conclude that $\la \vb{v},\p-\q\ra =0$. Therefore, $\X^\perp$ is a subset of all the 
+%\end{proof}
+
+
+\subsection{Dual Simplex}
+\label{sec:dual_simplex}
+Let $\Sv=(\sv_1,\dots,\sv_n)\in\R^{n-1\times n}$ be the vertex matrix of a simplex $\splx\subset\R^{n-1}$. For each $i\in[n-1]$, put $\v_i=\sv_n-\sv_i$. Then $\{\v_1,\dots,\v_{n-1}\}$ is a linearly independent set, and thus admits a sister basis $\{\bgamma_1,\dots,\bgamma_{n-1}\}$ which together form biorthogonal bases of $\R^{n-1}$ (Lemma \ref{lem:bi-orthogonal_bases}). Put $\bgamma_n = -\sum_{i=1}^{n-1}\bgamma_i$. 
+
+\begin{claim}
+The set 
+$\{\bgamma_1,\dots,\bgamma_n\}$ is affinely independent. 
+\end{claim}
+\begin{proof}
+Suppose not and let $\{\beta_i\}$ be such that $\sum_i \beta_i \bgamma_i =\zero$ with $\sum_i\beta_i=0$. Then, 
+\[\zero = \sum_i\beta_i\bgamma_i = \sum_{i=1}^{n-1} \beta_i \bgamma_i - \bigg(\sum_{i=1}^{n-1} \beta_i\bigg)\sum_{j=1}^{n-1}\bgamma_j = \sum_{i=1}^{n-1}\bigg(\beta_i-\sum_{j=1}^{n-1}\beta_j\bigg)\bgamma_i,\]
+implying that $\{\bgamma_i\}_{i=1}^{n-1}$ is linearly dependent; a contradiction.  
+\end{proof}
+
+Therefore, the set $\{\bgamma_1,\dots,\bgamma_n\}$ determines a simplex, which we call the \emph{dual simplex} of $\splx$. 
+
+\begin{definition}
+\label{def:dual_simplex}
+Given a simplex $\splx_1\subset\R^{n-1}$ with vertex set $\Sv(\splx_1)=(\sv_1,\dots,\sv_n)$, a simplex $\splx_2\subset \R^{n-1}$ with vertex vectors $\Sv(\splx_2)=(\bgamma_1,\dots,\bgamma_n)$ is called a \emph{dual simplex} of $\splx_1$ if $\bgamma_i$ is normal to $\splx_\ic$ for all $i\in[n]$. 
+\end{definition}
+
+\begin{lemma}
+Each simplex has a unique dual simplex. Moreover, if $\splx_1$ is the dual simplex to $\splx_0$, then $\splx_0$ is the dual simplex to $\splx_1$. 
+\end{lemma}
+\begin{proof}
+Existence follows from Lemma \ref{lem:bi-orthogonal_bases} using the construction above. Uniqueness follows from Observation \ref{obs:bi-orthogonal_unique}. The second part of the statement is clear by construction. 
+\end{proof}
+
+
+\begin{claim}
+For each $i\in[n]$, $\bgamma_i$ is perpendicular to $\splx_\ic$. 
+\end{claim}
+\begin{proof}
+We begin with a fixed $i<n$. Let $\p,\q\in\splx_\ic$ have barycentric coordinates $\x$ and $\y$ respectively. We need to show that $\la \bgamma_i,\p-\q\ra =0$. Note that $x(i)=y(i)=0$, and so 
+\begin{align*}
+    \p-\q &= \Sv(\x-\y) = \sum_{j=1,j\neq i}^{n-1} \sv_j(x(j)-y(j)) + \sv_n(x(n)-y(n)) \\
+    &= \sum_{j=1,j\neq i}^{n-1} \sv_j(x(j)-y(j)) + \sv_n\bigg(\sum_{j}y(j)-x(j)\bigg) = \sum_{j=1,j\neq i}^{n-1} (\sv_j-\sv_n)(x(j)-y(j)). 
+\end{align*}
+Now, by definition, $\la \bgamma_i,\sv_j-\sv_n\ra = \delta_{i,j}$ so it follows that \[\la \bgamma_i,\p-\q\ra = \sum_{j=1,j\neq i}^{n-1}\la \bgamma_i,\sv_j-\sv_n\ra (x(j)-y(j))=0,\]
+as desired. We now consider $i=n$. Recall that $\bgamma_n=-\sum_{i<n}\bgamma_i$. Moreover, $\la \bgamma_i,\sv_j\ra = \delta_{i,j}-\la \bgamma_i,\bgamma_n\ra$. Using similar arithmetic as above, 
+\begin{align*}
+    \la \bgamma_n ,\p-\q\ra &= -\sum_{i<n}\bigg\la \bgamma_i,-\sum_{j<n} \sv_j(x(j)-y(j))\bigg\ra \\
+    &= -\sum_{i<n}\bigg\la \bgamma_i,-\sum_{j<n} (\delta_{i,j}-\la \sv_i,\sv_n\ra)(x(j)-y(j))\bigg\ra \\
+    &= -\sum_{i<n}\bigg(x(i)-y(i)-\la\bgamma_i,\sv_n\ra  \sum_{j<n} x(j)-y(j)\bigg) =0,
+\end{align*}
+since $\x$ and $\y$ are barycentric coordinates. 
+\end{proof}
+
+
+

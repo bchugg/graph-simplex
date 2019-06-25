@@ -1,0 +1,109 @@
+\newcommand{\etalchar}[1]{$^{#1}$}
+\begin{thebibliography}{VMDC17}
+
+\bibitem[AALG17]{alev2017graph}
+Vedat~Levi Alev, Nima Anari, Lap~Chi Lau, and Shayan~Oveis Gharan.
+\newblock Graph clustering using effective resistance.
+\newblock {\em arXiv preprint arXiv:1711.06530}, 2017.
+
+\bibitem[Axl97]{axler1997linear}
+Sheldon~Jay Axler.
+\newblock {\em Linear algebra done right}, volume~2.
+\newblock Springer, 1997.
+
+\bibitem[BH12]{barata2012moore}
+Jo{\~a}o Carlos~Alves Barata and Mahir~Saleh Hussein.
+\newblock The {M}oore--{P}enrose pseudoinverse: A tutorial review of the
+  theory.
+\newblock {\em Brazilian Journal of Physics}, 42(1-2):146--165, 2012.
+
+\bibitem[CG97]{chung1997spectral}
+Fan~RK Chung and Fan~Chung Graham.
+\newblock {\em Spectral graph theory}.
+\newblock Number~92. American Mathematical Soc., 1997.
+
+\bibitem[DG03]{dasgupta2003elementary}
+Sanjoy Dasgupta and Anupam Gupta.
+\newblock An elementary proof of a theorem of johnson and lindenstrauss.
+\newblock {\em Random Structures \& Algorithms}, 22(1):60--65, 2003.
+
+\bibitem[DVM18]{devriendt2018simplex}
+Karel Devriendt and Piet Van~Mieghem.
+\newblock The simplex geometry of graphs.
+\newblock {\em arXiv preprint arXiv:1807.06475}, 2018.
+
+\bibitem[Fie93]{fiedler1993geometric}
+Miroslav Fiedler.
+\newblock A geometric approach to the laplacian matrix of a graph.
+\newblock In {\em Combinatorial and Graph-Theoretical Problems in Linear
+  Algebra}, pages 73--98. Springer, 1993.
+
+\bibitem[Fie05]{fiedler2005geometry}
+Miroslav Fiedler.
+\newblock Geometry of the laplacian.
+\newblock {\em Linear algebra and its applications}, 403:409--413, 2005.
+
+\bibitem[Fie11]{fiedler2011matrices}
+Miroslav Fiedler.
+\newblock {\em Matrices and graphs in geometry}.
+\newblock Number 139. Cambridge University Press, 2011.
+
+\bibitem[JL84]{johnson1984extensions}
+William~B Johnson and Joram Lindenstrauss.
+\newblock Extensions of lipschitz mappings into a hilbert space.
+\newblock {\em Contemporary mathematics}, 26(189-206):1, 1984.
+
+\bibitem[KS08]{kaibel2008complexity}
+Volker Kaibel and Alexander Schwartz.
+\newblock On the complexity of isomorphism problems related to polytopes.
+\newblock {\em Graphs and Combinatorics}, 2008.
+
+\bibitem[Mer94]{merris1994laplacian}
+Russell Merris.
+\newblock Laplacian matrices of graphs: a survey.
+\newblock {\em Linear algebra and its applications}, 197:143--176, 1994.
+
+\bibitem[Moo20]{moore1920reciprocal}
+Eliakim~H Moore.
+\newblock On the reciprocal of the general algebraic matrix.
+\newblock {\em Bull. Am. Math. Soc.}, 26:394--395, 1920.
+
+\bibitem[MPL17]{masuda2017random}
+Naoki Masuda, Mason~A Porter, and Renaud Lambiotte.
+\newblock Random walks and diffusion on networks.
+\newblock {\em Physics reports}, 716:1--58, 2017.
+
+\bibitem[Pen55]{penrose1955generalized}
+Roger Penrose.
+\newblock A generalized inverse for matrices.
+\newblock In {\em Mathematical proceedings of the Cambridge philosophical
+  society}, volume~51, pages 406--413. Cambridge University Press, 1955.
+
+\bibitem[Pen56]{penrose1956best}
+Roger Penrose.
+\newblock On best approximate solutions of linear matrix equations.
+\newblock In {\em Mathematical Proceedings of the Cambridge Philosophical
+  Society}, volume~52, pages 17--19. Cambridge University Press, 1956.
+
+\bibitem[Spi09]{spielman2009spectral}
+Daniel Spielman.
+\newblock Spectral graph theory.
+\newblock {\em Lecture Notes, Yale University}, pages 740--0776, 2009.
+
+\bibitem[SS11]{spielman2011graph}
+Daniel~A Spielman and Nikhil Srivastava.
+\newblock Graph sparsification by effective resistances.
+\newblock {\em SIAM Journal on Computing}, 40(6):1913--1926, 2011.
+
+\bibitem[V{\etalchar{+}}13]{vishnoi2013lx}
+Nisheeth~K Vishnoi et~al.
+\newblock Lx= b.
+\newblock {\em Foundations and Trends{\textregistered} in Theoretical Computer
+  Science}, 8(1--2):1--141, 2013.
+
+\bibitem[VMDC17]{van2017pseudoinverse}
+Piet Van~Mieghem, Karel Devriendt, and H~Cetinay.
+\newblock Pseudoinverse of the laplacian and best spreader node in a network.
+\newblock {\em Physical Review E}, 96(3):032311, 2017.
+
+\end{thebibliography}

@@ -1,0 +1,47 @@
+\chapter{Introduction}
+%\chapterquote{Confusion is the natural state of the mathematician.}{Lior Silberman}
+
+Questions/confusions: 
+\begin{enumerate}
+\item nothing explicit atm. 
+
+\end{enumerate}
+
+
+
+\section{Think about}
+\begin{enumerate}
+	\item Can we define the "inverse/dual" graph of $G$ as follows: $G$ yields a simplex $\splx_G$ which is hyperacute. It is therefore the inverse simplex of  graph $G^+$. How are $G$ and $G^+$ related?
+	\item The projection matrix $Y(e,f)=b_e^\tp \L_G^+b_f\sqrt{w(e)w(f)}$ is symmetric with real eigenvalues (see \cite{vishnoi2013lx}). It thus yields a simplex. Maybe explore its properties. 
+	\item Can use inequalities obtained in the effective resistance literature to obtain inequalities which pertain to all hyperacute simplices. See e.g.,\cite{alev2017graph} 
+\item Re-compute the Resistive embedding mentioned in the lecture notes; ensure this isn't the same as our simplex. What properties does it have? Is it a rotation of our simplex? It sits in $n$-dimensional space, but can it be projected to $\R^{n-1}$? 
+\item When we tried to shift the normalized Laplacian back, the orthogonality relationships still didn't seem to hold. What if we shift the normalized Laplacian, and then compute the inverse Laplacian?? Before, we were computing the inverse and then shifting.  
+\item Circumscribed Sphere of simplex (Fiedler talks about this ... I think this is different than the circumscibed ellipsoid?) Also circumsribed ellipsoid of (shifted?) normalized simplex. 
+\item Do low rank approximations of the gram matrix maintain any of the simplex properties? This yields a smaller representation of the graph ... what properties does this representation have?
+\item Embedding approximate distance matrix. 
+\item Applications of Schur Complement? \note{try next}
+    \item Simplex of the quotient graph? (EEP)
+    \item Relation of effective resistance to shortest path?
+    \item Does the simplex structure yield any clues as to possible embeddings of the graph? Pagethickness, planarity, etc? Could start with the high-dimensional simplex, and reduce the dimension one at a time maintaining some invariant of the embedding at each step. 
+    \item Can we estimate diameter, clustering coefficient, average distance, other network properties?
+    \item Simplex of Hypergraph? \note{Not promising---hypergraph doesn't seem to have common matricial representation.}
+    \item Graph/Spectral sparsification. Can we obtain a good sparsification of a graph by appealing to the simplex? (See Spielman slides). 
+    \item Dimensionality reduction. Can we reduce the dimensionality in specific ways to maintain interesting properties? \note{Started thinking about this; JL lemma, sparsification, etc}
+    \item Graph partitioning via the simplex? 
+    \item Similarity measures between graphs. Projection onto different subspaces??
+    \item Dynamic Voronoi tesselations and Delauney triangulations. What is the graph(s) of a Delauney triangulation? More generally, is there a set of graphs corresponding to a simplicial complex? \note{Seems hard}
+
+    \item Diameter, girth? \note{Can't really write these in terms of the quadratic product}. 
+    \item Does a clique have any particular structure in the simplex? Do cycles have a structure? \note{Nothing obvious beyond the trivial local connectivity.}
+    \item Is there a geometric way to think about matchings? Edge information is encoded by the dot products between vertices. \note{Yes, answered.}
+    \item Simplex of a directed graph?\note{Directed Laplacian isn't symmetric, so Laplacian in general may not have $n$ orthonormal eigenvectors.}  
+    \item Can hypergraphs have simplices? What's the Laplacian of a hypergraph? 
+    \item Is there any connection to the continuous Laplacian operator; can we extract any geometry from this?
+    \item Simplex of the dual graph?\note{Yes, easy. }
+    
+     
+    \item We could use the correspondence to develop a theory of random simplices. This could be a useful model. Study the random geometry of simplices via this correspondence. The random model could simply be to consider a random graph $G(n,p)$ and look at its simplex. $p$ would roughl correspond to volume of the simplex --- higher $p$ implies higher connectivity implies larger volume. \note{Meeeeeeh. Not sure if interesting.}
+    \item A simplicial complex is a triangulation of a surface. Each complex corresponds to a graph, and the graphs corresponding to different complexes are connected via the nodes lying on the connected faces of the simplex. This gives a multi-layer graph. This could be interesting to investigate.  Connected to Laplacian of hypergraph. Seems a difficult direction.  
+    
+    
+\end{enumerate}
