@@ -1,10 +1,19 @@
 \chapter{Background and Fundamentals}
+\label{sec:background}
+This chapter is devoted to introducing the  pre-requisite knowledge necessary to grapple with the material in subsequent sections. The subject matter of this dissertation lies at the intersection of several mathematical topics, ensuring that any treatment  of the material will give rise to notational challenges. Nevertheless, we have strived---courageously, in the author's unbiased opinion---to use maintain standard notation wherever possible in the hopes that readers familiar with spectral graph theory may skip this background material without losing the plot. 
+
 
 \section{General Notation}
 \label{sec:background_general}
-Let $[n]=\{1,2,\dots,n\}$. By $\diag(x_1,x_2,\dots,x_n)$ we mean the $n\times n$ matrix $\D$ entries $\D(i,i)=x_i$ and $\D(i,j)=0$ for $i\neq j$. Given vectors $\v_1,\dots,\v_n$, we will often denote by $(\v_1,\dots,\v_n)$ the matrix whose $i$-th column is $\v_i$. We let $x(i)$ denote the $i$-th component of a vector $\x$. For $1\leq p<\infty$, the \emph{$p$-norm} of $\x\in \R^d$ is 
+We use the standard notation for sets of numbers: $\R$ (reals), $\N$ (naturals), $\Z$ (integers), $\C$ (complex).  We use the subscript $\geq 0$ (resp., $>0$) to restrict a relevant set to its non-negative (resp., positive) elements ($\R_{\geq 0}$, for example). 
+We will often introduce new notation or definitions by using the notation $\equiv$. 
+Given a set of scalars $K$, we let $K^{n\times m}$ denote the set of $n\times m$ matrices ($n$ rows and $m$ columns) with elements in $K$. Matrices will typically be denoted by uppercase letters in boldface, e.g., $\Q\in K^{n\times m}$. For a set $U$, $K^U$ denotes the set of all functions from $U$ to $K$.  For any $n\in\N$, set $[n]\equiv \{1,2,\dots,n\}$. As usual, we let $K^n=K^{[n]}$, and call elements of $K^n$ \emph{vectors}. \note{Might have to distinguish between vectors and points; unsure whether this is needed yet.} Vectors will typically be denoted by lowercase boldcase letters. Lowercase  greek letters will often be used for scalars. 
+
+By $\diag(x_1,x_2,\dots,x_n)$ we mean the $n\times n$ matrix $\D$ entries $\D(i,i)=x_i$ and $\D(i,j)=0$ for $i\neq j$. Given vectors $\v_1,\dots,\v_n$, we will often denote by $(\v_1,\dots,\v_n)$ the matrix whose $i$-th column is $\v_i$. The $i$-th coordinate of a vector $\x$ will be denoted either by $\x(i)$ or simply $x(i)$. We trust this will not be overly confusing.  For $1\leq p<\infty$, the \emph{$p$-norm} of $\x\in \R^d$ is 
 \[\norm{\x}_p = \bigg(\sum_{i=1}^d x_i^p\bigg)^{1/p},\]
-while the \emph{0-norm} of $\x$ is the number of non-zero entries of $\x$, and is denoted by $\norm{\x}_0$. 
+while the \emph{0-norm} of $\x$ is the number of non-zero entries of $\x$, and is denoted by $\norm{\x}_0$.  Given a vector or matrix, we use the superscript $t$ to denote it's transpose, i.e.,, given $\Q$, $\Q^t$ is defined as $\Q^t(i,j) = \Q(j,i)$. The standard inner product on $\R^d$ is denoted as $\la\cdot,\cdot\ra$, that is, $\la \x,\y\ra = \sum_i x(i)y(i)$. Elementary properties of the inner product will often be used without justification, such as its bilinearity: $\la \x,\alpha\y_1+\y_2\ra  = \la \x,\alpha\y_1\ra + \la \x,\y_2\ra$ for $\alpha\in\R$.  
+
+We will often use the shorthand ``iff'' to mean ``if and only if''. We use $\delta_{ij}$ to denote the Kronecker delta function, i.e., $\delta_{ij} = 1$ if $i=j$ and 0 otherwise. We may sometimes include a comma and write $\delta_{i,j}$. 
 
 \section{Linear Algebra}
 \label{sec:background_linear}
@@ -12,17 +21,17 @@ The results derived in this section can be found in any self-contained reference
 
 \begin{lemma}
 \label{lem:bi-orthogonal_bases}
-Let $\v_1,\dots,\v_k$ be a set of linearly independent vectors in $\R^n$. There exists a set of vectors, $\u_1,\dots,\u_k$ such that $\la \v_i,\u_j\ra = \delta_{ij}$ for all $i,j\in[k]$. The collections $\{\v_i\}$ and $\{\u_i\}$ are called \emph{biorthogonal} or \emph{dual} bases.  
+Let $\v_1,\dots,\v_k$ be a set of linearly independent vectors in $\R^n$. There exists a set of vectors, $\u_1,\dots,\u_k$ such that $\la \v_i,\u_j\ra = \delta_{ij}$ for all $i,j\in[k]$. The collections $\{\v_i\}$ and $\{\u_i\}$ are called \emph{biorthogonal} or \emph{dual bases}.  
 \end{lemma}
 
-We present a simple observation which will be useful in later sections. 
+Given the set $\{\v_i\}$ of linearly independent vectors, the complementary set $\{\u_i\}$ given by Lemma \ref{lem:bi-orthogonal_bases} is called the \emph{sister} or \emph{dual set to $\{\v_i\}$}. If $\{v_i\}$ constitutes a basis of the underlying space, then we might call $\{\u_i\}$ the \emph{sister} or \emph{dual basis}.  We present a simple observation which will be useful in later sections. 
 
 \begin{observation}
 \label{obs:bi-orthogonal_unique}
-Let $\{\v_1,\dots,\v_n\}\subset\R^n$ be a set of linearly independent vectors. The complimentary set of vectors $\{\u_i\}$ given by Lemma \ref{lem:bi-orthogonal_bases} are unique. 
+Let $\{\v_1,\dots,\v_n\}\subset\R^n$ be a set of linearly independent vectors. The sister basis given by Lemma \ref{lem:bi-orthogonal_bases} is unique. 
 \end{observation}
 \begin{proof}
-Suppose $\{\u_i\}$ and $\{\w_i\}$ are two such sets of vectors. Fix $i\in[n]$. By independence, $\spn(\v_1,\dots,\v_{i-1},\v_{i+1},\dots,\v_n)$ is a hyperplane---that is, $\dim(\spn(\v_1,\dots,\v_{i-1},\v_{i+1},\dots,\v_n))^\perp=1$. Both $\u_i$ and $\w_i$ are orthogonal to this hyperplane (since they orthogonal to $\v_j$ for all $j\neq i$), thus are either parallel or anti-parallel. Therefore, there exists some $\alpha\in\R$ such that $\v_i=\alpha\w_i$. By definition, $\la \v_i,\u_i\ra = \la \v_i,\w_i\ra =1$, hence $\la \v_i,\alpha \w_i\ra = \la \v_i,\w_i\ra$ implying that $\alpha=1$. This demonstrates that $\u_i=\w_i$ for all $i$. 
+Suppose $\{\u_i\}$ and $\{\w_i\}$ are biorthogonal bases. Fix $i\in[n]$. By independence, $\spn(\v_1,\dots,\v_{i-1},\v_{i+1},\dots,\v_n)$ is a hyperplane---that is, $\dim(\spn(\v_1,\dots,\v_{i-1},\v_{i+1},\dots,\v_n))^\perp=1$. Both $\u_i$ and $\w_i$ are orthogonal to this hyperplane (since they orthogonal to $\v_j$ for all $j\neq i$), thus are either parallel or anti-parallel. Therefore, there exists some $\alpha\in\R$ such that $\v_i=\alpha\w_i$. By definition, $\la \v_i,\u_i\ra = \la \v_i,\w_i\ra =1$, hence $\la \v_i,\alpha \w_i\ra = \la \v_i,\w_i\ra$ implying that $\alpha=1$. This demonstrates that $\u_i=\w_i$ for all $i$. 
 \end{proof}
 
 Let $\M\in\R^{n\times n}$ matrix. We recall that a vector $\eig$ satisfying $\M\eig=\lambda\eig$ is an \emph{eigenvector} of $\M$, and call $\lambda$ the associated \emph{eigenvalue}. It's clear that if $\eig$ is an eigenvector then so it $c\eig$ for any constant $c\in \R$. If $\M$ is Hermitian, then the Spectral theorem dictates that there exists an orthonormal basis consisting of eigenvectors $\{\eig_1,\eig_2,\dots,\eig_n\}$ of $\M$ whose corresponding eigenvalues $\{\lambda_1,\dots,\lambda_n\}$ are all real. Let $\Eig=(\eig_1,\eig_2,\dots,\eig_n)$ be the matrix whose $i$-th column is the $i$-th eigenvector of $\M$, and set $\Eval=\diag(\lambda_1,\dots,\lambda_n)$. Observe that 
@@ -38,7 +47,7 @@ which is called the \emph{eigendecomposition} of $\M$.
 
 A symmetric matrix $\vb*{Q}\in\R^{n\times n}$ is \emph{positive semidefinite (PSD)} if $\x^\tp\Q\x \geq 0$ for all $\x\in\R^n$. If $\Q$ is PSD, then we define 
 \begin{equation*}
-    \Q^{1/2} \equiv \Eig\Eval\Eig^\tp = \sum_{i\in[n]}\sqrt{\lambda_i}\vp_i\vp_i^\tp.
+    \Q^{1/2} \equiv \Eig\Eval^{1/2}\Eig^\tp = \sum_{i\in[n]}\sqrt{\lambda_i}\vp_i\vp_i^\tp.
 \end{equation*}
 
 \subsection{Pseudoinverse}
@@ -107,8 +116,7 @@ We begin with basic graph theory.
 We denote a \emph{graph} by a triple $G=(V,E,w)$ where $V$ is the \emph{vertex set}, $E\subset V\times V$ is the \emph{edge set} and $w:V\times V\to\R_{\geq0}$ (the non-negative reals) a \emph{weight function}. We let the domain of $w$ be $V\times V$ for convenience; for $(i,j)\notin E$ we have $w((i,j))=0$. We call $G$ \emph{unweighted} if $w((i,j))=\chi_{(i,j)\in E}$ for all $i,j$. In this case, we may omit the weight function and simply write $G=(V,E)$. 
 We will typically take $V=[n]$ for simplicity. For a  vertex $i\in V$, we denote the set of its neighbours by 
 \[\delta(i) = \{j\in V:w(i,j)>0\},\]
-a set we call that \emph{neighbourhood} of $i$. The \emph{degree of $i$} if $\deg(i)\equiv |\delta(i)|$. The \emph{weight of $i$} if $w(i)\equiv \sum_{j\in \delta(i)}w(i,j)$. Note that if $G$ is unweighted, then $w(i)=\deg(i)$. 
-
+a set we call that \emph{neighbourhood} of $i$. The \emph{degree of $i$} if $\deg(i)\equiv |\delta(i)|$. The \emph{weight of $i$} if $w(i)\equiv \sum_{j\in \delta(i)}w(i,j)$. Note that if $G$ is unweighted, then $w(i)=\deg(i)$. If the degree of each vertex in $G$ is equal to $k$, we call $G$ a \emph{$k$-regular graph}. We call $G$ \emph{regular} if it is $k$-regular for some $k$. If $U\subset V$ contains only vertices with the same degree, we call it \emph{degree homogeneous}. 
 Abusing notation, we extend the weight function $w$ to sets of edges or vertices by setting $w(A)=\sum_{a\in A}w(a)$. 
 
 Unless otherwise stated, we will assume that graphs are \emph{undirected}---that is, there is no orientation on the edges. Consequently, we identify each tuple $(i,j)$ with its sister pair $(j,i)$. This implies, for example, that when summing over all edges $(i,j)\in E$ we are \emph{not} summing over all vertices and their neighbours. Indeed, this latter summation double counts the edges: $\sum_{(i,j)\in E}=\frac{1}{2}\sum_{i}\sum_{j\in\delta(i)}$. We will often write $i\sim j$ to denote an edge $(i,j)$; so, for example, $\sum_{i\sim j}=\sum_{(i,j)\in E}$. 
@@ -136,7 +144,7 @@ Then
 \label{eq:Lsum}
     \L_G=\sum_{i\sim j}\L_{i,j}.
 \end{equation}
-Another representation comes via the \emph{incidence matrix} of $G$, $\B_G\in \R^{E\times V}$, defined as follows. Place an arbitrary orientation on the edges of $G$ (say, for example, $(i,j)$ is directed from $i$ to $j$ iff $i<j$), and for an edge $e$, let $e^-\in V$ denote the vertex at which $e$ begins, and $e^+$ the vertex at which it ends. Set 
+Another representation comes via the \emph{incidence matrix} of $G$, $\B_G\in \R^{E\times V}$, defined as follows. Place an arbitrary orientation on the edges of $G$ (say, for example, $(i,j)$ is directed from $i$ to $j$ iff $i<j$), and for an edge $e$, let $e^-\in V$ denote the vertex at which $e$ begins, and $e^+$ the vertex at which it ends. Set \note{Fix this. Let $\B$ be a 0-1 matrix and use $W$ to incorporate the weights.}
 \[\B_G(e,i)=\begin{cases}
 \sqrt{w(e)}&\text{if }i=e^-,\\
 -\sqrt{w(e)}&\text{if }i=e^+,\\
@@ -231,13 +239,26 @@ Let $\x\in\ker(\L^+)$, so $\L^+\x=\zero$. Multiplying by $\L$ and using Equation
 \end{proof}
 
 \section{Simplices}
-\TODO Introduce simplex with defns, etc. 
-
-Define hyperplane $\H_i$ (maybe $\H_{\{i\}^c}$) which contains $\splx_{\{i\}^c}$ and corresponding halfspaces $\H_i^+$ and $\H_i^-$. 
+\label{sec:simplices}
 
 \begin{definition}
-A set of points $\x_1,\dots,\x_k$ are said to be \emph{affinely independent} if, for each $j$,  the set $\{\x_j-\x_i\}_{i\neq j}$ is linearly independent. 
+A set of points $\x_1,\dots,\x_k$ are said to be \emph{affinely independent} if the only solution to $\sum_{i\in[n]}\alpha_i\x_i=\zero$ with $\sum_{i\in [n]}\alpha_i=0$ is $\alpha_1=\dots=\alpha_n=0$. 
 \end{definition}
+
+Perhaps a more useful characterization of affine independence is the following. 
+
+\begin{lemma}
+	The set $\{\x_1,\dots,\x_k\}$ is affinely independent iff for each $j$, $\{\x_j-\x_i\}_{i\neq j}$ is linearly independent. 
+\end{lemma}
+\begin{proof}
+	Suppose that $\{\x_j-\x_i\_{i\neq j}$ is not linearly independent, and let $\{\beta_i\}$ (not all zero) be such that $\sum_{i\neq j}\beta_i (\x_j-\x_j)=\zero$. Putting $\beta=\sum_i \beta_i$, we can write this as 
+	\[\sum_{i\neq j}\frac{\beta_i}{\beta}\x_i - \x_j=\zero.\]
+	But these coefficients sum to 0, i.e., $\sum_{i\neq j}\beta_i/\beta -1=1-1-0$, so $\{\x_i\}$ are not affinely independent. Conversely, suppose that $\sum_i\alpha_i\x_i=\zero$ where $\sum_i\alpha_i=0$ and $\alpha_k\neq 0$ for some $k$. Then, 
+	\[\zero =\sum_i\alpha_i\x_i = \sum_{i\neq j}\alpha_i\x_i + \alpha_j\x_j = \sum_{i\neq j}\alpha_i\x_i - \sum_{i\neq j}\alpha_i\x_j = \sum_{i\neq j}\alpha_i(\x_i-\x_j), \]
+	implying that $\{\x_j-\x_i\}_{i\neq j}$ is not linearly independent. 
+\end{proof}
+
+
 
 \begin{definition}
 A \emph{simplex} $\splx$ in $\R^{n-1}$ is the convex hull of $n$ affinely independent vectors $\sv_1,\dots,\sv_n$. That is, 
@@ -258,7 +279,18 @@ As is illustrated in two and three dimensions by the triangle and the tetrahedro
 \end{equation*}
 We will typically omit the restriction symbol from the notation and simply write $\splx_U=\splx\restriction_U$. 
 
-\note{Bunch of stuff commented out here. No sure what's needed.}
+The \emph{centroid} of a simplex is the point 
+\begin{equation*}
+\cent(\splx) \equiv \frac{1}{n}\Sv \one = \frac{1}{n}\sum_{i\in[n]}\sv_i.
+\end{equation*} 
+
+The centroid of a simplex can be thought of as its centre of mass, assuming that weight is distributed evenly across its surface. 
+
+Given a simplex $\splx$, an \emph{altitude between faces $\splx_U$ and $\splx_{U^c}$} is a vector which lies in the orthogonal complement of both $\splx_U$ and $\splx_{U^c}$ and points from one face to the other. 
+We denote the altitude pointing from $\splx_{U^c}$ to $\splx_{U}$ as $\alt_(\splx_U)$. We can write the altitude as $\alt_U=\p-\q$ for some $\p\in \splx_{U^c}$ and $\q\in\splx_{U}$, and thus as $\Sv(\x_{U^c}-\x_{U})$ where $\x_{U^c}$ and $\x_{U}$ are the barycentric coordinates of $\p$ and $\q$. 
+
+
+\note{Bunch of stuff commented out here. Not sure what's needed. Deals with faces as subsets affine spaces, etc. }
 
 %\begin{observation}
 %\label{obs:p-q}
@@ -350,7 +382,7 @@ We will typically omit the restriction symbol from the notation and simply write
 
 \subsection{Dual Simplex}
 \label{sec:dual_simplex}
-Let $\Sv=(\sv_1,\dots,\sv_n)\in\R^{n-1\times n}$ be the vertex matrix of a simplex $\splx\subset\R^{n-1}$. For each $i\in[n-1]$, put $\v_i=\sv_n-\sv_i$. Then $\{\v_1,\dots,\v_{n-1}\}$ is a linearly independent set, and thus admits a sister basis $\{\bgamma_1,\dots,\bgamma_{n-1}\}$ which together form biorthogonal bases of $\R^{n-1}$ (Lemma \ref{lem:bi-orthogonal_bases}). Put $\bgamma_n = -\sum_{i=1}^{n-1}\bgamma_i$. 
+Let $\Sv=(\sv_1,\dots,\sv_n)\in\R^{n-1\times n}$ be the vertex matrix of a simplex $\splx\subset\R^{n-1}$. For each $i\in[n-1]$, put $\v_i=\sv_n-\sv_i$. Then $\{\v_1,\dots,\v_{n-1}\}$ is a linearly independent set, and thus admits a sister basis $\{\bgamma_1,\dots,\bgamma_{n-1}\}$ which together form biorthogonal bases of $\R^{n-1}$ (Lemma \ref{lem:bi-orthogonal_bases}). Put $\bgamma_n = -\sum_{i=1}^{n-1}\bgamma_i$.  
 
 \begin{claim}
 The set 
@@ -362,11 +394,33 @@ Suppose not and let $\{\beta_i\}$ be such that $\sum_i \beta_i \bgamma_i =\zero$
 implying that $\{\bgamma_i\}_{i=1}^{n-1}$ is linearly dependent; a contradiction.  
 \end{proof}
 
-Therefore, the set $\{\bgamma_1,\dots,\bgamma_n\}$ determines a simplex, which we call the \emph{dual simplex} of $\splx$. 
+Therefore, the set $\{\bgamma_1,\dots,\bgamma_n\}$ determines a simplex, which we call the \emph{dual simplex} of $\splx$. Of course, it would highly suboptimal if the notion of a dual simplex depended on the labelling of the vertices of $\splx$. More specifically, we defined the vertices of the dual simplex $\bgamma_i$ with respect to the vectors $\sv_n-\sv_i$. It is not clear a priori whether the vertices of the dual simplex would change were we to relabel the indices of $\{\sv_i\}$. In fact, they do not---the demonstration of which is the purpose of the following lemma. 
 
-\begin{definition}
+\begin{lemma}
+	\label{lem:dual_vertices_well-defined}
+	Let $\{\sv_1,\dots,\sv_n\}$ be a set of affinely independent vectors. Fix $k\in [n-1]$ and define $\v_i=\sv_n-\sv_i$ for $i\in[n-1]$ and $\u_i=\sv_k-\sv_i$ for $i\in[n]\setminus\{k\}$. If $\{\bgamma_1,\dots,\bgamma_n-1\}$ is the sister basis to $\{\v_1,\dots,\v_{n-1}\}$ and $\bgamma_n = -\sum_{i=1}^{n-1}\bgamma_i$, then $\{\bgamma_1,\dots,\bgamma_{k-1},\bgamma_{k+1},\dots,\bgamma_{n}\}$ is the sister basis to $\{\u_1,\dots,\u_{k-1},\u_{k+1},\dots,\u_n\}$. 
+\end{lemma}
+\begin{proof}
+	We need to show that $\la \bgamma_i,\u_j\ra = \delta_{ij}$ for all $i,j\neq k$. For $i\neq n$, we have 
+	\begin{align*}
+	\la \bgamma_i, \sv_k-\sv_j\ra &= \la \bgamma_i,\sv_k-\sv_n+\sv_n-\sv_j\ra \\
+	&= -\la \bgamma_i,\sv_n-\sv_k \ra + \la \bgamma_i,\sv_n-\sv_j\ra \\
+	&= -\delta_{ik} + \delta_{ij} = \delta_{ij},
+	\end{align*}
+	since $i\neq k$. For $i=n$ meanwhile, 
+	\begin{align*}
+	\la \bgamma_i,\sv_k-\sv_j\ra &= -\sum_{\ell=1}^{n-1}\la \bgamma_\ell,\sv_k-\sv_n+\sv_n-\sv_j\ra \\
+	&= \sum_{\ell=1}^{n-1}\la \bgamma_\ell,\sv_n-\sv_k\ra - \sum_{\ell=1}^{n-1}\la  \bgamma_\ell,\sv_n-\sv_j\ra =1-1=0. \qedhere
+	\end{align*}
+\end{proof}
+
+We also observe that, using the same notation as above, 
+\[-\sum_{i=1,i\neq k}^n \bgamma_i = -\sum_{i=1,i\neq k}^{n-1} \bgamma_i - \bgamma_n = -\sum_{i=1,i\neq k}^{n-1}\bgamma_i + \sum-{j=1}^{n-1} \bgamma_j = \bgamma_k,\]
+hence had we set $\v_i=\sv_k-\sv_i$ and defined $\bgamma_k = -\sum_{i\neq k}\bgamma_i$ (as we did for $k=n$), Lemma \ref{lem:dual_vertices_well-defined} demonstrates that we would produce the same set of vectors for the dual simplex. We honour the fact that the dual simplex is independent of labelling, i.e., well-defined, with the following definition. 
+
+\begin{definition}[Dual Simplex]
 \label{def:dual_simplex}
-Given a simplex $\splx_1\subset\R^{n-1}$ with vertex set $\Sv(\splx_1)=(\sv_1,\dots,\sv_n)$, a simplex $\splx_2\subset \R^{n-1}$ with vertex vectors $\Sv(\splx_2)=(\bgamma_1,\dots,\bgamma_n)$ is called a \emph{dual simplex} of $\splx_1$ if $\bgamma_i$ is normal to $\splx_\ic$ for all $i\in[n]$. 
+Given a simplex $\splx_1\subset\R^{n-1}$ with vertex set $\Sv(\splx_1)=(\sv_1,\dots,\sv_n)$, a simplex $\splx_2\subset \R^{n-1}$ with vertex vectors $\Sv(\splx_2)=(\bgamma_1,\dots,\bgamma_n)$ is called a \emph{dual simplex} of $\splx_1$ if for all $k\in[n]$, $\{\bgamma_i\}_{i\neq k}$ is the sister basis to $\{\sv_k-\sv_i\}_{i\neq k}$. 
 \end{definition}
 
 \begin{lemma}

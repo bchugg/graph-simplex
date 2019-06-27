@@ -266,8 +266,8 @@ The (normalized) Laplacian of a graph naturally encodes all of the graph's infor
 \end{equation*}
 In particular, the edge $(i,j)$ belongs to $E$ iff $\la \sv_i,\sv_j\ra$ and $\la \svn_i,\svn_j\ra$ are strictly less than zero. Each simplex takes space $O(n^2)$ to store, regardless of the number of edges in $G$. If $G$ is sparse, then this does not constitute an improvement. If $G$ is dense on the other hand---say $|E|=\omega(n^2)$---then storing $n$ vectors in $\R^{n-1}$ could be advantageous. Of course, in order to compute the simplex we need to first obtain an eigendecomposition of the Laplacian which can be infeasible for large graphs. 
 
-\paragraph{Centroids.}
-The \emph{centroid} $c(\splx)$ of a simplex $\splx$ is the point $\S\one/n$, where $\S=\S(\splx)$ are the vertices of $\splx$. Intuitively, it constitutes the center of mass of the simplex; an equal linear combination of all vertices. If $\splx=\splx(\M)$ is the simplex corresponding to the matrix $\M$ with  $(\eig_1,\dots,\eig_n)$ and eigenvalues $\lambda_1,\dots,\lambda_n$ then we have
+\paragraph{Centroid.}
+If $\splx=\splx(\M)$ is the simplex corresponding to the matrix $\M$ with  $(\eig_1,\dots,\eig_n)$ and eigenvalues $\lambda_1,\dots,\lambda_n$ then we have
 \[\Eval^{1/2}\Eig^\tp\one = (\sqrt{\lambda_1}\la \eig_1,\one\ra , \dots, \sqrt{\lambda_{n}}\la \eig_{n},\one\ra)^\tp ,\]
 and so 
 \[c(\splx) = \bigg(\sqrt{\lambda_1}\frac{\la \eig_1,\one\ra}{n }, \dots, \sqrt{\lambda_{n}}\frac{\la \eig_{n-1},\one\ra}{n}\bigg)^\tp. \]
@@ -317,9 +317,8 @@ That is, the length of the centroid $c(\splxn_U)$ captures the total fraction of
 
 
 
-\subsubsection{Altitudes}
-Given a simplex $\splx$, an \emph{altitude between faces $\splx_U$ and $\splx_{U^c}$} is a vector which lies in the orthogonal complement of both $\splx_U$ and $\splx_{U^c}$ and points from one face to the other. 
-We denote the altitude pointing from $\splx_{U^c}$ to $\splx_{U}$ as $\alt_(\splx_U)$. We can write the altitude as $\alt_U=\p-\q$ for some $\p\in \splx_{U^c}$ and $\q\in\splx_{U}$, and thus as $\Sv(\x_{U^c}-\x_{U})$ where $\x_{U^c}$ and $\x_{U}$ are the barycentric coordinates of $\p$ and $\q$. 
+\subsubsection{Centroid and Altitudes}
+Recall that the altitude between $\splx[U]$ and $\splx[U^c]$ of a simplex $\splx$ is the unique vector $\p-\q$ where  $\p\in \splx_{U^c}$ and $\q\in\splx_{U}$ which lies in the orthogonal complement of both $\splx_U$ and $\splx_{U^c}$. 
 
 \begin{lemma}
 \label{lem:complimentary_centroids}
@@ -431,6 +430,55 @@ which proves the first equality. The second is shown similarly by employing Lemm
 \end{proof}
 
 \section{Properties of \texorpdfstring{$\splxn_G$}{the normalized Simplex}}
+
+Here we study the normalized simplex $\splxn_G$ of the graph $G$, a somewhat less accessible object than its unnormalized counterpart.  The normalized simplex is, roughly speaking, distorted by the weights of the vertices. Consequently, many of the relationships between $\splx_G$ and $\splx_G^+$ are lost between $\splxn_G$ and $\splxn_G^+$. The first issue is that, in general, $\splxn_G$ and its inverse are not centred at the origin. Indeed, recall that the zero eigenvector $\vpn_n$ of $\Ln_G$ sits in the space $\spn(\W^{1/2}_G\one)$, which is distinct from $\spn(\one)$ unless $\W^{1/2}_G=d\I$ for some $d$, in which case $G$ is regular.
+If $G$ is not regular, we thus have that $\vp_i \in \spn(\W^{1/2}_G\one)\subset \spn(\one)^\perp$ for all $i<n$ implying that $\la \vp_i,\one\ra \neq 0$. In this case then,  
+ \[\cent(\splxn_G) = \frac{1}{n} \Evaln^{1/2}\Eign^\tp \one = \frac{1}{n} \begin{pmatrix}
+ \sqrt{\lambda_1}\la \vp_1,\one\ra \\
+ \vdots \\
+\sqrt{ \lambda_{n-1}}\la \vp_{n-1},\one \ra
+ \end{pmatrix}\neq \zero.\]
+The above argument proves the following.
+
+\begin{lemma}
+	\label{lem:centroid_normalized}
+	The centroid of $\splxn_G$ coincides with the origin of $\R^{n-1}$ iff $G$ is regular. 
+\end{lemma}
+
+The next set of properties which don't hold between $\splxn$ and $\splxn^+$ are the orthogonality relationships present between a simplex and its dual. That is, in general $\splxn^+_G$ is the not the dual of $\splxn_G$. 
+
+\begin{lemma}
+	The inverse simplex $\splxn_G^+$ is the dual of $\splxn_G$ iff $G$ is regular. 
+\end{lemma}
+\begin{proof}
+	content...
+\end{proof}
+
+
+Recall from Section \ref{sec:background_spectral} that a subset of vertices is degree homogenous if each vertex in the set has the same degree. 
+
+\begin{lemma}
+	Let $U_1,U_2\subset V(G)$ be two non-empty, degree homogenous subsets such that $U_1\cap U_2=\emptyset$. Then the faces $\splxn[U_1]$ and $\splxn[U_2]$ are perpendicular. 
+\end{lemma}
+
+When discussing general graphs, it will be useful to study a  translated copy of $\splxn_G$ which is centred at the origin. Accordingly, given any simplex $\ssplx$ with vertices $\{\sv_i\}$, we let $\ssplx^0$ denote the simplex with vertices $\{\sv_i - \cent(\ssplx)\}$. It's clear that the centroid of $\ssplx^0$ is the origin: 
+\begin{align*}
+\cent(\ssplx^0) 
+&= \frac{1}{n}(\sv_1-\cent(\ssplx),\;\dots\;\sv_n-\cent(\ssplx))\one \\
+&= \frac{1}{n}(\sv_1\;\dots\;\sv_n)\one - \frac{1}{n}(\cent(\ssplx)\;\dots\;\cent(\ssplx))\one = \cent(\ssplx) - \cent(\ssplx)=\zero.
+\end{align*}
+
+We solidify the concept with a definition. 
+
+\begin{definition}
+	Given a simplex $\ssplx$, the unique (up to rotation and translation) simplex with vertex matrix $\Sv(\ssplx) - (\cent(\ssplx)\;\dots\;\cent(\ssplx))$ centred at the origin is called the \emph{canonical (or centred) simplex corresponding to $\ssplx$} and is denoted $\ssplx^0$. 
+\end{definition}
+
+
+
+
+
+
 
 \section{Construction via Extended Menger and Gramian}
 \note{Will include this after the proof is sorted}
