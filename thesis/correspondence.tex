@@ -124,6 +124,7 @@ If we construct a weighted graph $G=(V,E,\w)$ on $n$ vertices with edge weights 
 We summarize the material in Sections \ref{sec:graph_to_simplex} and \ref{sec:simplex_to_graph} with the following theorem. 
 
 \begin{theorem}
+	\label{thm:graph-simplex}
 	There exists a bijection between hyperacute simplices in $\R^{n-1}$ centered at the origin and connected, weighted graphs on $n$ vertices. 
 \end{theorem}
 
@@ -297,23 +298,6 @@ Via the same process we can also obtain an equivalent expression for the centroi
 \end{equation}
 where we define $w(\delta^+U) \equiv  \la \Sv^+\chi_U,\Sv^+\chi_U\ra=\la \chi_U,\L^+\chi_U\ra$. 
 
-For the normalized Laplacian on the other hand,
-\begin{align}
-    \Lnf(\chi_U)&=\sum_{i\sim j}w(i,j) \bigg(\frac{\chi_U(i)}{\sqrt{w(i)}}-\frac{\chi_U(j)}{\sqrt{w(j)}}\bigg)^2 \notag \\
-    &= \sum_{i\in U,j\in U^c}w(i,j)\bigg(\frac{\chi_U(i)}{\sqrt{w(i)}}-\frac{\chi_U(j)}{\sqrt{w(j)}}\bigg)^2 \notag \\
-    &= \sum_{i\in U,j\in U^c}w(i,j)\frac{\chi_U(i)}{w(i)} \notag \\
-    &= \sum_{i\in U}\frac{W(\delta(i)\cap U^c)}{w(i)}. \label{eq:Lnf(chiU)}
-\end{align}
-Let $\gamma(i,B)$ denote the \emph{fractional weight of $i$ in $B$}; that is, \[\gamma(i,B)=\frac{1}{w(i)}\sum_{j\in\delta(i)\cap B} w(i,j)=\frac{1}{w(i)}W(\delta(i)\cap U^c),\]
-and $\gamma(A,B)$ the \emph{average fractional weight from $A$ to $B$}: 
-\[\gamma(A,B) =\frac{1}{|A|}\sum_{i\in A}\gamma(i,B). \]
-Then, 
-\begin{equation*}
-    \norm{c(\splxn_U)}_2^2 = \frac{1}{|U|^2}\la \Svn\chi_U,\Svn\chi_U\ra = \frac{1}{|U|^2}\Lnf(\chi_U) = \frac{1}{|U|} \gamma(U,U^c).
-\end{equation*}
-
-
-That is, the length of the centroid $c(\splxn_U)$ captures the total fraction of weight between $U$ and $U^c$. 
 
 
 
@@ -448,18 +432,55 @@ The above argument proves the following.
 The next set of properties which don't hold between $\splxn$ and $\splxn^+$ are the orthogonality relationships present between a simplex and its dual. That is, in general $\splxn^+_G$ is the not the dual of $\splxn_G$. 
 
 \begin{lemma}
+	\label{lem:inverse_not_dual}
 	The inverse simplex $\splxn_G^+$ is the dual of $\splxn_G$ iff $G$ is regular. 
 \end{lemma}
 \begin{proof}
-	content...
+	For any $i,j,k\in\N$ write 
+	\begin{equation}
+	\label{eq:lem_inverse_not_dual}
+	\la \svn_i^+,\svn_j-\svn_k\ra = \delta_{ij} - \delta_{ik} + \frac{\sqrt{w(i)w(k)}}{n} - \frac{\sqrt{w(i)w(j)}}{n}.
+	\end{equation}
+	First suppose that $G$ is $k$-regular. Then for $i\neq k$, Equation \eqref{eq:lem_inverse_not_dual} becomes $\la \svn_i^+,\svn_j-\svn_k\ra = \delta{ij}$. Since $k$ was arbitrary, we see that $\{\svn_i^+\}$ is the sister pair of $\{\svn_j-\svn_k\}$. Conversely, suppose $G$ is not regular and let $i,k$ obey $0\neq w(i)\neq w(k)$. Taking $i=j\neq k$ in \eqref{eq:lem_inverse_not_dual} we see 
+	\[\la \svn_i^+,\svn_i-\svn_k\ra = 1 - \frac{\sqrt{w(i)}}{n}(\sqrt{w(k)}-\sqrt{w(i)})\neq 1,\]
+	so $\{\svn_i^+\}$ is not the sister set of $\{\svn_j-\svn_k\}$, completing the argument. 
 \end{proof}
 
 
-Recall from Section \ref{sec:background_spectral} that a subset of vertices is degree homogenous if each vertex in the set has the same degree. 
+Recall from Section \ref{sec:background_spectral} that a subset of vertices is degree homogenous if each vertex in the set has the same weight. 
 
 \begin{lemma}
 	Let $U_1,U_2\subset V(G)$ be two non-empty, degree homogenous subsets such that $U_1\cap U_2=\emptyset$. Then the faces $\splxn[U_1]$ and $\splxn[U_2]$ are perpendicular. 
 \end{lemma}
+\begin{proof}
+	Suppose $w(i)=w_1$ for all $i\in U_1$ and $w(i)=w_2$ for all $i\in U_2$. Let $\x_{U_i}$ be the barycentric coordinate of any point in $\splxn[U_i]$, $i=1,2$, and compute 
+	\begin{align*}
+	\la \Svn\x_{U_1},\Svn\x_{U_2}\ra &= \x_{U_1}^\tp \bigg(\I-\frac{\sqrt{\w}\sqrt{\w}^\tp}{n}\bigg) \x_{U_2}\\
+	&= \x_{U_1}^\tp\x_{U_2} - \frac{1}{n}\sum_{i\in U_1}\x_{U_1}(i)\sqrt{w(i)}\sum_{j\in U_2}\x_{U_2}(j) \sqrt{w(j)} \\
+	&= -\frac{1}{n}\sqrt{w_1w_2}\sum_{i\in U_1}\x_{U_1}(i) \sum_{j\in U_2}\x_{U_2}(j) = -\frac{\sqrt{w_1w_2}}{n},
+	\end{align*} 
+	where the second equality is due to fact that $U_1\cap U_2=\emptyset$. This demonstrates that $\la \Svn\x_{U_1},\p-\q\ra=0$ for any $\p,\q\in\splxn[U_2]$, completing the proof. 
+\end{proof}
+
+\paragraph{Centroids and Altitudes.}
+For the normalized Laplacian on the other hand,
+\begin{align}
+\Lnf(\chi_U)&=\sum_{i\sim j}w(i,j) \bigg(\frac{\chi_U(i)}{\sqrt{w(i)}}-\frac{\chi_U(j)}{\sqrt{w(j)}}\bigg)^2 \notag \\
+&= \sum_{i\in U,j\in U^c}w(i,j)\bigg(\frac{\chi_U(i)}{\sqrt{w(i)}}-\frac{\chi_U(j)}{\sqrt{w(j)}}\bigg)^2 \notag \\
+&= \sum_{i\in U,j\in U^c}w(i,j)\frac{\chi_U(i)}{w(i)} \notag \\
+&= \sum_{i\in U}\frac{W(\delta(i)\cap U^c)}{w(i)}. \label{eq:Lnf(chiU)}
+\end{align}
+Let $\gamma(i,B)$ denote the \emph{fractional weight of $i$ in $B$}; that is, \[\gamma(i,B)=\frac{1}{w(i)}\sum_{j\in\delta(i)\cap B} w(i,j)=\frac{1}{w(i)}W(\delta(i)\cap U^c),\]
+and $\gamma(A,B)$ the \emph{average fractional weight from $A$ to $B$}: 
+\[\gamma(A,B) =\frac{1}{|A|}\sum_{i\in A}\gamma(i,B). \]
+Then, 
+\begin{equation*}
+\norm{c(\splxn_U)}_2^2 = \frac{1}{|U|^2}\la \Svn\chi_U,\Svn\chi_U\ra = \frac{1}{|U|^2}\Lnf(\chi_U) = \frac{1}{|U|} \gamma(U,U^c).
+\end{equation*}
+
+
+That is, the length of the centroid $c(\splxn_U)$ captures the total fraction of weight between $U$ and $U^c$. 
+
 
 When discussing general graphs, it will be useful to study a  translated copy of $\splxn_G$ which is centred at the origin. Accordingly, given any simplex $\ssplx$ with vertices $\{\sv_i\}$, we let $\ssplx^0$ denote the simplex with vertices $\{\sv_i - \cent(\ssplx)\}$. It's clear that the centroid of $\ssplx^0$ is the origin: 
 \begin{align*}
@@ -474,6 +495,35 @@ We solidify the concept with a definition.
 	Given a simplex $\ssplx$, the unique (up to rotation and translation) simplex with vertex matrix $\Sv(\ssplx) - (\cent(\ssplx)\;\dots\;\cent(\ssplx))$ centred at the origin is called the \emph{canonical (or centred) simplex corresponding to $\ssplx$} and is denoted $\ssplx^0$. 
 \end{definition}
 
+Noting that 
+\begin{equation*}
+\cent(\splxn) = \frac{1}{n}\bigg(\sum_{\ell=1}^n \svn_\ell(1),\dots,\sum_{\ell=1}^n \svn_\ell(n)\bigg)^\tp,
+\end{equation*}
+we see that the vertices of $\splxn_0$ have coordinates
+\begin{equation*}
+\svn_i(j) - \cent(\splxn)(j) = \vpn_j(i)\lambdan_j^{1/2} - \frac{1}{n}\sum_{\ell=1}^n \vpn_j(\ell)\lambdan_j^{1/2} = \lambdan_j^{1/2} \bigg(\vpn_j(i) - \frac{1}{n}\la \vpn_j,\one\ra \bigg).
+\end{equation*}
+Likewise, the vertices of $\splx_0^+$ have coordinates 
+\begin{equation*}
+\svn_i^+(j) = \evaln_j^{-1/2}\bigg(\vpn_j(i) - \frac{1}{n}\la \vpn_j,\one\ra\bigg).
+\end{equation*}
+
+One might imagine (and could be forgiven for doing so) that once centred, the normalized simplex and its inverse would indeed be duals. However, this is not the case. Observe that 
+\begin{align*}
+\la \cent(\splx^+),\svn_j-\svn_k\ra &= \frac{1}{n}\sum_{\ell=1}^{n-1} \sum_{r=1}^n \svn^+_r(\ell)(\svn_j(\ell)-\svn_k(\ell))  \\&= 
+\frac{1}{n}\sum_{r=1}^n \sum_{\ell=1}^{n-1} (\vp_\ell(r)\vp_\ell(j) - \vp_\ell(r)\vp_\ell(k) ) \\
+&= \frac{1}{n} \sum_{r=1}^n \bigg(\delta_{r,k} - \delta_{r,j} + \frac{\sqrt{w(r)w(k)}}{n} - \frac{\sqrt{w(r)w(j)}}{n}\bigg) \\
+&= \frac{\sqrt{w(k)}-\sqrt{w(j)}}{n^2} \sum_{r\in[n]}\sqrt{w(r)},
+\end{align*}
+so, by Equation \eqref{eq:lem_inverse_not_dual},
+\begin{align*}
+\la \svn_i^+-\cent(\splxn^+),(\svn_j-\cent(\splx)) - (\svn_k-\cent(\splx))\ra &= \la \svn_i^+,\svn_j-\svn_k\ra - \la \cent(\splxn^+),\svn_j-\svn_k\ra \\
+&= \delta_{ij} - \delta_{ik} + \frac{\sqrt{w(i)}}{n}(\sqrt{w(k)} - \sqrt{w(j)})  \\
+&\qquad - \frac{\sqrt{w(k)}-\sqrt{w(j)}}{n^2} \sum_{r\in[n]}\sqrt{w(r)} \\
+&= \delta_{ij} + (\sqrt{w(k)}-\sqrt{w(j)})\bigg(\frac{\sqrt{w(i)}}{n} - \frac{1}{n^2}\sum_{r\in[n]}\sqrt{w(r)}\bigg),
+\end{align*}
+which is not equal to $\delta_{ij}$ unless $w(k)=w(j)$ or $\sqrt{w(i)}= \frac{1}{n}\sum_r \sqrt{w(r)}$. Since this would have to hold for all $i,j,k$, $i,j\neq k$, both of these conditions imply that the graph would have to be regular. \note{So what IS the dual of these simplices??}
+
 
 
 
@@ -481,8 +531,72 @@ We solidify the concept with a definition.
 
 
 \section{Construction via Extended Menger and Gramian}
-\note{Will include this after the proof is sorted}
+In this section we derive matrix equations which relate the geometry of hyperacute simplices and their duals. The equations appeal to the relationship between hyperacute simplices and graphs by using well known results from the literature on electrical networks and effective resistance. The goal of this section is to demonstrate to the reader the utility of the graph-simplex correspondence in generating statements about hyperacute simplices, by hijacking our knowledge of graph theory. 
 
+Let a centred, hyperacute simplex $\splx^+$ be given. By Theorem \ref{thm:graph-simplex} it is the inverse simplex of a graph $G$, whose corresponding simplex $\splx = \splx_G$ is dual to $\splx^+$.
+Therefore, $\L_G=\Sv^\tp\Sv$ and $\L_G^+=(\Sv^+)^\tp\Sv$ and the vertices $\sv_i^+$ of $\splx^+$ can be written as $\sv_i^+=(\vp_1(i)\lambda_1^{1/2},\dots,\vp_{n-1}(i)\lambda_{n-1}^{1/2})^\tp$. Hence, 
+
+\begin{align*}
+\norm{\sv_i^+-\sv_j^+}_2^2 = (\bchi_i-\bchi_j)^\tp (\Sv^+)^\tp\Sv^+ (\bchi_i-\bchi_j) = \effr(i,j).
+\end{align*}
+
+That is, the distance between the vertices of $\splx^+$ encodes the effective resistance between nodes $i$ and $j$ in $G$. Let $\D^+$ be the distance matrix of $\splx^+$ (thus the effective resistance matrix $\Reff_G$ of $G$). Let $\overline{d}$ be the average squared distance between all the vertices of $\splx^+$, that is
+\[\overline{d} \equiv  \frac{1}{n^2}\sum_{i\leq j} \norm{\sv_i^+-\sv_j^+}_2^2.\]
+Let $\xi(i)$ give the average squared distance of vertex $i$ from other vertices minus the total average distance, 
+\[\xi(i) \equiv \frac{1}{n}\sum_{j} \norm{\sv_i^+-\sv_j^+}_2^2 - \overline{d},\]
+and put $\bxi=(\xi(1),\dots,\xi(n))$. 
+Then we have the following result. 
+
+\begin{lemma}
+	Let $\splx\subset\R^{n-1}$ be a centred hyperacute simplex with  squared distance matrix $\D$, and average squared distance vector $\bxi$. Denote by $\BGamma$ the vertex matrix of the dual simplex to $\splx$. Then, 
+	\begin{equation}
+	\label{eq:simplex_block_matrix}
+	-\frac{1}{2} \begin{pmatrix}
+	0 & \one_n^\tp \\ 
+	\one_n &  \D
+	\end{pmatrix}\begin{pmatrix}
+	\bxi^\tp \BGamma^\tp \BGamma\bxi + 4\overline{d} & -(\BGamma^\tp \BGamma\bxi + 2\one/n)^\tp \\
+	-(\BGamma^\tp \BGamma\bxi + 2\one/n) & \BGamma^\tp \BGamma
+	\end{pmatrix} = \I_{n+1}.
+	\end{equation}
+	Moreover, the vertices of the dual simplex to $\splx$ and the distance matrix of $\splx$ are related by the equation
+	\begin{equation}
+	\BGamma^\tp \BGamma \D \BGamma^\tp \BGamma = -2\BGamma^\tp \BGamma.
+	\end{equation}
+\end{lemma}
+
+\begin{proof}
+As above, $\splx$ is the inverse simplex of some graph $G$, and therefore, $\D=\Reff$, where $\Reff$ is the effective resistance matrix. Therefore, we can rewrite $\xi(i)$ as 
+\begin{align*}
+\frac{1}{n}\sum_j \effr(i,j) - \frac{1}{n^2}\sum_{i<j}\effr(i,j)=\L_G^+(i,i),
+\end{align*}
+where $\L_G^+$ is the pseudoinverse of $\L_G$. Meanwhile, the dual simplex to $\splx$ is the simplex of the graph $G$, and hence obeys $\BGamma^\tp\BGamma=\L_G$. Consequently, we can rewrite Equation \ref{eq:simplex_block_matrix} as 
+\begin{equation*}
+	-\frac{1}{2} \begin{pmatrix}
+0 & \one_n^\tp \\ 
+\one_n &  \Reff
+\end{pmatrix}
+\begin{pmatrix}
+\diag(\L_G^+)^\tp \L_G\diag(\L_G^+) + \frac{4}{n^2}R & -(\L_G + \frac{2}{n}\one)^\tp \\
+-(\L_G\diag(\L_G^+) + \frac{2}{n}\one) & \L_G
+\end{pmatrix} = \I_{n+1},
+\end{equation*}
+where $R=\sum_{i<j}\effr(i,j)$ is the total effective resistance in the graph. The above equality was proved by Van Mieghem \etal~\cite{van2017pseudoinverse}, but we prove it here for completeness. Multiplying out the left hand side, the top left-hand corner of the resulting block matrix is
+\[-\frac{1}{2}(\one^\tp\L_G - \frac{2}{n}\one^\tp \one) = 1,\]
+since $\one^\tp \L_G=\one^\tp\L_G^\tp =\zero$. Likewise the top-right hand corner is $\zero$. The bottom left-hand corner is 
+\begin{equation}
+\label{eq:lem_block_matrix}
+-\frac{1}{2}\bigg(\one\diag(\L_G^+)^\tp \L_G\diag(\L_G^+) - \Reff\L_G\diag(\L_G^+) + \frac{2}{n}\Reff\one\bigg),
+\end{equation}
+where, using that $\Reff=\diag(\L_G^+) \one^\tp + \one \diag(\L_G^+)^\tp -2\L_G^+$ and $\one^\tp\L_G=\zero$, 
+\begin{align*}
+\Reff\L_G = \one\diag(\L_G^+)^\tp \L_G - 2\bigg(\I-\frac{1}{n}\J\bigg).
+\end{align*}
+Equation \eqref{eq:lem_inverse_not_dual} thus becomes 
+\begin{align*}
+\bigg(\I-\frac{1}{n}\J\bigg)\diag(\L_G^+) - \frac{1}{n}\Reff\one.
+\end{align*}
+\end{proof}
 
 
 
