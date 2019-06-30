@@ -2,6 +2,14 @@
 
 \section{Computational Complexity}
 
+\begin{corollary}
+	Computing the minimum altitude in the inverse simplex of a graph is an NP-hard optimization problem. 
+\end{corollary}
+\begin{proof}
+	Follows from the fact that computing the maximum weighted cut is NP-hard. 
+\end{proof}
+
+
 \paragraph{Independent Set}
 Let $I\subset V$ be an independent set in $G$, i.e., if $i,j\in I$ then $(i,j)\notin E$. Consider 
 \begin{align*}
@@ -121,42 +129,14 @@ with $f(x)=\sqrt{x}$ is still a Laplacian. What's the graph which corresponds to
 Let this  graph be $G'$. Then  $\L^+_{G'}=\L_G^{+/2}$,  implying that by Spielman Teng we can get a good approximation of $\L_G^{+/2}$  (if we can compute  $G'$ quickly). Thus, we can get an approximate resistive embedding. Perhaps we can  then  get an approximate simplex from the  resistive embedding by projection onto appropriate  subspace (really need to figure out what  this subspace  is). 
 }
 
-\section{Electrical Flows}
-Given an undirected, weighted graph $G=(V,E,w)$, orient the edges of $G$ arbitrarily and encode this information in the matrix $\B$, as in Section ??. For an edge $e=(i,j)$ oriented from $i$ to $j$, denote $e^+=i$ and $e^-=j$. 
-We will consider $G$ as an electrical network. To do this, we imagine placing a resistor of resistance $1/w(e)$ on each edge $e$. Edges thus carry current between the nodes and, in general, higher weighted edges will carry more current.  
-An \emph{electrical flow $\f:E\to\R_{\geq 0}$} on $G$ assigns a current to each edge $e$ and respects, roughly speaking, Kirchoff's current law and Ohm's law. More precisely, let $\e$ be a vector describing the amount of current injected at each node. By Kirchoff's law, the amount of current passing through a vertex $i$ must be conserved. That is, 
-\[\sum_{e:i=e^+}f(e) - \sum_{e:i=e-}f(e) = e(i),\]
-or, more succinctly, 
-\begin{equation}
-\label{eq:kirchoff}
-    \B^\tp \f=\e. 
-\end{equation}
-Note that this property is also called \emph{flow conversation} in the network flow literature. 
-By Ohm's law, the amount of flow across an edge is proportional to the difference of potential at its endpoints. The constant of proportionality is the inverse of the resistance of that edge, i.e., the weight of the edge. Let $\brho:V\to\R_{\geq 0}$ describe the potential at each vertex. For $e=(i,j)$ with $i=e^+$, $j=e^-$, $\brho$ is defined by the relationship 
-\begin{equation*}
-    f(e) = w(e)(\rho(i)-\rho(j)) = w(e) (\B(e,i)\rho(i) + \B(e,j)\rho(j)),
-\end{equation*}
-so that
-\begin{equation}
-\label{eq:ohms_law}
-    \f=\W\B\brho.
-\end{equation}
-Combining \eqref{eq:kirchoff} and \eqref{eq:ohms_law} we see that $\e=\B^\tp \f=\B^\tp \W\B \brho = \L_G\brho$, and so $\brho = \L_G^+\e$ whenever $\la \e,\one\ra$ (recall that $\L_G^+$ is the inverse of $\L_G$ in the space $\spn(\one)^\tp$).  
-
-The \emph{effective resistance} of an edge $e=(i,j)$ is the potential difference induced across the edge when one unit of current is injected at $i$ and extracted at $j$. That is, for $\e=\bchi_i-\bchi_j$, we want to measure $\rho(i)-\rho(j)$. We do this by noticing that 
-\[\rho(i)-\rho(j) = \la \bchi_i,\brho\ra - \la \bchi_j,\brho\ra = \la \bchi_i,\bchi_j,\L_G^+\e=\Lf_G^+(\bchi_i-\bchi_j).\]
-Note that here we've relied on the fact that $\bchi_i-\bchi_j\perp \one$. 
 
 
-\begin{definition}
-The \emph{effective resistance} between nodes $i$ and $j$ is $\effr(i,j) \equiv \Lf_G^+(\bchi_i-\bchi_j)$.  
-\end{definition}
+\subsection{Resistive Embedding}
 
 Notice that the effective resistance is encoded naturally by the simplex $\splx(G)$: 
 \[\effr(i,j) = \la \bchi_i-\bchi_j,\L_G^+(\bchi_i-\bchi_j\ra = \la \Sv^+(\bchi_i,\bchi_j),\Sv^+(\bchi_i-\bchi_j)\ra = \norm{\sv_i^+-\sv_j^+}_2^2.\]
 That is, the distance between the vertices of the inverse simplex are precisely the effective resistances. 
 
-\subsection{Resistive Embedding}
 
 Consider the vertices $\bmu_i=\L_G^{+/2}\bchi_i\in\R^n$, for $i\in[n]$. This yields $n$ points in $\R^n$, also with pairwise squared distances equal to the effective resistance of the graph: 
 
@@ -183,12 +163,6 @@ Moreover,
 
 \begin{align*}
     \la \bmu_i,\bmu_j\ra &=\sum_{\ell\in[n]} \L_G^{+/2}(\ell,i)\L_G^{+/2}(\ell,j) = \la \L_G^{+/2}(\cdot,i),\L_G^{+/2}(\cdot,j)\ra =\la \L_G^{+/2}(\cdot,i),\L_G^{+/2}(j,\cdot)\ra= \L_G^+(i,j),
-    % &= \sum_{\ell\in[n]}\bigg(\sum_{r\in[n]}\lambda_r^{-1/2}\vp_r(\ell)\vp_r(i)\sum_{s\in[n]}\lambda_s^{-1/2}\vp_s(\ell)\vp_s(j)\bigg)\\
-    % &= \sum_{\ell\in[n]}\sum_{r\in[n]}\sum_{s\in[n]}\lambda_r^{-1/2}\lambda_s^{-1/2}\vp_r(\ell)\vp_r(i)\vp_s(\ell)\vp_s(j) \\
-    % &= \sum_{r\in[n]}\sum_{s\in[n]}\lambda_r^{-1/2}\lambda_s^{-1/2}\vp_r(i)\vp_s(j)\sum_{\ell\in[n]}\vp_r(\ell)\vp_s(\ell)\\
-    % &= \sum_{r\in[n]}\sum_{s\in[n]}\lambda_r^{-1/2}\lambda_s^{-1/2}\vp_r(i)\vp_s(j)\delta_{r,s}\\
-    % &= \sum_{r\in[n]}\lambda_r^{-1}\vp_r(j)\vp_r(i)\\ 
-    % &=  \sum_{r\in[n]}\lambda_r^{-1}\vp_r\vp_r^\tp(i,j) = \L_G^+(i,j).
 \end{align*}
 since $\L_G^{+/2}$ is symmetric and  $\L_G^{+/2}\L_G^{+/2}=\L_G^+$.  We can also see this from recalling that 
 \[\effr(i,j) = \L_G^+(i,i) + \L_G^+(j,j) - \frac{1}{2}\L_G^+(i,j),\]

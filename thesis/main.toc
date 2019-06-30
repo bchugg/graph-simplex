@@ -1,0 +1,45 @@
+\contentsline {chapter}{\numberline {1}Introduction}{2}{chapter.1}
+\contentsline {section}{\numberline {1.1}Think about}{2}{section.1.1}
+\contentsline {chapter}{\numberline {2}Background and Fundamentals}{5}{chapter.2}
+\contentsline {section}{\numberline {2.1}General Notation}{5}{section.2.1}
+\contentsline {section}{\numberline {2.2}Linear Algebra}{6}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}Pseudoinverse}{7}{subsection.2.2.1}
+\contentsline {section}{\numberline {2.3}Spectral Graph Theory}{8}{section.2.3}
+\contentsline {subsection}{\numberline {2.3.1}Laplacian Matrices}{8}{subsection.2.3.1}
+\contentsline {paragraph}{Pseudoinverse of $\vb *{L}_G$ and $\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle \vb *{L}$}\mathaccent "0362{\vb *{L}}_G$}{10}{paragraph*.2}
+\contentsline {subsection}{\numberline {2.3.2}The Laplacian Spectrum}{10}{subsection.2.3.2}
+\contentsline {section}{\numberline {2.4}Electrical Flows}{11}{section.2.4}
+\contentsline {section}{\numberline {2.5}Simplices}{12}{section.2.5}
+\contentsline {subsection}{\numberline {2.5.1}Dual Simplex}{13}{subsection.2.5.1}
+\contentsline {chapter}{\numberline {3}The Graph-Simplex Correspondence}{16}{chapter.3}
+\contentsline {section}{\numberline {3.1}Convex Polyhedra of Matrices}{16}{section.3.1}
+\contentsline {paragraph}{The Inverse Polytope.}{16}{paragraph*.4}
+\contentsline {subsection}{\numberline {3.1.1}The Simplex of a Graph}{17}{subsection.3.1.1}
+\contentsline {subsection}{\numberline {3.1.2}The Graph of a Simplex}{18}{subsection.3.1.2}
+\contentsline {section}{\numberline {3.2}Simplices of Special Graphs}{19}{section.3.2}
+\contentsline {paragraph}{Simplex of Complement Graph, $G^c$}{19}{paragraph*.5}
+\contentsline {paragraph}{Subgraphs}{19}{paragraph*.6}
+\contentsline {paragraph}{Product Graphs}{20}{paragraph*.7}
+\contentsline {subsection}{\numberline {3.2.1}Examples}{20}{subsection.3.2.1}
+\contentsline {paragraph}{The Complete Graph, $K_n$.}{20}{paragraph*.8}
+\contentsline {paragraph}{Cycle Graph}{20}{paragraph*.9}
+\contentsline {paragraph}{Path Graph}{21}{paragraph*.10}
+\contentsline {section}{\numberline {3.3}Properties of $\mathcal {S}_G$}{21}{section.3.3}
+\contentsline {paragraph}{Global Connectivity}{22}{paragraph*.11}
+\contentsline {subsubsection}{Centroid and Altitudes}{23}{subsubsection*.12}
+\contentsline {section}{\numberline {3.4}Properties of $\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle \mathcal {S}$}\mathaccent "0362{\mathcal {S}}_G$}{25}{section.3.4}
+\contentsline {paragraph}{Centroids and Altitudes.}{26}{paragraph*.15}
+\contentsline {paragraph}{Centred Simplex}{26}{paragraph*.16}
+\contentsline {section}{\numberline {3.5}Construction via Extended Menger and Gramian}{27}{section.3.5}
+\contentsline {section}{\numberline {3.6}Inequalities}{30}{section.3.6}
+\contentsline {section}{\numberline {3.7}Steiner Circumscribed Ellipsoid}{31}{section.3.7}
+\contentsline {section}{\numberline {3.8}Random Walks}{32}{section.3.8}
+\contentsline {subsection}{\numberline {3.8.1}Discrete Time Random Walks}{33}{subsection.3.8.1}
+\contentsline {subsection}{\numberline {3.8.2}Continuous Time Random Walks}{33}{subsection.3.8.2}
+\contentsline {subsection}{\numberline {3.8.3}mixing time}{33}{subsection.3.8.3}
+\contentsline {paragraph}{Mixing Time.}{34}{paragraph*.17}
+\contentsline {chapter}{\numberline {4}Algorithmic Implications}{35}{chapter.4}
+\contentsline {section}{\numberline {4.1}Computational Complexity}{35}{section.4.1}
+\contentsline {paragraph}{Independent Set}{35}{paragraph*.18}
+\contentsline {section}{\numberline {4.2}Embeddings}{36}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}Resistive Embedding}{38}{subsection.4.2.1}

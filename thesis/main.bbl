@@ -38,6 +38,11 @@ Miroslav Fiedler.
 \newblock In {\em Combinatorial and Graph-Theoretical Problems in Linear
   Algebra}, pages 73--98. Springer, 1993.
 
+\bibitem[Fie98]{fiedler1998some}
+Miroslav Fiedler.
+\newblock Some characterizations of symmetric inverse m-matrices.
+\newblock {\em Linear algebra and its applications}, 275:179--187, 1998.
+
 \bibitem[Fie05]{fiedler2005geometry}
 Miroslav Fiedler.
 \newblock Geometry of the laplacian.
@@ -57,6 +62,11 @@ William~B Johnson and Joram Lindenstrauss.
 Volker Kaibel and Alexander Schwartz.
 \newblock On the complexity of isomorphism problems related to polytopes.
 \newblock {\em Graphs and Combinatorics}, 2008.
+
+\bibitem[Men31]{menger1931new}
+Karl Menger.
+\newblock New foundation of euclidean geometry.
+\newblock {\em American Journal of Mathematics}, 53(4):721--745, 1931.
 
 \bibitem[Mer94]{merris1994laplacian}
 Russell Merris.
@@ -84,6 +94,11 @@ Roger Penrose.
 \newblock On best approximate solutions of linear matrix equations.
 \newblock In {\em Mathematical Proceedings of the Cambridge Philosophical
   Society}, volume~52, pages 17--19. Cambridge University Press, 1956.
+
+\bibitem[Sha67]{sharpe1967theorem}
+GE~Sharpe.
+\newblock Theorem on resistive networks.
+\newblock {\em Electronics letters}, 3(10):444--445, 1967.
 
 \bibitem[Spi09]{spielman2009spectral}
 Daniel Spielman.

@@ -7,7 +7,9 @@ This chapter is devoted to introducing the  pre-requisite knowledge necessary to
 \label{sec:background_general}
 We use the standard notation for sets of numbers: $\R$ (reals), $\N$ (naturals), $\Z$ (integers), $\C$ (complex).  We use the subscript $\geq 0$ (resp., $>0$) to restrict a relevant set to its non-negative (resp., positive) elements ($\R_{\geq 0}$, for example). 
 We will often introduce new notation or definitions by using the notation $\equiv$. The complement of a set $U$ (with respect to what will be clear from context) is denoted $U^c$. 
-Given a set of scalars $K$, we let $K^{n\times m}$ denote the set of $n\times m$ matrices ($n$ rows and $m$ columns) with elements in $K$. Matrices will typically be denoted by uppercase letters in boldface, e.g., $\Q\in K^{n\times m}$. For a set $U$, $K^U$ denotes the set of all functions from $U$ to $K$.  Elements of $K^U$ are also called vectors. For any $n\in\N$, set $[n]\equiv \{1,2,\dots,n\}$. As usual, we let $K^n=K^{[n]}$. \note{Might have to distinguish between vectors and points; unsure whether this is needed yet.} Vectors will typically be denoted by lowercase boldcase letters. Lowercase  greek letters will often be used for scalars. 
+Given a set of scalars $K$, we let $K^{n\times m}$ denote the set of $n\times m$ matrices ($n$ rows and $m$ columns) with elements in $K$. Matrices will typically be denoted by uppercase letters in boldface, e.g., $\Q\in K^{n\times m}$. 
+We let $\Q(i,\cdot)$ (resp., $\Q(\cdot,i)$) denote the $i$-th row (resp., column) of the matrix $\Q$. 
+For a set $U$, $K^U$ denotes the set of all functions from $U$ to $K$.  Elements of $K^U$ are also called vectors. For any $n\in\N$, set $[n]\equiv \{1,2,\dots,n\}$. As usual, we let $K^n=K^{[n]}$. \note{Might have to distinguish between vectors and points; unsure whether this is needed yet.} Vectors will typically be denoted by lowercase boldcase letters. Lowercase  greek letters will often be used for scalars. 
 
 For $n\in \N$, let $\zero_n\in\R^n$ and $\one_n\in\R^n$ be the vectors of all zeroes and all ones, respectively. Let $\I_n$ and $\J_n$  refer to the $n\times n$ identity matrix and all-ones matrix respectively (so $\J_n=\one_n\one_n^\tp)$. When the dimension $n$ is understood from context, will typically omit it as a subscript. We use $\chi(E)$ or $\chi_E$ as the indicator of an event $E$, i.e., $\chi(E)=1$ if $E$ occurs, and 0 otherwise. For example, $\chi(i\in U)=1$ if $i\in U$, and 0 if $i\in U^c$.  Similarly, for $U\subset K$,  $\bchi_U\in\R^K$ is the indicator vector of the set $U$, so $\bchi_U(i)=\chi(i\in U)$. 
 By $\diag(x_1,x_2,\dots,x_n)$ we mean the $n\times n$ matrix $\D$ entries $\D(i,i)=x_i$ and $\D(i,j)=0$ for $i\neq j$. Given vectors $\v_1,\dots,\v_n$, we will often denote by $(\v_1,\dots,\v_n)$ the matrix whose $i$-th column is $\v_i$. The $i$-th coordinate of a vector $\x$ will be denoted either by $\x(i)$ or simply $x(i)$. We trust this will not be overly confusing.  For $1\leq p<\infty$, the \emph{$p$-norm} of $\x\in \R^d$ is 
@@ -74,15 +76,7 @@ Let $\M\in \C^{n\times m}$. There exists a unique Pseudoinverse of $\M^+$ of $\M
 \end{enumerate}
 \end{lemma}
 
-\note{Change this from $\L_G$ to general matrix}. 
-Since $\L_G$ and $\Ln_G$ are both symmetric, $\range(\L^\tp)=\range(\L)=\R^n \setminus \ker(\L)=\R^n \setminus \spn(\{\one\})$, and $\range(\Ln^\tp)=\range(\Ln)=\R^n \setminus \ker(\Ln)=\R^n \setminus \spn(\{\W^{1/2}\one\})$. It follows that the pseudo-inverses of these two Laplacians satisfy
-\begin{equation}
-    \L_G(\L_G)^+ = (\L_G)^+\L_G = \I - \frac{1}{n}\one\one^\tp,\label{eq:LL+}|
-\end{equation}
-and 
-\begin{equation*}
-    \Ln_G(\Ln_G)^+ = (\Ln_G)^+\Ln_G = \I - \frac{1}{n}\D_G^{1/2}\one(\D_G^{1/2}\one)^\tp.
-\end{equation*}
+. 
 
 \begin{lemma}
 Suppose $\M\in\C^{m\times m}$ admits the eigendecomposition 
@@ -119,11 +113,12 @@ We will typically take $V=[n]$ for simplicity. For a  vertex $i\in V$, we denote
 \[\delta(i) = \{j\in V:w(i,j)>0\},\]
 a set we call that \emph{neighbourhood} of $i$. The \emph{degree of $i$} if $\deg(i)\equiv |\delta(i)|$. The \emph{weight of $i$} if $w(i)\equiv \sum_{j\in \delta(i)}w(i,j)$. Note that if $G$ is unweighted, then $w(i)=\deg(i)$. If the degree of each vertex in $G$ is equal to $k$, we call $G$ a \emph{$k$-regular graph}. We call $G$ \emph{regular} if it is $k$-regular for some $k$. If $U\subset V$ contains only vertices with the same degree, we call it \emph{degree homogeneous}. 
 Abusing notation, we extend the weight function $w$ to sets of edges or vertices by setting $w(A)=\sum_{a\in A}w(a)$. 
+For a set of subset of vertices $U$, the \emph{volume of $U$} is 
+\[\vol_G(U) \equiv \sum_{i\in U}w(i),\]
+and the volume of $G$ is $\vol(G) \equiv \vol_G(V(G))$. As usual, we will drop the subscript if the graph is clear from context. 
 
 Unless otherwise stated, we will assume that graphs are \emph{undirected}---that is, there is no orientation on the edges. Consequently, we identify each tuple $(i,j)$ with its sister pair $(j,i)$. This implies, for example, that when summing over all edges $(i,j)\in E$ we are \emph{not} summing over all vertices and their neighbours. Indeed, this latter summation double counts the edges: $\sum_{(i,j)\in E}=\frac{1}{2}\sum_{i}\sum_{j\in\delta(i)}$. We will often write $i\sim j$ to denote an edge $(i,j)$; so, for example, $\sum_{i\sim j}=\sum_{(i,j)\in E}$. 
 
-
-For a vertex $i\in V$, we let $\delta(i)$ denote the neighbours of $i$, i.e., $\delta(i)=\{j\in V:(i,j)\in E\}$. 
 
 
 
@@ -145,19 +140,19 @@ Then
 \label{eq:Lsum}
     \L_G=\sum_{i\sim j}\L_{i,j}.
 \end{equation}
-Another representation comes via the \emph{incidence matrix} of $G$, $\B_G\in \R^{E\times V}$, defined as follows. Place an arbitrary orientation on the edges of $G$ (say, for example, $(i,j)$ is directed from $i$ to $j$ iff $i<j$), and for an edge $e$, let $e^-\in V$ denote the vertex at which $e$ begins, and $e^+$ the vertex at which it ends. Set \note{Fix this. Let $\B$ be a 0-1 matrix and use $W$ to incorporate the weights.}
+Another representation comes via the \emph{incidence matrix} of $G$, $\B_G\in \R^{E\times V}$, defined as follows. Place an arbitrary orientation on the edges of $G$ (say, for example, $(i,j)$ is directed from $i$ to $j$ iff $i<j$), and for an edge $e$, let $e^-\in V$ denote the vertex at which $e$ begins, and $e^+$ the vertex at which it ends. Set 
 \[\B_G(e,i)=\begin{cases}
-\sqrt{w(e)}&\text{if }i=e^-,\\
--\sqrt{w(e)}&\text{if }i=e^+,\\
+1&\text{if }i=e^-,\\
+-1&\text{if }i=e^+,\\
 0&\text{otherwise},
 \end{cases}\]
-or, equivalently, $\B_G(e,i) = \sqrt{w(e)}(\chi_{(i=e^-)}-\chi_{(i=e^+)})$. Then,
+or, equivalently, $\B_G(e,i) = (\chi_{(i=e^-)}-\chi_{(i=e^+)})$. Then,
 \begin{equation*}
-   ( \B_G^\tp\B_G)(i,j)=\sum_{e\in E} \B_G^\tp(i,e)\B_G(e,j)=\sum_{e\in E}w(e)(\chi_{i=e^-}-\chi_{i=e^+})(\chi_{j=e^-}-\chi_{j=e^+}).
+   ( \B_G^\tp\W_G\B_G)(i,j)=\sum_{e\in E} \B_G^\tp(i,e)\B_G(e,j)=\sum_{e\in E}w(e)(\chi_{i=e^-}-\chi_{i=e^+})(\chi_{j=e^-}-\chi_{j=e^+}).
 \end{equation*}
-Let $\alpha(e)=(\chi_{i=e^-}-\chi_{i=e^+})(\chi_{j=e^-}-\chi_{j=e^+})$. If $i=j$, then $\alpha(e)=1$ iff $e$ is incident to $i$, and 0 otherwise. If $i\neq j$, then $\alpha(e)=1$ for $e=(i,j)$ and 0 otherwise, regardless of whether $i=e^-$ and $j=e^+$ or vice versa (this is precisely what ensures that the orientation we chose for the edges is inconsequential). Consequently, 
+Let $\alpha(e)=(\chi_{i=e^-}-\chi_{i=e^+})(\chi_{j=e^-}-\chi_{j=e^+})$. If $i=j$, then $\alpha(e)=1$ iff $e$ is incident to $i$, and 0 otherwise. If $i\neq j$, then $\alpha(e)=1$ for $e=(i,j)$ and 0 otherwise, regardless of whether $i=e^-$ and $j=e^+$ or vice versa (this is what ensures that the orientation we chose for the edges is inconsequential). Consequently, 
 \begin{align*}
-(\B_G^\tp\B_G)(i,j) = 
+(\B_G^\tp\W_G\B_G)(i,j) = 
 \begin{cases}
 \sum_{e\ni i} w(e),&\text{if } i=j,\\
 -w((i,j)),&\text{otherwise}, 
@@ -166,7 +161,7 @@ Let $\alpha(e)=(\chi_{i=e^-}-\chi_{i=e^+})(\chi_{j=e^-}-\chi_{j=e^+})$. If $i=j$
 which is precisely $\L_G(i,j)$. That is, we have 
  \begin{equation}
  \label{eq:L=BTB}
- \L_G=\B_G^\tp\B_G.
+ \L_G=(\W_G^{1/2}\B_G)^\tp(\W_G^{1/2}\B_G).
  \end{equation}
  We associate with $\L_G$ the quadratic form $\Lop_G:\R^V\to \R$ which acts on function $f:V\to \R$ as 
 \begin{equation*}
@@ -188,14 +183,14 @@ Therefore, applying Equation \ref{eq:Lsum} yields
 The \emph{symmetric normalized Laplacian} or simply the \emph{normalized Laplacian} of $G$ is given by \begin{equation*}
     \Ln_G = \W_G^{-1/2} \L_G\W_G^{-1/2} = \I - \W_G^{-1/2} \A_G\W_{G}^{-1/2}.
 \end{equation*} 
-To investigate $\Ln_G$ we may carry out a similar procedure to above. In particular, if we define $\Ln_{i,j}=\W_G^{-1/2} \L_{i,j}\W_G^{1/2}$ then we obtain the equivalent of Equation \ref{eq:Lsum} for the normalized Laplacian:
+To investigate $\Ln_G$ we may carry out a similar procedure to above. In particular, if we define $\Ln_{i,j}=\W_G^{-1/2} \L_{i,j}\W_G^{-1/2}$ then we obtain the equivalent of Equation \ref{eq:Lsum} for the normalized Laplacian:
 \begin{equation}
 \label{eq:Lnsum}
     \Ln_G = \sum_{i\sim j}\Ln_{i,j}.
 \end{equation}
-Likewise, defining $\Bn_G\in \R^{E\times V}$ by $\Bn_G=\B_G\W_G^{-1/2}$ gives 
+Likewise, 
 \begin{equation*}
-   \Bn_G^\tp \Bn_G = \W_G^{-1/2}\B_G^\tp \B_G\W_G^{-1/2} = \W_G^{-1/2}\L_G\W_G^{1/2}=\Ln_G
+   \W_G^{-1/2}\Bn_G^\tp \W_G\Bn_G\W_G^{-1/2} =  \W_G^{-1/2}\L_G\W_G^{-1/2}=\Ln_G
 \end{equation*}
 As we've done here, we will typically emphasize the associate of elements associated to the normalized Laplacian with a hat.
 Using Equation \eqref{eq:Lnsum}, we see that 
@@ -203,6 +198,26 @@ the quadratic form $\Lnf_G$ associated with $\Ln_G$ acts as
 \begin{equation*}
     \Lnf_G(f) = \sum_{i\sim j} w(i,j)\bigg(\frac{f(i)}{\sqrt{w(i)}}-\frac{f(j)}{\sqrt{w(j)}}\bigg)^2.
 \end{equation*}
+
+\paragraph{Pseudoinverse of \texorpdfstring{$\L_G$}{the combinatorial} and \texorpdfstring{$\Ln_G$}{normalized Laplacian.}}
+Since $\L_G$ and $\Ln_G$ are both symmetric, $\range(\L^\tp)=\range(\L)=\R^n \setminus \ker(\L)=\R^n \setminus \spn(\{\one\})$, and $\range(\Ln^\tp)=\range(\Ln)=\R^n \setminus \ker(\Ln)=\R^n \setminus \spn(\{\W^{1/2}\one\})$. It follows that the pseudo-inverses of these two Laplacians satisfy
+\begin{equation}
+\L_G(\L_G)^+ = (\L_G)^+\L_G = \I - \frac{1}{n}\one\one^\tp,\label{eq:LL+}|
+\end{equation}
+and 
+\begin{equation*}
+\Ln_G(\Ln_G)^+ = (\Ln_G)^+\Ln_G = \I - \frac{1}{n}\D_G^{1/2}\one(\D_G^{1/2}\one)^\tp.
+\end{equation*}
+
+\note{What is the following lemma used for?}
+\begin{lemma}
+	$\ker(\L^+)\subset\ker(\L)$ and $\ker(\Ln^+)\subset\ker(\Ln)$.  
+\end{lemma}
+\begin{proof}
+	Let $\x\in\ker(\L^+)$, so $\L^+\x=\zero$. Multiplying by $\L$ and using Equation \eqref{eq:LL+} gives $\zero=\L\L^+\x=(\I-\one\one^\tp/n)\x$, implying that $\x=\one \cdot \norm{\x}_1/n$, i.e., $\x\in\spn(\{\one\})=\ker(\L)$. The argument for the other inclusion is similar.
+\end{proof}
+
+
 
 
 
@@ -229,15 +244,38 @@ so $\L\vp=\zero$ (since $w(i)>0$ for all $i$). That is, each element in the kern
 \[\ker(\Ln)=\spn(\{\W^{1/2}\bchi_{V_1},\dots,\W^{1/2}\bchi_{V_k}\}).\]
 
 
+\section{Electrical Flows}
+Given an undirected, weighted graph $G=(V,E,w)$, orient the edges of $G$ arbitrarily and encode this information in the matrix $\B$, as in Section ??. For an edge $e=(i,j)$ oriented from $i$ to $j$, denote $e^+=i$ and $e^-=j$. 
+We will consider $G$ as an electrical network. To do this, we imagine placing a resistor of resistance $1/w(e)$ on each edge $e$. Edges thus carry current between the nodes and, in general, higher weighted edges will carry more current.  
+An \emph{electrical flow $\f:E\to\R_{\geq 0}$} on $G$ assigns a current to each edge $e$ and respects, roughly speaking, Kirchoff's current law and Ohm's law. More precisely, let $\e$ be a vector describing the amount of current injected at each node. By Kirchoff's law, the amount of current passing through a vertex $i$ must be conserved. That is, 
+\[\sum_{e:i=e^+}f(e) - \sum_{e:i=e-}f(e) = e(i),\]
+or, more succinctly, 
+\begin{equation}
+\label{eq:kirchoff}
+\B^\tp \f=\e. 
+\end{equation}
+Note that this property is also called \emph{flow conversation} in the network flow literature. 
+By Ohm's law, the amount of flow across an edge is proportional to the difference of potential at its endpoints. The constant of proportionality is the inverse of the resistance of that edge, i.e., the weight of the edge. Let $\brho:V\to\R_{\geq 0}$ describe the potential at each vertex. For $e=(i,j)$ with $i=e^+$, $j=e^-$, $\brho$ is defined by the relationship 
+\begin{equation*}
+f(e) = w(e)(\rho(i)-\rho(j)) = w(e) (\B(e,i)\rho(i) + \B(e,j)\rho(j)),
+\end{equation*}
+so that
+\begin{equation}
+\label{eq:ohms_law}
+\f=\W\B\brho.
+\end{equation}
+Combining \eqref{eq:kirchoff} and \eqref{eq:ohms_law} we see that $\e=\B^\tp \f=\B^\tp \W\B \brho = \L_G\brho$, and so $\brho = \L_G^+\e$ whenever $\la \e,\one\ra$ (recall that $\L_G^+$ is the inverse of $\L_G$ in the space $\spn(\one)^\tp$).  
+
+The \emph{effective resistance} of an edge $e=(i,j)$ is the potential difference induced across the edge when one unit of current is injected at $i$ and extracted at $j$. That is, for $\e=\bchi_i-\bchi_j$, we want to measure $\rho(i)-\rho(j)$. We do this by noticing that 
+\[\rho(i)-\rho(j) = \la \bchi_i,\brho\ra - \la \bchi_j,\brho\ra = \la \bchi_i,\bchi_j,\L_G^+\e=\Lf_G^+(\bchi_i-\bchi_j).\]
+Note that here we've relied on the fact that $\bchi_i-\bchi_j\perp \one$. 
 
 
-\note{Why did I do this?}
-\begin{lemma}
-$\ker(\L^+)\subset\ker(\L)$ and $\ker(\Ln^+)\subset\ker(\Ln)$.  
-\end{lemma}
-\begin{proof}
-Let $\x\in\ker(\L^+)$, so $\L^+\x=\zero$. Multiplying by $\L$ and using Equation \eqref{eq:LL+} gives $\zero=\L\L^+\x=(\I-\one\one^\tp/n)\x$, implying that $\x=\one \cdot \norm{\x}_1/n$, i.e., $\x\in\spn(\{\one\})=\ker(\L)$. The argument for the other inclusion is similar.
-\end{proof}
+\begin{definition}
+	The \emph{effective resistance} between nodes $i$ and $j$ is $\effr(i,j) \equiv \Lf_G^+(\bchi_i-\bchi_j)$.  
+\end{definition}
+
+
 
 \section{Simplices}
 \label{sec:simplices}
@@ -399,7 +437,7 @@ Therefore, the set $\{\bgamma_1,\dots,\bgamma_n\}$ determines a simplex, which w
 
 \begin{lemma}
 	\label{lem:dual_vertices_well-defined}
-	Let $\{\sv_1,\dots,\sv_n\}$ be a set of affinely independent vectors. Fix $k\in [n-1]$ and define $\v_i=\sv_n-\sv_i$ for $i\in[n-1]$ and $\u_i=\sv_k-\sv_i$ for $i\in[n]\setminus\{k\}$. If $\{\bgamma_1,\dots,\bgamma_n-1\}$ is the sister basis to $\{\v_1,\dots,\v_{n-1}\}$ and $\bgamma_n = -\sum_{i=1}^{n-1}\bgamma_i$, then $\{\bgamma_1,\dots,\bgamma_{k-1},\bgamma_{k+1},\dots,\bgamma_{n}\}$ is the sister basis to $\{\u_1,\dots,\u_{k-1},\u_{k+1},\dots,\u_n\}$. 
+	Let $\{\sv_1,\dots,\sv_n\}$ be a set of affinely independent vectors. Fix $k\in [n-1]$ and define $\v_i=\sv_n-\sv_i$ for $i\in[n-1]$ and $\u_i=\sv_k-\sv_i$ \note{Should maybe be $\sv_i-\sv_n$---run into trouble with negatives later on} for $i\in[n]\setminus\{k\}$. If $\{\bgamma_1,\dots,\bgamma_n-1\}$ is the sister basis to $\{\v_1,\dots,\v_{n-1}\}$ and $\bgamma_n = -\sum_{i=1}^{n-1}\bgamma_i$, then $\{\bgamma_1,\dots,\bgamma_{k-1},\bgamma_{k+1},\dots,\bgamma_{n}\}$ is the sister basis to $\{\u_1,\dots,\u_{k-1},\u_{k+1},\dots,\u_n\}$. 
 \end{lemma}
 \begin{proof}
 	We need to show that $\la \bgamma_i,\u_j\ra = \delta_{ij}$ for all $i,j\neq k$. For $i\neq n$, we have 
@@ -435,7 +473,7 @@ Existence follows from Lemma \ref{lem:bi-orthogonal_bases} using the constructio
 Definition \ref{def:dual_simplex} a unwieldy to work with in practice. For this reason we present an alternate characterization of the dual simplex, which lends itself more readily to verification. 
 
 \begin{lemma}
-	Let $\splx_1$ with $\Sv(\splx_1)=(\sv_1,\dots,\sv_n)$ and $\splx_2$ with $\Sv(\splx_2)=(\bgamma_1,\dots,\bgamma_n)$ be two simplices in $\R^{n-1}$. A necessary and sufficient condition for $\splx_2$ to be the dual of $\splx_1$ is that $\bgamma_i$ is perpendicular to $\splx_1[\ic]$ for all $i\in[n]$. 
+	Let $\splx_1$ with $\Sv(\splx_1)=(\sv_1,\dots,\sv_n)$ and $\splx_2$ with $\Sv(\splx_2)=(\bgamma_1,\dots,\bgamma_n)$ be two simplices in $\R^{n-1}$. A necessary and sufficient condition for $\splx_2$ to be the dual of $\splx_1$ is that $\bgamma_i$ is perpendicular to $\splx_1[\ic]$ for all $i\in[n]$. \note{Not actually sure if this is true anymore. Run into problems with normalization.}
 \end{lemma}
 \begin{proof}
 Suppose first that $\splx_1$ and $\splx_2$ are dual 

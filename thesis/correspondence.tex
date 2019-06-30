@@ -1,42 +1,44 @@
 \chapter{The Graph-Simplex Correspondence}
 
-Fiedler Book ~\cite{fiedler2011matrices}. 
+
 
 \section{Convex Polyhedra of Matrices}
-Consider an arbitrary real and symmetric matrix $\M\in \R^{n\times n}$ which admits the eigendecomposition $\M=\sum_{i=1}^d \lambda_i \eig_i\eig_i^\tp$ for some $d\leq n$ (i.e., $\M$ has eigenvalue zero with multiplicity $n-d$) where the eigenvectors $\{\eig_i\}_{i=1}^d $ are orthonormal. 
-
-We define the polyhedron $\splx({\M})\subset \R^{d-1}$ on the vertices $\sv_1,\dots,\sv_n$ by setting
+\note{Unclear whether to leave this or just discuss the simplex of a graph immediately.}
+Consider an arbitrary real and symmetric matrix $\M\in \R^{n\times n}$ which admits the eigendecomposition $\M=\sum_{i=1}^d \lambda_i \eig_i\eig_i^\tp$ for some $d\leq n$ (i.e., $\M$ has eigenvalue zero with multiplicity $n-d$) where the eigenvectors $\{\eig_i\}_{i=1}^d $ are orthonormal. Writing out the eigendecomposition as 
+\[\M=\Eig_M\Eval_M\Eig_M^\tp=(\Eig_M\Eval_M^{1/2})(\Eig_M\Eval_M^{1/2})^\tp,\]
+with $\Eig_M = (\vp_1,\dots,\vp_d)$, $\Eval_M=\diag(\lambda_1,\dots,\lambda_d)$ (note the respective absences of $\vp_{d+1},\dots,\vp_n$ and $\lambda_{d+1},\dots,\lambda_n$), suggests that we might consider $\Eval_M^{1/2}\Eig_M$ as a vertex matrix, thus $\M$ as a gram matrix. 
+Inorexably compelled by this intuition, define the vertices $\sv_1,\dots,\sv_n$ given by 
 \begin{equation*}
-    \sv_i(j) = \eig_j(i)\lambda_j^{1/2},
+    \sv_i = (\Eval_\M^{1/2}\Eig_\M)^\tp (\cdot,i) = (\eig_i(1)\lambda_1^{1/2}, \eig_i(2)\lambda_2^{1/2},\dots,\eig_i(n)\lambda_n^{1/2})^\tp,
 \end{equation*}
-and 
+and the polytope 
 \begin{equation*}
-    \splx(\M)=CH(\sv_1,\dots,\sv_n)=\bigg\{\sum_{\sv\in \Sv} \sv\cdot x(i): \sum_i x(i) =1, x(i)\geq 0\bigg\} = \{\Sv\x: \norm{\x}_1=1, \x\geq \zero\}. 
+\pol_\M=\conv(\sv_1,\dots,\sv_n).
 \end{equation*}
-Letting $\Sv=[\sv_1,\dots,\sv_n]\in \R^{d\times n}$ be the matrix whose $i$-th column is the $i$-th vertex $\sv_i$, one can verify that 
-\begin{equation*}
-    \Sv=(\Eig \Eval^{1/2})^\tp,
-\end{equation*}
-where $\Eig=(\eig_1,\dots,\eig_d)$ and $\Eval=\diag(\lambda_1,\dots,\lambda_d)$. Hence, 
+\note{define convex hull in prelims.}
+We call $\pol_\M$ the \emph{the polytope of the matrix $\M$}. 
+Letting $\Sv(\pol_\M)=(\sv_1,\dots,\sv_n)\in \R^{d\times n}$ be the matrix whose $i$-th column is the $i$-th vertex $\sv_i$, we see that 
+$ \Sv=(\Eig \Eval^{1/2})^\tp$, and 
 \begin{equation*}
     \Sv^\tp \Sv=(\Eig\Eval^{1/2}) (\Eig\Eval^{1/2})^\tp = \Eig \Eval\Eig^\tp =\M.
 \end{equation*}
-That is, $\M$ is the Gram matrix of the vertex vectors of $\splx(\M)$. 
-Observe that the polytope $\splx(\M)$ is indeed $d$-dimensional: 
+Observe that the polytope $\splx(\M)$ is $d$-dimensional: \note{Introduce dimension of polytope in prelims}
 \[\rank(\Sv)=\rank(\Sv^\tp \Sv)=\rank(\M)=d.\]
 
 
 \paragraph{The Inverse Polytope.}
 With $\M$ as above, consider the pseudo-inverse of $\M$ which we can write as 
-\[\M^+=\sum_{i=1}^d \lambda_i^{-1} \eig_i\eig_i^\tp.\]
+\[\M^+=\sum_{i=1}^d \lambda_i^{-1} \eig_i\eig_i^\tp = \Eig_\M \Eval_\M^{-1/2}\Eig_M.\]
 
 
-We can thus associated with $\M^+$ as simplex $\splx_{\M^+}$, which has as its vertex matrix $\Sv_{\M^+}=(\Eig\Eval^{-1/2})^\tp$; that is, the vertices are defined by $\sv_i(j)=\eig_j(i)/\lambda_j^{1/2}$. 
+We can thus associated with $\M^+$ a polytope $\pol_{\M^+}$, which has as its vertex matrix $\Sv(\pol_{\M^+})=(\Eig\Eval^{-1/2})^\tp$; that is, the vertices $\{\sv_i^+\}$ of $\pol_{\M^+}$ are defined by 
+$\sv_i^+(j)=\eig_j(i)/\lambda_j^{1/2}$. We call $\pol_{\M^+}$ the \emph{inverse polytope of $\M$}. 
 
 \subsection{The Simplex of a Graph}
 \label{sec:graph_to_simplex}
-For an undirected graph $G$, the previous section yields several polytopes corresponding to $G$. The most structurally rich among these are the polytopes $\splx_G\equiv \splx_{\L_G}$ and $\splxn_G\equiv \splx_{\Ln_G}$ corresponding to $G$'s combinatorial and normalized Laplacians.  We let $\Sv_G=(\sv_1,\dots,\sv_n)$ and $\Svn_G=(\svn_1,\dots,\svn_n)$ denote the vertices of $\splx_G$ and $\splxn_G$, respectively. Since $\rank(\L_G)=\rank(\Ln_G)=n-1$, the polytopes $\splx_G$ and $\splxn_G$ are in fact simplices. Consequently, we will often refer to $\splx_G$ as the \emph{simplex of $G$}, and to $\splxn_G$ as the \emph{normalized simplex of $G$}. If $G$ is clear from context we will often drop it from the subscript. 
+For an undirected graph $G$, the previous section yields several polytopes corresponding to $G$. The most structurally rich among these are the polytopes $\splx_G\equiv \pol_{\L_G}$ and $\splxn_G\equiv \pol_{\Ln_G}$ corresponding to $G$'s combinatorial and normalized Laplacians.  We let $\Sv_G=(\sv_1,\dots,\sv_n)$ and $\Svn_G=(\svn_1,\dots,\svn_n)$ denote the vertices of $\splx_G$ and $\splxn_G$, respectively. Since $\rank(\L_G)=\rank(\Ln_G)=n-1$, the polytopes $\splx_G$ and $\splxn_G$ are in fact simplices. Consequently, we will often refer to $\splx_G$ as the \emph{simplex of $G$}, and to $\splxn_G$ as the \emph{normalized simplex of $G$}. If $G$ is clear from context we will often drop it from the subscript. 
 
+\note{Why do we need this? We know the simplices are well-defined  due  to the rank}
 \begin{lemma}
 \label{lem:sv_affine_indep}
 The vertices $\{\sv_i\}$  and $\{\svn_i\}$ are affinely independent. 
@@ -47,7 +49,7 @@ $\sum_{i=1}^n \alpha_i\sv_i = \zero$, i.e., $\balpha\in\ker(\Sv)$. Since $\ker(\
 \end{proof}
 
 For the inverse simplex and normalized simplex of $G$ we have 
-\[\Sv^+ = (\Eig\Eval^{-1/2})^\tp,\qquad \text{and} \qquad \Svn^+ = (\Eign\Evaln^{-1/2})^\tp.\]
+\[\Sv^+ = \Eval^{-1/2}\Eig^\tp,\qquad \text{and} \qquad \Svn^+ = \Evaln^{-1/2}\Eign^\tp.\]
 Let $\widetilde{\Eig}$ be the matrix containing all eigenvectors of $\L_G$ (i.e., also containing $\one/\sqrt{n}$).  Note that because $\wEig^\tp \wEig=\I$ it follows that $\wEig\wEig^\tp=\I$ as well. Therefore, 
 \begin{equation*}\delta_{i,j}=\sum_{k=1}^n \vp_k(i)\vp_k(j) = \sum_{k=1}^{n-1} \vp_k(i)\vp_k(j) + 1/n.
 \end{equation*}
@@ -68,20 +70,34 @@ and so
 \end{equation}
 where $\w=(w(1),\dots,w(n))$ and $\sqrt{\w}=(\sqrt{w(1)},\dots,\sqrt{w(n)})$. 
 
+Exploring the relationships between the vertex matrices and themselves meanwhile,  we find that 
+\begin{align}
+\Sv^+(\Sv^+)^\tp &= 
+\begin{pmatrix}
+\sum_i \sv_i^+(1)\sv_i^+(1) & \dots & \sum_i \sv_i^+(1)\sv_i^+(n) \\
+\vdots &\ddots  & \vdots \\
+\sum_i \sv_i^+(n)\sv_i^+(1) & \dots & \sum_i \sv_i^+(n)\sv_i^+(n)
+\end{pmatrix}\notag 
+\\[10pt] 
+&= 
+\begin{pmatrix}
+\lambda_1^{-1} \la \vp_1,\vp_1\ra & \dots & \lambda_1^{-1/2}\lambda_n^{-1/2}\la \vp_1,\vp_n\ra \\
+\vdots & \ddots & \cdots \\
+\lambda_1^{-1/2}\lambda_n^{-1/2}\la \vp_n,\vp_1\ra & \dots &\lambda_n^{-1} \la \vp_n,\vp_n\ra 
+\end{pmatrix} = \Eval^{-1},\label{eq:SvSv+}
+\end{align}
+and likewise, 
+\begin{equation}
+\label{eq:SvnSvn+}
+\Svn^+(\Svn^+)^\tp = \Evaln^{-1}.
+\end{equation}
 
 
 
-\subsubsection{Simplex of Complement Graph, $G^c$}
-Suppose $G$ is unweighted. The complement of $G$, $G^c$, has adjacency matrix $\A_{G^c}=\one\one^\tp - \I-\A_G$ and degree matrix $\D^c=\D_{G^c}=(n-1)\I-\D_G$ since $\deg(i)_{G^c}=n-1-\deg(i)_G$. The Laplacian of $G^c$ thus reads as 
-\[\L^c=\D^c-\A^c=n\I-\D_G-\one\one^\tp+\A_G=n\I-\one\one^\tp-\L_G.\]
-Of course, $\one$ is still an eigenfunction of $\L^c$. For $\vp\perp \one$, we have 
-\[\L^c\vp = n\vp - \one\la \one,\vp\ra - \L\vp = (n-\lambda)\vp,\]
-which which it follows that $\L^c$ shares the same eigenfunctions as $\L$, with corresponding eigenvalues $\{n-\lambda_i\}$. Consequently, the simplex corresponding to $G^c$, $\splx^c$ has vertices given by 
-\[\sigma_i(j) = \vp_j(i) \sqrt{n-\lambda_j},\]
-and the inverse simplex has vertices 
-\[\sigma_i(j)^+=\frac{\vp_j(i)}{\sqrt{n-\lambda_j}}. \]
 
-\section{The Graph of a Simplex}
+
+
+\subsection{The Graph of a Simplex}
 \label{sec:simplex_to_graph}
 In this section we demonstrate that each hyperacute simplex is the inverse simplex of a graph $G$. 
 
@@ -128,7 +144,20 @@ We summarize the material in Sections \ref{sec:graph_to_simplex} and \ref{sec:si
 	There exists a bijection between hyperacute simplices in $\R^{n-1}$ centered at the origin and connected, weighted graphs on $n$ vertices. 
 \end{theorem}
 
+\note{in light of the theorem, may  want to think about structuring the discussion so that $\splx^+$ is actually the main object, while $\splx$ is secondary. }
+
 \section{Simplices of Special Graphs}
+
+\paragraph{Simplex of Complement Graph, $G^c$}
+Suppose $G$ is unweighted. The complement of $G$, $G^c$, has adjacency matrix $\A_{G^c}=\one\one^\tp - \I-\A_G$ and degree matrix $\D^c=\D_{G^c}=(n-1)\I-\D_G$ since $\deg(i)_{G^c}=n-1-\deg(i)_G$. The Laplacian of $G^c$ thus reads as 
+\[\L^c=\D^c-\A^c=n\I-\D_G-\one\one^\tp+\A_G=n\I-\one\one^\tp-\L_G.\]
+Of course, $\one$ is still an eigenfunction of $\L^c$. For $\vp\perp \one$, we have 
+\[\L^c\vp = n\vp - \one\la \one,\vp\ra - \L\vp = (n-\lambda)\vp,\]
+which which it follows that $\L^c$ shares the same eigenfunctions as $\L$, with corresponding eigenvalues $\{n-\lambda_i\}$. Consequently, the simplex corresponding to $G^c$, $\splx^c$ has vertices given by 
+\[\sigma_i(j) = \vp_j(i) \sqrt{n-\lambda_j},\]
+and the inverse simplex has vertices 
+\[\sigma_i(j)^+=\frac{\vp_j(i)}{\sqrt{n-\lambda_j}}. \]
+
 
 
 \paragraph{Subgraphs}
@@ -173,6 +202,8 @@ as desired. Consequently, the product graph yields a simplex with vertices
 
 \subsection{Examples}
 
+\note{Explore certain graphs whose eigenvalues and eigenvectors are easy to compute.}
+
 \paragraph{The Complete Graph, $K_n$.}
 First let us consider the combinatorial simplex, $\splx^\comb(K_n)$.  The combinatorial Laplacian $\L_{K_n}$ has two eigenvalues: 0 with multiplicity 1 and $n$ with multiplicity $n-1$. To see this, observe that for any $\eig$ perpendicular to $\one$, we have 
 \begin{align*}
@@ -180,15 +211,20 @@ First let us consider the combinatorial simplex, $\splx^\comb(K_n)$.  The combin
 &= \bigg(\vp(1)n - \sum_i \vp(i), \dots,\vp(n)n - \sum_i \vp(i)\bigg) \\
 &= (\vp(1)n,\dots,\vp(n)n) = n\eig,
 \end{align*}
-since $\sum_i\vp(i)=\la \eig,\one\ra =0$. \TODO Find orthonormal basis of eigenvectors.
+since $\sum_i\vp(i)=\la \eig,\one\ra =0$. \note{finish this}
+
+\paragraph{Cycle Graph}
+
+\paragraph{Path Graph}
 
 
 \section{Properties of \texorpdfstring{$\splx_G$}{Graph Simplices}}
-Fix a graph $G=(V,E)$ with $|V|=n$.
+Fix a graph $G=(V,E,w)$ with $|V|=n$. The first property of $\splx=\splx_G$ that's worth noting is that it is centred at the origin: $\cent(\splx) = n^{-1}\Eval^{-1/2}\Eig^\tp \one =\zero$, since $\la \vp_i,\one\ra =0$ for all $i<n$.  Likewise, $\cent(\splx^+)=\zero$. 
 
 
 
-\note{Unclear whether this stuff holds for $\splx_G$ or whether it does for every simplex? If the latter, then move into previous section}
+
+\note{Should hold between every  simplex and its dual. Probably move into prelims section}
 \begin{lemma}
 \label{lem:faces_orthogonal}
 Let $\splx$ and $\splx^+$ be the simplex and inverse simplex of a graph $G=(V,E)$. For any non-empty $U\subset V$,  
@@ -255,29 +291,7 @@ Moreover, $\x\in \bigcap_i\H_i$ iff $\la \x,\sv_i^+\ra +1/n\geq 0$ for all $i$, 
 
 
 
-\paragraph{Recovering $G$ from its simplices.}
-The (normalized) Laplacian of a graph naturally encodes all of the graph's information. By means of the relationships $\Sv^\tp\Sv=\L$ and $\Svn^\tp\Svn=\Ln$, so too do the simplices $\splx$ and $\splxn$. More precisely, given the simplices, the edge information can be recovered using inner products: 
-\begin{equation*}
-    \la \sv_i,\sv_j\ra = \begin{cases} w(i),&\text{if }i=j,\\
-    -w(i,j),&\text{otherwise},
-    \end{cases}\quad \text{and} \quad 
-    \la \svn_i,\svn_j\ra = \begin{cases} 1,&\text{if }i=j,\\
-    -1/\sqrt{w(i)w(j)},&\text{otherwise}.
-    \end{cases}
-\end{equation*}
-In particular, the edge $(i,j)$ belongs to $E$ iff $\la \sv_i,\sv_j\ra$ and $\la \svn_i,\svn_j\ra$ are strictly less than zero. Each simplex takes space $O(n^2)$ to store, regardless of the number of edges in $G$. If $G$ is sparse, then this does not constitute an improvement. If $G$ is dense on the other hand---say $|E|=\omega(n^2)$---then storing $n$ vectors in $\R^{n-1}$ could be advantageous. Of course, in order to compute the simplex we need to first obtain an eigendecomposition of the Laplacian which can be infeasible for large graphs. 
 
-\paragraph{Centroid.}
-If $\splx=\splx(\M)$ is the simplex corresponding to the matrix $\M$ with  $(\eig_1,\dots,\eig_n)$ and eigenvalues $\lambda_1,\dots,\lambda_n$ then we have
-\[\Eval^{1/2}\Eig^\tp\one = (\sqrt{\lambda_1}\la \eig_1,\one\ra , \dots, \sqrt{\lambda_{n}}\la \eig_{n},\one\ra)^\tp ,\]
-and so 
-\[c(\splx) = \bigg(\sqrt{\lambda_1}\frac{\la \eig_1,\one\ra}{n }, \dots, \sqrt{\lambda_{n}}\frac{\la \eig_{n-1},\one\ra}{n}\bigg)^\tp. \]
-Similarly, 
-\[c(\splx^+) = \bigg(\frac{\la \eig_1,\one\ra}{n\sqrt{\lambda_1} }, \dots, \frac{\la \eig_{n-1},\one\ra}{n\sqrt{\lambda_{n-1}}}\bigg)^\tp.\]
-
-For an eigenvector $\eig$ of $\L$ we have $\eig\one=0$, implying that $\Eig^\tp\one=\zero$. Therefore, 
-\[c(\splx) = \frac{1}{n}\S\one = \frac{1}{n}(\Eval^{1/2})^\tp \Eig^\tp \one = \zero, \]
-and likewise, $c(\splx^+)=\zero$.
 
 \paragraph{Global Connectivity}
 Given $U\subset V(G)$ then \emph{cut-set} of $U$ is 
@@ -355,12 +369,6 @@ w(\delta^+ U^c) &= \la \Sv^+\bchi_{U^c},\Sv^+\bchi_{U^c}\ra  \\
 \end{align*}
 \end{proof}
 
-\begin{corollary}
-Computing the minimum altitude in the inverse simplex of a graph is an NP-hard optimization problem. 
-\end{corollary}
-\begin{proof}
-Follows from the fact that computing the maximum weighted cut is NP-hard. 
-\end{proof}
 
 \begin{lemma}
 \label{lem:svi^+ai_parallel}
@@ -463,7 +471,7 @@ Recall from Section \ref{sec:background_spectral} that a subset of vertices is d
 \end{proof}
 
 \paragraph{Centroids and Altitudes.}
-For the normalized Laplacian on the other hand,
+For the normalized Laplacian we have
 \begin{align}
 \Lnf(\chi_U)&=\sum_{i\sim j}w(i,j) \bigg(\frac{\chi_U(i)}{\sqrt{w(i)}}-\frac{\chi_U(j)}{\sqrt{w(j)}}\bigg)^2 \notag \\
 &= \sum_{i\in U,j\in U^c}w(i,j)\bigg(\frac{\chi_U(i)}{\sqrt{w(i)}}-\frac{\chi_U(j)}{\sqrt{w(j)}}\bigg)^2 \notag \\
@@ -480,6 +488,9 @@ Then,
 
 
 That is, the length of the centroid $c(\splxn_U)$ captures the total fraction of weight between $U$ and $U^c$. 
+
+\paragraph{Centred  Simplex}
+\note{Unclear whether this notion is actually useful yet. Unclear whether the centred version is easier to study than the unormalized  counterpart.}
 
 
 When discussing general graphs, it will be useful to study a  translated copy of $\splxn_G$ which is centred at the origin. Accordingly, given any simplex $\ssplx$ with vertices $\{\sv_i\}$, we let $\ssplx^0$ denote the simplex with vertices $\{\sv_i - \cent(\ssplx)\}$. It's clear that the centroid of $\ssplx^0$ is the origin: 
@@ -522,7 +533,7 @@ so, by Equation \eqref{eq:lem_inverse_not_dual},
 &\qquad - \frac{\sqrt{w(k)}-\sqrt{w(j)}}{n^2} \sum_{r\in[n]}\sqrt{w(r)} \\
 &= \delta_{ij} + (\sqrt{w(k)}-\sqrt{w(j)})\bigg(\frac{\sqrt{w(i)}}{n} - \frac{1}{n^2}\sum_{r\in[n]}\sqrt{w(r)}\bigg),
 \end{align*}
-which is not equal to $\delta_{ij}$ unless $w(k)=w(j)$ or $\sqrt{w(i)}= \frac{1}{n}\sum_r \sqrt{w(r)}$. Since this would have to hold for all $i,j,k$, $i,j\neq k$, both of these conditions imply that the graph would have to be regular. \note{So what IS the dual of these simplices??}
+which is not equal to $\delta_{ij}$ unless $w(k)=w(j)$ or $\sqrt{w(i)}= \frac{1}{n}\sum_r \sqrt{w(r)}$. Since this would have to hold for all $i,j,k$, $i,j\neq k$, both of these conditions imply that the graph would have to be regular. \note{So what IS the dual of these simplices??  Ughgggghghgh wtf is happening}
 
 
 
@@ -540,7 +551,23 @@ Therefore, $\L_G=\Sv^\tp\Sv$ and $\L_G^+=(\Sv^+)^\tp\Sv$ and the vertices $\sv_i
 \norm{\sv_i^+-\sv_j^+}_2^2 = (\bchi_i-\bchi_j)^\tp (\Sv^+)^\tp\Sv^+ (\bchi_i-\bchi_j) = \effr(i,j).
 \end{align*}
 
-That is, the distance between the vertices of $\splx^+$ encodes the effective resistance between nodes $i$ and $j$ in $G$. Let $\D^+$ be the distance matrix of $\splx^+$ (thus the effective resistance matrix $\Reff_G$ of $G$). Let $\overline{d}$ be the average squared distance between all the vertices of $\splx^+$, that is
+That is, the distance between the vertices of $\splx^+$ encodes the effective resistance between nodes $i$ and $j$ in $G$. Let $\D^+$ be the distance matrix of $\splx^+$ (thus the effective resistance matrix $\Reff_G$ of $G$). 
+
+
+\note{Detour into electrical networks, not sure where this goes exactly.} Observe that starting with the equation $\R=\one\diag(\L_G^+(i,I))^\tp + \diag(\L_G^+(i,i))\one^\tp - 2\L_G^+$, it follows that $\x^\tp \R\x = -2\x^\tp \L_G^+\x$ for any $\x\in\spn(\one)^\perp$. Therefore, 
+\begin{align*}
+\L_G^+(i,j)&=\bchi_i^\tp \L_G^+\bchi_j \\
+&= \bigg(\bchi_i-\frac{1}{n}\one\bigg)^\tp \L_G^+\bigg(\bchi_j-\frac{1}{n}\one\bigg) \\
+&= -\frac{1}{2}\bigg(\bchi_i-\frac{1}{n}\one\bigg)^\tp \Reff_G\bigg(\bchi_j-\frac{1}{n}\one\bigg) \\
+&= \frac{1}{2n}\bigg(\sum_{k\in[n]}\effr(i,k)+\effr(j,k)\bigg) - \frac{1}{2}\effr(i,j) -\frac{R_G}{n^2},
+\end{align*}
+where $R_G$ is the total effective resistance of the graph. 
+For $i=j$, this becomes 
+\begin{align*}
+\L_G^+(i,i) = \frac{1}{n} \sum_{k\in[n]}\effr(i,k) - \frac{R_G}{n^2}.
+\end{align*}
+
+Let $\overline{d}$ be the average squared distance between all the vertices of $\splx^+$, that is
 \[\overline{d} \equiv  \frac{1}{n^2}\sum_{i\leq j} \norm{\sv_i^+-\sv_j^+}_2^2.\]
 Let $\xi(i)$ give the average squared distance of vertex $i$ from other vertices minus the total average distance, 
 \[\xi(i) \equiv \frac{1}{n}\sum_{j} \norm{\sv_i^+-\sv_j^+}_2^2 - \overline{d},\]
@@ -561,47 +588,125 @@ Then we have the following result.
 	\end{equation}
 	Moreover, the vertices of the dual simplex to $\splx$ and the distance matrix of $\splx$ are related by the equation
 	\begin{equation}
-	\BGamma^\tp \BGamma \D \BGamma^\tp \BGamma = -2\BGamma^\tp \BGamma.
+	\label{eq:lem_inverse_relation}
+	\BGamma^\tp \BGamma \D \BGamma^\tp \BGamma = -2\BGamma^\tp \BGamma,
 	\end{equation}
+	and in the space $\spn(\one)^\perp$ it holds that 
+	\begin{equation*}
+	\label{eq:lem_inverse_relation2}
+	\D\BGamma^\tp \BGamma \D= -2\D.	
+	\end{equation*}
 \end{lemma}
 
 \begin{proof}
 As above, $\splx$ is the inverse simplex of some graph $G$, and therefore, $\D=\Reff$, where $\Reff$ is the effective resistance matrix. Therefore, we can rewrite $\xi(i)$ as 
 \begin{align*}
-\frac{1}{n}\sum_j \effr(i,j) - \frac{1}{n^2}\sum_{i<j}\effr(i,j)=\L_G^+(i,i),
+\frac{1}{n}\sum_j \effr(i,j) - \frac{1}{n^2}\sum_{i<j}\effr(i,j),
 \end{align*}
-where $\L_G^+$ is the pseudoinverse of $\L_G$. Meanwhile, the dual simplex to $\splx$ is the simplex of the graph $G$, and hence obeys $\BGamma^\tp\BGamma=\L_G$. Consequently, we can rewrite Equation \ref{eq:simplex_block_matrix} as 
+and $\bxi$ as 
+\begin{align*}
+\bxi = \frac{1}{n}\Reff\one - \frac{1}{n^2} \one \one^\tp \Reff\one = \frac{1}{n}\Reff\one - \frac{1}{n^2} \J \Reff\one.
+\end{align*}
+Meanwhile, the dual simplex to $\splx$ is the simplex of the graph $G$, and hence obeys $\BGamma^\tp\BGamma=\L_G$. Consequently, we can rewrite Equation \ref{eq:simplex_block_matrix} as the purely graph theoretic statement  
 \begin{equation*}
 	-\frac{1}{2} \begin{pmatrix}
 0 & \one_n^\tp \\ 
 \one_n &  \Reff
-\end{pmatrix}
+\end{pmatrix} = 
 \begin{pmatrix}
-\diag(\L_G^+)^\tp \L_G\diag(\L_G^+) + \frac{4}{n^2}R & -(\L_G + \frac{2}{n}\one)^\tp \\
--(\L_G\diag(\L_G^+) + \frac{2}{n}\one) & \L_G
-\end{pmatrix} = \I_{n+1},
+(\frac{1}{n}\Reff\one - \frac{1}{n^2} \J \Reff\one)^\tp \L_G(\frac{1}{n}\Reff\one - \frac{1}{n^2} \J \Reff\one) + \frac{4}{n^2}R & -(\L_G(\frac{1}{n}\Reff\one - \frac{1}{n^2} \J \Reff\one) + \frac{2}{n}\one)^\tp \\
+-(\L_G(\frac{1}{n}\Reff\one - \frac{1}{n^2} \J \Reff\one) + \frac{2}{n}\one) & \L_G
+\end{pmatrix}^{-1}.
 \end{equation*}
-where $R=\sum_{i<j}\effr(i,j)$ is the total effective resistance in the graph. The above equality was proved by Van Mieghem \etal~\cite{van2017pseudoinverse}, but we prove it here for completeness. Multiplying out the left hand side, the top left-hand corner of the resulting block matrix is
+where $R=\sum_{i<j}\effr(i,j)$ is the total effective resistance in the graph. The above equality was proved by Van Mieghem \etal~\cite{van2017pseudoinverse}, and in a more general form by Fiedler~\cite{fiedler1993geometric,fiedler2011matrices}, but we prove it here for completeness. Multiplying out the left hand side, the top left-hand corner of the resulting block matrix is
 \[-\frac{1}{2}(\one^\tp\L_G - \frac{2}{n}\one^\tp \one) = 1,\]
 since $\one^\tp \L_G=\one^\tp\L_G^\tp =\zero$. Likewise the top-right hand corner is $\zero$. The bottom left-hand corner is 
 \begin{equation}
 \label{eq:lem_block_matrix}
--\frac{1}{2}\bigg(\one\diag(\L_G^+)^\tp \L_G\diag(\L_G^+) - \Reff\L_G\diag(\L_G^+) + \frac{2}{n}\Reff\one\bigg),
+-\frac{1}{2}\bigg(\one\bxi^\tp \L_G\bxi +\frac{4}{n^2} R \one - \Reff\L_G\bxi - \frac{2}{n}\Reff\one\bigg),
 \end{equation}
-where, using that $\Reff=\diag(\L_G^+) \one^\tp + \one \diag(\L_G^+)^\tp -2\L_G^+$ and $\one^\tp\L_G=\zero$, 
+where, using that $\Reff=\bxi \one^\tp + \one \bxi^\tp -2\L_G^+$ and $\one^\tp\L_G=\zero$, 
+\begin{align}
+\Reff\L_G = \one\bxi^\tp \L_G - 2\bigg(\I-\frac{1}{n}\J\bigg).\label{eq:lem_block_matrix2}
+\end{align}
+Equation \eqref{eq:lem_block_matrix} thus becomes 
 \begin{align*}
-\Reff\L_G = \one\diag(\L_G^+)^\tp \L_G - 2\bigg(\I-\frac{1}{n}\J\bigg).
+\frac{1}{n}\Reff\one -\frac{2}{n^2}R \one - \bigg(\I-\frac{1}{n}\J\bigg)\bxi &= \frac{1}{n}\Reff\one - \frac{2}{n^2}R\one - \bigg(\I-\frac{1}{n}\J\bigg)\bigg(\frac{1}{n}\Reff\one - \frac{1}{n^2}\J\Reff\one\bigg) \\
+&= -\frac{2}{n^2} R\one + \frac{1}{n^2}\Reff\one + \frac{1}{n^2}\J\Reff\one - \frac{1}{n^3}\J^2\Reff\one \\
+&= -\frac{2}{n^2} R\one +\frac{1}{n^2} \J\Reff\one = \zero,
 \end{align*}
-Equation \eqref{eq:lem_inverse_not_dual} thus becomes 
+using that $\J^2 = n \J$, $R=\frac{1}{2}\one^\tp \Reff\one$, and $\J\Reff\one = \one(\one^\tp \Reff\one) = \one R$. Finally, again using \eqref{eq:lem_block_matrix2}, the bottom right-hand side is 
 \begin{align*}
-\bigg(\I-\frac{1}{n}\J\bigg)\diag(\L_G^+) - \frac{1}{n}\Reff\one.
+\frac{1}{2}\one \bxi^\tp \L_G + \frac{1}{n}\one\one^\tp - \frac{1}{2}\Reff\L_G &= \frac{1}{n}\J + \bigg(\I-\frac{1}{n}\J\bigg) = \I.
 \end{align*}
+This demonstrates that \eqref{eq:lem_block_matrix} holds. We now show that $\L_G \Reff\L_G = -2 \L_G$ and that $\Reff\L_G\Reff\x = -2\Reff\x$ for all $\x\in\spn(\one)^\perp$, which will complete the proof. Applying Equation \eqref{eq:lem_block_matrix2} we have 
+\begin{align*}
+\L_G\Reff\L_G = \L_G\one \bxi^\tp\L_G = -2\L_G+ \frac{2}{n}\L_G\one\one^\tp = -2\L_G.
+\end{align*}
+In the same way as \eqref{eq:lem_block_matrix2} was derived, we see that 
+\begin{equation*}
+\L_G\Reff = \L_G\bxi\one^\tp - 2\bigg(\I-\frac{1}{n}\J\bigg),
+\end{equation*}
+and so 
+\begin{equation*}
+\Reff\L_G\Reff= \bigg(\Reff\L_G\bxi^\tp + \frac{2}{n}\one \bigg)\one^\tp -2\Reff,
+\end{equation*}
+as desired. 
 \end{proof}
+
+Putting aside simplex geometry for the moment, it is worth meditating on the significance of Equation \eqref{eq:simplex_block_matrix} as applied to electrical networks. As demonstrated in \cite{van2017pseudoinverse}, the result translates into the matrix equation 
+
+\begin{equation*}
+-\frac{1}{2}\begin{pmatrix}
+0 & \one^\tp \\
+\one & \Reff
+\end{pmatrix} = 
+\begin{pmatrix}
+\diag(\L_G^+(i,i))^\tp  \L_G \diag(\L_G^+(i,i)) 
+&  -(\L_G\diag(\L_G^+(i,i)) + \frac{2}{n}\one )^\tp \\
+-(\L_G\diag(\L_G^+(i,i)) + \frac{2}{n}\one ) 
+& \L_G
+\end{pmatrix}.
+\end{equation*}
+
+Let $\D$ be the distance matrix of a set $X$ of $d$ points. The matrix 
+\begin{equation}
+\label{eq:menger_matrix}
+\begin{pmatrix}
+0 & \one^\tp \\
+\one & \D
+\end{pmatrix}\in\R^{(d+1)\times (d+1)},
+\end{equation}
+is called the \emph{Menger matrix of $X$}. 
+
+\begin{lemma}[\cite{menger1931new}]
+	Let $\D$ be the distance matrix of a set $X$ of $d$ points. The $d-1$ dimensional volume of the convex hull of $X$ is proportional to the root of the determinant of the Menger matrix: 
+	\begin{equation*}
+	\vol(CH(X))^2 = \frac{(-1)^d}{((d-1)!)^2 2^{d-1}} \det\begin{pmatrix}
+	0 & \one^\tp \\
+	\one & \D
+	\end{pmatrix}.
+	\end{equation*} 
+\end{lemma}
+
+Sharpe~\cite{sharpe1967theorem} said something about something which should probably be cited, but not exactly sure what it is yet. 
 
 
 
 
 \section{Inequalities}
+
+The conductance of a graph $G$ is 
+\begin{equation*}
+\theta(S) \equiv \frac{|\delta(S)|}{|S|}. 
+\end{equation*}
+We have the following inequality: 
+\[\theta(S)\geq \lambda_2\bigg(1-\frac{|S|}{|V|}\bigg)\geq \frac{\lambda_2}{2},\]
+which yields 
+\[\norm{\Sv \chi S}_2^2 \geq \frac{|S|}{2}\lambda_{n-1}.\]
+We can relate the eigenvalues of $G$ to the geometry of $\splx$ via the relation $\Sv\Sv^\tp = \Eval$. Hence
+\[\norm{\Sv \chi_S}_2^2 \geq \frac{|S|}{2} \Sv\Sv^\tp (n-1,n-1)\geq \frac{|S|}{2} \min_{i}\{(\Sv\Sv^\tp)(i,i):(\Sv\Sv^\tp)(i,i)\neq 0\} = \frac{|S|}{2}\min_{i=1}^{n-1} \norm{\Pi_i(\Sv)}_2^2.  \]
+
 
 \begin{lemma}
 If $\p$ is any vector pointing from $\splx_U$ to $\splx_{U^c}$ which has a non-empty intersection with both faces, then $\norm{\p}_2 \geq \norm{\alt(\splx_U)}_2$. 
@@ -641,12 +746,14 @@ We obtain several inequalities for the simplex via immediate application of ineq
 \begin{lemma}
 Let $G=(V,E,w)$ be a weighted graph and let $U\subset V$ obey $\vol(U)<\vol(V)/2$ and \[\theta(U) \geq \frac{\alpha}{\vol(U)^{1/2-\eps}}.\]
 \end{lemma}
+\todo \note{finish this/decide whether this is worth including.}
 
 \section{Steiner Circumscribed Ellipsoid}
+\todo  \note{Read more about quadrics in general but filling this out. Might be more we can say. Also look into any algorithmic work done on quadrics. Does this relationship help us answer anything interesting?}
 Fiedler derivation: ~\cite{fiedler2005geometry}. More Fiedler geometry: ~\cite{fiedler1993geometric}. 
 A \emph{quadric} in $\C^d$ is a hypersurface of dimension $d-1$ of the form 
 \begin{equation*}
-    \Q(\Qb,\r,s) \equiv \{\x\in\C^d: \x^\tp \Qb\x + \r^\tp \x + s=0\}.
+\{\x\in\C^d: \x^\tp \Qb\x + \r^\tp \x + s=0\}.
 \end{equation*}
 
 \begin{definition}
@@ -682,49 +789,28 @@ It remains to show that $\H$ is parallel to the tangent plane of $E$ at the poin
 which is clearly parallel to $\H$. This completes the proof.
 \end{proof}
 
-Perhaps a more insightful representation of $\El(\splx)$ comes from noticing that 
-\begin{align*}
-    \Sv^+(\Sv^+)^\tp &= 
-    \begin{pmatrix}
-\sum_i \sv_i^+(1)\sv_i^+(1) & \dots & \sum_i \sv_i^+(1)\sv_i^+(n) \\
-\vdots &\ddots  & \vdots \\
-\sum_i \sv_i^+(n)\sv_i^+(1) & \dots & \sum_i \sv_i^+(n)\sv_i^+(n)
-\end{pmatrix}
-\\[10pt]
-&= 
-\begin{pmatrix}
-\lambda_1^{-1} \la \vp_1,\vp_1\ra & \dots & \lambda_1^{-1/2}\lambda_n^{-1/2}\la \vp_1,\vp_n\ra \\
-\vdots & \ddots & \cdots \\
-\lambda_1^{-1/2}\lambda_n^{-1/2}\la \vp_n,\vp_1\ra & \dots &\lambda_n^{-1} \la \vp_n,\vp_n\ra 
-\end{pmatrix} = \Eval^{-1}.
-\end{align*}
-Hence, by \eqref{eq:steinerE},
+Perhaps a more insightful representation of $\El(\splx)$ comes from appealing to Equation \eqref{eq:SvSv+}, i.e., $\Sv\Sv^\tp = \Eval^{-1/2}$. Hence, by \eqref{eq:steinerE},
 \begin{equation}
 \label{eq:steinerE2}
     \El(\splx) = \bigg\{\x:\x^\tp \Eval^{-1}\x = \frac{n-1}{n}\bigg\}.
 \end{equation}
 
 
-\paragraph{Simplex inequalities}
-The conductance of a graph $G$ is 
-\begin{equation*}
-    \theta(S) \equiv \frac{|\delta(S)|}{|S|}. 
-\end{equation*}
-We have the following inequality: 
-\[\theta(S)\geq \lambda_2\bigg(1-\frac{|S|}{|V|}\bigg)\geq \frac{\lambda_2}{2},\]
-which yields 
-\[\norm{\Sv \chi S}_2^2 \geq \frac{|S|}{2}\lambda_{n-1}.\]
-We can relate the eigenvalues of $G$ to the geometry of $\splx$ via the relation $\Sv\Sv^\tp = \Eval$. Hence
-\[\norm{\Sv \chi_S}_2^2 \geq \frac{|S|}{2} \Sv\Sv^\tp (n-1,n-1)\geq \frac{|S|}{2} \min_{i}\{(\Sv\Sv^\tp)(i,i):(\Sv\Sv^\tp)(i,i)\neq 0\} = \frac{|S|}{2}\min_{i=1}^{n-1} \norm{\Pi_i(\Sv)}_2^2.  \]
 
 
 
 
 
 \section{Random Walks}
-\note{Very unclear if there's anything interesting here.}
+\note{Very unclear if there's anything interesting here. Mostly just contains Karel's thought on rws at the moment. Think about: \\
+	
+	(1) can we generate  a theory/answer questions regarding random walks in simplices using our knowledge of rws in graphs. \\
+	
+	(2)Straight lines are geodesics. If in the simplex the path created by a random walk is a straight line, is this telling us the random walk is as ``efficient'' as possible? Whereas those with curved lines are inefficient? Unclear how to formalized this /where to take it. 
+	After  thinking about this a bit, probably not: It just says that the eigenvalues corresponding to  the vertices which contribute to the starting position are equal.
+}
 
-\note{Straight lines are geodesics. If in the simplex the path created by a random walk is a straight line, is this telling us the random walk is as ``efficient'' as possible? Whereas those with curved lines are inefficient? Unclear how to formalized this /where to take it. }
+
 
 \subsection{Discrete Time Random Walks}
 In a \emph{discrete time random walk (DSRW)} we envision a walker who jumps from vertex $i$ to vertex $j$ with probability proportional to $w(i,j)$. To this end, one defines the transition matrix 

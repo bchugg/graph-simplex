@@ -1,22 +1,15 @@
 \chapter{Introduction}
-%\chapterquote{Confusion is the natural state of the mathematician.}{Lior Silberman}
-
-Questions/confusions: 
-\begin{enumerate}
-\item nothing explicit atm. 
-
-\end{enumerate}
-
 
 
 \section{Think about}
 \begin{enumerate}	
-	\item Looking at the random walk of a graph as a path in the simplex didn't yield anything too interest. What about the other way around? Beginning at a random point in the simplex, if we take a "random walk" (this would have to be defined appropriately -- we take a weighted step towards each vertex with some probability), we end up at some point that we know as a result of graph theory. We also know what governs how quickly we converge to this point, and when the path will be "straight". We know it's the sizes of the eigenvalues which govern the convergence; if we're simply given a hyperacute simplex, what do the eigenvalues represent? Can we translate this into a statement about the dynamics of the random walk in terms of the simplex only, and not the graph?
+	\item In ~\cite{fiedler1998some}, Fielder gives some sort of correspondence involving ``ultrametric matrices''. Look this up and understand it---could be interesting. 
+	\item Looking at the random walk of a graph as a path in the simplex didn't yield anything too interesting. What about the other way around? Beginning at a random point in the simplex, if we take a "random walk" (this would have to be defined appropriately -- we take a weighted step towards each vertex with some probability), we end up at some point that we know as a result of graph theory. We also know what governs how quickly we converge to this point, and when the path will be "straight". We know it's the sizes of the eigenvalues which govern the convergence; if we're simply given a hyperacute simplex, what do the eigenvalues represent? Can we translate this into a statement about the dynamics of the random walk in terms of the simplex only, and not the graph?
 	\item Can we define the "inverse/dual" graph of $G$ as follows: $G$ yields a simplex $\splx_G$ which is hyperacute. It is therefore the inverse simplex of  graph $G^+$. How are $G$ and $G^+$ related?
 	\item The projection matrix $Y(e,f)=b_e^\tp \L_G^+b_f\sqrt{w(e)w(f)}$ is symmetric with real eigenvalues (see \cite{vishnoi2013lx}). It thus yields a simplex. Maybe explore its properties. 
 	\item Can use inequalities obtained in the effective resistance literature to obtain inequalities which pertain to all hyperacute simplices. See e.g.,\cite{alev2017graph} 
-\item Re-compute the Resistive embedding mentioned in the lecture notes; ensure this isn't the same as our simplex. What properties does it have? Is it a rotation of our simplex? It sits in $n$-dimensional space, but can it be projected to $\R^{n-1}$? 
-\item When we tried to shift the normalized Laplacian back, the orthogonality relationships still didn't seem to hold. What if we shift the normalized Laplacian, and then compute the inverse Laplacian?? Before, we were computing the inverse and then shifting.  
+\item Re-compute the Resistive embedding mentioned in the lecture notes; ensure this isn't the same as our simplex. What properties does it have? Is it a rotation of our simplex? It sits in $n$-dimensional space, but can it be projected to $\R^{n-1}$? \note{Answered more or less}
+\item When we tried to shift the normalized Laplacian back, the orthogonality relationships still didn't seem to hold. What if we shift the normalized Laplacian, and then compute the inverse Laplacian?? Before, we were computing the inverse and then shifting.  \note{Still thinking, not trivial}
 \item Circumscribed Sphere of simplex (Fiedler talks about this ... I think this is different than the circumscibed ellipsoid?) Also circumsribed ellipsoid of (shifted?) normalized simplex. 
 \item Do low rank approximations of the gram matrix maintain any of the simplex properties? This yields a smaller representation of the graph ... what properties does this representation have?
 \item Embedding approximate distance matrix. 
