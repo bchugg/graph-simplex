@@ -99,7 +99,7 @@ and likewise,
 
 \subsection{The Graph of a Simplex}
 \label{sec:simplex_to_graph}
-In this section we demonstrate that each hyperacute simplex is the inverse simplex of a graph $G$. 
+In this section we demonstrate that each hyperacute (more precisely, each non-obtuse) simplex is the inverse simplex of a graph $G$. 
 
 \begin{lemma}[\cite{fiedler1993geometric}]
 Given a simplex $\ssplx\subset\R^{n-1}$ centered at the origin, let $\vb*{Q}$ be the Gram matrix of its normalized outernormals. That is, $\vb*{Q}(i,j)=\la \u_i,\u_j\ra$ where $\u_{i}$ is the outer normal to the face $\ssplx_\ic$. If $\vb*{Q}_1,\vb*{Q}_2\in\R^{n\times n}$ are defined by 
@@ -110,7 +110,7 @@ and
 \begin{equation*}
 \vb*{Q}_2(i,j) = \begin{cases}
 1,& \text{if } i=j,\\
--\cos\theta{i,j},&\text{otherwise},
+-\cos\theta_{i,j},&\text{otherwise},
 \end{cases} 
 \end{equation*}
 where $\theta_{i,j}$ is the (interior) angle between $\ssplx_\ic$ and $\ssplx_\jc$, then 
@@ -129,7 +129,7 @@ Let $\splx^+$ be a hyperacute simplex, and $\splx$ its dual. The vertex matrix $
 \end{equation*}
 (Here $\theta^+{i,j}$ is the angle between $\splx_\ic^+$ and $\splx_\jc^+$.)
 We claim that $\Sv^\tp\Sv$ is the Laplacian matrix of some graph $G$. First, the matrix is symmetric. Second,
-for each $i$, $(\Sv^\tp\Sv)(i,i)=\norm{\alt_i^+}_2^{-2}>0$, and for $i\neq j$, $(\Sv^\tp\Sv)(i,j) <0$ since $\theta^+_{i,j}<\pi/2$ by assumption (note therefore the importance that $\splx^+$ is hyperacute). Finally, denote $\Sv=(\sv_1,\dots,\sv_n)$, and recall from the construction of the dual simplex in Section \ref{sec:dual_simplex} that $\sv_n=-\sum_{i<n}\sv_i$. Therefore, for $i\neq n$, 
+for each $i$, $(\Sv^\tp\Sv)(i,i)=\norm{\alt_i^+}_2^{-2}>0$, and for $i\neq j$, $(\Sv^\tp\Sv)(i,j) \leq 0$ since $\theta^+_{i,j}\leq \pi/2$ by assumption (note therefore the importance that $\splx^+$ is hyperacute). Finally, denote $\Sv=(\sv_1,\dots,\sv_n)$, and recall from the construction of the dual simplex in Section \ref{sec:dual_simplex} that $\sv_n=-\sum_{i<n}\sv_i$. Therefore, for $i\neq n$, 
 \begin{align*}
     \sum_{j=1}^n (\Sv^+\Sv)(i,j) &= \sum_{j=1}^{n-1} \la \sv_i,\sv_j\ra + \la \sv_i,-\sum_{j<n}\sv_j\ra = \sum_{j<n}\la \sv_i,\sv_j\ra - \sum_{j<n}\la \sv_i,\sv_j\ra  = 0,
 \end{align*}
@@ -141,7 +141,7 @@ We summarize the material in Sections \ref{sec:graph_to_simplex} and \ref{sec:si
 
 \begin{theorem}
 	\label{thm:graph-simplex}
-	There exists a bijection between hyperacute simplices in $\R^{n-1}$ centered at the origin and connected, weighted graphs on $n$ vertices. 
+	There exists a bijection between hyperacute \note{Need  to  define  hyperacute as allowing angles of $\pi/2$} simplices in $\R^{n-1}$ centered at the origin and connected, weighted graphs on $n$ vertices. 
 \end{theorem}
 
 \note{in light of the theorem, may  want to think about structuring the discussion so that $\splx^+$ is actually the main object, while $\splx$ is secondary. }
@@ -437,6 +437,8 @@ The above argument proves the following.
 	The centroid of $\splxn_G$ coincides with the origin of $\R^{n-1}$ iff $G$ is regular. 
 \end{lemma}
 
+Given this, one might wonder whether the origin is even a point in the simplex $\splxn$. It is easily seen that it is, however. Consider the barycentric coordinate $\u = \sqrt{\w}/\norm{\sqrt{\w}}_1$, where $\sqrt{\w}=(w(1)^{1/2}, \dots, w(n)^{1/2})$. Since all eigenvectors $\vpn_i$, $i<n$ are orthogonal to $\vp_n \in\spn(\w^{1/2})$ it follows that $\zero = \Svn\u\in\splxn$. 
+
 The next set of properties which don't hold between $\splxn$ and $\splxn^+$ are the orthogonality relationships present between a simplex and its dual. That is, in general $\splxn^+_G$ is the not the dual of $\splxn_G$. 
 
 \begin{lemma}
@@ -554,7 +556,7 @@ Therefore, $\L_G=\Sv^\tp\Sv$ and $\L_G^+=(\Sv^+)^\tp\Sv$ and the vertices $\sv_i
 That is, the distance between the vertices of $\splx^+$ encodes the effective resistance between nodes $i$ and $j$ in $G$. Let $\D^+$ be the distance matrix of $\splx^+$ (thus the effective resistance matrix $\Reff_G$ of $G$). 
 
 
-\note{Detour into electrical networks, not sure where this goes exactly.} Observe that starting with the equation $\R=\one\diag(\L_G^+(i,I))^\tp + \diag(\L_G^+(i,i))\one^\tp - 2\L_G^+$, it follows that $\x^\tp \R\x = -2\x^\tp \L_G^+\x$ for any $\x\in\spn(\one)^\perp$. Therefore, 
+\note{Detour into electrical networks, not sure where this goes exactly.} Observe that starting with the equation $\Reff=\one\diag(\L_G^+(i,i))^\tp + \diag(\L_G^+(i,i))\one^\tp - 2\L_G^+$, \note{should explain where this equation comes from} it follows that $\x^\tp \Reff\x = -2\x^\tp \L_G^+\x$ for any $\x\in\spn(\one)^\perp$. Therefore, 
 \begin{align*}
 \L_G^+(i,j)&=\bchi_i^\tp \L_G^+\bchi_j \\
 &= \bigg(\bchi_i-\frac{1}{n}\one\bigg)^\tp \L_G^+\bigg(\bchi_j-\frac{1}{n}\one\bigg) \\
@@ -607,15 +609,15 @@ and $\bxi$ as
 \begin{align*}
 \bxi = \frac{1}{n}\Reff\one - \frac{1}{n^2} \one \one^\tp \Reff\one = \frac{1}{n}\Reff\one - \frac{1}{n^2} \J \Reff\one.
 \end{align*}
-Meanwhile, the dual simplex to $\splx$ is the simplex of the graph $G$, and hence obeys $\BGamma^\tp\BGamma=\L_G$. Consequently, we can rewrite Equation \ref{eq:simplex_block_matrix} as the purely graph theoretic statement  
+Meanwhile, the dual simplex to $\splx$ is the simplex of the graph $G$, and hence obeys $\BGamma^\tp\BGamma=\L_G$. Consequently, letting $\u=\frac{1}{n}\Reff\one - \frac{1}{n^2} \J \Reff\one$, we can rewrite Equation \ref{eq:simplex_block_matrix} as the purely graph theoretic statement  
 \begin{equation*}
 	-\frac{1}{2} \begin{pmatrix}
 0 & \one_n^\tp \\ 
 \one_n &  \Reff
 \end{pmatrix} = 
 \begin{pmatrix}
-(\frac{1}{n}\Reff\one - \frac{1}{n^2} \J \Reff\one)^\tp \L_G(\frac{1}{n}\Reff\one - \frac{1}{n^2} \J \Reff\one) + \frac{4}{n^2}R & -(\L_G(\frac{1}{n}\Reff\one - \frac{1}{n^2} \J \Reff\one) + \frac{2}{n}\one)^\tp \\
--(\L_G(\frac{1}{n}\Reff\one - \frac{1}{n^2} \J \Reff\one) + \frac{2}{n}\one) & \L_G
+\u^\tp \L_G\u + \frac{4}{n^2}R & -(\L_G\u + \frac{2}{n}\one)^\tp \\
+-(\L_G\u + \frac{2}{n}\one) & \L_G
 \end{pmatrix}^{-1}.
 \end{equation*}
 where $R=\sum_{i<j}\effr(i,j)$ is the total effective resistance in the graph. The above equality was proved by Van Mieghem \etal~\cite{van2017pseudoinverse}, and in a more general form by Fiedler~\cite{fiedler1993geometric,fiedler2011matrices}, but we prove it here for completeness. Multiplying out the left hand side, the top left-hand corner of the resulting block matrix is
@@ -693,6 +695,33 @@ Sharpe~\cite{sharpe1967theorem} said something about something which should prob
 
 
 
+\section{The Inverse Graph}
+Let $G$ be a connected and weighted graph. $G$ admits the hyperacute combinatorial simplex $\splx_G$ which, by Theorem \ref{thm:graph-simplex}, is the inverse simplex of a graph $H$. It thus obeys 
+\begin{equation*}
+\norm{\sv_i-\sv_j}_2^2 = \effr_H(i,j). 
+\end{equation*}
+Expanding both sides for $i\neq j$ and  using the definition of the effective resistance yields 
+\begin{equation*}
+w_G(i) + w_G(j) + 2w_G(i,j) = \L_H^+(i,i) + \L_H^+(j,j) -2\L_H^+(i,j). 
+\end{equation*}
+Here we using the subscript $G$ to reinforce the fact that the weights are those of the original graph, $G$. We can calculate the entries of the pseudoinverse $\L_H^+$ more explicitly. Put 
+\[W_G\equiv \sum_{i<j}w(i,j) = \frac{1}{2}\sum_i \sum_j w(i,j) = \frac{1}{2}\sum_i w(i).\]
+That is, $W_G$ is the total weight of the graph $G$. Recall that $R_H$ is the total effective resistance of $H$ and compute 
+\begin{align*}
+R_H &= \sum_{i<j} \effr(i,j) \\
+&= \sum_{i<j} (w_G(i) + w_G(j) + 2w_G(i,j)) \\
+&= \frac{1}{2}\sum_{i,j} (w_G(i) +w_G(j)) + 2W_G \\
+&= (2n+2)W_G 
+\end{align*}
+
+Using this and a previous calculated formula for the entries of the pseudoinverse yields 
+\begin{align*}
+\L_H^+(i,j) &= \frac{1}{2}\bigg(\sum_k \effr_H(i,k) + \sum_k \effr_H(j,k)\bigg) - \frac{1}{2} \effr_H(i,j) - \frac{R_H}{n^2}, \\
+&= \frac{1}{2}\sum_k (w_G(i) + w_G(j) + 2w_G(k) + 2w_G(i,k) + 2w_G(j,k)) - \frac{1}{2}w_G(i,j) - \frac{R_H}{n^2}\\
+&= \bigg(\frac{n}{2}+1\bigg)(w_G(i)+w_G(j))  - \frac{1}{2}w_G(i,j) + \bigg(2-\frac{2}{n}-\frac{2}{n^2}\bigg)W_G.
+\end{align*}
+where
+
 
 \section{Inequalities}
 
@@ -742,6 +771,9 @@ Squaring both sides and recalling that $\chi_{F^+}\L^+\chi_{F^+} = W(\delta^+F^+
 \end{proof}
 
 We obtain several inequalities for the simplex via immediate application of inequalities from the literature on electrical networks. 
+
+\note{Since $\Reff_G=n\sum_i\lambda_i^{-1}=n\tr(\Sv\Sv^\tp)$,
+facts/inequalities pertaining to the effective resistance can be translated to the simplex. }
 
 \begin{lemma}
 Let $G=(V,E,w)$ be a weighted graph and let $U\subset V$ obey $\vol(U)<\vol(V)/2$ and \[\theta(U) \geq \frac{\alpha}{\vol(U)^{1/2-\eps}}.\]

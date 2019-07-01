@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  30 JUN 2019 20:55
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  1 JUL 2019 21:24
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1534,7 +1534,7 @@ Chapter 2.
 
 
 ]
-Overfull \hbox (79.73486pt too wide) in paragraph at lines 37--38
+Overfull \hbox (79.73486pt too wide) in paragraph at lines 39--40
 []\OT1/cmr/m/n/10.95 Suppose $\OMS/cmsy/m/n/10.95 f\OT1/cmr/bx/sc/10.95 u[]\OMS
 /cmsy/m/n/10.95 g$ \OT1/cmr/m/n/10.95 and $\OMS/cmsy/m/n/10.95 f[][]g$ \OT1/cmr
 /m/n/10.95 are biorthog-o-nal bases. Fix $\OML/cmm/m/it/10.95 i \OMS/cmsy/m/n/1
@@ -1545,7 +1545,7 @@ sc/10.95 v[]\OML/cmm/m/it/10.95 ; \OT1/cmr/bx/sc/10.95 v[]\OML/cmm/m/it/10.95 ;
  []
 
 [6] [7] [8] [9] [10] [11]
-Overfull \hbox (1.89871pt too wide) in paragraph at lines 303--304
+Overfull \hbox (1.89871pt too wide) in paragraph at lines 305--306
 [][]\OT1/cmr/m/sc/10.95 Definition \OT1/cmr/m/n/10.95 2.4\OT1/cmr/m/sc/10.95 . 
 []\OT1/cmr/m/n/10.95 A \OT1/cmr/m/it/10.95 sim-plex $\OMS/cmsy/m/n/10.95 S$ \OT
 1/cmr/m/n/10.95 in $\U/msb/m/n/10.95 R[]$ \OT1/cmr/m/n/10.95 is the con-vex hul
@@ -1576,31 +1576,33 @@ Package Fancyhdr Warning: \headheight is too small (14.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[26] [27] [28]
-Overfull \hbox (9.58627pt too wide) detected at line 620
-\OMS/cmsy/m/n/10.95 ^^@[] [] \OT1/cmr/m/n/10.95 = [][] \OML/cmm/m/it/10.95 :
- []
+[26]
 
-[29] [30] [31]
-Underfull \hbox (badness 10000) in paragraph at lines 811--811
+Package Fancyhdr Warning: \headheight is too small (14.0pt): 
+ Make it at least 14.75629pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 811--811
+[27] [28] [29] [30] [31] [32]
+Underfull \hbox (badness 10000) in paragraph at lines 843--843
 
  []
 
-[32] [33]) [34]
+
+Underfull \hbox (badness 10000) in paragraph at lines 843--843
+
+ []
+
+[33] [34]) [35]
 \openout2 = `algorithmic_implications.aux'.
 
  (./algorithmic_implications.tex
 Chapter 4.
-[35
+[36
 
 
 
-] [36] [37] [38]) [39] (./main.bbl [40
+] [37] [38] [39] [40]) [41] (./main.bbl [42
 
 
 ]
@@ -1610,7 +1612,7 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 116.
 )
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 52.
- [41]
+ [43]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 52.
  (./main.aux
 (./introduction.aux) (./background.aux) (./correspondence.aux)
@@ -1618,7 +1620,7 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 52.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 52.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 52.
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: EED1AB83EB5AC85EA5756505E1D07F27;2117.
+(rerunfilecheck)             Checksum: 8E38B5118C1A4A0427E2DD5B6C12EF05;2259.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
@@ -1626,10 +1628,10 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 52.
  ) 
 Here is how much of TeX's memory you used:
- 16070 strings out of 493014
- 270111 string characters out of 6133351
- 359545 words of memory out of 5000000
- 19216 multiletter control sequences out of 15000+600000
+ 16078 strings out of 493014
+ 270186 string characters out of 6133351
+ 359553 words of memory out of 5000000
+ 19219 multiletter control sequences out of 15000+600000
  12713 words of font info for 46 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  40i,18n,43p,10398b,432s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1654,10 +1656,10 @@ texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/t
 exlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/local/tex
 live/2016/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local
 /texlive/2016/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on main.pdf (41 pages, 425324 bytes).
+Output written on main.pdf (43 pages, 435263 bytes).
 PDF statistics:
- 700 PDF objects out of 1000 (max. 8388607)
- 626 compressed objects within 7 object streams
- 215 named destinations out of 1000 (max. 500000)
- 249 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 725 PDF objects out of 1000 (max. 8388607)
+ 649 compressed objects within 7 object streams
+ 220 named destinations out of 1000 (max. 500000)
+ 265 words of extra memory for PDF output out of 10000 (max. 10000000)
 

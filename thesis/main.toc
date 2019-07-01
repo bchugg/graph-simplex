@@ -30,16 +30,18 @@
 \contentsline {section}{\numberline {3.4}Properties of $\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle \mathcal {S}$}\mathaccent "0362{\mathcal {S}}_G$}{25}{section.3.4}
 \contentsline {paragraph}{Centroids and Altitudes.}{26}{paragraph*.15}
 \contentsline {paragraph}{Centred Simplex}{26}{paragraph*.16}
-\contentsline {section}{\numberline {3.5}Construction via Extended Menger and Gramian}{27}{section.3.5}
-\contentsline {section}{\numberline {3.6}Inequalities}{30}{section.3.6}
-\contentsline {section}{\numberline {3.7}Steiner Circumscribed Ellipsoid}{31}{section.3.7}
-\contentsline {section}{\numberline {3.8}Random Walks}{32}{section.3.8}
-\contentsline {subsection}{\numberline {3.8.1}Discrete Time Random Walks}{33}{subsection.3.8.1}
-\contentsline {subsection}{\numberline {3.8.2}Continuous Time Random Walks}{33}{subsection.3.8.2}
-\contentsline {subsection}{\numberline {3.8.3}mixing time}{33}{subsection.3.8.3}
-\contentsline {paragraph}{Mixing Time.}{34}{paragraph*.17}
-\contentsline {chapter}{\numberline {4}Algorithmic Implications}{35}{chapter.4}
-\contentsline {section}{\numberline {4.1}Computational Complexity}{35}{section.4.1}
-\contentsline {paragraph}{Independent Set}{35}{paragraph*.18}
-\contentsline {section}{\numberline {4.2}Embeddings}{36}{section.4.2}
-\contentsline {subsection}{\numberline {4.2.1}Resistive Embedding}{38}{subsection.4.2.1}
+\contentsline {section}{\numberline {3.5}Construction via Extended Menger and Gramian}{28}{section.3.5}
+\contentsline {section}{\numberline {3.6}The Inverse Graph}{30}{section.3.6}
+\contentsline {section}{\numberline {3.7}Inequalities}{31}{section.3.7}
+\contentsline {section}{\numberline {3.8}Steiner Circumscribed Ellipsoid}{32}{section.3.8}
+\contentsline {section}{\numberline {3.9}Random Walks}{33}{section.3.9}
+\contentsline {subsection}{\numberline {3.9.1}Discrete Time Random Walks}{34}{subsection.3.9.1}
+\contentsline {subsection}{\numberline {3.9.2}Continuous Time Random Walks}{34}{subsection.3.9.2}
+\contentsline {subsection}{\numberline {3.9.3}mixing time}{35}{subsection.3.9.3}
+\contentsline {paragraph}{Mixing Time.}{35}{paragraph*.17}
+\contentsline {chapter}{\numberline {4}Algorithmic Implications}{36}{chapter.4}
+\contentsline {section}{\numberline {4.1}Computational Complexity}{36}{section.4.1}
+\contentsline {paragraph}{Independent Set}{36}{paragraph*.18}
+\contentsline {section}{\numberline {4.2}Transitioning between simplices}{37}{section.4.2}
+\contentsline {section}{\numberline {4.3}Embeddings}{38}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}Resistive Embedding}{40}{subsection.4.3.1}

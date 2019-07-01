@@ -18,6 +18,8 @@ while the \emph{0-norm} of $\x$ is the number of non-zero entries of $\x$, and i
 
 We will often use the shorthand ``iff'' to mean ``if and only if''. We use $\delta_{ij}$ to denote the Kronecker delta function, i.e., $\delta_{ij} = 1$ if $i=j$ and 0 otherwise. We may sometimes include a comma and write $\delta_{i,j}$. 
 
+We will occasionally make use of asymptotic notation,  especially when analyzing various algorithms. Let $f,g:U\subset \R \to \R$ be functions. Write $f=O(g)$ as $x\to c$ if $\limsup_{x\to c}|f(x)/g(x)|<\infty$, and $f=\Omega(g)$ as $x\to c$ if $g=O(f)$. Write $f=o(g)$ as $x\to c$ if $\lim_{x\to c}|f(x)/g(x)|=0$ and $f=\omega(g)$ if $g=o(f)$. If $f=O(g)$ and $f=\Omega(g)$ we write $f=\Theta(g)$. Typically we are interested in the behaviour as $x\to\infty$. 
+
 \section{Linear Algebra}
 \label{sec:background_linear}
 The results derived in this section can be found in any self-contained reference on spectral graph theory (see e.g., \cite{spielman2009spectral,chung1997spectral}). What's not graph-theoretic in nature---dimension, kernel, similarity, for example---may be found in a generic reference on linear algebra (e.g.,  \cite{axler1997linear}). 
@@ -110,7 +112,7 @@ so both required conditions hold, and we conclude that $\vb{Q}=\M^+$.
 We begin with basic graph theory. 
 We denote a \emph{graph} by a triple $G=(V,E,w)$ where $V$ is the \emph{vertex set}, $E\subset V\times V$ is the \emph{edge set} and $w:V\times V\to\R_{\geq0}$ (the non-negative reals) a \emph{weight function}. We let the domain of $w$ be $V\times V$ for convenience; for $(i,j)\notin E$ we have $w((i,j))=0$. We call $G$ \emph{unweighted} if $w((i,j))=\chi_{(i,j)\in E}$ for all $i,j$. In this case, we may omit the weight function and simply write $G=(V,E)$. 
 We will typically take $V=[n]$ for simplicity. For a  vertex $i\in V$, we denote the set of its neighbours by 
-\[\delta(i) = \{j\in V:w(i,j)>0\},\]
+\[\delta(i) \equiv  \{j\in V:w(i,j)>0\},\]
 a set we call that \emph{neighbourhood} of $i$. The \emph{degree of $i$} if $\deg(i)\equiv |\delta(i)|$. The \emph{weight of $i$} if $w(i)\equiv \sum_{j\in \delta(i)}w(i,j)$. Note that if $G$ is unweighted, then $w(i)=\deg(i)$. If the degree of each vertex in $G$ is equal to $k$, we call $G$ a \emph{$k$-regular graph}. We call $G$ \emph{regular} if it is $k$-regular for some $k$. If $U\subset V$ contains only vertices with the same degree, we call it \emph{degree homogeneous}. 
 Abusing notation, we extend the weight function $w$ to sets of edges or vertices by setting $w(A)=\sum_{a\in A}w(a)$. 
 For a set of subset of vertices $U$, the \emph{volume of $U$} is 

@@ -52,6 +52,34 @@ The first result was also proved in \cite{kaibel2008complexity}.
 
 \note{Formulate MST in terms of hyperacute simplices. Seems somewhat surprising that this high-dimensional geometric problem is solvable in poly time. On the other hand, what seems like a related problem in "geometric" space, Hamiltonian cycle/path, is hard. Probably worth mentioning but not thinking too much about.}
 
+\section{Transitioning between simplices}
+Let us consider the computational complexity of transitioning between $\splx$ and $\splxn$ and vice versa. Let $\phi_{ij}$ (resp., $\phin_{ij}$) be the angle between $\sv_i$ and $\sv_j$ (resp., $\svn_i$ and $\svn_j$). Using the typical formula for the dot product in Euclidean space we have
+\begin{equation*}
+\cos\phi_{ij} = \frac{\la \sv_i,\sv_j\ra }{\norm{\sv_i}_2\norm{\sv_j}_2} = \frac{\L_G(i,j)}{\sqrt{w(i)w(j)}} = \Ln_G(i,j), \quad\text{and}\quad \cos\phin_{ij} = \frac{\la \svn_i,\svn_j\ra }{\norm{\svn_i}_2\norm{\svn_j}_2} = \Ln_G(i,j),
+\end{equation*}
+using that $\norm{\svn_i}_2=1$ for all $i$. 
+That is, the angles between vertices in $\splx$ in $\splxn$ are the same. Suppose we are given the simplex $\splx$ and told it is the combinatorial simplex of a graph. For each $\sv_i = \Sv(\splx)$, define a new vertex 
+\[\bgamma_i = \frac{\sv_i}{\norm{\sv_i}_2}.\]
+Is it evident that the angle between $\bgamma_i$ and $\bgamma_j$ is identical to that between $\sv_i$ and $\sv_j$: 
+\begin{equation*}
+\frac{\la \bgamma_i,\bgamma_j\ra}{\norm{\bgamma_i}_2\norm{\bgamma_j}_2} = \bigg\la \frac{\sv_i}{\norm{\sv_i}_2},\frac{\sv_j}{\norm{\sv_j}_2}\bigg\ra = \cos(\phi_{ij}).
+\end{equation*}
+Therefore, it follows that the simplex with vertices is congruent  to $\splxn$. This yields the following result. 
+
+\begin{lemma}
+	Given a combinatorial simplex $\splx$, a simplex congruent to $\splxn$ can be computed in time $O(n^2)$. 
+\end{lemma}
+\begin{proof}
+	Given $\splx$, define the vertices $\bgamma_i$ as above. Computing $\norm{\sv_i}_2$ takes time $O(n)$ and must be done for each vertex. 
+\end{proof}
+
+Given the relative ease with which we can transition from $\splx$ to $\splxn$, it is somewhat surprising that it is much more difficult to transition from $\splxn$ to  $\splx$, especially if the underlying graph $G$ is not given. The obvious tactic is, given the vertices $\{\svn_i\}$, to define vertices $\svn_i \sqrt{w(i)}$, which, since $\sqrt{w(i)}=\norm{\sv_i}_2$, have the same magnitude as $\sv_i$. As above, the scaling does not affect the angle between the vertices, and thus the simplex with these vertices is congruent to $\splx$. However, it's not clear how to obtain the value $\sqrt{w(i)}$ from $\splxn$. Using that $\la \svn_i,\svn_j\ra =(w(i)w(j))^{-1/2}$ we can write 
+\[w(i)^{1/2} = -\sum_{j\neq i}w(j)^{-1/2} \bigg/ \sum_{j\neq i}\la \svn_i,\svn_j\ra,\]
+which yields a non-linear system of equations. 
+
+
+
+
 \section{Embeddings}
 Johnson-Lindenstrauss Lemma~\cite{johnson1984extensions,dasgupta2003elementary}: 
 
