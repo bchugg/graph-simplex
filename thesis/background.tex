@@ -117,9 +117,12 @@ a set we call that \emph{neighbourhood} of $i$. The \emph{degree of $i$} if $\de
 Abusing notation, we extend the weight function $w$ to sets of edges or vertices by setting $w(A)=\sum_{a\in A}w(a)$. 
 For a set of subset of vertices $U$, the \emph{volume of $U$} is 
 \[\vol_G(U) \equiv \sum_{i\in U}w(i),\]
-and the volume of $G$ is $\vol(G) \equiv \vol_G(V(G))$. As usual, we will drop the subscript if the graph is clear from context. 
+and the volume of $G$ is $\vol(G) \equiv \vol_G(V(G))$. As usual, we will drop the subscript if the graph is clear from context. Given a subset $U\subset  V$, we write $G[U]$ to be the graph induced by $U$, i.e., $V(G[U])  = V\cap U$ and  $E(G[U]) = E \cap U \times U$. If a graph is connected  and acyclic (i.e., there is a unique path between each pair of vertices) we call it a \emph{tree}. It's well known that a tree on $n$ nodes has $n-1$ edges.  
 
 Unless otherwise stated, we will assume that graphs are \emph{undirected}---that is, there is no orientation on the edges. Consequently, we identify each tuple $(i,j)$ with its sister pair $(j,i)$. This implies, for example, that when summing over all edges $(i,j)\in E$ we are \emph{not} summing over all vertices and their neighbours. Indeed, this latter summation double counts the edges: $\sum_{(i,j)\in E}=\frac{1}{2}\sum_{i}\sum_{j\in\delta(i)}$. We will often write $i\sim j$ to denote an edge $(i,j)$; so, for example, $\sum_{i\sim j}=\sum_{(i,j)\in E}$. 
+
+We will also appeal to so-called ``handshaking lemma'' for unweighted graphs, which states that $\sum_i \deg_G(i) = 2|E(G)|$; easily verified with a counting argument. 
+
 
 
 
@@ -329,6 +332,8 @@ The centroid of a simplex can be thought of as its centre of mass, assuming that
 
 Given a simplex $\splx$, an \emph{altitude between faces $\splx_U$ and $\splx_{U^c}$} is a vector which lies in the orthogonal complement of both $\splx_U$ and $\splx_{U^c}$ and points from one face to the other. 
 We denote the altitude pointing from $\splx_{U^c}$ to $\splx_{U}$ as $\alt_(\splx_U)$. We can write the altitude as $\alt_U=\p-\q$ for some $\p\in \splx_{U^c}$ and $\q\in\splx_{U}$, and thus as $\Sv(\x_{U^c}-\x_{U})$ where $\x_{U^c}$ and $\x_{U}$ are the barycentric coordinates of $\p$ and $\q$. 
+
+We will use the symbol $\cong$ to denote isomorphism or congruency between simplices. That is, $\splx_1\cong\splx_2$ iff $\splx_1$ can be converted to $\splx_2$ via translation and rotation.  
 
 
 \note{Bunch of stuff commented out here. Not sure what's needed. Deals with faces as subsets affine spaces, etc. }

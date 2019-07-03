@@ -11,45 +11,45 @@ Warning--there's a number but no series in chung1997spectral
 Warning--there's a number but no series in fiedler2011matrices
 Warning--can't use both volume and number fields in penrose1955generalized
 Warning--can't use both volume and number fields in penrose1956best
-You've used 23 entries,
+You've used 24 entries,
             2543 wiz_defined-function locations,
-            710 strings with 7439 characters,
-and the built_in function-call counts, 8826 in all, are:
-= -- 918
-> -- 329
-< -- 21
-+ -- 107
-- -- 102
-* -- 612
-:= -- 1426
-add.period$ -- 74
-call.type$ -- 23
-change.case$ -- 126
-chr.to.int$ -- 23
-cite$ -- 27
-duplicate$ -- 376
-empty$ -- 671
-format.name$ -- 136
-if$ -- 1817
+            714 strings with 7571 characters,
+and the built_in function-call counts, 9082 in all, are:
+= -- 945
+> -- 337
+< -- 22
++ -- 109
+- -- 104
+* -- 626
+:= -- 1473
+add.period$ -- 77
+call.type$ -- 24
+change.case$ -- 130
+chr.to.int$ -- 24
+cite$ -- 28
+duplicate$ -- 389
+empty$ -- 688
+format.name$ -- 140
+if$ -- 1866
 int.to.chr$ -- 1
 int.to.str$ -- 0
 missing$ -- 26
-newline$ -- 119
-num.names$ -- 69
-pop$ -- 104
+newline$ -- 124
+num.names$ -- 72
+pop$ -- 108
 preamble$ -- 1
-purify$ -- 152
+purify$ -- 158
 quote$ -- 0
-skip$ -- 310
+skip$ -- 320
 stack$ -- 0
-substring$ -- 562
-swap$ -- 64
-text.length$ -- 21
-text.prefix$ -- 12
+substring$ -- 569
+swap$ -- 65
+text.length$ -- 22
+text.prefix$ -- 13
 top$ -- 0
-type$ -- 172
+type$ -- 180
 warning$ -- 4
-while$ -- 93
-width$ -- 24
-write$ -- 304
+while$ -- 95
+width$ -- 25
+write$ -- 317
 (There were 4 warnings)

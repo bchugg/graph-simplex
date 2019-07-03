@@ -658,18 +658,19 @@ as desired.
 
 Putting aside simplex geometry for the moment, it is worth meditating on the significance of Equation \eqref{eq:simplex_block_matrix} as applied to electrical networks. As demonstrated in \cite{van2017pseudoinverse}, the result translates into the matrix equation 
 
-\begin{equation*}
+\begin{equation}
+\label{eq:block_inverse}
 -\frac{1}{2}\begin{pmatrix}
 0 & \one^\tp \\
 \one & \Reff
 \end{pmatrix} = 
 \begin{pmatrix}
-\diag(\L_G^+(i,i))^\tp  \L_G \diag(\L_G^+(i,i)) 
+\diag(\L_G^+(i,i))^\tp  \L_G \diag(\L_G^+(i,i))  + 4R_G/n^2
 &  -(\L_G\diag(\L_G^+(i,i)) + \frac{2}{n}\one )^\tp \\
 -(\L_G\diag(\L_G^+(i,i)) + \frac{2}{n}\one ) 
 & \L_G
-\end{pmatrix}.
-\end{equation*}
+\end{pmatrix}^{-1}.
+\end{equation}
 
 Let $\D$ be the distance matrix of a set $X$ of $d$ points. The matrix 
 \begin{equation}
@@ -680,6 +681,72 @@ Let $\D$ be the distance matrix of a set $X$ of $d$ points. The matrix
 \end{pmatrix}\in\R^{(d+1)\times (d+1)},
 \end{equation}
 is called the \emph{Menger matrix of $X$}. 
+
+
+A variant of the following result was proved by Fiedler~\cite{fiedler2011matrices}. 
+\begin{lemma}
+	\label{lem:block_matrix_tree}
+ For a weighted and connected tree $T=(V,E,w)$ on $n$ vertices let the matrix $\bS_T$ describe the inverse distances  between vertices, i.e., for $(i,j)\in E$, $\bS_T(i,j) = 1/w(i,j)$ and for $(i,j)\notin E$, $\bS_T(i,j) = \sum_{\ell=1}^{k-1} 1/w(v_\ell,v_{\ell+1})$ where $i=v_1,v_2,\dots,v_k=j$ is the unique path between $i$ and $j$. Then,
+ \begin{equation}
+ \label{eq:block_ST}
+-\frac{1}{2} \begin{pmatrix}
+0 & \one^\tp \\
+\one & \bS_T 
+\end{pmatrix}
+\begin{pmatrix}
+\sum_{i\sim j}1/w(i,j)  & (\d-2\one)^\tp \\
+\d-2\one & \L_T
+\end{pmatrix} = \I.
+ \end{equation}
+\end{lemma}
+\begin{proof}
+We begin by computing the left hand side of the matrix equation. Note that for connected trees on $n$ nodes, there are  precisely $n-1$ edges. Therefore, $\one^\tp \d-2n = \sum_i \deg(i) - 2n = 2|E| -2n = -2$, by the handshaking lemma. Since $\one^\tp\L_T=\zero$, it follows that the top row of the resulting matrix is as desired. Next, let us consider the term 
+\[\sum_{i\sim j}\frac{\one}{w(i,j)} + \bS_T(\d-2\one),\]
+which we need to demonstrate is equal to $\zero$. Consider the $k$-th row of the above vector, 
+\begin{equation}
+\label{eq:lem_block_matrix_tree}
+\sum_{i\sim j}\frac{1}{w(i,j)} + \sum_{\ell\in[n]}\bS_T(k,\ell)(\deg(\ell)-2).
+\end{equation}
+Denote the sum on the right by $S$. Fix some $(i,j)\in E$ and let us consider how many occurrences of $1/w(i,j)$ there are in $S$. Since $T$ is a tree, we may partition $V$ into two disjoint sets of vertices, $V_i$ and $V_j$ (so that $V_i\cup V_j=V$ and $V_i\cap V_j=\emptyset$) where $i\in V_i$,  $j\in V_j$, and $T[V_i]$, $T[V_j]$ are both connected trees. That is, the original graph $T$ is a union of $T[V_i]$, $T[V_j]$ and the edge $(i,j)$ which connects them. Now, the edge $(i,j)$ will be on the path between two vertices if and only if one lies in $V_i$ and the other in $V_j$. (Again, this is due to the fact that $T$ is a tree---there is thus no other path between the components  $V_i$ and $V_j$ other than via $(i,j)$.)   
+Assume without loss of generality that $k\in V_i$. Then,  by the above argument, $1/w(i,j)$ appears only in those terms $\bS_T(k,\ell)$ with $\ell\in V_j$. 
+Consequently, collecting and summing over all the terms $1/w(i,j)$, we may rewrite $S$ as 
+\[\sum_{i\sim j} \frac{1}{w(i,j)}\sum_{\ell \in V_j} (\deg_T(\ell)-2).\]
+Since $T[V_j]$ is a tree, $\sum_{\ell\in V_j}\deg_{T[V_j]}(\ell)=2(|V_j|-1)$ (using the same arguments as above). Moreover, $\deg_{T[V_j]}(\ell)=\deg_T(\ell)$ for every $\ell\in V_j\setminus \{j\}$, since no other vertex besides $j$ shares an edge with any vertex in $V_i$. On the other hand, since $(i,j)\in E$,  $\deg_{T[V_j]}(j) = \deg_T(j)-1$. Hence, 
+\[\sum_{\ell\in V_j}(\deg_T(\ell)-2) = 2(|V_i|-1) + 1 - 2|V_i| = -1.\]
+We have thus shown that $S=-\sum_{i\sim j}1/w(i,j)$, and so \eqref{eq:lem_block_matrix_tree} is indeed 0. Finally, we consider the term $\one^\tp \d - 2\one\one^\tp + \bS_T\L_T$, which we need to show is $-2I$. Let us expand  the $(k,\ell)$-th component of this matrix: 
+\begin{align*}
+\deg(\ell) - 2 + \sum_{i\in [n]} \bS_T(k,i)\L_T(\ell,k) &= \deg(\ell) - 2 + \bS_T(k,\ell)\L_T(\ell,\ell) + \sum_{i\neq \ell} \bS_T(k,i)\L_T(\ell,k)\\
+&= \deg(\ell) -2 + \bS_T(k,\ell)w(\ell) - \sum_{i\in\delta(\ell)} \bS_T(k,i) \\
+&= \deg(\ell) -2 + \sum_{i\in\delta(\ell)}w(i,\ell)(\bS_T(k,\ell) - \bS_T(k,i)).
+\end{align*}
+For $k=\ell$, we have $\bS_T(k,\ell)=0$ and $\bS_T(k,i)=\bS_T(\ell,i) = 1/w(i,\ell)$. It  follows that the above sum is $-2$, as desired. 
+Now consider $k\neq \ell$. 
+Fix $i\in \delta(\ell)$ and let $P=(k=v_1,\dots,v_r=\ell)$ be the unique path between $k$  and $\ell$. First, suppose that $i\in P$ so that $i=v_{r-1}$. Then $\bS_T(k,ell) - \bS_T(k,i) = \sum_{s=1}^{r-1}1/w(v_s,v_{s+1}) - \sum_{s=1}^{r-2} 1/w(v_s,v_{s+1}) = 1/w(v_{r-1},v_r) = 1/w(i,\ell)$. Otherwise,  if $i\in P$ then the unique path  between $i$ and $k$ in $T$ is $P\cup\{\ell\} = (v_1,\dots,v_r,i)$. In  this case  $\bS_T(k,ell) - \bS_T(k,i) = \sum_{s=1}^{r-1}1/w(v_s,v_{s+1}) - (\sum_{s=1}^{r-1} 1/w(v_s,v_{s+1}) + 1/w(i,\ell)) = - 1/w(i,\ell)$. Finally, we note that there can be at most one neighbour of $\ell$ which is on the shortest path between $k$ and $\ell$. Therefore, 
+$\sum_{i\in\delta(\ell)}w(i,\ell)(\bS_T(k,\ell)-\bS_T(k,i)) = 1-(|\delta(\ell)|-1) = 2 - \deg(\ell)$, demonstrating that the $(k,\ell)$-th component is zero, completing the proof. 
+\end{proof}
+
+\begin{corollary}
+	Let $T$  be a weighted and connected tree. Then 
+	\begin{equation*}
+	\bxi^\tp \L_T\bxi + \frac{4R_T}{n^2} = \sum_{i,j}  \frac{1}{w(i,j)}, \quad \text{and}\quad \L_G\bxi = \bigg(2-\frac{2}{n}\bigg)\one - \d,
+	\end{equation*}
+	where $\bxi = \diag(\L_T^+(i,i))=\frac{1}{n}\Reff\one - \frac{1}{n^2} \J \Reff\one$ and $\d= (\deg(1),\dots,\deg(n))$. 
+\end{corollary}
+\begin{proof}
+	Let $\bS_T$ be as it was in  Lemma \ref{lem:block_matrix_tree}. It's well known  that in trees, the effective resistance between nodes $i,j$  is equal to $\sum_{s=1}^{r-1} 1/w(v_s,v_{s+1})$ where $i=v_1,\dots,v_r=j$ is the shortest path between $i$ and $j$ in $T$ (see e.g., \cite{ellens2011effective}). That is, $\Reff_T=\bS_T$. Since matrix inverses are unique, combining Equations \eqref{eq:block_ST} and \eqref{eq:block_inverse} yields 
+	\begin{equation*}
+	\begin{pmatrix}
+	\sum_{i\sim j}1/w(i,j)  & (\d-2\one)^\tp \\
+	\d-2\one & \L_T
+	\end{pmatrix} = \begin{pmatrix}
+\bxi^\tp  \L_T \bxi  + 4R_T/n^2
+	&  -(\L_T\bxi + \frac{2}{n}\one )^\tp \\
+	-(\L_T\bxi + \frac{2}{n}\one ) 
+	& \L_T
+	\end{pmatrix},
+	\end{equation*}  
+	from which the claim follows. 
+\end{proof}
 
 \begin{lemma}[\cite{menger1931new}]
 	Let $\D$ be the distance matrix of a set $X$ of $d$ points. The $d-1$ dimensional volume of the convex hull of $X$ is proportional to the root of the determinant of the Menger matrix: 
@@ -696,6 +763,7 @@ Sharpe~\cite{sharpe1967theorem} said something about something which should prob
 
 
 \section{The Inverse Graph}
+\label{sec:inverse_graph}
 Let $G$ be a connected and weighted graph. $G$ admits the hyperacute combinatorial simplex $\splx_G$ which, by Theorem \ref{thm:graph-simplex}, is the inverse simplex of a graph $H$. It thus obeys 
 \begin{equation*}
 \norm{\sv_i-\sv_j}_2^2 = \effr_H(i,j). 
@@ -712,7 +780,7 @@ R_H &= \sum_{i<j} \effr(i,j) \\
 &= \sum_{i<j} (w_G(i) + w_G(j) + 2w_G(i,j)) \\
 &= \frac{1}{2}\sum_{i,j} (w_G(i) +w_G(j)) + 2W_G \\
 &= (2n+2)W_G 
-\end{align*}
+\end{align*} 
 
 Using this and a previous calculated formula for the entries of the pseudoinverse yields 
 \begin{align*}
@@ -720,7 +788,6 @@ Using this and a previous calculated formula for the entries of the pseudoinvers
 &= \frac{1}{2}\sum_k (w_G(i) + w_G(j) + 2w_G(k) + 2w_G(i,k) + 2w_G(j,k)) - \frac{1}{2}w_G(i,j) - \frac{R_H}{n^2}\\
 &= \bigg(\frac{n}{2}+1\bigg)(w_G(i)+w_G(j))  - \frac{1}{2}w_G(i,j) + \bigg(2-\frac{2}{n}-\frac{2}{n^2}\bigg)W_G.
 \end{align*}
-where
 
 
 \section{Inequalities}
@@ -748,7 +815,8 @@ The following lemma is due to Devriendt and Van Mieghem~\cite{devriendt2018simpl
 
 
 \begin{lemma}
-For any $f$ with $\la f,\one\ra=0$, \begin{equation*}
+For any $f$ with $\la f,\one\ra=0$, 
+\begin{equation*}
     \Lf(f) \geq \frac{\norm{f}_1^2}{4W(\delta^+F^+)},
 \end{equation*}
 for $F^+\equiv \{i:f(i)\geq 0\}$. 

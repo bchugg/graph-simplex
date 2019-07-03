@@ -32,6 +32,12 @@ Karel Devriendt and Piet Van~Mieghem.
 \newblock The simplex geometry of graphs.
 \newblock {\em arXiv preprint arXiv:1807.06475}, 2018.
 
+\bibitem[Ell11]{ellens2011effective}
+Wendy Ellens.
+\newblock {\em Effective resistance and other graph measures for network
+  robustness}.
+\newblock PhD thesis, Master thesis, Leiden University, 2011.
+
 \bibitem[Fie93]{fiedler1993geometric}
 Miroslav Fiedler.
 \newblock A geometric approach to the laplacian matrix of a graph.
