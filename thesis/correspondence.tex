@@ -218,11 +218,17 @@ since $\sum_i\vp(i)=\la \eig,\one\ra =0$. \note{finish this}
 \paragraph{Path Graph}
 
 
-\section{Properties of \texorpdfstring{$\splx_G$}{Graph Simplices}}
+\section{Properties of \texorpdfstring{$\splx_G$}{the Combinatorial Simplex} and \texorpdfstring{$\splx_G^+$}{its inverse}}
+\label{sec:S_G}
 Fix a graph $G=(V,E,w)$ with $|V|=n$. The first property of $\splx=\splx_G$ that's worth noting is that it is centred at the origin: $\cent(\splx) = n^{-1}\Eval^{-1/2}\Eig^\tp \one =\zero$, since $\la \vp_i,\one\ra =0$ for all $i<n$.  Likewise, $\cent(\splx^+)=\zero$. 
 
 
-
+\begin{figure}
+	\centering
+	\includegraphics[scale=0.5]{inverse_relations}
+	\caption{A simplex of a graph and its inverse. }
+	\label{fig:inverse_relations}
+\end{figure}
 
 \note{Should hold between every  simplex and its dual. Probably move into prelims section}
 \begin{lemma}
@@ -273,7 +279,7 @@ Let $\splx$ be the simplex of a graph $G=(V,E,w)$, and fix $U\subset V$. For any
 \end{equation*}
 \end{lemma}
 \begin{proof}
-Let $\x\in\splx_U$ be arbitrary. For any $i\in U^c$ we have $\la \p,\sv_i^+\ra = -1/n$. Hence, for any $E\subset U^c$
+Let $\x\in\splx_U$ be arbitrary. For any $i\in U^c$ we have $\la \x,\sv_i^+\ra = -1/n$. Hence, for any $E\subset U^c$
 \[\sum_{i\in E}\la \x,\sv_i^+\ra + \frac{|E|}{n} = \sum_{i\in E}\bigg(\la \x,\sv_i^+\ra+\frac{1}{n}\bigg)=\sum_{i\in E}\bigg(\frac{1}{n}-\frac{1}{n}\bigg)=0,\]
 implying that $\x$ is in the desired set. 
 \end{proof}
@@ -762,25 +768,25 @@ Sharpe~\cite{sharpe1967theorem} said something about something which should prob
 
 
 
-\section{The Inverse Graph}
-\label{sec:inverse_graph}
-Let $G$ be a connected and weighted graph. $G$ admits the hyperacute combinatorial simplex $\splx_G$ which, by Theorem \ref{thm:graph-simplex}, is the inverse simplex of a graph $H$. It thus obeys 
-\begin{equation*}
-\norm{\sv_i-\sv_j}_2^2 = \effr_H(i,j). 
-\end{equation*}
-Expanding both sides for $i\neq j$ and  using the definition of the effective resistance yields 
-\begin{equation*}
-w_G(i) + w_G(j) + 2w_G(i,j) = \L_H^+(i,i) + \L_H^+(j,j) -2\L_H^+(i,j). 
-\end{equation*}
-Here we using the subscript $G$ to reinforce the fact that the weights are those of the original graph, $G$. We can calculate the entries of the pseudoinverse $\L_H^+$ more explicitly. Put 
-\[W_G\equiv \sum_{i<j}w(i,j) = \frac{1}{2}\sum_i \sum_j w(i,j) = \frac{1}{2}\sum_i w(i).\]
-That is, $W_G$ is the total weight of the graph $G$. Recall that $R_H$ is the total effective resistance of $H$ and compute 
-\begin{align*}
-R_H &= \sum_{i<j} \effr(i,j) \\
-&= \sum_{i<j} (w_G(i) + w_G(j) + 2w_G(i,j)) \\
-&= \frac{1}{2}\sum_{i,j} (w_G(i) +w_G(j)) + 2W_G \\
-&= (2n+2)W_G 
-\end{align*} 
+%\section{The Inverse Graph}
+%\label{sec:inverse_graph}
+%Let $G$ be a connected and weighted graph. $G$ admits the hyperacute combinatorial simplex $\splx_G$ which, by Theorem \ref{thm:graph-simplex}, is the inverse simplex of a graph $H$. It thus obeys 
+%\begin{equation*}
+%\norm{\sv_i-\sv_j}_2^2 = \effr_H(i,j). 
+%\end{equation*}
+%%Expanding both sides for $i\neq j$ and  using the definition of the effective resistance yields 
+%\begin{equation*}
+%w_G(i) + w_G(j) + 2w_G(i,j) = \L_H^+(i,i) + \L_H^+(j,j) -2\L_H^+(i,j). 
+%\end{equation*}
+%Here we using the subscript $G$ to reinforce the fact that the weights are those of the original graph, $G$. We can calculate the entries of the pseudoinverse $\L_H^+$ more explicitly. Put 
+%\[W_G\equiv \sum_{i<j}w(i,j) = \frac{1}{2}\sum_i \sum_j w(i,j) = \frac{1}{2}\sum_i w(i).\]
+%That is, $W_G$ is the total weight of the graph $G$. Recall that $R_H$ is the total effective resistance of $H$ and compute 
+%\begin{align*}
+%R_H &= \sum_{i<j} \effr(i,j) \\
+%&= \sum_{i<j} (w_G(i) + w_G(j) + 2w_G(i,j)) \\
+%&= \frac{1}{2}\sum_{i,j} (w_G(i) +w_G(j)) + 2W_G \\
+%&= (2n+2)W_G 
+%\end{align*} 
 
 Using this and a previous calculated formula for the entries of the pseudoinverse yields 
 \begin{align*}
@@ -848,12 +854,15 @@ Let $G=(V,E,w)$ be a weighted graph and let $U\subset V$ obey $\vol(U)<\vol(V)/2
 \end{lemma}
 \todo \note{finish this/decide whether this is worth including.}
 
-\section{Steiner Circumscribed Ellipsoid}
+\section{Quadrics}
+
+\note{Circumscribed ellipsoid for normalized Laplacian is not necessarily the sphere -- could be deformed. }
+\label{sec:quadrics}
 \todo  \note{Read more about quadrics in general but filling this out. Might be more we can say. Also look into any algorithmic work done on quadrics. Does this relationship help us answer anything interesting?}
 Fiedler derivation: ~\cite{fiedler2005geometry}. More Fiedler geometry: ~\cite{fiedler1993geometric}. 
 A \emph{quadric} in $\C^d$ is a hypersurface of dimension $d-1$ of the form 
 \begin{equation*}
-\{\x\in\C^d: \x^\tp \Qb\x + \r^\tp \x + s=0\}.
+\{\x\in\C^d: \x^\tp \Q\x + \r^\tp \x + s=0\}.
 \end{equation*}
 
 \begin{definition}
@@ -876,7 +885,7 @@ The Steiner circumscribed Ellipsoid of $\splx=\splx(G)$ satisfies
 \end{lemma}
 \begin{proof}
 Set $\M=\Sv^+(\Sv^+)^\tp$ and $E=\{\x:\x^\tp \M\x=(n-1)/n\}$. The claim is that $\El(\splx)=E$.  
-First we demonstrate that the vertices of $\splx$ are contained in $\El(\splx)$. Noticing that $\J^2=n\J$, we compute 
+First we demonstrate that the vertices of $\splx$ are contained in $E$. Noticing that $\J^2=n\J$, we compute 
 \begin{align*}
     \sv_i^\tp \M \sv_i &= \chi_i^\tp \Sv^\tp \Sv^+(\Sv^+)^\tp \Sv \chi_i = \chi_i^\tp \left(\I-\frac{1}{n}\J\right)^2 \chi_i = \chi_i^\tp \left(\I-\frac{1}{n}\J\right) \chi_i = 1 - \frac{1}{n}, 
 \end{align*}
@@ -895,7 +904,53 @@ Perhaps a more insightful representation of $\El(\splx)$ comes from appealing to
     \El(\splx) = \bigg\{\x:\x^\tp \Eval^{-1}\x = \frac{n-1}{n}\bigg\}.
 \end{equation}
 
+On the other hand, it's easy to see that the Steiner ellipsoid of the normalized simplex, $\El(\splxn)$ is simply the unit sphere, i.e., $\El(\splxn) = \{\x:\x^\tp \x = 1\}$, since $\norm{\svn_i}_2^2=1$. 
+\note{Is this enough to justify it?} 
+Therefore, we see that the circumscribed sphere and the circumscribed ellipsoid of the normalized simplex are one and the same. 
 
+For the combinatorial simplex, however, it's not even clear whether the circumscribed sphere exists \note{Unless it exists for all simplices?}. Demonstrating that it does in fact exist is the purpose of the following lemma. 
+
+\note{I think this should hold for more than simply hyperacute simplices, but need to generalize the Menger matrix stuff in order for the result to go through.}
+\begin{lemma}
+	\label{lem:circ_sphere}
+	Let $\splx^+\subset\R^{n-1}$ be a hyperacute simplex. The circumscribed sphere  of $\splx^+$ exists and is given by the set of points $\{\x:\x=\Sv\balpha, \; \la \balpha,\one \ra = 1, \; \la \balpha,\D\balpha\ra =0\}$, which is a sphere centred at the point $\frac{1}{2}\Sv(\L_G\bxi + \one/n)$ with radius $\frac{1}{2}\sqrt{\bxi^\tp\L_G\bxi + 4R_G/n^2}$. 
+\end{lemma}
+\begin{proof}
+Set $\bzeta = \frac{1}{2}(\L_G\bxi + \one/n)$ and $r = \bxi^\tp \L_G\bxi+4R_G/n^2$. 
+Let us expand $\x$ in barycentric coordinates in accordance with Lemma \ref{lem:barycentric_coeffs}.  Put $\x=\sum_i \alpha_i\sv_i$ where $\sum_i\alpha_i=\sum_i\beta_i=1$. Let $\balpha=(\alpha_1,\dots,\alpha_n)$. 
+The claim is that the circumscribed sphere of $\splx^+$ is given by the equation 
+\begin{equation}
+\label{eq:lem_circ_sphere2}
+\norm{\x - \Sv\bzeta}_2^2 = \frac{1}{4}r,
+\end{equation}
+and that this equation is equivalent to $\balpha^\tp \D\balpha=0$. Note first that due to Equation \ref{eq:block_inverse}, $\la \one, -2\bzeta\ra = \la \one, -\L_G\bxi - \frac{2}{n}\one\ra = -2$, so $\bzeta=(\zeta_1,\dots,\zeta_{n-1})$ obeys $\sum_i \zeta_i=1$.  The left hand side of \eqref{eq:lem_circ_sphere2} then becomes 
+\begin{align*}
+\la \x-\Sv\bzeta,\x-\Sv\bzeta\ra &= \sum_{i,j\in[n]} (\alpha_i-\zeta_i)(\alpha_j-\zeta_j) \la \sv_i,\sv_j\ra \\
+&= \sum_{i,j\in[n]} (\alpha_i-\zeta_i)(\alpha_j-\zeta_j) \la \sv_i-\sv_n,\sv_j-\sv_n\ra,
+\end{align*} 
+where the last line uses that $\sv_n \sum_i(\alpha_i-\zeta_i)=\zero$. 
+Observing that 
+\begin{align*}
+\la \sv_i-\sv_n,\sv_j-\sv_n\ra &= \frac{1}{2}(\norm{\sv_i-\sv_n}_2^2 + \norm{\sv_j-\sv_n}_2^2 - \norm{\sv_i-\sv_j}_2^2),
+\end{align*}
+we may proceed as
+\begin{align}
+\la\x-\Sv\bzeta,\x-\Sv\bzeta\ra &= \frac{1}{2}\bigg(\sum_j (\alpha_j-\zeta_j) \sum_i (\alpha_i-\zeta_i)\norm{\sv_i-\sv_n}_2^2 \notag \\
+&\qquad + \sum_i (\alpha_i-\zeta_i) \sum_j (\alpha_j-\zeta_j)\norm{\sv_j-\sv_n}_2^2  \notag \\
+&\qquad - \sum_{i,j} (\alpha_i-\zeta_i)(\alpha_j-\zeta_j)\norm{\sv_i-\sv_j}_2^2 \bigg)\notag \\
+&= -\frac{1}{2}\sum_{i,j} (\alpha_i-\zeta_i)(\alpha_j-\zeta_j)\norm{\sv_i-\sv_j}_2^2. \label{eq:lem_circ_sphere}
+\end{align} 
+Recalling the block matrix equation \eqref{eq:block_inverse} for hyperacute simplices, for all $i$ we have $\one (\bxi^\tp \L_G\bxi + 4R_G/n^2) - \D(\L_G\bxi + 2\one /n) = \zero$, i.e., $r\one -2\D =\zero$. Hence 
+\[\la \D(i,\cdot),\bzeta\ra = \frac{r}{2}.\]
+Using this, we rewrite the summation in on the right hand side of \eqref{eq:lem_circ_sphere} as 
+\begin{align*}
+\sum_{i,j}(\alpha_i-\zeta_i)(\alpha_j-\zeta_j)\D(i,j) &= \sum_i (\alpha_i-\zeta_i) \bigg(\sum_j\alpha_j \D(i,j) - \sum_j \alpha_j \D(i,j)\bigg) \\
+&= \sum_j\alpha_j \sum_i (\alpha_i-\zeta_i)\D(i,j) - \frac{1}{2}r \sum_i (\alpha_i-\zeta_i) \\
+&= \sum_j \alpha_j \bigg(\sum_i \alpha_i \D(i,j) - \frac{1}{2}r \bigg) \\
+&= \sum_{i,j} \alpha_i \D(i,j) \alpha_j -\frac{1}{2}r= \balpha^\tp \D\balpha - \frac{1}{2}r.
+\end{align*}
+The equation of the sphere in \eqref{eq:lem_circ_sphere2} now becomes $\frac{1}{4}r - \frac{1}{2}\balpha^\tp \D\balpha = \frac{1}{4}r$, i.e., $\balpha^\tp \D\balpha=\zero$ as was claimed.  Now, to see that this sphere contains the vertices of $\splx^+$,  $\{\sv_i^+\}$, we need only note that the barycentric coordinate of $\sv_\ell^+$ is $\bchi_\ell$ and that $\bchi_\ell^\tp \D \bchi_\ell = \sum_{i,j} \bchi_\ell(i) \D(i,j) \bchi_\ell(j) = \D(\ell,\ell) = 0$. 
+\end{proof}
 
 
 

@@ -55,7 +55,18 @@ A symmetric matrix $\vb*{Q}\in\R^{n\times n}$ is \emph{positive semidefinite (PS
     \Q^{1/2} \equiv \Eig\Eval^{1/2}\Eig^\tp = \sum_{i\in[n]}\sqrt{\lambda_i}\vp_i\vp_i^\tp.
 \end{equation*}
 
+The following basic result will be useful for us. 
+
+\begin{lemma}
+	\label{lem:rank(QtQ)}
+	For any $\Q:\R^n\to\R^m$, $\rank(\Q) = \rank(\Q^\tp\Q)$. 
+\end{lemma}
+\begin{proof}
+	It suffices to show that $\dim\ker\Q = \dim\ker\Q^\tp \Q$, by rank-nullity. Clearly $\ker\Q \subset \ker\Q^\tp\Q$ since $\Q\f=\zero$ implies $\Q^\tp\Q\f=\zero$. Conversely, if $\Q^\tp\Q\f=\zero$ then $0=\f^\tp \Q^\tp \Q\f = \norm{\Q\f}_2^2$, implying that $\Q\f=\zero$.  
+\end{proof}
+
 \subsection{Pseudoinverse}
+\label{sec:background_pseudoinverse}
 Moore-Penrose pseudo-inverse: Nice overview by Barata~\cite{barata2012moore}. Introduced by Moore~\cite{moore1920reciprocal}, rediscovered by Penrose~\cite{penrose1955generalized,penrose1956best}. Pseudoinverse of Laplacian discussed by Van Meighem \etal~\cite{van2017pseudoinverse}. 
 
 \TODO introduce properties and defns of pseudo inverse.
@@ -235,7 +246,7 @@ Let $V_1,\dots,V_k\subset V$, $V_i\cap V_j= \emptyset$ for $i\neq j$ be the disj
 Suppose $\L\vp=\zero$. Then $\vp^\tp\L\vp=\Lf(\vp)=0$, which implies that $\vp(i)=\vp(j)$ for all $i,j\in V_\ell$. We can immediately see $k$ orthonormal vectors which satisfy this condition, namely \[\frac{1}{\sqrt{|V_1|}} \bchi_{V_1},\dots, \frac{1}{\sqrt{|V_k|}} \bchi_{V_k}.\]
 On the other hand, consider a non-zero vector $\vp$ which is orthogonal to all of the above vectors. Then 
 \[0=\sum_{i=1}^k \la \vp,\bchi_{V_i}\ra = \la \vp,\one \ra=\sum_{i=1}^k \vp(i),\]
-implying that there exists $\ell\in[k]$ such that $\vp(i)\neq\vp(j)$ for some $i,j\in V_\ell$. Hence, $\L(\vp)>0$ and so $\L\vp\neq 0$. Therefore, there are no other linearly independent eigenfunctions corresponding to the zero eigenvalue.  
+implying that there exists $\ell\in[k]$ such that $\vp(i)\neq\vp(j)$ for some $i,j\in V_\ell$. Hence, $\Lf(\vp)>0$ and so $\L\vp\neq 0$. Therefore, there are no other linearly independent eigenfunctions corresponding to the zero eigenvalue.  
 We have thus shown that 0 is an eigenvalue of $\L$ with multiplicity equal to the number of connected components and 
 \[\ker(\L)=\spn(\{\bchi_{V_1},\dots,\bchi_{V_k}\}).\]
 For the most part this thesis will deal with connected graphs, in which case $\ker(\L)=\spn(\{\one\})$.  
@@ -285,6 +296,12 @@ Note that here we've relied on the fact that $\bchi_i-\bchi_j\perp \one$.
 \section{Simplices}
 \label{sec:simplices}
 
+\begin{figure}
+	\centering
+	\includegraphics[scale=0.6]{simplices}
+	\caption{Simplices in dimensions one, two, and three. }
+\end{figure}
+
 \begin{definition}
 A set of points $\x_1,\dots,\x_k$ are said to be \emph{affinely independent} if the only solution to $\sum_{i\in[n]}\alpha_i\x_i=\zero$ with $\sum_{i\in [n]}\alpha_i=0$ is $\alpha_1=\dots=\alpha_n=0$. 
 \end{definition}
@@ -292,14 +309,23 @@ A set of points $\x_1,\dots,\x_k$ are said to be \emph{affinely independent} if 
 Perhaps a more useful characterization of affine independence is the following. 
 
 \begin{lemma}
+	\label{lem:affine-linearly-independent}
 	The set $\{\x_1,\dots,\x_k\}$ is affinely independent iff for each $j$, $\{\x_j-\x_i\}_{i\neq j}$ is linearly independent. 
 \end{lemma}
 \begin{proof}
-	Suppose that $\{\x_j-\x_i\_{i\neq j}$ is not linearly independent, and let $\{\beta_i\}$ (not all zero) be such that $\sum_{i\neq j}\beta_i (\x_j-\x_j)=\zero$. Putting $\beta=\sum_i \beta_i$, we can write this as 
+	Suppose that $\{\x_j-\x_i\}_{i\neq j}$ is not linearly independent, and let $\{\beta_i\}$ (not all zero) be such that $\sum_{i\neq j}\beta_i (\x_j-\x_j)=\zero$. Putting $\beta=\sum_i \beta_i$, we can write this as 
 	\[\sum_{i\neq j}\frac{\beta_i}{\beta}\x_i - \x_j=\zero.\]
 	But these coefficients sum to 0, i.e., $\sum_{i\neq j}\beta_i/\beta -1=1-1-0$, so $\{\x_i\}$ are not affinely independent. Conversely, suppose that $\sum_i\alpha_i\x_i=\zero$ where $\sum_i\alpha_i=0$ and $\alpha_k\neq 0$ for some $k$. Then, 
 	\[\zero =\sum_i\alpha_i\x_i = \sum_{i\neq j}\alpha_i\x_i + \alpha_j\x_j = \sum_{i\neq j}\alpha_i\x_i - \sum_{i\neq j}\alpha_i\x_j = \sum_{i\neq j}\alpha_i(\x_i-\x_j), \]
 	implying that $\{\x_j-\x_i\}_{i\neq j}$ is not linearly independent. 
+\end{proof}
+
+\begin{lemma}
+	\label{lem:barycentric_coeffs}
+	Let $\{\x_1,\dots,\x_n\}\subset\R^{n-1}$ be affinely independent, and let  $\y\in\R^{n-1}$ be arbitrary. Then there exists coefficients $\{\alpha_i\}\subset\R$ obeying $\sum_{i\in[n]}\alpha_i=1$ such that $\y=\sum_{i\in[n]}\alpha_i\x_i$. 
+\end{lemma}
+\begin{proof}
+	By Lemma \ref{lem:affine-linearly-independent}, the vectors $\bzeta_i=\x_i-\x_n$, $i<n$ are linearly independent and span $\R^{n-1}$. Therefore, there exist real numbers $\alpha_i$, $i<n$ with $\y-\x_n = \sum_{i<n} \alpha_i\bzeta_i$. Putting $\alpha_n=1-\sum_{i<n}\alpha_i$, we have $\y=\sum_{i<n}\alpha_i\bzeta_i + x_n = \sum_{i<n} \alpha_i\x_i + (1-\sum_{i<n}\alpha_i)\x_n = \sum_{i\in[n]}i \alpha_i\x_i$. It's immediate that $\sum_i\alpha_i=1$. 
 \end{proof}
 
 
@@ -335,95 +361,14 @@ We denote the altitude pointing from $\splx_{U^c}$ to $\splx_{U}$ as $\alt_(\spl
 
 We will use the symbol $\cong$ to denote isomorphism or congruency between simplices. That is, $\splx_1\cong\splx_2$ iff $\splx_1$ can be converted to $\splx_2$ via translation and rotation.  
 
-
-\note{Bunch of stuff commented out here. Not sure what's needed. Deals with faces as subsets affine spaces, etc. }
-
-%\begin{observation}
-%\label{obs:p-q}
-%Every vector parallel to the face $\splx_U$ is parallel to a vector of the form $\p-\q$ for $\p,\q\in\splx_U$. 
-%\end{observation}
-
+\begin{figure}
+	\centering
+	\includegraphics[scale=0.5]{simplex_faces}
+	\caption{}
+	\label{fig:simplex_faces}
+\end{figure}
 
 
-%\TODO Give intuition for what's about to happen. And give figures.
-%
-%\begin{lemma}
-% $\spn(\{\sv_1-\sv_j\}_{j\in U})$ is parallel to $\splx_U$. 
-%\end{lemma}
-%Fix $i\in[n]$. By virtue of the fact that the vertex vectors are affinely independent, it follows that 
-%\[\dim(\spn(\{\sv_1-\sv_j\}_{j\geq 2,j\neq i})=n-2,\]
-%meaning the set of vectors $\{\sv_1-\sv_j\}_{j\neq i}$ forms a hyperplane which passes through the origin. Let $\w$ be the normal direction of this hyperplane, so that $\la \w,\v\ra=0$ for all \begin{equation}
-%\label{eq:v_in_span}
-%    \v=\sum_{j\geq 2,j\neq i}\alpha_j(\sv_1-\sv_j)\in\spn_\R(\{\sv_1-\sv_j\}_{j\geq 2,j\neq i})
-%\end{equation} it holds that  $\la \w,\v\ra=0$. Let $\p,\q\in\splx_\ic$, so that $\p-\q$ is parallel so $\splx_\ic$. Let $\x$ and $\y$ be the barycentric coordinates of $\p$ and $\q$. Observe that 
-%\begin{align*}
-%    \p-\q&= \Sv(\x-\y) 
-%    = \sum_{j\neq i} (x(i) - y(i))\sv_j \\
-%    &= \bigg(1-\sum_{\ell}x(\ell) - 1 + \sum_\ell y(\ell)\bigg)\sv_1 + \sum_{j\geq 2;j\neq i}(x(j)-y(j))\sv_j \\
-%    &= \sum_{j\geq 2,j\neq i} (y(j)-x(j))(\sv_1-\sv_j). 
-%\end{align*}
-%The inequality on the second line follows from the fact that $\x$ and $\y$ are barycentric coordinates and hence sum to one. Taking $\alpha_j = y(j)=x(j)$ in \eqref{eq:v_in_span} shows that $\la \w,\p-\q\ra =0$. Combined with Claim \ref{claim:p-q}, this demonstrates that $\spn_\R(\{\sv_1-\sv_j\}_{j\neq i})$ is parallel to $\splx_\ic$. 
-%
-%\begin{lemma}
-%$\splx_U\subset \spn(\{\sv_1-\sv_j\}_{j\in U}) + \cent(\splx_U)$. 
-%\end{lemma}
-%
-%For each $i\in[n]$ we therefore define the \emph{hyperplane associated with the facet $\splx_\ic$} as 
-%\begin{equation}
-%    \H_\ic \equiv \spn(\{\sv_1-\sv_j\}_{j\neq i,j>1}) + \cent(\splx_\ic).
-%\end{equation}
-%In other words, $\H_\ic$ is the affine space of dimension $n-2$ in which $\splx_\ic$ lies.
-%
-%\begin{lemma}
-%For any proper subset $U\subsetneq[n]$, 
-%$\dim(\spn_\R(\{\sv_j\}_{j\in U}))=|U|$. 
-%\end{lemma}
-%\begin{proof}
-%It's immediate that 
-%\[|U|\geq \dim(\spn(\{\sv_j\}_{j\in U})) \geq \dim(\spn_\R(\{\sv_1-\sv_j\}_{j\in U}))=|U|-1,\]
-%by linear independence of the set $\{\sv_1-\sv_j\}$. Therefore, to demonstrate that the dimension is indeed $|U|$, it suffices to find a point $\x\in\spn(\{\sv_j\}_{j\in U})\setminus \spn_\R(\{\sv_1-\sv_j\}_{j\in U})$. 
-%\end{proof}
-%
-%\note{Unclear where this stuff goes/whether it's needed}
-%\begin{lemma}
-%\label{lem:svi_independent}
-%Let $G=(V,E)$ be a graph, and let $U\subsetneq V$ (i.e., $|U|<n)$. Then 
-%\[\dim(\spn_\R(\{\sv_i\}_{i\in U}))=\dim(\spn_\R(\{\sv_i^+\}_{i\in U}))=|U|.\]
-%\end{lemma}
-%
-%\begin{lemma}
-%\label{lem:face_shift}
-%Let $U\subsetneq V$. For each $i\in U$ set $\bgam_i = \sv_i - c_U$ where $c_U=c(\splx_U)$ is the centroid of the face $\splx_U$. Then 
-%\[\dim(\spn_\R(\{\bgam_i\}_{i\in U}))=|U|-1,\]
-%and every vector in $\spn(\{\bgam_i\}_{i\in U}))^\perp$, i.e., the orthogonal complement of $ \spn(\{\bgam_i\}_{i\in U}))$, is perpendicular to $\splx_{U}$. 
-%\end{lemma}
-%\begin{proof}
-%For notational convenience, put $\X=\spn(\{\bgam_i\}_{i\in U})$. We begin by considering $\dim(\X)$. Notice that 
-%\[\sum_{i\in U}\bgam_i = \sum_{i\in U}\bigg(\sv_i - \frac{1}{|U|}\sum_{j\in U}\sv_j\bigg) = \sum_{i\in U}\sv_i - \sum_{j\in U}\sv_i\sum_{i\in U}\frac{1}{|U|}=\zero,\]
-%which demonstrates that $\{\bgam_i\}$ are linearly dependent. Hence $\dim(\X)<|U|$. Now, suppose wlog that $U=[k]$ for some $k<n$. Since $\{\bgam_1,\dots,\bgam_k\}$ are linearly dependent, we have that $\spn(\{\bgam_1,\dots,\bgam_k\})=\spn(\{\bgam_1,\dots,\bgam_{k-1}\})$. Suppose now that $\bgam_1,\dots,\bgam_{k-1}$ are again dependent, and take $\alpha_1,\dots,\alpha_{k-1}\in \R$ such that 
-%\[\zero = \sum_{i=1}^{k-1}\alpha_i\bgam_i = \sum_{i=1}^{k-1}\alpha _i \sv_i + c_U\sum_{i=1}^{k-1}\alpha_i = \sum_{i=1}^{k-1}\alpha_i\sv_i + \frac{\beta}{|U|}\sum_{i=1}^k \sv_i = \sum_{i=1}^{k-1}\sv_i\bigg(\alpha_i+\frac{\beta}{|U|}\bigg) + \frac{\beta}{|U|}\sv_k, \]
-%where $\beta=\sum_{i=1}^{k-1}\alpha_i$. But this implies that $\{\sv_i\}_{i\in U}$ are linearly dependent, contradicting Lemma \ref{lem:svi_independent}. We now move onto the second assertion. Let $\vb{v}\in \X^\perp$, so $\v$ is orthogonal to every vector in $\X$. Therefore, for all $\alpha_1,\dots,\alpha_{k-1}\in \R$, 
-%\begin{align}
-%    0&=\bigg\la \vb{v},\sum_{i=1}^{k-1} \alpha_i\bgam_i\bigg\ra = \bigg\la \vb{v}, \sum_{i=1}^{k-1}\alpha_i\sv_i - \sum_{i=1}^{k-1}\frac{\alpha_i}{k}\sum_{j=1} ^{k}\sv_j\bigg\ra \notag \\
-%    &= \bigg\la \vb{v},\sum_{i=1}^{k-1}\sv_i\bigg[\alpha_i -\sum_{j=1}^{k-1}\frac{\alpha_j}{k}\bigg] - \left(\sum_{i=1}^{k-1} \frac{\alpha_i}{k}\right)\sv_k\bigg\ra.\label{eq:lem_face_shift_1}
-%\end{align}
-%(Notice that the sum runs only until $k-1$ because of the discussion above.) Let $\p,\q\in \splx_{U}$, so $\p=\sum_{i\in U}x_i\sv_i=\sum_{i=1}^k x_i\sv_i $ for some $x_1,\dots,x_k\in\R$ with $\sum_i x_i=1$ and similarly, $\q=\sum_{i=1}^k y_i \sv_i$ with $\sum_iy_i=1$. The vector $\p-\q$ lies in $\splx_U$, so we must demonstrate that $\la \v,\p-\q\ra =\la \v,\sum_{i=1}^k \sv_i(x_i-y_i)\ra = 0$. By Equation \ref{eq:lem_face_shift_1} it suffices to demonstrate that we may choose $\alpha_1,\dots,\alpha_{k-1}\in \R$ such that $\alpha_i-\sum_{j=1}^{k-1}\alpha_j/k=(x_i-y_i)$ for all $i\in[k-1]$ and $-\sum_{i=1}^{k-1}\alpha_i/k=(x_k-y_k)$. Since this is a system of $k$ equations in $k-1$ unknowns, it is not obvious a priori that a solution exists. However, the final constraint is immediately satisfied by virtue of the fact that $\{x_i\}$ and $\{y_i\}$ are barycentric coordinates. Assuming the first $k-1$ constraints are satisfied (i.e., those for $x_i-y_i$, $i\in[k-1]$), observe 
-%\begin{align*}    
-%x_k-y_k &= 1 - \sum_{i=1}^{k-1}x_i -1 + \sum_{i=1}^{k-1}y_i = - \sum_{i=1}^{k-1}(x_i-y_i)  
-%    = -\sum_{i=1}^{k-1} \bigg(\frac{k-1}{k}\alpha_i -\sum_{j=1,j\neq i}^{k-1}\frac{\alpha_j}{k}\bigg) \\
-%    &= -\frac{k-1}{k}\sum_{i=1}^{k-1}\sum_{i=1}^{k-1}\alpha_i +\frac{1}{k} \sum_{i=1}^{k-1}\sum_{j=1,j\neq i}^{k-1}\alpha_j 
-%    = -\frac{k-1}{k}\sum_{i=1}^{k-1}\sum_{i=1}^{k-1}\alpha_i +\frac{1}{k} \sum_{j=1 i}^{k-1}(k-2)\alpha_j \\
-%    &= -\frac{1}{k}\sum_{i=1}^{k-1}\alpha_i.
-%\end{align*}
-%Therefore, it remains to show that the first $k-1$ constraints can be satisfied.
-%Letting $\beta_i=x_i-y_i$ and $\bbeta=(\beta_1,\dots,\beta_{k-1})$ we can write the constraints succinctly as 
-%\begin{equation*}
-%    (\I_{k-1}-\frac{1}{k}\J_{k-1}^\tp )\balpha=\bbeta,
-%\end{equation*}
-%where the subscript $k-1$ signifies that the relevant matrices are square and of size $k-1$. To demonstrate that there exists some $\balpha$ which satisfies the above, it suffies to show that $\I_{k-1}-k^{-1}\J_{k-1}^\tp$ has rank $k-1$, or equivalently that its kernel has dimension zero. Let $\vp\in \ker(\I_{k-1}-k^{-1}\J_{k-1}^\tp)$. Then $\vp=k^{-1}\one\one^\tp \vp=(\norm{\vp}_1/k)\cdot\one$, implying that $\vp$ is a constant vector, say $\vp=a\cdot \one$. We require that 
-%\[a\cdot\one = \frac{\norm{a\cdot \one}_1}{k}\one = \frac{a(k-1)}{k}\one,\]
-%which is only satisfied for $a=0$. Hence $\vp=\zero$, and  $\ker(\I_{k-1}-k^{-1}\J_{k-1}^\tp)=\{0\}$ as desired. Consequently, we may choose $\alpha_1,\dots,\alpha_{k-1}$ to satisfy the constraints and finally conclude that $\la \vb{v},\p-\q\ra =0$. Therefore, $\X^\perp$ is a subset of all the 
-%\end{proof}
 
 
 \subsection{Dual Simplex}
@@ -464,6 +409,19 @@ We also observe that, using the same notation as above,
 \[-\sum_{i=1,i\neq k}^n \bgamma_i = -\bigg(\sum_{i=1,i\neq k}^{n-1} \bgamma_i\bigg) - \bgamma_n = -\sum_{i=1,i\neq k}^{n-1}\bgamma_i + \sum_{j=1}^{n-1} \bgamma_j = \bgamma_k,\]
 hence had we set $\v_i=\sv_k-\sv_i$ and defined $\bgamma_k = -\sum_{i\neq k}\bgamma_i$ (as we did for $k=n$), Lemma \ref{lem:dual_vertices_well-defined} demonstrates that we would produce the same set of vectors for the dual simplex. We honour the fact that the dual simplex is independent of labelling, i.e., well-defined, with the following definition. 
 
+\begin{figure}
+	\centering
+	\begin{minipage}{0.45\textwidth}
+		\centering
+		\includegraphics[scale=0.6]{altitude}
+	\end{minipage}
+	\begin{minipage}{0.45\textwidth}
+		\centering
+		\includegraphics[scale=0.7]{altitude2}
+	\end{minipage}
+\end{figure}
+
+
 \begin{definition}[Dual Simplex]
 \label{def:dual_simplex}
 Given a simplex $\splx_1\subset\R^{n-1}$ with vertex set $\Sv(\splx_1)=(\sv_1,\dots,\sv_n)$, a simplex $\splx_2\subset \R^{n-1}$ with vertex vectors $\Sv(\splx_2)=(\bgamma_1,\dots,\bgamma_n)$ is called a \emph{dual simplex} of $\splx_1$ if for all $k\in[n]$, $\{\bgamma_i\}_{i\neq k}$ is the sister basis to $\{\sv_k-\sv_i\}_{i\neq k}$. 
@@ -499,5 +457,22 @@ as desired. We now consider $i=n$. Recall that $\bgamma_n=-\sum_{i<n}\bgamma_i$.
 since $\x$ and $\y$ are barycentric coordinates. Conversely, suppose that $\la \bgamma_i, \Sv\x-\Sv\y\ra=0$ for every $\Sv\x,\Sv\y\in\splx_\ic$. For $k\neq i$ and any $j\in[n]$, we need to show that $\la \bgamma_i,\sv_k-\sv_j\ra = \delta_{ij}$. For $j\neq i$, we can take $\x=\bchi_k$ and $\y=\bchi_j$ above to obtain $\la \bgamma_i,\Sv\x-\Sv\y\ra = \la \bgamma_i,\sv_k-\sv_j\ra = 0=\delta_{ij}$. For $j=i$, 
 \end{proof}
 
+\subsection{Angles in a Simplex}
+There are several angles worth discussing in a simplex. For a simplex $\ssplx$, let $\phi_{ij}(\ssplx)$ be the angle between the outer normals to $\splx_\ic$ and $\splx_\jc$. As usual, the paranthetical $(\ssplx)$ will typically be dropped when the simplex is understood from context. Using the notion of the dual simplex introduced in the previous section, we can write 
+\begin{equation*}
+\cos \phi_{ij}(\ssplx) = \frac{\la \bgamma_i,\bgamma_j\ra }{\norm{\bgamma_i}_2 \cdot \norm{\bgamma_j}_2},
+\end{equation*}
+where $\{\bgamma_i\}$ are the vertices of $\ssplx^D$. 
+Now, define $\theta_{ij}(\ssplx)$ to be the angle between $\ssplx_\ic$ and $\ssplx_\jc$. Appealing to elementary geometry, we see that the angles $\phi_{ij}$ and $\theta_{ij}$ are \emph{supplementary}, i.e., their sum is $\pi$. Hence, 
+\begin{equation}
+\label{eq:cos_theta_ij}
+\cos \theta_{ij}(\ssplx) = - \frac{\la \bgamma_i,\bgamma_j\ra }{\norm{\bgamma_i}_2 \cdot \norm{\bgamma_j}_2},
+\end{equation}
+where we've used that $\cos(\phi_{ij}) = \cos(\pi - \theta_{ij}) = -\cos(\theta_{ij})$. 
+
+\begin{definition}
+	\label{def:hyperacute}
+	We call the simplex $\ssplx\subset \R^{n-1}$ \emph{hyperacute} if $\theta_{ij}(\ssplx)\leq \pi/2$ for all $i,j\in[n]$. If $\ssplx$ is not hyperacute, it is called \emph{obtuse}. 
+\end{definition}
 
 

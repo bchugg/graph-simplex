@@ -27,6 +27,12 @@ Sanjoy Dasgupta and Anupam Gupta.
 \newblock An elementary proof of a theorem of johnson and lindenstrauss.
 \newblock {\em Random Structures \& Algorithms}, 22(1):60--65, 2003.
 
+\bibitem[DM05]{drineas2005approximating}
+Petros Drineas and Michael~W Mahoney.
+\newblock Approximating a gram matrix for improved kernel-based learning.
+\newblock In {\em International Conference on Computational Learning Theory},
+  pages 323--337. Springer, 2005.
+
 \bibitem[DVM18]{devriendt2018simplex}
 Karel Devriendt and Piet Van~Mieghem.
 \newblock The simplex geometry of graphs.

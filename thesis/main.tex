@@ -9,10 +9,11 @@
 \usepackage{titlesec}
 \usepackage{hyperref}
 \usepackage{fancyhdr}
-\usepackage[intoc]{nomencl}
 \usepackage{etoolbox}
 \usepackage{xcolor}
-
+\usepackage[strict]{changepage}
+\usepackage{graphicx}
+\graphicspath{{figures/}{../figures/}}
 
 
 % Macros and formatting
@@ -20,22 +21,24 @@
 \input{formatting}
 
 
-
-\title{Graph-Simplex}
-\author{Ben Chugg}
-\date{}
-\makenomenclature
-
-
-
 \begin{document}
+	
+
 
 % Front matter
 \frontmatterstyling
-%\maketitle
+\include{frontmatter/titlepage}
+\include{frontmatter/abstract}
+\include{frontmatter/laysummary}
+\include{frontmatter/acknowledgements}
+\pagestyle{plain}
 \tableofcontents
-%\input{frontmatter/nomenclature.tex}
-%\printnomenclature
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{\listfigurename}
+\listoffigures
+\include{frontmatter/nomenclature}
+
 
 % Mid matter
 \midmatterstyling
@@ -43,10 +46,14 @@
 \include{background}
 \include{correspondence}
 \include{algorithmic_implications}
+\include{conclusion}
 
 
+% End matter
 \backmatterstyling
 \bibliographystyle{alpha}
 \bibliography{ref.bib}
+
+
 
 \end{document}

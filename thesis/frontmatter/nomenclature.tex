@@ -1,27 +1,40 @@
-%\setlength{\nomitemsep}{-\parsep}
+\chapter*{Nomenclature\footnote{The subsript $G$ and paranthetical $(G)$ is often dropped from relevant symbols.}}
+\addcontentsline{toc}{chapter}{Nomenclature}
 
-% Create groups
-\renewcommand\nomgroup[1]{%
-  \item[\bfseries
-  \ifstrequal{#1}{S}{Spectral Theory }{%
-  \ifstrequal{#1}{G}{Simplex Geometry}{%
-  \ifstrequal{#1}{O}{Other Symbols}{}}}%
-	
-]}
+% Table variables
+\newlength{\colwidth} % Width of symbol column
+\newlength{\groupsep} % Space between groups
+\newlength{\headingsep} % Space between heading and symbols
+\setlength{\colwidth}{3.5cm}
+\setlength{\groupsep}{1cm}
+\setlength{\headingsep}{0.05cm}
 
-% Spectral Theory
-\nomenclature[S]{$\L_G$ ($\Ln_G$}{(Normalized) Laplacian Matrix of graph $G$}
-\nomenclature[S]{$\Lf_G$ ($\Lnf_G$}{Quadratic form associated with (combinatorial) Laplacian of graph $G$.  }
-\nomenclature[S]{$\A_G$}{Adjacency matrix of graph $G$}
-\nomenclature[S]{$\D_G$}{Degree matrix of graph $G$}
-\nomenclature[S]{$\{\vp_i\}$ ($\{\vpn_i\}$)}{Eigenvectors of combinatorial (normalized) Laplacian matrix}
-\nomenclature[S]{$\Eig$ ($\Eign$)}{Eigenvector matrix of (normalized) Laplacian matrix}
+\textbf{Simplex Geometry}\\
+\vspace{\headingsep}\\
+\begin{tabular}{p{\colwidth}l}
+	{$\ssplx$} & {General simplex} \\
+	$\ssplx^D$ & Dual simplex to $\ssplx$ \\
+	$\Sv(\ssplx)$ & Vertex matrix of simplex $\ssplx$ \\
+	$\splx_G$ ($\splxn_G$)  &  (Normalized) Simplex associated to graph $G$.\\
+	$\splx^+_G$ ($\splxn^+_G$)	& Inverse simplex of $\splx_G$ ($\splxn_G$).\\
+	{$\ssplx\restriction_U, \ssplx_U, \ssplx[U]$} & {Face of simplex $\ssplx$ restricted to $U$ }\\ 
+	{$\Sv_G$ $(\Svn_G)$} & Vertex matrix of the simplex $\splx_G$ ($\splxn_G$). \\
+	{$\Sv_G^+$ $(\Svn_G^+)$} & Vertex matrix of the simplex $\splx_G^+$ ($\splxn_G^+$). \\
+	{$\{\sv_i\}$ ($\{\svn_i\})$} & {Vertex vectors of (normalized) simplex}\\
+	{$\alt(\ssplx_U)$} & {Altitude vector from $\ssplx_U$ to $\ssplx_{U^c}$}\\
+	{$\cent(\ssplx_U)$} & {Centroid of simplex $\ssplx_U$}\\
+\end{tabular}
+\vspace{\groupsep}
 
-
-% Simplex Geometry
-\nomenclature[G, 03]{$\Sv$ $(\Svn)$}{Vertex matrix of (normalized) simplex.}
-\nomenclature[G, 04]{$\{\sv_i\}$ ($\{\svn_i\})$}{Vertex vectors of (normalized) simplex}
-\nomenclature[G, 01]{$\splx$}{Simplex}
-\nomenclature[G, 02]{$\splx\restriction_U (=\splx_U)$}{Face of simplex $\splx$ restricted to $U$ }
-\nomenclature[G]{$\cent(\splx_U)$}{Centroid of simplex $\splx_U$}
-\nomenclature[G]{$\alt(\splx_U)$}{Altitude vector from $\splx_U$ to $\splx_{U^c}$}
+\noindent \textbf{Spectral Graph Theory}\\ 
+\vspace{\headingsep} \\
+\begin{tabular}{p{\colwidth}l}
+	{$\L_G$ ($\Ln_G$)} & {Combinatorial (Normalized) Laplacian Matrix of graph $G$} \\
+	{$\Lf_G$ ($\Lnf_G$)} & Quadratic form associated with $\L_G$ ($\Ln_G$)\\
+	{$\A_G$} & {Adjacency matrix of graph $G$}\\
+	{$\W_G$} & {Weight matrix of graph $G$}\\
+	$\{\lambda_i(G)\}$ ($\{\lambda_i(G)\}$) & Eigenvalues of $\L_G$ ($\Ln_G$). Sorted in decreasing order. \\
+	$\Eval_G$ ($\Evaln_G$) & Diagonal Eigenvalue matrix of $\L_G$ ($\Ln_G$) \\
+	$\{\vp_i(G)\}$ ($\{\vpn_i(G)\}$) & Eigenvectors of $\L_G$ ($\Ln_G$)\\
+	{$\Eig_G$ ($\Eign_G$)} & Eigenvector matrix of $\L_G$ ($\Ln_G$)
+\end{tabular}

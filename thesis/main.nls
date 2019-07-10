@@ -1,0 +1,32 @@
+\begin{thenomenclature} 
+
+ \nomgroup{G}
+
+  \item [{$\alt(\splx_U)$}]\begingroup Altitude vector from $\splx_U$ to $\splx_{U^c}$\nomeqref {0}
+		\nompageref{1}
+  \item [{$\cent(\splx_U)$}]\begingroup Centroid of simplex $\splx_U$\nomeqref {0}
+		\nompageref{1}
+  \item [{$\splx$}]\begingroup Simplex\nomeqref {0}\nompageref{1}
+  \item [{$\splx\restriction_U (=\splx_U)$}]\begingroup Face of simplex $\splx$ restricted to $U$ \nomeqref {0}
+		\nompageref{1}
+  \item [{$\Sv$ $(\Svn)$}]\begingroup Vertex matrix of (normalized) simplex.\nomeqref {0}
+		\nompageref{1}
+  \item [{$\{\sv_i\}$ ($\{\svn_i\})$}]\begingroup Vertex vectors of (normalized) simplex\nomeqref {0}
+		\nompageref{1}
+
+ \nomgroup{S}
+
+  \item [{$\A_G$}]\begingroup Adjacency matrix of graph $G$\nomeqref {0}
+		\nompageref{1}
+  \item [{$\D_G$}]\begingroup Degree matrix of graph $G$\nomeqref {0}
+		\nompageref{1}
+  \item [{$\Eig$ ($\Eign$)}]\begingroup Eigenvector matrix of (normalized) Laplacian matrix\nomeqref {0}
+		\nompageref{1}
+  \item [{$\L_G$ ($\Ln_G$}]\begingroup (Normalized) Laplacian Matrix of graph $G$\nomeqref {0}
+		\nompageref{1}
+  \item [{$\Lf_G$ ($\Lnf_G$}]\begingroup Quadratic form associated with (combinatorial) Laplacian of graph $G$.  \nomeqref {0}
+		\nompageref{1}
+  \item [{$\{\vp_i\}$ ($\{\vpn_i\}$)}]\begingroup Eigenvectors of combinatorial (normalized) Laplacian matrix\nomeqref {0}
+		\nompageref{1}
+
+\end{thenomenclature}

@@ -1,0 +1,87 @@
+
+%\begin{observation}
+%\label{obs:p-q}
+%Every vector parallel to the face $\splx_U$ is parallel to a vector of the form $\p-\q$ for $\p,\q\in\splx_U$. 
+%\end{observation}
+
+
+
+%\TODO Give intuition for what's about to happen. And give figures.
+%
+%\begin{lemma}
+% $\spn(\{\sv_1-\sv_j\}_{j\in U})$ is parallel to $\splx_U$. 
+%\end{lemma}
+%Fix $i\in[n]$. By virtue of the fact that the vertex vectors are affinely independent, it follows that 
+%\[\dim(\spn(\{\sv_1-\sv_j\}_{j\geq 2,j\neq i})=n-2,\]
+%meaning the set of vectors $\{\sv_1-\sv_j\}_{j\neq i}$ forms a hyperplane which passes through the origin. Let $\w$ be the normal direction of this hyperplane, so that $\la \w,\v\ra=0$ for all \begin{equation}
+%\label{eq:v_in_span}
+%    \v=\sum_{j\geq 2,j\neq i}\alpha_j(\sv_1-\sv_j)\in\spn_\R(\{\sv_1-\sv_j\}_{j\geq 2,j\neq i})
+%\end{equation} it holds that  $\la \w,\v\ra=0$. Let $\p,\q\in\splx_\ic$, so that $\p-\q$ is parallel so $\splx_\ic$. Let $\x$ and $\y$ be the barycentric coordinates of $\p$ and $\q$. Observe that 
+%\begin{align*}
+%    \p-\q&= \Sv(\x-\y) 
+%    = \sum_{j\neq i} (x(i) - y(i))\sv_j \\
+%    &= \bigg(1-\sum_{\ell}x(\ell) - 1 + \sum_\ell y(\ell)\bigg)\sv_1 + \sum_{j\geq 2;j\neq i}(x(j)-y(j))\sv_j \\
+%    &= \sum_{j\geq 2,j\neq i} (y(j)-x(j))(\sv_1-\sv_j). 
+%\end{align*}
+%The inequality on the second line follows from the fact that $\x$ and $\y$ are barycentric coordinates and hence sum to one. Taking $\alpha_j = y(j)=x(j)$ in \eqref{eq:v_in_span} shows that $\la \w,\p-\q\ra =0$. Combined with Claim \ref{claim:p-q}, this demonstrates that $\spn_\R(\{\sv_1-\sv_j\}_{j\neq i})$ is parallel to $\splx_\ic$. 
+%
+%\begin{lemma}
+%$\splx_U\subset \spn(\{\sv_1-\sv_j\}_{j\in U}) + \cent(\splx_U)$. 
+%\end{lemma}
+%
+%For each $i\in[n]$ we therefore define the \emph{hyperplane associated with the facet $\splx_\ic$} as 
+%\begin{equation}
+%    \H_\ic \equiv \spn(\{\sv_1-\sv_j\}_{j\neq i,j>1}) + \cent(\splx_\ic).
+%\end{equation}
+%In other words, $\H_\ic$ is the affine space of dimension $n-2$ in which $\splx_\ic$ lies.
+%
+%\begin{lemma}
+%For any proper subset $U\subsetneq[n]$, 
+%$\dim(\spn_\R(\{\sv_j\}_{j\in U}))=|U|$. 
+%\end{lemma}
+%\begin{proof}
+%It's immediate that 
+%\[|U|\geq \dim(\spn(\{\sv_j\}_{j\in U})) \geq \dim(\spn_\R(\{\sv_1-\sv_j\}_{j\in U}))=|U|-1,\]
+%by linear independence of the set $\{\sv_1-\sv_j\}$. Therefore, to demonstrate that the dimension is indeed $|U|$, it suffices to find a point $\x\in\spn(\{\sv_j\}_{j\in U})\setminus \spn_\R(\{\sv_1-\sv_j\}_{j\in U})$. 
+%\end{proof}
+%
+%\note{Unclear where this stuff goes/whether it's needed}
+%\begin{lemma}
+%\label{lem:svi_independent}
+%Let $G=(V,E)$ be a graph, and let $U\subsetneq V$ (i.e., $|U|<n)$. Then 
+%\[\dim(\spn_\R(\{\sv_i\}_{i\in U}))=\dim(\spn_\R(\{\sv_i^+\}_{i\in U}))=|U|.\]
+%\end{lemma}
+%
+%\begin{lemma}
+%\label{lem:face_shift}
+%Let $U\subsetneq V$. For each $i\in U$ set $\bgam_i = \sv_i - c_U$ where $c_U=c(\splx_U)$ is the centroid of the face $\splx_U$. Then 
+%\[\dim(\spn_\R(\{\bgam_i\}_{i\in U}))=|U|-1,\]
+%and every vector in $\spn(\{\bgam_i\}_{i\in U}))^\perp$, i.e., the orthogonal complement of $ \spn(\{\bgam_i\}_{i\in U}))$, is perpendicular to $\splx_{U}$. 
+%\end{lemma}
+%\begin{proof}
+%For notational convenience, put $\X=\spn(\{\bgam_i\}_{i\in U})$. We begin by considering $\dim(\X)$. Notice that 
+%\[\sum_{i\in U}\bgam_i = \sum_{i\in U}\bigg(\sv_i - \frac{1}{|U|}\sum_{j\in U}\sv_j\bigg) = \sum_{i\in U}\sv_i - \sum_{j\in U}\sv_i\sum_{i\in U}\frac{1}{|U|}=\zero,\]
+%which demonstrates that $\{\bgam_i\}$ are linearly dependent. Hence $\dim(\X)<|U|$. Now, suppose wlog that $U=[k]$ for some $k<n$. Since $\{\bgam_1,\dots,\bgam_k\}$ are linearly dependent, we have that $\spn(\{\bgam_1,\dots,\bgam_k\})=\spn(\{\bgam_1,\dots,\bgam_{k-1}\})$. Suppose now that $\bgam_1,\dots,\bgam_{k-1}$ are again dependent, and take $\alpha_1,\dots,\alpha_{k-1}\in \R$ such that 
+%\[\zero = \sum_{i=1}^{k-1}\alpha_i\bgam_i = \sum_{i=1}^{k-1}\alpha _i \sv_i + c_U\sum_{i=1}^{k-1}\alpha_i = \sum_{i=1}^{k-1}\alpha_i\sv_i + \frac{\beta}{|U|}\sum_{i=1}^k \sv_i = \sum_{i=1}^{k-1}\sv_i\bigg(\alpha_i+\frac{\beta}{|U|}\bigg) + \frac{\beta}{|U|}\sv_k, \]
+%where $\beta=\sum_{i=1}^{k-1}\alpha_i$. But this implies that $\{\sv_i\}_{i\in U}$ are linearly dependent, contradicting Lemma \ref{lem:svi_independent}. We now move onto the second assertion. Let $\vb{v}\in \X^\perp$, so $\v$ is orthogonal to every vector in $\X$. Therefore, for all $\alpha_1,\dots,\alpha_{k-1}\in \R$, 
+%\begin{align}
+%    0&=\bigg\la \vb{v},\sum_{i=1}^{k-1} \alpha_i\bgam_i\bigg\ra = \bigg\la \vb{v}, \sum_{i=1}^{k-1}\alpha_i\sv_i - \sum_{i=1}^{k-1}\frac{\alpha_i}{k}\sum_{j=1} ^{k}\sv_j\bigg\ra \notag \\
+%    &= \bigg\la \vb{v},\sum_{i=1}^{k-1}\sv_i\bigg[\alpha_i -\sum_{j=1}^{k-1}\frac{\alpha_j}{k}\bigg] - \left(\sum_{i=1}^{k-1} \frac{\alpha_i}{k}\right)\sv_k\bigg\ra.\label{eq:lem_face_shift_1}
+%\end{align}
+%(Notice that the sum runs only until $k-1$ because of the discussion above.) Let $\p,\q\in \splx_{U}$, so $\p=\sum_{i\in U}x_i\sv_i=\sum_{i=1}^k x_i\sv_i $ for some $x_1,\dots,x_k\in\R$ with $\sum_i x_i=1$ and similarly, $\q=\sum_{i=1}^k y_i \sv_i$ with $\sum_iy_i=1$. The vector $\p-\q$ lies in $\splx_U$, so we must demonstrate that $\la \v,\p-\q\ra =\la \v,\sum_{i=1}^k \sv_i(x_i-y_i)\ra = 0$. By Equation \ref{eq:lem_face_shift_1} it suffices to demonstrate that we may choose $\alpha_1,\dots,\alpha_{k-1}\in \R$ such that $\alpha_i-\sum_{j=1}^{k-1}\alpha_j/k=(x_i-y_i)$ for all $i\in[k-1]$ and $-\sum_{i=1}^{k-1}\alpha_i/k=(x_k-y_k)$. Since this is a system of $k$ equations in $k-1$ unknowns, it is not obvious a priori that a solution exists. However, the final constraint is immediately satisfied by virtue of the fact that $\{x_i\}$ and $\{y_i\}$ are barycentric coordinates. Assuming the first $k-1$ constraints are satisfied (i.e., those for $x_i-y_i$, $i\in[k-1]$), observe 
+%\begin{align*}    
+%x_k-y_k &= 1 - \sum_{i=1}^{k-1}x_i -1 + \sum_{i=1}^{k-1}y_i = - \sum_{i=1}^{k-1}(x_i-y_i)  
+%    = -\sum_{i=1}^{k-1} \bigg(\frac{k-1}{k}\alpha_i -\sum_{j=1,j\neq i}^{k-1}\frac{\alpha_j}{k}\bigg) \\
+%    &= -\frac{k-1}{k}\sum_{i=1}^{k-1}\sum_{i=1}^{k-1}\alpha_i +\frac{1}{k} \sum_{i=1}^{k-1}\sum_{j=1,j\neq i}^{k-1}\alpha_j 
+%    = -\frac{k-1}{k}\sum_{i=1}^{k-1}\sum_{i=1}^{k-1}\alpha_i +\frac{1}{k} \sum_{j=1 i}^{k-1}(k-2)\alpha_j \\
+%    &= -\frac{1}{k}\sum_{i=1}^{k-1}\alpha_i.
+%\end{align*}
+%Therefore, it remains to show that the first $k-1$ constraints can be satisfied.
+%Letting $\beta_i=x_i-y_i$ and $\bbeta=(\beta_1,\dots,\beta_{k-1})$ we can write the constraints succinctly as 
+%\begin{equation*}
+%    (\I_{k-1}-\frac{1}{k}\J_{k-1}^\tp )\balpha=\bbeta,
+%\end{equation*}
+%where the subscript $k-1$ signifies that the relevant matrices are square and of size $k-1$. To demonstrate that there exists some $\balpha$ which satisfies the above, it suffies to show that $\I_{k-1}-k^{-1}\J_{k-1}^\tp$ has rank $k-1$, or equivalently that its kernel has dimension zero. Let $\vp\in \ker(\I_{k-1}-k^{-1}\J_{k-1}^\tp)$. Then $\vp=k^{-1}\one\one^\tp \vp=(\norm{\vp}_1/k)\cdot\one$, implying that $\vp$ is a constant vector, say $\vp=a\cdot \one$. We require that 
+%\[a\cdot\one = \frac{\norm{a\cdot \one}_1}{k}\one = \frac{a(k-1)}{k}\one,\]
+%which is only satisfied for $a=0$. Hence $\vp=\zero$, and  $\ker(\I_{k-1}-k^{-1}\J_{k-1}^\tp)=\{0\}$ as desired. Consequently, we may choose $\alpha_1,\dots,\alpha_{k-1}$ to satisfy the constraints and finally conclude that $\la \vb{v},\p-\q\ra =0$. Therefore, $\X^\perp$ is a subset of all the 
+%\end{proof}

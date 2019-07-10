@@ -52,7 +52,12 @@ The first result was also proved in \cite{kaibel2008complexity}.
 
 \note{Formulate MST in terms of hyperacute simplices. Seems somewhat surprising that this high-dimensional geometric problem is solvable in poly time. On the other hand, what seems like a related problem in "geometric" space, Hamiltonian cycle/path, is hard. Probably worth mentioning but not thinking too much about.}
 
-\section{Transitioning between simplices}
+\section{There and Back Again: Transitioning Between Simplices}
+In this section we investigate the computational aspects of transitioning between various simplices and between the graph and its simplices. We are interested in obtaining computational results which are strictly sub-cubic in time, i.e., $o(n^3)$ because in cubic time one can solve linear systems and compute eigendecompositions. Thus, for instance, given $G$ it is trivial to compute all of $\splx_G,\splx^+_G,\splxn_G$, and $\splxn_G^+$ by finding the eigendecomposition (which takes cubic time) of $\L_G$ from which we can construct the relevant vertex set.  Moreover, starting with a simplex with vertex set $\Sv$, one can compute $\Sv^\tp\Sv$ in cubic time. If the simplex is the simplex if a graph then this yields the Laplacian (or the pseudoinverse of the Laplacian) of the graph, which as above allows us to compute any of the simplices. In what follows therefore, we attempt to beat the barrier of $O(n^3)$. 
+
+A question which is raised by the above discussion is one of certifying whether a given simplex $\ssplx$ is the combinatorial, normalized, or one of their duals of some graph $G$. Again, in cubic time we can compute $\Sv^\tp\Sv$ and thus decide whether $\Sv^\tp\Sv$ is equal to $\L_G$ for some graph $G$. In quadratic time we can check whether all the angles $\theta_{ij}$ between the faces $\ssplx_\ic$ and $\ssplx_\jc$ are non-obtuse, in which case $\ssplx$ is the inverse simplex of some graph. Beyond computing $\Sv(\ssplx)^\tp \Sv(\ssplx)$ however, it's not clear how to obtain the original graph or the combinatorial simplex. 
+
+\subsection{Between \texorpdfstring{$\splx$}{the combinatorial} and \texorpdfstring{$\splxn$}{normalized simplex.}}
 Let us consider the computational complexity of transitioning between $\splx$ and $\splxn$ and vice versa. Let $\phi_{ij}$ (resp., $\phin_{ij}$) be the angle between $\sv_i$ and $\sv_j$ (resp., $\svn_i$ and $\svn_j$). Using the typical formula for the dot product in Euclidean space we have
 \begin{equation*}
 \cos\phi_{ij} = \frac{\la \sv_i,\sv_j\ra }{\norm{\sv_i}_2\norm{\sv_j}_2} = \frac{\L_G(i,j)}{\sqrt{w(i)w(j)}} = \Ln_G(i,j), \quad\text{and}\quad \cos\phin_{ij} = \frac{\la \svn_i,\svn_j\ra }{\norm{\svn_i}_2\norm{\svn_j}_2} = \Ln_G(i,j),
@@ -77,10 +82,123 @@ Given the relative ease with which we can transition from $\splx$ to $\splxn$, i
 \[w(i)^{1/2} = -\sum_{j\neq i}w(j)^{-1/2} \bigg/ \sum_{j\neq i}\la \svn_i,\svn_j\ra,\]
 which yields a non-linear system of equations. 
 
+Of course, if we are given the graph then we have access to $\sqrt{w(i)}$ and can compute $\svn_i w(i)^{1/2}$ in time $O(n)$. The following result is then immediate. 
+
+\begin{lemma}
+	Given a graph $G=(V,E,w)$ and its normalized simplex $\splxn_G$, a simplex congruent to  the combinatorial simplex $\splx_G$ can be computed in $O(n^2)$ time. 
+\end{lemma}
+
+\note{Think about possible lower bounds on computing $\splx$ from $\splxn$ when no graph is given. Doing so would imply knowledge of $\sqrt{\w}$ (taking ratio of lengths of vertices). What does this imply? Does knowledge of $\w$ give us some knowledge of the graph structure from which we can extract a lower bound? }
 
 
 
-\section{Embeddings}
+\subsection{\texorpdfstring{$\splx$}{The combinatorial} and \texorpdfstring{$\splx^+$}{normalized simplex}.}
+
+Let us suppose that we can generate $\splx^+$ from $\splx$ (or vice versa) in time $O(g(n))$. Note that for $i<n$, 
+\[\lambda_i = \frac{\lambda_i^{1/2} \vp_j(i)}{\lambda_i^{-1/2}\vp_j(i)} = \frac{\sv_i(j)}{\sv_i^+(j)}, \quad \text{and} \quad \vp_i(j) = \frac{\sv_j(i)}{\lambda_i^{1/2}},\]
+hence knowledge of $\{\sv_i\}$ and $\{\sv_i^+\}$ yields knowledge of the eigendecomposition of the underlying graph $G$ in $O(n^2)$ time ($O(n)$ to determine all the  eigenvalues and $O(n^2)$ to determine the eigenvectors). The same argument holds \emph{mutatis mutandis} for the normalized Laplacian. 
+
+\begin{lemma}
+	If $\splx^+$  (resp., $\splxn^+$) can be generated from $\splx$ (resp., $\splxn$) or vice versa in time $O(g(n))$, then \lapdecomp can be solved in time $O(g(n) + n^2)$ for arbitrary weighted graphs. 
+\end{lemma}
+
+It is therefore unlikely that $g(n) = o(n^2)$. 
+
+An alternate way of seeing that constructing the inverse simplex from its dual is computationally challenging is to recall from Section \ref{sec:S_G} that $\splx_\ic$ is contained in the hyperplane $\{\x\in\R^{n-1}:\la \x,\sv_i^+\ra = -1/n\}$ (Lemma \ref{lem:SUsubset})
+ and that that $\sv_i^+$ is perpendicular to $\splx_\ic$ (Lemma \ref{lem:faces_orthogonal}). Hence, computing the inverse simplex would imply that we had computed normal vectors to $n$ hyperplanes, the typical procedure for which typically involves computing an $n\times n$ determinant and requires  $O(n^3)$ time. 
+ 
+ One might at least hope that we could approximate the inverse simplex given the original simplex. 
+
+
+
+
+
+
+
+
+
+
+
+\note{Therefore, if we can show that: For any hyperplane there exists a simplex with a face parallel to the hyperlane, then we can obtain a lower bound in terms of computing normals to hyperplanes.} 
+
+We can, however, estimate the distance matrix of the inverse simplex by appealing to the result of Spielman and Teng~\cite{spielman2011graph} demontrating how to quickly approximate the effective resistances. As we've noted before, $w(i) = \norm{\sv_i}_2^2$ can be computed in linear time, hence $W^{1/2}$ can be computed in $O(n^2)$ time. The number of edges c
+
+
+
+
+
+
+
+
+\subsection{Between \texorpdfstring{$G$}{the graph} and \texorpdfstring{$\splx$ or $\splxn$}{its simplices}}
+
+
+
+\section{Approximations and Embeddings} 
+
+\subsection{Low Rank Approximation}
+
+\note{Define low rank approximation}
+Let us suppose the we have obtained a low rank---$k$, say---approximation of $\L_G$, written $\tL$. We might then ask several questions: 
+\begin{enumerate}
+	\item Is $\tL$ still a gram matrix? That is, can $\tL$ be written $\tSv^\tp\tSv$ where $\tSv$ is the vertex matrix of some set of points, $P=\{\p_1,\dots,\p_\ell\}$? If so, what is the relationship between $\Sv$ and $\tSv$, where $\Sv=\Sv(\splx_G)$ is the usual vertex matrix of the combinatorial simplex of $G$? If $\tL$ has rank $k$ then $P$ spans a subspace of dimension $k$ and $\conv(P)$ forms a polytope in that space. What is the relationship between the geometry of $\conv(P)$ and $\splx_G$?
+	\item Is $\tL$ useful in helping estimate properties of the simplex $\splx_G$? For example, if one could bound the difference in the quadratic products of $\L_G$ and $\tL$, this would imply (via the results in Section \ref{sec:S_G}) that we could estimate many of the properties of $\splx_G$. 
+	\end{enumerate}
+
+Of course, we have chosen to work with $\L_G$ and $\splx_G$ for convenience; we could have asked the same questions of $\Ln_G$ and $\splxn_G$. 
+
+Let us examine a specific low rank approximation proposed by Drineas and Mahoney~\cite{drineas2005approximating}, which finds low rank approximations to Gram matrices. We will give a brief overview of their method in general, and then elaborate on how it applies to our case in particular. Let $\M\in\R^{n\times m}$ be a gram matrix. Using the probability distribution $F(i) = \M(i,i)^2 / \tr(\M^2)$ sample $a\leq m$ columns of $\M$ independently at random and with replacement, where $a$ is some given parameter. Let $I\subset[n]$, $|I|\leq a$, be the indices of sampled columns. Let $\bC\in\R^{n\times a}$ be the matrix formed by these columns (that is, $\bC=\M(\cdot,I)$).  Let $\Q$ be the matrix $\M(I,I)\in\R^{a\times a}$, i.e., the submatrix of $M$ with entries corresponding to indices in $I$, and $\Q^+_k$  the optimal rank $k$-approximation to $\Q^+$, the pseudoinverse of $\Q$ (section \ref{sec:background_pseudoinverse}). The low rank approximation to $\M$ is then 
+\begin{equation*}
+\tM \equiv \bC\M(I,I)_k^+\bC^\tp.
+\end{equation*}
+
+\begin{theorem}[\cite{drineas2005approximating}]
+	Let $\M$ be a gram matrix and let $\tM$ be as above. Let $\eps>0$,  $k\leq c\in\N$. If $c=\Omega(k/\eps^4)$, then 
+	\begin{equation*}
+	\norm{\M-\tM}_\kappa \leq \norm{\M-\M_k}_\kappa + \eps \tr(\M^2),
+	\end{equation*}
+	for $\kappa=2,F$. 
+\end{theorem}
+
+Let us analyze how this result translates to the case when $\M=\L_G$. Let $I$ and $\bC$ be as above. First we observe that $\L_G(I,I)$ is simply the Laplacian on the subgraph $G[I]$. Put $\tG = G[I]$. Performing an eigendecomposition, write 
+\begin{equation*}
+\L_\tG = \sum_{r=1}^{|I|} \mu_r \bnu_r\bnu_r^\tp,
+\end{equation*}
+for where $\mu_1\geq \mu_2\geq \dots \geq \mu_{|I|}=0$ and $\{\bnu_r\}$ are the eigenvalues and eigenvectors of $\L_\tG$, respectively. The results of Section \ref{sec:background_pseudoinverse} then dictate that 
+\begin{equation*}
+\L_\tG^+ = \sum_{r=1}^{|I|} \frac{1}{\mu_r} \bnu_r\bnu_r^\tp,
+\end{equation*}
+and so the best rank $k$ approximation to $\L_\tG$ is given by 
+\begin{equation*}
+\L_k \equiv (\L_\tG^+)_k = \sum_{r=1}^{k} \frac{1}{\mu_r} \bnu_r\bnu_r^\tp.
+\end{equation*}
+The approximation for $\L_G$ is thus given by $\tL=\bC\L_k\bC^\tp=\bC\L_k^{1/2}\L_k^{\tp/2}\bC^\tp = (\L_k^{\tp/2}\bC^\tp)^\tp \L_k^{\tp/2}\bC^\tp$. That is, we can view $\tL$ as the gram matrix of the vectors given by the columns of $\tSv =  (\L_k^{\tp/2}\bC^\tp)$. 
+
+Let us examine $\tSv^\tp=\C\L_k^{\tp/2}$. First consider $\rank(\bC)$, which we claim is $|I|$. Suppose $\bC\f=\zero$, where $\f:I \to \R$. Extend $\f$ to $\hf:[n]\to\R$ by setting $\hf(u)=0$ for all $u\in [n]\setminus I$. Then 
+\[(\L_G\hf)(k) = \sum_{i\in[n]}\L_G(k,i)\hf(i) = \sum_{i\in I}\L_G(k,i) \f(i) + \sum_{i\in[n]\setminus I} \L_G(k,i)\hf(i) = \sum_{i\in I}\bC(k,i) \f(i) = 0,\]
+implying that $\L_G\hf=\zero$, so $\hf\in\spn(\one))$. However, as long as $|I|\neq[n]$, this is impossible since  $\hf([n]\setminus I)=\zero$. Therefore, so long as $c<n$, we have $\rank(\bC) = c$. 
+We now claim that $\rank(\bC\L_k^{\tp/2}) = \rank(\L_k^{\tp/2})$, which is easier to prove in the abstract. 
+
+\begin{lemma}
+	Let $\bS:\R^n\to\R^\ell$, $T\in\R^m\to\R^n$ be linear maps with $\rank(\bS)=\ell$. Then $\rank(\bS\T) = \rank(\T)$. 
+\end{lemma}
+\begin{proof}
+	If $\T\f=\zero$ then clearly $\bS\T\f=\zero$ so $\dim\ker(\T)\leq \dim\ker(\bS\T)$. On the other hand, if $\bS\T\f=\zero$ then because $\bS$ is full rank, $\T\f=\zero$ implying that $\dim \ker \T\ge \ker\bS\T$. 	By the rank nullity Theorem (e.g., ~\cite{axler1997linear}) $\rank(\bS\T) + \dim\ker \bS\T = n = \rank(\T) + \dim\ker\T$ from which the result follows immediately. 
+\end{proof}
+
+Taking $\bC=\bS$ and $\T=\L_k^{\tp/2}$ in the above lemma gives that $\rank(\bC\L_k^{\tp/2})=k$. Consequently, the vertex matrix $\tSv\in\R^{|I|\times n}$ contains $n$ vectors in $\R^{|I|}$. Moreover, 
+\[\rank(\tL) = \rank(\tSv^\tp \tSv) = \rank(\tSv)=k,\]
+meaning the $n$ vectors span a $k$-dimensional space. 
+
+One might hope that the approximation matrix $\tL$ was a Laplacian, but this does not seem to be the case in general. While it is true that $\tL(i,i)\geq 0$ (by virtue of being a gram matrix) and that $\tL\one=\zero$ (this follows since $\bC^\tp\one =\zero$ because the rows of $\bC^\tp$ are columns and hence rows of $\L_G$). However, 
+\[\tL(i,j) = \sum_{r,s=1}^c \bC(i,r)\bC(j,s)\L_k(r,s),\]
+which does not look to be necessarily non-positive. 
+
+
+
+
+
+\subsection{Embedding \texorpdfstring{$\splx$}{the simplex} in lower dimensions}
 Johnson-Lindenstrauss Lemma~\cite{johnson1984extensions,dasgupta2003elementary}: 
 
 \begin{theorem}[Johnson-Lindenstrauss Lemma]

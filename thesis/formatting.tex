@@ -1,8 +1,6 @@
 \allowdisplaybreaks
-
-% Nomenclature formatting
-\setlength{\nomlabelwidth}{4cm}
 \setlength{\headheight}{14pt}
+
 
 %%  THEOREMS %%
 \newtheoremstyle{tstyle}
@@ -81,10 +79,13 @@ citecolor=darkblue
 
 \newcommand{\frontmatterstyling}{
 \chapstylenoline
+\pagenumbering{roman}
 }
 
 % Mid matter styling -- Chapter and Section
-\newcommand{\midmatterstyling}{\let\secsymbol\S
+\newcommand{\midmatterstyling}{
+	\pagenumbering{arabic}
+	\let\secsymbol\S
 \titleformat{\section}[block]{\normalfont\bfseries}{\secsymbol\thesection.}{0.5em}{\centering}[]
 \titleformat{\subsection}[block]{\normalfont\it}{\thesubsection.}{0.5em}{\centering}[]
 \titleformat
