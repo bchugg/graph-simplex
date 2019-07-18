@@ -7,7 +7,7 @@ This chapter is devoted to introducing the  pre-requisite knowledge necessary to
 \label{sec:background_general}
 We use the standard notation for sets of numbers: $\R$ (reals), $\N$ (naturals), $\Z$ (integers), $\C$ (complex).  We use the subscript $\geq 0$ (resp., $>0$) to restrict a relevant set to its non-negative (resp., positive) elements ($\R_{\geq 0}$, for example). 
 We will often introduce new notation or definitions by using the notation $\equiv$. The complement of a set $U$ (with respect to what will be clear from context) is denoted $U^c$. 
-Given a set of scalars $K$, we let $K^{n\times m}$ denote the set of $n\times m$ matrices ($n$ rows and $m$ columns) with elements in $K$. Matrices will typically be denoted by uppercase letters in boldface, e.g., $\Q\in K^{n\times m}$. 
+Given a set of scalars $K$, we let $K^{n\times m}$ denote the set of $n\times m$ matrices ($n$ rows and $m$ columns) with elements in $K$. Matrices will typically be denoted by uppercase letters in boldface, e.g., $\Q\in K^{n\times m}$. Matrices will also often be referred to as linear transformations and written, for example, as $\Q:K^m \to K^n$. 
 We let $\Q(i,\cdot)$ (resp., $\Q(\cdot,i)$) denote the $i$-th row (resp., column) of the matrix $\Q$. 
 For a set $U$, $K^U$ denotes the set of all functions from $U$ to $K$.  Elements of $K^U$ are also called vectors. For any $n\in\N$, set $[n]\equiv \{1,2,\dots,n\}$. As usual, we let $K^n=K^{[n]}$. \note{Might have to distinguish between vectors and points; unsure whether this is needed yet.} Vectors will typically be denoted by lowercase boldcase letters. Lowercase  greek letters will often be used for scalars. 
 
@@ -18,7 +18,11 @@ while the \emph{0-norm} of $\x$ is the number of non-zero entries of $\x$, and i
 
 We will often use the shorthand ``iff'' to mean ``if and only if''. We use $\delta_{ij}$ to denote the Kronecker delta function, i.e., $\delta_{ij} = 1$ if $i=j$ and 0 otherwise. We may sometimes include a comma and write $\delta_{i,j}$. 
 
-We will occasionally make use of asymptotic notation,  especially when analyzing various algorithms. Let $f,g:U\subset \R \to \R$ be functions. Write $f=O(g)$ as $x\to c$ if $\limsup_{x\to c}|f(x)/g(x)|<\infty$, and $f=\Omega(g)$ as $x\to c$ if $g=O(f)$. Write $f=o(g)$ as $x\to c$ if $\lim_{x\to c}|f(x)/g(x)|=0$ and $f=\omega(g)$ if $g=o(f)$. If $f=O(g)$ and $f=\Omega(g)$ we write $f=\Theta(g)$. Typically we are interested in the behaviour as $x\to\infty$. 
+A set $\X\subset\R^m$ is \emph{convex} if for all $\x,\y\in\X$ and $\lambda\in(0,1)$, $\lambda\x + (1-\lambda)\y\in \X$. 
+The \emph{convex hull} of a finite set of points $X=\{\x_1,\dots,\x_k\}\subset \R^n$ is 
+\[\conv(X) \equiv \bigg\{\sum_\ell \alpha_i\x_i: \sum_\ell \alpha_i = 1, \;\alpha_i\geq 0\bigg\},\]
+or equivalently, the smallest convex set containing $X$~\cite{grunbaum1967convex}. 
+
 
 \section{Linear Algebra}
 \label{sec:background_linear}
@@ -238,6 +242,7 @@ and
 
 
 \subsection{The Laplacian Spectrum}
+\label{sec:background_laplacian_spectrum}
 Both the combinatorial and normalized Laplacian of an undirected graph $G$ are real, symmetric matrices. By the spectral theorem therefore, they both admit a basis of orthonormal eigenfunctions corresponding to real eigenvalues. Focus for the moment on the combinatorial Laplacian  $\L_G$, with eigenvalues $\lambda_1\geq \lambda_2\geq \dots \geq \lambda_n$ and corresponding orthonormal eigenfunctions $\vp_1,\dots,\vp_n$. A straightforward consequence of Equation \ref{eq:L=BTB} is that all eigenvalues of $\L_G$ are non-negative. Let $\lambda$ be an eigenvalue with (unit) eigenvector $\vp$. Then,  \begin{equation*}
     \lambda = \lambda\la \vp,\vp\ra = \la \lambda \vp,\vp\ra = \la \L_G\vp,\vp\ra = \la \B_G^\tp \B_G\vp,\vp\ra = \la \B_G\vp,\B_G\vp\ra =\norm{\B_G\vp}_2^2 \geq 0.
 \end{equation*}
@@ -255,7 +260,7 @@ A similar analysis holds for the normalized Laplacian. Using the same argument b
 \[\Ln\W^{1/2}\vp = \W^{-1/2}\L\W^{-1/2}\W^{1/2}\vp = \W^{-1/2}\L\vp = \zero,\]
 so $\W^{1/2}\bchi_{V_1},\dots,\W^{1/2}\bchi_{V_k}$ lie in the kernel of $\Ln$.
 Conversely, if $\vp\in\ker(\Ln)$, define $vp'$ such that $\vp=\W^{1/2}\vp'$ (this is possible because $\W^{1/2}$ is diagonal---we simply factor out $\sqrt{w(i)}$ from $\vp(i)$ to obtain $\vp'(i)$). Then 
-\[\zero =\Ln\vp = \W^{-1/2}\L \W^{-1/2}\W^{1/2}\vp = \W^{-1/2}\L\vp,\]
+\[\zero =\Ln\vp' = \W^{-1/2}\L \W^{-1/2}\W^{1/2}\vp = \W^{-1/2}\L\vp,\]
 so $\L\vp=\zero$ (since $w(i)>0$ for all $i$). That is, each element in the kernel of $\Ln$ takes the form $\W^{1/2}\vp$ for $\vp\in\ker(\L)$. We conclude that 
 \[\ker(\Ln)=\spn(\{\W^{1/2}\bchi_{V_1},\dots,\W^{1/2}\bchi_{V_k}\}).\]
 

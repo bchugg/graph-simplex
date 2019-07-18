@@ -1,63 +1,177 @@
-\chapter{Algorithmic Implications}
+\chapter{Algorithmics}
+
+This final chapter will discuss some of the algorithmic foundations and consequences of the graph-simplex correspondence. Vis-\`{a}-vis foundations, we will chiefly be concerned with transitioning between a graph and its various simplices. We will explore lower bounds for how quickly this can be done if we wish to obtain the precise result, and whether we can ``approximate'' any of the constructions (e.g., given the graph $G$ can we quickly obtain a simplex which serves as an approximation\footnote{The notion of approximating a simplex is rather ambiguous and will be expounded upon at a later time.} to $\splx_G$.) With respect to algorithmic consequences on the other hand, we will attempt to leverage knowledge we have in the hitherto relatively unrelated areas of computational graph theory and high-dimensional computational geometry to draw new conclusions about the complexity of several problems in these areas. For instance, if a  graph theoretic problem has an analogue in the simplex, any fact regarding the problems difficulty---whether it's NP-complete, say---translates to an immediate result about its geometric counterpart. In particular, since the simplex of a graph can be generate in polynomial time given the graph (due to the fact that an eigendecomposition can be computed in polynomial time) and vice versa, problems which are solvable in polynomial in either the simplex or graph domain  translate to polynomial (yet perhaps not optimal!) problems in the other domain and likewise, problems which are NP-hard in one domain have analogues which are NP-hard in the other. 
+
+For the benefit reader unfamiliar with computational complexity and reductions, we begin the chapter with a short section containing this background material. We will also discuss computational representations of a simplex therein. 
+
+\section{Preliminaries}
+
+We begin with asymptotic notation which will be used to analyze the running time of various algorithms. We use the standard definitions---see any reference text on algorithm design for more background (e.g., \cite{kleinberg2006algorithm}). Let $f,g:U\subset \R \to \R$ be functions. Write $f=O(g)$ (or $f(n)=O(g(n))$) if $\limsup_{x\to \infty}|f(x)/g(x)|<\infty$, and $f=\Omega(g)$ if $g=O(f)$. Write $f=o(g)$ as $x\to c$ if $\lim_{x\to \infty}|f(x)/g(x)|=0$ and $f=\omega(g)$ if $g=o(f)$. If $f=O(g)$ and $f=\Omega(g)$ we write $f=\Theta(g)$. We will also use the tilde to hide polylog factors. Say $f=\tO(g)$ if $f(n) = O(g(n) \log^c n)$ and $f=\tOmega(g)$ if $f(n) = \Omega(g(n) \log^{-c}n)$, for some $c\geq 0$. 
+
+
+In order to discuss the algorithmics pertaining to simplices and convex polyhedra in general, we must discuss how such objects are represented by a machine. Clearly, we cannot simply enumerate all the points enclosed by a body in high-dimensional space. Instead we must concisely represent the boundaries of the polytope. The two most common such descriptions are 
+\begin{itemize}
+	\item \emph{\vdesc}, in which we are given the vertex vectors of the polytope; 
+	\item \emph{\hdesc}, in which we are given the parameters of the half-spaces whose intersection defines the polytope. That is, if $\ssplx=\bigcap_i \{\x:\la \z_i,\x\ra \geq b_i\}$, then an \hdesc of $\ssplx$ would be the vectors $\{\z_i\}$ and the scalars $\{b_i\}$. 
+\end{itemize}
+
+It's not at all clear whether these descriptions are equivalent in the sense that one can easily generate one from the other. Indeed, the complexity of vertex enumeration (generating a \vdesc from an \hdesc) and facet enumeration (generating an \hdesc from a \vdesc) remains an open problem for general polytopes~\cite{kaibel2003some}, although there exist polynomial time algorithms when the polytopes are simplices (e.g., \cite{bremner1998primal}). We will return to this fact later on. 
+
+Some background on computational models and reductions will also be useful. \todo \\
+
+
 
 \section{Computational Complexity}
 
-\begin{corollary}
-	Computing the minimum altitude in the inverse simplex of a graph is an NP-hard optimization problem. 
-\end{corollary}
+In this section we investigate the relationships between problems in one domain---either the graph-theoretic or geometric domain---and their analogues in the other. The following result exemplifies the power of the graph-simplex correspondence in yielding results which seem otherwise to be difficult to obtain (certainly more difficult than the following proof, at any rate).  First we generalize the no
+The following result was first stated by Devriendt and Van Mieghem~\cite{devriendt2018simplex}, although it was stated only for inverse simplices of graphs. We observe that it can be generalized as follows. 
+
+\begin{lemma}
+	Computing the altitude of minimum length in a convex polytope is \NP-hard. 
+\end{lemma}
 \begin{proof}
-	Follows from the fact that computing the maximum weighted cut is NP-hard. 
+	The relationship $\norm{\alt(\splx^+_U)}_2^2 = w(\delta U)^{-1}$ (Lemma \ref{lem:alt}) for the inverse simplex of a graph $G$ demonstrates that the problem of computing a minimum length altitude in any hyperacute simplex is \NP-hard, because computing the  maximum weight cut in any weighted graph is \NP-hard~\cite{karp1972reducibility}.  Since the class of convex polytopes contains the class of hyperacute simplices, the result follows. 
+\end{proof}
+
+\begin{remark} In  the above statement and its proof, the description of the polytope and simplex was not specified. This is due to the fact that---as discussed above---for simplices there is a polynomial time algorithm to translate betweent the various descriptions. With regard to \NP-completeness therefore, the description makes no difference. 
+\end{remark}
+
+The remainder of this section is dedicated to obtaining more results of this type. 
+
+We begin by investigating independent sets. Given a graph $G=(V,E,w)$, recall that an \emph{independent set} is a subset $I\subset V$ such that if $i,j\in I$ then $(i,j)\notin E$. 
+The weight of an independent set is nicely described by the Laplacian quadratic form. If $I$ is an independent set note that 
+\[\vol(I) = w(\delta I),\] 
+and so 
+\begin{align*}
+    \Lf(\bchi_I) = \sum_{i\sim j}w(i,j)(\bchi_I(i)-\bchi_I(j))^2 = \sum_{i\in I}\sum_{j:j\sim i} w(i,j) = \sum_{i\in I}w(i)=w(\delta I),
+\end{align*}
+where the second and fourth inequalities follows from the fact that $I$ is an independent set. Now, suppose we assign each vertex $i$ a weight $f(i)\geq 0$. The \mwis problem consists of maximizing $f(I)\equiv \sum_{i\in I}f(i)$ over all independent sets $I$. Clearly \mwis is \NP-hard in general, seeing as it reduces to the usual independent set maximization problem by taking $f(i)=1$ for all $i$. If $f$ is a linear function of the weights so that $f(i)=\alpha w(i)$ for all $i$ and some $\alpha> 0$, we call the corresponding problem $\alpha$-\vwis. We will focus on the case $\alpha=1$ for clarity, and call the  corresponding problem just \vwis. The difficulty of this problem is not immediately clear, since it is more structured than simply \mwis. The next lemma removes any doubt as to the problems tractability.   
+
+\begin{lemma}
+	\label{lem:vwis}
+	\vwis is \NP-Complete. 
+\end{lemma}
+\begin{proof}
+	Given a purported independent $I$, it is easily checkable in polynomial time whether $\vol(I)$ is of a certain size---hence \vwis is in \NP. 
+	To that it is \NP-hard, we reduce from \iset. Let $G=(V(G),E(G))$ and  $k\in\N$ be an instance of \iset. The intuition behind the following reduction is to create a separate graph $H$ which, for each independent set $I\subset V(G)$, has an independent set $J$ in $H$ such that  $\vol_H(J)=|I|$ in $H$ and conversely, for each maximal independent set $J$ in $H$ there exists an independent set $I$ in $G$ with $|I| = \vol_H(J)$. From this relationship it follows that $G,k$ constitutes a yes instance to \iset iff $H,k$ is a yes instance to \mwis.  After wordsmithing the intuition, let us proceed to the formal argument. 
+
+	Construct a graph $H=(V(H), E(H))$ as follows. For each vertex $u\in V(G)$, create $\deg_G(u)+1$ vertices $u_0,u_1,\dots,u_{\deg_G(u)}$ in $V(H)$. For $1\leq k\leq \deg_G(u)$ set \[w_H(u_k) =  \frac{1}{\deg_G(u)}.\] Construct the edge set $E(H)$ such that the neighbours of each vertex are described by 
+	\begin{equation*}
+	\delta_{H}(u_k) = \{u_0\}\cup \bigcup_{v\in \delta_G(u)}\{v_\ell: 0\leq \ell\leq \deg_G(v) \}.
+ 	\end{equation*}
+	In words, $u_k$ is connected to all the vertices representing $v$ if $(u,v)\in E(G)$, and to $u_0$. Now, let $I\subset V(G)$ be an independent set in $G$ and consider the set
+	\[J = \{v_k: v\in I, 1\leq k\leq \deg_G(v)\}.\]
+	We claim that $J$ is an independent set in $H$. 
+	Indeed, if $v_k,u_\ell\in J$ and  $(v_k,u_\ell) \in E(H)$ for some $k\in[\deg_G(v)]$, $\ell\in[\deg_G(u)]$ then $v\in d_G(u)$ by definition of $\delta_H(u)$. Since $I$ is an independent set however, both $u$ and $v$ are not in $I$, a contradiction. This demonstrates that $J$ is bonafide independent set. Moreover, 
+	\[\vol_H(J) = \sum_{v\in I}\sum_{k=1}^{\deg_G(u)} w_H(v_k) = \sum_{v\in I}\sum_{k=1}^{\deg_G(u)} \frac{1}{\deg_G(u)} = |I|.\]
+
+	Conversely, let $J$ be an independent set in $H$. We claim that there exists an independent $J'$ in $H$ with $\vol_H(J')\geq \vol_H(J)$ containing only vertices of the form $v_\ell$ for $\ell\geq 1$, i.e., not $v_0$. Initially, set $J'=J$ but suppose $v_0\in J$. Replace $v_0$ by $v_1,\dots,v_{\deg_G(v)}$ in $J'$.  None of the these vertices share edges, and aside from one another, $v_\ell$ and $v_0$ for $\ell>0$ have the same edge set. It follows that $J'$ remains an independent set. Moreover, since $w_H(v_0) < w_H(v_\ell)$ by construction, we have $\vol_H(J)< \vol_H(J')$. Let us remark further that if $J$ contains vertices $\{v_\ell\}_{\ell\in F}$ for some $F\subsetneq  [\deg_G(v)]$, then we may add the missing vertices $v_k$, $k\in [\deg_G(v)]\setminus F$ while maintaining the property that $J$ is an independent set (this follows since $\delta_H(v_k) = \delta_H(v_\ell)$ for all  $\ell,k\geq1$). We have thus argued that every maximal independent set in $H$ can be written in the form $J= \cup_{v\in I}\{v_k: 1\leq k\leq \deg_G(v)\}$ for some set $I\subset V(G)$. We now claim that $I$ is an independent set in $G$. The argument is similar to above: If not, then $u,v\in I$ with $u\sim v$, but this implies that $v_k\sim v_\ell$ in $H$ meaning that $J$ is not an independent set.  Additionally, as above, $\vol_H(J)=|I|$. Therefore, there exists an independent set $J$ in $H$ with $\vol_H(J)\geq k$ iff there exists an independent set $I$ in $G$ with $|I|\geq k$, concluding the argument. 
+\end{proof}
+
+This result allows us to conclude that certain optimizations problems in hyperacute simplices---thus convex polytopes in general---are \NP-hard. 
+
+\begin{lemma}
+	Let $\P$ be a convex polytope with vertex set $V$. The optimization problem 
+	\begin{alignat*}{2}
+	\min_{I\subset V, I\neq\emptyset} & \quad &&  \frac{\norm{\cent(\P_I)}_2^2}{|I|} \\
+	\text{s.t.}&  &&  \la \sv_i,\sv_j\ra=0,\; i,j\in I,
+	\end{alignat*}
+	is \NP-hard. In particular, it is \NP-hard whenever $\P$ is the combinatorial simplex of a graph. 
+\end{lemma}
+\begin{proof}
+	Let $\P$ be the combinatorial simplex of a graph $G$. Using that $\la \sv_i,\sv_j\ra = w(i,j)$, the condition that $\la \sv_i,\sv_j\ra =0$ for all $i,j\in I$ translates to $(i,j)\in E(G)$ for all $i,j\in I$. Moreover, Equation \eqref{eq:c(S_U)} in Section \ref{sec:S_G} gives us  
+	\begin{align*}
+	\frac{|I|}{\norm{c(\splx_I)}_2^2} = w_G(\delta I) = \vol(I),
+	\end{align*}
+	for $I$ an independent set. 
+	The above optimization problem can consequently be formulated as 
+	\[\max_{I\subset V(G)} \vol_G(I),\quad  \text{s.t.} \quad I \text{ is an independent set}.\]
+	which is precisely the \vwis problem. 
+	\end{proof}
+	
+We can play a similar game by using the relationships furnished by the normalized Laplacian as opposed to the combinatorial Laplacian. Doing this removes the normalizing factor of $|I|$ from the optimization problem in the previous result.  
+
+\begin{lemma}
+	Let $\P$ be a convex polytope with vertex set $V$. The optimization problem
+	\begin{alignat*}{2}
+	\min_{I\subset V, I\neq \emptyset} & \quad &&  {\norm{\cent(\P_I)}_2^2} \\
+	\text{s.t.}&  &&  \la \sv_i,\sv_j\ra=0,\; i,j\in I,
+	\end{alignat*}
+	is \NP-hard. In particular, it is hard for those polytopes and simplices with all vertices on the unit sphere. 
+\end{lemma}
+\begin{proof}
+	The proof is similar to the previous lemma. For $\P$ the normalized simplex of a graph $G$, the condition $\la \sv_i,\sv_j\ra=0$ once again implies that $I$ must be an independent set. Notice that for such an $I$, if $i\in I$ then $\delta(i) \cap I^c = \delta(i)$ (none of $i$'s neighbours are in $I$). Therefore, Equation \eqref{eq:Lnf(chiU)} yields 
+	\begin{align*}
+	\Lnf(\bchi_I)=\sum_{i\in I}\frac{1}{w(i)}\sum_{j\in I^c\cap \delta(i)} w(i,j) = \sum_{i\in I}\frac{w(i)}{w(i)} = |I|.
+	\end{align*}
+	Equation \eqref{eq:c(SnU)} then implies that 
+	\[\norm{c(\P_I)}_2^2=\frac{1}{|I|^2}\Lnf_G(\bchi_I)=\frac{1}{|I|},\]
+	so the optimization problem can be formulated as 
+	\[\max_{I\subset V(G)} |I|,\quad  \text{s.t.} \quad I \text{ is an independent set},\]
+	which is the \iset problem. 
 \end{proof}
 
 
-\paragraph{Independent Set}
-Let $I\subset V$ be an independent set in $G$, i.e., if $i,j\in I$ then $(i,j)\notin E$. Consider 
-\begin{align*}
-    \Lf(\chi_I) = \sum_{i\sim j}w(i,j)(\chi_I(i)-\chi_I(j))^2 = \sum_{i\in I}\sum_{j:j\sim i} w(i,j) = \sum_{i\in I}w(i)=W(\delta I),
-\end{align*}
-where the second and fourth inequalities follows from the fact that $I$ is an independent set. 
-
-Suppose we assign each vertex $i$ a weight $f(i)\geq 0$. The \mwis problem consists of maximizing $f(I)\equiv \sum_{i\in I}f(i)$ over all independent sets $I$. Clearly \mwis is NP-hard, seeing as it reduces to the usual independent set maximization problem by taking $f(i)=1$ for all $i$. 
-
-Suppose $f(i)=\alpha w(i)$ for all $i$, i.e., we assign the vertex weights as a linear function of their total edge weight. For an independent set $I$ we have 
-\begin{align*}
-    f(I) = \alpha w(I)= \alpha W(\delta I) = \alpha \frac{|I|}{\norm{c(\splx_I)}_2^2}.
-\end{align*}
-In the simplex, the criteria that $I$ is an independent set translates to the property that $\la \sv_i,\sv_j\ra =0$ for all $i,j\in I$. We can thus say something \TODO \note{What? Need to decide whether problem is easy or hard} about the constrained optimization problem 
-\begin{alignat*}{2}
-    \min_I & \quad && \frac{\norm{c(\splx_I)}_2^2}{|I|} \\
-    \text{s.t.} & && \la \sv_i,\sv_j\ra =0, \;i,j\in I.
-\end{alignat*}
-
-The normalized Laplacian, meanwhile, removes the weights from consideration. For an independent set $I$ and a vertex $i\in I$ note that $W(\delta(i)\cap I^c)=w(i)$ since $\delta(i)\cap I^c=\delta(i)$ by definition of an independent set. Therefore, Equation \eqref{eq:Lnf(chiU)} yields 
-\begin{align*}
-    \Lnf(\chi_I)=\sum_{i\in I}\frac{W(\delta(i)\cap I^c)}{w(i)} = |I|,
-\end{align*}
-implying that 
-\[\norm{c(\splxn_I)}_2^2=\frac{1}{|I|^2}\Lnf(\chi_I)=\frac{1}{|I|}.\]
-Since maximizing the cardinality of an independent set is an NP-hard problem, we have that 
-
-\begin{alignat*}{2}
-\max_I & \quad &&  \norm{c(\splxn_I)}_2^2 \\
- \text{s.t.}&  &&  \la \sv_i,\sv_j\ra=0,\; i,j\in I,
-\end{alignat*}
-is an NP-hard problem.
-
-
+\note{Need to say more about this}
 \begin{theorem}
 Deciding whether two polytopes are isomorphic is Graph-Isomorphism-Hard. Moreover, subpolytope isomorphism is NP-hard. 
 \end{theorem}
+\begin{proof}
+	Let two graphs $G_1$ and $G_2$ be given. Compute their corresponding inverse simplices $\splx_1^+$ and $\splx_2^+$. If $\splx_1^+\cong\splx_2+$, then there exists a (linear) mapping $\T$ between the vertices such that $\T \sv_1^+=\sv_2^+$ for all $\sv_1^+\in \Sv(\splx_1^+)$ and $\sv_2^+\in \Sv(\splx_2^+)$. In this case, the matrix obtained by the dot products of the vectors $\T\Sv(\splx_1^+)$ yields $\L_{G_1}$, implying that $G_1\cong G_2$.  
+\end{proof}
 
 The first result was also proved in \cite{kaibel2008complexity}. 
 
-\note{Formulate MST in terms of hyperacute simplices. Seems somewhat surprising that this high-dimensional geometric problem is solvable in poly time. On the other hand, what seems like a related problem in "geometric" space, Hamiltonian cycle/path, is hard. Probably worth mentioning but not thinking too much about.}
 
-\section{There and Back Again: Transitioning Between Simplices}
-In this section we investigate the computational aspects of transitioning between various simplices and between the graph and its simplices. We are interested in obtaining computational results which are strictly sub-cubic in time, i.e., $o(n^3)$ because in cubic time one can solve linear systems and compute eigendecompositions. Thus, for instance, given $G$ it is trivial to compute all of $\splx_G,\splx^+_G,\splxn_G$, and $\splxn_G^+$ by finding the eigendecomposition (which takes cubic time) of $\L_G$ from which we can construct the relevant vertex set.  Moreover, starting with a simplex with vertex set $\Sv$, one can compute $\Sv^\tp\Sv$ in cubic time. If the simplex is the simplex if a graph then this yields the Laplacian (or the pseudoinverse of the Laplacian) of the graph, which as above allows us to compute any of the simplices. In what follows therefore, we attempt to beat the barrier of $O(n^3)$. 
+\section{There and Back Again: A Tale of Graphs to Simplices}
+In this section we investigate the computational aspects of transitioning between various simplices and between the graph and its simplices. We are interested in obtaining computational results which are strictly sub-cubic in time, i.e., $o(n^3)$ because in cubic time one can solve linear systems and compute eigendecompositions. 
+
+
+We let $M(n)$ denote the complexity of the eigendecomposition problem. It is known that  $M(n)\tOmega(n^3 + n\log^2 \log \eps)$ to obtain a relative error\footnote{We note that the relative error is a necessary parameter of any algorithm because eigenvalues may be irrational.} of $2^{-\eps}$, while there exists algorithms which run in time $O(n^3 + n\log^2 \log \eps)$~\cite{pan1999complexity}. 
+We let $L(n)$ denote the runtime of \lapdecomp, and we assume that $L(n) =\omega(n^2)$. \note{This must be the case}. 
+
+\note{fix this section}
+ Thus, for instance, given $G$ it is trivial to compute all of $\splx_G,\splx^+_G,\splxn_G$, and $\splxn_G^+$ by finding the eigendecomposition of $\L_G$ from which we can construct the relevant vertex set.  Moreover, starting with a simplex with vertex set $\Sv$, one can compute $\Sv^\tp\Sv$ in cubic time. If the simplex is the simplex if a graph then this yields the Laplacian (or the pseudoinverse of the Laplacian) of the graph, which as above allows us to compute any of the simplices. In what follows therefore, we attempt to beat the barrier of $O(n^3)$. 
 
 A question which is raised by the above discussion is one of certifying whether a given simplex $\ssplx$ is the combinatorial, normalized, or one of their duals of some graph $G$. Again, in cubic time we can compute $\Sv^\tp\Sv$ and thus decide whether $\Sv^\tp\Sv$ is equal to $\L_G$ for some graph $G$. In quadratic time we can check whether all the angles $\theta_{ij}$ between the faces $\ssplx_\ic$ and $\ssplx_\jc$ are non-obtuse, in which case $\ssplx$ is the inverse simplex of some graph. Beyond computing $\Sv(\ssplx)^\tp \Sv(\ssplx)$ however, it's not clear how to obtain the original graph or the combinatorial simplex. 
 
-\subsection{Between \texorpdfstring{$\splx$}{the combinatorial} and \texorpdfstring{$\splxn$}{normalized simplex.}}
+\subsection{Precise Mappings}
+We begin by exploring the complexity of transitioning between the different objects \emph{precisely}---e.g., given $G$ compute its precise combinatorial simplex. The subsequent  section will explore various approximations. 
+
+\begin{figure}
+	\centering
+	\renewcommand{\arraystretch}{1.5}	\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|}
+		\hline 
+		\multicolumn{3}{|c|}{} & \multicolumn{4}{c|}{\textsf{V}} & \multicolumn{4}{c|}{\textsf{H}}\\
+	\cline{3-11} 
+\multicolumn{2}{|r|}{From/To} & $G$ & $\splx_G$ & $\splx_G^+$ & $\splxn_G$ & $\splxn_G^+$ & $\splx_G$ & $\splx_G^+$ & $\splxn_G$ & $\splxn_G^+$ \\
+\cline{2-11} 
+& $G$ & --- &$\Omega(n^\omega)$ &$\Omega(n^\omega)$ &$\Omega(n^\omega)$ &$\Omega(n^\omega)$ & $\Omega(n^\omega)$ & $\Omega(n^\omega)$ &  & \\
+\hline 
+\multirow{4}{0.4cm}{\textsf{V}} & $\splx_G$ & $O(n^3)$ & --- & $\Omega(n^\omega)$ & $O(n^2)$ & & $\Omega(n^\omega)$ & $O(1)$ & & \\
+\cline{2-11}
+& $\splx_G^+$ & & $\Omega(n^\omega)$ & --- & & & $O(1)$ &$\Omega(n^\omega)$ & & \\
+\cline{2-11}
+& $\splxn_G$ & & ?  / $O(n^2)$ &  & --- & $\Omega(n^\omega)$ & & & &\\
+\cline{2-11}
+& $\splxn_G^+$ & & & &$\Omega(n^\omega)$ & --- & & & & \\
+\hline 
+\multirow{4}{0.4cm}{\textsf{H}} & $\splx_G$ & & $\Omega(n^\tau)$ & $O(n^2)$ & & &--- & & & \\
+\cline{2-11}
+& $\splx_G^+$ & & $O(n^2)$ & $\Omega(n^\tau)$ & & & & --- & & \\
+\cline{2-11}
+& $\splxn_G$ & & & & &  & & & --- &\\
+\cline{2-11}
+& $\splxn_G^+$ & & & & & & & & & --- \\
+\hline 
+	\end{tabular}
+	\renewcommand{\arraystretch}{1}
+\caption{Summary of results for precise mappings. A slash refers to a difference in runtimes when the graph is available versus when it isn't. The quantity before the slash indicates the runtime \emph{without} the graph, after the slash the runtime \emph{with} the graph. A question mark indicates that the runtime isn't known.}
+\end{figure}
+
+The results obtained in this section are summarized in Figure 
+
+\paragraph{Between \texorpdfstring{$\splx$}{the combinatorial} and \texorpdfstring{$\splxn$}{normalized simplex}.}
 Let us consider the computational complexity of transitioning between $\splx$ and $\splxn$ and vice versa. Let $\phi_{ij}$ (resp., $\phin_{ij}$) be the angle between $\sv_i$ and $\sv_j$ (resp., $\svn_i$ and $\svn_j$). Using the typical formula for the dot product in Euclidean space we have
 \begin{equation*}
 \cos\phi_{ij} = \frac{\la \sv_i,\sv_j\ra }{\norm{\sv_i}_2\norm{\sv_j}_2} = \frac{\L_G(i,j)}{\sqrt{w(i)w(j)}} = \Ln_G(i,j), \quad\text{and}\quad \cos\phin_{ij} = \frac{\la \svn_i,\svn_j\ra }{\norm{\svn_i}_2\norm{\svn_j}_2} = \Ln_G(i,j),
@@ -92,51 +206,80 @@ Of course, if we are given the graph then we have access to $\sqrt{w(i)}$ and ca
 
 
 
-\subsection{\texorpdfstring{$\splx$}{The combinatorial} and \texorpdfstring{$\splx^+$}{normalized simplex}.}
+\paragraph{\texorpdfstring{$\splx$}{The combinatorial} and \texorpdfstring{$\splx^+$}{normalized simplex}.}
 
 Let us suppose that we can generate $\splx^+$ from $\splx$ (or vice versa) in time $O(g(n))$. Note that for $i<n$, 
 \[\lambda_i = \frac{\lambda_i^{1/2} \vp_j(i)}{\lambda_i^{-1/2}\vp_j(i)} = \frac{\sv_i(j)}{\sv_i^+(j)}, \quad \text{and} \quad \vp_i(j) = \frac{\sv_j(i)}{\lambda_i^{1/2}},\]
 hence knowledge of $\{\sv_i\}$ and $\{\sv_i^+\}$ yields knowledge of the eigendecomposition of the underlying graph $G$ in $O(n^2)$ time ($O(n)$ to determine all the  eigenvalues and $O(n^2)$ to determine the eigenvectors). The same argument holds \emph{mutatis mutandis} for the normalized Laplacian. 
 
 \begin{lemma}
-	If $\splx^+$  (resp., $\splxn^+$) can be generated from $\splx$ (resp., $\splxn$) or vice versa in time $O(g(n))$, then \lapdecomp can be solved in time $O(g(n) + n^2)$ for arbitrary weighted graphs. 
+	\label{lem:S_to_S^+_vdesc}
+	If a \vdesc of $\splx^+$  (resp., $\splxn^+$) can be generated from a \vdesc of $\splx$ (resp., $\splxn$) or vice versa in time $O(g(n))$, then \lapdecomp can be solved in time $O(g(n) + n^2)$ for arbitrary weighted graphs. Consequently $g(n) = \Omega(n^\omega)$.  
 \end{lemma}
-
-It is therefore unlikely that $g(n) = o(n^2)$. 
 
 An alternate way of seeing that constructing the inverse simplex from its dual is computationally challenging is to recall from Section \ref{sec:S_G} that $\splx_\ic$ is contained in the hyperplane $\{\x\in\R^{n-1}:\la \x,\sv_i^+\ra = -1/n\}$ (Lemma \ref{lem:SUsubset})
  and that that $\sv_i^+$ is perpendicular to $\splx_\ic$ (Lemma \ref{lem:faces_orthogonal}). Hence, computing the inverse simplex would imply that we had computed normal vectors to $n$ hyperplanes, the typical procedure for which typically involves computing an $n\times n$ determinant and requires  $O(n^3)$ time. 
  
- One might at least hope that we could approximate the inverse simplex given the original simplex. 
+ We now consider transitioning between different descriptions of $\splx$ and $\splx^+$. Let us recall that the \hdesc of $\splx$ and $\splx^+$ yield immediate insight into the vertices of its inverse as $\splx=\cap_i \{\x:\la \x,\sv_i^+\ra \geq -1/n\}$ and $\splx^+=\cap_i\{\x:\la\x,\sv_i\ra \geq -1/n\}$ (Equations \eqref{eq:splx_bigcapH_i} and \eqref{eq:splx^+_bigcapH_i}). Consequently, given given a \hdesc of one of these simplices, the vertices of its inverse are recoverable in quadratic time. This yields the following result. 
+ 
+ \begin{lemma}
+ 	\label{lem:S_vdesc_to_hdesc}
+	 Suppose we can compute an \hdesc of $\splx$ (resp., $\splx^+$) )given its \vdesc in time $t(n)$. Then a \vdesc of $\splx^+$ (resp., $\splx$) is recoverable in time $t(n) + O(n^2)$, implying by Lemma \ref{lem:S_to_S^+_vdesc} that $t(n) = \Omega(n^\omega)$. 
+ \end{lemma}
+
+We also note that a consequence of the relationship between the vertices of $\splx$ and the \hdesc of $\splx^+$ that given \vdesc of $\splx$ or $\splx^+$, we have immediate access to the \hdesc of its inverse. 
+
+
+\paragraph{Between \texorpdfstring{$G$}{the graph} and \texorpdfstring{$\splx$ or $\splxn$}{its simplices}.}
+Similar kinds of results hold  in these cases. Assume that we obtain  the simplex $\splx_G$ from $G$. Notice  that \[\sum_{i=1}^{n-1}   \sv_i(j)^2 = \lambda_j \sum_{i=1}^{n-1} \vp_j(i) = \lambda_j\bigg(1-\frac{1}{n}\bigg),\]
+so 
+\[\lambda_j = \frac{\sum_{i=1}^{n-1}\sv_i(j)}{1-1/n},\]
+which can be computed  in $O(n)$  time. Then, as above, knowledge of the eigenvalues furnishes knowledge  of the eigenvectors in $O(n^2)$ time. Running almost identical arguments for $\splx^+$, $\splxn$, or $\splxn^+$ yields an almost equivalent result as in the previous section.  
+
+\begin{lemma}
+	\label{lem:G_to_S_and_Sn}
+	If either the combinatorial or normalized simplex or their  inverses can be generated from a graph $G$ in $O(g(n))$ time, then \lapdecomp can be solved in time $O(g(n) + n^2)$ for arbitrary weighted graphs. Consequently $g(n) = \Omega(n^\omega)$. 
+\end{lemma}
+
+The information encoded in the dot products between vertices allow us to make queries regarding the edge weights, but  each query takes $O(n)$ time since we must compute a dot product between two vectors of length $n-1$. Hence, re-constructing the graph or its Laplacian takes $O(n^3)$ if we wish do it precisely. 
+
+Let us now consider transitioning between $G$ and the \hdesc of a simplex.  The following lemma summarizes the consequences of this relationship. 
+
+\begin{lemma}
+	Given a graph $G$ suppose an \hdesc of $\splx$ (resp., $\splx^+$) can be generated in time $g(n)$. Then a \vdesc of $\splx^+$ (resp., $\splx$ can be obtained in time $O(g(n) + n^2)$ starting from $G$. Consequently, by Lemma \ref{lem:G_to_S_and_Sn}, $g(n)=\Omega(n^\omega)$. 
+\end{lemma}
+
+
+\paragraph{Between different descriptions of the simplices.}
+
+Here we investigate  the interplay between the various different descriptions of the simplices. 
+
+
+The following is an immediate consequence of Lemma \ref{lem:hdesc_dual}.  
+
+\begin{corollary}
+	\label{cor:hdesc_S_to_S+}
+	If $\ssplx$ is a centred simplex in \hdesc, we can obtain a \vdesc of $\ssplx^D$ in quadratic time. In particular, given  an \hdesc of the combinatorial simplex $\splx_G$ (resp., inverse combinatorial  simplex $\splx_G^+$)  of a graph $G$, a \vdesc of $\splx_G^+$ (resp., $\splx_G$)  is obtainable in quadratic time. 
+\end{corollary}
+
+Due to the fact that $\splxn_G^+$ is not the dual of $\splxn_G$ Lemma \ref{lem:hdesc_dual} is less useful here.  
+
+\begin{lemma}
+	\label{lem:hdesc_to_vdesc}
+	Generating an \vdesc of the simplex $\splx$ given its \hdesc requires time $\Omega(n^\tau)$ for any $\splx\in\{\splx_G,\splx_G^+\}$. 
+\end{lemma}
+\begin{proof}
+	Consider $\splx_G$; the argument is similar for $\splx_G^+$. Suppose obtaining the \hdesc takes time $t(n)$. Due to the properties of the hyperplane representations, this yields access to both sets of vertices in time $t(n)+O(n^2)$. Using the arithmetic in the previous section, this implies that we can obtain the eigenvalues and eigenvectors of $G$ in time $O(n^2)$, i.e., we can solve \lapdecomp in time $t(n)+O(n^2)$ implying that $t(n)=\Omega(n^\tau)$. 
+\end{proof}
 
 
 
 
 
 
+\subsection{Approximations} 
 
-
-
-
-
-\note{Therefore, if we can show that: For any hyperplane there exists a simplex with a face parallel to the hyperlane, then we can obtain a lower bound in terms of computing normals to hyperplanes.} 
-
-We can, however, estimate the distance matrix of the inverse simplex by appealing to the result of Spielman and Teng~\cite{spielman2011graph} demontrating how to quickly approximate the effective resistances. As we've noted before, $w(i) = \norm{\sv_i}_2^2$ can be computed in linear time, hence $W^{1/2}$ can be computed in $O(n^2)$ time. The number of edges c
-
-
-
-
-
-
-
-
-\subsection{Between \texorpdfstring{$G$}{the graph} and \texorpdfstring{$\splx$ or $\splxn$}{its simplices}}
-
-
-
-\section{Approximations and Embeddings} 
-
-\subsection{Low Rank Approximation}
+\paragraph{Low Rank Approximation}
 
 \note{Define low rank approximation}
 Let us suppose the we have obtained a low rank---$k$, say---approximation of $\L_G$, written $\tL$. We might then ask several questions: 
@@ -198,7 +341,7 @@ which does not look to be necessarily non-positive.
 
 
 
-\subsection{Embedding \texorpdfstring{$\splx$}{the simplex} in lower dimensions}
+\paragraph{Embedding \texorpdfstring{$\splx$}{the simplex} in lower dimensions}
 Johnson-Lindenstrauss Lemma~\cite{johnson1984extensions,dasgupta2003elementary}: 
 
 \begin{theorem}[Johnson-Lindenstrauss Lemma]
@@ -277,7 +420,7 @@ Let this  graph be $G'$. Then  $\L^+_{G'}=\L_G^{+/2}$,  implying that by Spielma
 
 
 
-\subsection{Resistive Embedding}
+\paragraph{Resistive Embedding}
 
 Notice that the effective resistance is encoded naturally by the simplex $\splx(G)$: 
 \[\effr(i,j) = \la \bchi_i-\bchi_j,\L_G^+(\bchi_i-\bchi_j\ra = \la \Sv^+(\bchi_i,\bchi_j),\Sv^+(\bchi_i-\bchi_j)\ra = \norm{\sv_i^+-\sv_j^+}_2^2.\]

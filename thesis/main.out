@@ -25,7 +25,7 @@
 \BOOKMARK [1][-]{section.3.2}{Simplices of Special Graphs}{chapter.3}% 25
 \BOOKMARK [2][-]{subsection.3.2.1}{Examples}{section.3.2}% 26
 \BOOKMARK [1][-]{section.3.3}{Properties of the Combinatorial Simplex and its inverse}{chapter.3}% 27
-\BOOKMARK [1][-]{section.3.4}{Properties of the normalized Simplex}{chapter.3}% 28
+\BOOKMARK [1][-]{section.3.4}{Properties of the normalized Simplex and and its inverse}{chapter.3}% 28
 \BOOKMARK [1][-]{section.3.5}{Construction via Extended Menger and Gramian}{chapter.3}% 29
 \BOOKMARK [1][-]{section.3.6}{Inequalities}{chapter.3}% 30
 \BOOKMARK [1][-]{section.3.7}{Quadrics}{chapter.3}% 31
@@ -33,15 +33,11 @@
 \BOOKMARK [2][-]{subsection.3.8.1}{Discrete Time Random Walks}{section.3.8}% 33
 \BOOKMARK [2][-]{subsection.3.8.2}{Continuous Time Random Walks}{section.3.8}% 34
 \BOOKMARK [2][-]{subsection.3.8.3}{mixing time}{section.3.8}% 35
-\BOOKMARK [0][-]{chapter.4}{Algorithmic Implications}{}% 36
-\BOOKMARK [1][-]{section.4.1}{Computational Complexity}{chapter.4}% 37
-\BOOKMARK [1][-]{section.4.2}{There and Back Again: Transitioning Between Simplices}{chapter.4}% 38
-\BOOKMARK [2][-]{subsection.4.2.1}{Between the combinatorial and normalized simplex.}{section.4.2}% 39
-\BOOKMARK [2][-]{subsection.4.2.2}{The combinatorial and normalized simplex.}{section.4.2}% 40
-\BOOKMARK [2][-]{subsection.4.2.3}{Between the graph and its simplices}{section.4.2}% 41
-\BOOKMARK [1][-]{section.4.3}{Approximations and Embeddings}{chapter.4}% 42
-\BOOKMARK [2][-]{subsection.4.3.1}{Low Rank Approximation}{section.4.3}% 43
-\BOOKMARK [2][-]{subsection.4.3.2}{Embedding the simplex in lower dimensions}{section.4.3}% 44
-\BOOKMARK [2][-]{subsection.4.3.3}{Resistive Embedding}{section.4.3}% 45
-\BOOKMARK [0][-]{chapter.5}{Conclusion}{}% 46
-\BOOKMARK [1][-]{section.5.1}{Open Problems and Future Directions}{chapter.5}% 47
+\BOOKMARK [0][-]{chapter.4}{Algorithmics}{}% 36
+\BOOKMARK [1][-]{section.4.1}{Preliminaries}{chapter.4}% 37
+\BOOKMARK [1][-]{section.4.2}{Computational Complexity}{chapter.4}% 38
+\BOOKMARK [1][-]{section.4.3}{There and Back Again: A Tale of Graphs to Simplices}{chapter.4}% 39
+\BOOKMARK [2][-]{subsection.4.3.1}{Precise Mappings}{section.4.3}% 40
+\BOOKMARK [2][-]{subsection.4.3.2}{Approximations}{section.4.3}% 41
+\BOOKMARK [0][-]{chapter.5}{Conclusion}{}% 42
+\BOOKMARK [1][-]{section.5.1}{Open Problems and Future Directions}{chapter.5}% 43

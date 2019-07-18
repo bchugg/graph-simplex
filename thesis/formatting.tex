@@ -22,6 +22,8 @@
 \theoremstyle{defn}
 \newtheorem{definition}{Definition}[chapter]
 \renewcommand{\qedsymbol}{$\boxtimes$}
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}[chapter]
 
 % LINKS
 \definecolor{darkblue}{RGB}{19,69,150}
@@ -87,7 +89,7 @@ citecolor=darkblue
 	\pagenumbering{arabic}
 	\let\secsymbol\S
 \titleformat{\section}[block]{\normalfont\bfseries}{\secsymbol\thesection.}{0.5em}{\centering}[]
-\titleformat{\subsection}[block]{\normalfont\it}{\thesubsection.}{0.5em}{\centering}[]
+\titleformat{\subsection}[block]{\normalfont\it}{\thesubsection.}{0.5em}{\centering}[\vspace{-0.4cm}\rule{\titlewidth}{0.5pt}\vspace{0.3cm}]
 \titleformat
 {\chapter}[block]{\sc}{\centering Chapter \ \thechapter}{0.1in} 
 {

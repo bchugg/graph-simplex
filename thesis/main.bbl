@@ -11,6 +11,11 @@ Sheldon~Jay Axler.
 \newblock {\em Linear algebra done right}, volume~2.
 \newblock Springer, 1997.
 
+\bibitem[BFM98]{bremner1998primal}
+David Bremner, Komei Fukuda, and Ambros Marzetta.
+\newblock Primal—dual methods for vertex and facet enumeration.
+\newblock {\em Discrete \& Computational Geometry}, 20(3):333--357, 1998.
+
 \bibitem[BH12]{barata2012moore}
 Jo{\~a}o Carlos~Alves Barata and Mahir~Saleh Hussein.
 \newblock The {M}oore--{P}enrose pseudoinverse: A tutorial review of the
@@ -65,15 +70,37 @@ Miroslav Fiedler.
 \newblock {\em Matrices and graphs in geometry}.
 \newblock Number 139. Cambridge University Press, 2011.
 
+\bibitem[GKPS67]{grunbaum1967convex}
+Branko Gr{\"u}nbaum, Victor Klee, Micha~A Perles, and Geoffrey~Colin Shephard.
+\newblock Convex polytopes.
+\newblock 1967.
+
 \bibitem[JL84]{johnson1984extensions}
 William~B Johnson and Joram Lindenstrauss.
 \newblock Extensions of lipschitz mappings into a hilbert space.
 \newblock {\em Contemporary mathematics}, 26(189-206):1, 1984.
 
+\bibitem[Kar72]{karp1972reducibility}
+Richard~M Karp.
+\newblock Reducibility among combinatorial problems.
+\newblock In {\em Complexity of computer computations}, pages 85--103.
+  Springer, 1972.
+
+\bibitem[KP03]{kaibel2003some}
+Volker Kaibel and Marc~E Pfetsch.
+\newblock Some algorithmic problems in polytope theory.
+\newblock In {\em Algebra, geometry and software systems}, pages 23--47.
+  Springer, 2003.
+
 \bibitem[KS08]{kaibel2008complexity}
 Volker Kaibel and Alexander Schwartz.
 \newblock On the complexity of isomorphism problems related to polytopes.
 \newblock {\em Graphs and Combinatorics}, 2008.
+
+\bibitem[KT06]{kleinberg2006algorithm}
+Jon Kleinberg and Eva Tardos.
+\newblock {\em Algorithm design}.
+\newblock Pearson Education India, 2006.
 
 \bibitem[Men31]{menger1931new}
 Karl Menger.
@@ -94,6 +121,12 @@ Eliakim~H Moore.
 Naoki Masuda, Mason~A Porter, and Renaud Lambiotte.
 \newblock Random walks and diffusion on networks.
 \newblock {\em Physics reports}, 716:1--58, 2017.
+
+\bibitem[PC99]{pan1999complexity}
+Victor~Y Pan and Zhao~Q Chen.
+\newblock The complexity of the matrix eigenproblem.
+\newblock In {\em Proceedings of the thirty-first annual ACM symposium on
+  Theory of computing}, pages 507--516. ACM, 1999.
 
 \bibitem[Pen55]{penrose1955generalized}
 Roger Penrose.
@@ -121,6 +154,11 @@ Daniel Spielman.
 Daniel~A Spielman and Nikhil Srivastava.
 \newblock Graph sparsification by effective resistances.
 \newblock {\em SIAM Journal on Computing}, 40(6):1913--1926, 2011.
+
+\bibitem[Ste22]{steinitz1922polyeder}
+Ernst Steinitz.
+\newblock Polyeder und raumeinteilungen.
+\newblock {\em Encyk der Math Wiss}, 12:38--43, 1922.
 
 \bibitem[V{\etalchar{+}}13]{vishnoi2013lx}
 Nisheeth~K Vishnoi et~al.

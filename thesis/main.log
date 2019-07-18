@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  10 JUL 2019 13:05
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  18 JUL 2019 15:08
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1370,6 +1370,9 @@ Package graphics Info: Driver file: pdftex.def on input line 96.
 \Gin@req@height=\dimen169
 \Gin@req@width=\dimen170
 )
+(/usr/local/texlive/2016/texmf-dist/tex/latex/multirow/multirow.sty
+\bigstrutjot=\dimen171
+)
 (./macros.tex) (./formatting.tex
 \c@theorem=\count149
 \c@lemma=\count150
@@ -1377,7 +1380,8 @@ Package graphics Info: Driver file: pdftex.def on input line 96.
 \c@claim=\count152
 \c@observation=\count153
 \c@definition=\count154
-Package hyperref Info: Option `colorlinks' set `true' on input line 32.
+\c@remark=\count155
+Package hyperref Info: Option `colorlinks' set `true' on input line 34.
 ) (./main.aux (./frontmatter/titlepage.aux)
 (./frontmatter/abstract.aux) (./frontmatter/laysummary.aux)
 (./frontmatter/acknowledgements.aux) (./frontmatter/nomenclature.aux)
@@ -1385,20 +1389,20 @@ Package hyperref Info: Option `colorlinks' set `true' on input line 32.
 (./algorithmic_implications.aux) (./conclusion.aux))
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -1408,15 +1412,15 @@ LaTeX Font Info:    ... okay on input line 24.
 * layout: <same size as paper>
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
 * modes: 
-* h-part:(L,W,R)=(72.26999pt, 469.75502pt, 72.26999pt)
-* v-part:(T,H,B)=(72.26999pt, 650.43001pt, 72.26999pt)
+* h-part:(L,W,R)=(86.72377pt, 440.84746pt, 86.72377pt)
+* v-part:(T,H,B)=(86.72377pt, 621.52245pt, 86.72377pt)
 * \paperwidth=614.295pt
 * \paperheight=794.96999pt
-* \textwidth=469.75502pt
-* \textheight=650.43001pt
-* \oddsidemargin=0.0pt
-* \evensidemargin=0.0pt
-* \topmargin=-31.8738pt
+* \textwidth=440.84746pt
+* \textheight=621.52245pt
+* \oddsidemargin=14.45378pt
+* \evensidemargin=14.45378pt
+* \topmargin=-17.42001pt
 * \headheight=14.0pt
 * \headsep=19.8738pt
 * \topskip=11.0pt
@@ -1436,31 +1440,31 @@ LaTeX Font Info:    ... okay on input line 24.
 
 (/usr/local/texlive/2016/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count155
-\scratchdimen=\dimen171
+\scratchcounter=\count156
+\scratchdimen=\dimen172
 \scratchbox=\box45
-\nofMPsegments=\count156
-\nofMParguments=\count157
+\nofMPsegments=\count157
+\nofMParguments=\count158
 \everyMPshowfont=\toks28
-\MPscratchCnt=\count158
-\MPscratchDim=\dimen172
-\MPnumerator=\count159
-\makeMPintoPDFobject=\count160
+\MPscratchCnt=\count159
+\MPscratchDim=\dimen173
+\MPnumerator=\count160
+\makeMPintoPDFobject=\count161
 \everyMPtoPDFconversion=\toks29
 )
 \AtBeginShipoutBox=\box46
-Package hyperref Info: Link coloring ON on input line 24.
+Package hyperref Info: Link coloring ON on input line 26.
  (/usr/local/texlive/2016/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 
 (/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
-\c@section@level=\count161
+\c@section@level=\count162
 )
-LaTeX Info: Redefining \ref on input line 24.
-LaTeX Info: Redefining \pageref on input line 24.
-LaTeX Info: Redefining \nameref on input line 24.
+LaTeX Info: Redefining \ref on input line 26.
+LaTeX Info: Redefining \pageref on input line 26.
+LaTeX Info: Redefining \nameref on input line 26.
 
 (./main.out) (./main.out)
 \@outlinefile=\write3
@@ -1489,7 +1493,7 @@ File: block.tss 2016/03/15
 
 
 (./frontmatter/titlepage.tex
-<figures/oxford_logo.png, id=192, 116.1138pt x 138.7584pt>
+<figures/oxford_logo.png, id=176, 116.1138pt x 138.7584pt>
 File: figures/oxford_logo.png Graphic file (type png)
 
 <use figures/oxford_logo.png>
@@ -1513,7 +1517,7 @@ LaTeX Font Warning: Font shape `OT1/cmr/bx/sc' undefined
  been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.31 \include{frontmatter/abstract}
+l.33 \include{frontmatter/abstract}
                                     [1
 
 
@@ -1568,7 +1572,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [7
 
 
-]
+] [8]
 \openout2 = `introduction.aux'.
 
  (./introduction.tex
@@ -1598,127 +1602,214 @@ Chapter 2.
 
 
 ]
-Overfull \hbox (79.73486pt too wide) in paragraph at lines 39--40
-[]\OT1/cmr/m/n/10.95 Suppose $\OMS/cmsy/m/n/10.95 f\OT1/cmr/bx/sc/10.95 u[]\OMS
-/cmsy/m/n/10.95 g$ \OT1/cmr/m/n/10.95 and $\OMS/cmsy/m/n/10.95 f[][]g$ \OT1/cmr
-/m/n/10.95 are biorthog-o-nal bases. Fix $\OML/cmm/m/it/10.95 i \OMS/cmsy/m/n/1
-0.95 2 \OT1/cmr/m/n/10.95 [\OML/cmm/m/it/10.95 n\OT1/cmr/m/n/10.95 ]$. By in-de
--pen-dence, $[](\OT1/cmr/bx/sc/10.95 v[]\OML/cmm/m/it/10.95 ; [] ; \OT1/cmr/bx/
-sc/10.95 v[]\OML/cmm/m/it/10.95 ; \OT1/cmr/bx/sc/10.95 v[]\OML/cmm/m/it/10.95 ;
- [] ; \OT1/cmr/bx/sc/10.95 v[]\OT1/cmr/m/n/10.95 )$
+Overfull \hbox (22.93858pt too wide) in paragraph at lines 43--44
+[]\OT1/cmr/m/n/10.95 (\OT1/cmr/bx/sc/10.95 v[]\OML/cmm/m/it/10.95 ; [] ; \OT1/c
+mr/bx/sc/10.95 v[]\OML/cmm/m/it/10.95 ; \OT1/cmr/bx/sc/10.95 v[]\OML/cmm/m/it/1
+0.95 ; [] ; \OT1/cmr/bx/sc/10.95 v[]\OT1/cmr/m/n/10.95 )$ is a hyperplane---tha
+t is, $[]([](\OT1/cmr/bx/sc/10.95 v[]\OML/cmm/m/it/10.95 ; [] ; \OT1/cmr/bx/sc/
+10.95 v[]\OML/cmm/m/it/10.95 ; \OT1/cmr/bx/sc/10.95 v[]\OML/cmm/m/it/10.95 ; []
+ ; \OT1/cmr/bx/sc/10.95 v[]\OT1/cmr/m/n/10.95 ))[] =
  []
 
-[4] [5] [6] [7] [8] [9]
+[4]
+Overfull \hbox (8.8533pt too wide) in paragraph at lines 74--75
+\OT1/cmr/m/n/10.95 Moore-Penrose pseudo-inverse: Nice overview by Barata [[]]. 
+In-tro-duced by Moore [[]],
+ []
+
+
+Overfull \hbox (5.05112pt too wide) in paragraph at lines 74--75
+\OT1/cmr/m/n/10.95 re-dis-cov-ered by Pen-rose [[], []]. Pseu-doin-verse of Lap
+la-cian dis-cussed by Van Meighem
+ []
+
+[5] [6] [7] [8] [9] [10]
 <../figures/simplices.png, id=416, 420.57124pt x 155.58125pt>
 File: ../figures/simplices.png Graphic file (type png)
 
 <use ../figures/simplices.png>
-Package pdftex.def Info: ../figures/simplices.png used on input line 301.
+Package pdftex.def Info: ../figures/simplices.png used on input line 306.
 (pdftex.def)             Requested size: 252.3447pt x 93.34946pt.
- [10]
-Overfull \hbox (1.89871pt too wide) in paragraph at lines 334--335
-[][]\OT1/cmr/m/sc/10.95 Definition \OT1/cmr/m/n/10.95 2.4\OT1/cmr/m/sc/10.95 . 
-[]\OT1/cmr/m/n/10.95 A \OT1/cmr/m/it/10.95 sim-plex $\OMS/cmsy/m/n/10.95 S$ \OT
-1/cmr/m/n/10.95 in $\U/msb/m/n/10.95 R[]$ \OT1/cmr/m/n/10.95 is the con-vex hul
-l of $\OML/cmm/m/it/10.95 n$ \OT1/cmr/m/n/10.95 affinely in-de-pen-dent vec-tor
-s $[][]\OML/cmm/m/it/10.95 ; [] ; [][]$\OT1/cmr/m/n/10.95 .
- []
-
-[11 <../figures/simplices.png>]
-<../figures/simplex_faces.png, id=434, 420.57124pt x 183.68625pt>
+ [11 <../figures/simplices.png>]
+<../figures/simplex_faces.png, id=426, 420.57124pt x 183.68625pt>
 File: ../figures/simplex_faces.png Graphic file (type png)
 
 <use ../figures/simplex_faces.png>
-Package pdftex.def Info: ../figures/simplex_faces.png used on input line 366.
+Package pdftex.def Info: ../figures/simplex_faces.png used on input line 371.
 (pdftex.def)             Requested size: 210.28511pt x 91.84288pt.
- [12 <../figures/simplex_faces.png>]
-<../figures/altitude.png, id=442, 219.82124pt x 143.53625pt>
+ [12] [13 <../figures/simplex_faces.png>]
+<../figures/altitude.png, id=441, 219.82124pt x 143.53625pt>
 File: ../figures/altitude.png Graphic file (type png)
 
 <use ../figures/altitude.png>
-Package pdftex.def Info: ../figures/altitude.png used on input line 416.
+Package pdftex.def Info: ../figures/altitude.png used on input line 421.
 (pdftex.def)             Requested size: 131.89375pt x 86.1224pt.
 
-<../figures/altitude2.png, id=443, 147.55125pt x 120.45pt>
+<../figures/altitude2.png, id=442, 147.55125pt x 120.45pt>
 File: ../figures/altitude2.png Graphic file (type png)
 
 <use ../figures/altitude2.png>
-Package pdftex.def Info: ../figures/altitude2.png used on input line 420.
+Package pdftex.def Info: ../figures/altitude2.png used on input line 425.
 (pdftex.def)             Requested size: 103.28516pt x 84.3144pt.
- [13 <../figures/altitude.png> <../figures/altitude2.png>] [14]) [15]
+ [14 <../figures/altitude.png> <../figures/altitude2.png>]) [15]
 \openout2 = `correspondence.aux'.
 
  (./correspondence.tex
 Chapter 3.
+
+Overfull \hbox (2.68085pt too wide) in paragraph at lines 8--11
+\OT1/cmr/m/n/10.95 with $[][] = ([][]\OML/cmm/m/it/10.95 ; [] ; [][]\OT1/cmr/m/
+n/10.95 )$, $\OT1/cmr/bx/sc/10.95 ^^C[] \OT1/cmr/m/n/10.95 = [](\OML/cmm/m/it/1
+0.95 ^^U[]; [] ; ^^U[]\OT1/cmr/m/n/10.95 )$ (note the re-spec-tive ab-sences of
+ $[][]\OML/cmm/m/it/10.95 ; [] ; [][]$
+ []
+
 [16
 
 
 
-] [17] [18] [19] [20]
-<../figures/inverse_relations.png, id=510, 412.54124pt x 212.795pt>
+] [17] [18] [19]
+Overfull \hbox (14.98311pt too wide) in paragraph at lines 204--204
+[] 
+ []
+
+[20] [21] <../figures/inverse_relations.png, id=512, 412.54124pt x 212.795pt>
 File: ../figures/inverse_relations.png Graphic file (type png)
 
 <use ../figures/inverse_relations.png>
-Package pdftex.def Info: ../figures/inverse_relations.png used on input line 22
-8.
+Package pdftex.def Info: ../figures/inverse_relations.png used on input line 26
+4.
 (pdftex.def)             Requested size: 206.27011pt x 106.39723pt.
- [21 <../figures/inverse_relations.png>]
-[22] [23] [24] [25] [26] [27] [28] [29] [30] [31] [32] [33] [34] [35]
-Underfull \hbox (badness 10000) in paragraph at lines 966--966
+ [22 <../figures/inverse_relations.png>]
+[23] [24] [25] [26] [27] [28] [29] [30]
+
+LaTeX Warning: Reference `eq:Sn_altdesc' on page 31 undefined on input line 652
+.
+
+[31]
+
+LaTeX Warning: Reference `eq:Sn_altdesc' on page 32 undefined on input line 694
+.
+
+
+Overfull \hbox (6.5684pt too wide) in paragraph at lines 718--720
+[][] \OT1/cmr/m/n/10.95 = ([][])[][]$ and the ver-tices $[][]$ of $\OMS/cmsy/m/
+n/10.95 S[]$ \OT1/cmr/m/n/10.95 can be writ-ten as $[][] = ([][](\OML/cmm/m/it/
+10.95 i\OT1/cmr/m/n/10.95 )\OML/cmm/m/it/10.95 ^^U[]; [] ; [][]\OT1/cmr/m/n/10.
+95 (\OML/cmm/m/it/10.95 i\OT1/cmr/m/n/10.95 )\OML/cmm/m/it/10.95 ^^U[]\OT1/cmr/
+m/n/10.95 )[]$.
+ []
+
+[32] [33] [34]
+Overfull \hbox (4.64648pt too wide) in paragraph at lines 812--814
+\OT1/cmr/m/n/10.95 This demon-strates that [] holds. We now show that $[][][][]
+[] = \OMS/cmsy/m/n/10.95 ^^@\OT1/cmr/m/n/10.95 2[][]$ and that $[][][][][] =
+ []
+
+
+Overfull \hbox (4.64658pt too wide) detected at line 842
+[][] \OMS/cmsy/m/n/10.95 ^^@ [] [] \OT1/cmr/m/n/10.95 = [][] \OML/cmm/m/it/10.9
+5 :
+ []
+
+[35] [36] [37] [38] [39]
+Overfull \hbox (2.72893pt too wide) in paragraph at lines 1105--1107
+\OT1/cmr/m/n/10.95 Recalling the block ma-trix equa-tion [] for hy-per-a-cute s
+im-plices, for all $\OML/cmm/m/it/10.95 i$ \OT1/cmr/m/n/10.95 we have $\OT1/cmr
+/bx/sc/10.95 1\OT1/cmr/m/n/10.95 ([][][][][] +
+ []
+
+[40]
+Underfull \hbox (badness 10000) in paragraph at lines 1129--1129
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 966--966
+Underfull \hbox (badness 10000) in paragraph at lines 1129--1129
 
  []
 
-[36]) [37]
+[41] [42]) [43]
 \openout2 = `algorithmic_implications.aux'.
 
  (./algorithmic_implications.tex
 Chapter 4.
-[38
+[44
 
 
 
-] [39] [40]
-Overfull \hbox (15.35341pt too wide) in paragraph at lines 141--143
-\OT1/cmr/m/n/10.95 Define low rank ap-prox-i-ma-tion[] Let us sup-pose the we h
-ave ob-tained a low rank---$\OML/cmm/m/it/10.95 k$\OT1/cmr/m/n/10.95 , say---ap
-proximation
+]
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 14.
+
+
+LaTeX Font Warning: Font shape `OT1/cmss/m/it' in size <10.95> not available
+(Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 14.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 20--21
+
  []
 
-[41] [42] [43] [44] [45]) [46]
+[45] [46] [47] [48] [49] [50]
+Overfull \hbox (7.02153pt too wide) in paragraph at lines 227--228
+[][]\OT1/cmr/m/sc/10.95 Lemma \OT1/cmr/m/n/10.95 4.8\OT1/cmr/m/sc/10.95 . []\OT
+1/cmr/m/it/10.95 Sup-pose we can com-pute an \OT1/cmss/m/sl/10.95 H\OT1/cmr/m/i
+t/10.95 -description of $\OMS/cmsy/m/n/10.95 S$ \OT1/cmr/m/it/10.95 (resp., $\O
+MS/cmsy/m/n/10.95 S[]$\OT1/cmr/m/it/10.95 ) )given its \OT1/cmss/m/sl/10.95 V\O
+T1/cmr/m/it/10.95 -description
+ []
+
+[51] [52]
+Overfull \hbox (11.32439pt too wide) in paragraph at lines 293--294
+[]\OT1/cmr/m/n/10.95 Let us ex-am-ine a spe-cific low rank ap-prox-i-ma-tion pr
+o-posed by Drineas and Ma-honey [[]],
+ []
+
+[53] [54] [55]
+Overfull \hbox (3.7416pt too wide) in paragraph at lines 402--402
+[]\OT1/cmr/m/n/10.95 Given a graph $\OML/cmm/m/it/10.95 G \OT1/cmr/m/n/10.95 = 
+(\OML/cmm/m/it/10.95 V; E; w\OT1/cmr/m/n/10.95 )$, we can com-pute all the ap-p
+rox-i-mate dis-tances $[][] =
+ []
+
+[56]
+Overfull \hbox (13.5874pt too wide) in paragraph at lines 455--455
+[] 
+ []
+
+[57]) [58]
 \openout2 = `conclusion.aux'.
 
  (./conclusion.tex
 Chapter 5.
-) [47
+) [59
 
 
 
-] (./main.bbl [48
+] (./main.bbl
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ” in font cmr10!
+ [60
 
 
 ]
 LaTeX Font Info:    Font shape `OMS/cmr/m/it' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 128.
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 128.
-)
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 59.
- [49]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 59.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 166.
+ [61])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 61.
+ [62]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 61.
  (./main.aux (./frontmatter/titlepage.aux)
 (./frontmatter/abstract.aux) (./frontmatter/laysummary.aux)
 (./frontmatter/acknowledgements.aux) (./frontmatter/nomenclature.aux)
 (./introduction.aux) (./background.aux) (./correspondence.aux)
 (./algorithmic_implications.aux) (./conclusion.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 59.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 59.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 61.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 61.
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 70DAEA50E2E7CEC47FFF0D77F2905047;3261.
+(rerunfilecheck)             Checksum: 331AF2A4836604ACC2DAECFA5B763810;2858.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
@@ -1726,16 +1817,16 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 LaTeX Warning: There were undefined references.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 59.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 61.
  ) 
 Here is how much of TeX's memory you used:
- 16226 strings out of 493014
- 273121 string characters out of 6133351
- 360606 words of memory out of 5000000
- 19268 multiletter control sequences out of 15000+600000
- 16448 words of font info for 61 fonts, out of 8000000 for 9000
+ 16341 strings out of 493014
+ 274661 string characters out of 6133351
+ 364469 words of memory out of 5000000
+ 19328 multiletter control sequences out of 15000+600000
+ 17726 words of font info for 65 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 40i,18n,43p,10398b,432s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 40i,18n,43p,10398b,430s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbsy10.pf
 b></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
@@ -1752,17 +1843,19 @@ sr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr
 sr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/
 local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/loc
 al/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/
-texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/t
-exlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/tex
-live/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texli
-ve/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texliv
-e/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/local/texlive/
-2016/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texl
-ive/2016/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on main.pdf (57 pages, 605835 bytes).
+texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/t
+exlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr/local/t
+exlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/te
+xlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texl
+ive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texliv
+e/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive
+/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/local/texlive/2
+016/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texli
+ve/2016/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on main.pdf (71 pages, 673559 bytes).
 PDF statistics:
- 914 PDF objects out of 1000 (max. 8388607)
- 813 compressed objects within 9 object streams
- 258 named destinations out of 1000 (max. 500000)
- 407 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1046 PDF objects out of 1200 (max. 8388607)
+ 927 compressed objects within 10 object streams
+ 305 named destinations out of 1000 (max. 500000)
+ 375 words of extra memory for PDF output out of 10000 (max. 10000000)
 

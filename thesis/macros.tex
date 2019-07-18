@@ -1,14 +1,25 @@
-% Text
+% Text and Operators
 \newcommand{\range}{\textnormal{range}}
 \newcommand{\rw}{\textnormal{rw}}
 \newcommand{\sym}{\textnormal{sym}}
 \newcommand{\comb}{\textnormal{c}}
 \newcommand{\spn}{\textnormal{span}}
 \newcommand{\etal}{\textit{et al.}\xspace}
-\newcommand{\mwis}{\textsc{Max-Weight Independent Set}\xspace}
+\newcommand{\hdesc}{\textsf{H}-description\xspace}
+\newcommand{\Hdesc}{\hdesc}
+\newcommand{\vdesc}{\textsf{V}-description\xspace}
+\newcommand{\Vdesc}{\vdesc}
+\newcommand{\NP}{\textsf{NP}\xspace}
+\DeclareMathOperator*{\argmax}{\textnormal{argmax}}
+
+% Problems 
+\newcommand{\mwis}{\textsc{Max-Weight Independent-Set}\xspace}
 \newcommand{\lapdecomp}{\textsc{Laplacian Eigendecomposion}\xspace}
+\newcommand{\vwis}{\textsc{Vertex-Weighted Independent-Set}\xspace}
+\newcommand{\iset}{\textsc{Independent-Set}\xspace}
 
 % Vector and Matrix Typeface
+\newcommand{\z}{\vb*{z}}
 \newcommand{\bmu}{\vb*{\mu}}
 \newcommand{\f}{\vb*{f}}
 \newcommand{\brho}{\vb*{\rho}}
@@ -45,7 +56,6 @@
 \newcommand{\bxi}{\vb*{\xi}}
 \renewcommand{\d}{\vb*{d}}
 \newcommand{\bzeta}{\vb*{\zeta}}
-\newcommand{\z}{\vb*{z}}
 \newcommand{\tL}{\widetilde{\L}}
 \newcommand{\tM}{\widetilde{\M}}
 \newcommand{\bC}{\vb*{C}}
@@ -73,10 +83,12 @@
 \newcommand{\evaln}{\widehat{\lambda}}
 \newcommand{\lambdan}{\widehat{\lambda}}
 \newcommand{\tp}{t}
+\newcommand{\tw}{TW} % Total Weight
 
 
 
-% Simplex notation
+% Simplex and polytope notation
+\renewcommand{\P}{\mathcal{P}}
 \newcommand{\ssplx}{\mathcal{T}}
 \newcommand{\cent}{\vb*{c}}
 \newcommand{\Bn}{\widehat{\B}}
@@ -97,6 +109,7 @@
 \newcommand{\Reff}{\vb*{R}}
 \newcommand{\effr}{r^{\text{eff}}}
 
+
 % Misc
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\la}{\langle}
@@ -112,6 +125,7 @@
 \renewcommand{\supset}{\supseteq}
 \newcommand{\N}{\mathbb{N}}
 \renewcommand{\H}{\mathcal{H}}
+\newcommand{\Hn}{\widehat{\mathcal{H}}}
 \newcommand{\bgam}{\vb*{\gamma}}
 \newcommand{\X}{\mathcal{X}}
 \newcommand{\ic}{{\{i\}^c}}
@@ -120,6 +134,11 @@
 \newcommand{\conv}{\textnormal{conv}}
 \newcommand{\pol}{\mathcal{P}}
 \newcommand{\phin}{\widehat{\phi}}
+\newcommand{\Qbb}{\mathbb{Q}}
+
+% Complexity
+\newcommand{\tOmega}{\widetilde{\Omega}}
+\newcommand{\tO}{\widetilde{O}}
 
 % Resistive Embedding
 \newcommand{\re}{\mathcal{R}}

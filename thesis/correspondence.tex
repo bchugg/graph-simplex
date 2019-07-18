@@ -58,17 +58,21 @@ From this, it follows that
 hence, 
 \begin{equation}
 \label{eq:sv+sv}
-    \Sv^\tp\Sv^+=(\Sv^+)^\tp\Sv=\I-\one\one^\tp/n.
+    \Sv^\tp\Sv^+=(\Sv^+)^\tp\Sv=\I-\frac{\J}{n}.
 \end{equation}
-For the inverse normalized simplex, on the other hand, one has $\vpn_{n}(i)\vpn_{n}(j)=\sqrt{w(i)w(j)}/n$, implying that 
-\begin{equation*}\delta_{i,j}=\sum_{k=1}^n \vpn_k(i)\vpn_k(j) = \sum_{k=1}^{n-1} \vpn_k(i)\vpn_k(j) + \frac{\sqrt{w(i)w(j)}}{n},
+For the inverse normalized simplex on the other hand, one has (Section \ref{sec:background_laplacian_spectrum})
+\[\vp_n \in \spn(\W_G^{1/2}\one ),\]
+and since we are working with normalized eigenfunctions ($\norm{\vp_n}_2=1$), we can write 
+\[\vp_n = \frac{\sqrt{\w}}{(\vol(G))^{1/2}},\]
+where we recall that $\vol(G)=\sum_{i\in[n]} w(i)$. 
+Therefore, $\vpn_{n}(i)\vpn_{n}(j)=\sqrt{w(i)w(j)}/\vol(G)$, implying that 
+\begin{equation*}\delta_{i,j}=\sum_{k=1}^n \vpn_k(i)\vpn_k(j) = \sum_{k=1}^{n-1} \vpn_k(i)\vpn_k(j) + \frac{\sqrt{w(i)w(j)}}{\vol(G)},
 \end{equation*}
 and so 
 \begin{equation}
 \label{eq:svn+svn}
-\Svn^\tp\Svn^+=(\Svn^+)^\tp\Svn=\I-\sqrt{\w}\sqrt{\w}^\tp/n,
+\Svn^\tp\Svn^+=(\Svn^+)^\tp\Svn=\I-\frac{\sqrt{\w}\sqrt{\w}^\tp}{\vol(G)}.
 \end{equation}
-where $\w=(w(1),\dots,w(n))$ and $\sqrt{\w}=(\sqrt{w(1)},\dots,\sqrt{w(n)})$. 
 
 Exploring the relationships between the vertex matrices and themselves meanwhile,  we find that 
 \begin{align}
@@ -100,6 +104,8 @@ and likewise,
 \subsection{The Graph of a Simplex}
 \label{sec:simplex_to_graph}
 In this section we demonstrate that each hyperacute (more precisely, each non-obtuse) simplex is the inverse simplex of a graph $G$. 
+
+\note{Should be able to prove this on our own by appealing to the dual simplex}
 
 \begin{lemma}[\cite{fiedler1993geometric}]
 Given a simplex $\ssplx\subset\R^{n-1}$ centered at the origin, let $\vb*{Q}$ be the Gram matrix of its normalized outernormals. That is, $\vb*{Q}(i,j)=\la \u_i,\u_j\ra$ where $\u_{i}$ is the outer normal to the face $\ssplx_\ic$. If $\vb*{Q}_1,\vb*{Q}_2\in\R^{n\times n}$ are defined by 
@@ -217,10 +223,40 @@ since $\sum_i\vp(i)=\la \eig,\one\ra =0$. \note{finish this}
 
 \paragraph{Path Graph}
 
+\paragraph{The probability simplex.} 
+Fix  $n\in\N$. The \emph{probability simplex} is the simplex $\widetilde{\splx}_p=\conv(\{\bchi_i\}_{i=1}^n \cup \{\zero\})$. It is most likely the simplex of greatest familiarity to mathematicians and computer scientists, being used to reason geometrically about probability distributions. The probability simplex has centroid $\one/n\neq\zero$ and we will consider its centred version 
+\[\splx_p \equiv \widetilde{\splx}_p -  \frac{\one}{n},\]
+which has vertices  $\sv_i = \bchi_i - \one/n$, $i<n$, and $\sv_n = -\one/n$. Note that $\sv_j-\sv_n = \bchi_j$ and so 
+$\la \bchi_i, \sv_j-\sv_n\ra = \delta_{ij}$. Taking  $\bgamma_i = \bchi_i$ and $\bgamma_n = -\sum_i \bchi_i = -\one$ thus gives us the dual vertices. The  angles between the facets of $\splx_p$ are thus defined by 
+\begin{equation*}
+\cos\theta_{ij}(\splx_p) = - \la \bchi_i,\bchi_j\ra = -\delta_{ij}, \; i,j\in[n-1],  \quad \text{and}\quad \cos\theta_{in}(\splx_p) = \frac{\la \bchi_i,\one\ra}{\norm{1}} = 1/\sqrt{n}, \;i\in[n].
+\end{equation*}
+This implies  that $\theta_{ij}(\splx_p) = 0$ for $i\neq j$, $i,j\neq n$ and $\theta_{in}(\splx_p) \in =(0,\pi/2)$. 
+\note{The angles in $\splx_p$ and $\widetilde{\splx}_p$ don't change, but those it seems like those in the shifted simplex do. What is going on  here?}
+
+ 
+
+
 
 \section{Properties of \texorpdfstring{$\splx_G$}{the Combinatorial Simplex} and \texorpdfstring{$\splx_G^+$}{its inverse}}
 \label{sec:S_G}
 Fix a graph $G=(V,E,w)$ with $|V|=n$. The first property of $\splx=\splx_G$ that's worth noting is that it is centred at the origin: $\cent(\splx) = n^{-1}\Eval^{-1/2}\Eig^\tp \one =\zero$, since $\la \vp_i,\one\ra =0$ for all $i<n$.  Likewise, $\cent(\splx^+)=\zero$. 
+
+
+Secondly, let us notice that $\splx_G^+$ is intimately related to the effective resistance of the graph $G$. Indeed, 
+\begin{equation*}
+\norm{\sv_i^+-\sv_j^+}_2^2 = \norm{\sv_i^+}_2^2 + \norm{\sv_j^+}_2^2 - 2\la \sv_i^+,\sv_j^+\ra = \L_G^+(i,i) + \L_G^+(j,j) - 2\L_G^+(i,j) = \effr(i,j).
+\end{equation*}
+
+\begin{lemma}
+	The combinatorial simplex $\splx_G$ of a graph $G$ is hyperacute iff $\L_G^+$ is a Laplacian.\note{Is the pseudoinverse Laplacian ever a Laplacian?}
+\end{lemma}
+\begin{proof}
+	Using Equation \ref{eq:cos_theta_ij} and the fact that $\splx_G^+=\splx_G^D$, we have
+	\[\cos \theta_{ij} = -\frac{\la \sv_i^+,\sv_j^+\ra }{\norm{\sv_i^+}_2 \norm{\sv_j^+}_2},\]
+	where we recall that $\theta_{ij}$ is the angle between $\splx_\ic$ and $\splx_\jc$. Thus, $\splx_G$ is hyperacute iff $-\la \sv_i^+,\sv_j^+\ra\\/\norm{\sv_i^+}_2 \norm{\sv_j^+}_2 \in[0,1]$, which occurs iff $\la \sv_i^+,\sv_j^+\ra \leq 0$. In this case $\L_G^+(i,j)\leq 0$, implying that $\L_G^+$ is a Laplacian (recall that it already satisfies the other required properties: $\L_G^+\one=\zero$ and $\L_G^+(i,i)\geq 0$). 
+\end{proof}
+
 
 
 \begin{figure}
@@ -275,7 +311,11 @@ hence $\splx\subset E$. This completes the proof.
 \label{lem:SUsubset}
 Let $\splx$ be the simplex of a graph $G=(V,E,w)$, and fix $U\subset V$. For any non-empty $E\subset U^c$,
 \begin{equation*}
-    \splx_U \subset \bigg\{\x\in\R^{n-1}: \sum_{i\in E}\la \x,\sv_i^+\ra +\frac{|E|}{n}=  0\bigg\}.
+    \splx_U \subset \bigg\{\x\in\R^{n-1}: \sum_{i\in E}\la \x,\sv_i^+\ra +\frac{|E|}{n}=  0\bigg\},
+\end{equation*}
+and
+\begin{equation*}
+    \splx^+_U \subset \bigg\{\x\in\R^{n-1}: \sum_{i\in E}\la \x,\sv_i\ra +\frac{|E|}{n}=  0\bigg\},
 \end{equation*}
 \end{lemma}
 \begin{proof}
@@ -289,10 +329,16 @@ Lemma \ref{lem:SUsubset} gives us an alternate way to prove Lemma \ref{lem:S_alt
 All points in the simplex $\splx$ lie to one side of $\splx_{\{i\}^c}$, i.e., they lie in the halfspace 
 \[\H_i^{\geq } \equiv \{\x\in\R^{n-1}:\la \x,\sv_i^+\ra+1/n\geq0\}.\]
 (We know it is this halfspace because $\zero\in\splx\cap\H_i^{\geq }$.) The simplex is the interior of the region defined by the intersection of the faces $\splx_{\{i\}^c}$, i.e.,   
-\begin{equation*}
-    \splx=\bigcap_i \H_i.
-\end{equation*}
-Moreover, $\x\in \bigcap_i\H_i$ iff $\la \x,\sv_i^+\ra +1/n\geq 0$ for all $i$, i.e., $(\la \x,\sv_1^+\ra,\dots,\la \x,\sv_n^+\ra) + \one/n\geq \zero$, meaning $\x$ satisfies \eqref{eq:S_alt_desc}.  
+\begin{equation}
+\label{eq:splx_bigcapH_i}
+    \splx=\bigcap_i \H_i^{\geq }.
+\end{equation}
+Moreover, $\x\in \bigcap_i\H_i^{\geq }$ iff $\la \x,\sv_i^+\ra +1/n\geq 0$ for all $i$, i.e., $(\la \x,\sv_1^+\ra,\dots,\la \x,\sv_n^+\ra) + \one/n\geq \zero$, meaning $\x$ satisfies \eqref{eq:S_alt_desc}.  We emphasize that a very similar discussion applies to $\splx^+$, in which case one has 
+\begin{equation}
+\label{eq:splx^+_bigcapH_i}
+\splx=\bigcap_i (\H_i^+)^{\geq },
+\end{equation}
+for $(\H_i^+)^{\geq } \equiv \{\x\in\R^{n-1}:\la \x,\sv_i\ra + 1/n\geq 0\}$. 
 
 
 
@@ -398,12 +444,13 @@ since $\one^\tp \x=\one^\tp \bchi_i=1$.
 \begin{lemma}
 \label{lem:alt}
 For any non-empty $U\subset V$, 
-\[a_U=\frac{n-|U|}{w(\delta^+ U)}c^+_{U^c},\quad \text{and}\quad a^+_U = \frac{n-|U|}{w(\delta U)} c_{U^c}.\]
+\[\alt_U=\frac{n-|U|}{w(\delta^+ U)}\cent^+_{U^c},\quad \text{and}\quad \alt^+_U = \frac{n-|U|}{w(\delta U)} \cent_{U^c}.\]
 \end{lemma}
 \begin{proof}
 This is a consequence of identities \eqref{eq:c(S_U)} and \eqref{eq:c(S+_U)} and Lemmas \ref{lem:alt_and_centroid} and \ref{lem:||alt||}. Applying the latter and then the former, observe that 
-\[a_U = \frac{\norm{a_U}_2}{\norm{c^+_{U^c}}_2}c^+_{U^c} = \frac{\sqrt{w(\delta^+ U)}}{\sqrt{w(\delta^+U)}/|U^c|}c^+_{U^c} = \frac{n-|U|}{w(\delta^+U)}c^+_{U^c}.\]
-A similar computation holds for $a_U^+$.  
+\[\alt_U = \frac{\norm{\alt_U}_2}{\norm{\cent^+_{U^c}}_2}\cent^+_{U^c} =
+\bigg(\frac{1}{\sqrt{w(\delta^+ U^c)}} \bigg/\frac{\sqrt{w(\delta^+U)}}{|U^c|} \bigg)\cent^+_{U^c} = \frac{n-|U|}{w(\delta^+U)}c^+_{U^c},\]
+where we've once against used that $w(\delta^+ U^c )=w(\delta^+ U)$. A similar computation holds for $\alt_U^+$.  
 \end{proof}
 
 
@@ -427,7 +474,8 @@ which proves the first equality. The second is shown similarly by employing Lemm
 
 \end{proof}
 
-\section{Properties of \texorpdfstring{$\splxn_G$}{the normalized Simplex}}
+\section{Properties of \texorpdfstring{$\splxn_G$}{the normalized Simplex} and \texorpdfstring{$\splxn_G^+$}{and its inverse}}
+\label{sec:Sn_G}
 
 Here we study the normalized simplex $\splxn_G$ of the graph $G$, a somewhat less accessible object than its unnormalized counterpart.  The normalized simplex is, roughly speaking, distorted by the weights of the vertices. Consequently, many of the relationships between $\splx_G$ and $\splx_G^+$ are lost between $\splxn_G$ and $\splxn_G^+$. The first issue is that, in general, $\splxn_G$ and its inverse are not centred at the origin. Indeed, recall that the zero eigenvector $\vpn_n$ of $\Ln_G$ sits in the space $\spn(\W^{1/2}_G\one)$, which is distinct from $\spn(\one)$ unless $\W^{1/2}_G=d\I$ for some $d$, in which case $G$ is regular.
 If $G$ is not regular, we thus have that $\vp_i \in \spn(\W^{1/2}_G\one)\subset \spn(\one)^\perp$ for all $i<n$ implying that $\la \vp_i,\one\ra \neq 0$. In this case then,  
@@ -466,36 +514,97 @@ The next set of properties which don't hold between $\splxn$ and $\splxn^+$ are 
 Recall from Section \ref{sec:background_spectral} that a subset of vertices is degree homogenous if each vertex in the set has the same weight. 
 
 \begin{lemma}
-	Let $U_1,U_2\subset V(G)$ be two non-empty, degree homogenous subsets such that $U_1\cap U_2=\emptyset$. Then the faces $\splxn[U_1]$ and $\splxn[U_2]$ are perpendicular. 
+	\label{lem:Sn_perp_homogenous}
+	Let $U_1,U_2\subset V(G)$ be two non-empty, degree homogenous subsets such that $U_1\cap U_2=\emptyset$. Then the faces $\splxn^+[U_1]$ and $\splxn[U_2]$ are perpendicular. 
 \end{lemma}
 \begin{proof}
-	Suppose $w(i)=w_1$ for all $i\in U_1$ and $w(i)=w_2$ for all $i\in U_2$. Let $\x_{U_i}$ be the barycentric coordinate of any point in $\splxn[U_i]$, $i=1,2$, and compute 
+	Suppose $w(i)=w_1$ for all $i\in U_1$ and $w(i)=w_2$ for all $i\in U_2$. Let $\x_{U_1}$ be the barycentric coordinate of any point in $\splxn^+[U_1]$ and $\x_{U_2}$ that of any point in $\splxn[U_2]$. 
 	\begin{align*}
-	\la \Svn\x_{U_1},\Svn\x_{U_2}\ra &= \x_{U_1}^\tp \bigg(\I-\frac{\sqrt{\w}\sqrt{\w}^\tp}{n}\bigg) \x_{U_2}\\
-	&= \x_{U_1}^\tp\x_{U_2} - \frac{1}{n}\sum_{i\in U_1}\x_{U_1}(i)\sqrt{w(i)}\sum_{j\in U_2}\x_{U_2}(j) \sqrt{w(j)} \\
-	&= -\frac{1}{n}\sqrt{w_1w_2}\sum_{i\in U_1}\x_{U_1}(i) \sum_{j\in U_2}\x_{U_2}(j) = -\frac{\sqrt{w_1w_2}}{n},
+	\la \Svn^+\x_{U_1},\Svn\x_{U_2}\ra &= \x_{U_1}^\tp \bigg(\I-\frac{\sqrt{\w}\sqrt{\w}^\tp}{\vol(G)}\bigg) \x_{U_2}\\
+	&= \x_{U_1}^\tp\x_{U_2} - \frac{1}{\vol(G)}\sum_{i\in U_1}\x_{U_1}(i)\sqrt{w(i)}\sum_{j\in U_2}\x_{U_2}(j) \sqrt{w(j)} \\
+	&= -\frac{1}{\vol(G)}\sqrt{w_1w_2}\sum_{i\in U_1}\x_{U_1}(i) \sum_{j\in U_2}\x_{U_2}(j) = -\frac{\sqrt{w_1w_2}}{\vol(G)},
 	\end{align*} 
-	where the second equality is due to fact that $U_1\cap U_2=\emptyset$. This demonstrates that $\la \Svn\x_{U_1},\p-\q\ra=0$ for any $\p,\q\in\splxn[U_2]$, completing the proof. 
+	where the second equality is due to fact that $U_1\cap U_2=\emptyset$. This demonstrates that $\la \Svn^+\x_{U_1},\p-\q\ra=0$ for any $\p,\q\in\splxn[U_2]$, completing the proof. 
+\end{proof}
+
+\begin{lemma}
+	\label{lem:Sn_not_homogeneous}
+	Suppose  $U_1\subset V(G)$ is not degree homogeneous. Then for all $U_2\subset V(G)$ then faces $\splxn[U_1]$ (resp., $\splxn^+[U_1]$) and $\splxn^+[U_2]$ (resp., $\splxn[U_2]$) are not perpendicular. 
+\end{lemma}
+\begin{proof}
+	We show that $\splxn[U_1]$ and $\splxn^+[U_2]$ are not orthogonal; the other case is nearly identical. Let $i,j\in U_1$ be such that $w(i)\neq w(j)$ and consider the points $\p=\Svn\bchi_i,\q=\Svn\bchi_j\in\splxn[U_1]$. For any $\Svn^+\x\in\splxn^+[U_2]$, performing the usual arithmetic yields
+	\begin{align*}
+	\la \Svn^+\x,\p-\q\ra &= \frac{1}{\vol(G)} \sum_{k\in U_2}\sqrt{w(k)}x(k)(\sqrt{w(j)}-\sqrt{w(j)}) \neq 0.\qedhere
+	\end{align*}
+\end{proof}
+
+\begin{corollary}
+	\label{cor:Sn_orthog_iff_regular}
+	The vertex $\svn_i^+$ (resp., $\svn_i$) is orthogonal to $\splxn_\ic$ (resp., $\splxn^+_\ic$) iff $G[\ic]=G[V\setminus\{i\}]$ is regular. 
+\end{corollary}
+\begin{proof}
+	If $G[\ic]$ is regular then $\ic$ is weight homogenous. By Lemma~\ref{lem:Sn_perp_homogenous} $\splxn[\{i\}]=\svn_i$ (resp., $\splxn^+[\{i\}]=\svn_i^+$) is orthogonal to $\splxn[\ic]$ (resp., $\splxn^+[\ic]$). (Note that the singleton $\{i\}$ is clearly degree homogeneous.) Conversely, if $G[\ic]$ is not regular then by Lemma~\ref{lem:Sn_not_homogeneous} $\svn_i$ (resp., $\svn_i^+$) is not orthogonal to $\splxn[\ic]$ (resp., $\splxn^+[\ic]$).
 \end{proof}
 
 \paragraph{Centroids and Altitudes.}
 For the normalized Laplacian we have
 \begin{align}
-\Lnf(\chi_U)&=\sum_{i\sim j}w(i,j) \bigg(\frac{\chi_U(i)}{\sqrt{w(i)}}-\frac{\chi_U(j)}{\sqrt{w(j)}}\bigg)^2 \notag \\
-&= \sum_{i\in U,j\in U^c}w(i,j)\bigg(\frac{\chi_U(i)}{\sqrt{w(i)}}-\frac{\chi_U(j)}{\sqrt{w(j)}}\bigg)^2 \notag \\
-&= \sum_{i\in U,j\in U^c}w(i,j)\frac{\chi_U(i)}{w(i)} \notag \\
-&= \sum_{i\in U}\frac{W(\delta(i)\cap U^c)}{w(i)}. \label{eq:Lnf(chiU)}
+\Lnf(\bchi_U)&=\sum_{i\sim j}w(i,j) \bigg(\frac{\bchi_U(i)}{\sqrt{w(i)}}-\frac{\bchi_U(j)}{\sqrt{w(j)}}\bigg)^2 \notag \\
+&= \sum_{i\in U,j\in U^c}w(i,j)\bigg(\frac{\bchi_U(i)}{\sqrt{w(i)}}-\frac{\bchi_U(j)}{\sqrt{w(j)}}\bigg)^2 \notag \\
+&= \sum_{i\in U,j\in U^c}w(i,j)\frac{\bchi_U(i)}{w(i)} \notag \\
+&= \sum_{i\in U}\frac{1}{w(i)} \sum_{j\in \delta(i)\cap U^c}w(i,j) \notag \\
+&= \sum_{i\in U}\frac{w_{G[i+U^c]}(i)}{w(i)}, \label{eq:Lnf(chiU)}
 \end{align}
-Let $\gamma(i,B)$ denote the \emph{fractional weight of $i$ in $B$}; that is, \[\gamma(i,B)=\frac{1}{w(i)}\sum_{j\in\delta(i)\cap B} w(i,j)=\frac{1}{w(i)}W(\delta(i)\cap U^c),\]
-and $\gamma(A,B)$ the \emph{average fractional weight from $A$ to $B$}: 
-\[\gamma(A,B) =\frac{1}{|A|}\sum_{i\in A}\gamma(i,B). \]
-Then, 
-\begin{equation*}
+where we've used the shorthand $i+U^c = \{i\}\cup U^c$ and we recall that $G[I]$ is the graph restricted to the vertices in $I$. In words then, the quantity 
+\[\gamma(i,B)\equiv \frac{w_{G[i+U^c]}(i)}{w(i)},\]
+is the \emph{fractional weight of $i$ in $B$}. 
+Further defining $\gamma(A,B)$ as the \emph{total fractional weight from $A$ to $B$}:
+\[\gamma(A,B) \equiv \sum_{i\in A}\gamma(i,B), \]
+we have 
+\[\Lnf(\bchi_U) = \gamma(U,U^c),\]
+and so
+\begin{equation}
+\label{eq:c(SnU)}
 \norm{c(\splxn_U)}_2^2 = \frac{1}{|U|^2}\la \Svn\chi_U,\Svn\chi_U\ra = \frac{1}{|U|^2}\Lnf(\chi_U) = \frac{1}{|U|} \gamma(U,U^c).
-\end{equation*}
+\end{equation}
 
 
 That is, the length of the centroid $c(\splxn_U)$ captures the total fraction of weight between $U$ and $U^c$. 
+ 
+ 
+The lemma equivalent to \ref{lem:SUsubset} for the normalized simplex is as follows. 
+
+\begin{lemma}
+	\label{lem:SUn_subset}
+	Let $U\subset V$ be non-empty and $F\subset U^c$. Setting 
+	\[\beta_i^S = \sqrt{w(i)} \frac{\max_{j\in S} \sqrt{w(j)}}{\vol(G)},\]
+	for any set $S$, we have 
+	\begin{equation*}
+	\splxn_U \subset \Hn_{F}^\geq \equiv \bigg\{\x\in\R^{n-1}: \sum_{i\in F} (\la \x,\svn_i^+\ra + \beta_i^{F^c})\ge 0\bigg\}.
+	\end{equation*}
+	Similarly, 
+	\begin{equation*}
+	\splxn^+_U \subset (\Hn^+_{F})^\geq \equiv \bigg\{\x\in\R^{n-1}: \sum_{i\in F} (\la \x,\svn_i\ra + \beta_i^{F^c})\ge 0\bigg\}.
+	\end{equation*}
+\end{lemma} 
+\begin{proof}
+	Let $\x=\Svn\y\in \splxn_U$, where $\y$  is a barycentric coordinate with $\y(U^c)=\zero$. For $i\in U^c$, 
+	\begin{align*}
+	\la \Svn\y,\svn_i^+ \ra &= \y^\tp \Svn^\tp \Svn^+ \bchi_i = \y^\tp \bigg(\I-\frac{\sqrt{\w}\sqrt{\w}^\tp}{\vol(G)}\bigg)\bchi_i = - \frac{1}{\vol(G)} \left(\sum_{j\in U}y(j) \sqrt{w(j)}\right) \sqrt{w(i)}.
+	\end{align*}
+	Since $\norm{\y}_1=1$, and $F^c\supset U$ (since $F\subset U^c$) it follows that 
+	\[\sum_{j\in U}y(i) \sqrt{w(j)} \leq \max_{j\in U} \sqrt{w(j)} \leq \max_{j\in F^c}\sqrt{w(j)},\]
+	hence 
+	\[\la \Svn\y,\svn_i^+\ra \geq -\frac{\sqrt{w(i)}}{\vol(G)} \max_{j\in F^c}\sqrt{\w(j)} = -\beta_i^{F^c}.\]  
+	Consequently, $\sum_{i\in F} (\la \x,\svn_i^+\ra + \beta_i^{F_c}) \geq \sum_{i\in F^c}(-\beta_i^{F^c} +\beta_i^{F^c})=0$, so indeed $\x\in \Hn_F$. The proof for the $\splxn^+_G$ and $\Hn_F^+$ is almost identical. 
+\end{proof}
+
+We might expect that Lemma \ref{lem:SUn_subset} yields a hyperplane representation of the normalized simplex, as did \ref{lem:SUsubset} for the combinatorial simplex. Unfortunately however, the issue is once again complicated by the vertex weights and the relation between $\Svn^+$ and $\Svn$. Let us illustrate the problem by focusing on $\splxn$. 
+
+As opposed to Section \ref{sec:S_G}, $\splxn_\ic $ is not contained in the hyperplane $\Hn_i = \{\x: \la \x,\svn_i^+\ra + \beta_i=0\}$, where we take $\beta_i = \beta_i^{\{i\}^c} = \sqrt{w(i)}\max_{j\neq i}\sqrt{w(j)} / \vol(G)$. To see this, take any $k\notin \argmax_{j\neq i} \sqrt{w(j)}$ (such a $k$ exists iff the graph is not regular) and note that while $\sv_k\in\splxn_U$ it is not in $\Hn_i$: 
+\[\la \sv_k,\sv_i^+\ra = \bchi_k\Svn^\tp\Svn^+\bchi_i = -\frac{\sqrt{w(k)w(i)}}{\vol(G)}\neq \beta_i,\]
+by assumption. The other way to see this is to note that $\svn_i^+$ is not perpendicular to $\splx_\ic$ in general by Corollary \ref{cor:Sn_orthog_iff_regular}. 
+
 
 \paragraph{Centred  Simplex}
 \note{Unclear whether this notion is actually useful yet. Unclear whether the centred version is easier to study than the unormalized  counterpart.}
@@ -514,6 +623,18 @@ We solidify the concept with a definition.
 	Given a simplex $\ssplx$, the unique (up to rotation and translation) simplex with vertex matrix $\Sv(\ssplx) - (\cent(\ssplx)\;\dots\;\cent(\ssplx))$ centred at the origin is called the \emph{canonical (or centred) simplex corresponding to $\ssplx$} and is denoted $\ssplx^0$. 
 \end{definition}
 
+We remark that a simplex and its centred version have the same dual. 
+
+\begin{observation}
+	\label{obs:dual_centred}
+	A simplex $\ssplx$ and corresponding centred simplex $\ssplx_0$ share the same dual, i.e., $\splx^D = \ssplx_0^D$. 
+\end{observation}
+\begin{proof}
+	Let $\Sv(\ssplx) = (\sv_i)$ and $\Sv(\ssplx^D) = (\bgamma_i)$. The vertices of the centred simplex $\ssplx_0$ are $\{\sv_i - \cent\}$ where $\cent=\cent(\ssplx)$. We have 
+	$\delta_{ij} = \la \bgamma_i,\sv_j-\sv_n \ra = \la \bgamma_i, (\sv_j-\cent) - (\sv_n-\cent)\ra$, 
+	hence $\ssplx^D$ is dual to $\ssplx_0$. 
+\end{proof}
+
 Noting that 
 \begin{equation*}
 \cent(\splxn) = \frac{1}{n}\bigg(\sum_{\ell=1}^n \svn_\ell(1),\dots,\sum_{\ell=1}^n \svn_\ell(n)\bigg)^\tp,
@@ -527,21 +648,63 @@ Likewise, the vertices of $\splx_0^+$ have coordinates
 \svn_i^+(j) = \evaln_j^{-1/2}\bigg(\vpn_j(i) - \frac{1}{n}\la \vpn_j,\one\ra\bigg).
 \end{equation*}
 
-One might imagine (and could be forgiven for doing so) that once centred, the normalized simplex and its inverse would indeed be duals. However, this is not the case. Observe that 
-\begin{align*}
-\la \cent(\splx^+),\svn_j-\svn_k\ra &= \frac{1}{n}\sum_{\ell=1}^{n-1} \sum_{r=1}^n \svn^+_r(\ell)(\svn_j(\ell)-\svn_k(\ell))  \\&= 
-\frac{1}{n}\sum_{r=1}^n \sum_{\ell=1}^{n-1} (\vp_\ell(r)\vp_\ell(j) - \vp_\ell(r)\vp_\ell(k) ) \\
-&= \frac{1}{n} \sum_{r=1}^n \bigg(\delta_{r,k} - \delta_{r,j} + \frac{\sqrt{w(r)w(k)}}{n} - \frac{\sqrt{w(r)w(j)}}{n}\bigg) \\
-&= \frac{\sqrt{w(k)}-\sqrt{w(j)}}{n^2} \sum_{r\in[n]}\sqrt{w(r)},
-\end{align*}
-so, by Equation \eqref{eq:lem_inverse_not_dual},
-\begin{align*}
-\la \svn_i^+-\cent(\splxn^+),(\svn_j-\cent(\splx)) - (\svn_k-\cent(\splx))\ra &= \la \svn_i^+,\svn_j-\svn_k\ra - \la \cent(\splxn^+),\svn_j-\svn_k\ra \\
-&= \delta_{ij} - \delta_{ik} + \frac{\sqrt{w(i)}}{n}(\sqrt{w(k)} - \sqrt{w(j)})  \\
-&\qquad - \frac{\sqrt{w(k)}-\sqrt{w(j)}}{n^2} \sum_{r\in[n]}\sqrt{w(r)} \\
-&= \delta_{ij} + (\sqrt{w(k)}-\sqrt{w(j)})\bigg(\frac{\sqrt{w(i)}}{n} - \frac{1}{n^2}\sum_{r\in[n]}\sqrt{w(r)}\bigg),
-\end{align*}
-which is not equal to $\delta_{ij}$ unless $w(k)=w(j)$ or $\sqrt{w(i)}= \frac{1}{n}\sum_r \sqrt{w(r)}$. Since this would have to hold for all $i,j,k$, $i,j\neq k$, both of these conditions imply that the graph would have to be regular. \note{So what IS the dual of these simplices??  Ughgggghghgh wtf is happening}
+
+In light of Lemma \ref{lem:SUsubset}, one might imagine that if given a simplex in \hdesc, say $\ssplx=\bigcap_i \{\x:\la \z_i,\x\ra \geq b_i\}$ then the vectors $\z_i$ are parallel to the dual vertices of $\ssplx$. Lemma~\ref{lem:SUn_subset}, however, disconfirms this hypothesis. As is illustrated by some ugly arithmetic in Section~\ref{sec:Sn_G}, the dual vertices of $\splxn_G$ are not $\{\svn_i^+\}$, but $\splxn_G = \bigcap_i \{\x:\la \x,\svn_i^+\ra \geq \beta_i/n\}$ by Equation \eqref{eq:Sn_altdesc}. It turns out the key difference is that $\splx_G$ is centred whereas $\splxn_G$ is not. 
+
+\begin{lemma}
+	\label{lem:hdesc_dual}
+	Let $\ssplx\subset\R^{n-1}$ be a centred simplex with $\ssplx=\bigcap_{i=1}^n  \{\x\in\R^{n-1}: \la \x,\z_i\ra \geq  \alpha_i\}$. Then $\{-\z_i/(\alpha_i n)\}$ are the vertices of $\ssplx^D$. 
+\end{lemma}
+\begin{proof}
+	As usual, let $\{\sv_i\}$ be the vertices of $\ssplx$. Put $\bgamma_i = -\z_i/(\alpha_i n)$. We need to show that $\{\bgamma_i\}_{i=1}^{n-1}$ is the sister basis to $\{\sv_i-\sv_n\}_{i=1}^{n-1}$. Let $H_i$ be the boundary of the halfspace $\{\x:\la \x,\z_i\ra \geq \alpha_i\}$, so $H_i = \{\x:\la \x,\z_i\ra = \alpha_i\}$. Enumerate the vertices $\{\sv_i\}$ such that $\splx_\ic \subset H_i$. Fix $i\in[n-1]$. We claim that 
+	\[\sv_i \in \bigcap_{j\neq i}H_i.\]
+	Indeed, $\splx_\jc$ is the $n-1$ dimensional simplex with vertices $\{\sv_\ell\}_{\ell\neq j}$. Hence $\sv_i\in \splx_\jc$ for all $j\neq i$ and thus also lies in $\cap_{j \neq i}H_j$. Therefore, $\la \sv_i,\z_j\ra = \alpha_j$ for all $j\neq i$, from which it follows  that $\la \bgamma_j,\sv_i-\sv_n\ra = -\la \z_j,\sv_i\ra/(\alpha_j n) + \la \z_j,\sv_n\ra / (\alpha_j n )=1/n - 1/n =0$.  
+	It remains to show that $\la \bgamma_i,\sv_i-\sv_n\ra=1$ for all $i\neq n$. Since $\ssplx$ is centred by assumption, we have $\sv_i = -\sum_{j\neq i} \sv_j$. Consequently, 
+	\begin{align*}
+	\la \bgamma_i,\sv_i-\sv_n\ra &= -\sum_{j\neq i}\la \bgamma_i,\sv_j\ra - \la \bgamma_i,\sv_n \ra = \frac{1}{n}(n-1) + \frac{1}{n} = 1,
+	\end{align*}
+	as was to be shown.  
+\end{proof}
+
+\begin{lemma}
+	\label{lem:hdesc_centred}
+	Let $\ssplx=\cap_i \{\x:\la \x,\z_i\ra \geq \alpha_i\}$ be a simplex. Its centred version, $\ssplx_0$, can be written as $\cap_i \{\x:\la \x,\z_i\ra \geq \alpha_i - \la \cent(\ssplx),\z_i\ra\}$. 
+\end{lemma}
+\begin{proof}
+	As usual, take $\H_i = \{\x:\la \x,\z_i\ra = \alpha_i\}$ to be the hyperplanes bounding the simplex. The hyperplanes bounding the centred simplex, are parallel to the hyperplanes $\H_i$ and can thus be written as 
+	\[\H_{i0} = \{\x:\la \x,\z_i\ra = \beta_i\},\]
+	for some $\beta_i$. Moreover, just as $\sv_j\in\H_i$ for $j\neq i$, we have $\sv_j-\cent(\ssplx)\in \H_{i0}$, since $\{\sv_j-\cent(\ssplx)\}$ are the vertices of $\ssplx_0$. As such, $\la \sv_j-\cent(\ssplx),\z_i\ra=\beta_i$, and 
+	\[\la \sv_j-\cent(\ssplx),\z_i\ra = \la \sv_j,\z_i\ra - \la\cent(\ssplx),\z_i\ra = \alpha_i - \la\cent(\ssplx),\z_i\ra,\]
+	whence $\beta_i = \alpha_i - \la\cent(\ssplx),\z_i\ra$. It then follows that 
+	\[\ssplx_0=\bigcap_i \H_{i0}^{\geq },\]
+	where $\H_{i0}^\geq = \{\x:\la \x,\z_i\ra \geq  \alpha_i - \la \cent(\ssplx),
+	\z_i\ra\}$. 
+\end{proof}
+
+\begin{corollary}
+	\label{cor:dual_Sn}
+	The dual simplex to $\splxn_G^+$ has vertices 
+	\begin{equation*}
+	\bigg\{\frac{\svn_i^+}{\beta_i + n\la \cent(\ssplx),\svn_i^+\ra}\bigg\},
+	\end{equation*}
+	where 
+	\[\beta_i = \bigg(w(i)\sum_{j\neq i}w(j)\bigg)^{1/2}.\]
+\end{corollary}
+\begin{proof}
+	Lemma \ref{lem:SUn_subset} and Equation \eqref{eq:Sn_altdesc} tells us that $\splxn = \bigcap_i \H_i^\geq $ where  $\H_i = \{\x:\la \x,\svn^+_i\ra \geq -\beta_i/n\}$. Lemma \ref{lem:hdesc_centred} then implies that 
+	\begin{equation*}
+	\splxn_0 = \bigcap_i \bigg\{\x:\la \x,\svn_i^+\ra \geq -\frac{\beta_i}{n} - \la \cent(\ssplx),\svn_i^+\ra\bigg\}.
+	\end{equation*}
+	Put $\kappa_i = -\beta_i/n - \la \cent(\ssplx),\svn_i^+\ra$. 
+	Lemma \ref{lem:hdesc_dual} then dictates that the dual vertices of $\splx_0^D$ obey 
+	\begin{equation*}
+	\bigg\{\frac{\svn_i^+}{-n\cdot \kappa_i}\bigg\} = 	\bigg\{\frac{\svn_i^+}{\beta_i + n\la \cent(\ssplx),\svn_i^+\ra}\bigg\}.
+	\end{equation*}
+	Finally, since a centred simplex and its uncentred counterpart share the same dual simplex by Observation \ref{obs:dual_centred}, the result follows. 
+\end{proof}
+
+
+
 
 
 

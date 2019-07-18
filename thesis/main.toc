@@ -13,12 +13,12 @@
 \contentsline {subsection}{\numberline {2.2.1}Pseudoinverse}{5}{subsection.2.2.1}
 \contentsline {section}{\numberline {2.3}Spectral Graph Theory}{6}{section.2.3}
 \contentsline {subsection}{\numberline {2.3.1}Laplacian Matrices}{7}{subsection.2.3.1}
-\contentsline {paragraph}{Pseudoinverse of $\vb *{L}_G$ and $\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle \vb *{L}$}\mathaccent "0362{\vb *{L}}_G$}{8}{paragraph*.8}
+\contentsline {paragraph}{Pseudoinverse of $\vb *{L}_G$ and $\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle \vb *{L}$}\mathaccent "0362{\vb *{L}}_G$}{9}{paragraph*.8}
 \contentsline {subsection}{\numberline {2.3.2}The Laplacian Spectrum}{9}{subsection.2.3.2}
 \contentsline {section}{\numberline {2.4}Electrical Flows}{10}{section.2.4}
-\contentsline {section}{\numberline {2.5}Simplices}{10}{section.2.5}
-\contentsline {subsection}{\numberline {2.5.1}Dual Simplex}{12}{subsection.2.5.1}
-\contentsline {subsection}{\numberline {2.5.2}Angles in a Simplex}{14}{subsection.2.5.2}
+\contentsline {section}{\numberline {2.5}Simplices}{11}{section.2.5}
+\contentsline {subsection}{\numberline {2.5.1}Dual Simplex}{13}{subsection.2.5.1}
+\contentsline {subsection}{\numberline {2.5.2}Angles in a Simplex}{15}{subsection.2.5.2}
 \contentsline {chapter}{\numberline {3}The Graph-Simplex Correspondence}{16}{chapter.3}
 \contentsline {section}{\numberline {3.1}Convex Polyhedra of Matrices}{16}{section.3.1}
 \contentsline {paragraph}{The Inverse Polytope.}{16}{paragraph*.10}
@@ -26,36 +26,39 @@
 \contentsline {subsection}{\numberline {3.1.2}The Graph of a Simplex}{18}{subsection.3.1.2}
 \contentsline {section}{\numberline {3.2}Simplices of Special Graphs}{19}{section.3.2}
 \contentsline {paragraph}{Simplex of Complement Graph, $G^c$}{19}{paragraph*.11}
-\contentsline {paragraph}{Subgraphs}{19}{paragraph*.12}
+\contentsline {paragraph}{Subgraphs}{20}{paragraph*.12}
 \contentsline {paragraph}{Product Graphs}{20}{paragraph*.13}
-\contentsline {subsection}{\numberline {3.2.1}Examples}{20}{subsection.3.2.1}
-\contentsline {paragraph}{The Complete Graph, $K_n$.}{20}{paragraph*.14}
-\contentsline {paragraph}{Cycle Graph}{20}{paragraph*.15}
+\contentsline {subsection}{\numberline {3.2.1}Examples}{21}{subsection.3.2.1}
+\contentsline {paragraph}{The Complete Graph, $K_n$.}{21}{paragraph*.14}
+\contentsline {paragraph}{Cycle Graph}{21}{paragraph*.15}
 \contentsline {paragraph}{Path Graph}{21}{paragraph*.16}
-\contentsline {section}{\numberline {3.3}Properties of $\mathcal {S}_G$ and $\mathcal {S}_G^+$}{21}{section.3.3}
-\contentsline {paragraph}{Global Connectivity}{22}{paragraph*.17}
-\contentsline {subsubsection}{Centroid and Altitudes}{23}{subsubsection*.18}
-\contentsline {section}{\numberline {3.4}Properties of $\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle \mathcal {S}$}\mathaccent "0362{\mathcal {S}}_G$}{25}{section.3.4}
-\contentsline {paragraph}{Centroids and Altitudes.}{26}{paragraph*.21}
-\contentsline {paragraph}{Centred Simplex}{27}{paragraph*.22}
-\contentsline {section}{\numberline {3.5}Construction via Extended Menger and Gramian}{28}{section.3.5}
-\contentsline {section}{\numberline {3.6}Inequalities}{32}{section.3.6}
-\contentsline {section}{\numberline {3.7}Quadrics}{34}{section.3.7}
-\contentsline {section}{\numberline {3.8}Random Walks}{36}{section.3.8}
-\contentsline {subsection}{\numberline {3.8.1}Discrete Time Random Walks}{36}{subsection.3.8.1}
-\contentsline {subsection}{\numberline {3.8.2}Continuous Time Random Walks}{37}{subsection.3.8.2}
-\contentsline {subsection}{\numberline {3.8.3}mixing time}{37}{subsection.3.8.3}
-\contentsline {paragraph}{Mixing Time.}{37}{paragraph*.23}
-\contentsline {chapter}{\numberline {4}Algorithmic Implications}{38}{chapter.4}
-\contentsline {section}{\numberline {4.1}Computational Complexity}{38}{section.4.1}
-\contentsline {paragraph}{Independent Set}{38}{paragraph*.24}
-\contentsline {section}{\numberline {4.2}There and Back Again: Transitioning Between Simplices}{39}{section.4.2}
-\contentsline {subsection}{\numberline {4.2.1}Between $\mathcal {S}$ and $\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle \mathcal {S}$}\mathaccent "0362{\mathcal {S}}$}{39}{subsection.4.2.1}
-\contentsline {subsection}{\numberline {4.2.2}$\mathcal {S}$ and $\mathcal {S}^+$.}{40}{subsection.4.2.2}
-\contentsline {subsection}{\numberline {4.2.3}Between $G$ and $\mathcal {S}$ or $\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle \mathcal {S}$}\mathaccent "0362{\mathcal {S}}$}{41}{subsection.4.2.3}
-\contentsline {section}{\numberline {4.3}Approximations and Embeddings}{41}{section.4.3}
-\contentsline {subsection}{\numberline {4.3.1}Low Rank Approximation}{41}{subsection.4.3.1}
-\contentsline {subsection}{\numberline {4.3.2}Embedding $\mathcal {S}$ in lower dimensions}{43}{subsection.4.3.2}
-\contentsline {subsection}{\numberline {4.3.3}Resistive Embedding}{45}{subsection.4.3.3}
-\contentsline {chapter}{\numberline {5}Conclusion}{47}{chapter.5}
-\contentsline {section}{\numberline {5.1}Open Problems and Future Directions}{47}{section.5.1}
+\contentsline {paragraph}{The probability simplex.}{21}{paragraph*.17}
+\contentsline {section}{\numberline {3.3}Properties of $\mathcal {S}_G$ and $\mathcal {S}_G^+$}{22}{section.3.3}
+\contentsline {paragraph}{Global Connectivity}{24}{paragraph*.18}
+\contentsline {subsubsection}{Centroid and Altitudes}{25}{subsubsection*.19}
+\contentsline {section}{\numberline {3.4}Properties of $\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle \mathcal {S}$}\mathaccent "0362{\mathcal {S}}_G$ and $\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle \mathcal {S}$}\mathaccent "0362{\mathcal {S}}_G^+$}{27}{section.3.4}
+\contentsline {paragraph}{Centroids and Altitudes.}{29}{paragraph*.23}
+\contentsline {paragraph}{Centred Simplex}{30}{paragraph*.24}
+\contentsline {section}{\numberline {3.5}Construction via Extended Menger and Gramian}{32}{section.3.5}
+\contentsline {section}{\numberline {3.6}Inequalities}{37}{section.3.6}
+\contentsline {section}{\numberline {3.7}Quadrics}{39}{section.3.7}
+\contentsline {section}{\numberline {3.8}Random Walks}{41}{section.3.8}
+\contentsline {subsection}{\numberline {3.8.1}Discrete Time Random Walks}{41}{subsection.3.8.1}
+\contentsline {subsection}{\numberline {3.8.2}Continuous Time Random Walks}{42}{subsection.3.8.2}
+\contentsline {subsection}{\numberline {3.8.3}mixing time}{42}{subsection.3.8.3}
+\contentsline {paragraph}{Mixing Time.}{43}{paragraph*.25}
+\contentsline {chapter}{\numberline {4}Algorithmics}{44}{chapter.4}
+\contentsline {section}{\numberline {4.1}Preliminaries}{44}{section.4.1}
+\contentsline {section}{\numberline {4.2}Computational Complexity}{45}{section.4.2}
+\contentsline {section}{\numberline {4.3}There and Back Again: A Tale of Graphs to Simplices}{48}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}Precise Mappings}{49}{subsection.4.3.1}
+\contentsline {paragraph}{Between $\mathcal {S}$ and $\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle \mathcal {S}$}\mathaccent "0362{\mathcal {S}}$.}{50}{paragraph*.26}
+\contentsline {paragraph}{$\mathcal {S}$ and $\mathcal {S}^+$.}{51}{paragraph*.27}
+\contentsline {paragraph}{Between $G$ and $\mathcal {S}$ or $\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle \mathcal {S}$}\mathaccent "0362{\mathcal {S}}$.}{51}{paragraph*.28}
+\contentsline {paragraph}{Between different descriptions of the simplices.}{52}{paragraph*.29}
+\contentsline {subsection}{\numberline {4.3.2}Approximations}{52}{subsection.4.3.2}
+\contentsline {paragraph}{Low Rank Approximation}{52}{paragraph*.30}
+\contentsline {paragraph}{Embedding $\mathcal {S}$ in lower dimensions}{54}{paragraph*.31}
+\contentsline {paragraph}{Resistive Embedding}{57}{paragraph*.32}
+\contentsline {chapter}{\numberline {5}Conclusion}{59}{chapter.5}
+\contentsline {section}{\numberline {5.1}Open Problems and Future Directions}{59}{section.5.1}

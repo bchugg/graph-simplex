@@ -85,3 +85,24 @@
 %\[a\cdot\one = \frac{\norm{a\cdot \one}_1}{k}\one = \frac{a(k-1)}{k}\one,\]
 %which is only satisfied for $a=0$. Hence $\vp=\zero$, and  $\ker(\I_{k-1}-k^{-1}\J_{k-1}^\tp)=\{0\}$ as desired. Consequently, we may choose $\alpha_1,\dots,\alpha_{k-1}$ to satisfy the constraints and finally conclude that $\la \vb{v},\p-\q\ra =0$. Therefore, $\X^\perp$ is a subset of all the 
 %\end{proof}
+
+
+
+
+% Arithemetic argument that the normalized simplex and its inverse are not in fact duals
+One might imagine (and could be forgiven for doing so) that once centred, the normalized simplex and its inverse would indeed be duals. However, this is not the case. Observe that 
+\begin{align*}
+\la \cent(\splx^+),\svn_j-\svn_k\ra &= \frac{1}{n}\sum_{\ell=1}^{n-1} \sum_{r=1}^n \svn^+_r(\ell)(\svn_j(\ell)-\svn_k(\ell))  \\&= 
+\frac{1}{n}\sum_{r=1}^n \sum_{\ell=1}^{n-1} (\vp_\ell(r)\vp_\ell(j) - \vp_\ell(r)\vp_\ell(k) ) \\
+&= \frac{1}{n} \sum_{r=1}^n \bigg(\delta_{r,k} - \delta_{r,j} + \frac{\sqrt{w(r)w(k)}}{n} - \frac{\sqrt{w(r)w(j)}}{n}\bigg) \\
+&= \frac{\sqrt{w(k)}-\sqrt{w(j)}}{n^2} \sum_{r\in[n]}\sqrt{w(r)},
+\end{align*}
+so, by Equation \eqref{eq:lem_inverse_not_dual},
+\begin{align*}
+\la \svn_i^+-\cent(\splxn^+),(\svn_j-\cent(\splx)) - (\svn_k-\cent(\splx))\ra &= \la \svn_i^+,\svn_j-\svn_k\ra - \la \cent(\splxn^+),\svn_j-\svn_k\ra \\
+&= \delta_{ij} - \delta_{ik} + \frac{\sqrt{w(i)}}{n}(\sqrt{w(k)} - \sqrt{w(j)})  \\
+&\qquad - \frac{\sqrt{w(k)}-\sqrt{w(j)}}{n^2} \sum_{r\in[n]}\sqrt{w(r)} \\
+&= \delta_{ij} + (\sqrt{w(k)}-\sqrt{w(j)})\bigg(\frac{\sqrt{w(i)}}{n} - \frac{1}{n^2}\sum_{r\in[n]}\sqrt{w(r)}\bigg),
+\end{align*}
+which is not equal to $\delta_{ij}$ unless $w(k)=w(j)$ or $\sqrt{w(i)}= \frac{1}{n}\sum_r \sqrt{w(r)}$. Since this would have to hold for all $i,j,k$, $i,j\neq k$, both of these conditions imply that the graph would have to be regular. \note{So what IS the dual of these simplices??  Ughgggghghgh wtf is happening}
+
