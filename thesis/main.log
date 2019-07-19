@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  18 JUL 2019 15:08
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  19 JUL 2019 20:11
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1493,7 +1493,7 @@ File: block.tss 2016/03/15
 
 
 (./frontmatter/titlepage.tex
-<figures/oxford_logo.png, id=176, 116.1138pt x 138.7584pt>
+<figures/oxford_logo.png, id=180, 116.1138pt x 138.7584pt>
 File: figures/oxford_logo.png Graphic file (type png)
 
 <use figures/oxford_logo.png>
@@ -1624,75 +1624,75 @@ la-cian dis-cussed by Van Meighem
  []
 
 [5] [6] [7] [8] [9] [10]
-<../figures/simplices.png, id=416, 420.57124pt x 155.58125pt>
+<../figures/simplices.png, id=421, 420.57124pt x 155.58125pt>
 File: ../figures/simplices.png Graphic file (type png)
 
 <use ../figures/simplices.png>
-Package pdftex.def Info: ../figures/simplices.png used on input line 306.
+Package pdftex.def Info: ../figures/simplices.png used on input line 307.
 (pdftex.def)             Requested size: 252.3447pt x 93.34946pt.
  [11 <../figures/simplices.png>]
-<../figures/simplex_faces.png, id=426, 420.57124pt x 183.68625pt>
+<../figures/simplex_faces.png, id=431, 420.57124pt x 183.68625pt>
 File: ../figures/simplex_faces.png Graphic file (type png)
 
 <use ../figures/simplex_faces.png>
-Package pdftex.def Info: ../figures/simplex_faces.png used on input line 371.
+Package pdftex.def Info: ../figures/simplex_faces.png used on input line 372.
 (pdftex.def)             Requested size: 210.28511pt x 91.84288pt.
  [12] [13 <../figures/simplex_faces.png>]
-<../figures/altitude.png, id=441, 219.82124pt x 143.53625pt>
+<../figures/altitude.png, id=448, 219.82124pt x 143.53625pt>
 File: ../figures/altitude.png Graphic file (type png)
 
 <use ../figures/altitude.png>
-Package pdftex.def Info: ../figures/altitude.png used on input line 421.
+Package pdftex.def Info: ../figures/altitude.png used on input line 442.
 (pdftex.def)             Requested size: 131.89375pt x 86.1224pt.
 
-<../figures/altitude2.png, id=442, 147.55125pt x 120.45pt>
+<../figures/altitude2.png, id=449, 147.55125pt x 120.45pt>
 File: ../figures/altitude2.png Graphic file (type png)
 
 <use ../figures/altitude2.png>
-Package pdftex.def Info: ../figures/altitude2.png used on input line 425.
+Package pdftex.def Info: ../figures/altitude2.png used on input line 446.
 (pdftex.def)             Requested size: 103.28516pt x 84.3144pt.
- [14 <../figures/altitude.png> <../figures/altitude2.png>]) [15]
+ [14 <../figures/altitude.png> <../figures/altitude2.png>] [15]) [16] [17]
 \openout2 = `correspondence.aux'.
 
  (./correspondence.tex
 Chapter 3.
 
-Overfull \hbox (2.68085pt too wide) in paragraph at lines 8--11
+Overfull \hbox (2.68085pt too wide) in paragraph at lines 10--13
 \OT1/cmr/m/n/10.95 with $[][] = ([][]\OML/cmm/m/it/10.95 ; [] ; [][]\OT1/cmr/m/
 n/10.95 )$, $\OT1/cmr/bx/sc/10.95 ^^C[] \OT1/cmr/m/n/10.95 = [](\OML/cmm/m/it/1
 0.95 ^^U[]; [] ; ^^U[]\OT1/cmr/m/n/10.95 )$ (note the re-spec-tive ab-sences of
  $[][]\OML/cmm/m/it/10.95 ; [] ; [][]$
  []
 
-[16
+[18
 
 
 
-] [17] [18] [19]
-Overfull \hbox (14.98311pt too wide) in paragraph at lines 204--204
+] [19] [20] [21] [22]
+Overfull \hbox (14.98311pt too wide) in paragraph at lines 248--248
 [] 
  []
 
-[20] [21] <../figures/inverse_relations.png, id=512, 412.54124pt x 212.795pt>
+[23] [24] <../figures/inverse_relations.png, id=541, 412.54124pt x 212.795pt>
 File: ../figures/inverse_relations.png Graphic file (type png)
 
 <use ../figures/inverse_relations.png>
-Package pdftex.def Info: ../figures/inverse_relations.png used on input line 26
-4.
+Package pdftex.def Info: ../figures/inverse_relations.png used on input line 30
+8.
 (pdftex.def)             Requested size: 206.27011pt x 106.39723pt.
- [22 <../figures/inverse_relations.png>]
-[23] [24] [25] [26] [27] [28] [29] [30]
+ [25] [26 <../figures/inverse_relations.png>] [27] [28] [29] [30] [31] [32] [33
+]
 
-LaTeX Warning: Reference `eq:Sn_altdesc' on page 31 undefined on input line 652
+LaTeX Warning: Reference `eq:Sn_altdesc' on page 34 undefined on input line 668
 .
 
-[31]
+[34]
 
-LaTeX Warning: Reference `eq:Sn_altdesc' on page 32 undefined on input line 694
+LaTeX Warning: Reference `eq:Sn_altdesc' on page 35 undefined on input line 710
 .
 
 
-Overfull \hbox (6.5684pt too wide) in paragraph at lines 718--720
+Overfull \hbox (6.5684pt too wide) in paragraph at lines 734--736
 [][] \OT1/cmr/m/n/10.95 = ([][])[][]$ and the ver-tices $[][]$ of $\OMS/cmsy/m/
 n/10.95 S[]$ \OT1/cmr/m/n/10.95 can be writ-ten as $[][] = ([][](\OML/cmm/m/it/
 10.95 i\OT1/cmr/m/n/10.95 )\OML/cmm/m/it/10.95 ^^U[]; [] ; [][]\OT1/cmr/m/n/10.
@@ -1700,41 +1700,41 @@ n/10.95 S[]$ \OT1/cmr/m/n/10.95 can be writ-ten as $[][] = ([][](\OML/cmm/m/it/
 m/n/10.95 )[]$.
  []
 
-[32] [33] [34]
-Overfull \hbox (4.64648pt too wide) in paragraph at lines 812--814
+[35] [36]
+Overfull \hbox (4.64648pt too wide) in paragraph at lines 828--830
 \OT1/cmr/m/n/10.95 This demon-strates that [] holds. We now show that $[][][][]
 [] = \OMS/cmsy/m/n/10.95 ^^@\OT1/cmr/m/n/10.95 2[][]$ and that $[][][][][] =
  []
 
-
-Overfull \hbox (4.64658pt too wide) detected at line 842
+[37]
+Overfull \hbox (4.64658pt too wide) detected at line 858
 [][] \OMS/cmsy/m/n/10.95 ^^@ [] [] \OT1/cmr/m/n/10.95 = [][] \OML/cmm/m/it/10.9
 5 :
  []
 
-[35] [36] [37] [38] [39]
-Overfull \hbox (2.72893pt too wide) in paragraph at lines 1105--1107
+[38] [39] [40] [41] [42]
+Overfull \hbox (2.72893pt too wide) in paragraph at lines 1121--1123
 \OT1/cmr/m/n/10.95 Recalling the block ma-trix equa-tion [] for hy-per-a-cute s
 im-plices, for all $\OML/cmm/m/it/10.95 i$ \OT1/cmr/m/n/10.95 we have $\OT1/cmr
 /bx/sc/10.95 1\OT1/cmr/m/n/10.95 ([][][][][] +
  []
 
-[40]
-Underfull \hbox (badness 10000) in paragraph at lines 1129--1129
+[43]
+Underfull \hbox (badness 10000) in paragraph at lines 1145--1145
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1129--1129
+Underfull \hbox (badness 10000) in paragraph at lines 1145--1145
 
  []
 
-[41] [42]) [43]
+[44] [45]) [46]
 \openout2 = `algorithmic_implications.aux'.
 
  (./algorithmic_implications.tex
 Chapter 4.
-[44
+[47
 
 
 
@@ -1751,7 +1751,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 20--21
 
  []
 
-[45] [46] [47] [48] [49] [50]
+[48] [49] [50] [51] [52] [53]
 Overfull \hbox (7.02153pt too wide) in paragraph at lines 227--228
 [][]\OT1/cmr/m/sc/10.95 Lemma \OT1/cmr/m/n/10.95 4.8\OT1/cmr/m/sc/10.95 . []\OT
 1/cmr/m/it/10.95 Sup-pose we can com-pute an \OT1/cmss/m/sl/10.95 H\OT1/cmr/m/i
@@ -1760,30 +1760,30 @@ MS/cmsy/m/n/10.95 S[]$\OT1/cmr/m/it/10.95 ) )given its \OT1/cmss/m/sl/10.95 V\O
 T1/cmr/m/it/10.95 -description
  []
 
-[51] [52]
-Overfull \hbox (11.32439pt too wide) in paragraph at lines 293--294
+[54] [55]
+Overfull \hbox (11.32439pt too wide) in paragraph at lines 300--301
 []\OT1/cmr/m/n/10.95 Let us ex-am-ine a spe-cific low rank ap-prox-i-ma-tion pr
 o-posed by Drineas and Ma-honey [[]],
  []
 
-[53] [54] [55]
-Overfull \hbox (3.7416pt too wide) in paragraph at lines 402--402
+[56] [57] [58]
+Overfull \hbox (3.7416pt too wide) in paragraph at lines 409--409
 []\OT1/cmr/m/n/10.95 Given a graph $\OML/cmm/m/it/10.95 G \OT1/cmr/m/n/10.95 = 
 (\OML/cmm/m/it/10.95 V; E; w\OT1/cmr/m/n/10.95 )$, we can com-pute all the ap-p
 rox-i-mate dis-tances $[][] =
  []
 
-[56]
-Overfull \hbox (13.5874pt too wide) in paragraph at lines 455--455
+[59]
+Overfull \hbox (13.5874pt too wide) in paragraph at lines 462--462
 [] 
  []
 
-[57]) [58]
+[60]) [61]
 \openout2 = `conclusion.aux'.
 
  (./conclusion.tex
 Chapter 5.
-) [59
+) [62
 
 
 
@@ -1791,15 +1791,15 @@ Chapter 5.
 Missing character: There is no â in font cmr10!
 Missing character: There is no € in font cmr10!
 Missing character: There is no ” in font cmr10!
- [60
+ [63
 
 
 ]
 LaTeX Font Info:    Font shape `OMS/cmr/m/it' in size <10.95> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 166.
- [61])
+ [64])
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 61.
- [62]
+ [65]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 61.
  (./main.aux (./frontmatter/titlepage.aux)
 (./frontmatter/abstract.aux) (./frontmatter/laysummary.aux)
@@ -1809,7 +1809,7 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 61.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 61.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 61.
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 331AF2A4836604ACC2DAECFA5B763810;2858.
+(rerunfilecheck)             Checksum: B70AC94FAD8D9A8686767FF72315BC91;2932.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
@@ -1820,10 +1820,10 @@ LaTeX Warning: There were undefined references.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 61.
  ) 
 Here is how much of TeX's memory you used:
- 16341 strings out of 493014
- 274661 string characters out of 6133351
- 364469 words of memory out of 5000000
- 19328 multiletter control sequences out of 15000+600000
+ 16357 strings out of 493014
+ 274903 string characters out of 6133351
+ 362735 words of memory out of 5000000
+ 19336 multiletter control sequences out of 15000+600000
  17726 words of font info for 65 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  40i,18n,43p,10398b,430s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1852,10 +1852,10 @@ e/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive
 /2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/local/texlive/2
 016/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texli
 ve/2016/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on main.pdf (71 pages, 673559 bytes).
+Output written on main.pdf (74 pages, 682820 bytes).
 PDF statistics:
- 1046 PDF objects out of 1200 (max. 8388607)
- 927 compressed objects within 10 object streams
- 305 named destinations out of 1000 (max. 500000)
- 375 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1075 PDF objects out of 1200 (max. 8388607)
+ 953 compressed objects within 10 object streams
+ 313 named destinations out of 1000 (max. 500000)
+ 383 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -1,38 +1,100 @@
 \chapter{The Graph-Simplex Correspondence}
+\label{chap:correspondence}
 
+In this chapter we introduce the graph simplex correspondence and explore its mathematical foundations and properties. While the focus of this dissertation is the bijective relationship between graphs and simplices, we begin by introducing the more general relationship between matrices and convex polytopes. The correspondence between graphs and simplices will then follow as a consequence. 
 
 
 \section{Convex Polyhedra of Matrices}
-\note{Unclear whether to leave this or just discuss the simplex of a graph immediately.}
-Consider an arbitrary real and symmetric matrix $\M\in \R^{n\times n}$ which admits the eigendecomposition $\M=\sum_{i=1}^d \lambda_i \eig_i\eig_i^\tp$ for some $d\leq n$ (i.e., $\M$ has eigenvalue zero with multiplicity $n-d$) where the eigenvectors $\{\eig_i\}_{i=1}^d $ are orthonormal. Writing out the eigendecomposition as 
+\label{sec:correspondence_polyhedra_matrices}
+Here we introduce the (perhaps complex) convex polytope associated with a given matrix. Let $\M\in \R^{n\times n}$ be symmetric and admitting of the eigendecomposition $\M=\sum_{i=1}^d \lambda_i \eig_i\eig_i^\tp$ for some $d\leq n$ (i.e., $\M$ has eigenvalue zero with multiplicity $n-d$) where the eigenvectors $\{\eig_i\}_{i=1}^d $ are orthonormal. Writing out the eigendecomposition as 
 \[\M=\Eig_M\Eval_M\Eig_M^\tp=(\Eig_M\Eval_M^{1/2})(\Eig_M\Eval_M^{1/2})^\tp,\]
 with $\Eig_M = (\vp_1,\dots,\vp_d)$, $\Eval_M=\diag(\lambda_1,\dots,\lambda_d)$ (note the respective absences of $\vp_{d+1},\dots,\vp_n$ and $\lambda_{d+1},\dots,\lambda_n$), suggests that we might consider $\Eval_M^{1/2}\Eig_M$ as a vertex matrix, thus $\M$ as a gram matrix. 
-Inorexably compelled by this intuition, define the vertices $\sv_1,\dots,\sv_n$ given by 
+Inorexably compelled by this intuition, define the vertices $\sv_1,\dots,\sv_n$ given by the columns of $\Eval_M^{1/2}\Eig_M^\tp$, i.e.,  
 \begin{equation*}
-    \sv_i = (\Eval_\M^{1/2}\Eig_\M)^\tp (\cdot,i) = (\eig_i(1)\lambda_1^{1/2}, \eig_i(2)\lambda_2^{1/2},\dots,\eig_i(n)\lambda_n^{1/2})^\tp,
+    \sv_i = (\Eval_M^{1/2}\Eig_M^\tp) (\cdot,i) = (\eig_1(i)\lambda_1^{1/2}, \eig_2(i)\lambda_2^{1/2},\dots,\eig_d(i)\lambda_d^{1/2})^\tp\in \C^d,
 \end{equation*}
-and the polytope 
+where we emphasize that the vertex vector will have complex entries if $\lambda_j<0$ for any $j\in[d]$. We may now define the \emph{polytope of the matrix $\M$} as the polytope given by their convex hull:
 \begin{equation*}
-\pol_\M=\conv(\sv_1,\dots,\sv_n).
+\pol_\M\equiv \conv(\sv_1,\dots,\sv_n).
 \end{equation*}
-\note{define convex hull in prelims.}
-We call $\pol_\M$ the \emph{the polytope of the matrix $\M$}. 
-Letting $\Sv(\pol_\M)=(\sv_1,\dots,\sv_n)\in \R^{d\times n}$ be the matrix whose $i$-th column is the $i$-th vertex $\sv_i$, we see that 
-$ \Sv=(\Eig \Eval^{1/2})^\tp$, and 
+Letting $\Sv=\Sv(\pol_\M)=(\sv_1,\dots,\sv_n)\in \R^{d\times n}$ be the matrix whose $i$-th column is the $i$-th vertex $\sv_i$---henceforth called the \emph{vertex matrix of $\P_M$}---we see that 
+$ \Sv=\Eval_M^{1/2}\Eig_M^\tp=(\Eig_M\Eval^{1/2})^\tp$, and 
 \begin{equation*}
     \Sv^\tp \Sv=(\Eig\Eval^{1/2}) (\Eig\Eval^{1/2})^\tp = \Eig \Eval\Eig^\tp =\M.
 \end{equation*}
-Observe that the polytope $\splx(\M)$ is $d$-dimensional: \note{Introduce dimension of polytope in prelims}
-\[\rank(\Sv)=\rank(\Sv^\tp \Sv)=\rank(\M)=d.\]
+Observe that the polytope $\splx(\M)$ is $d$-dimensional, i.e., its vertices span a $d$-dimensional subspace,
+\[\rank(\Sv)=\rank(\Sv^\tp \Sv)=\rank(\M)=d,\]
+where we've employed Lemma \ref{lem:rank(QtQ)} and the fact that $\M$ has rank $d$ due to its eigendecomposition. We thus conceptualize of $\P_M$ as a polytope in $\R^d$. 
+
+\begin{remark}
+	The ordering of the non-zero eigenvalues did not enter our considerations when defining $\P_M$. Let us consider re-ordering the indices; take $\tau:[d]\to[d]$ to be any permutation and $\{\sv_i^\tau\}$ be the vertices as they would be defined under the ordering given by $\tau$. Hence $\sv_i^\tau(j) = \vp_{\tau^{-1}(j)}(i)\lambda_{\tau^{-1}(j)}^{1/2}$. The pairwise distances between these vertices then obey 
+	\begin{equation*}
+	\norm{\sv_i^\tau-\sv_k^\tau}_2^2 = \sum_{j=1}^d \lambda_{\tau^{-1}(j)} (\vp_{\tau^{-1}(j)}(i)-\vp_{\tau^{-1}(j)}(k))^2 = \sum_{j=1}^d \lambda_{j} (\vp_{j}(i)-\vp_{j}(k))^2 = \norm{\sv_i-\sv_j}_2^2,
+	\end{equation*}
+	since $\tau$ is a bijection, hence summing over $\tau^{-1}(j)$ yields the same result as summing from 1 to $d$. 
+	Therefore, we see that the polytopes $\conv(\sv_1^\tau,\dots,\sv_n^\tau)$ and  $\conv(\sv_1,\dots,\sv_n)$ are congruent. In fact, since they share the same centroid they are simply rotations of one another. 
+\end{remark}
 
 
-\paragraph{The Inverse Polytope.}
-With $\M$ as above, consider the pseudo-inverse of $\M$ which we can write as 
-\[\M^+=\sum_{i=1}^d \lambda_i^{-1} \eig_i\eig_i^\tp = \Eig_\M \Eval_\M^{-1/2}\Eig_M.\]
-
-
+\subsection{The Inverse Polytope} 
+\label{sec:inverse_polytope}
+Given that we can associate a polytope with the matrix $\M$, it is natural to wonder about the relationship between this polytope and that associated to $M^{-1}$ if $\M$ if invertible, or with its pseudoinverse $\M^+$ more generally. As illustrated in Section \ref{sec:background_pseudoinverse}, with the eigendecompition of $\M$ as above, we can write  the pseudoinverse as 
+\[\M^+=\sum_{i=1}^d \lambda_i^{-1} \eig_i\eig_i^\tp = \Eig_M \Eval_M^{-1/2}\Eig_M.\]
 We can thus associated with $\M^+$ a polytope $\pol_{\M^+}$, which has as its vertex matrix $\Sv(\pol_{\M^+})=(\Eig\Eval^{-1/2})^\tp$; that is, the vertices $\{\sv_i^+\}$ of $\pol_{\M^+}$ are defined by 
 $\sv_i^+(j)=\eig_j(i)/\lambda_j^{1/2}$. We call $\pol_{\M^+}$ the \emph{inverse polytope of $\M$}. 
+
+Let us observe several properties of the relationship between $\P_M$ and $\P_{M^+}$. In what follows we drop the subscript $M$ from the eigenvalue and eigenvector matrix. Note that because of the orthogonality relationships among eigenvectors of $\M$, 
+\[\Eig^\tp \Eig = \begin{pmatrix}
+\la \vp_1,\vp_1\ra & \dots & \la \vp_1,\vp_d \ra \\
+\vdots & \ddots & \vdots \\
+\la \vp_d,\vp_1\ra & \dots & \la \vp_d,\vp_d\ra
+\end{pmatrix} = \I_d.\]
+Consequently, 
+\begin{equation*}
+\M^+\M = \Eig\Eval\Eig^\tp \Eig\Eval^{-1}\Eig^\tp = \Eig\Eval\Eval^{-1}\Eig^\tp = \Eig\Eig^\tp,
+\end{equation*}
+and similarly $\M\M^+= \Eig\Eig^\tp$. As it happens, the vertex matrices of $\P_M$ and $\P_M^+$ satisfy the same pseudoinverse relation: 
+\begin{equation*}
+\Sv^\tp\Sv^+ = \Eig \Eval^{1/2}\Eval^{-1/2}\Eig^\tp = \Eig\Eig^\tp, 
+\end{equation*}
+and $(\Sv^+)^\tp\Sv = \Eig\Eig^\tp$. Using the properties of the relationship between a matrix and its pseudoinverse immediately yields the following result. 
+
+\begin{lemma}
+	Let $\Sv=\Sv(\M)$ and $\Sv^+=\Sv(\M^+)$ by the vertex matrices of $\P_M$ and $\P_{M^+}$ where $\M$ is a real and symmetric matrix. The matrices $\Sv^\tp\Sv^+$ and $(\Sv^+)^\tp\Sv$ are equal and moreover 
+	\begin{enumerate}
+		\item[(i).] act as the orthogonal projection onto $\range(\M)$;
+		\item[(ii).] $(\I-\Sv^\tp\Sv^+)$ acts as the orthogonal projection onto $\ker(\M)$. 
+	\end{enumerate}
+\end{lemma}
+\begin{proof}
+	Apply Lemma \ref{lem:pseudoinverse_properties}. 
+\end{proof}
+
+Further exploring the relationships between the vertex matrices and themselves, we find that 
+\begin{align}
+\Sv\Sv^\tp &= 
+\begin{pmatrix}
+\sum_i \sv_i(1)\sv_i(1) & \dots & \sum_i \sv_i(1)\sv_i(n) \\
+\vdots &\ddots  & \vdots \\
+\sum_i \sv_i(n)\sv_i(1) & \dots & \sum_i \sv_i(n)\sv_i(n)
+\end{pmatrix}\notag 
+\\[10pt] 
+&= 
+\begin{pmatrix}
+\lambda_1 \la \vp_1,\vp_1\ra & \dots & \lambda_1^{1/2}\lambda_n^{1/2}\la \vp_1,\vp_n\ra \\
+\vdots & \ddots & \cdots \\
+\lambda_1^{1/2}\lambda_n^{1/2}\la \vp_n,\vp_1\ra & \dots &\lambda_n \la \vp_n,\vp_n\ra 
+\end{pmatrix} = \Eval,\label{eq:SvSv^t}
+\end{align}
+and likewise, 
+\begin{equation}
+\label{eq:SvSv+}
+\Svn^+(\Svn^+)^\tp = \Eval^{-1}.
+\end{equation}
+
+
+
+
 
 \subsection{The Simplex of a Graph}
 \label{sec:graph_to_simplex}
@@ -74,27 +136,9 @@ and so
 \Svn^\tp\Svn^+=(\Svn^+)^\tp\Svn=\I-\frac{\sqrt{\w}\sqrt{\w}^\tp}{\vol(G)}.
 \end{equation}
 
-Exploring the relationships between the vertex matrices and themselves meanwhile,  we find that 
-\begin{align}
-\Sv^+(\Sv^+)^\tp &= 
-\begin{pmatrix}
-\sum_i \sv_i^+(1)\sv_i^+(1) & \dots & \sum_i \sv_i^+(1)\sv_i^+(n) \\
-\vdots &\ddots  & \vdots \\
-\sum_i \sv_i^+(n)\sv_i^+(1) & \dots & \sum_i \sv_i^+(n)\sv_i^+(n)
-\end{pmatrix}\notag 
-\\[10pt] 
-&= 
-\begin{pmatrix}
-\lambda_1^{-1} \la \vp_1,\vp_1\ra & \dots & \lambda_1^{-1/2}\lambda_n^{-1/2}\la \vp_1,\vp_n\ra \\
-\vdots & \ddots & \cdots \\
-\lambda_1^{-1/2}\lambda_n^{-1/2}\la \vp_n,\vp_1\ra & \dots &\lambda_n^{-1} \la \vp_n,\vp_n\ra 
-\end{pmatrix} = \Eval^{-1},\label{eq:SvSv+}
-\end{align}
-and likewise, 
-\begin{equation}
-\label{eq:SvnSvn+}
-\Svn^+(\Svn^+)^\tp = \Evaln^{-1}.
-\end{equation}
+In summary, any real symmetric $n\times n$ matrix of rank $d$ yields a $d$-dimensional convex polytope $\P_M$ in $\C^{d\times d}$. If all eigenvalues are positive then the polytope sits in $\R^{d\times d}$. The vertex matrices of $\P_M$ and $\P_{M^+}$---the polytope of the pseudoinverse of $M$---when multiplied together are equal to and hence satisfy the projection properties of $\M^+\M$. 
+
+
 
 
 
@@ -606,34 +650,6 @@ As opposed to Section \ref{sec:S_G}, $\splxn_\ic $ is not contained in the hyper
 by assumption. The other way to see this is to note that $\svn_i^+$ is not perpendicular to $\splx_\ic$ in general by Corollary \ref{cor:Sn_orthog_iff_regular}. 
 
 
-\paragraph{Centred  Simplex}
-\note{Unclear whether this notion is actually useful yet. Unclear whether the centred version is easier to study than the unormalized  counterpart.}
-
-
-When discussing general graphs, it will be useful to study a  translated copy of $\splxn_G$ which is centred at the origin. Accordingly, given any simplex $\ssplx$ with vertices $\{\sv_i\}$, we let $\ssplx^0$ denote the simplex with vertices $\{\sv_i - \cent(\ssplx)\}$. It's clear that the centroid of $\ssplx^0$ is the origin: 
-\begin{align*}
-\cent(\ssplx^0) 
-&= \frac{1}{n}(\sv_1-\cent(\ssplx),\;\dots\;\sv_n-\cent(\ssplx))\one \\
-&= \frac{1}{n}(\sv_1\;\dots\;\sv_n)\one - \frac{1}{n}(\cent(\ssplx)\;\dots\;\cent(\ssplx))\one = \cent(\ssplx) - \cent(\ssplx)=\zero.
-\end{align*}
-
-We solidify the concept with a definition. 
-
-\begin{definition}
-	Given a simplex $\ssplx$, the unique (up to rotation and translation) simplex with vertex matrix $\Sv(\ssplx) - (\cent(\ssplx)\;\dots\;\cent(\ssplx))$ centred at the origin is called the \emph{canonical (or centred) simplex corresponding to $\ssplx$} and is denoted $\ssplx^0$. 
-\end{definition}
-
-We remark that a simplex and its centred version have the same dual. 
-
-\begin{observation}
-	\label{obs:dual_centred}
-	A simplex $\ssplx$ and corresponding centred simplex $\ssplx_0$ share the same dual, i.e., $\splx^D = \ssplx_0^D$. 
-\end{observation}
-\begin{proof}
-	Let $\Sv(\ssplx) = (\sv_i)$ and $\Sv(\ssplx^D) = (\bgamma_i)$. The vertices of the centred simplex $\ssplx_0$ are $\{\sv_i - \cent\}$ where $\cent=\cent(\ssplx)$. We have 
-	$\delta_{ij} = \la \bgamma_i,\sv_j-\sv_n \ra = \la \bgamma_i, (\sv_j-\cent) - (\sv_n-\cent)\ra$, 
-	hence $\ssplx^D$ is dual to $\ssplx_0$. 
-\end{proof}
 
 Noting that 
 \begin{equation*}

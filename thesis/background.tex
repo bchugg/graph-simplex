@@ -86,6 +86,7 @@ the \emph{Moore-Penrose Pseudoinverse} of $\M$.
 \end{definition}
 
 \begin{lemma}[\cite{barata2012moore}]
+	\label{lem:pseudoinverse_properties}
 Let $\M\in \C^{n\times m}$. There exists a unique Pseudoinverse of $\M^+$ of $\M$. Moreover, the following properties hold: 
 \begin{enumerate}
     \item[(i).] $\M\M^+$ is an orthogonal projector obeying $\range(\M\M^+)=\range(\M)$; and 
@@ -373,6 +374,26 @@ We will use the symbol $\cong$ to denote isomorphism or congruency between simpl
 	\label{fig:simplex_faces}
 \end{figure}
 
+\paragraph{Centred  Simplex}
+
+When discussing general graphs, it will be useful to study a  translated copy of $\splxn_G$ which is centred at the origin. Accordingly, given any simplex $\ssplx$ with vertices $\{\sv_i\}$, we let $\ssplx^0$ denote the simplex with vertices $\{\sv_i - \cent(\ssplx)\}$. It's clear that the centroid of $\ssplx^0$ is the origin: 
+\begin{align*}
+\cent(\ssplx^0) 
+&= \frac{1}{n}(\sv_1-\cent(\ssplx),\;\dots\;\sv_n-\cent(\ssplx))\one \\
+&= \frac{1}{n}(\sv_1\;\dots\;\sv_n)\one - \frac{1}{n}(\cent(\ssplx)\;\dots\;\cent(\ssplx))\one = \cent(\ssplx) - \cent(\ssplx)=\zero.
+\end{align*}
+
+We solidify the concept with a definition. 
+
+\begin{definition}
+	Given a simplex $\ssplx$, the unique (up to rotation and translation) simplex with vertex matrix $\Sv(\ssplx) - (\cent(\ssplx)\;\dots\;\cent(\ssplx))$ centred at the origin is called the \emph{canonical (or centred) simplex corresponding to $\ssplx$} and is denoted $\ssplx^0$. 
+\end{definition}
+
+In order to discuss translations of simplices, we will introduce equivalence classes. Given a simplex $\splx$, define $[\splx]$ as the set of all simplices which have the same inter-vertex distances but whose vertices have all been shifted by some constant vector: 
+\[[\splx] \equiv \{\splx+\balpha\one^\tp:\balpha\in\R^{n-1}\}.\]
+
+ 
+ 
 
 
 
@@ -390,23 +411,23 @@ Suppose not and let $\{\beta_i\}$ be such that $\sum_i \beta_i \bgamma_i =\zero$
 implying that $\{\bgamma_i\}_{i=1}^{n-1}$ is linearly dependent; a contradiction.  
 \end{proof}
 
-Therefore, the set $\{\bgamma_1,\dots,\bgamma_n\}$ determines a simplex, which we call the \emph{dual simplex} of $\splx$. Of course, it would highly suboptimal if the notion of a dual simplex depended on the labelling of the vertices of $\splx$. More specifically, we defined the vertices of the dual simplex $\bgamma_i$ with respect to the vectors $\sv_n-\sv_i$. It is not clear a priori whether the vertices of the dual simplex would change were we to relabel the indices of $\{\sv_i\}$. In fact, they do not---the demonstration of which is the purpose of the following lemma. 
+Therefore, the set $\{\bgamma_1,\dots,\bgamma_n\}$ determines a simplex, which we call the \emph{dual simplex} of $\splx$. Of course, it would highly suboptimal if the notion of a dual simplex depended on the labelling of the vertices of $\splx$. More specifically, we defined the vertices of the dual simplex $\bgamma_i$ with respect to the vectors $\sv_i-\sv_n$. It is not clear a priori whether the vertices of the dual simplex would change were we to relabel the indices of $\{\sv_i\}$. In fact, they do not---the demonstration of which is the purpose of the following lemma. 
 
 \begin{lemma}
 	\label{lem:dual_vertices_well-defined}
-	Let $\{\sv_1,\dots,\sv_n\}$ be a set of affinely independent vectors. Fix $k\in [n-1]$ and define $\v_i=\sv_n-\sv_i$ for $i\in[n-1]$ and $\u_i=\sv_k-\sv_i$ \note{Should maybe be $\sv_i-\sv_n$---run into trouble with negatives later on} for $i\in[n]\setminus\{k\}$. If $\{\bgamma_1,\dots,\bgamma_n-1\}$ is the sister basis to $\{\v_1,\dots,\v_{n-1}\}$ and $\bgamma_n = -\sum_{i=1}^{n-1}\bgamma_i$, then $\{\bgamma_1,\dots,\bgamma_{k-1},\bgamma_{k+1},\dots,\bgamma_{n}\}$ is the sister basis to $\{\u_1,\dots,\u_{k-1},\u_{k+1},\dots,\u_n\}$. 
+	Let $\{\sv_1,\dots,\sv_n\}$ be a set of affinely independent vectors. Fix $k\in [n-1]$ and define $\v_i=\sv_i-\sv_n$ for $i\in[n-1]$ and $\u_i=\sv_i-\sv_k$ for $i\in[n]\setminus\{k\}$. If $\{\bgamma_1,\dots,\bgamma_{n-1}\}$ is the sister basis to $\{\v_1,\dots,\v_{n-1}\}$ and $\bgamma_n = -\sum_{i=1}^{n-1}\bgamma_i$, then $\{\bgamma_1,\dots,\bgamma_{k-1},\bgamma_{k+1},\dots,\bgamma_{n}\}$ is the sister basis to $\{\u_1,\dots,\u_{k-1},\u_{k+1},\dots,\u_n\}$. 
 \end{lemma}
 \begin{proof}
 	We need to show that $\la \bgamma_i,\u_j\ra = \delta_{ij}$ for all $i,j\neq k$. For $i\neq n$, we have 
 	\begin{align*}
-	\la \bgamma_i, \sv_k-\sv_j\ra &= \la \bgamma_i,\sv_k-\sv_n+\sv_n-\sv_j\ra \\
-	&= -\la \bgamma_i,\sv_n-\sv_k \ra + \la \bgamma_i,\sv_n-\sv_j\ra \\
-	&= -\delta_{ik} + \delta_{ij} = \delta_{ij},
+	\la \bgamma_i, \sv_j-\sv_k\ra &= \la \bgamma_i,\sv_j-\sv_n+\sv_n-\sv_k\ra \\
+	&= \la \bgamma_i,\sv_j-\sv_n \ra - \la \bgamma_i,\sv_k-\sv_n\ra \\
+	&= \delta_{ij} - \delta_{ik} = \delta_{ij},
 	\end{align*}
 	since $i\neq k$. For $i=n$ meanwhile, 
 	\begin{align*}
-	\la \bgamma_i,\sv_k-\sv_j\ra &= -\sum_{\ell=1}^{n-1}\la \bgamma_\ell,\sv_k-\sv_n+\sv_n-\sv_j\ra \\
-	&= \sum_{\ell=1}^{n-1}\la \bgamma_\ell,\sv_n-\sv_k\ra - \sum_{\ell=1}^{n-1}\la  \bgamma_\ell,\sv_n-\sv_j\ra =1-1=0. \qedhere
+	\la \bgamma_n,\sv_j-\sv_k\ra &= -\sum_{\ell=1}^{n-1}\la \bgamma_\ell,\sv_j-\sv_n+\sv_n-\sv_k\ra \\
+	&= \sum_{\ell=1}^{n-1}\la \bgamma_\ell,\sv_j-\sv_n\ra - \sum_{\ell=1}^{n-1}\la  \bgamma_\ell,\sv_k-\sv_n\ra =\sum_{\ell}\delta_{j\ell}-\delta_{k\ell}=0. \qedhere
 	\end{align*}
 \end{proof}
 
@@ -429,35 +450,60 @@ hence had we set $\v_i=\sv_k-\sv_i$ and defined $\bgamma_k = -\sum_{i\neq k}\bga
 
 \begin{definition}[Dual Simplex]
 \label{def:dual_simplex}
-Given a simplex $\splx_1\subset\R^{n-1}$ with vertex set $\Sv(\splx_1)=(\sv_1,\dots,\sv_n)$, a simplex $\splx_2\subset \R^{n-1}$ with vertex vectors $\Sv(\splx_2)=(\bgamma_1,\dots,\bgamma_n)$ is called a \emph{dual simplex} of $\splx_1$ if for all $k\in[n]$, $\{\bgamma_i\}_{i\neq k}$ is the sister basis to $\{\sv_k-\sv_i\}_{i\neq k}$. 
+Given a simplex $\splx_1\subset\R^{n-1}$ with vertex set $\Sv(\splx_1)=(\sv_1,\dots,\sv_n)$, a simplex $\splx_2\subset \R^{n-1}$ with vertex vectors $\Sv(\splx_2)=(\bgamma_1,\dots,\bgamma_n)$ is called a \emph{dual simplex} of $\splx_1$ if for all $k\in[n]$, $\{\bgamma_i\}_{i\neq k}$ is the sister basis to $\{\sv_i-\sv_k\}_{i\neq k}$. We denote the dual of the simplex $\splx$ as $\splx^\du$. 
 \end{definition}
+
+We remark that in light of the previous lemma that in order to determine whether the vertices $\{\bgamma_i\}$ are the dual vertices to $\{\sv_i\}$ it suffices to check whether $\la \bgamma_i,\sv_j-\sv_k\ra=\delta_{ij}$ for a single $k\neq i,j$, as opposed to all $k\in[n]$. This will be done henceforth and will not be further remarked upon. 
+We also note that duality between simplices is not a relationship between individual simplices per se, but rather assigns to each congruence class of simplices a centred simplex. Indeed, let $[\splx]$ be a congruence class of simplices such that for every $\splx_1,\splx_2\in[\splx]$, $\Sv(\splx_1) = \Sv(\splx_2) + \balpha\one^\tp$ for some $\alpha\in\R^{n-1}$ (i.e., $\splx_1$ is a shifted version of $\splx_2$). Let $\splx_1^\du$ have vertices $\{\sv_i^\du\}$. Then
+\[\la \sv_i^\du,(\sv_j-\balpha) - (\sv_n-\balpha)\ra = \la \sv_i^\du,\sv_j-\sv_n\ra=\delta_{ij}, \]
+meaning that $\splx_1^*$ is also dual to $\splx_2$. We encapsulate this in an observation for easy recollection. 
+
+\begin{observation}
+	\label{obs:dual_centred}
+	A simplex $\ssplx$ and corresponding centred simplex $\ssplx_0$ share the same dual, i.e., $\splx^\du = \ssplx_0^\du$. 
+\end{observation}
+
+
+Observe that the dual simplex is always centred by construction (since $\bgamma_n=-\sum_{i<n}\bgamma_i$).  The following lemma demonstrates that, in the language of the preceding paragraph, if $\splx^\du$ is the dual of the congruence class $[\splx]$, then the dual of $[\splx^\du]$ is the representative of $[\splx]$ which is centred. 
+
+\begin{lemma}
+	\label{lem:dual_of_dual}
+	Let a simplex $\splx\in\R^{n-1}$ have vertices $\Sv=(\sv_i)$, $\splx^\du$ have vertices $\Sv=(\sv_i^\du)$ and $(\splx^\du)^\du$ have vertices $(\bgamma_i)$. Then, after potential re-ordering, $\bgamma_i = \sv_i-\sv_n$. 
+\end{lemma}
+\begin{proof}
+	We are given that $\la \sv_i^\du,\sv_j-\sv_n\ra=\delta_{ij}$ and $\la \bgamma_i,\sv_j^\du-\sv_n^\du\ra=\delta_{ij}$. Since dual bases are unique, it suffices to show that $\sv_i-\sv_n$ satisfies the relationships of $\bgamma_i$, and indeed $\la \sv_i-\sv_n,\sv_j^\du-\sv_n^\du\ra = \la \sv_i,\sv_j^\du-\sv_n^\du\ra - \la \sv_n,\sv_j^\du-\sv_n^\du\ra = \delta_{ij} - \delta_{in} = \delta_{ij}$. 
+\end{proof} 
+
+\begin{remark}
+	The notion of the dual simplex expounded here is the same as the object discovered by Fiedler in his book~\cite[Chapter 5]{fiedler2011matrices}, which he calls the \emph{inverse simplex}. In a covert attempt to confuse the reader, we will reserve the name inverse simplex for a (sometimes) distinct object. Fiedler defines the inverse simplex with respect to the centroid of the given simplex, finding vectors $\u_i$ such that $\la \u_i,\sv_j-\cent\ra = \delta_{ij}-1/n$, where $\cent=\cent(\splx)$.  Such vectors then satisfy $\la \u_i,\sv_j-\sv_k\ra = \la \u_i,\sv_j-\cent-(\sv_k-\cent)\ra = \delta_{ij}-\delta_{ik}=\delta_{ij}$ for $i,j\neq k$, hence are the (unique) dual vertices. 
+\end{remark}
+
+We summarize the discussion with the following theorem. 
 
 \begin{theorem}
 	\label{thm:dual_simplex}
-Each simplex has a unique dual simplex. Moreover, if $\splx_1$ is the dual simplex to $\splx_0$, then $\splx_0$ is the dual simplex to $\splx_1$. 
+Each simplex has a unique dual simplex. Moreover, if $\splx^\du$ is the dual of $\splx$, then $\splx_0$ is the dual of $\splx^\du$, where $\splx_0\cong \splx$ is centred. 
+  
 \end{theorem}
 \begin{proof}
-Existence follows from Lemma \ref{lem:bi-orthogonal_bases} using the construction above. Uniqueness follows from Observation \ref{obs:bi-orthogonal_unique} and Lemma \ref{lem:dual_vertices_well-defined}. The second part of the statement is clear by construction. 
+Existence follows from Lemma \ref{lem:bi-orthogonal_bases} using the construction above. Uniqueness follows from Observation \ref{obs:bi-orthogonal_unique} and Lemma \ref{lem:dual_vertices_well-defined}. The second part of the statement follows from Lemma \ref{lem:dual_of_dual}. 
 \end{proof}
 
-Definition \ref{def:dual_simplex} a unwieldy to work with in practice. For this reason we present an alternate characterization of the dual simplex, which lends itself more readily to verification. 
-
 \begin{lemma}
-	Let $\splx_1$ with $\Sv(\splx_1)=(\sv_1,\dots,\sv_n)$ and $\splx_2$ with $\Sv(\splx_2)=(\bgamma_1,\dots,\bgamma_n)$ be two simplices in $\R^{n-1}$. A necessary and sufficient condition for $\splx_2$ to be the dual of $\splx_1$ is that $\bgamma_i$ is perpendicular to $\splx_1[\ic]$ for all $i\in[n]$. \note{Not actually sure if this is true anymore. Run into problems with normalization.}
+	Let $\splx^\du$ be the dual of the simplex $\splx\in\R^{n-1}$ with $\Sv(\splx)=(\sv_1,\dots,\sv_n)$ and $\Sv(\splx^\du)=(\bgamma_1,\dots,\bgamma_n)$. Then $\bgamma_i$ is perpendicular to $\splx_1[\ic]$ for all $i\in[n]$. 
 \end{lemma}
 \begin{proof}
-Suppose first that $\splx_1$ and $\splx_2$ are dual 
-and consider a fixed $i<n$. Let $\p,\q\in\splx_\ic$ have barycentric coordinates $\x$ and $\y$ respectively. We need to show that $\la \bgamma_i,\p-\q\ra =0$. Note that $x(i)=y(i)=0$, and so 
+Consider a fixed $i<n$. Let $\p,\q\in\splx_\ic$ have barycentric coordinates $\x$ and $\y$ respectively. We need to show that $\la \bgamma_i,\p-\q\ra =0$. Note that $x(i)=y(i)=0$, and so 
 \begin{align*}
     \p-\q &= \Sv(\x-\y) = \sum_{j=1,j\neq i}^{n-1} \sv_j(x(j)-y(j)) + \sv_n(x(n)-y(n)) \\
     &= \sum_{j=1,j\neq i}^{n-1} \sv_j(x(j)-y(j)) + \sv_n\bigg(\sum_{j}y(j)-x(j)\bigg) = \sum_{j=1,j\neq i}^{n-1} (\sv_j-\sv_n)(x(j)-y(j)). 
 \end{align*}
 Now, by definition, $\la \bgamma_i,\sv_j-\sv_n\ra = \delta_{i,j}$ so it follows that \[\la \bgamma_i,\p-\q\ra = \sum_{j=1,j\neq i}^{n-1}\la \bgamma_i,\sv_j-\sv_n\ra (x(j)-y(j))=0,\]
-as desired. We now consider $i=n$. Recall that $\bgamma_n=-\sum_{i<n}\bgamma_i$. Moreover, $\la \bgamma_i,\sv_j\ra = \delta_{i,j}-\la \bgamma_i,\bgamma_n\ra$. Using similar arithmetic as above, 
+as desired. We now consider $i=n$. Recall that $\bgamma_n=-\sum_{i<n}\bgamma_i$. Moreover, $\la \bgamma_i,\sv_j\ra = \delta_{i,j}-\la \bgamma_i,\sv_n\ra$. Using similar arithmetic as above, 
 \begin{align*}
     \la \bgamma_n ,\p-\q\ra &= -\sum_{i<n}\bigg\la \bgamma_i,-\sum_{j<n} \sv_j(x(j)-y(j))\bigg\ra \\
     &= -\sum_{i<n}\bigg\la \bgamma_i,-\sum_{j<n} (\delta_{i,j}-\la \sv_i,\sv_n\ra)(x(j)-y(j))\bigg\ra \\
-    &= -\sum_{i<n}\bigg(x(i)-y(i)-\la\bgamma_i,\sv_n\ra  \sum_{j<n} x(j)-y(j)\bigg) =0,
+    &= -\sum_{i<n}\bigg(x(i)-y(i)-\la\bgamma_i,\sv_n\ra  \sum_{j<n} (x(j)-y(j))\bigg) =0,
 \end{align*}
 since $\x$ and $\y$ are barycentric coordinates. Conversely, suppose that $\la \bgamma_i, \Sv\x-\Sv\y\ra=0$ for every $\Sv\x,\Sv\y\in\splx_\ic$. For $k\neq i$ and any $j\in[n]$, we need to show that $\la \bgamma_i,\sv_k-\sv_j\ra = \delta_{ij}$. For $j\neq i$, we can take $\x=\bchi_k$ and $\y=\bchi_j$ above to obtain $\la \bgamma_i,\Sv\x-\Sv\y\ra = \la \bgamma_i,\sv_k-\sv_j\ra = 0=\delta_{ij}$. For $j=i$, 
 \end{proof}

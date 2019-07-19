@@ -146,19 +146,19 @@ We begin by exploring the complexity of transitioning between the different obje
 	\cline{3-11} 
 \multicolumn{2}{|r|}{From/To} & $G$ & $\splx_G$ & $\splx_G^+$ & $\splxn_G$ & $\splxn_G^+$ & $\splx_G$ & $\splx_G^+$ & $\splxn_G$ & $\splxn_G^+$ \\
 \cline{2-11} 
-& $G$ & --- &$\Omega(n^\omega)$ &$\Omega(n^\omega)$ &$\Omega(n^\omega)$ &$\Omega(n^\omega)$ & $\Omega(n^\omega)$ & $\Omega(n^\omega)$ &  & \\
+& $G$ & --- &$\Omega(n^\tau)$ &$\Omega(n^\tau)$ &$\Omega(n^\tau)$ &$\Omega(n^\tau)$ & $\Omega(n^\tau)$ & $\Omega(n^\tau)$ &  & \\
 \hline 
-\multirow{4}{0.4cm}{\textsf{V}} & $\splx_G$ & $O(n^3)$ & --- & $\Omega(n^\omega)$ & $O(n^2)$ & & $\Omega(n^\omega)$ & $O(1)$ & & \\
+\multirow{4}{0.4cm}{\textsf{V}} & $\splx_G$ & $O(n^3)$ & --- & $\Omega(n^\tau)$ & $O(n^2)$ & & $\Omega(n^\tau)$ & $O(1)$ & & \\
 \cline{2-11}
-& $\splx_G^+$ & & $\Omega(n^\omega)$ & --- & & & $O(1)$ &$\Omega(n^\omega)$ & & \\
+& $\splx_G^+$ & & $\Omega(n^\tau)$ & --- & & & $O(1)$ &$\Omega(n^\tau)$ & & \\
 \cline{2-11}
-& $\splxn_G$ & & ?  / $O(n^2)$ &  & --- & $\Omega(n^\omega)$ & & & &\\
+& $\splxn_G$ & & ?  / $O(n^2)$ &  & --- & $\Omega(n^\tau)$ & & & &\\
 \cline{2-11}
-& $\splxn_G^+$ & & & &$\Omega(n^\omega)$ & --- & & & & \\
+& $\splxn_G^+$ & & & &$\Omega(n^\tau)$ & --- & & & & \\
 \hline 
-\multirow{4}{0.4cm}{\textsf{H}} & $\splx_G$ & & $\Omega(n^\tau)$ & $O(n^2)$ & & &--- & & & \\
+\multirow{4}{0.4cm}{\textsf{H}} & $\splx_G$ & & $\Omega(n^\tau)$ & $O(n^2)$ & & &--- & $\Omega(n^\tau)$& & \\
 \cline{2-11}
-& $\splx_G^+$ & & $O(n^2)$ & $\Omega(n^\tau)$ & & & & --- & & \\
+& $\splx_G^+$ & & $O(n^2)$ & $\Omega(n^\tau)$ & & &$\Omega(n^\tau)$ & --- & & \\
 \cline{2-11}
 & $\splxn_G$ & & & & &  & & & --- &\\
 \cline{2-11}
@@ -214,7 +214,7 @@ hence knowledge of $\{\sv_i\}$ and $\{\sv_i^+\}$ yields knowledge of the eigende
 
 \begin{lemma}
 	\label{lem:S_to_S^+_vdesc}
-	If a \vdesc of $\splx^+$  (resp., $\splxn^+$) can be generated from a \vdesc of $\splx$ (resp., $\splxn$) or vice versa in time $O(g(n))$, then \lapdecomp can be solved in time $O(g(n) + n^2)$ for arbitrary weighted graphs. Consequently $g(n) = \Omega(n^\omega)$.  
+	If a \vdesc of $\splx^+$  (resp., $\splxn^+$) can be generated from a \vdesc of $\splx$ (resp., $\splxn$) or vice versa in time $O(g(n))$, then \lapdecomp can be solved in time $O(g(n) + n^2)$ for arbitrary weighted graphs. Consequently $g(n) = \Omega(n^\tau)$.  
 \end{lemma}
 
 An alternate way of seeing that constructing the inverse simplex from its dual is computationally challenging is to recall from Section \ref{sec:S_G} that $\splx_\ic$ is contained in the hyperplane $\{\x\in\R^{n-1}:\la \x,\sv_i^+\ra = -1/n\}$ (Lemma \ref{lem:SUsubset})
@@ -224,10 +224,17 @@ An alternate way of seeing that constructing the inverse simplex from its dual i
  
  \begin{lemma}
  	\label{lem:S_vdesc_to_hdesc}
-	 Suppose we can compute an \hdesc of $\splx$ (resp., $\splx^+$) )given its \vdesc in time $t(n)$. Then a \vdesc of $\splx^+$ (resp., $\splx$) is recoverable in time $t(n) + O(n^2)$, implying by Lemma \ref{lem:S_to_S^+_vdesc} that $t(n) = \Omega(n^\omega)$. 
+	 Suppose we can compute an \hdesc of $\splx$ (resp., $\splx^+$) )given its \vdesc in time $t(n)$. Then a \vdesc of $\splx^+$ (resp., $\splx$) is recoverable in time $t(n) + O(n^2)$, implying by Lemma \ref{lem:S_to_S^+_vdesc} that $t(n) = \Omega(n^\tau)$. 
  \end{lemma}
 
 We also note that a consequence of the relationship between the vertices of $\splx$ and the \hdesc of $\splx^+$ that given \vdesc of $\splx$ or $\splx^+$, we have immediate access to the \hdesc of its inverse. 
+
+A similar result for going from between the \hdesc of the combinatorial simplices. The argument runs as usual: Given an \hdesc of $\splx$, suppose we can generate an \hdesc of $\splx^+$ in time $t(n)$. We can obtain the vertices $\{\sv_i^+\}$ from the \hdesc of $\splx$, and the vertices $\{\sv_i\}$ from the \hdesc of $\splx^+$. Using these, we can then obtain the eigendecomposition of $G$ in time $O(n^2)$. That is, we can solve \lapdecomp in time $t(n) + O(n^2)$ yielding that $t(n) = \Omega(n^\tau)$. 
+
+\begin{lemma}
+	\label{lem:hdesc_to_hdesc}
+	Generating an \hdesc of $\splx_G$ given an \hdesc of $\splx_G^+$, and vice versa, requires time $\Omega(n^\tau)$. 
+\end{lemma}
 
 
 \paragraph{Between \texorpdfstring{$G$}{the graph} and \texorpdfstring{$\splx$ or $\splxn$}{its simplices}.}
@@ -238,7 +245,7 @@ which can be computed  in $O(n)$  time. Then, as above, knowledge of the eigenva
 
 \begin{lemma}
 	\label{lem:G_to_S_and_Sn}
-	If either the combinatorial or normalized simplex or their  inverses can be generated from a graph $G$ in $O(g(n))$ time, then \lapdecomp can be solved in time $O(g(n) + n^2)$ for arbitrary weighted graphs. Consequently $g(n) = \Omega(n^\omega)$. 
+	If either the combinatorial or normalized simplex or their  inverses can be generated from a graph $G$ in $O(g(n))$ time, then \lapdecomp can be solved in time $O(g(n) + n^2)$ for arbitrary weighted graphs. Consequently $g(n) = \Omega(n^\tau)$. 
 \end{lemma}
 
 The information encoded in the dot products between vertices allow us to make queries regarding the edge weights, but  each query takes $O(n)$ time since we must compute a dot product between two vectors of length $n-1$. Hence, re-constructing the graph or its Laplacian takes $O(n^3)$ if we wish do it precisely. 
@@ -246,7 +253,7 @@ The information encoded in the dot products between vertices allow us to make qu
 Let us now consider transitioning between $G$ and the \hdesc of a simplex.  The following lemma summarizes the consequences of this relationship. 
 
 \begin{lemma}
-	Given a graph $G$ suppose an \hdesc of $\splx$ (resp., $\splx^+$) can be generated in time $g(n)$. Then a \vdesc of $\splx^+$ (resp., $\splx$ can be obtained in time $O(g(n) + n^2)$ starting from $G$. Consequently, by Lemma \ref{lem:G_to_S_and_Sn}, $g(n)=\Omega(n^\omega)$. 
+	Given a graph $G$ suppose an \hdesc of $\splx$ (resp., $\splx^+$) can be generated in time $g(n)$. Then a \vdesc of $\splx^+$ (resp., $\splx$ can be obtained in time $O(g(n) + n^2)$ starting from $G$. Consequently, by Lemma \ref{lem:G_to_S_and_Sn}, $g(n)=\Omega(n^\tau)$. 
 \end{lemma}
 
 
