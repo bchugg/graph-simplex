@@ -1,0 +1,473 @@
+\chapter{Further Properties of the Correspondence}
+\label{chap:further_properties}
+
+
+
+\section{Construction via Extended Menger and Gramian}
+\label{sec:block_matrix}
+In this section we derive matrix equations which relate the geometry of hyperacute simplices and their duals. The equations appeal to the relationship between hyperacute simplices and graphs by using well known results from the literature on electrical networks and effective resistance. The goal of this section is to demonstrate to the reader the utility of the graph-simplex correspondence in generating statements about hyperacute simplices, by hijacking our knowledge of graph theory. 
+
+Let a centred, hyperacute simplex $\splx^+$ be given. By Theorem \ref{thm:graph-simplex} it is the inverse simplex of a graph $G$, whose corresponding simplex $\splx = \splx_G$ is dual to $\splx^+$.
+Therefore, $\L_G=\Sv^\tp\Sv$ and $\L_G^+=(\Sv^+)^\tp\Sv$ and the vertices $\sv_i^+$ of $\splx^+$ can be written as $\sv_i^+=(\vp_1(i)\lambda_1^{1/2},\dots,\vp_{n-1}(i)\lambda_{n-1}^{1/2})^\tp$. Hence, 
+
+\begin{align*}
+\norm{\sv_i^+-\sv_j^+}_2^2 = (\bchi_i-\bchi_j)^\tp (\Sv^+)^\tp\Sv^+ (\bchi_i-\bchi_j) = \effr(i,j).
+\end{align*}
+
+That is, the distance between the vertices of $\splx^+$ encodes the effective resistance between nodes $i$ and $j$ in $G$. Let $\D^+$ be the distance matrix of $\splx^+$ (thus the effective resistance matrix $\Reff_G$ of $G$). 
+
+
+\note{Detour into electrical networks, not sure where this goes exactly.} Observe that starting with the equation $\Reff=\one\diag(\L_G^+(i,i))^\tp + \diag(\L_G^+(i,i))\one^\tp - 2\L_G^+$, \note{should explain where this equation comes from} it follows that $\x^\tp \Reff\x = -2\x^\tp \L_G^+\x$ for any $\x\in\spn(\one)^\perp$. Therefore, 
+\begin{align*}
+\L_G^+(i,j)&=\bchi_i^\tp \L_G^+\bchi_j \\
+&= \bigg(\bchi_i-\frac{1}{n}\one\bigg)^\tp \L_G^+\bigg(\bchi_j-\frac{1}{n}\one\bigg) \\
+&= -\frac{1}{2}\bigg(\bchi_i-\frac{1}{n}\one\bigg)^\tp \Reff_G\bigg(\bchi_j-\frac{1}{n}\one\bigg) \\
+&= \frac{1}{2n}\bigg(\sum_{k\in[n]}\effr(i,k)+\effr(j,k)\bigg) - \frac{1}{2}\effr(i,j) -\frac{R_G}{n^2},
+\end{align*}
+where $R_G$ is the total effective resistance of the graph. 
+For $i=j$, this becomes 
+\begin{align*}
+\L_G^+(i,i) = \frac{1}{n} \sum_{k\in[n]}\effr(i,k) - \frac{R_G}{n^2}.
+\end{align*}
+
+Let $\overline{d}$ be the average squared distance between all the vertices of $\splx^+$, that is
+\[\overline{d} \equiv  \frac{1}{n^2}\sum_{i\leq j} \norm{\sv_i^+-\sv_j^+}_2^2.\]
+Let $\xi(i)$ give the average squared distance of vertex $i$ from other vertices minus the total average distance, 
+\[\xi(i) \equiv \frac{1}{n}\sum_{j} \norm{\sv_i^+-\sv_j^+}_2^2 - \overline{d},\]
+and put $\bxi=(\xi(1),\dots,\xi(n))$. 
+Then we have the following result. 
+
+\begin{lemma}
+	Let $\splx\subset\R^{n-1}$ be a centred hyperacute simplex with  squared distance matrix $\D$, and average squared distance vector $\bxi$. Denote by $\BGamma$ the vertex matrix of the dual simplex to $\splx$. Then, 
+	\begin{equation}
+	\label{eq:simplex_block_matrix}
+	-\frac{1}{2} \begin{pmatrix}
+	0 & \one_n^\tp \\ 
+	\one_n &  \D
+	\end{pmatrix}\begin{pmatrix}
+	\bxi^\tp \BGamma^\tp \BGamma\bxi + 4\overline{d} & -(\BGamma^\tp \BGamma\bxi + 2\one/n)^\tp \\
+	-(\BGamma^\tp \BGamma\bxi + 2\one/n) & \BGamma^\tp \BGamma
+	\end{pmatrix} = \I_{n+1}.
+	\end{equation}
+	Moreover, the vertices of the dual simplex to $\splx$ and the distance matrix of $\splx$ are related by the equation
+	\begin{equation}
+	\label{eq:lem_inverse_relation}
+	\BGamma^\tp \BGamma \D \BGamma^\tp \BGamma = -2\BGamma^\tp \BGamma,
+	\end{equation}
+	and in the space $\spn(\one)^\perp$ it holds that 
+	\begin{equation*}
+	\label{eq:lem_inverse_relation2}
+	\D\BGamma^\tp \BGamma \D= -2\D.	
+	\end{equation*}
+\end{lemma}
+
+\begin{proof}
+As above, $\splx$ is the inverse simplex of some graph $G$, and therefore, $\D=\Reff$, where $\Reff$ is the effective resistance matrix. Therefore, we can rewrite $\xi(i)$ as 
+\begin{align*}
+\frac{1}{n}\sum_j \effr(i,j) - \frac{1}{n^2}\sum_{i<j}\effr(i,j),
+\end{align*}
+and $\bxi$ as 
+\begin{align*}
+\bxi = \frac{1}{n}\Reff\one - \frac{1}{n^2} \one \one^\tp \Reff\one = \frac{1}{n}\Reff\one - \frac{1}{n^2} \J \Reff\one.
+\end{align*}
+Meanwhile, the dual simplex to $\splx$ is the simplex of the graph $G$, and hence obeys $\BGamma^\tp\BGamma=\L_G$. Consequently, letting $\u=\frac{1}{n}\Reff\one - \frac{1}{n^2} \J \Reff\one$, we can rewrite Equation \ref{eq:simplex_block_matrix} as the purely graph theoretic statement  
+\begin{equation*}
+	-\frac{1}{2} \begin{pmatrix}
+0 & \one_n^\tp \\ 
+\one_n &  \Reff
+\end{pmatrix} = 
+\begin{pmatrix}
+\u^\tp \L_G\u + \frac{4}{n^2}R & -(\L_G\u + \frac{2}{n}\one)^\tp \\
+-(\L_G\u + \frac{2}{n}\one) & \L_G
+\end{pmatrix}^{-1}.
+\end{equation*}
+where $R=\sum_{i<j}\effr(i,j)$ is the total effective resistance in the graph. The above equality was proved by Van Mieghem \etal~\cite{van2017pseudoinverse}, and in a more general form by Fiedler~\cite{fiedler1993geometric,fiedler2011matrices}, but we prove it here for completeness. Multiplying out the left hand side, the top left-hand corner of the resulting block matrix is
+\[-\frac{1}{2}(\one^\tp\L_G - \frac{2}{n}\one^\tp \one) = 1,\]
+since $\one^\tp \L_G=\one^\tp\L_G^\tp =\zero$. Likewise the top-right hand corner is $\zero$. The bottom left-hand corner is 
+\begin{equation}
+\label{eq:lem_block_matrix}
+-\frac{1}{2}\bigg(\one\bxi^\tp \L_G\bxi +\frac{4}{n^2} R \one - \Reff\L_G\bxi - \frac{2}{n}\Reff\one\bigg),
+\end{equation}
+where, using that $\Reff=\bxi \one^\tp + \one \bxi^\tp -2\L_G^+$ and $\one^\tp\L_G=\zero$, 
+\begin{align}
+\Reff\L_G = \one\bxi^\tp \L_G - 2\bigg(\I-\frac{1}{n}\J\bigg).\label{eq:lem_block_matrix2}
+\end{align}
+Equation \eqref{eq:lem_block_matrix} thus becomes 
+\begin{align*}
+\frac{1}{n}\Reff\one -\frac{2}{n^2}R \one - \bigg(\I-\frac{1}{n}\J\bigg)\bxi &= \frac{1}{n}\Reff\one - \frac{2}{n^2}R\one - \bigg(\I-\frac{1}{n}\J\bigg)\bigg(\frac{1}{n}\Reff\one - \frac{1}{n^2}\J\Reff\one\bigg) \\
+&= -\frac{2}{n^2} R\one + \frac{1}{n^2}\Reff\one + \frac{1}{n^2}\J\Reff\one - \frac{1}{n^3}\J^2\Reff\one \\
+&= -\frac{2}{n^2} R\one +\frac{1}{n^2} \J\Reff\one = \zero,
+\end{align*}
+using that $\J^2 = n \J$, $R=\frac{1}{2}\one^\tp \Reff\one$, and $\J\Reff\one = \one(\one^\tp \Reff\one) = \one R$. Finally, again using \eqref{eq:lem_block_matrix2}, the bottom right-hand side is 
+\begin{align*}
+\frac{1}{2}\one \bxi^\tp \L_G + \frac{1}{n}\one\one^\tp - \frac{1}{2}\Reff\L_G &= \frac{1}{n}\J + \bigg(\I-\frac{1}{n}\J\bigg) = \I.
+\end{align*}
+This demonstrates that \eqref{eq:lem_block_matrix} holds. We now show that $\L_G \Reff\L_G = -2 \L_G$ and that $\Reff\L_G\Reff\x = -2\Reff\x$ for all $\x\in\spn(\one)^\perp$, which will complete the proof. Applying Equation \eqref{eq:lem_block_matrix2} we have 
+\begin{align*}
+\L_G\Reff\L_G = \L_G\one \bxi^\tp\L_G = -2\L_G+ \frac{2}{n}\L_G\one\one^\tp = -2\L_G.
+\end{align*}
+In the same way as \eqref{eq:lem_block_matrix2} was derived, we see that 
+\begin{equation*}
+\L_G\Reff = \L_G\bxi\one^\tp - 2\bigg(\I-\frac{1}{n}\J\bigg),
+\end{equation*}
+and so 
+\begin{equation*}
+\Reff\L_G\Reff= \bigg(\Reff\L_G\bxi^\tp + \frac{2}{n}\one \bigg)\one^\tp -2\Reff,
+\end{equation*}
+as desired. 
+\end{proof}
+
+Putting aside simplex geometry for the moment, it is worth meditating on the significance of Equation \eqref{eq:simplex_block_matrix} as applied to electrical networks. As demonstrated in \cite{van2017pseudoinverse}, the result translates into the matrix equation 
+
+\begin{equation}
+\label{eq:block_inverse}
+-\frac{1}{2}\begin{pmatrix}
+0 & \one^\tp \\
+\one & \Reff
+\end{pmatrix} = 
+\begin{pmatrix}
+\diag(\L_G^+(i,i))^\tp  \L_G \diag(\L_G^+(i,i))  + 4R_G/n^2
+&  -(\L_G\diag(\L_G^+(i,i)) + \frac{2}{n}\one )^\tp \\
+-(\L_G\diag(\L_G^+(i,i)) + \frac{2}{n}\one ) 
+& \L_G
+\end{pmatrix}^{-1}.
+\end{equation}
+
+Let $\D$ be the distance matrix of a set $X$ of $d$ points. The matrix 
+\begin{equation}
+\label{eq:menger_matrix}
+\begin{pmatrix}
+0 & \one^\tp \\
+\one & \D
+\end{pmatrix}\in\R^{(d+1)\times (d+1)},
+\end{equation}
+is called the \emph{Menger matrix of $X$}. 
+
+
+A variant of the following result was proved by Fiedler~\cite{fiedler2011matrices}. 
+\begin{lemma}
+	\label{lem:block_matrix_tree}
+ For a weighted and connected tree $T=(V,E,w)$ on $n$ vertices let the matrix $\bS_T$ describe the inverse distances  between vertices, i.e., for $(i,j)\in E$, $\bS_T(i,j) = 1/w(i,j)$ and for $(i,j)\notin E$, $\bS_T(i,j) = \sum_{\ell=1}^{k-1} 1/w(v_\ell,v_{\ell+1})$ where $i=v_1,v_2,\dots,v_k=j$ is the unique path between $i$ and $j$. Then,
+ \begin{equation}
+ \label{eq:block_ST}
+-\frac{1}{2} \begin{pmatrix}
+0 & \one^\tp \\
+\one & \bS_T 
+\end{pmatrix}
+\begin{pmatrix}
+\sum_{i\sim j}1/w(i,j)  & (\d-2\one)^\tp \\
+\d-2\one & \L_T
+\end{pmatrix} = \I.
+ \end{equation}
+\end{lemma}
+\begin{proof}
+We begin by computing the left hand side of the matrix equation. Note that for connected trees on $n$ nodes, there are  precisely $n-1$ edges. Therefore, $\one^\tp \d-2n = \sum_i \deg(i) - 2n = 2|E| -2n = -2$, by the handshaking lemma. Since $\one^\tp\L_T=\zero$, it follows that the top row of the resulting matrix is as desired. Next, let us consider the term 
+\[\sum_{i\sim j}\frac{\one}{w(i,j)} + \bS_T(\d-2\one),\]
+which we need to demonstrate is equal to $\zero$. Consider the $k$-th row of the above vector, 
+\begin{equation}
+\label{eq:lem_block_matrix_tree}
+\sum_{i\sim j}\frac{1}{w(i,j)} + \sum_{\ell\in[n]}\bS_T(k,\ell)(\deg(\ell)-2).
+\end{equation}
+Denote the sum on the right by $S$. Fix some $(i,j)\in E$ and let us consider how many occurrences of $1/w(i,j)$ there are in $S$. Since $T$ is a tree, we may partition $V$ into two disjoint sets of vertices, $V_i$ and $V_j$ (so that $V_i\cup V_j=V$ and $V_i\cap V_j=\emptyset$) where $i\in V_i$,  $j\in V_j$, and $T[V_i]$, $T[V_j]$ are both connected trees. That is, the original graph $T$ is a union of $T[V_i]$, $T[V_j]$ and the edge $(i,j)$ which connects them. Now, the edge $(i,j)$ will be on the path between two vertices if and only if one lies in $V_i$ and the other in $V_j$. (Again, this is due to the fact that $T$ is a tree---there is thus no other path between the components  $V_i$ and $V_j$ other than via $(i,j)$.)   
+Assume without loss of generality that $k\in V_i$. Then,  by the above argument, $1/w(i,j)$ appears only in those terms $\bS_T(k,\ell)$ with $\ell\in V_j$. 
+Consequently, collecting and summing over all the terms $1/w(i,j)$, we may rewrite $S$ as 
+\[\sum_{i\sim j} \frac{1}{w(i,j)}\sum_{\ell \in V_j} (\deg_T(\ell)-2).\]
+Since $T[V_j]$ is a tree, $\sum_{\ell\in V_j}\deg_{T[V_j]}(\ell)=2(|V_j|-1)$ (using the same arguments as above). Moreover, $\deg_{T[V_j]}(\ell)=\deg_T(\ell)$ for every $\ell\in V_j\setminus \{j\}$, since no other vertex besides $j$ shares an edge with any vertex in $V_i$. On the other hand, since $(i,j)\in E$,  $\deg_{T[V_j]}(j) = \deg_T(j)-1$. Hence, 
+\[\sum_{\ell\in V_j}(\deg_T(\ell)-2) = 2(|V_i|-1) + 1 - 2|V_i| = -1.\]
+We have thus shown that $S=-\sum_{i\sim j}1/w(i,j)$, and so \eqref{eq:lem_block_matrix_tree} is indeed 0. Finally, we consider the term $\one^\tp \d - 2\one\one^\tp + \bS_T\L_T$, which we need to show is $-2I$. Let us expand  the $(k,\ell)$-th component of this matrix: 
+\begin{align*}
+\deg(\ell) - 2 + \sum_{i\in [n]} \bS_T(k,i)\L_T(\ell,k) &= \deg(\ell) - 2 + \bS_T(k,\ell)\L_T(\ell,\ell) + \sum_{i\neq \ell} \bS_T(k,i)\L_T(\ell,k)\\
+&= \deg(\ell) -2 + \bS_T(k,\ell)w(\ell) - \sum_{i\in\delta(\ell)} \bS_T(k,i) \\
+&= \deg(\ell) -2 + \sum_{i\in\delta(\ell)}w(i,\ell)(\bS_T(k,\ell) - \bS_T(k,i)).
+\end{align*}
+For $k=\ell$, we have $\bS_T(k,\ell)=0$ and $\bS_T(k,i)=\bS_T(\ell,i) = 1/w(i,\ell)$. It  follows that the above sum is $-2$, as desired. 
+Now consider $k\neq \ell$. 
+Fix $i\in \delta(\ell)$ and let $P=(k=v_1,\dots,v_r=\ell)$ be the unique path between $k$  and $\ell$. First, suppose that $i\in P$ so that $i=v_{r-1}$. Then $\bS_T(k,ell) - \bS_T(k,i) = \sum_{s=1}^{r-1}1/w(v_s,v_{s+1}) - \sum_{s=1}^{r-2} 1/w(v_s,v_{s+1}) = 1/w(v_{r-1},v_r) = 1/w(i,\ell)$. Otherwise,  if $i\in P$ then the unique path  between $i$ and $k$ in $T$ is $P\cup\{\ell\} = (v_1,\dots,v_r,i)$. In  this case  $\bS_T(k,ell) - \bS_T(k,i) = \sum_{s=1}^{r-1}1/w(v_s,v_{s+1}) - (\sum_{s=1}^{r-1} 1/w(v_s,v_{s+1}) + 1/w(i,\ell)) = - 1/w(i,\ell)$. Finally, we note that there can be at most one neighbour of $\ell$ which is on the shortest path between $k$ and $\ell$. Therefore, 
+$\sum_{i\in\delta(\ell)}w(i,\ell)(\bS_T(k,\ell)-\bS_T(k,i)) = 1-(|\delta(\ell)|-1) = 2 - \deg(\ell)$, demonstrating that the $(k,\ell)$-th component is zero, completing the proof. 
+\end{proof}
+
+\begin{corollary}
+	Let $T$  be a weighted and connected tree. Then 
+	\begin{equation*}
+	\bxi^\tp \L_T\bxi + \frac{4R_T}{n^2} = \sum_{i,j}  \frac{1}{w(i,j)}, \quad \text{and}\quad \L_G\bxi = \bigg(2-\frac{2}{n}\bigg)\one - \d,
+	\end{equation*}
+	where $\bxi = \diag(\L_T^+(i,i))=\frac{1}{n}\Reff\one - \frac{1}{n^2} \J \Reff\one$ and $\d= (\deg(1),\dots,\deg(n))$. 
+\end{corollary}
+\begin{proof}
+	Let $\bS_T$ be as it was in  Lemma \ref{lem:block_matrix_tree}. It's well known  that in trees, the effective resistance between nodes $i,j$  is equal to $\sum_{s=1}^{r-1} 1/w(v_s,v_{s+1})$ where $i=v_1,\dots,v_r=j$ is the shortest path between $i$ and $j$ in $T$ (see e.g., \cite{ellens2011effective}). That is, $\Reff_T=\bS_T$. Since matrix inverses are unique, combining Equations \eqref{eq:block_ST} and \eqref{eq:block_inverse} yields 
+	\begin{equation*}
+	\begin{pmatrix}
+	\sum_{i\sim j}1/w(i,j)  & (\d-2\one)^\tp \\
+	\d-2\one & \L_T
+	\end{pmatrix} = \begin{pmatrix}
+\bxi^\tp  \L_T \bxi  + 4R_T/n^2
+	&  -(\L_T\bxi + \frac{2}{n}\one )^\tp \\
+	-(\L_T\bxi + \frac{2}{n}\one ) 
+	& \L_T
+	\end{pmatrix},
+	\end{equation*}  
+	from which the claim follows. 
+\end{proof}
+
+\begin{lemma}[\cite{menger1931new}]
+	Let $\D$ be the distance matrix of a set $X$ of $d$ points. The $d-1$ dimensional volume of the convex hull of $X$ is proportional to the root of the determinant of the Menger matrix: 
+	\begin{equation*}
+	\vol(CH(X))^2 = \frac{(-1)^d}{((d-1)!)^2 2^{d-1}} \det\begin{pmatrix}
+	0 & \one^\tp \\
+	\one & \D
+	\end{pmatrix}.
+	\end{equation*} 
+\end{lemma}
+
+Sharpe~\cite{sharpe1967theorem} said something about something which should probably be cited, but not exactly sure what it is yet. 
+
+
+
+%\section{The Inverse Graph}
+%\label{sec:inverse_graph}
+%Let $G$ be a connected and weighted graph. $G$ admits the hyperacute combinatorial simplex $\splx_G$ which, by Theorem \ref{thm:graph-simplex}, is the inverse simplex of a graph $H$. It thus obeys 
+%\begin{equation*}
+%\norm{\sv_i-\sv_j}_2^2 = \effr_H(i,j). 
+%\end{equation*}
+%%Expanding both sides for $i\neq j$ and  using the definition of the effective resistance yields 
+%\begin{equation*}
+%w_G(i) + w_G(j) + 2w_G(i,j) = \L_H^+(i,i) + \L_H^+(j,j) -2\L_H^+(i,j). 
+%\end{equation*}
+%Here we using the subscript $G$ to reinforce the fact that the weights are those of the original graph, $G$. We can calculate the entries of the pseudoinverse $\L_H^+$ more explicitly. Put 
+%\[W_G\equiv \sum_{i<j}w(i,j) = \frac{1}{2}\sum_i \sum_j w(i,j) = \frac{1}{2}\sum_i w(i).\]
+%That is, $W_G$ is the total weight of the graph $G$. Recall that $R_H$ is the total effective resistance of $H$ and compute 
+%\begin{align*}
+%R_H &= \sum_{i<j} \effr(i,j) \\
+%&= \sum_{i<j} (w_G(i) + w_G(j) + 2w_G(i,j)) \\
+%&= \frac{1}{2}\sum_{i,j} (w_G(i) +w_G(j)) + 2W_G \\
+%&= (2n+2)W_G 
+%\end{align*} 
+
+Using this and a previous calculated formula for the entries of the pseudoinverse yields 
+\begin{align*}
+\L_H^+(i,j) &= \frac{1}{2}\bigg(\sum_k \effr_H(i,k) + \sum_k \effr_H(j,k)\bigg) - \frac{1}{2} \effr_H(i,j) - \frac{R_H}{n^2}, \\
+&= \frac{1}{2}\sum_k (w_G(i) + w_G(j) + 2w_G(k) + 2w_G(i,k) + 2w_G(j,k)) - \frac{1}{2}w_G(i,j) - \frac{R_H}{n^2}\\
+&= \bigg(\frac{n}{2}+1\bigg)(w_G(i)+w_G(j))  - \frac{1}{2}w_G(i,j) + \bigg(2-\frac{2}{n}-\frac{2}{n^2}\bigg)W_G.
+\end{align*}
+
+
+\section{Inequalities}
+
+The conductance of a graph $G$ is 
+\begin{equation*}
+\theta(S) \equiv \frac{|\delta(S)|}{|S|}. 
+\end{equation*}
+We have the following inequality: 
+\[\theta(S)\geq \lambda_2\bigg(1-\frac{|S|}{|V|}\bigg)\geq \frac{\lambda_2}{2},\]
+which yields 
+\[\norm{\Sv \chi S}_2^2 \geq \frac{|S|}{2}\lambda_{n-1}.\]
+We can relate the eigenvalues of $G$ to the geometry of $\splx$ via the relation $\Sv\Sv^\tp = \Eval$. Hence
+\[\norm{\Sv \chi_S}_2^2 \geq \frac{|S|}{2} \Sv\Sv^\tp (n-1,n-1)\geq \frac{|S|}{2} \min_{i}\{(\Sv\Sv^\tp)(i,i):(\Sv\Sv^\tp)(i,i)\neq 0\} = \frac{|S|}{2}\min_{i=1}^{n-1} \norm{\Pi_i(\Sv)}_2^2.  \]
+
+
+\begin{lemma}
+If $\p$ is any vector pointing from $\splx_U$ to $\splx_{U^c}$ which has a non-empty intersection with both faces, then $\norm{\p}_2 \geq \norm{\alt(\splx_U)}_2$. 
+\end{lemma}
+\begin{proof}
+Geometry. \note{Work this out}. 
+\end{proof}
+
+The following lemma is due to Devriendt and Van Mieghem~\cite{devriendt2018simplex}. 
+
+
+\begin{lemma}
+For any $f$ with $\la f,\one\ra=0$, 
+\begin{equation*}
+    \Lf(f) \geq \frac{\norm{f}_1^2}{4W(\delta^+F^+)},
+\end{equation*}
+for $F^+\equiv \{i:f(i)\geq 0\}$. 
+\end{lemma}
+\begin{proof}
+Let $F^+$ be as above and let $F^-\equiv [n]\setminus F^+=\{i:f(i)<0\}$. Observe that 
+\begin{equation*}
+    \norm{f}_1=\sum_i |f(i)| = \la \chi_{F^+}-\chi_{F^-},f\ra = (\chi_{F^+}-\chi_{F^-})^\tp f = (\chi_{F^+}-\chi_{F^-})^\tp(\I-\J/n) f,
+\end{equation*}
+where the last inequality follows since $f$ is orthogonal to $\one$ by assumption. Using the pseudoinverse relation \eqref{eq:sv+sv}, we can continue as 
+\begin{align*}
+    \norm{f}_1 &= (\chi_{F^+}-\chi_{F^-})^\tp(\Sv^+)^\tp \Sv f \\
+    &= (\chi_{F^+}-\one + \chi_{F^+})^\tp(\Sv^+)^\tp \Sv f \\
+    &=2\chi_{F^+}^\tp (\Sv^+)^\tp \Sv f - (\Sv^+\one)^\tp \Sv f \\
+    &= 2\la \Sv^+\chi_{F^+}, \chi_{F^+}^\tp (\Sv^+)^\tp \Sv f \ra &&\text{since }\Sv^+\one =\zero\\
+    &\leq 2\norm{\Sv\chi_{F^+}}_2 \cdot \norm{\Sv^+ f}_2 &&\text{by Cauchy-Schwartz}\\
+    &= 2\left(\chi_{F^+}\L^+\chi_{F^+}\cdot f^\tp \L f\right)^{1/2}.
+\end{align*}
+Squaring both sides and recalling that $\chi_{F^+}\L^+\chi_{F^+} = W(\delta^+F^+)$ gives the desired result. 
+\end{proof}
+
+We obtain several inequalities for the simplex via immediate application of inequalities from the literature on electrical networks. 
+
+\note{Since $\Reff_G=n\sum_i\lambda_i^{-1}=n\tr(\Sv\Sv^\tp)$,
+facts/inequalities pertaining to the effective resistance can be translated to the simplex. }
+
+\begin{lemma}
+Let $G=(V,E,w)$ be a weighted graph and let $U\subset V$ obey $\vol(U)<\vol(V)/2$ and \[\theta(U) \geq \frac{\alpha}{\vol(U)^{1/2-\eps}}.\]
+\end{lemma}
+\todo \note{finish this/decide whether this is worth including.}
+
+\section{Quadrics}
+
+\note{Circumscribed ellipsoid for normalized Laplacian is not necessarily the sphere -- could be deformed. }
+\label{sec:quadrics}
+\todo  \note{Read more about quadrics in general but filling this out. Might be more we can say. Also look into any algorithmic work done on quadrics. Does this relationship help us answer anything interesting?}
+Fiedler derivation: ~\cite{fiedler2005geometry}. More Fiedler geometry: ~\cite{fiedler1993geometric}. 
+A \emph{quadric} in $\C^d$ is a hypersurface of dimension $d-1$ of the form 
+\begin{equation*}
+\{\x\in\C^d: \x^\tp \Q\x + \r^\tp \x + s=0\}.
+\end{equation*}
+
+\begin{definition}
+\label{def:steiner_ellipsoid}
+The \emph{Steiner Circumscribed Ellipsoid}, or simply the \emph{Steiner Ellipsoid} of a simplex $\splx$ with vertices $\{\sv_i\}$ is a quadric which contains the vertices and whose tangent plane at $\sv_i$ is parallel to the affine plane spanned by $\{\sv_j\}_{j\neq i}$. 
+\end{definition}
+
+\begin{theorem}
+The Steiner ellipsoid of a simplex $\splx$ is unique and moreover, is the ellipsoid with minimum volume which contains $\splx$. 
+\end{theorem}
+
+Owing to its uniqueness, we denote the Steiner ellipsoid of the simplex $\splx$ by $\El(\splx)$. The following lemma gives an explicit representation of $\El(\splx)$. 
+
+\begin{lemma}[\cite{fiedler2005geometry}]
+The Steiner circumscribed Ellipsoid of $\splx=\splx(G)$ satisfies
+\begin{equation}
+\label{eq:steinerE}
+    \El(\splx) = \bigg\{\x: \x^\tp \Sv^+(\Sv^+)^\tp \x - \frac{n-1}{n}=0\bigg\}.
+\end{equation}
+\end{lemma}
+\begin{proof}
+Set $\M=\Sv^+(\Sv^+)^\tp$ and $E=\{\x:\x^\tp \M\x=(n-1)/n\}$. The claim is that $\El(\splx)=E$.  
+First we demonstrate that the vertices of $\splx$ are contained in $E$. Noticing that $\J^2=n\J$, we compute 
+\begin{align*}
+    \sv_i^\tp \M \sv_i &= \chi_i^\tp \Sv^\tp \Sv^+(\Sv^+)^\tp \Sv \chi_i = \chi_i^\tp \left(\I-\frac{1}{n}\J\right)^2 \chi_i = \chi_i^\tp \left(\I-\frac{1}{n}\J\right) \chi_i = 1 - \frac{1}{n}, 
+\end{align*}
+so indeed the vertices $\sv_i$ are contained in $E$. Now, define the hyperplane 
+\[\H\equiv \bigg\{\x:\x^\tp \M \sv_i = -\frac{1}{n}\bigg\}.\]
+We claim that $\H$ is the affine plane containing the points $\{\sv_j\}_{j\neq i}$. Indeed, consider $\sv_j$ for some fixed $j\neq i$. Then, as above 
+\[\sv_j^\tp \M\sv_i = \chi_j^\tp \left(\I-\frac{1}{n}\J\right) \chi_i = -\frac{1}{n}. \]
+It remains to show that $\H$ is parallel to the tangent plane of $E$ at the point $\sv_i$. But this tangent plane is defined by the equation~\cite{fiedler2005geometry} \note{Should figure out how this is actually done}
+\[\x^\tp \M\sv_i =\frac{n-1}{n},\]
+which is clearly parallel to $\H$. This completes the proof.
+\end{proof}
+
+Perhaps a more insightful representation of $\El(\splx)$ comes from appealing to Equation \eqref{eq:SvSv+}, i.e., $\Sv\Sv^\tp = \Eval^{-1/2}$. Hence, by \eqref{eq:steinerE},
+\begin{equation}
+\label{eq:steinerE2}
+    \El(\splx) = \bigg\{\x:\x^\tp \Eval^{-1}\x = \frac{n-1}{n}\bigg\}.
+\end{equation}
+
+On the other hand, it's easy to see that the Steiner ellipsoid of the normalized simplex, $\El(\splxn)$ is simply the unit sphere, i.e., $\El(\splxn) = \{\x:\x^\tp \x = 1\}$, since $\norm{\svn_i}_2^2=1$. 
+\note{Is this enough to justify it?} 
+Therefore, we see that the circumscribed sphere and the circumscribed ellipsoid of the normalized simplex are one and the same. 
+
+For the combinatorial simplex, however, it's not even clear whether the circumscribed sphere exists \note{Unless it exists for all simplices?}. Demonstrating that it does in fact exist is the purpose of the following lemma. 
+
+\note{I think this should hold for more than simply hyperacute simplices, but need to generalize the Menger matrix stuff in order for the result to go through.}
+\begin{lemma}
+	\label{lem:circ_sphere}
+	Let $\splx^+\subset\R^{n-1}$ be a hyperacute simplex. The circumscribed sphere  of $\splx^+$ exists and is given by the set of points $\{\x:\x=\Sv\balpha, \; \la \balpha,\one \ra = 1, \; \la \balpha,\D\balpha\ra =0\}$, which is a sphere centred at the point $\frac{1}{2}\Sv(\L_G\bxi + \one/n)$ with radius $\frac{1}{2}\sqrt{\bxi^\tp\L_G\bxi + 4R_G/n^2}$. 
+\end{lemma}
+\begin{proof}
+Set $\bzeta = \frac{1}{2}(\L_G\bxi + \one/n)$ and $r = \bxi^\tp \L_G\bxi+4R_G/n^2$. 
+Let us expand $\x$ in barycentric coordinates in accordance with Lemma \ref{lem:barycentric_coeffs}.  Put $\x=\sum_i \alpha_i\sv_i$ where $\sum_i\alpha_i=\sum_i\beta_i=1$. Let $\balpha=(\alpha_1,\dots,\alpha_n)$. 
+The claim is that the circumscribed sphere of $\splx^+$ is given by the equation 
+\begin{equation}
+\label{eq:lem_circ_sphere2}
+\norm{\x - \Sv\bzeta}_2^2 = \frac{1}{4}r,
+\end{equation}
+and that this equation is equivalent to $\balpha^\tp \D\balpha=0$. Note first that due to Equation \ref{eq:block_inverse}, $\la \one, -2\bzeta\ra = \la \one, -\L_G\bxi - \frac{2}{n}\one\ra = -2$, so $\bzeta=(\zeta_1,\dots,\zeta_{n-1})$ obeys $\sum_i \zeta_i=1$.  The left hand side of \eqref{eq:lem_circ_sphere2} then becomes 
+\begin{align*}
+\la \x-\Sv\bzeta,\x-\Sv\bzeta\ra &= \sum_{i,j\in[n]} (\alpha_i-\zeta_i)(\alpha_j-\zeta_j) \la \sv_i,\sv_j\ra \\
+&= \sum_{i,j\in[n]} (\alpha_i-\zeta_i)(\alpha_j-\zeta_j) \la \sv_i-\sv_n,\sv_j-\sv_n\ra,
+\end{align*} 
+where the last line uses that $\sv_n \sum_i(\alpha_i-\zeta_i)=\zero$. 
+Observing that 
+\begin{align*}
+\la \sv_i-\sv_n,\sv_j-\sv_n\ra &= \frac{1}{2}(\norm{\sv_i-\sv_n}_2^2 + \norm{\sv_j-\sv_n}_2^2 - \norm{\sv_i-\sv_j}_2^2),
+\end{align*}
+we may proceed as
+\begin{align}
+\la\x-\Sv\bzeta,\x-\Sv\bzeta\ra &= \frac{1}{2}\bigg(\sum_j (\alpha_j-\zeta_j) \sum_i (\alpha_i-\zeta_i)\norm{\sv_i-\sv_n}_2^2 \notag \\
+&\qquad + \sum_i (\alpha_i-\zeta_i) \sum_j (\alpha_j-\zeta_j)\norm{\sv_j-\sv_n}_2^2  \notag \\
+&\qquad - \sum_{i,j} (\alpha_i-\zeta_i)(\alpha_j-\zeta_j)\norm{\sv_i-\sv_j}_2^2 \bigg)\notag \\
+&= -\frac{1}{2}\sum_{i,j} (\alpha_i-\zeta_i)(\alpha_j-\zeta_j)\norm{\sv_i-\sv_j}_2^2. \label{eq:lem_circ_sphere}
+\end{align} 
+Recalling the block matrix equation \eqref{eq:block_inverse} for hyperacute simplices, for all $i$ we have $\one (\bxi^\tp \L_G\bxi + 4R_G/n^2) - \D(\L_G\bxi + 2\one /n) = \zero$, i.e., $r\one -2\D =\zero$. Hence 
+\[\la \D(i,\cdot),\bzeta\ra = \frac{r}{2}.\]
+Using this, we rewrite the summation in on the right hand side of \eqref{eq:lem_circ_sphere} as 
+\begin{align*}
+\sum_{i,j}(\alpha_i-\zeta_i)(\alpha_j-\zeta_j)\D(i,j) &= \sum_i (\alpha_i-\zeta_i) \bigg(\sum_j\alpha_j \D(i,j) - \sum_j \alpha_j \D(i,j)\bigg) \\
+&= \sum_j\alpha_j \sum_i (\alpha_i-\zeta_i)\D(i,j) - \frac{1}{2}r \sum_i (\alpha_i-\zeta_i) \\
+&= \sum_j \alpha_j \bigg(\sum_i \alpha_i \D(i,j) - \frac{1}{2}r \bigg) \\
+&= \sum_{i,j} \alpha_i \D(i,j) \alpha_j -\frac{1}{2}r= \balpha^\tp \D\balpha - \frac{1}{2}r.
+\end{align*}
+The equation of the sphere in \eqref{eq:lem_circ_sphere2} now becomes $\frac{1}{4}r - \frac{1}{2}\balpha^\tp \D\balpha = \frac{1}{4}r$, i.e., $\balpha^\tp \D\balpha=\zero$ as was claimed.  Now, to see that this sphere contains the vertices of $\splx^+$,  $\{\sv_i^+\}$, we need only note that the barycentric coordinate of $\sv_\ell^+$ is $\bchi_\ell$ and that $\bchi_\ell^\tp \D \bchi_\ell = \sum_{i,j} \bchi_\ell(i) \D(i,j) \bchi_\ell(j) = \D(\ell,\ell) = 0$. 
+\end{proof}
+
+
+
+
+
+\section{Random Walks}
+\note{Very unclear if there's anything interesting here. Mostly just contains Karel's thought on rws at the moment. Think about: \\
+	
+	(1) can we generate  a theory/answer questions regarding random walks in simplices using our knowledge of rws in graphs. \\
+	
+	(2)Straight lines are geodesics. If in the simplex the path created by a random walk is a straight line, is this telling us the random walk is as ``efficient'' as possible? Whereas those with curved lines are inefficient? Unclear how to formalized this /where to take it. 
+	After  thinking about this a bit, probably not: It just says that the eigenvalues corresponding to  the vertices which contribute to the starting position are equal.
+}
+
+
+
+\subsection{Discrete Time Random Walks}
+In a \emph{discrete time random walk (DSRW)} we envision a walker who jumps from vertex $i$ to vertex $j$ with probability proportional to $w(i,j)$. To this end, one defines the transition matrix 
+\begin{equation*}
+    \T(i,j) = \frac{w(i,j)}{w(i)}=\frac{\A_G(i,j)}{\sum_{k\in\delta(i)} \A_G(i,k)}.
+\end{equation*}
+It's clear that $\sum_i \T(i,j)=1$. 
+The probability that the walker is at node $i$ at time $t$ is the probability that that she was at node $j$ at time $t-1$ and transitioned to node $i$. Thus, 
+\begin{equation*}
+    \pi_i(t)=\sum_{j}\pi_j(t-1)\T(i,j),
+\end{equation*}
+or, more succinctly, 
+\begin{equation*}
+    \bpi(t) = \T\bpi(t-1).
+\end{equation*}
+The stationary distribution $\bpi(\infty)\equiv \lim_t \bpi(t)$  satisfies $\bpi(\infty)=\T\bpi(\infty)$,  which yields that 
+The stationary distribution of such a walk is given by 
+\[\pi_i = \frac{\sum_{j\in \delta(i)} w(i,j)}{\sum_{j,k\in V}w(i,j)},\]
+which, for an undirected and unweighted graph simplifies to $\pi_i=\deg(i)/2|E|$. 
+
+
+\subsection{Continuous Time Random Walks}
+
+A \emph{Continuous Time Random Walk}~\cite{masuda2017random} satisfies the equation 
+\begin{equation}
+\label{eq:ctrw_dynamics}
+    \frac{d\bpi(t)}{dt}= -\bpi(t)^\tp\W^{-1} \L,
+\end{equation}
+hence 
+\begin{equation*}
+    \bpi(t)^\tp = \bpi(0)^\tp \exp(-\W^{-1}\L t).
+\end{equation*}
+After converging to the stationary distribution there is, by definition, no change in the distribution. Therefore, $d\bpi(t)/dt=0$ and Equation \eqref{eq:ctrw_dynamics} reduces to 
+$-\bpi(t)\W^{-1}\L =\zero$. Therefore, $\bpi(t)\W^{-1}$ is a left eigenfunction of $\L$ or equivalently, $ \W^{-1}\bpi$ is a right eigenfunction with corresponding eigenvalue zero. Hence, $\W^{-1}\bpi\in\spn\{\one\}$, i.e., $\bpi\in\spn\{\w\}$. Since $\norm{\bpi(\infty)}_1=1$, we see that 
+\[\bpi(\infty) = \frac{\w}{\norm{\w}_1}.\]
+In particular, the CTRW shares the same stationary distribution as the DTRW. 
+
+
+
+\subsection{mixing time}
+The distribution $\bpi=(\pi_1,\dots,\pi_n)$ corresponds to a point in the simplex, namely $\p_\pi=\S\bpi$. It is thus natural to wonder whether this point tells us anything interesting about the dynamics of the walk. 
+
+The \emph{variation distance} between two distributions $p_1$ and $p_2$ with finite state space $S$ is given by 
+\[\norm{p_1-p_2}_V = \frac{1}{2}\sum_{s\in S} |p_1(s)-p_2(s)|.\]
+
+\paragraph{Mixing Time.} Let $\p_i^t$ be the distribution over the set of vertices $V$ at time $t$ obtained by beginning the random walk at vertex $i$. Define 
+\[\Delta(t) = \max_{i\in V}\norm{\p_i^t-\bpi}_V,\]
+where $\norm{\cdot}_V$ is the variation distance. Given $\eps>0$ set 
+\[\tau(\eps) = \min\{t:\Delta(t)\leq \eps\}.\]
+We have 

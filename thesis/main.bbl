@@ -75,6 +75,11 @@ Branko Gr{\"u}nbaum, Victor Klee, Micha~A Perles, and Geoffrey~Colin Shephard.
 \newblock Convex polytopes.
 \newblock 1967.
 
+\bibitem[Haw75]{hawkins1975cauchy}
+Thomas Hawkins.
+\newblock Cauchy and the spectral theory of matrices.
+\newblock {\em Historia Mathematica}, 2(1):1--29, 1975.
+
 \bibitem[JL84]{johnson1984extensions}
 William~B Johnson and Joram Lindenstrauss.
 \newblock Extensions of lipschitz mappings into a hilbert space.
@@ -165,6 +170,11 @@ Nisheeth~K Vishnoi et~al.
 \newblock Lx= b.
 \newblock {\em Foundations and Trends{\textregistered} in Theoretical Computer
   Science}, 8(1--2):1--141, 2013.
+
+\bibitem[VM13]{van2013double}
+P~Van~Mieghem.
+\newblock Double orthogonality and the nature of networks.
+\newblock {\em Delft University of Technology}, 2013.
 
 \bibitem[VMDC17]{van2017pseudoinverse}
 Piet Van~Mieghem, Karel Devriendt, and H~Cetinay.

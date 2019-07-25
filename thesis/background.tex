@@ -14,7 +14,7 @@ For a set $U$, $K^U$ denotes the set of all functions from $U$ to $K$.  Elements
 For $n\in \N$, let $\zero_n\in\R^n$ and $\one_n\in\R^n$ be the vectors of all zeroes and all ones, respectively. Let $\I_n$ and $\J_n$  refer to the $n\times n$ identity matrix and all-ones matrix respectively (so $\J_n=\one_n\one_n^\tp)$. When the dimension $n$ is understood from context, will typically omit it as a subscript. We use $\chi(E)$ or $\chi_E$ as the indicator of an event $E$, i.e., $\chi(E)=1$ if $E$ occurs, and 0 otherwise. For example, $\chi(i\in U)=1$ if $i\in U$, and 0 if $i\in U^c$.  Similarly, for $U\subset K$,  $\bchi_U\in\R^K$ is the indicator vector of the set $U$, so $\bchi_U(i)=\chi(i\in U)$. 
 By $\diag(x_1,x_2,\dots,x_n)$ we mean the $n\times n$ matrix $\D$ entries $\D(i,i)=x_i$ and $\D(i,j)=0$ for $i\neq j$. Given vectors $\v_1,\dots,\v_n$, we will often denote by $(\v_1,\dots,\v_n)$ the matrix whose $i$-th column is $\v_i$. The $i$-th coordinate of a vector $\x$ will be denoted either by $\x(i)$ or simply $x(i)$. We trust this will not be overly confusing.  For $1\leq p<\infty$, the \emph{$p$-norm} of $\x\in \R^d$ is 
 \[\norm{\x}_p = \bigg(\sum_{i=1}^d x_i^p\bigg)^{1/p},\]
-while the \emph{0-norm} of $\x$ is the number of non-zero entries of $\x$, and is denoted by $\norm{\x}_0$.  Given a vector or matrix, we use the superscript $t$ to denote it's transpose, i.e.,, given $\Q$, $\Q^t$ is defined as $\Q^t(i,j) = \Q(j,i)$. The standard inner product on $\R^d$ is denoted as $\la\cdot,\cdot\ra$, that is, $\la \x,\y\ra = \sum_i x(i)y(i)$. Elementary properties of the inner product will often be used without justification, such as its bilinearity: $\la \x,\alpha\y_1+\y_2\ra  = \la \x,\alpha\y_1\ra + \la \x,\y_2\ra$ for $\alpha\in\R$.  
+while the \emph{0-norm} of $\x$ is the number of non-zero entries of $\x$, and is denoted by $\norm{\x}_0$.  Given a vector or matrix, we use the superscript $t$ to denote it's transpose, i.e.,, given $\Q$, $\Q^t$ is defined as $\Q^t(i,j) = \Q(j,i)$. The standard inner product on $\R^d$ is denoted as $\la\cdot,\cdot\ra$, that is, $\la \x,\y\ra = \sum_i x(i)y(i)$. Elementary properties of the inner product will often be used without justification, such as its bilinearity: $\la \x,\alpha\y_1+\y_2\ra  = \la \x,\alpha\y_1\ra + \la \x,\y_2\ra$ for $\alpha\in\R$.  We will sometimes use the notation $\perp$ to mean ``orthogonal to'', so $\x\perp\y$ iff $\la\x,\y\ra=0$. 
 
 We will often use the shorthand ``iff'' to mean ``if and only if''. We use $\delta_{ij}$ to denote the Kronecker delta function, i.e., $\delta_{ij} = 1$ if $i=j$ and 0 otherwise. We may sometimes include a comma and write $\delta_{i,j}$. 
 
@@ -26,7 +26,12 @@ or equivalently, the smallest convex set containing $X$~\cite{grunbaum1967convex
 
 \section{Linear Algebra}
 \label{sec:background_linear}
-The results derived in this section can be found in any self-contained reference on spectral graph theory (see e.g., \cite{spielman2009spectral,chung1997spectral}). What's not graph-theoretic in nature---dimension, kernel, similarity, for example---may be found in a generic reference on linear algebra (e.g.,  \cite{axler1997linear}). 
+The results derived in this section can be found in any self-contained reference on spectral graph theory (see e.g., \cite{spielman2009spectral,chung1997spectral}). What's not graph-theoretic in nature---dimension, kernel, similarity, for example---may be found in a generic reference on linear algebra (e.g.,  \cite{axler1997linear}). We begin by stating a well-known but substantial result first proved by Cauchy (see \cite{hawkins1975cauchy} for the relevant history), which initiated the systematic study of the spectrum of matrices and which underpins the results in this dissertation. 
+
+\begin{theorem}[Spectral Theorem for real matrices]
+	\label{thm:spectral_theorem}
+	Every real, symmetric $n\times n$ matrix has a set of $n$ orthogonal eigenvectors and real eigenvalues.  
+\end{theorem}
 
 \begin{lemma}
 \label{lem:bi-orthogonal_bases}
@@ -300,7 +305,7 @@ Note that here we've relied on the fact that $\bchi_i-\bchi_j\perp \one$.
 
 
 \section{Simplices}
-\label{sec:simplices}
+\label{sec:background_simplices}
 
 \begin{figure}
 	\centering
@@ -353,6 +358,15 @@ As is illustrated in two and three dimensions by the triangle and the tetrahedro
 \begin{equation*}
     \splx\restriction_U \equiv \{\Sv\x: \x\geq 0,\;\norm{\x}_1=1,\;x(i)=0\text{ for all }i\in U^c\}.
 \end{equation*}
+The following observation demonstrates that $\splx\restriction_U$ is a well-defined simplex. 
+\begin{observation}
+	\label{obs:subset_affinely_independent}
+	Any subset of an affinely independent set of vectors is again affinely independent. 
+\end{observation}
+\begin{proof}
+	Let $\{v_i\}_{i\in[n]}$ be a set of vectors and let $U\subsetneq[n]$ be a proper subset of $[n]$. If $\{\v_i\}_{i\in U}$ is not affinely independent, then there exists $\{\alpha_i\}_{j\in U}$ not all zero such that $\sum_{i\in U}\alpha_i\v_i=\zero$ and $\sum_i\alpha_i=0$. Taking $\alpha_j=0$ for $j\in U^c$ implies that $\sum_{i\in[n]}\alpha_i\v_i=\zero$ while maintaing that $\sum_{i}\alpha_i=0$. Hence $\{v_i\}_{i\in[n]}$ is not affinely independent. 
+\end{proof}
+
 Trusting the reader's capacity for variation, depending on the situation we may adopt different notation for the faces of a simplex. Often times the vertical restriction symbol will be dropped and we will write only $\splx_U$; other times we will write $\splx[U]$, especially when the space reserved a subscript is being used for other purposes. 
 
 The \emph{centroid} of a simplex is the point 
@@ -374,9 +388,7 @@ We will use the symbol $\cong$ to denote isomorphism or congruency between simpl
 	\label{fig:simplex_faces}
 \end{figure}
 
-\paragraph{Centred  Simplex}
-
-When discussing general graphs, it will be useful to study a  translated copy of $\splxn_G$ which is centred at the origin. Accordingly, given any simplex $\ssplx$ with vertices $\{\sv_i\}$, we let $\ssplx^0$ denote the simplex with vertices $\{\sv_i - \cent(\ssplx)\}$. It's clear that the centroid of $\ssplx^0$ is the origin: 
+\paragraph{Centred  simplex.} When discussing general graphs, it will be useful to study a  translated copy of $\splxn_G$ which is centred at the origin. Accordingly, given any simplex $\ssplx$ with vertices $\{\sv_i\}$, we let $\ssplx^0$ denote the simplex with vertices $\{\sv_i - \cent(\ssplx)\}$. It's clear that the centroid of $\ssplx^0$ is the origin: 
 \begin{align*}
 \cent(\ssplx^0) 
 &= \frac{1}{n}(\sv_1-\cent(\ssplx),\;\dots\;\sv_n-\cent(\ssplx))\one \\
@@ -490,27 +502,30 @@ Existence follows from Lemma \ref{lem:bi-orthogonal_bases} using the constructio
 \end{proof}
 
 \begin{lemma}
-	Let $\splx^\du$ be the dual of the simplex $\splx\in\R^{n-1}$ with $\Sv(\splx)=(\sv_1,\dots,\sv_n)$ and $\Sv(\splx^\du)=(\bgamma_1,\dots,\bgamma_n)$. Then $\bgamma_i$ is perpendicular to $\splx_1[\ic]$ for all $i\in[n]$. 
+	\label{lem:dual_faces_orthogonal}
+	Let $\splx^\du$ be the dual of the simplex $\splx\in\R^{n-1}$. For all $U\subset[n]$, $\emptyset\neq U\neq[n]$, $\splx_U$ is orthogonal to $\splx_{U^c}^\du$.  
 \end{lemma}
 \begin{proof}
-Consider a fixed $i<n$. Let $\p,\q\in\splx_\ic$ have barycentric coordinates $\x$ and $\y$ respectively. We need to show that $\la \bgamma_i,\p-\q\ra =0$. Note that $x(i)=y(i)=0$, and so 
+Let $\Sv(\splx)=(\sv_1,\dots,\sv_n)$ and $\Sv(\splx^\du)=(\svd_1,\dots,\svd_n)$.  Let $\Sv\x\in \splx_U$ and $\Sv^\du\y_1,\Sv^\du\y_2\in \splx^\du_{U^c}$, where $\y_1$ and $\y_2$ are barycentric coordinates. Fix $k\in U^c$. We need to show that $\la \Sv\x,\Sv^\du\y_1-\Sv^\du\y_2\ra =0$. First, using $\norm{\y_i}=1$, $i=1,2$, write
 \begin{align*}
-    \p-\q &= \Sv(\x-\y) = \sum_{j=1,j\neq i}^{n-1} \sv_j(x(j)-y(j)) + \sv_n(x(n)-y(n)) \\
-    &= \sum_{j=1,j\neq i}^{n-1} \sv_j(x(j)-y(j)) + \sv_n\bigg(\sum_{j}y(j)-x(j)\bigg) = \sum_{j=1,j\neq i}^{n-1} (\sv_j-\sv_n)(x(j)-y(j)). 
+	 \Sv^\du\y_1 - \Sv^\du\y_2 &= \sum_{j\in U^c} \svd_j(y_1(j)-y_2(j)) \\
+	 &=\sum_{j\in U^c\setminus \{k\}} \svd_j(y_1(j)-y_2(j)) + \svd_k(y_1(k)-y_2(k)) \\
+    &= \sum_{j\in U^c\setminus\{k\}}\svd_j(y_1(j)-y_2(j))  -\svd_k\bigg(\sum_{j\in U^c\setminus \{k\}} y_1(j)-y_2(j)\bigg) \\
+    &= \sum_{j\in U^c\setminus\{k\}} (\svd_j-\svd_k)(y_1(j)-y_2(j)). 
 \end{align*}
-Now, by definition, $\la \bgamma_i,\sv_j-\sv_n\ra = \delta_{i,j}$ so it follows that \[\la \bgamma_i,\p-\q\ra = \sum_{j=1,j\neq i}^{n-1}\la \bgamma_i,\sv_j-\sv_n\ra (x(j)-y(j))=0,\]
-as desired. We now consider $i=n$. Recall that $\bgamma_n=-\sum_{i<n}\bgamma_i$. Moreover, $\la \bgamma_i,\sv_j\ra = \delta_{i,j}-\la \bgamma_i,\sv_n\ra$. Using similar arithmetic as above, 
+Now, by definition, $\la \sv^i,\svd_j-\svd_k\ra = \delta_{i,j}$ for $i,j\neq k$ so it follows that 
 \begin{align*}
-    \la \bgamma_n ,\p-\q\ra &= -\sum_{i<n}\bigg\la \bgamma_i,-\sum_{j<n} \sv_j(x(j)-y(j))\bigg\ra \\
-    &= -\sum_{i<n}\bigg\la \bgamma_i,-\sum_{j<n} (\delta_{i,j}-\la \sv_i,\sv_n\ra)(x(j)-y(j))\bigg\ra \\
-    &= -\sum_{i<n}\bigg(x(i)-y(i)-\la\bgamma_i,\sv_n\ra  \sum_{j<n} (x(j)-y(j))\bigg) =0,
+\la \Sv\x,\Sv^\du(\y_1-\y_2)\ra &= \sum_{i\in U} x(i)\la \sv_i,\Sv^\du(\y_1-\y_2)\ra \\
+&= \sum_{i\in U}x(i)\sum_{j\in U^c\setminus \{k\}} \la \sv_i,\svd_j-\svd_k\ra (y_1(j)-y_2(j)) \\
+&=\sum_{i\in U} x(i) \sum_{j\in U^c\setminus\{k\}} \delta_{ij}(y_1(j)-y_2(j)) = 0, 
 \end{align*}
-since $\x$ and $\y$ are barycentric coordinates. Conversely, suppose that $\la \bgamma_i, \Sv\x-\Sv\y\ra=0$ for every $\Sv\x,\Sv\y\in\splx_\ic$. For $k\neq i$ and any $j\in[n]$, we need to show that $\la \bgamma_i,\sv_k-\sv_j\ra = \delta_{ij}$. For $j\neq i$, we can take $\x=\bchi_k$ and $\y=\bchi_j$ above to obtain $\la \bgamma_i,\Sv\x-\Sv\y\ra = \la \bgamma_i,\sv_k-\sv_j\ra = 0=\delta_{ij}$. For $j=i$, 
+since $U^c\setminus\{k\}\cap\{i\}=\emptyset$. 
 \end{proof}
 
 \subsection{Angles in a Simplex}
+\label{sec:background_simplex_angles}
 There are several angles worth discussing in a simplex. For a simplex $\ssplx$, let $\phi_{ij}(\ssplx)$ be the angle between the outer normals to $\splx_\ic$ and $\splx_\jc$. As usual, the paranthetical $(\ssplx)$ will typically be dropped when the simplex is understood from context. Using the notion of the dual simplex introduced in the previous section, we can write 
-\begin{equation*}
+ \begin{equation*}
 \cos \phi_{ij}(\ssplx) = \frac{\la \bgamma_i,\bgamma_j\ra }{\norm{\bgamma_i}_2 \cdot \norm{\bgamma_j}_2},
 \end{equation*}
 where $\{\bgamma_i\}$ are the vertices of $\ssplx^D$. 

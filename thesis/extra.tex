@@ -86,6 +86,29 @@
 %which is only satisfied for $a=0$. Hence $\vp=\zero$, and  $\ker(\I_{k-1}-k^{-1}\J_{k-1}^\tp)=\{0\}$ as desired. Consequently, we may choose $\alpha_1,\dots,\alpha_{k-1}$ to satisfy the constraints and finally conclude that $\la \vb{v},\p-\q\ra =0$. Therefore, $\X^\perp$ is a subset of all the 
 %\end{proof}
 
+\begin{corollary}
+	\label{cor:dual_Sn}
+	The dual simplex to $\splxn_G^+$ has vertices 
+	\begin{equation*}
+	\bigg\{\frac{\svn_i^+}{\beta_i + n\la \cent(\ssplx),\svn_i^+\ra}\bigg\},
+	\end{equation*}
+	where 
+	\[\beta_i = \bigg(w(i)\sum_{j\neq i}w(j)\bigg)^{1/2}.\]
+\end{corollary}
+\begin{proof}
+	Lemma \ref{lem:SUn_subset} and Equation \eqref{eq:Sn_altdesc} tells us that $\splxn = \bigcap_i \H_i^\geq $ where  $\H_i = \{\x:\la \x,\svn^+_i\ra \geq -\beta_i/n\}$. Lemma \ref{lem:hdesc_centred} then implies that 
+	\begin{equation*}
+	\splxn_0 = \bigcap_i \bigg\{\x:\la \x,\svn_i^+\ra \geq -\frac{\beta_i}{n} - \la \cent(\ssplx),\svn_i^+\ra\bigg\}.
+	\end{equation*}
+	Put $\kappa_i = -\beta_i/n - \la \cent(\ssplx),\svn_i^+\ra$. 
+	Lemma \ref{lem:hdesc_dual} then dictates that the dual vertices of $\splx_0^D$ obey 
+	\begin{equation*}
+	\bigg\{\frac{\svn_i^+}{-n\cdot \kappa_i}\bigg\} = 	\bigg\{\frac{\svn_i^+}{\beta_i + n\la \cent(\ssplx),\svn_i^+\ra}\bigg\}.
+	\end{equation*}
+	Finally, since a centred simplex and its uncentred counterpart share the same dual simplex by Observation \ref{obs:dual_centred}, the result follows. 
+\end{proof}
+
+
 
 
 
