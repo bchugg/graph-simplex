@@ -1,53 +1,32 @@
 \chapter{Further Properties of the Correspondence}
 \label{chap:further_properties}
 
+The previous chapter introduced the graph-simplex correspondence and devoted several sections to the basic properties of the simplices associated to a given graph. In this chapter we  continue the study of the correspondence and present several of its more significant and advanced properties.  
 
 
-\section{Construction via Extended Menger and Gramian}
+
+\section{Block Matrix Equations}
 \label{sec:block_matrix}
 In this section we derive matrix equations which relate the geometry of hyperacute simplices and their duals. The equations appeal to the relationship between hyperacute simplices and graphs by using well known results from the literature on electrical networks and effective resistance. The goal of this section is to demonstrate to the reader the utility of the graph-simplex correspondence in generating statements about hyperacute simplices, by hijacking our knowledge of graph theory. 
 
-Let a centred, hyperacute simplex $\splx^+$ be given. By Theorem \ref{thm:graph-simplex} it is the inverse simplex of a graph $G$, whose corresponding simplex $\splx = \splx_G$ is dual to $\splx^+$.
-Therefore, $\L_G=\Sv^\tp\Sv$ and $\L_G^+=(\Sv^+)^\tp\Sv$ and the vertices $\sv_i^+$ of $\splx^+$ can be written as $\sv_i^+=(\vp_1(i)\lambda_1^{1/2},\dots,\vp_{n-1}(i)\lambda_{n-1}^{1/2})^\tp$. Hence, 
-
-\begin{align*}
-\norm{\sv_i^+-\sv_j^+}_2^2 = (\bchi_i-\bchi_j)^\tp (\Sv^+)^\tp\Sv^+ (\bchi_i-\bchi_j) = \effr(i,j).
-\end{align*}
-
-That is, the distance between the vertices of $\splx^+$ encodes the effective resistance between nodes $i$ and $j$ in $G$. Let $\D^+$ be the distance matrix of $\splx^+$ (thus the effective resistance matrix $\Reff_G$ of $G$). 
-
-
-\note{Detour into electrical networks, not sure where this goes exactly.} Observe that starting with the equation $\Reff=\one\diag(\L_G^+(i,i))^\tp + \diag(\L_G^+(i,i))\one^\tp - 2\L_G^+$, \note{should explain where this equation comes from} it follows that $\x^\tp \Reff\x = -2\x^\tp \L_G^+\x$ for any $\x\in\spn(\one)^\perp$. Therefore, 
-\begin{align*}
-\L_G^+(i,j)&=\bchi_i^\tp \L_G^+\bchi_j \\
-&= \bigg(\bchi_i-\frac{1}{n}\one\bigg)^\tp \L_G^+\bigg(\bchi_j-\frac{1}{n}\one\bigg) \\
-&= -\frac{1}{2}\bigg(\bchi_i-\frac{1}{n}\one\bigg)^\tp \Reff_G\bigg(\bchi_j-\frac{1}{n}\one\bigg) \\
-&= \frac{1}{2n}\bigg(\sum_{k\in[n]}\effr(i,k)+\effr(j,k)\bigg) - \frac{1}{2}\effr(i,j) -\frac{R_G}{n^2},
-\end{align*}
-where $R_G$ is the total effective resistance of the graph. 
-For $i=j$, this becomes 
-\begin{align*}
-\L_G^+(i,i) = \frac{1}{n} \sum_{k\in[n]}\effr(i,k) - \frac{R_G}{n^2}.
-\end{align*}
-
-Let $\overline{d}$ be the average squared distance between all the vertices of $\splx^+$, that is
-\[\overline{d} \equiv  \frac{1}{n^2}\sum_{i\leq j} \norm{\sv_i^+-\sv_j^+}_2^2.\]
+Let a centred, hyperacute simplex $\ssplx$ be given.  Let $\bar{d}$ be the average squared distance between all the vertices of $\ssplx$, that is
+\[\bar{d} \equiv  \frac{1}{n^2}\sum_{i\leq j} \norm{\bgamma_i-\bgamma_j^+}_2^2.\]
 Let $\xi(i)$ give the average squared distance of vertex $i$ from other vertices minus the total average distance, 
-\[\xi(i) \equiv \frac{1}{n}\sum_{j} \norm{\sv_i^+-\sv_j^+}_2^2 - \overline{d},\]
+\[\xi(i) \equiv \frac{1}{n}\sum_{j} \norm{\bgamma_i^+-\bgamma_j^+}_2^2 - \bar{d},\]
 and put $\bxi=(\xi(1),\dots,\xi(n))$. 
 Then we have the following result. 
 
 \begin{lemma}
-	Let $\splx\subset\R^{n-1}$ be a centred hyperacute simplex with  squared distance matrix $\D$, and average squared distance vector $\bxi$. Denote by $\BGamma$ the vertex matrix of the dual simplex to $\splx$. Then, 
+	Let $\ssplx\subset\R^{n-1}$ be a hyperacute simplex with  squared distance matrix $\D$, and average squared distance vector $\bxi$. Denote by $\BGamma$ the vertex matrix of the dual simplex to $\ssplx$. Then, 
 	\begin{equation}
 	\label{eq:simplex_block_matrix}
 	-\frac{1}{2} \begin{pmatrix}
 	0 & \one_n^\tp \\ 
 	\one_n &  \D
-	\end{pmatrix}\begin{pmatrix}
+	\end{pmatrix} = \begin{pmatrix}
 	\bxi^\tp \BGamma^\tp \BGamma\bxi + 4\overline{d} & -(\BGamma^\tp \BGamma\bxi + 2\one/n)^\tp \\
 	-(\BGamma^\tp \BGamma\bxi + 2\one/n) & \BGamma^\tp \BGamma
-	\end{pmatrix} = \I_{n+1}.
+	\end{pmatrix}^{-1}.
 	\end{equation}
 	Moreover, the vertices of the dual simplex to $\splx$ and the distance matrix of $\splx$ are related by the equation
 	\begin{equation}
@@ -126,14 +105,13 @@ Putting aside simplex geometry for the moment, it is worth meditating on the sig
 \one & \Reff
 \end{pmatrix} = 
 \begin{pmatrix}
-\diag(\L_G^+(i,i))^\tp  \L_G \diag(\L_G^+(i,i))  + 4R_G/n^2
-&  -(\L_G\diag(\L_G^+(i,i)) + \frac{2}{n}\one )^\tp \\
--(\L_G\diag(\L_G^+(i,i)) + \frac{2}{n}\one ) 
+\u^\tp  \L_G \u  + 4R_G/n^2
+&  -(\L_G\u + \frac{2}{n}\one )^\tp \\
+-(\L_G\u + \frac{2}{n}\one ) 
 & \L_G
-\end{pmatrix}^{-1}.
+\end{pmatrix}^{-1},
 \end{equation}
-
-Let $\D$ be the distance matrix of a set $X$ of $d$ points. The matrix 
+where $\u=\diag(\L_G^+(i,i))$, which is interesting in its own right. Taken together, Equations \eqref{eq:block_ST} and \eqref{eq:block_inverse} allow us to translate between knowledge of the effective resistance of a graph, and the underlying geometry of its simplex. For example, we can relate the volume of the simplex to the effective resistances in the graph. To see this, we need to introduce a particular object from the field of distance geometry. Let $\D$ be the distance matrix of a set $\X$ of $d$ points. The matrix 
 \begin{equation}
 \label{eq:menger_matrix}
 \begin{pmatrix}
@@ -141,10 +119,77 @@ Let $\D$ be the distance matrix of a set $X$ of $d$ points. The matrix
 \one & \D
 \end{pmatrix}\in\R^{(d+1)\times (d+1)},
 \end{equation}
-is called the \emph{Menger matrix of $X$}. 
+is called the \emph{Menger matrix of $X$}, the determinant of which is called the \emph{Cayley-Menger determinant}, named after Arthur Cayley and Karl Menger~\cite{cayley1841theorem, Menger1928}. The Cayley-Menger determinant is related to the volume of the underlying set of points as follows. 
 
 
-A variant of the following result was proved by Fiedler~\cite{fiedler2011matrices}. 
+\begin{lemma}[\cite{menger1931new}]
+	\label{lem:menger_volume}
+	Let $\D$ be the distance matrix of a set $\X$ of $d$ points. The $d-1$ dimensional volume\footnote{That is, the volume as calculated in $\R^{d-1}$.} of the convex hull of $\X$ is proportional to the root of the determinant of the Menger matrix: 
+	\begin{equation*}
+	\vol(\conv(\X))^2 = \frac{(-1)^d}{((d-1)!)^2 2^{d-1}} \det\begin{pmatrix}
+	0 & \one^\tp \\
+	\one & \D
+	\end{pmatrix}.
+	\end{equation*} 
+\end{lemma}
+
+The relation between the Menger matrix and the volume combined with the matrix equations above, allows us to give a concise formula for the volume of any hyperacute simplex. This was first pointed out in \cite{van2017pseudoinverse}. 
+
+\begin{lemma}
+	Let $\ssplx\subset\R^{n-1}$ be a hyperacute simplex, and let $G$ be its associated graph. Then $\ssplx$'s $n-1$ dimensional volume is 
+	\begin{equation*}
+	\vol(\ssplx) = \frac{1}{(n-1)!\cdot \Gamma_G}. 
+	\end{equation*}
+\end{lemma}
+Before proceeding to the proof, we remind the reader of the equation of the determinant of a matrix in terms of its co-factor expansion. Let $\Q\in\R^{m\times m}$. For any $i,j\in[m]$, let $\Q_{-i,-j}$ denote the matrix obtained by removing row $i$ and column $j$ from $\Q$. The cofactor expansion along row $i\in[n]$ is the relationship
+\begin{equation*}
+\det(\Q) = \sum_{k=1}^m (-1)^{i+k} \Q(i,k)\det(\Q_{-i,-k}),
+\end{equation*}
+while the cofactor expansion along column $j\in[n]$ reads
+\begin{equation*}
+\det(\Q) = \sum_{k=1}^m (-1)^{j+k} \Q(k,j)\det(\Q_{-k,-j}). 
+\end{equation*}
+We may now give the proof. 
+\begin{proof}
+	Let $\D$ be the distance matrix of $\ssplx$, and recall that $\D=\Reff$ where $\Reff$ is the effective resistance matrix of the graph $G$. 
+	Set \[\r=-\bigg(\L_G\diag(\L_G^+(i,i)) + \frac{2}{n}\one\bigg), \quad \alpha = \diag(\L_G^+(i,i))^\tp \L_G\diag(\L_G^+(i,i)) + 4R_G/n^2.\] 
+	Combining Lemma \ref{lem:menger_volume} and Equation \ref{eq:block_inverse}, write 
+	\begin{align*}
+	\vol(\ssplx)^2 &= \frac{(-1)^n }{((n-1)!)^2 2^{n-1}} \det\left(-2\begin{pmatrix}
+	\alpha & \r \\
+	\r & \L_G
+	\end{pmatrix}^{-1}\right) \\
+	&= \frac{ -4}{((n-1)!)^2}\det\begin{pmatrix}
+	\alpha & \r \\
+	\r & \L_G
+	\end{pmatrix}^{-1},
+	\end{align*}
+	where we've employed the basic determinant properties $\det( \beta\Q)=\beta^{m}\det(\Q)$ for $\Q\in\R^{m\times m}$ and $\det(\Q^{-1})=\det(\Q)^{-1}$ for $\Q$ invertible. We are thus left with task of evaluating the above determinant. We claim it is equal to $-4\Gamma_G$,  which will complete the proof. 
+	Put 
+	\[\Q = \begin{pmatrix}
+	\alpha & \r\\ \r& \L_G
+	\end{pmatrix}\in\R^{n+1\times n+1}.\]
+	First we carry out a cofactor expansion along the first row, which yields 
+	\begin{align*}
+	\det(\Q) = \alpha \det(\L_G) + \sum_{j=2}^{n+1}(-1)^{1+j}r({j-1}) \det(\Q_{-1,-j}) = \sum_{j=1}^n (-1)^j r(j) \det(\Q_{-1,-j+1}).
+	\end{align*}
+	For each $j$, carrying out a cofactor expansion of the first column of $\Q_{-1,-j+1}$ yields 
+	\begin{align*}
+	\det(\Q_{-1,-j+1}) &= \sum_{k=1}^n (-1)^{k+1}r(k) \det(\L_{-k,-j}),
+	\end{align*}
+	hence, 
+	\begin{align*}
+	\det(\Q) = - \sum_{j=1}^n \sum_{k=1}^n r(j)r(k)(-1)^j(-1)^k  \det(\Q_{-k,-j}) = - \sum_{j=1}^n \sum_{k=1}^n r(j)r(k)\Gamma_G,
+	\end{align*}
+	by Theorem~\ref{thm:matrix_tree_theorem}. It remains only to note that 
+	$-\sum_{j,k=1}^n r(j) r(k) = -(\sum_j r(j))^2 = - \la \one,\r\ra ^2 = - 4$ 
+	by  definition  of $\r$. 
+\end{proof}
+
+
+
+Our next set of results demonstrate the the inverse relation can be used not only to infer geometry properties of simplices, but also graph-theoretic properties. A variant of the following  was proved by Fiedler~\cite{fiedler2011matrices}. 
+
 \begin{lemma}
 	\label{lem:block_matrix_tree}
  For a weighted and connected tree $T=(V,E,w)$ on $n$ vertices let the matrix $\bS_T$ describe the inverse distances  between vertices, i.e., for $(i,j)\in E$, $\bS_T(i,j) = 1/w(i,j)$ and for $(i,j)\notin E$, $\bS_T(i,j) = \sum_{\ell=1}^{k-1} 1/w(v_\ell,v_{\ell+1})$ where $i=v_1,v_2,\dots,v_k=j$ is the unique path between $i$ and $j$. Then,
@@ -182,7 +227,7 @@ We have thus shown that $S=-\sum_{i\sim j}1/w(i,j)$, and so \eqref{eq:lem_block_
 \end{align*}
 For $k=\ell$, we have $\bS_T(k,\ell)=0$ and $\bS_T(k,i)=\bS_T(\ell,i) = 1/w(i,\ell)$. It  follows that the above sum is $-2$, as desired. 
 Now consider $k\neq \ell$. 
-Fix $i\in \delta(\ell)$ and let $P=(k=v_1,\dots,v_r=\ell)$ be the unique path between $k$  and $\ell$. First, suppose that $i\in P$ so that $i=v_{r-1}$. Then $\bS_T(k,ell) - \bS_T(k,i) = \sum_{s=1}^{r-1}1/w(v_s,v_{s+1}) - \sum_{s=1}^{r-2} 1/w(v_s,v_{s+1}) = 1/w(v_{r-1},v_r) = 1/w(i,\ell)$. Otherwise,  if $i\in P$ then the unique path  between $i$ and $k$ in $T$ is $P\cup\{\ell\} = (v_1,\dots,v_r,i)$. In  this case  $\bS_T(k,ell) - \bS_T(k,i) = \sum_{s=1}^{r-1}1/w(v_s,v_{s+1}) - (\sum_{s=1}^{r-1} 1/w(v_s,v_{s+1}) + 1/w(i,\ell)) = - 1/w(i,\ell)$. Finally, we note that there can be at most one neighbour of $\ell$ which is on the shortest path between $k$ and $\ell$. Therefore, 
+Fix $i\in \delta(\ell)$ and let $P=(k=v_1,\dots,v_r=\ell)$ be the unique path between $k$  and $\ell$. First, suppose that $i\in P$ so that $i=v_{r-1}$. Then $\bS_T(k,\ell) - \bS_T(k,i) = \sum_{s=1}^{r-1}1/w(v_s,v_{s+1}) - \sum_{s=1}^{r-2} 1/w(v_s,v_{s+1}) = 1/w(v_{r-1},v_r) = 1/w(i,\ell)$. Otherwise,  if $i\in P$ then the unique path  between $i$ and $k$ in $T$ is $P\cup\{\ell\} = (v_1,\dots,v_r,i)$. In  this case  $\bS_T(k,ell) - \bS_T(k,i) = \sum_{s=1}^{r-1}1/w(v_s,v_{s+1}) - (\sum_{s=1}^{r-1} 1/w(v_s,v_{s+1}) + 1/w(i,\ell)) = - 1/w(i,\ell)$. Finally, we note that there can be at most one neighbour of $\ell$ which is on the shortest path between $k$ and $\ell$. Therefore, 
 $\sum_{i\in\delta(\ell)}w(i,\ell)(\bS_T(k,\ell)-\bS_T(k,i)) = 1-(|\delta(\ell)|-1) = 2 - \deg(\ell)$, demonstrating that the $(k,\ell)$-th component is zero, completing the proof. 
 \end{proof}
 
@@ -209,49 +254,14 @@ $\sum_{i\in\delta(\ell)}w(i,\ell)(\bS_T(k,\ell)-\bS_T(k,i)) = 1-(|\delta(\ell)|-
 	from which the claim follows. 
 \end{proof}
 
-\begin{lemma}[\cite{menger1931new}]
-	Let $\D$ be the distance matrix of a set $X$ of $d$ points. The $d-1$ dimensional volume of the convex hull of $X$ is proportional to the root of the determinant of the Menger matrix: 
-	\begin{equation*}
-	\vol(CH(X))^2 = \frac{(-1)^d}{((d-1)!)^2 2^{d-1}} \det\begin{pmatrix}
-	0 & \one^\tp \\
-	\one & \D
-	\end{pmatrix}.
-	\end{equation*} 
-\end{lemma}
 
 Sharpe~\cite{sharpe1967theorem} said something about something which should probably be cited, but not exactly sure what it is yet. 
 
 
 
-%\section{The Inverse Graph}
-%\label{sec:inverse_graph}
-%Let $G$ be a connected and weighted graph. $G$ admits the hyperacute combinatorial simplex $\splx_G$ which, by Theorem \ref{thm:graph-simplex}, is the inverse simplex of a graph $H$. It thus obeys 
-%\begin{equation*}
-%\norm{\sv_i-\sv_j}_2^2 = \effr_H(i,j). 
-%\end{equation*}
-%%Expanding both sides for $i\neq j$ and  using the definition of the effective resistance yields 
-%\begin{equation*}
-%w_G(i) + w_G(j) + 2w_G(i,j) = \L_H^+(i,i) + \L_H^+(j,j) -2\L_H^+(i,j). 
-%\end{equation*}
-%Here we using the subscript $G$ to reinforce the fact that the weights are those of the original graph, $G$. We can calculate the entries of the pseudoinverse $\L_H^+$ more explicitly. Put 
-%\[W_G\equiv \sum_{i<j}w(i,j) = \frac{1}{2}\sum_i \sum_j w(i,j) = \frac{1}{2}\sum_i w(i).\]
-%That is, $W_G$ is the total weight of the graph $G$. Recall that $R_H$ is the total effective resistance of $H$ and compute 
-%\begin{align*}
-%R_H &= \sum_{i<j} \effr(i,j) \\
-%&= \sum_{i<j} (w_G(i) + w_G(j) + 2w_G(i,j)) \\
-%&= \frac{1}{2}\sum_{i,j} (w_G(i) +w_G(j)) + 2W_G \\
-%&= (2n+2)W_G 
-%\end{align*} 
-
-Using this and a previous calculated formula for the entries of the pseudoinverse yields 
-\begin{align*}
-\L_H^+(i,j) &= \frac{1}{2}\bigg(\sum_k \effr_H(i,k) + \sum_k \effr_H(j,k)\bigg) - \frac{1}{2} \effr_H(i,j) - \frac{R_H}{n^2}, \\
-&= \frac{1}{2}\sum_k (w_G(i) + w_G(j) + 2w_G(k) + 2w_G(i,k) + 2w_G(j,k)) - \frac{1}{2}w_G(i,j) - \frac{R_H}{n^2}\\
-&= \bigg(\frac{n}{2}+1\bigg)(w_G(i)+w_G(j))  - \frac{1}{2}w_G(i,j) + \bigg(2-\frac{2}{n}-\frac{2}{n^2}\bigg)W_G.
-\end{align*}
-
 
 \section{Inequalities}
+In this section we demonstrate how the graph-simplex may be used to obtain both geometric and graph-theoretic inequalities. 
 
 The conductance of a graph $G$ is 
 \begin{equation*}

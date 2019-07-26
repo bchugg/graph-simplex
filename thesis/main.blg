@@ -9,54 +9,59 @@ A level-1 auxiliary file: frontmatter/nomenclature.aux
 A level-1 auxiliary file: introduction.aux
 A level-1 auxiliary file: background.aux
 A level-1 auxiliary file: correspondence.aux
+A level-1 auxiliary file: further_properties.aux
 A level-1 auxiliary file: algorithmic_implications.aux
 A level-1 auxiliary file: conclusion.aux
 The style file: alpha.bst
 Database file #1: ref.bib.bib
+I was expecting a `,' or a `}'---line 165 of file ref.bib.bib
+ :  notes="(English transl. IRE Trans. Circuit Theory CT-5 (1958), 4-7)"
+ :                                                                      .
+I'm skipping whatever remains of this entry
 Warning--there's a number but no series in chung1997spectral
 Warning--there's a number but no series in fiedler2011matrices
 Warning--empty journal in grunbaum1967convex
 Warning--can't use both volume and number fields in penrose1955generalized
 Warning--can't use both volume and number fields in penrose1956best
-You've used 34 entries,
+You've used 39 entries,
             2543 wiz_defined-function locations,
-            774 strings with 9030 characters,
-and the built_in function-call counts, 13248 in all, are:
-= -- 1384
-> -- 501
-< -- 30
-+ -- 163
-- -- 157
-* -- 892
-:= -- 2125
-add.period$ -- 111
-call.type$ -- 34
-change.case$ -- 188
-chr.to.int$ -- 34
-cite$ -- 39
-duplicate$ -- 578
-empty$ -- 1008
-format.name$ -- 206
-if$ -- 2755
+            809 strings with 9701 characters,
+and the built_in function-call counts, 14994 in all, are:
+= -- 1565
+> -- 552
+< -- 35
++ -- 178
+- -- 171
+* -- 1017
+:= -- 2406
+add.period$ -- 126
+call.type$ -- 39
+change.case$ -- 213
+chr.to.int$ -- 39
+cite$ -- 44
+duplicate$ -- 653
+empty$ -- 1150
+format.name$ -- 229
+if$ -- 3107
 int.to.chr$ -- 1
 int.to.str$ -- 0
-missing$ -- 37
-newline$ -- 174
-num.names$ -- 102
-pop$ -- 172
+missing$ -- 43
+newline$ -- 199
+num.names$ -- 117
+pop$ -- 192
 preamble$ -- 1
-purify$ -- 227
+purify$ -- 258
 quote$ -- 0
-skip$ -- 478
+skip$ -- 535
 stack$ -- 0
-substring$ -- 815
-swap$ -- 108
-text.length$ -- 30
-text.prefix$ -- 16
+substring$ -- 948
+swap$ -- 114
+text.length$ -- 35
+text.prefix$ -- 20
 top$ -- 0
-type$ -- 256
+type$ -- 292
 warning$ -- 5
-while$ -- 139
-width$ -- 35
-write$ -- 447
-(There were 5 warnings)
+while$ -- 158
+width$ -- 40
+write$ -- 512
+(There was 1 error message)

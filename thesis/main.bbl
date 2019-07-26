@@ -22,10 +22,21 @@ Jo{\~a}o Carlos~Alves Barata and Mahir~Saleh Hussein.
   theory.
 \newblock {\em Brazilian Journal of Physics}, 42(1-2):146--165, 2012.
 
+\bibitem[Cay41]{cayley1841theorem}
+Arthur Cayley.
+\newblock On a theorem in the geometry of position.
+\newblock {\em Cambridge Mathematical Journal}, 2:267--271, 1841.
+
 \bibitem[CG97]{chung1997spectral}
 Fan~RK Chung and Fan~Chung Graham.
 \newblock {\em Spectral graph theory}.
 \newblock Number~92. American Mathematical Soc., 1997.
+
+\bibitem[CK78]{chaiken1978matrix}
+Seth Chaiken and Daniel~J Kleitman.
+\newblock Matrix tree theorems.
+\newblock {\em Journal of combinatorial theory, Series A}, 24(3):377--381,
+  1978.
 
 \bibitem[DG03]{dasgupta2003elementary}
 Sanjoy Dasgupta and Anupam Gupta.
@@ -91,6 +102,12 @@ Richard~M Karp.
 \newblock In {\em Complexity of computer computations}, pages 85--103.
   Springer, 1972.
 
+\bibitem[Kir47]{Kirchhoff1847}
+Gustav Kirchhoff.
+\newblock Uber die autlgsung der gleichungen, auf welche man bei der unter-
+  suchung der linearen verteilung galvanischer strijme gefuhrt wird.
+\newblock {\em Ann. Phys. Chem.}, 72:497--508, 1847.
+
 \bibitem[KP03]{kaibel2003some}
 Volker Kaibel and Marc~E Pfetsch.
 \newblock Some algorithmic problems in polytope theory.
@@ -106,6 +123,16 @@ Volker Kaibel and Alexander Schwartz.
 Jon Kleinberg and Eva Tardos.
 \newblock {\em Algorithm design}.
 \newblock Pearson Education India, 2006.
+
+\bibitem[Max73]{maxwell1873treatise}
+James~Clerk Maxwell.
+\newblock {\em A treatise on electricity and magnetism}, volume~1.
+\newblock Oxford: Clarendon Press, 1873.
+
+\bibitem[Men28]{Menger1928}
+Karl Menger.
+\newblock Untersuchungen {\"u}ber allgemeine metrik.
+\newblock {\em Mathematische Annalen}, 100(1):75--163, Dec 1928.
 
 \bibitem[Men31]{menger1931new}
 Karl Menger.

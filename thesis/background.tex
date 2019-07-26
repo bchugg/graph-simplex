@@ -235,14 +235,16 @@ and
 \Ln_G(\Ln_G)^+ = (\Ln_G)^+\Ln_G = \I - \frac{1}{n}\D_G^{1/2}\one(\D_G^{1/2}\one)^\tp.
 \end{equation*}
 
-\note{What is the following lemma used for?}
-\begin{lemma}
-	$\ker(\L^+)\subset\ker(\L)$ and $\ker(\Ln^+)\subset\ker(\Ln)$.  
-\end{lemma}
-\begin{proof}
-	Let $\x\in\ker(\L^+)$, so $\L^+\x=\zero$. Multiplying by $\L$ and using Equation \eqref{eq:LL+} gives $\zero=\L\L^+\x=(\I-\one\one^\tp/n)\x$, implying that $\x=\one \cdot \norm{\x}_1/n$, i.e., $\x\in\spn(\{\one\})=\ker(\L)$. The argument for the other inclusion is similar.
-\end{proof}
 
+
+We will make use  of the following Theorem, often  called the \emph{Kirchhoff Tree Theorem}, named after Gustav Kirchhoff for the work done in \cite{Kirchhoff1847}. It was first stated in its most familiar form by Maxwell~\cite{maxwell1873treatise}. We use the formulation found in~\cite{chaiken1978matrix}. 
+
+\begin{theorem}
+	\label{thm:matrix_tree_theorem}
+	Let $G=(V,E,w)$ be a connected, weighted, and undirected graph. Let $\L$ be $G$'s combinatorial Laplacian matrix. Then for all $i,j\in[n]$, 
+	\[\Gamma_G = (-1)^i(-1)^j \det(\L_{-i,-j}) = \frac{1}{n}\sum_{i=1}^{n-1} \lambda_i,\]
+	where $\lambda_1,\dots,\lambda_{n-1}$ are the non-zero eigenvalues of $G$, $\L_{-i,-j}$ is the matrix obtained by removing the $i$-th row and $j$-th column of $\L$, and $\Gamma_G$ is the weight of all spanning trees of $G$.  
+\end{theorem}
 
 
 
@@ -302,6 +304,20 @@ Note that here we've relied on the fact that $\bchi_i-\bchi_j\perp \one$.
 	The \emph{effective resistance} between nodes $i$ and $j$ is $\effr(i,j) \equiv \Lf_G^+(\bchi_i-\bchi_j)$.  
 \end{definition}
 
+ Observe that starting with the equation $\Reff=\one\diag(\L_G^+(i,i))^\tp + \diag(\L_G^+(i,i))\one^\tp - 2\L_G^+$, \note{should explain where this equation comes from} it follows that $\x^\tp \Reff\x = -2\x^\tp \L_G^+\x$ for any $\x\in\spn(\one)^\perp$. Therefore, 
+\begin{align}
+\L_G^+(i,j)&=\bchi_i^\tp \L_G^+\bchi_j \notag \\
+&= \bigg(\bchi_i-\frac{1}{n}\one\bigg)^\tp \L_G^+\bigg(\bchi_j-\frac{1}{n}\one\bigg) \notag \\
+&= -\frac{1}{2}\bigg(\bchi_i-\frac{1}{n}\one\bigg)^\tp \Reff_G\bigg(\bchi_j-\frac{1}{n}\one\bigg) \notag \\
+&= \frac{1}{2n}\bigg(\sum_{k\in[n]}\effr(i,k)+\effr(j,k)\bigg) - \frac{1}{2}\effr(i,j) -\frac{R_G}{n^2}, \label{eq:L^+(i,j)}
+\end{align}
+where $R_G$ is the total effective resistance of the graph. 
+For $i=j$, this becomes 
+\begin{align}
+\L_G^+(i,i) = \frac{1}{n} \sum_{k\in[n]}\effr(i,k) - \frac{R_G}{n^2}.\label{eq:L^+(i,i)}
+\end{align}
+
+
 
 
 \section{Simplices}
@@ -310,7 +326,7 @@ Note that here we've relied on the fact that $\bchi_i-\bchi_j\perp \one$.
 \begin{figure}
 	\centering
 	\includegraphics[scale=0.6]{simplices}
-	\caption{Simplices in dimensions one, two, and three. }
+	\caption{Simplices in dimensions one, two, and three. We wish the reader luck in visualizing a simplex (or anything really) in more than three dimensions.}
 \end{figure}
 
 \begin{definition}

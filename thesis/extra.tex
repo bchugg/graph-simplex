@@ -129,3 +129,44 @@ so, by Equation \eqref{eq:lem_inverse_not_dual},
 \end{align*}
 which is not equal to $\delta_{ij}$ unless $w(k)=w(j)$ or $\sqrt{w(i)}= \frac{1}{n}\sum_r \sqrt{w(r)}$. Since this would have to hold for all $i,j,k$, $i,j\neq k$, both of these conditions imply that the graph would have to be regular. \note{So what IS the dual of these simplices??  Ughgggghghgh wtf is happening}
 
+
+\note{What is the following lemma used for?}
+\begin{lemma}
+	$\ker(\L^+)\subset\ker(\L)$ and $\ker(\Ln^+)\subset\ker(\Ln)$.  
+\end{lemma}
+\begin{proof}
+	Let $\x\in\ker(\L^+)$, so $\L^+\x=\zero$. Multiplying by $\L$ and using Equation \eqref{eq:LL+} gives $\zero=\L\L^+\x=(\I-\one\one^\tp/n)\x$, implying that $\x=\one \cdot \norm{\x}_1/n$, i.e., $\x\in\spn(\{\one\})=\ker(\L)$. The argument for the other inclusion is similar.
+\end{proof}
+
+
+% Inverse graph stuff
+
+%\section{The Inverse Graph}
+%\label{sec:inverse_graph}
+%Let $G$ be a connected and weighted graph. $G$ admits the hyperacute combinatorial simplex $\splx_G$ which, by Theorem \ref{thm:graph-simplex}, is the inverse simplex of a graph $H$. It thus obeys 
+%\begin{equation*}
+%\norm{\sv_i-\sv_j}_2^2 = \effr_H(i,j). 
+%\end{equation*}
+%%Expanding both sides for $i\neq j$ and  using the definition of the effective resistance yields 
+%\begin{equation*}
+%w_G(i) + w_G(j) + 2w_G(i,j) = \L_H^+(i,i) + \L_H^+(j,j) -2\L_H^+(i,j). 
+%\end{equation*}
+%Here we using the subscript $G$ to reinforce the fact that the weights are those of the original graph, $G$. We can calculate the entries of the pseudoinverse $\L_H^+$ more explicitly. Put 
+%\[W_G\equiv \sum_{i<j}w(i,j) = \frac{1}{2}\sum_i \sum_j w(i,j) = \frac{1}{2}\sum_i w(i).\]
+%That is, $W_G$ is the total weight of the graph $G$. Recall that $R_H$ is the total effective resistance of $H$ and compute 
+%\begin{align*}
+%R_H &= \sum_{i<j} \effr(i,j) \\
+%&= \sum_{i<j} (w_G(i) + w_G(j) + 2w_G(i,j)) \\
+%&= \frac{1}{2}\sum_{i,j} (w_G(i) +w_G(j)) + 2W_G \\
+%&= (2n+2)W_G 
+%\end{align*} 
+
+Using this and a previous calculated formula for the entries of the pseudoinverse yields 
+%\begin{align*}
+\L_H^+(i,j) &= \frac{1}{2}\bigg(\sum_k \effr_H(i,k) + \sum_k \effr_H(j,k)\bigg) - \frac{1}{2} \effr_H(i,j) - \frac{R_H}{n^2}, \\
+&= \frac{1}{2}\sum_k (w_G(i) + w_G(j) + 2w_G(k) + 2w_G(i,k) + 2w_G(j,k)) - \frac{1}{2}w_G(i,j) - \frac{R_H}{n^2}\\
+&= \bigg(\frac{n}{2}+1\bigg)(w_G(i)+w_G(j))  - \frac{1}{2}w_G(i,j) + \bigg(2-\frac{2}{n}-\frac{2}{n^2}\bigg)W_G.
+\end{align*}
+
+
+

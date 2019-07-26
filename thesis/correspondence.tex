@@ -265,7 +265,7 @@ and the inverse simplex has vertices
 
 
 
-\paragraph{Subgraphs}
+\paragraph{Subgraphs.}
 Let $H\subset G$, in the sense that $w_H(i,j)\leq w_G(i,j)$ for all $i,j\in [n]$ (we allow for $G$ to be weighted once again). Then, for any $\f:V\to\R$ we see that 
 \[\Lf_G(\f)=\sum_{i\sim j}w_G(i,j)(\f(i)-\f(j))^2 \geq \sum_{i\sim j}w_H(i,j)(\f(i)-\f(j))^2 =\Lf_H(\f).\]
 Therefore, 
@@ -789,24 +789,16 @@ by assumption. The other way to see this is to note that $\svn_i^+$ is not perpe
 
 
 \paragraph{What is $\splxn_G^\du$?} 
-Given that $\splxn_G^+$ is not the dual of $\splxn_G$ in general, is 
+Given that $\splxn_G^+$ is not the dual of $\splxn_G$ in general, it  seems appropriate  to  ask ``what on  earth \emph{is} the dual of the normalized simplex?". Somewhat surprisingly, this question is intimately related to the hyperplane representation---or lack thereof---of $\splxn_G$. 
 
-Noting that 
+We can obtain an implicit representation for the dual vertices $\{\svnd_i\}$ by noting that they must satisfy  $\la \svnd_i,\svn_j-\svn_n\ra=\delta_{ij}$ for all $i,j\neq n$. This translates to 
 \begin{equation*}
-\cent(\splxn) = \frac{1}{n}\bigg(\sum_{\ell=1}^n \svn_\ell(1),\dots,\sum_{\ell=1}^n \svn_\ell(n)\bigg)^\tp,
+\sum_{\ell=1}^n \svnd_i(\ell)(\vpn_k(j)-\vpn_k(n))\lambdan_k^{1/2}=\delta_{ij},
 \end{equation*}
-we see that the vertices of $\splxn_0$ have coordinates
-\begin{equation*}
-\svn_i(j) - \cent(\splxn)(j) = \vpn_j(i)\lambdan_j^{1/2} - \frac{1}{n}\sum_{\ell=1}^n \vpn_j(\ell)\lambdan_j^{1/2} = \lambdan_j^{1/2} \bigg(\vpn_j(i) - \frac{1}{n}\la \vpn_j,\one\ra \bigg).
-\end{equation*}
-Likewise, the vertices of $\splx_0^+$ have coordinates 
-\begin{equation*}
-\svn_i^+(j) = \evaln_j^{-1/2}\bigg(\vpn_j(i) - \frac{1}{n}\la \vpn_j,\one\ra\bigg).
-\end{equation*}
+but extracting values of $\svnd_i$ which meet this condition is not trivial. 
+We might, however, try a different tactic. Note that in the case of the combinatorial simplices, the dual vertices are encoded in their hyperplane representation by Equation \eqref{eq:S_alt_desc}: $\splx_G = \bigcap_i\{\x:\la \x,\sv_i^+\ra \geq -1/n\}$. It is thus  natural to wonder whether this relationship holds for every simplex, that is,  if given a simplex described as the intersection of haldspaces, say $\ssplx=\bigcap_i \{\x:\la \z_i,\x\ra \geq b_i\}$ are the vectors $\z_i$ are parallel to the dual vertices of $\ssplx$.  The following lemma gives gives sufficient conditions as to when this is the case. 
 
-
-In light of Lemma \ref{lem:SUsubset}, one might imagine that if given a simplex in \hdesc, say $\ssplx=\bigcap_i \{\x:\la \z_i,\x\ra \geq b_i\}$ then the vectors $\z_i$ are parallel to the dual vertices of $\ssplx$. Lemma~\ref{lem:SUn_subset}, however, disconfirms this hypothesis. As is illustrated by some ugly arithmetic in Section~\ref{sec:Sn_G}, the dual vertices of $\splxn_G$ are not $\{\svn_i^+\}$, but $\splxn_G = \bigcap_i \{\x:\la \x,\svn_i^+\ra \geq \beta_i/n\}$ by Equation \eqref{eq:Sn_altdesc}. It turns out the key difference is that $\splx_G$ is centred whereas $\splxn_G$ is not. 
-
+ 
 \begin{lemma}
 	\label{lem:hdesc_dual}
 	Let $\ssplx\subset\R^{n-1}$ be a centred simplex with $\ssplx=\bigcap_{i=1}^n  \{\x\in\R^{n-1}: \la \x,\z_i\ra \geq  \alpha_i\}$. Then $\{-\z_i/(\alpha_i n)\}$ are the vertices of $\ssplx^D$. 
@@ -821,6 +813,8 @@ In light of Lemma \ref{lem:SUsubset}, one might imagine that if given a simplex 
 	\end{align*}
 	as was to be shown.  
 \end{proof}
+
+Lemma \ref{lem:hdesc_dual} allows us to extract the dual given a hyperplane description of a centred simplex. The next natural question is then how the hyperplane description of an arbitrary simplex relates to the hyperplane description of its centred counterpart. This is answered by the following lemma. 
 
 \begin{lemma}
 	\label{lem:hdesc_centred}
@@ -838,6 +832,33 @@ In light of Lemma \ref{lem:SUsubset}, one might imagine that if given a simplex 
 \end{proof}
 
 Taken together, Lemmas \ref{lem:hdesc_dual} and \ref{lem:hdesc_centred} provide a path to try and determine the dual simplex of $\splxn_G$. In particular, if we could determine a hyperplane representation of any simplex congruent to $\splxn_G$,  then we can obtain a hyperplane representation of its centred version by Lemma \ref{lem:hdesc_centred} and to the dual of its centred version by Lemma \ref{lem:hdesc_dual}. Since the dual is common to all congruent simplices by Observation \ref{obs:dual_centred}, this would yield $\splx_G^\du$. The trick is simply to determine a hyperplane representation of $\splx_G$---which we leave as an exercise for the reader. Just kidding. 
+
+ 
+\note{Not worth fleshing out  until we have more content for this section.}
+
+Noting that 
+\begin{equation*}
+\cent(\splxn) = \frac{1}{n}\bigg(\sum_{\ell=1}^n \svn_\ell(1),\dots,\sum_{\ell=1}^n \svn_\ell(n)\bigg)^\tp,
+\end{equation*}
+we see that the vertices of $\splxn_0$ have coordinates
+\begin{equation*}
+\svn_i(j) - \cent(\splxn)(j) = \vpn_j(i)\lambdan_j^{1/2} - \frac{1}{n}\sum_{\ell=1}^n \vpn_j(\ell)\lambdan_j^{1/2} = \lambdan_j^{1/2} \bigg(\vpn_j(i) - \frac{1}{n}\la \vpn_j,\one\ra \bigg).
+\end{equation*}
+Likewise, the vertices of $\splxn_0^+$ have coordinates 
+\begin{equation*}
+\svn_i^+(j) = \evaln_j^{-1/2}\bigg(\vpn_j(i) - \frac{1}{n}\la \vpn_j,\one\ra\bigg).
+\end{equation*}
+
+Let $\cent=\cent(\splxn_0)$ be the centroid of the centred normalized Laplacian. Noting that $(\cent,\cent,\dots,\cent)=\cent\one^\tp$, 
+the Gram Matrix of $\splxn_0$ is 
+\begin{align*}
+(\Svn-\cent\one^\tp)^\tp(\Svn-\cent\one^\tp) &= \Svn^\tp\Svn - \Svn^\tp\cent\one^\tp - \one\cent^\tp\Svn + \one\cent^\tp\cent\one^\tp \\
+&= \Ln_G - \frac{1}{n} \Svn^\tp\Svn\one\one^\tp - \frac{1}{n}\one\one^\tp\Svn^\tp\Svn + \frac{1}{n^2}\Svn^\tp\Svn\one\one^\tp \\
+&= \Ln_G - \frac{1}{n}\Ln_G\J - \frac{1}{n} \J\Ln_G+ \frac{1}{n^2}\J\Ln_G\J.\\
+\end{align*}
+
+\note{What are the properties of this matrix? It has an eigenvector of $\one$ with eigenvalue 0, but it does not seem to be a Laplacian. }
+
 
 
 
