@@ -11,6 +11,12 @@ Sheldon~Jay Axler.
 \newblock {\em Linear algebra done right}, volume~2.
 \newblock Springer, 1997.
 
+\bibitem[Bab16]{babai2016graph}
+L{\'a}szl{\'o} Babai.
+\newblock Graph isomorphism in quasipolynomial time.
+\newblock In {\em Proceedings of the forty-eighth annual ACM symposium on
+  Theory of Computing}, pages 684--697. ACM, 2016.
+
 \bibitem[BFM98]{bremner1998primal}
 David Bremner, Komei Fukuda, and Ambros Marzetta.
 \newblock Primal—dual methods for vertex and facet enumeration.
@@ -37,6 +43,12 @@ Seth Chaiken and Daniel~J Kleitman.
 \newblock Matrix tree theorems.
 \newblock {\em Journal of combinatorial theory, Series A}, 24(3):377--381,
   1978.
+
+\bibitem[Coo71]{cook1971complexity}
+Stephen~A Cook.
+\newblock The complexity of theorem-proving procedures.
+\newblock In {\em Proceedings of the third annual ACM symposium on Theory of
+  computing}, pages 151--158. ACM, 1971.
 
 \bibitem[DG03]{dasgupta2003elementary}
 Sanjoy Dasgupta and Anupam Gupta.
@@ -108,11 +120,21 @@ Gustav Kirchhoff.
   suchung der linearen verteilung galvanischer strijme gefuhrt wird.
 \newblock {\em Ann. Phys. Chem.}, 72:497--508, 1847.
 
+\bibitem[Knu11]{knuth2011art}
+Donald~E Knuth.
+\newblock {\em Art of Computer Programming, Volumes 1-4A Boxed Set}.
+\newblock Addison-Wesley Professional, 2011.
+
 \bibitem[KP03]{kaibel2003some}
 Volker Kaibel and Marc~E Pfetsch.
 \newblock Some algorithmic problems in polytope theory.
 \newblock In {\em Algebra, geometry and software systems}, pages 23--47.
   Springer, 2003.
+
+\bibitem[Kra83]{krause1983steinerellipsoide}
+Hans-Ulrich Krause.
+\newblock Steinerellipsoide.
+\newblock {\em Elemente der Mathematik}, 38:137--142, 1983.
 
 \bibitem[KS08]{kaibel2008complexity}
 Volker Kaibel and Alexander Schwartz.
@@ -149,10 +171,10 @@ Eliakim~H Moore.
 \newblock On the reciprocal of the general algebraic matrix.
 \newblock {\em Bull. Am. Math. Soc.}, 26:394--395, 1920.
 
-\bibitem[MPL17]{masuda2017random}
-Naoki Masuda, Mason~A Porter, and Renaud Lambiotte.
-\newblock Random walks and diffusion on networks.
-\newblock {\em Physics reports}, 716:1--58, 2017.
+\bibitem[MP14]{mckay2014practical}
+Brendan~D McKay and Adolfo Piperno.
+\newblock Practical graph isomorphism, ii.
+\newblock {\em Journal of Symbolic Computation}, 60:94--112, 2014.
 
 \bibitem[PC99]{pan1999complexity}
 Victor~Y Pan and Zhao~Q Chen.
@@ -191,6 +213,11 @@ Daniel~A Spielman and Nikhil Srivastava.
 Ernst Steinitz.
 \newblock Polyeder und raumeinteilungen.
 \newblock {\em Encyk der Math Wiss}, 12:38--43, 1922.
+
+\bibitem[Sto10]{stothers2010complexity}
+Andrew~James Stothers.
+\newblock On the complexity of matrix multiplication.
+\newblock 2010.
 
 \bibitem[V{\etalchar{+}}13]{vishnoi2013lx}
 Nisheeth~K Vishnoi et~al.

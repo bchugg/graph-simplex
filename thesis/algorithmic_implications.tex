@@ -1,15 +1,17 @@
 \chapter{Algorithmics}
 \label{chap:algorithmics}
 
-This final chapter will discuss some of the algorithmic foundations and consequences of the graph-simplex correspondence. Vis-\`{a}-vis foundations, we will chiefly be concerned with transitioning between a graph and its various simplices. We will explore lower bounds for how quickly this can be done if we wish to obtain the precise result, and whether we can ``approximate'' any of the constructions (e.g., given the graph $G$ can we quickly obtain a simplex which serves as an approximation\footnote{The notion of approximating a simplex is rather ambiguous and will be expounded upon at a later time.} to $\splx_G$.) With respect to algorithmic consequences on the other hand, we will attempt to leverage knowledge we have in the hitherto relatively unrelated areas of computational graph theory and high-dimensional computational geometry to draw new conclusions about the complexity of several problems in these areas. For instance, if a  graph theoretic problem has an analogue in the simplex, any fact regarding the problems difficulty---whether it's NP-complete, say---translates to an immediate result about its geometric counterpart. In particular, since the simplex of a graph can be generate in polynomial time given the graph (due to the fact that an eigendecomposition can be computed in polynomial time) and vice versa, problems which are solvable in polynomial in either the simplex or graph domain  translate to polynomial (yet perhaps not optimal!) problems in the other domain and likewise, problems which are NP-hard in one domain have analogues which are NP-hard in the other. 
+This final chapter will discuss some of the algorithmic foundations and consequences of the graph-simplex correspondence. Vis-\`{a}-vis foundations, we will chiefly be concerned with transitioning between a graph and its various simplices. We will explore lower bounds for how quickly this can be done if we wish to obtain the precise result\footnote{Ignoring issues of floating point number accuracy}, and whether we can ``approximate'' any of the constructions (e.g., given the graph $G$ can we quickly obtain a simplex which serves as an approximation\footnote{The notion of approximating a simplex is rather ambiguous and will be expounded upon at a later time.} to $\splx_G$.) With respect to algorithmic consequences on the other hand, we will attempt to leverage knowledge we have in the hitherto relatively unrelated areas of computational graph theory and high-dimensional computational geometry to draw new conclusions about the complexity of several problems in these areas. For instance, if a  graph theoretic problem has an analogue in the simplex, any fact regarding the problems difficulty---whether it's NP-complete, say---translates to an immediate result about its geometric counterpart. In particular, since the simplex of a graph can be generate in polynomial time given the graph (due to the fact that an eigendecomposition can be computed in polynomial time) and vice versa, problems which are solvable in polynomial in either the simplex or graph domain  translate to polynomial (yet perhaps not optimal!) problems in the other domain and likewise, problems which are \NP-hard in one domain have analogues which are \NP-hard in the other. 
 
-For the benefit reader unfamiliar with computational complexity and reductions, we begin the chapter with a short section containing this background material. We will also discuss computational representations of a simplex therein. 
+For the benefit of the (undoubtedly confused) reader unfamiliar with computational complexity and reductions, we begin the chapter with a short section containing this background material. We will also discuss computational representations of a simplex therein. 
 
 \section{Preliminaries}
-
+\label{sec:algorithmics_prelims}
+\paragraph{Asymptotics.}
 We begin with asymptotic notation which will be used to analyze the running time of various algorithms. We use the standard definitions---see any reference text on algorithm design for more background (e.g., \cite{kleinberg2006algorithm}). Let $f,g:U\subset \R \to \R$ be functions. Write $f=O(g)$ (or $f(n)=O(g(n))$) if $\limsup_{x\to \infty}|f(x)/g(x)|<\infty$, and $f=\Omega(g)$ if $g=O(f)$. Write $f=o(g)$ as $x\to c$ if $\lim_{x\to \infty}|f(x)/g(x)|=0$ and $f=\omega(g)$ if $g=o(f)$. If $f=O(g)$ and $f=\Omega(g)$ we write $f=\Theta(g)$. We will also use the tilde to hide polylog factors. Say $f=\tO(g)$ if $f(n) = O(g(n) \log^c n)$ and $f=\tOmega(g)$ if $f(n) = \Omega(g(n) \log^{-c}n)$, for some $c\geq 0$. 
 
 
+\paragraph{Simplex representations.}
 In order to discuss the algorithmics pertaining to simplices and convex polyhedra in general, we must discuss how such objects are represented by a machine. Clearly, we cannot simply enumerate all the points enclosed by a body in high-dimensional space. Instead we must concisely represent the boundaries of the polytope. The two most common such descriptions are 
 \begin{itemize}
 	\item \emph{\vdesc}, in which we are given the vertex vectors of the polytope; 
@@ -18,23 +20,32 @@ In order to discuss the algorithmics pertaining to simplices and convex polyhedr
 
 It's not at all clear whether these descriptions are equivalent in the sense that one can easily generate one from the other. Indeed, the complexity of vertex enumeration (generating a \vdesc from an \hdesc) and facet enumeration (generating an \hdesc from a \vdesc) remains an open problem for general polytopes~\cite{kaibel2003some}, although there exist polynomial time algorithms when the polytopes are simplices (e.g., \cite{bremner1998primal}). We will return to this fact later on. 
 
-Some background on computational models and reductions will also be useful. \todo \\
+\paragraph{Reductions.}
+Some background on computational models and reductions will also be useful. For more details see~\cite{kleinberg2006algorithm} or \cite{knuth2011art}. We will use the typical computational model for analyzing algorithms. Without diving too far into the minutiae, we assume that single arithmetic operations require $O(1)$-time, i.e., constant. We will analyze the runtime of an algorithm as a function of how many bits it takes to represent the input. A common tool for providing upper bounds on the runtime of an algorithm is to ``reduce'' it to a problem for which a bound is already known. Assume problem $P$ requires time $\Omega(f_P(n))$ to solve---meaning that \emph{any} algorithm requires time $\Omega(f_P(n))$---where $n$ represents the size of the input and $f_P(n)$  is some function of $n$, e.g., $f_P(n) =  n^2\log n$. Let $Q$ be a distinct problem and suppose that for every instance of $P$ we can transform the input of $P$ to a valid input for $Q$, and transform the output of $Q$ to a valid output of $P$, both in time $O(f_P(n))$.  We have then established that $f_Q(n) = \Omega(f_P(n))$, where $f_Q$ the runtime required to solve $Q$, since we can solve $P$ in time $f_Q(n) + O(f_P(n))$ by transforming any input to $P$ to the input of $Q$, solving $Q$, and transforming the output back. Such a technique will be used extensively throughout the next few sections. 
+
+\paragraph{The complexity classes \NP, \NP-hard, and \NP-Complete.}
+
 
 
 
 \section{Computational Complexity}
 
-In this section we investigate the relationships between problems in one domain---either the graph-theoretic or geometric domain---and their analogues in the other. The following result exemplifies the power of the graph-simplex correspondence in yielding results which seem otherwise to be difficult to obtain (certainly more difficult than the following proof, at any rate).  First we generalize the no
+In this section we investigate the relationships between problems in one domain---either the graph-theoretic or geometric domain---and their analogues in the other. The following result exemplifies the power of the graph-simplex correspondence in yielding results which seem otherwise to be difficult to obtain (certainly more difficult than the following proof, at any rate).  
 The following result was first stated by Devriendt and Van Mieghem~\cite{devriendt2018simplex}, although it was stated only for inverse simplices of graphs. We observe that it can be generalized as follows. 
 
 \begin{lemma}
-	Computing the altitude of minimum length in a convex polytope is \NP-hard. 
+	\label{lem:altitude_hard}
+	Computing the altitude of minimum length in a hyperacute polytope is \NP-hard. Consequently, computing the minimum length altitude in general polyhedra is \NP-hard. 
 \end{lemma}
 \begin{proof}
 	The relationship $\norm{\alt(\splx^+_U)}_2^2 = w(\delta U)^{-1}$ (Lemma \ref{lem:alt}) for the inverse simplex of a graph $G$ demonstrates that the problem of computing a minimum length altitude in any hyperacute simplex is \NP-hard, because computing the  maximum weight cut in any weighted graph is \NP-hard~\cite{karp1972reducibility}.  Since the class of convex polytopes contains the class of hyperacute simplices, the result follows. 
 \end{proof}
 
 \begin{remark} In  the above statement and its proof, the description of the polytope and simplex was not specified. This is due to the fact that---as discussed above---for simplices there is a polynomial time algorithm to translate betweent the various descriptions. With regard to \NP-completeness therefore, the description makes no difference. 
+\end{remark}
+
+\begin{remark}
+	As exemplified by the statement of Lemma \ref{lem:altitude_hard} the fact that a problem is \NP-hard for hyperacute simplices immediately implies that it is so for general polyhedra (since simplices are a subclass of polyhedra). We will still, however, often state a result in terms of general polyhedra because it seems most likely to be useful in this form. 
 \end{remark}
 
 The remainder of this section is dedicated to obtaining more results of this type. 
@@ -113,30 +124,34 @@ We can play a similar game by using the relationships furnished by the normalize
 \end{proof}
 
 
-\note{Need to say more about this}
+Next we extract a result based on the most (in)famous problem in computational graph theory: Graph isomorphism. An \emph{isomorphism} between two graphs $G_1$ and $G_2$ is a bijection $f:V(G_1)\to V(G_2)$ such that $(u,v)\in E(G_1)$ iff $(f(u),f(v))\in E(G_2)$. We write $G_1\cong G_2$ if $G_1$ is isomorphic to $G_2$. The \graphiso problem asks, given $G_1,G_2$ whether they are isomorphic. 
+It's clear that $\graphiso\in\NP$, but whether it is \NP-complete remains an open question~\cite{mckay2014practical}. L{\'a}szl{\'o} Babai recently claims to have solved the problem in  quasipolynomial time~\cite{babai2016graph}; the work is still being verified. 
+Accordingly, we call a problem Graph-Isomorphism-Hard if it can be reduced to to \graphiso. 
+The more general problem of \emph{subgraph} isomorphism, which asks whether $G_1$ has a subgraph isomorphic to $G_2$, is \NP-complete~\cite{cook1971complexity, karp1972reducibility}. We are interested in the relationship between graph isomorphism and polytope congruence.  
+
 \begin{theorem}
-Deciding whether two polytopes are isomorphic is Graph-Isomorphism-Hard. Moreover, subpolytope isomorphism is NP-hard. 
+	\label{thm:simplex_congruence}
+Deciding whether two hyperacute simplices are congruent is Graph-Isomorphism-Hard. Moreover, given two hyperacute simplices $\splx_1\in\R^d$ and $\splx_2\in\R^k$, deciding whether there exists $k$-dimensional face of $\splx_1$ congruent to $\splx_2$ is \NP-hard. 
 \end{theorem}
 \begin{proof}
-	Let two graphs $G_1$ and $G_2$ be given. Compute their corresponding inverse simplices $\splx_1^+$ and $\splx_2^+$. If $\splx_1^+\cong\splx_2+$, then there exists a (linear) mapping $\T$ between the vertices such that $\T \sv_1^+=\sv_2^+$ for all $\sv_1^+\in \Sv(\splx_1^+)$ and $\sv_2^+\in \Sv(\splx_2^+)$. In this case, the matrix obtained by the dot products of the vectors $\T\Sv(\splx_1^+)$ yields $\L_{G_1}$, implying that $G_1\cong G_2$.  
+	Let two graphs $G_1$ and $G_2$ be given. Compute their corresponding inverse simplices $\splx_1^+$ and $\splx_2^+$. 
+	We claim that $\splx_1^+\cong\splx_2^+$ iff $G_1\cong G_2$. If $\splx_1^+\cong\splx_2^+$ then because they are both centred at the origin there exists a rotation matrix $\Q$ such that $\Q\Sv_1^+=\Sv_2^+$. Since a rotation matrix does not change the relationship between the inner product of vectors\footnote{A rotation matrix $\Q$ obeys $\Q^\tp\Q=\I$, hence $\la \Q\u,\Q\v\ra = \u^\tp \Q^\tp \Q\v=\la \u,\v\ra$.}, we see that $(\Sv_1^+)^\tp\Sv_1^+$ and $(\Sv_2^+)^\tp\Sv_2^+$ define the same Laplacian. Hence $G_1$ is isomorphic to $G_2$. Conversely, if $G_1\cong G_2$, then there exists a  relabelling of the vertices such that their Laplacian matrices are identical, as are the simplices. The second part of the statement follows by a similar reduction, and the fact that $\subgraphiso\in\NP$-complete.
 \end{proof}
 
-The first result was also proved in \cite{kaibel2008complexity}. 
+Kaibel and Schwarz~\cite{kaibel2008complexity} investigated the problem of polytope isomorphism. They define two polytopes is isomorphic if they have the same \emph{face-lattice}---the lattice in which the nodes correspond to subsets of the vertices, and the lattice ordering is by face inclusion. Since congruent simplices share the same face  lattice up to labelling, Theorem \ref{thm:simplex_congruence} implies their result. 
 
 
-\section{There and Back Again: A Tale of Graphs to Simplices}
-In this section we investigate the computational aspects of transitioning between various simplices and between the graph and its simplices. We are interested in obtaining computational results which are strictly sub-cubic in time, i.e., $o(n^3)$ because in cubic time one can solve linear systems and compute eigendecompositions. 
+\section{There and Back Again: A Tale of Graphs and Simplices}
+In this section we investigate the computational aspects of transitioning between the various objects which we've studied thus far. We begin with a foray into the computational complexity of eigendecompositions since, as we will see, we are only interested in transitions which take less time than computing the eigendecomposition of a Laplacian. 
+ 
+Let $M(n)$ denote the complexity of the eigendecomposition problem. It is known that  $M(n)=\tOmega(n^3 + n\log^2 \log \eps)$ to obtain a relative error\footnote{We note that the relative error is a necessary parameter of any algorithm because eigenvalues may be irrational.} of $2^{-\eps}$, while there exists algorithms which run in time $O(n^3 + n\log^2 \log \eps)$~\cite{pan1999complexity}.  
+Let \lapdecomp refer to the problem of computing the eigendecomposition of the Laplacian of a graph, i.e., computing its eigenvalues and eigenvectors. The complexity of \lapdecomp does not seem to be known, \note{really need to figure this out---how can it not be known?} and we thus denote the lower bound by $\Omega(n^\tau)$ for some $\tau$. We will assume, based on the difficulty of general eigendecomposition that $\tau>2$. 
 
 
-We let $M(n)$ denote the complexity of the eigendecomposition problem. It is known that  $M(n)\tOmega(n^3 + n\log^2 \log \eps)$ to obtain a relative error\footnote{We note that the relative error is a necessary parameter of any algorithm because eigenvalues may be irrational.} of $2^{-\eps}$, while there exists algorithms which run in time $O(n^3 + n\log^2 \log \eps)$~\cite{pan1999complexity}. 
-We let $L(n)$ denote the runtime of \lapdecomp, and we assume that $L(n) =\omega(n^2)$. \note{This must be the case}. 
-
-\note{fix this section}
- Thus, for instance, given $G$ it is trivial to compute all of $\splx_G,\splx^+_G,\splxn_G$, and $\splxn_G^+$ by finding the eigendecomposition of $\L_G$ from which we can construct the relevant vertex set.  Moreover, starting with a simplex with vertex set $\Sv$, one can compute $\Sv^\tp\Sv$ in cubic time. If the simplex is the simplex if a graph then this yields the Laplacian (or the pseudoinverse of the Laplacian) of the graph, which as above allows us to compute any of the simplices. In what follows therefore, we attempt to beat the barrier of $O(n^3)$. 
+Now, observe that given $G$, we can compute the combinatorial and nornalized Laplacians (and their inverses) by first constructing the combinatorial or normalized Laplacian in $O(n^2)$, performing an eigendecomposition in time $O(n^\tau)$, and constructing the vertices of the simplices from the eigenvalues and eigenvectors in time $O(n^2)$. Using our  assumption that $\tau>2$, this takes total time $O(n^\tau)$.  Moreover, starting with a simplex with vertex set $\Sv$, one can compute $\Sv^\tp\Sv$ in the time required for matrix multiplication, which is $\Theta(n^\kappa)$ for some $2\leq \kappa\leq 2.376$~\cite{stothers2010complexity}. If the simplex is the simplex of a graph then this yields the Laplacian (or its pseudoinverse) of the graph, which as above allows us to compute any of the simplices. In what follows therefore, we attempt to beat the barrier of $O(n^3)$. 
 
 A question which is raised by the above discussion is one of certifying whether a given simplex $\ssplx$ is the combinatorial, normalized, or one of their duals of some graph $G$. Again, in cubic time we can compute $\Sv^\tp\Sv$ and thus decide whether $\Sv^\tp\Sv$ is equal to $\L_G$ for some graph $G$. In quadratic time we can check whether all the angles $\theta_{ij}$ between the faces $\ssplx_\ic$ and $\ssplx_\jc$ are non-obtuse, in which case $\ssplx$ is the inverse simplex of some graph. Beyond computing $\Sv(\ssplx)^\tp \Sv(\ssplx)$ however, it's not clear how to obtain the original graph or the combinatorial simplex. 
 
-\subsection{Precise Mappings}
 We begin by exploring the complexity of transitioning between the different objects \emph{precisely}---e.g., given $G$ compute its precise combinatorial simplex. The subsequent  section will explore various approximations. 
 
 \begin{figure}
@@ -168,9 +183,10 @@ We begin by exploring the complexity of transitioning between the different obje
 	\end{tabular}
 	\renewcommand{\arraystretch}{1}
 \caption{Summary of results for precise mappings. A slash refers to a difference in runtimes when the graph is available versus when it isn't. The quantity before the slash indicates the runtime \emph{without} the graph, after the slash the runtime \emph{with} the graph. A question mark indicates that the runtime isn't known.}
+\label{fig:mapping_results}
 \end{figure}
 
-The results obtained in this section are summarized in Figure 
+The results obtained in this section are summarized in Figure \ref{fig:mapping_results}.
 
 \paragraph{Between \texorpdfstring{$\splx$}{the combinatorial} and \texorpdfstring{$\splxn$}{normalized simplex}.}
 Let us consider the computational complexity of transitioning between $\splx$ and $\splxn$ and vice versa. Let $\phi_{ij}$ (resp., $\phin_{ij}$) be the angle between $\sv_i$ and $\sv_j$ (resp., $\svn_i$ and $\svn_j$). Using the typical formula for the dot product in Euclidean space we have
@@ -285,7 +301,7 @@ Due to the fact that $\splxn_G^+$ is not the dual of $\splxn_G$ Lemma \ref{lem:h
 
 
 
-\subsection{Approximations} 
+\section{Approximations} 
 
 \paragraph{Low Rank Approximation}
 

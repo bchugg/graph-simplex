@@ -169,4 +169,90 @@ Using this and a previous calculated formula for the entries of the pseudoinvers
 \end{align*}
 
 
+\note{Very unclear if there's anything interesting here. Mostly just contains Karel's thought on rws at the moment. Think about: \\
+	
+	(1) can we generate  a theory/answer questions regarding random walks in simplices using our knowledge of rws in graphs. \\
+	
+	(2)Straight lines are geodesics. If in the simplex the path created by a random walk is a straight line, is this telling us the random walk is as ``efficient'' as possible? Whereas those with curved lines are inefficient? Unclear how to formalized this /where to take it. 
+	After  thinking about this a bit, probably not: It just says that the eigenvalues corresponding to  the vertices which contribute to the starting position are equal.
+}
+
+
+
+\subsection{Discrete Time Random Walks}
+In a \emph{discrete time random walk (DSRW)} we envision a walker who jumps from vertex $i$ to vertex $j$ with probability proportional to $w(i,j)$. To this end, one defines the transition matrix 
+\begin{equation*}
+\T(i,j) = \frac{w(i,j)}{w(i)}=\frac{\A_G(i,j)}{\sum_{k\in\delta(i)} \A_G(i,k)}.
+\end{equation*}
+It's clear that $\sum_i \T(i,j)=1$. 
+The probability that the walker is at node $i$ at time $t$ is the probability that that she was at node $j$ at time $t-1$ and transitioned to node $i$. Thus, 
+\begin{equation*}
+\pi_i(t)=\sum_{j}\pi_j(t-1)\T(i,j),
+\end{equation*}
+or, more succinctly, 
+\begin{equation*}
+\bpi(t) = \T\bpi(t-1).
+\end{equation*}
+The stationary distribution $\bpi(\infty)\equiv \lim_t \bpi(t)$  satisfies $\bpi(\infty)=\T\bpi(\infty)$,  which yields that 
+The stationary distribution of such a walk is given by 
+\[\pi_i = \frac{\sum_{j\in \delta(i)} w(i,j)}{\sum_{j,k\in V}w(i,j)},\]
+which, for an undirected and unweighted graph simplifies to $\pi_i=\deg(i)/2|E|$. 
+
+
+\subsection{Continuous Time Random Walks}
+
+A \emph{Continuous Time Random Walk}~\cite{masuda2017random} satisfies the equation 
+\begin{equation}
+\label{eq:ctrw_dynamics}
+\frac{d\bpi(t)}{dt}= -\bpi(t)^\tp\W^{-1} \L,
+\end{equation}
+hence 
+\begin{equation*}
+\bpi(t)^\tp = \bpi(0)^\tp \exp(-\W^{-1}\L t).
+\end{equation*}
+After converging to the stationary distribution there is, by definition, no change in the distribution. Therefore, $d\bpi(t)/dt=0$ and Equation \eqref{eq:ctrw_dynamics} reduces to 
+$-\bpi(t)\W^{-1}\L =\zero$. Therefore, $\bpi(t)\W^{-1}$ is a left eigenfunction of $\L$ or equivalently, $ \W^{-1}\bpi$ is a right eigenfunction with corresponding eigenvalue zero. Hence, $\W^{-1}\bpi\in\spn\{\one\}$, i.e., $\bpi\in\spn\{\w\}$. Since $\norm{\bpi(\infty)}_1=1$, we see that 
+\[\bpi(\infty) = \frac{\w}{\norm{\w}_1}.\]
+In particular, the CTRW shares the same stationary distribution as the DTRW. 
+
+
+
+\subsection{mixing time}
+The distribution $\bpi=(\pi_1,\dots,\pi_n)$ corresponds to a point in the simplex, namely $\p_\pi=\S\bpi$. It is thus natural to wonder whether this point tells us anything interesting about the dynamics of the walk. 
+
+The \emph{variation distance} between two distributions $p_1$ and $p_2$ with finite state space $S$ is given by 
+\[\norm{p_1-p_2}_V = \frac{1}{2}\sum_{s\in S} |p_1(s)-p_2(s)|.\]
+
+\paragraph{Mixing Time.} Let $\p_i^t$ be the distribution over the set of vertices $V$ at time $t$ obtained by beginning the random walk at vertex $i$. Define 
+\[\Delta(t) = \max_{i\in V}\norm{\p_i^t-\bpi}_V,\]
+where $\norm{\cdot}_V$ is the variation distance. Given $\eps>0$ set 
+\[\tau(\eps) = \min\{t:\Delta(t)\leq \eps\}.\]
+We have 
+
+We begin with a quantity related to random walks on the graph. Fix a graph $G=(V,E,w)$. Given $U\subset V$, the \emph{conductance of the cut $(U,U^c)$}---or simply the \emph{conductance of $U$}---is 
+\begin{equation*}
+\cond_G(U) \equiv \frac{w(\delta U)}{\min\{\vol(U),\vol(U^c)\}}.
+\end{equation*}
+The  conductance of a set, roughly speaking, measures how well connected the set is to its neighbours---higher conductance implies higher connectedness. We are interested in how  relatively  connected a set  is,  which is the reason for the normalization. The total \emph{conductance of $G$} is 
+\begin{equation*}
+\cond_G \equiv \min_{U\subset V}\cond_G(U). 
+\end{equation*}
+We have the following inequality: 
+\[\theta(S)\geq \lambda_2\bigg(1-\frac{|S|}{|V|}\bigg)\geq \frac{\lambda_2}{2},\]
+which yields 
+\[\norm{\Sv \chi S}_2^2 \geq \frac{|S|}{2}\lambda_{n-1}.\]
+We can relate the eigenvalues of $G$ to the geometry of $\splx$ via the relation $\Sv\Sv^\tp = \Eval$. Hence
+\[\norm{\Sv \chi_S}_2^2 \geq \frac{|S|}{2} \Sv\Sv^\tp (n-1,n-1)\geq \frac{|S|}{2} \min_{i}\{(\Sv\Sv^\tp)(i,i):(\Sv\Sv^\tp)(i,i)\neq 0\} = \frac{|S|}{2}\min_{i=1}^{n-1} \norm{\Pi_i(\Sv)}_2^2.  \]
+
+
+\begin{observation}
+	Let $\p$ be any vector 
+	If $\p$ is any vector pointing from $\splx_U$ to $\splx_{U^c}$ which has a non-empty intersection with both faces, then $\norm{\p}_2 \geq \norm{\alt(\splx_U)}_2$. 
+\end{observation}
+\begin{proof}
+	Geometry. \note{Work this out}. 
+\end{proof}
+
+
+
 

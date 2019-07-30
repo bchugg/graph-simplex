@@ -261,28 +261,7 @@ Sharpe~\cite{sharpe1967theorem} said something about something which should prob
 
 
 \section{Inequalities}
-In this section we demonstrate how the graph-simplex may be used to obtain both geometric and graph-theoretic inequalities. 
-
-The conductance of a graph $G$ is 
-\begin{equation*}
-\theta(S) \equiv \frac{|\delta(S)|}{|S|}. 
-\end{equation*}
-We have the following inequality: 
-\[\theta(S)\geq \lambda_2\bigg(1-\frac{|S|}{|V|}\bigg)\geq \frac{\lambda_2}{2},\]
-which yields 
-\[\norm{\Sv \chi S}_2^2 \geq \frac{|S|}{2}\lambda_{n-1}.\]
-We can relate the eigenvalues of $G$ to the geometry of $\splx$ via the relation $\Sv\Sv^\tp = \Eval$. Hence
-\[\norm{\Sv \chi_S}_2^2 \geq \frac{|S|}{2} \Sv\Sv^\tp (n-1,n-1)\geq \frac{|S|}{2} \min_{i}\{(\Sv\Sv^\tp)(i,i):(\Sv\Sv^\tp)(i,i)\neq 0\} = \frac{|S|}{2}\min_{i=1}^{n-1} \norm{\Pi_i(\Sv)}_2^2.  \]
-
-
-\begin{lemma}
-If $\p$ is any vector pointing from $\splx_U$ to $\splx_{U^c}$ which has a non-empty intersection with both faces, then $\norm{\p}_2 \geq \norm{\alt(\splx_U)}_2$. 
-\end{lemma}
-\begin{proof}
-Geometry. \note{Work this out}. 
-\end{proof}
-
-The following lemma is due to Devriendt and Van Mieghem~\cite{devriendt2018simplex}. 
+In this section we demonstrate how the graph-simplex may be used to obtain both geometric and graph-theoretic inequalities. We begin with an inequality relating the quadratic form $\L$ to the ``weight'' of the cuts associated with the pseudoinverse.  It was first proved by Devriendt and Van Mieghem~\cite{devriendt2018simplex}. 
 
 
 \begin{lemma}
@@ -309,46 +288,47 @@ where the last inequality follows since $f$ is orthogonal to $\one$ by assumptio
 Squaring both sides and recalling that $\chi_{F^+}\L^+\chi_{F^+} = W(\delta^+F^+)$ gives the desired result. 
 \end{proof}
 
-We obtain several inequalities for the simplex via immediate application of inequalities from the literature on electrical networks. 
-
-\note{Since $\Reff_G=n\sum_i\lambda_i^{-1}=n\tr(\Sv\Sv^\tp)$,
+\note{Still working on this content. Since $\Reff_G=n\sum_i\lambda_i^{-1}=n\tr(\Sv\Sv^\tp)$,
 facts/inequalities pertaining to the effective resistance can be translated to the simplex. }
 
-\begin{lemma}
-Let $G=(V,E,w)$ be a weighted graph and let $U\subset V$ obey $\vol(U)<\vol(V)/2$ and \[\theta(U) \geq \frac{\alpha}{\vol(U)^{1/2-\eps}}.\]
-\end{lemma}
-\todo \note{finish this/decide whether this is worth including.}
-
 \section{Quadrics}
-
-\note{Circumscribed ellipsoid for normalized Laplacian is not necessarily the sphere -- could be deformed. }
 \label{sec:quadrics}
-\todo  \note{Read more about quadrics in general but filling this out. Might be more we can say. Also look into any algorithmic work done on quadrics. Does this relationship help us answer anything interesting?}
-Fiedler derivation: ~\cite{fiedler2005geometry}. More Fiedler geometry: ~\cite{fiedler1993geometric}. 
-A \emph{quadric} in $\C^d$ is a hypersurface of dimension $d-1$ of the form 
-\begin{equation*}
-\{\x\in\C^d: \x^\tp \Q\x + \r^\tp \x + s=0\}.
-\end{equation*}
 
-\begin{definition}
+Here we explore several quadrics associated with the simplices of $G$. 
+We remind the reader that a  \emph{quadric} in $\R^d$ is a hypersurface of dimension $d-1$ of the form 
+\begin{equation*}
+\{\x\in\R^d: \x^\tp \Q\x + \r^\tp \x + s=0\},
+\end{equation*}
+for some $\Q\in\R^{d\times d},\r\in\R^d$  and $s\in \R$. 
+In $\R^3$, typical examples of quadrics are spheroids and ellipsoids ($\r=\zero$ in these cases), paraboloids, hyperboloids, and  cylinders. In what follows we focus on ellipsoids, in particular on \emph{circumscribed} ellipsoids. Such a quadric of interest in simplex geometry is the following. 
+
+\begin{definition}[\cite{krause1983steinerellipsoide}]
 \label{def:steiner_ellipsoid}
 The \emph{Steiner Circumscribed Ellipsoid}, or simply the \emph{Steiner Ellipsoid} of a simplex $\splx$ with vertices $\{\sv_i\}$ is a quadric which contains the vertices and whose tangent plane at $\sv_i$ is parallel to the affine plane spanned by $\{\sv_j\}_{j\neq i}$. 
 \end{definition}
 
-\begin{theorem}
+It's existence  and uniqueness is guaranteed by the following theorem. 
+
+\begin{theorem}[\cite{fiedler2005geometry}]
 The Steiner ellipsoid of a simplex $\splx$ is unique and moreover, is the ellipsoid with minimum volume which contains $\splx$. 
 \end{theorem}
 
-Owing to its uniqueness, we denote the Steiner ellipsoid of the simplex $\splx$ by $\El(\splx)$. The following lemma gives an explicit representation of $\El(\splx)$. 
+Owing to its uniqueness, we denote the Steiner ellipsoid of the simplex $\splx$ by $\El(\splx)$. The following lemma gives an explicit representation of the circumscribed ellipsoid of the combinatorial simplex of $G$---which we will  henceforth call the \emph{(Steiner) circumscribed ellipsoid of $G$}---and of its inverse, which we call the \emph{inverse (Steiner) circumscibed Ellipsoid of $G$}. 
 
 \begin{lemma}[\cite{fiedler2005geometry}]
-The Steiner circumscribed Ellipsoid of $\splx=\splx(G)$ satisfies
+The Steiner circumscribed ellipsoid  of $G$ and its inverse  are described by 
 \begin{equation}
 \label{eq:steinerE}
-    \El(\splx) = \bigg\{\x: \x^\tp \Sv^+(\Sv^+)^\tp \x - \frac{n-1}{n}=0\bigg\}.
+    \El(\splx_G) = \bigg\{\x: \x^\tp \Sv^+(\Sv^+)^\tp \x - \frac{n-1}{n}=0\bigg\},
+\end{equation}
+and 
+\begin{equation}
+\label{eq:steinerE_inverse}
+\El(\splx^+_G) = \bigg\{\x: \x^\tp \Sv\Sv^\tp \x - \frac{n-1}{n}=0\bigg\}.
 \end{equation}
 \end{lemma}
 \begin{proof}
+We prove Equation  \eqref{eq:steinerE} only; Equation \eqref{eq:steinerE_inverse} follows similarly. 
 Set $\M=\Sv^+(\Sv^+)^\tp$ and $E=\{\x:\x^\tp \M\x=(n-1)/n\}$. The claim is that $\El(\splx)=E$.  
 First we demonstrate that the vertices of $\splx$ are contained in $E$. Noticing that $\J^2=n\J$, we compute 
 \begin{align*}
@@ -363,22 +343,29 @@ It remains to show that $\H$ is parallel to the tangent plane of $E$ at the poin
 which is clearly parallel to $\H$. This completes the proof.
 \end{proof}
 
-Perhaps a more insightful representation of $\El(\splx)$ comes from appealing to Equation \eqref{eq:SvSv+}, i.e., $\Sv\Sv^\tp = \Eval^{-1/2}$. Hence, by \eqref{eq:steinerE},
+ Perhaps a more insightful representation of $\El(\splx)$ comes from appealing to Equation \eqref{eq:SvSv+}, i.e., $\Sv\Sv^\tp = \Eval^{-1/2}$. Hence, by \eqref{eq:steinerE},
 \begin{equation}
 \label{eq:steinerE2}
     \El(\splx) = \bigg\{\x:\x^\tp \Eval^{-1}\x = \frac{n-1}{n}\bigg\}.
 \end{equation}
 
-On the other hand, it's easy to see that the Steiner ellipsoid of the normalized simplex, $\El(\splxn)$ is simply the unit sphere, i.e., $\El(\splxn) = \{\x:\x^\tp \x = 1\}$, since $\norm{\svn_i}_2^2=1$. 
-\note{Is this enough to justify it?} 
-Therefore, we see that the circumscribed sphere and the circumscribed ellipsoid of the normalized simplex are one and the same. 
+This allows us to give explicit formulas for the semi-axes of $\El(\splx)$.
+ The \emph{semi-axes} of an ellipsoid written in the standard form $\x^\tp \D^2\x=1$ with $\D\in\R^{d\times d}$ a diagonal matrix are the $d$ vectors $\e_i\cdot \D(i,i)^{-1}$. They are the unique vectors $\u_i$ such that any  point $\x$ on the ellipsoid can be written as $\x=\sum_i \u_i\alpha_i$ with  $\sum_i\alpha_i^2=1$~\cite{devriendt2018simplex}. 
+ 
+ \begin{lemma}
+ 	The semi-axes of the Steiner Cirscumscribed Ellipsoid  $\El(\splx_G)$ of  the graph $G$ are 
+ 	\[\frac{\e_i}{\sqrt{\lambda_i} }\cdot \bigg(\frac{n}{n-1}\bigg)^{1/2}, \]
+ 	for $i=1,\dots,n-1$. 
+ \end{lemma}
+\begin{proof}
+	The diagonal matrix $\D=\Eval^{-1/2} (\frac{n}{n-1})^{1/2}$ has entries $D(i,i) = \e_i(\frac{n}{(n-1)\lambda_i})^{1/2}$, and equation  \eqref{eq:steinerE2} demonstrates  that  $\El(\splx_G) = \{\x:\x^\tp \D^2\x=1\}$. Apply the definition of semi-axes. 
+\end{proof}
 
-For the combinatorial simplex, however, it's not even clear whether the circumscribed sphere exists \note{Unless it exists for all simplices?}. Demonstrating that it does in fact exist is the purpose of the following lemma. 
+Next we investigate the circumscribed sphere of the combinatorial  simplex. Similarly to the circumscribed ellipsoid, the \emph{cirscumscribed sphere  of a convex body $\P$} is the sphere whose boundary contains all the vertices of $\P$. The circumscribed sphere does not exist in general. However, just as it is possible to always draw a circle containing the endpoints  of a triangle, so the circumscribed sphere of a hyperacute simplex always exists  as is demonstrated  by the following lemma.  
 
-\note{I think this should hold for more than simply hyperacute simplices, but need to generalize the Menger matrix stuff in order for the result to go through.}
-\begin{lemma}
+\begin{lemma}[\cite{fiedler1993geometric}]
 	\label{lem:circ_sphere}
-	Let $\splx^+\subset\R^{n-1}$ be a hyperacute simplex. The circumscribed sphere  of $\splx^+$ exists and is given by the set of points $\{\x:\x=\Sv\balpha, \; \la \balpha,\one \ra = 1, \; \la \balpha,\D\balpha\ra =0\}$, which is a sphere centred at the point $\frac{1}{2}\Sv(\L_G\bxi + \one/n)$ with radius $\frac{1}{2}\sqrt{\bxi^\tp\L_G\bxi + 4R_G/n^2}$. 
+	Let $\splx^+\subset\R^{n-1}$ be a hyperacute simplex. The circumscribed sphere  of $\splx^+$ exists and is given by the set of points $\{\x:\x=\Sv\balpha, \; \la \balpha,\one \ra = 1, \; \la \balpha,\D\balpha\ra =0\}$, which is a sphere centred at the point $\frac{1}{2}\Sv(\L_G\bxi + \one/n)$ with radius $\frac{1}{2}\sqrt{\bxi^\tp\L_G\bxi + 4R_G/n^2}$ where $G$ is $\splx^+$'s associated graph, and $\bxi = \diag(\L_G^+(i,i))$. 
 \end{lemma}
 \begin{proof}
 Set $\bzeta = \frac{1}{2}(\L_G\bxi + \one/n)$ and $r = \bxi^\tp \L_G\bxi+4R_G/n^2$. 
@@ -407,7 +394,7 @@ we may proceed as
 \end{align} 
 Recalling the block matrix equation \eqref{eq:block_inverse} for hyperacute simplices, for all $i$ we have $\one (\bxi^\tp \L_G\bxi + 4R_G/n^2) - \D(\L_G\bxi + 2\one /n) = \zero$, i.e., $r\one -2\D =\zero$. Hence 
 \[\la \D(i,\cdot),\bzeta\ra = \frac{r}{2}.\]
-Using this, we rewrite the summation in on the right hand side of \eqref{eq:lem_circ_sphere} as 
+Using this, we rewrite the summation on the right hand side of \eqref{eq:lem_circ_sphere} as 
 \begin{align*}
 \sum_{i,j}(\alpha_i-\zeta_i)(\alpha_j-\zeta_j)\D(i,j) &= \sum_i (\alpha_i-\zeta_i) \bigg(\sum_j\alpha_j \D(i,j) - \sum_j \alpha_j \D(i,j)\bigg) \\
 &= \sum_j\alpha_j \sum_i (\alpha_i-\zeta_i)\D(i,j) - \frac{1}{2}r \sum_i (\alpha_i-\zeta_i) \\
@@ -417,67 +404,13 @@ Using this, we rewrite the summation in on the right hand side of \eqref{eq:lem_
 The equation of the sphere in \eqref{eq:lem_circ_sphere2} now becomes $\frac{1}{4}r - \frac{1}{2}\balpha^\tp \D\balpha = \frac{1}{4}r$, i.e., $\balpha^\tp \D\balpha=\zero$ as was claimed.  Now, to see that this sphere contains the vertices of $\splx^+$,  $\{\sv_i^+\}$, we need only note that the barycentric coordinate of $\sv_\ell^+$ is $\bchi_\ell$ and that $\bchi_\ell^\tp \D \bchi_\ell = \sum_{i,j} \bchi_\ell(i) \D(i,j) \bchi_\ell(j) = \D(\ell,\ell) = 0$. 
 \end{proof}
 
+Until this point, we have been examining only the quadrics associated with the combinatorial simplices. We now consider the normalized simplices. Since all the vertices of the normalized simplex lie on the unit sphere, it's clear  that the circumscribed sphere of $\splxn_G$ is precisely $\{\x:\x^\tp\x=1\}$. 
+
+\note{If time investigate the circumscribed ellipsoid of $\splxn_G$. Also perhaps the circumscribed sphere of $\splxn_G^+$?}.  
+
 
 
 
 
 \section{Random Walks}
-\note{Very unclear if there's anything interesting here. Mostly just contains Karel's thought on rws at the moment. Think about: \\
-	
-	(1) can we generate  a theory/answer questions regarding random walks in simplices using our knowledge of rws in graphs. \\
-	
-	(2)Straight lines are geodesics. If in the simplex the path created by a random walk is a straight line, is this telling us the random walk is as ``efficient'' as possible? Whereas those with curved lines are inefficient? Unclear how to formalized this /where to take it. 
-	After  thinking about this a bit, probably not: It just says that the eigenvalues corresponding to  the vertices which contribute to the starting position are equal.
-}
-
-
-
-\subsection{Discrete Time Random Walks}
-In a \emph{discrete time random walk (DSRW)} we envision a walker who jumps from vertex $i$ to vertex $j$ with probability proportional to $w(i,j)$. To this end, one defines the transition matrix 
-\begin{equation*}
-    \T(i,j) = \frac{w(i,j)}{w(i)}=\frac{\A_G(i,j)}{\sum_{k\in\delta(i)} \A_G(i,k)}.
-\end{equation*}
-It's clear that $\sum_i \T(i,j)=1$. 
-The probability that the walker is at node $i$ at time $t$ is the probability that that she was at node $j$ at time $t-1$ and transitioned to node $i$. Thus, 
-\begin{equation*}
-    \pi_i(t)=\sum_{j}\pi_j(t-1)\T(i,j),
-\end{equation*}
-or, more succinctly, 
-\begin{equation*}
-    \bpi(t) = \T\bpi(t-1).
-\end{equation*}
-The stationary distribution $\bpi(\infty)\equiv \lim_t \bpi(t)$  satisfies $\bpi(\infty)=\T\bpi(\infty)$,  which yields that 
-The stationary distribution of such a walk is given by 
-\[\pi_i = \frac{\sum_{j\in \delta(i)} w(i,j)}{\sum_{j,k\in V}w(i,j)},\]
-which, for an undirected and unweighted graph simplifies to $\pi_i=\deg(i)/2|E|$. 
-
-
-\subsection{Continuous Time Random Walks}
-
-A \emph{Continuous Time Random Walk}~\cite{masuda2017random} satisfies the equation 
-\begin{equation}
-\label{eq:ctrw_dynamics}
-    \frac{d\bpi(t)}{dt}= -\bpi(t)^\tp\W^{-1} \L,
-\end{equation}
-hence 
-\begin{equation*}
-    \bpi(t)^\tp = \bpi(0)^\tp \exp(-\W^{-1}\L t).
-\end{equation*}
-After converging to the stationary distribution there is, by definition, no change in the distribution. Therefore, $d\bpi(t)/dt=0$ and Equation \eqref{eq:ctrw_dynamics} reduces to 
-$-\bpi(t)\W^{-1}\L =\zero$. Therefore, $\bpi(t)\W^{-1}$ is a left eigenfunction of $\L$ or equivalently, $ \W^{-1}\bpi$ is a right eigenfunction with corresponding eigenvalue zero. Hence, $\W^{-1}\bpi\in\spn\{\one\}$, i.e., $\bpi\in\spn\{\w\}$. Since $\norm{\bpi(\infty)}_1=1$, we see that 
-\[\bpi(\infty) = \frac{\w}{\norm{\w}_1}.\]
-In particular, the CTRW shares the same stationary distribution as the DTRW. 
-
-
-
-\subsection{mixing time}
-The distribution $\bpi=(\pi_1,\dots,\pi_n)$ corresponds to a point in the simplex, namely $\p_\pi=\S\bpi$. It is thus natural to wonder whether this point tells us anything interesting about the dynamics of the walk. 
-
-The \emph{variation distance} between two distributions $p_1$ and $p_2$ with finite state space $S$ is given by 
-\[\norm{p_1-p_2}_V = \frac{1}{2}\sum_{s\in S} |p_1(s)-p_2(s)|.\]
-
-\paragraph{Mixing Time.} Let $\p_i^t$ be the distribution over the set of vertices $V$ at time $t$ obtained by beginning the random walk at vertex $i$. Define 
-\[\Delta(t) = \max_{i\in V}\norm{\p_i^t-\bpi}_V,\]
-where $\norm{\cdot}_V$ is the variation distance. Given $\eps>0$ set 
-\[\tau(\eps) = \min\{t:\Delta(t)\leq \eps\}.\]
-We have 
+Would like to think about this more but unclear if there's anything interesting here for now. 

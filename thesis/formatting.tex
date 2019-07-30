@@ -1,5 +1,7 @@
+% General
 \allowdisplaybreaks
 \setlength{\headheight}{14pt}
+\setlength{\parskip}{0.5em}
 
 
 %%  THEOREMS %%
@@ -33,12 +35,6 @@ linkcolor=darkblue,
 citecolor=darkblue
 }
 
-% HEADINGS
-\pagestyle{fancy}
-\renewcommand{\chaptermark}[1]{\markboth{ {\chaptername\ \thechapter.\ #1}}{}}
-\renewcommand{\sectionmark}[1]{ \markright{\textit{#1}}{} }
-\lhead{\leftmark}
-\rhead{\rightmark}
 
 
 
@@ -85,11 +81,20 @@ citecolor=darkblue
 }
 
 % Mid matter styling -- Chapter and Section
-\newcommand{\midmatterstyling}{
-	\pagenumbering{arabic}
-	\let\secsymbol\S
+\newcommand{\headingstyle}{%
+\pagestyle{fancy}%
+\renewcommand{\chaptermark}[1]{ \markboth{Chap. \thechapter. \;##1}{} }%
+\renewcommand{\sectionmark}[1]{ \markright{{\em ##1}}{} }%
+\lhead{\leftmark}%
+\rhead{\rightmark}%
+}
+
+\newcommand{\midmatterstyling}{%
+\headingstyle
+\pagenumbering{arabic}
+\let\secsymbol\S
 \titleformat{\section}[block]{\normalfont\bfseries}{\secsymbol\thesection.}{0.5em}{\centering}[]
-\titleformat{\subsection}[block]{\normalfont\it}{\thesubsection.}{0.5em}{\centering}[\vspace{-0.4cm}\rule{\titlewidth}{0.5pt}\vspace{0.3cm}]
+\titleformat{\subsection}[block]{\normalfont\it}{\thesubsection.}{0.5em}{\centering}[\vspace{-0.6cm}\rule{\titlewidth}{0.5pt}\vspace{0.3cm}]
 \titleformat
 {\chapter}[block]{\sc}{\centering Chapter \ \thechapter}{0.1in} 
 {
