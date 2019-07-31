@@ -1,7 +1,7 @@
 \chapter{Algorithmics}
 \label{chap:algorithmics}
 
-This final chapter will discuss some of the algorithmic foundations and consequences of the graph-simplex correspondence. Vis-\`{a}-vis foundations, we will chiefly be concerned with transitioning between a graph and its various simplices. We will explore lower bounds for how quickly this can be done if we wish to obtain the precise result\footnote{Ignoring issues of floating point number accuracy}, and whether we can ``approximate'' any of the constructions (e.g., given the graph $G$ can we quickly obtain a simplex which serves as an approximation\footnote{The notion of approximating a simplex is rather ambiguous and will be expounded upon at a later time.} to $\splx_G$.) With respect to algorithmic consequences on the other hand, we will attempt to leverage knowledge we have in the hitherto relatively unrelated areas of computational graph theory and high-dimensional computational geometry to draw new conclusions about the complexity of several problems in these areas. For instance, if a  graph theoretic problem has an analogue in the simplex, any fact regarding the problems difficulty---whether it's NP-complete, say---translates to an immediate result about its geometric counterpart. In particular, since the simplex of a graph can be generate in polynomial time given the graph (due to the fact that an eigendecomposition can be computed in polynomial time) and vice versa, problems which are solvable in polynomial in either the simplex or graph domain  translate to polynomial (yet perhaps not optimal!) problems in the other domain and likewise, problems which are \NP-hard in one domain have analogues which are \NP-hard in the other. 
+This final technical chapter will discuss some of the algorithmic foundations and consequences of the graph-simplex correspondence. Vis-\`{a}-vis foundations, we will chiefly be concerned with transitioning between a graph and its various simplices. We will explore lower bounds for how quickly this can be done if we wish to obtain the precise result\footnote{Ignoring issues of floating point number accuracy}, and whether we can ``approximate'' any of the constructions (e.g., given the graph $G$ can we quickly obtain a simplex which serves as an approximation\footnote{The notion of approximating a simplex is rather ambiguous and will be expounded upon at a later time.} to $\splx_G$.) With respect to algorithmic consequences on the other hand, we will attempt to leverage knowledge we have in the hitherto relatively unrelated areas of computational graph theory and high-dimensional computational geometry to draw new conclusions about the complexity of several problems in these areas. For instance, if a  graph theoretic problem has an analogue in the simplex, any fact regarding the problems difficulty---whether it's NP-complete, say---translates to an immediate result about its geometric counterpart. In particular, since the simplex of a graph can be generate in polynomial time given the graph (due to the fact that an eigendecomposition can be computed in polynomial time) and vice versa, problems which are solvable in polynomial in either the simplex or graph domain  translate to polynomial (yet perhaps not optimal!) problems in the other domain and likewise, problems which are \NP-hard in one domain have analogues which are \NP-hard in the other. 
 
 For the benefit of the (undoubtedly confused) reader unfamiliar with computational complexity and reductions, we begin the chapter with a short section containing this background material. We will also discuss computational representations of a simplex therein. 
 
@@ -142,17 +142,18 @@ Kaibel and Schwarz~\cite{kaibel2008complexity} investigated the problem of polyt
 
 
 \section{There and Back Again: A Tale of Graphs and Simplices}
-In this section we investigate the computational aspects of transitioning between the various objects which we've studied thus far. We begin with a foray into the computational complexity of eigendecompositions since, as we will see, we are only interested in transitions which take less time than computing the eigendecomposition of a Laplacian. 
+In this section we investigate the computational aspects of transitioning between the various objects which we've studied thus far. As one should expect given that the mapping between graphs and simplices relies on the  eigenvalues and eigenvectors of graph  Laplacians, the complexity of these transitions is intimately related with the complexity of computing  eigendecompositions. 
+Moreover, as we will see, if we are prepared to compute  eigendecompositions (which is essentially cubic), then we can essentially compute all the objects from one another. We thus begin  with a foray into the computational complexity of eigendecompositions, as we will be mostly  interested in circumstances in which a transition can be computed in less  time than this. Unfortunately, it will become clear that the complexity of  computing a Laplacian eigendecomposition is actually a lower bound to many of the transitions. 
  
 Let $M(n)$ denote the complexity of the eigendecomposition problem. It is known that  $M(n)=\tOmega(n^3 + n\log^2 \log \eps)$ to obtain a relative error\footnote{We note that the relative error is a necessary parameter of any algorithm because eigenvalues may be irrational.} of $2^{-\eps}$, while there exists algorithms which run in time $O(n^3 + n\log^2 \log \eps)$~\cite{pan1999complexity}.  
 Let \lapdecomp refer to the problem of computing the eigendecomposition of the Laplacian of a graph, i.e., computing its eigenvalues and eigenvectors. The complexity of \lapdecomp does not seem to be known, \note{really need to figure this out---how can it not be known?} and we thus denote the lower bound by $\Omega(n^\tau)$ for some $\tau$. We will assume, based on the difficulty of general eigendecomposition that $\tau>2$. 
 
 
-Now, observe that given $G$, we can compute the combinatorial and nornalized Laplacians (and their inverses) by first constructing the combinatorial or normalized Laplacian in $O(n^2)$, performing an eigendecomposition in time $O(n^\tau)$, and constructing the vertices of the simplices from the eigenvalues and eigenvectors in time $O(n^2)$. Using our  assumption that $\tau>2$, this takes total time $O(n^\tau)$.  Moreover, starting with a simplex with vertex set $\Sv$, one can compute $\Sv^\tp\Sv$ in the time required for matrix multiplication, which is $\Theta(n^\kappa)$ for some $2\leq \kappa\leq 2.376$~\cite{stothers2010complexity}. If the simplex is the simplex of a graph then this yields the Laplacian (or its pseudoinverse) of the graph, which as above allows us to compute any of the simplices. In what follows therefore, we attempt to beat the barrier of $O(n^3)$. 
+Now, observe that given $G$, we can compute the combinatorial and nornalized Laplacians (and their inverses) by first constructing the combinatorial or normalized Laplacian in $O(n^2)$, performing an eigendecomposition in time $O(n^\tau)$, and constructing the vertices of the simplices from the eigenvalues and eigenvectors in time $O(n^2)$. Using our  assumption that $\tau>2$, this takes total time $O(n^\tau)$.  Moreover, starting with a simplex with vertex set $\Sv$, one can compute $\Sv^\tp\Sv$ in the time required for matrix multiplication, which is currently $O(n^{2.3727})$~\cite{williams2012multiplying} and whose lower bound is $\Theta(n^\kappa)$ for some $2\leq \kappa\leq 2.3727$~\cite{stothers2010complexity}. If the simplex is the simplex of a graph then this yields the Laplacian (or its pseudoinverse) of the graph in time $O(n^{2.3727})$,  and from here to any of its simplices  in time $O(n^\tau)$. Hence, we can transition between the various simplices in time $O(n^{\max\{2.3727,\tau\}})$.  In what follows therefore, we attempt to beat the barrier of $O(n^\tau)$. 
 
-A question which is raised by the above discussion is one of certifying whether a given simplex $\ssplx$ is the combinatorial, normalized, or one of their duals of some graph $G$. Again, in cubic time we can compute $\Sv^\tp\Sv$ and thus decide whether $\Sv^\tp\Sv$ is equal to $\L_G$ for some graph $G$. In quadratic time we can check whether all the angles $\theta_{ij}$ between the faces $\ssplx_\ic$ and $\ssplx_\jc$ are non-obtuse, in which case $\ssplx$ is the inverse simplex of some graph. Beyond computing $\Sv(\ssplx)^\tp \Sv(\ssplx)$ however, it's not clear how to obtain the original graph or the combinatorial simplex. 
+Another question in which we might be interested is one of \emph{certification}. That is, verifying whether  a given simplex is one of the combinatorial or normalized simplices of a graph. We will investigate  this possibility at  the end of this  section. 
 
-We begin by exploring the complexity of transitioning between the different objects \emph{precisely}---e.g., given $G$ compute its precise combinatorial simplex. The subsequent  section will explore various approximations. 
+We begin by investigating the relationship between $\splx$ and $\splxn$, when either  $\splx$ or $\splxn$ are given and we are told a priori that they are the simplices of a graph. The results obtained  in this section are summarized in Figure~\ref{fig:mapping_results}. 
 
 \begin{figure}
 	\centering
@@ -185,8 +186,6 @@ We begin by exploring the complexity of transitioning between the different obje
 \caption{Summary of results for precise mappings. A slash refers to a difference in runtimes when the graph is available versus when it isn't. The quantity before the slash indicates the runtime \emph{without} the graph, after the slash the runtime \emph{with} the graph. A question mark indicates that the runtime isn't known.}
 \label{fig:mapping_results}
 \end{figure}
-
-The results obtained in this section are summarized in Figure \ref{fig:mapping_results}.
 
 \paragraph{Between \texorpdfstring{$\splx$}{the combinatorial} and \texorpdfstring{$\splxn$}{normalized simplex}.}
 Let us consider the computational complexity of transitioning between $\splx$ and $\splxn$ and vice versa. Let $\phi_{ij}$ (resp., $\phin_{ij}$) be the angle between $\sv_i$ and $\sv_j$ (resp., $\svn_i$ and $\svn_j$). Using the typical formula for the dot product in Euclidean space we have
@@ -235,7 +234,7 @@ hence knowledge of $\{\sv_i\}$ and $\{\sv_i^+\}$ yields knowledge of the eigende
 \end{lemma}
 
 An alternate way of seeing that constructing the inverse simplex from its dual is computationally challenging is to recall from Section \ref{sec:S_G} that $\splx_\ic$ is contained in the hyperplane $\{\x\in\R^{n-1}:\la \x,\sv_i^+\ra = -1/n\}$ (Lemma \ref{lem:SUsubset})
- and that that $\sv_i^+$ is perpendicular to $\splx_\ic$ (Lemma \ref{lem:faces_orthogonal}). Hence, computing the inverse simplex would imply that we had computed normal vectors to $n$ hyperplanes, the typical procedure for which typically involves computing an $n\times n$ determinant and requires  $O(n^3)$ time. 
+ and that that $\sv_i^+$ is perpendicular to $\splx_\ic$ (Lemma \ref{lem:S_G_basic_properties}). Hence, computing the inverse simplex would imply that we had computed normal vectors to $n$ hyperplanes, the typical procedure for which typically involves computing an $n\times n$ determinant and requires  $O(n^3)$ time. 
  
  We now consider transitioning between different descriptions of $\splx$ and $\splx^+$. Let us recall that the \hdesc of $\splx$ and $\splx^+$ yield immediate insight into the vertices of its inverse as $\splx=\cap_i \{\x:\la \x,\sv_i^+\ra \geq -1/n\}$ and $\splx^+=\cap_i\{\x:\la\x,\sv_i\ra \geq -1/n\}$ (Equations \eqref{eq:splx_bigcapH_i} and \eqref{eq:splx^+_bigcapH_i}). Consequently, given given a \hdesc of one of these simplices, the vertices of its inverse are recoverable in quadratic time. This yields the following result. 
  
@@ -297,11 +296,104 @@ Due to the fact that $\splxn_G^+$ is not the dual of $\splxn_G$ Lemma \ref{lem:h
 \end{proof}
 
 
+\paragraph{Verification.}
+In time $O(n^{2.3727})$ we can compute $\Sv^\tp\Sv$. We can check whether this is equal to $\L_G$ for some $G$ by verifying whether (i) $\Sv^\tp\Sv\one=\zero$, (ii) $(\Sv^\tp\Sv)(i,i)>0$ for all $i$ and (iii) $(\Sv^\tp\Sv)(i,j)\leq 0$ for all $i\neq j$. These three steps require time $O(n^3)$. We can check whether $\Sv^\tp\Sv$ is equal to $\Ln_G$ for some $G$ by first ensuring, similarly to above, that (iii) holds and that $(\Sv^\tp\Sv)(i,i)=1$ for all $i$. Then we compute the kernel  of $\Sv^\tp\Sv$ in cubic time by means of Gaussian elimination~\cite{kailath1999fast} to obtain a vector $\v$ equal to $\sqrt{\w_G}$ (if indeed $\Sv^\tp\Sv=\Ln_G$) up to scaling. To determine whether $\v$ does represent valid weightings of the vertices, we check whether $(\Sv^\tp\Sv)(i,j)\v(j)$ is constant for all $i$. In  this case $\Sv^\tp\Sv$ is equal to the normalized Laplacian of some graph. This can also be done in cubic time. Therefore, 
+
+Moreover, in cubic time we can check whether all the angles $\theta_{ij}$ between the faces $\ssplx_\ic$ and $\ssplx_\jc$ are non-obtuse, in which case $\ssplx$ is the inverse simplex of some graph. Beyond computing $\Sv(\ssplx)^\tp \Sv(\ssplx)$ however, it's not clear how to obtain the original graph or the combinatorial simplex. 
+
+
 
 
 
 
 \section{Approximations} 
+\label{sec:algorithmics_approximations}
+Here we are concerned  with  approximations of various sorts. We begin  with an eye towards the problem of  dimensionality. Specifically, Theorem ~\ref{thm:graph-simplex} yields simplices of dimension $n-1$ for a graph on $n$ vertices. In  many application areas, graphs may have thousands  to  millions of vertices. Working in a Euclidean space  of  this  size can be unwieldy. Our  first  result, therefore, demonstrates that we can ``approximate'' the simplex in a lower dimensional space. 
+
+\subsection{Embedding \texorpdfstring{$\splx$}{the simplex} in lower dimensions}
+The idea is to  map each vertex to a  point in $\R^d$, for $d\ll n$, while maintaining the general form of the simplex. By this we mean that we'd like the distance between the new  points  to remain approximately  as they  were. If possible, we'd also  like to new, lower  dimensional  object (note that it won't  be  a simplex because there will  be  $n$ points in $ R^d$) to retain some of the properties which  relate it  to the underlying graph. In  particular, we'd like the gram matrix  of the new  points to  approximate the gram  matrix of the original  set  of points. As it turns out,  a  mapping meeting both  of these criteria exists and is computable  in polynomial time. It will   rely on the Johnson-Lindenstrauss Lemma~\cite{johnson1984extensions,dasgupta2003elementary}. 
+
+\begin{theorem}[Johnson-Lindenstrauss Lemma]
+	Let $E\subset \R^k$ be a set of $n$ points, for some $k\in\N$. For any $\eps>0$ and $d\geq 8\log(n)\eps^{-2}$ there exists a map $g_\eps:\R^k\to\R^d$ such that 
+	\begin{equation*}
+	(1-\eps)\norm{\u-\v}_2^2 \leq \norm{g_\eps(\u) - g_\eps(\v)}_2^2 \leq (1+\eps)\norm{\u-\v}_2^2,
+	\end{equation*}
+	for all $\u,\v\in E$. 
+\end{theorem}
+
+
+Consider inverse simplex for which we have $\norm{\sv_i^+-\sv_j^+}_2^2=r(i,j)$ where $r(i,j)$ is the effective resistance between vertices $i$ and $j$. Add a point $\o$ which is the centroid of these points. Thus $\norm{\sv_i^+-\o}_2^2 = \L_G^+(i,i)$ for all $i$. Note that we can compute this in linear time since 
+\[\norm{\sv_i^+-\o}_2^2 = \norm{\sv_i^+}_2^2 = \frac{1}{W(\delta(\{i\}))}=\frac{1}{w(i)}.\]
+
+Applying JL transform to obtain $n+1$ points in $\R^d$, for $d=O(\log(n)/\eps^2)$. Let $f$ be the mapping, e.g., $\sv_i^+$ mapped to $f(\sv_i^+)$. By JL, have 
+
+\[(1-\eps)\norm{\x-\y}_2^2\leq  \norm{f(\x) -f(\y)}_2^2\leq (1+\eps)\norm{\x-\y}_2^2, \]
+for all $\x,\y\in \{\sv_1^+,\dots,\sv_n^+,\o\}$. 
+Apply a linear transformation to the points so that $f(\o)$ coincides with the origin $\zero\in\R^d$. Note that this does not affect the distances between the points themselves, and does not damage the approximation. Update $f$ to reflect this transformation. Then, 
+\[\norm{f(\sv_i^+)}_2^2 = \norm{f(\sv_i^+)-f(\o)}_2^2 = (1+\eps_{i,\o})\norm{\sv_i^+-\o}_2^2 = (1+\eps_{i,\o})\L_G^+(i,i).\]
+Hence, 
+\begin{align*}
+\norm{f(\sv_i^+)-f(\sv_j+)}_2^2 &= \la f(\sv_i^+)-f(\sv_j^+),f(\sv_i^+)-f(\sv_j+)\ra \\
+&= \norm{f(\sv_i^+)}_2^2 + \norm{f(\sv_j^+)}_2^2 - 2\la f(\sv_i^+),f(\sv_j^+)\ra,  
+\end{align*}
+implying that 
+\begin{align*}
+\la f(\sv_i^+),f(\sv_j^+) \ra &= -\frac{1}{2} \bigg((1+\eps_{i,j})\norm{\sv_i^+-\sv_j^+}_2^2 - (1+\eps_{i,\o})\L_G^+(i,i) - (1+\eps_{j,\o})\L_G^+(j,j)\bigg) \\
+&= -\frac{1}{2}((1+\eps_{i,j})r(i,j) - (1+\eps_{i,\o})\L_G^+(i,i) - (1+\eps_{j,\o})\L_G^+(j,j)) \\
+&= -\frac{1}{2}((1+\eps_{i,j})(\L_G^+(i,i) - \L_G^+(j,j) - 2\L_G^+(i,j)) \\
+&\hspace{2cm}- (1+\eps_{i,\o})\L_G^+(i,i) - (1+\eps_{j,\o})\L_G^+(j,j))\\
+&= (1+\eps_{i,j})\L_G^+(i,j) + \varepsilon(i,j),
+\end{align*}
+where 
+\[\varepsilon(i,j)\equiv \frac{1}{2}(\eps_{i,\o}-\eps_{i,j})\L_G^+(i,i) + (\eps_{j,\o}-\eps_{i,j})\L_G^+(i,j),\]
+is an error term dictated by $\eps_{i,j}, \eps_{i,\o}$ and $\eps_{j,\o}$. Setting 
+\[M\equiv \max_i \L_G^+(i,i),\]
+we can bound the error term via repeated applications of the triangle inequality: 
+\begin{align*}
+|\varepsilon(i,j)|& \leq \frac{1}{2}\bigg(|(\eps_{i,\o}-\eps_{i,j})\L_G^+(i,i)| + |(\eps_{j,\o}-\eps_{i,j})\L_G^+(i,j|\bigg) \\
+& \leq \frac{1}{2}\bigg([|\eps_{i,j}|+|\eps_{i,\o}|]\L_G^+(i,i) + [|\eps_{i,j}|+|\eps_{j,\o}|]\L_G^+(j,j)\bigg) \\
+&\leq \frac{1}{2} ( 2\eps\L_G^+(i,i) + 2\eps\L_G^+(j,j) ) \leq 2\eps M,
+\end{align*}
+since $|\eps_{i,j}|, |\eps_{i,\o}|,|\eps_{j,\o}|\leq |\eps|$. Setting $f(\Sv^+) = (f(\sv_1^+),\dots,f(\sv_n^+))\in \R^{d\times n}$, this approximation implies that 
+\begin{equation*}
+\L_G^+ - O(\eps M)\I \leq f(\Sv^+)^\tp f(\Sv^+) \leq \L_G^+ + O(\eps M)\I. 
+\end{equation*}
+In other words, we can approximately recover the Gram matrix $\L_G^+=\Sv^+\Sv^+$ using the lower dimensional matrix $f(\Sv^+)$. 
+
+The JL mapping maintains other approximate information of the graph.  For  example,  it is well-known that the effective resistance between two vertices is related to the probability that this edge  is in a random  spanning  tree as 
+\begin{equation*}
+	\effr(i,j) = \frac{1}{w(i,j)} \Pr_{T\sim \mu}[(i,j)\in T],
+\end{equation*}
+where $\mu$ is the uniform distribution over all spanning trees~\cite{burton1993local}. 
+	
+
+
+
+
+\subsection{Approximating the  distances of \texorpdfstring{$\splx_G^+$}{the inverse simplex}}
+
+
+
+\begin{theorem}[\cite{spielman2011graph}]
+	For any $\eps>0$ and graph $G=(V,E,w)$, there exists an algorithm which computes a matrix $\widetilde{\Reff}\in\R^{O(\log(n)\eps^{-2})\times n}$ such that 
+	\begin{equation*}
+	(1-\eps)r(i,j) \leq \norm{\widetilde{\Reff}(\bchi_i-\bchi_j)}_2^2 \leq (1+\eps) r(i,j).
+	\end{equation*}
+	The algorithm runs in time $\widetilde{O}( |E|\log (r)/\eps^2)$, where 
+	\[r=\frac{\max_{i,j}w(i,j)}{\min_{i,j}w(i,j)}.\]
+\end{theorem}
+
+Given a graph $G=(V,E,w)$, we can compute all the approximate distances $\norm{\sv_i^+-\sv_j^+}_2^2=r(i,j)$ in time \[\widetilde{O}(|E|\log (r)/\eps^2)+O(|E| \log(n)/\eps^2)=\widetilde{O}(|E|/\eps^2),\]
+assuming $r=O(1)$. Note that we can compute a single effective resistance in time $O(\log n/\eps^2)$, since it involves simply computing the $\ell_2$ norm the vector $\widetilde{\Reff}(\bchi_i-\bchi_j)$ which is simply the difference of two columns of $\widetilde{\Reff}$. 
+
+
+
+
+
+
+
+
+
 
 \paragraph{Low Rank Approximation}
 
@@ -364,154 +456,4 @@ which does not look to be necessarily non-positive.
 
 
 
-
-\paragraph{Embedding \texorpdfstring{$\splx$}{the simplex} in lower dimensions}
-Johnson-Lindenstrauss Lemma~\cite{johnson1984extensions,dasgupta2003elementary}: 
-
-\begin{theorem}[Johnson-Lindenstrauss Lemma]
-Let $E\subset \R^k$ be a set of $n$ points, for some $k\in\N$. For any $\eps>0$ and $d\geq 8\log(n)\eps^{-2}$ there exists a map $g_\eps:\R^k\to\R^d$ such that 
-\begin{equation*}
-    (1-\eps)\norm{\u-\v}_2^2 \leq \norm{g_\eps(\u) - g_\eps(\v)}_2^2 \leq (1+\eps)\norm{\u-\v}_2^2,
-\end{equation*}
-for all $\u,\v\in E$. 
-\end{theorem}
-
-\begin{theorem}[\cite{spielman2011graph}]
-For any $\eps>0$ and graph $G=(V,E,w)$, there exists an algorithm which computes a matrix $\widetilde{\Reff}\in\R^{O(\log(n)\eps^{-2})\times n}$ such that 
-\begin{equation*}
-    (1-\eps)r(i,j) \leq \norm{\widetilde{\Reff}(\bchi_i-\bchi_j)}_2^2 \leq (1+\eps) r(i,j).
-\end{equation*}
-The algorithm runs in time $\widetilde{O}( |E|\log (r)/\eps^2)$, where 
-\[r=\frac{\max_{i,j}w(i,j)}{\min_{i,j}w(i,j)}.\]
-\end{theorem}
-
-Consider inverse simplex for which we have $\norm{\sv_i^+-\sv_j^+}_2^2=r(i,j)$ where $r(i,j)$ is the effective resistance between vertices $i$ and $j$. Add a point $\o$ which is the centroid of these points. Thus $\norm{\sv_i^+-\o}_2^2 = \L_G^+(i,i)$ for all $i$. Note that we can compute this in linear time since 
-\[\norm{\sv_i^+-\o}_2^2 = \norm{\sv_i^+}_2^2 = \frac{1}{W(\delta(\{i\}))}=\frac{1}{w(i)}.\]
-
-Applying JL transform to obtain $n+1$ points in $\R^d$, for $d=O(\log(n)/\eps^2)$. Let $f$ be the mapping, e.g., $\sv_i^+$ mapped to $f(\sv_i^+)$. By JL, have 
-
-\[(1-\eps)\norm{\x-\y}_2^2\leq  \norm{f(\x) -f(\y)}_2^2\leq (1+\eps)\norm{\x-\y}_2^2, \]
-for all $\x,\y\in \{\sv_1^+,\dots,\sv_n^+,\o\}$. 
-Apply a linear transformation to the points so that $f(\o)$ coincides with the origin $\zero\in\R^d$. Note that this does not affect the distances between the points themselves, and does not damage the approximation. Update $f$ to reflect this transformation. Then, 
-\[\norm{f(\sv_i^+)}_2^2 = \norm{f(\sv_i^+)-f(\o)}_2^2 = (1+\eps_{i,\o})\norm{\sv_i^+-\o}_2^2 = (1+\eps_{i,\o})\L_G^+(i,i).\]
-Hence, 
-\begin{align*}
-    \norm{f(\sv_i^+)-f(\sv_j+)}_2^2 &= \la f(\sv_i^+)-f(\sv_j^+),f(\sv_i^+)-f(\sv_j+)\ra \\
-    &= \norm{f(\sv_i^+)}_2^2 + \norm{f(\sv_j^+)}_2^2 - 2\la f(\sv_i^+),f(\sv_j^+)\ra,  
-\end{align*}
-implying that 
-\begin{align*}
-    \la f(\sv_i^+),f(\sv_j^+) \ra &= -\frac{1}{2} \bigg((1+\eps_{i,j})\norm{\sv_i^+-\sv_j^+}_2^2 - (1+\eps_{i,\o})\L_G^+(i,i) - (1+\eps_{j,\o})\L_G^+(j,j)\bigg) \\
-    &= -\frac{1}{2}((1+\eps_{i,j})r(i,j) - (1+\eps_{i,\o})\L_G^+(i,i) - (1+\eps_{j,\o})\L_G^+(j,j)) \\
-    &= -\frac{1}{2}((1+\eps_{i,j})(\L_G^+(i,i) - \L_G^+(j,j) - 2\L_G^+(i,j)) \\
-    &\hspace{2cm}- (1+\eps_{i,\o})\L_G^+(i,i) - (1+\eps_{j,\o})\L_G^+(j,j))\\
-    &= (1+\eps_{i,j})\L_G^+(i,j) + \varepsilon(i,j),
-\end{align*}
-where 
-\[\varepsilon(i,j)\equiv \frac{1}{2}(\eps_{i,\o}-\eps_{i,j})\L_G^+(i,i) + (\eps_{j,\o}-\eps_{i,j})\L_G^+(i,j),\]
-is an error term dictated by $\eps_{i,j}, \eps_{i,\o}$ and $\eps_{j,\o}$. Setting 
-\[M\equiv \max_i \L_G^+(i,i),\]
-we can bound the error term via repeated applications of the triangle inequality: 
-\begin{align*}
-    |\varepsilon(i,j)|& \leq \frac{1}{2}\bigg(|(\eps_{i,\o}-\eps_{i,j})\L_G^+(i,i)| + |(\eps_{j,\o}-\eps_{i,j})\L_G^+(i,j|\bigg) \\
-    & \leq \frac{1}{2}\bigg([|\eps_{i,j}|+|\eps_{i,\o}|]\L_G^+(i,i) + [|\eps_{i,j}|+|\eps_{j,\o}|]\L_G^+(j,j)\bigg) \\
-    &\leq \frac{1}{2} ( 2\eps\L_G^+(i,i) + 2\eps\L_G^+(j,j) ) \leq 2\eps M,
-\end{align*}
-since $|\eps_{i,j}|, |\eps_{i,\o}|,|\eps_{j,\o}|\leq |\eps|$. Setting $f(\Sv^+) = (f(\sv_1^+),\dots,f(\sv_n^+))\in \R^{d\times n}$, this approximation implies that 
-\begin{equation*}
-    \L_G^+ - O(\eps M)\I \leq f(\Sv^+)^\tp f(\Sv^+) \leq \L_G^+ + O(\eps M)\I. 
-\end{equation*}
-In other words, we can approximately recover the Gram matrix $\L_G^+=\Sv^+\Sv^+$ using the lower dimensional matrix $f(\Sv^+)$. 
-
-Given a graph $G=(V,E,w)$, we can compute all the approximate distances $\norm{\sv_i^+-\sv_j^+}_2^2=r(i,j)$ in time \[\widetilde{O}(|E|\log (r)/\eps^2)+O(|E| \log(n)/\eps^2)=\widetilde{O}(|E|/\eps^2),\]
-assuming $r=O(1)$. Note that we can compute a single effective resistance in time $O(\log n/\eps^2)$, since it involves simply computing the $\ell_2$ norm the vector $\widetilde{\Reff}(\bchi_i-\bchi_j)$ which is simply the difference of two columns of $\widetilde{\Reff}$. 
-\note{Question: Does JL Lemma work with approximate distances??} 
-
-\note{Possible reduction techniques: (1) Projection of simplex onto subspace $\R^k\subset \R^n$, probably either the subspace corresponding to largest or smallest eigenvalues. (2) Graph Sparsification: Keeps the same dimension, but removes many edges, i.e., many vertices becomes orthogonal. (3) JL Lemma approach. }
-
-\note{Obviously the JL embedding approach does not maintain the fact that the dot product between non-neighbours is zero. But does it approximate this information? I.e., is the dot product smaller for non-neighbours than it is for neighbours?}
-
-\note{For example, it maintains approximate information about random spanning trees. We know that 
-\[\norm{\sv_i^+-\sv_j^+}_2^2 = \frac{1}{w(i,j)} \Pr_{T\sim \mu}[(i,j)\in T],\]
-where $\mu$ is the uniform distribution over all spanning trees. Hence the new JL body approximately maintains this information. 
-}
-
-
-\note{Another thought, about how to do the embedding quickly:  Karel says that replacing $\lambda_j$ with $\lambda_j^{1/2}$ still yields a Laplacian,  i.e., $f(\L_G) = \Eig f(\Eval)\Eig^\tp = \sum_i f(\lambda_i)\vp_i\vp_i^\tp$
-with $f(x)=\sqrt{x}$ is still a Laplacian. What's the graph which corresponds to this Laplacian?  Can we get to that graph from  the original graph, without calculating eigendecomposition?
-Let this  graph be $G'$. Then  $\L^+_{G'}=\L_G^{+/2}$,  implying that by Spielman Teng we can get a good approximation of $\L_G^{+/2}$  (if we can compute  $G'$ quickly). Thus, we can get an approximate resistive embedding. Perhaps we can  then  get an approximate simplex from the  resistive embedding by projection onto appropriate  subspace (really need to figure out what  this subspace  is). 
-}
-
-
-
-\paragraph{Resistive Embedding}
-
-Notice that the effective resistance is encoded naturally by the simplex $\splx(G)$: 
-\[\effr(i,j) = \la \bchi_i-\bchi_j,\L_G^+(\bchi_i-\bchi_j\ra = \la \Sv^+(\bchi_i,\bchi_j),\Sv^+(\bchi_i-\bchi_j)\ra = \norm{\sv_i^+-\sv_j^+}_2^2.\]
-That is, the distance between the vertices of the inverse simplex are precisely the effective resistances. 
-
-
-Consider the vertices $\bmu_i=\L_G^{+/2}\bchi_i\in\R^n$, for $i\in[n]$. This yields $n$ points in $\R^n$, also with pairwise squared distances equal to the effective resistance of the graph: 
-
-\begin{equation*}
-    \norm{\bmu_i-\bmu_j}_2^2 = \norm{\L_G^{+/2}(\bchi_i-\bchi_j)}_2^2 =  (\bchi_i-\bchi_j)^\tp \L_G^+(\bchi_i-\bchi_j)=\effr(i,j).
-\end{equation*}
-
-\begin{claim}
-\note{Sort this out. Seems true but should make sure.} The polytope defined by the vertices $\{\bmu_i\}$ sits in an $n-1$ dimensional subspace. That  is, there exists a linear map $\T:\R^n\to\R^{n-1}$ such that $\T\bmu\subset\R^{n-1}$ is a simplex.
-\end{claim}
-
-Based on above, should have  that $\T\bmu$ is a shifted/rotated/reflected copy of $\splx$. So there exists a map $\M:\R^{n-1}\to\R^{n-1}$ such that $\M\T\bmu=\Sv$. 
-
-We have 
-\begin{align*}
-    \mu_i(\ell) = \L_G^{+/2}(\ell,i) = \sum_{j\in[n]}\lambda_j^{-1/2}\vp_j\vp_j^\tp(\ell,i) = \sum_{j\in[n]}\lambda_j^{-1/2}\vp_j(\ell)\vp_j(i).
-\end{align*}
-Recalling the formula for the vertices of the inverse simplex $\splx^+$ demonstrates that 
-\begin{equation*}
-    \mu_i(\ell) = \sum_{j\in[n]}\sv_\ell^+(j)\vp_j(i) = \sum_{j\in[n]}\sv_i^+(j)\vp_j(\ell).
-\end{equation*}
-
-Moreover,
-
-\begin{align*}
-    \la \bmu_i,\bmu_j\ra &=\sum_{\ell\in[n]} \L_G^{+/2}(\ell,i)\L_G^{+/2}(\ell,j) = \la \L_G^{+/2}(\cdot,i),\L_G^{+/2}(\cdot,j)\ra =\la \L_G^{+/2}(\cdot,i),\L_G^{+/2}(j,\cdot)\ra= \L_G^+(i,j),
-\end{align*}
-since $\L_G^{+/2}$ is symmetric and  $\L_G^{+/2}\L_G^{+/2}=\L_G^+$.  We can also see this from recalling that 
-\[\effr(i,j) = \L_G^+(i,i) + \L_G^+(j,j) - \frac{1}{2}\L_G^+(i,j),\]
-combined with the facts that $\norm{\bmu_i-\bmu_j}_2^2 = \effr(i,j)$ and $\norm{\bmu_i}_2^2 = \L_G^+(i,i)$. 
-
-
-
-\note{If we can  figure  out the map which  projects the polyhedron onto the correct subspace,  the relationships of the simplex will hold and we can maybe use this to discover interesting eigenvector/eigenvalue properties. } 
-
-Let $\re=\conv(\bmu_1,\dots,\bmu_n)$ be the convex polygon defined by the vertices $\{\bmu_i\}$.  Note that $\L_G^{+/2}$ is $\re$'s associated vertex matrix. 
-
-The centroid of $\re$ coincides with the origin  of $\R^n$: 
-\begin{equation*}
-    \cent(\re) = \frac{1}{n}\L_G^{+/2}\one = \frac{1}{n}\sum_{i\in[n-1]}\lambda_i^{-1/2}\vp_i\vp_i^\tp \one = \zero.
-\end{equation*}
-
-\begin{lemma}
-The all ones vector is orthogonal to $\re$. 
-\end{lemma}
-\begin{proof}
-We need to show that for all $\p,\q\in\re$, $\la \one,\p-\q\ra=0$. As usual, let $\x$ and $\y$ be the barycentric coordinates of $\p$ and $\q$ so that $\p=\L_G^{+/2}\x$ and $\q=\L_G^{+/2}\y$. We have
-\begin{align*}
-    \la \one,\p\ra &= \sum_{\ell\in[n]} (\L_G^{+/2}\x)(\ell) = \sum_{\ell\in[n]} \sum_{j\in [n]}\L_G^{+/2}(\ell,j)x(j) = \sum_{j\in[n]}x(j) \sum_{\ell\in[n]}\L_G^{+/2}(\ell,j),
-\end{align*}
-where for any $j$, 
-\[\sum_{\ell\in[n]}\L_G^{+/2}(\ell,j)= \one^\tp \L_G^{+/2}\bchi_j=\sum_{\ell\in[n-1]} \lambda_\ell^{-1/2}\one^\tp \vp_\ell\vp_\ell^\tp\bchi_j=0,\]
-since $\vp_i\in\spn(\one)^\perp$  for all $i<n$. Hence  $\la \one,\p\ra=0$ meaning that $\la \one,\p-\q\ra=0$ as well. 
-\end{proof}
-
-The relationship between $\re$ and $\splx$ gives us an alternate way to prove equalities such as \eqref{eq:c(S_U)}. Indeed, there exists an isometry between $\re$ and $\splx$; therefore, 
-\begin{equation*}
-    \norm{\cent(\splx_U)}_2^2 = \norm{\cent(\re_U)}_2^2 = \frac{1}{|U|^2} \norm{\L_G^{+/2}\bchi_U}_2^2 = \frac{1}{|U|^2}w(\delta^+ U).
-\end{equation*}
-
-
-\note{What is the ``inverse'' of $\re$?? This inverse will relate to a lot of graph properties. If we can obtain a closed form analytical expression this could yield new relationships}. 
-
-\note{Answer: Inverse simply has vertices $\L_G^{1/2}\bchi_i$}. 
 

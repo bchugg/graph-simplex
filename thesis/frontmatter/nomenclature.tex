@@ -1,65 +1,84 @@
-\chapter*{Nomenclature\footnote{The subsript $G$ and paranthetical $(G)$ is often dropped from relevant symbols.}}
+\chapter*{Nomenclature\footnote{The subscript $G$ and paranthetical $(G)$ is often dropped from relevant symbols.}}
 \addcontentsline{toc}{chapter}{Nomenclature}
 
 % Table variables
 \newlength{\colwidth} % Width of symbol column
 \newlength{\groupsep} % Space between groups
 \newlength{\headingsep} % Space between heading and symbols
+\newlength{\descsep} % Horizontal space for description
 \setlength{\colwidth}{3.5cm}
 \setlength{\groupsep}{1cm}
-\setlength{\headingsep}{0.05cm}
+\setlength{\headingsep}{0.00cm}
+\setlength{\descsep}{10cm}
 
 \textbf{Simplex Geometry}\\
-\vspace{\headingsep}\\
-\begin{tabular}{p{\colwidth}l}
-	{$\ssplx$} & {General simplex} \\
-	$\ssplx^D$ & Dual simplex to $\ssplx$ \\
+\vspace{\headingsep}
+\begin{longtable}{p{\colwidth}p{\descsep}l}
+	{$\ssplx$} & {General simplex} & Section \ref{sec:background_simplices} \\
+	$\ssplx^\du$ & Dual simplex to $\ssplx$ & Section \ref{sec:background_dual_simplex} \\
 	$\Sv(\ssplx)$ & Vertex matrix of simplex $\ssplx$ \\
-	$\splx_G$ ($\splxn_G$)  &  (Normalized) Simplex associated to graph $G$.\\
-	$\splx^+_G$ ($\splxn^+_G$)	& Inverse simplex of $\splx_G$ ($\splxn_G$).\\
-	{$\ssplx\restriction_U, \ssplx_U, \ssplx[U]$} & {Face of simplex $\ssplx$ restricted to $U$ }\\ 
-	{$\Sv_G$ $(\Svn_G)$} & Vertex matrix of the simplex $\splx_G$ ($\splxn_G$). \\
-	{$\Sv_G^+$ $(\Svn_G^+)$} & Vertex matrix of the simplex $\splx_G^+$ ($\splxn_G^+$). \\
+	$\splx_G$ ($\splxn_G$)  &  (Normalized) Simplex associated to graph $G$ & Section \ref{sec:graph_to_simplex} \\
+	$\splx^+_G$ ($\splxn^+_G$)	& Inverse simplex of $\splx_G$ ($\splxn_G$) & Section \ref{sec:simplex_to_graph}\\
+	{$\ssplx\restriction_U, \ssplx_U, \ssplx[U]$} & {Face of simplex $\ssplx$ restricted to $U$ } & Equation  \eqref{eq:T_U}\\ 
+	{$\Sv_G$ $(\Svn_G)$} & Vertex matrix of the simplex $\splx_G$ ($\splxn_G$) & Section \ref{sec:bijection_graphs_simplices}\\
+	{$\Sv_G^+$ $(\Svn_G^+)$} & Vertex matrix of the simplex $\splx_G^+$ ($\splxn_G^+$) \\
 	{$\{\sv_i\}$ ($\{\svn_i\})$} & {Vertex vectors of (normalized) simplex}\\
-	{$\alt(\ssplx_U)$} & {Altitude vector from $\ssplx_U$ to $\ssplx_{U^c}$}\\
-	{$\cent(\ssplx_U)$} & {Centroid of simplex $\ssplx_U$}\\
-\end{tabular}
+	{$\alt(\ssplx_U)$} & {Altitude vector from $\ssplx_U$ to $\ssplx_{U^c}$} & Section \ref{sec:background_spectral}\\
+	{$\cent(\ssplx_U)$} & {Centroid of simplex $\ssplx_U$} & Equation \eqref{eq:centroid} \\
+	$\El(\ssplx)$ & Steiner circumscribed ellipsoid  of $\ssplx$ & Definition \ref{def:steiner_ellipsoid}\\
+	$\bar{d}$ & Average squared distance in a simplex & Equation \eqref{eq:avg_squared_distance}\\
+	$\bxi$ & Average squared distance of each vertex minus $\bar{d}$ & Equation \eqref{eq:avg_squared_distance}\\
+	$\x_{U^c}$ & Barycentric coordinate for face $\ssplx_U$ & \\
+\end{longtable}
 \vspace{\groupsep}
 
 \noindent \textbf{Graph Theory}\\
-\vspace{\headingsep}\\
-\begin{tabular}{p{\colwidth}l}
+\vspace{\headingsep}
+\begin{longtable}{p{\colwidth}p{\descsep}l}
+	$G=(V,E,w)$ & Undirected, connected, and weighted graph & Section \ref{sec:background_spectral}\\
 	$V(G)$, $E(G)$ & Vertex set and edge set of graph $G$\\
 	$\A_G$ & {Adjacency matrix of graph $G$}\\
 	{$\W_G$} & {Weight matrix of graph $G$}\\
 	$w_G(i,j)$ & Weight of edge $(i,j)$ in $G$ \\
-	$\delta_G(i)$ & Neighbours of $i$ in $G$ \\
+	$\delta_G(i)$ & Set of neighbours of $i$ in $G$ & Equation \eqref{eq:delta(i)}\\
+	$\delta_G U$ & Cut set of $U$ in $G$ \\
 	$w_G(i)$ & Weight of vertex $i\in V(G)$, i.e., $\sum_{j\in \delta_G(i)}w(i,j)$\\
-	$\vol_G(U)$ & Volume of set $U$, i.e., $\sum_{i\in U}w(i)$. 
-\end{tabular}
+	$\vol_G(U)$ & Volume of set $U$, i.e., $\sum_{i\in U}w(i)$ & Equation \eqref{eq:volU}\\
+	$\Gamma_G$ & Total weight of all spanning trees in $G$ & Section \ref{sec:background_laplacian_spectrum} \\
+	$\effr_G(i,j)$  & Effective resistance between vertices $i$ and $j$ in $G$ & Section \ref{sec:background_er}\\
+	$\Reff_G$  & Effective resistance matrix & Section \ref{sec:background_er}\\
+	$\respol_G$ & Effective Polytope of $G$ & Equation \eqref{eq:res_pol}
+\end{longtable}
 \vspace{\groupsep}
 
 
-\noindent \textbf{Spectral Graph Theory}\\ 
-\vspace{\headingsep} \\
-\begin{tabular}{p{\colwidth}l}
-	{$\L_G$ ($\Ln_G$)} & {Combinatorial (Normalized) Laplacian Matrix of graph $G$} \\
-	{$\Lf_G$ ($\Lnf_G$)} & Quadratic form associated with $\L_G$ ($\Ln_G$)\\
-	$\{\lambda_i(G)\}$ ($\{\lambda_i(G)\}$) & Eigenvalues of $\L_G$ ($\Ln_G$). Sorted in decreasing order. \\
+\noindent \textbf{Linear Algebra \& Spectral Graph Theory}\\ 
+\vspace{\headingsep} 
+\begin{longtable}{p{\colwidth}p{\descsep}l}
+	{$\L_G$ ($\Ln_G$)} & {Combinatorial (Normalized) Laplacian Matrix of $G$} & Equations \eqref{eq:L_G}, \eqref{eq:Ln_G}\\
+	{$\Lf_G$ ($\Lnf_G$)} & Quadratic form associated with $\L_G$ ($\Ln_G$) & Equations \eqref{eq:Lf}, \eqref{eq:Lnf}\\
+	$\{\lambda_i(G)\}$ ($\{\lambda_i(G)\}$) & Eigenvalues of $\L_G$ ($\Ln_G$), sorted in decreasing order & Section \ref{sec:background_laplacian_spectrum}\\
 	$\Eval_G$ ($\Evaln_G$) & Diagonal Eigenvalue matrix of $\L_G$ ($\Ln_G$) \\
 	$\{\vp_i(G)\}$ ($\{\vpn_i(G)\}$) & Eigenvectors of $\L_G$ ($\Ln_G$)\\
-	{$\Eig_G$ ($\Eign_G$)} & Eigenvector matrix of $\L_G$ ($\Ln_G$)
-\end{tabular}
+	{$\Eig_G$ ($\Eign_G$)} & Eigenvector matrix of $\L_G$ ($\Ln_G$)\\
+	$\Q^+$ & Pseudoinverse of matrix $\Q$  & Section \ref{sec:background_pseudoinverse}\\
+	$\dim \Q$ & Dimension of space spanned by columns of $\Q$ \\
+	$\range\ Q$ & Range of $\Q$ \\
+	$\ker\Q$ & Kernel of $\Q$\\
+	$\norm{\cdot}_p$ & $p$-norm in $\R^d$ & Equation \eqref{eq:pnorm}
+\end{longtable}
 \vspace{\groupsep}
 
 \noindent \textbf{Miscellaneous}\\ 
-\vspace{\headingsep} \\
-\begin{tabular}{p{\colwidth}l}
-	$\R$ & Real numbers\\
+\vspace{\headingsep} 
+\begin{longtable}{p{\colwidth}p{\descsep}l}
+	$\R$ & Real numbers &Section \ref{sec:background_general} \\
 	$\Qbb$ & Rational numbers\\
 	$\C$ & Complex numbers\\
 	$\N$ & Natural numbers\\
 	$\delta_{ij}$ & Kronecker delta function \\
 	$\chi_U$ & Indicator for event $U$\\
-	$\bchi_U$ & Indicator vector for set $U$ 
-\end{tabular}
+	$\bchi_U$ & Indicator vector for set $U$ \\	
+	$\D(\X)$ & Squared distance matrix of set of points $\X$ &  \\
+		$\conv(\X)$ & Convex hull of set of points $\X$ & Equation \eqref{eq:conv(X)}\\
+\end{longtable}

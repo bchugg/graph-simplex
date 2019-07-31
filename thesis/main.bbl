@@ -6,6 +6,11 @@ Vedat~Levi Alev, Nima Anari, Lap~Chi Lau, and Shayan~Oveis Gharan.
 \newblock Graph clustering using effective resistance.
 \newblock {\em arXiv preprint arXiv:1711.06530}, 2017.
 
+\bibitem[ARV09]{arora2009expander}
+Sanjeev Arora, Satish Rao, and Umesh Vazirani.
+\newblock Expander flows, geometric embeddings and graph partitioning.
+\newblock {\em Journal of the ACM (JACM)}, 56(2):5, 2009.
+
 \bibitem[Axl97]{axler1997linear}
 Sheldon~Jay Axler.
 \newblock {\em Linear algebra done right}, volume~2.
@@ -27,6 +32,12 @@ Jo{\~a}o Carlos~Alves Barata and Mahir~Saleh Hussein.
 \newblock The {M}oore--{P}enrose pseudoinverse: A tutorial review of the
   theory.
 \newblock {\em Brazilian Journal of Physics}, 42(1-2):146--165, 2012.
+
+\bibitem[BP93]{burton1993local}
+Robert Burton and Robin Pemantle.
+\newblock Local characteristics, entropy and limit theorems for spanning trees
+  and domino tilings via transfer-impedances.
+\newblock {\em The Annals of Probability}, pages 1329--1371, 1993.
 
 \bibitem[Cay41]{cayley1841theorem}
 Arthur Cayley.
@@ -54,6 +65,12 @@ Stephen~A Cook.
 Sanjoy Dasgupta and Anupam Gupta.
 \newblock An elementary proof of a theorem of johnson and lindenstrauss.
 \newblock {\em Random Structures \& Algorithms}, 22(1):60--65, 2003.
+
+\bibitem[DLP11]{ding2011cover}
+Jian Ding, James~R Lee, and Yuval Peres.
+\newblock Cover times, blanket times, and majorizing measures.
+\newblock In {\em Proceedings of the forty-third annual ACM symposium on Theory
+  of computing}, pages 61--70. ACM, 2011.
 
 \bibitem[DM05]{drineas2005approximating}
 Petros Drineas and Michael~W Mahoney.
@@ -92,6 +109,12 @@ Miroslav Fiedler.
 Miroslav Fiedler.
 \newblock {\em Matrices and graphs in geometry}.
 \newblock Number 139. Cambridge University Press, 2011.
+
+\bibitem[Gha15]{shayanNotes}
+Sharan Ghayan.
+\newblock Recent developments in approximation algorithms: Electrical flows and
+  effective resistance.
+\newblock CSE 599 Course Notes, 2015.
 
 \bibitem[GKPS67]{grunbaum1967convex}
 Branko Gr{\"u}nbaum, Victor Klee, Micha~A Perles, and Geoffrey~Colin Shephard.
@@ -135,6 +158,11 @@ Volker Kaibel and Marc~E Pfetsch.
 Hans-Ulrich Krause.
 \newblock Steinerellipsoide.
 \newblock {\em Elemente der Mathematik}, 38:137--142, 1983.
+
+\bibitem[KS99]{kailath1999fast}
+Thomas Kailath and Ali~H Sayed.
+\newblock {\em Fast reliable algorithms for matrices with structure}.
+\newblock SIAM, 1999.
 
 \bibitem[KS08]{kaibel2008complexity}
 Volker Kaibel and Alexander Schwartz.
@@ -234,5 +262,10 @@ P~Van~Mieghem.
 Piet Van~Mieghem, Karel Devriendt, and H~Cetinay.
 \newblock Pseudoinverse of the laplacian and best spreader node in a network.
 \newblock {\em Physical Review E}, 96(3):032311, 2017.
+
+\bibitem[Wil12]{williams2012multiplying}
+Virginia~Vassilevska Williams.
+\newblock Multiplying matrices faster than coppersmith-winograd.
+\newblock In {\em STOC}, volume~12, pages 887--898. Citeseer, 2012.
 
 \end{thebibliography}

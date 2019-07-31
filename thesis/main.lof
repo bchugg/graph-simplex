@@ -6,5 +6,5 @@
 \contentsline {figure}{\numberline {3.1}{\ignorespaces A simplex of a graph and its inverse. }}{30}{figure.3.1}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Summary of results for precise mappings. A slash refers to a difference in runtimes when the graph is available versus when it isn't. The quantity before the slash indicates the runtime \emph {without} the graph, after the slash the runtime \emph {with} the graph. A question mark indicates that the runtime isn't known.}}{62}{figure.5.1}
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Summary of results for precise mappings. A slash refers to a difference in runtimes when the graph is available versus when it isn't. The quantity before the slash indicates the runtime \emph {without} the graph, after the slash the runtime \emph {with} the graph. A question mark indicates that the runtime isn't known.}}{63}{figure.5.1}
 \addvspace {10\p@ }

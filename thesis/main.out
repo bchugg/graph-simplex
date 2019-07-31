@@ -32,11 +32,14 @@
 \BOOKMARK [1][-]{section.4.1}{Block Matrix Equations}{chapter.4}% 32
 \BOOKMARK [1][-]{section.4.2}{Inequalities}{chapter.4}% 33
 \BOOKMARK [1][-]{section.4.3}{Quadrics}{chapter.4}% 34
-\BOOKMARK [1][-]{section.4.4}{Random Walks}{chapter.4}% 35
-\BOOKMARK [0][-]{chapter.5}{Algorithmics}{}% 36
-\BOOKMARK [1][-]{section.5.1}{Preliminaries}{chapter.5}% 37
-\BOOKMARK [1][-]{section.5.2}{Computational Complexity}{chapter.5}% 38
-\BOOKMARK [1][-]{section.5.3}{There and Back Again: A Tale of Graphs and Simplices}{chapter.5}% 39
-\BOOKMARK [1][-]{section.5.4}{Approximations}{chapter.5}% 40
-\BOOKMARK [0][-]{chapter.6}{Conclusion}{}% 41
-\BOOKMARK [1][-]{section.6.1}{Open Problems and Future Directions}{chapter.6}% 42
+\BOOKMARK [1][-]{section.4.4}{Resistive Polytope}{chapter.4}% 35
+\BOOKMARK [1][-]{section.4.5}{Random Walks}{chapter.4}% 36
+\BOOKMARK [0][-]{chapter.5}{Algorithmics}{}% 37
+\BOOKMARK [1][-]{section.5.1}{Preliminaries}{chapter.5}% 38
+\BOOKMARK [1][-]{section.5.2}{Computational Complexity}{chapter.5}% 39
+\BOOKMARK [1][-]{section.5.3}{There and Back Again: A Tale of Graphs and Simplices}{chapter.5}% 40
+\BOOKMARK [1][-]{section.5.4}{Approximations}{chapter.5}% 41
+\BOOKMARK [2][-]{subsection.5.4.1}{Embedding the simplex in lower dimensions}{section.5.4}% 42
+\BOOKMARK [2][-]{subsection.5.4.2}{Approximating the distances of the inverse simplex}{section.5.4}% 43
+\BOOKMARK [0][-]{chapter.6}{Conclusion}{}% 44
+\BOOKMARK [1][-]{section.6.1}{Open Problems and Future Directions}{chapter.6}% 45

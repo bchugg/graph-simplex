@@ -10,9 +10,15 @@ The previous chapter introduced the graph-simplex correspondence and devoted sev
 In this section we derive matrix equations which relate the geometry of hyperacute simplices and their duals. The equations appeal to the relationship between hyperacute simplices and graphs by using well known results from the literature on electrical networks and effective resistance. The goal of this section is to demonstrate to the reader the utility of the graph-simplex correspondence in generating statements about hyperacute simplices, by hijacking our knowledge of graph theory. 
 
 Let a centred, hyperacute simplex $\ssplx$ be given.  Let $\bar{d}$ be the average squared distance between all the vertices of $\ssplx$, that is
-\[\bar{d} \equiv  \frac{1}{n^2}\sum_{i\leq j} \norm{\bgamma_i-\bgamma_j^+}_2^2.\]
+\begin{equation}
+\label{eq:avg_squared_distance}
+\bar{d} \equiv  \frac{1}{n^2}\sum_{i\leq j} \norm{\bgamma_i-\bgamma_j^+}_2^2.
+\end{equation}
 Let $\xi(i)$ give the average squared distance of vertex $i$ from other vertices minus the total average distance, 
-\[\xi(i) \equiv \frac{1}{n}\sum_{j} \norm{\bgamma_i^+-\bgamma_j^+}_2^2 - \bar{d},\]
+\begin{equation}
+\label{eq:avg_sqd_distance_i}
+\xi(i) \equiv \frac{1}{n}\sum_{j} \norm{\bgamma_i^+-\bgamma_j^+}_2^2 - \bar{d},
+\end{equation}
 and put $\bxi=(\xi(1),\dots,\xi(n))$. 
 Then we have the following result. 
 
@@ -111,12 +117,12 @@ Putting aside simplex geometry for the moment, it is worth meditating on the sig
 & \L_G
 \end{pmatrix}^{-1},
 \end{equation}
-where $\u=\diag(\L_G^+(i,i))$, which is interesting in its own right. Taken together, Equations \eqref{eq:block_ST} and \eqref{eq:block_inverse} allow us to translate between knowledge of the effective resistance of a graph, and the underlying geometry of its simplex. For example, we can relate the volume of the simplex to the effective resistances in the graph. To see this, we need to introduce a particular object from the field of distance geometry. Let $\D$ be the distance matrix of a set $\X$ of $d$ points. The matrix 
+where $\u=\diag(\L_G^+(i,i))$, which is interesting in its own right. Taken together, Equations \eqref{eq:block_ST} and \eqref{eq:block_inverse} allow us to translate between knowledge of the effective resistance of a graph, and the underlying geometry of its simplex. For example, we can relate the volume of the simplex to the effective resistances in the graph. To see this, we need to introduce a particular object from the field of distance geometry. Let $\D(\X)$ be the distance matrix of a set $\X$ of $d$ points. The matrix 
 \begin{equation}
 \label{eq:menger_matrix}
 \begin{pmatrix}
 0 & \one^\tp \\
-\one & \D
+\one & \D(\X)
 \end{pmatrix}\in\R^{(d+1)\times (d+1)},
 \end{equation}
 is called the \emph{Menger matrix of $X$}, the determinant of which is called the \emph{Cayley-Menger determinant}, named after Arthur Cayley and Karl Menger~\cite{cayley1841theorem, Menger1928}. The Cayley-Menger determinant is related to the volume of the underlying set of points as follows. 
@@ -124,11 +130,11 @@ is called the \emph{Menger matrix of $X$}, the determinant of which is called th
 
 \begin{lemma}[\cite{menger1931new}]
 	\label{lem:menger_volume}
-	Let $\D$ be the distance matrix of a set $\X$ of $d$ points. The $d-1$ dimensional volume\footnote{That is, the volume as calculated in $\R^{d-1}$.} of the convex hull of $\X$ is proportional to the root of the determinant of the Menger matrix: 
+	Let $\D(\X)$ be the distance matrix of a set $\X$ of $d$ points. The $d-1$ dimensional volume\footnote{That is, the volume as calculated in $\R^{d-1}$.} of the convex hull of $\X$ is proportional to the root of the determinant of the Menger matrix: 
 	\begin{equation*}
 	\vol(\conv(\X))^2 = \frac{(-1)^d}{((d-1)!)^2 2^{d-1}} \det\begin{pmatrix}
 	0 & \one^\tp \\
-	\one & \D
+	\one & \D(\X)
 	\end{pmatrix}.
 	\end{equation*} 
 \end{lemma}
@@ -409,6 +415,88 @@ Until this point, we have been examining only the quadrics associated with the c
 \note{If time investigate the circumscribed ellipsoid of $\splxn_G$. Also perhaps the circumscribed sphere of $\splxn_G^+$?}.  
 
 
+\section{Resistive Polytope}
+\label{sec:resistive_polytope}
+In this section we explore the relationship between the inverse combinatorial simplex of $G$ and another geometric object related to the effective resistance of the graph. Consider the vertices $\bmu_i=\L_G^{+/2}\bchi_i\in\R^n$, for $i\in[n]$. This yields $n$ points in $\R^n$, also with pairwise squared distances equal to the effective resistance of the graph: 
+
+\begin{equation*}
+\norm{\bmu_i-\bmu_j}_2^2 = \norm{\L_G^{+/2}(\bchi_i-\bchi_j)}_2^2 =  (\bchi_i-\bchi_j)^\tp \L_G^+(\bchi_i-\bchi_j)=\effr(i,j).
+\end{equation*}
+
+This embedding has been referred to as a \emph{resistive embedding}~\cite{shayanNotes,ding2011cover}, and is an example of an $\ell_2^2$ metric~\cite{arora2009expander} owing  to the fact that, as we saw in Section~\ref{sec:background_er},  that effective resistance is a metric. That being said however, while the mapping seems to be known, there is very little literature on its properties. 
+
+We  set 
+\begin{equation}
+\label{eq:res_pol}
+\respol_G \equiv \conv(\{\mu_i\}),
+\end{equation}
+and  call  $\respol_G$ the \emph{resistive polytope of $G$}. Note that $\L_G^{+/2}$ is $\respol_G$'s vertex matrix. As usual, we may omit the subscript $G$ for convenience. We emphasize that while the vertices $\{\bmu_i\}$ obey the same pairwise  distances as  those of the inverse simplex $\splx_G^+$, $\respol_G$  is not the same object as $\splx_G^+$. First, of course, there is  the fact that it sits in  $\R^n$. However,  we also note that the entries of $\mu_i$ (the first $n-1$, at least) do not match those of $\sv_i^+$. Indeed, 
+
+%\begin{claim}
+%	\note{Sort this out. Seems true but should make sure.} The polytope defined by the vertices $\{\bmu_i\}$ sits in an $n-1$ dimensional subspace. That  is, there exists a linear map $\T:\R^n\to\R^{n-1}$ such that $\T\bmu\subset\R^{n-1}$ is a simplex.
+%\end{claim}
+
+%Based on above, should have  that $\T\bmu$ is a shifted/rotated/reflected copy of $\splx$. So there exists a map $\M:\R^{n-1}\to\R^{n-1}$ such that $\M\T\bmu=\Sv$. 
+
+\begin{align*}
+\mu_i(\ell) = \L_G^{+/2}(\ell,i) = \sum_{j\in[n]}\lambda_j^{-1/2}\vp_j\vp_j^\tp(\ell,i) = \sum_{j\in[n]}\lambda_j^{-1/2}\vp_j(\ell)\vp_j(i).
+\end{align*}
+Recalling the formula for the vertices of the inverse simplex $\splx^+$ demonstrates that 
+\begin{equation*}
+\mu_i(\ell) = \sum_{j\in[n]}\sv_\ell^+(j)\vp_j(i) = \sum_{j\in[n]}\sv_i^+(j)\vp_j(\ell).
+\end{equation*}
+Hence, in general, $\mu_i(\ell)\neq \sv_i(\ell)$. However, the dot products between the vertices of $\respol_G$ does respect  the same relationships as those between the vertices of $\splx_G^+$:
+\begin{align*}
+\la \bmu_i,\bmu_j\ra &=\sum_{\ell\in[n]} \L_G^{+/2}(\ell,i)\L_G^{+/2}(\ell,j) \\
+&= \la \L_G^{+/2}(\cdot,i),\L_G^{+/2}(\cdot,j)\ra \\
+&=\la \L_G^{+/2}(\cdot,i),\L_G^{+/2}(j,\cdot)\ra= \L_G^+(i,j),
+\end{align*}
+since $\L_G^{+/2}$ is symmetric and  $\L_G^{+/2}\L_G^{+/2}=\L_G^+$.  We can also see this from recalling that 
+\[\effr(i,j) = \L_G^+(i,i) + \L_G^+(j,j) - \frac{1}{2}\L_G^+(i,j),\]
+combined with the facts that $\norm{\bmu_i-\bmu_j}_2^2 = \effr(i,j)$ and $\norm{\bmu_i}_2^2 = \L_G^+(i,i)$. Moreover, the centroid of $\re_G$ also coincides with the origin  of $\R^n$: 
+\begin{equation*}
+\cent(\re_G) = \frac{1}{n}\L_G^{+/2}\one = \frac{1}{n}\sum_{i\in[n-1]}\lambda_i^{-1/2}\vp_i\vp_i^\tp \one = \zero.
+\end{equation*}
+
+One therefore begins to suspect that $\respol_G$ is the same object of  $\splx_G^+$, simply projected onto some hyperplane of $\R^n$. The following lemma  demonstrates that this is indeed the  case, and  that  the hyperplane  is that which is has $\spn(\one)$ as its orthogonal complement.  
+
+\begin{lemma}
+	The all ones vector is orthogonal to $\re_G$. 
+\end{lemma}
+\begin{proof}
+	We need to show that for all $\p,\q\in\re_G$, $\la \one,\p-\q\ra=0$. As usual, let $\x$ and $\y$ be the barycentric coordinates of $\p$ and $\q$ so that $\p=\L_G^{+/2}\x$ and $\q=\L_G^{+/2}\y$. We have
+	\begin{align*}
+	\la \one,\p\ra &= \sum_{\ell\in[n]} (\L_G^{+/2}\x)(\ell) = \sum_{\ell\in[n]} \sum_{j\in [n]}\L_G^{+/2}(\ell,j)x(j) = \sum_{j\in[n]}x(j) \sum_{\ell\in[n]}\L_G^{+/2}(\ell,j),
+	\end{align*}
+	where for any $j$, 
+	\[\sum_{\ell\in[n]}\L_G^{+/2}(\ell,j)= \one^\tp \L_G^{+/2}\bchi_j=\sum_{\ell\in[n-1]} \lambda_\ell^{-1/2}\one^\tp \vp_\ell\vp_\ell^\tp\bchi_j=0,\]
+	since $\vp_i\in\spn(\one)^\perp$  for all $i<n$. Hence  $\la \one,\p\ra=0$ meaning that $\la \one,\p-\q\ra=0$ as well. 
+\end{proof}
+
+The relationship between $\re$ and $\splx$ gives us an alternate way to prove equalities such as \eqref{eq:c(S_U)}: There exists an isometry\footnote{A distance preserving map.} between $\re$ and $\splx$, so 
+\begin{equation*}
+\norm{\cent(\splx^+_U)}_2^2 = \norm{\cent(\re_U)}_2^2 = \frac{1}{|U|^2} \norm{\L_G^{+/2}\bchi_U}_2^2 = \frac{1}{|U|^2}w(\delta^+ U).
+\end{equation*}
+
+
+Additionally, just as $\splx_G^+$  has  the inverse $\splx_G$, $\respol_G$  has an inverse which respects the same  relationships. As one might guess, this inverse has vertex matrix $\L_G^{1/2}$. To see this, for any $i,j\neq k$,  we have 
+\begin{equation*}
+\la \L_G^{1/2}\bchi_i,\L_G^{+/2}\bchi_j-\L_G^{+/2}\bchi_k\ra = \bchi^\tp \L_G^{1/2}\L_G^{+/2}(\bchi_j-\bchi_k)\ra,
+\end{equation*}
+where 
+\begin{align*}
+\L_G^{1/2}\L_G^{+/2} &= \sum_{r,s=1}^{n-1}\lambda_r^{1/2}\lambda_s^{1/2}\vp_r\vp_r^\tp\vp_s\vp_s^\tp = \sum_{r=1}^{n-1} \vp_r\vp_r^\tp,
+\end{align*}
+and 
+\begin{align*}
+\sum_{r=1}^{n-1}\bchi_i \vp_r\vp_r^\tp\bchi_j = \sum_{r=1}^{n-1}\vp_r(i)\vp_r(j) = \delta_{ij} - \frac{1}{n},
+\end{align*}
+using Equation \eqref{eq:sum_double_ortho}. Hence, 
+\begin{align*}
+\bchi_i^\tp \L_G^{1/2}\L_G^{+/2}(\bchi_j-\bchi_k) = \delta_{ij} - \frac{1}{n} - (\delta_{ik}-\frac{1}{n}) = \delta_{ij}.
+\end{align*}
+
+\note{Still investigating this relationship and its properties.}
 
 
 

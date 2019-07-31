@@ -14,11 +14,11 @@ A level-1 auxiliary file: algorithmic_implications.aux
 A level-1 auxiliary file: conclusion.aux
 The style file: alpha.bst
 Database file #1: ref.bib.bib
-I was expecting a `,' or a `}'---line 225 of file ref.bib.bib
+I was expecting a `,' or a `}'---line 270 of file ref.bib.bib
  :  notes="(English transl. IRE Trans. Circuit Theory CT-5 (1958), 4-7)"
  :                                                                      .
 I'm skipping whatever remains of this entry
-Repeated entry---line 259 of file ref.bib.bib
+Repeated entry---line 304 of file ref.bib.bib
  : @incollection{karp1972reducibility
  :                                   ,
 I'm skipping whatever remains of this entry
@@ -28,45 +28,45 @@ Warning--empty journal in grunbaum1967convex
 Warning--can't use both volume and number fields in penrose1955generalized
 Warning--can't use both volume and number fields in penrose1956best
 Warning--empty journal in stothers2010complexity
-You've used 44 entries,
+You've used 50 entries,
             2543 wiz_defined-function locations,
-            838 strings with 10341 characters,
-and the built_in function-call counts, 16831 in all, are:
-= -- 1760
-> -- 586
-< -- 42
-+ -- 186
-- -- 178
-* -- 1115
-:= -- 2676
-add.period$ -- 143
-call.type$ -- 44
-change.case$ -- 236
-chr.to.int$ -- 44
-cite$ -- 50
-duplicate$ -- 752
-empty$ -- 1314
-format.name$ -- 246
-if$ -- 3512
+            868 strings with 11246 characters,
+and the built_in function-call counts, 19369 in all, are:
+= -- 2027
+> -- 690
+< -- 48
++ -- 220
+- -- 212
+* -- 1274
+:= -- 3073
+add.period$ -- 163
+call.type$ -- 50
+change.case$ -- 271
+chr.to.int$ -- 50
+cite$ -- 56
+duplicate$ -- 867
+empty$ -- 1500
+format.name$ -- 288
+if$ -- 4058
 int.to.chr$ -- 1
 int.to.str$ -- 0
-missing$ -- 49
-newline$ -- 224
-num.names$ -- 132
-pop$ -- 226
+missing$ -- 55
+newline$ -- 254
+num.names$ -- 150
+pop$ -- 262
 preamble$ -- 1
-purify$ -- 287
+purify$ -- 329
 quote$ -- 0
-skip$ -- 612
+skip$ -- 715
 stack$ -- 0
-substring$ -- 1079
-swap$ -- 138
-text.length$ -- 42
-text.prefix$ -- 25
+substring$ -- 1220
+swap$ -- 173
+text.length$ -- 48
+text.prefix$ -- 27
 top$ -- 0
-type$ -- 328
+type$ -- 372
 warning$ -- 6
-while$ -- 176
-width$ -- 45
-write$ -- 576
+while$ -- 202
+width$ -- 52
+write$ -- 655
 (There were 2 error messages)

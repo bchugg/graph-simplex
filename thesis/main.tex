@@ -15,6 +15,7 @@
 \usepackage[strict]{changepage}
 \usepackage{graphicx}
 \usepackage{multirow}
+\usepackage{longtable}
 \graphicspath{{figures/}{../figures/}}
 
 
@@ -34,7 +35,9 @@
 \include{frontmatter/laysummary}
 \include{frontmatter/acknowledgements}
 \pagestyle{plain}
+\renewcommand{\baselinestretch}{0.75}\normalsize
 \tableofcontents
+\renewcommand{\baselinestretch}{1.0}\normalsize
 \cleardoublepage
 \phantomsection
 \addcontentsline{toc}{chapter}{\listfigurename}

@@ -132,8 +132,10 @@ We will often refer to the pair $\splx_G$ and $\splx_G^+$ as the \emph{combinato
 As illustrated by the discussion at the end of Section \ref{sec:inverse_polytope}, the vertex matrices of the polytope of a matrix and its inverse share the same relationship as the matrix and its pseudoinverse (Lemma \ref{lem:vertex_matrices_pseudoinverse}). Since this relationship is well understood for the Laplacian and its pseudoinverse, we may explicit compute the relationships between $\Sv,\Sv^+$ and $\Svn,\Svn^+$. 
 
 Let $\widetilde{\Eig}$ be the matrix containing all eigenvectors of $\L_G$ (i.e., also containing $\one/\sqrt{n}$).  It is well known that $\widetilde{\Eig}$ is an orthogonal matrix (see e.g., \cite{van2013double}), i.e., $\wEig^\tp \wEig=\wEig\wEig^\tp=\I$, a property which is also called \emph{double orthogonality}. When expanded, this second equality implies that
-\begin{equation*}\delta_{i,j}=\sum_{k=1}^n \vp_k(i)\vp_k(j) = \sum_{k=1}^{n-1} \vp_k(i)\vp_k(j) + 1/n.
-\end{equation*}
+\begin{equation}
+\label{eq:sum_double_ortho}
+\delta_{i,j}=\sum_{k=1}^n \vp_k(i)\vp_k(j) = \sum_{k=1}^{n-1} \vp_k(i)\vp_k(j) + 1/n.
+\end{equation}
 From this, it follows that 
 \[\la\sigma_i^+,\sigma_j\ra = \delta_{i,j} - \frac{1}{n},\]
 hence, 

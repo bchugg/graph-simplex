@@ -13,15 +13,21 @@ For a set $U$, $K^U$ denotes the set of all functions from $U$ to $K$.  Elements
 
 For $n\in \N$, let $\zero_n\in\R^n$ and $\one_n\in\R^n$ be the vectors of all zeroes and all ones, respectively. Let $\I_n$ and $\J_n$  refer to the $n\times n$ identity matrix and all-ones matrix respectively (so $\J_n=\one_n\one_n^\tp)$. When the dimension $n$ is understood from context, will typically omit it as a subscript. We use $\chi(E)$ or $\chi_E$ as the indicator of an event $E$, i.e., $\chi(E)=1$ if $E$ occurs, and 0 otherwise. For example, $\chi(i\in U)=1$ if $i\in U$, and 0 if $i\in U^c$.  Similarly, for $U\subset K$,  $\bchi_U\in\R^K$ is the indicator vector of the set $U$, so $\bchi_U(i)=\chi(i\in U)$. 
 By $\diag(x_1,x_2,\dots,x_n)$ we mean the $n\times n$ matrix $\D$ entries $\D(i,i)=x_i$ and $\D(i,j)=0$ for $i\neq j$. Given vectors $\v_1,\dots,\v_n$, we will often denote by $(\v_1,\dots,\v_n)$ the matrix whose $i$-th column is $\v_i$. The $i$-th coordinate of a vector $\x$ will be denoted either by $\x(i)$ or simply $x(i)$. We trust this will not be overly confusing.  For $1\leq p<\infty$, the \emph{$p$-norm} of $\x\in \R^d$ is 
-\[\norm{\x}_p = \bigg(\sum_{i=1}^d x_i^p\bigg)^{1/p},\]
+\begin{equation}
+\label{eq:pnorm}
+\norm{\x}_p = \bigg(\sum_{i=1}^d x_i^p\bigg)^{1/p},
+\end{equation}
 while the \emph{0-norm} of $\x$ is the number of non-zero entries of $\x$, and is denoted by $\norm{\x}_0$.  Given a vector or matrix, we use the superscript $t$ to denote it's transpose, i.e.,, given $\Q$, $\Q^t$ is defined as $\Q^t(i,j) = \Q(j,i)$. The standard inner product on $\R^d$ is denoted as $\la\cdot,\cdot\ra$, that is, $\la \x,\y\ra = \sum_i x(i)y(i)$. Elementary properties of the inner product will often be used without justification, such as its bilinearity: $\la \x,\alpha\y_1+\y_2\ra  = \la \x,\alpha\y_1\ra + \la \x,\y_2\ra$ for $\alpha\in\R$.  We will sometimes use the notation $\perp$ to mean ``orthogonal to'', so $\x\perp\y$ iff $\la\x,\y\ra=0$. 
 
 We will often use the shorthand ``iff'' to mean ``if and only if''. We use $\delta_{ij}$ to denote the Kronecker delta function, i.e., $\delta_{ij} = 1$ if $i=j$ and 0 otherwise. We may sometimes include a comma and write $\delta_{i,j}$. 
 
 A set $\X\subset\R^m$ is \emph{convex} if for all $\x,\y\in\X$ and $\lambda\in(0,1)$, $\lambda\x + (1-\lambda)\y\in \X$. 
 The \emph{convex hull} of a finite set of points $X=\{\x_1,\dots,\x_k\}\subset \R^n$ is 
-\[\conv(X) \equiv \bigg\{\sum_\ell \alpha_i\x_i: \sum_\ell \alpha_i = 1, \;\alpha_i\geq 0\bigg\},\]
-or equivalently, the smallest convex set containing $X$~\cite{grunbaum1967convex}. 
+\begin{equation}
+\label{eq:conv(X)}
+\conv(\X) \equiv \bigg\{\sum_\ell \alpha_i\x_i: \sum_\ell \alpha_i = 1, \;\alpha_i\geq 0\bigg\},
+\end{equation}
+or equivalently, the smallest convex set containing $X$~\cite{grunbaum1967convex}. We will often denote the \emph{squared distance matrix of $\X$} by $\D(\X)\in\R^{|\X|\times |\X|}$,  whose entries are given by $\D(\x,\y) = \norm{\x-\y}_2^2$.  
 
 
 \section{Linear Algebra}
@@ -133,11 +139,17 @@ so both required conditions hold, and we conclude that $\vb{Q}=\M^+$.
 We begin with basic graph theory. 
 We denote a \emph{graph} by a triple $G=(V,E,w)$ where $V$ is the \emph{vertex set}, $E\subset V\times V$ is the \emph{edge set} and $w:V\times V\to\R_{\geq0}$ (the non-negative reals) a \emph{weight function}. We let the domain of $w$ be $V\times V$ for convenience; for $(i,j)\notin E$ we have $w((i,j))=0$. We call $G$ \emph{unweighted} if $w((i,j))=\chi_{(i,j)\in E}$ for all $i,j$. In this case, we may omit the weight function and simply write $G=(V,E)$. 
 We will typically take $V=[n]$ for simplicity. For a  vertex $i\in V$, we denote the set of its neighbours by 
-\[\delta(i) \equiv  \{j\in V:w(i,j)>0\},\]
+\begin{equation}
+\label{eq:delta(i)}
+\delta_G(i) \equiv  \{j\in V:w(i,j)>0\},
+\end{equation}
 a set we call that \emph{neighbourhood} of $i$. The \emph{degree of $i$} if $\deg(i)\equiv |\delta(i)|$. The \emph{weight of $i$} if $w(i)\equiv \sum_{j\in \delta(i)}w(i,j)$. Note that if $G$ is unweighted, then $w(i)=\deg(i)$. If the degree of each vertex in $G$ is equal to $k$, we call $G$ a \emph{$k$-regular graph}. We call $G$ \emph{regular} if it is $k$-regular for some $k$. If $U\subset V$ contains only vertices with the same degree, we call it \emph{degree homogeneous}. 
 Abusing notation, we extend the weight function $w$ to sets of edges or vertices by setting $w(A)=\sum_{a\in A}w(a)$. 
 For a set of subset of vertices $U$, the \emph{volume of $U$} is 
-\[\vol_G(U) \equiv \sum_{i\in U}w(i),\]
+\begin{equation}
+\label{eq:volU}
+\vol_G(U) \equiv \sum_{i\in U}w(i),
+\end{equation}
 and the volume of $G$ is $\vol(G) \equiv \vol_G(V(G))$. As usual, we will drop the subscript if the graph is clear from context. Given a subset $U\subset  V$, we write $G[U]$ to be the graph induced by $U$, i.e., $V(G[U])  = V\cap U$ and  $E(G[U]) = E \cap U \times U$. If a graph is connected  and acyclic (i.e., there is a unique path between each pair of vertices) we call it a \emph{tree}. It's well known that a tree on $n$ nodes has $n-1$ edges.  
 
 Unless otherwise stated, we will assume that graphs are \emph{undirected}---that is, there is no orientation on the edges. Consequently, we identify each tuple $(i,j)$ with its sister pair $(j,i)$. This implies, for example, that when summing over all edges $(i,j)\in E$ we are \emph{not} summing over all vertices and their neighbours. Indeed, this latter summation double counts the edges: $\sum_{(i,j)\in E}=\frac{1}{2}\sum_{i}\sum_{j\in\delta(i)}$. We will often write $i\sim j$ to denote an edge $(i,j)$; so, for example, $\sum_{i\sim j}=\sum_{(i,j)\in E}$. 
@@ -154,7 +166,10 @@ Let $G=(V,E,w)$ be a graph, with $V=[n]$ and $|E|=m$.
 Let $\W$ be the \emph{weight matrix} of $G$, i.e., $\W=\diag(w(1),w(2),\dots,w(n))$. 
 The \emph{degree matrix} of $G$ is $\diag(\deg(1),\deg(2),\dots,\deg(n))$. The \emph{adjacency matrix} of $G$ encodes the edge relations, namely, $\A_G(i,j)=w((i,j))$ for all $i\neq j$, and $\A_G(i,i)=0$ for all $i$. Notice that (for undirected graphs) $\A_G$ is symmetric.  If $G$ is unweighted, then $\W_G$ is also called the \emph{degree matrix of $G$}. 
 The \emph{combinatorial Laplacian} of $G$ is the matrix 
-\[\L_G=\W_G-\A_G.\]
+\begin{equation}
+\label{eq:L_G}
+\L_G=\W_G-\A_G.
+\end{equation}
 There are several useful representations of the Laplacian. Let $\L_{i,j}=w(i,j)(\chi_i-\chi_j) (\chi_i-\chi_j)^\tp\in \R^{V\times V}$, i.e., 
 \[\L_{i,j}(a,b)=\begin{cases}
 w(i,j)&a=b\in\{i,j\},\\
@@ -202,13 +217,15 @@ we find that
 \[f^\tp \L_{i,j} f = w(i,j)(f(i)-f(j))^2.\]
 Therefore, applying Equation \ref{eq:Lsum} yields 
 \begin{equation}
-\label{eq:Lop}
+\label{eq:Lf}
     \Lop_G(f) = f^\tp \bigg(\sum_{i\sim j} \L_{i,j}\bigg) f = \sum_{i\sim j}f^\tp \L_{i,j} f= \sum_{i\sim j} w(i,j)(f(i)-f(j))^2.
 \end{equation}
 
-The \emph{symmetric normalized Laplacian} or simply the \emph{normalized Laplacian} of $G$ is given by \begin{equation*}
+The \emph{symmetric normalized Laplacian} or simply the \emph{normalized Laplacian} of $G$ is given by 
+\begin{equation}
+\label{eq:Ln_G}
     \Ln_G = \W_G^{-1/2} \L_G\W_G^{-1/2} = \I - \W_G^{-1/2} \A_G\W_{G}^{-1/2}.
-\end{equation*} 
+\end{equation} 
 To investigate $\Ln_G$ we may carry out a similar procedure to above. In particular, if we define $\Ln_{i,j}=\W_G^{-1/2} \L_{i,j}\W_G^{-1/2}$ then we obtain the equivalent of Equation \ref{eq:Lsum} for the normalized Laplacian:
 \begin{equation}
 \label{eq:Lnsum}
@@ -221,9 +238,10 @@ Likewise,
 As we've done here, we will typically emphasize the associate of elements associated to the normalized Laplacian with a hat.
 Using Equation \eqref{eq:Lnsum}, we see that 
 the quadratic form $\Lnf_G$ associated with $\Ln_G$ acts as 
-\begin{equation*}
+\begin{equation}
+\label{eq:Lnf}
     \Lnf_G(f) = \sum_{i\sim j} w(i,j)\bigg(\frac{f(i)}{\sqrt{w(i)}}-\frac{f(j)}{\sqrt{w(j)}}\bigg)^2.
-\end{equation*}
+\end{equation}
 
 \paragraph{Pseudoinverse of \texorpdfstring{$\L_G$}{the combinatorial} and \texorpdfstring{$\Ln_G$}{normalized Laplacian.}}
 Since $\L_G$ and $\Ln_G$ are both symmetric, $\range(\L^\tp)=\range(\L)=\R^n \setminus \ker(\L)=\R^n \setminus \spn(\{\one\})$, and $\range(\Ln^\tp)=\range(\Ln)=\R^n \setminus \ker(\Ln)=\R^n \setminus \spn(\{\W^{1/2}\one\})$. It follows that the pseudo-inverses of these two Laplacians satisfy
@@ -274,6 +292,7 @@ so $\L\vp=\zero$ (since $w(i)>0$ for all $i$). That is, each element in the kern
 
 
 \section{Electrical Flows}
+\label{sec:background_er}
 Given an undirected, weighted graph $G=(V,E,w)$, orient the edges of $G$ arbitrarily and encode this information in the matrix $\B$, as in Section ??. For an edge $e=(i,j)$ oriented from $i$ to $j$, denote $e^+=i$ and $e^-=j$. 
 We will consider $G$ as an electrical network. To do this, we imagine placing a resistor of resistance $1/w(e)$ on each edge $e$. Edges thus carry current between the nodes and, in general, higher weighted edges will carry more current.  
 An \emph{electrical flow $\f:E\to\R_{\geq 0}$} on $G$ assigns a current to each edge $e$ and respects, roughly speaking, Kirchoff's current law and Ohm's law. More precisely, let $\e$ be a vector describing the amount of current injected at each node. By Kirchoff's law, the amount of current passing through a vertex $i$ must be conserved. That is, 
@@ -370,10 +389,11 @@ If we gather the vertices of the simplex $\splx$ into the \emph{vertex matrix} $
 \end{equation*}
 Given a point $\p=\Sv\x\in\splx$, $\x$ is called the \emph{barycentric coordinate} of $\p$.  
 
-As is illustrated in two and three dimensions by the triangle and the tetrahedron, the projection of the simplex onto spaces spanned by subsets of its vertices yields simplices of lower dimensions. Let $U\subset [n]$. The \emph{face of $\splx$ corresponding to $U$} is 
-\begin{equation*}
-    \splx\restriction_U \equiv \{\Sv\x: \x\geq 0,\;\norm{\x}_1=1,\;x(i)=0\text{ for all }i\in U^c\}.
-\end{equation*}
+As is illustrated in two and three dimensions by the triangle and the tetrahedron, the projection of the simplex onto spaces spanned by subsets of its vertices yields simplices of lower dimensions. Let $U\subset [n]$. The \emph{face of $\ssplx$ corresponding to $U$} is 
+\begin{equation}
+\label{eq:T_U}
+    \ssplx\restriction_U \equiv \{\Sv\x: \x\geq 0,\;\norm{\x}_1=1,\;x(i)=0\text{ for all }i\in U^c\}.
+\end{equation}
 The following observation demonstrates that $\splx\restriction_U$ is a well-defined simplex. 
 \begin{observation}
 	\label{obs:subset_affinely_independent}
@@ -386,9 +406,10 @@ The following observation demonstrates that $\splx\restriction_U$ is a well-defi
 Trusting the reader's capacity for variation, depending on the situation we may adopt different notation for the faces of a simplex. Often times the vertical restriction symbol will be dropped and we will write only $\splx_U$; other times we will write $\splx[U]$, especially when the space reserved a subscript is being used for other purposes. 
 
 The \emph{centroid} of a simplex is the point 
-\begin{equation*}
+\begin{equation}
+\label{eq:centroid}
 \cent(\splx) \equiv \frac{1}{n}\Sv \one = \frac{1}{n}\sum_{i\in[n]}\sv_i.
-\end{equation*} 
+\end{equation} 
 
 The centroid of a simplex can be thought of as its centre of mass, assuming that weight is distributed evenly across its surface. 
 
@@ -426,7 +447,7 @@ In order to discuss translations of simplices, we will introduce equivalence cla
 
 
 \subsection{Dual Simplex}
-\label{sec:dual_simplex}
+\label{sec:background_dual_simplex}
 Let $\Sv=(\sv_1,\dots,\sv_n)\in\R^{n-1\times n}$ be the vertex matrix of a simplex $\splx\subset\R^{n-1}$. For each $i\in[n-1]$, put $\v_i=\sv_n-\sv_i$. Then $\{\v_1,\dots,\v_{n-1}\}$ is a linearly independent set, and thus admits a sister basis $\{\bgamma_1,\dots,\bgamma_{n-1}\}$ which together form biorthogonal bases of $\R^{n-1}$ (Lemma \ref{lem:bi-orthogonal_bases}). Put $\bgamma_n = -\sum_{i=1}^{n-1}\bgamma_i$.  
 
 \begin{claim}
