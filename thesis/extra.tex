@@ -253,6 +253,12 @@ We can relate the eigenvalues of $G$ to the geometry of $\splx$ via the relation
 	Geometry. \note{Work this out}. 
 \end{proof}
 
+	\item Looking at the random walk of a graph as a path in the simplex didn't yield anything too interesting. What about the other way around? Beginning at a random point in the simplex, if we take a "random walk" (this would have to be defined appropriately -- we take a weighted step towards each vertex with some probability), we end up at some point that we know as a result of graph theory. We also know what governs how quickly we converge to this point, and when the path will be "straight". We know it's the sizes of the eigenvalues which govern the convergence; if we're simply given a hyperacute simplex, what do the eigenvalues represent? Can we translate this into a statement about the dynamics of the random walk in terms of the simplex only, and not the graph?
+\item Can we define the "inverse/dual" graph of $G$ as follows: $G$ yields a simplex $\splx_G$ which is hyperacute. It is therefore the inverse simplex of  graph $G^+$. How are $G$ and $G^+$ related? \note{Tried this in Section \ref{sec:inverse_graph}. Unclear as of yet whether it's interesting. }
+\item The projection matrix $Y(e,f)=b_e^\tp \L_G^+b_f\sqrt{w(e)w(f)}$ is symmetric with real eigenvalues (see \cite{vishnoi2013lx}). It thus yields a simplex. Maybe explore its properties. 
+\item Can use inequalities obtained in the effective resistance literature to obtain inequalities which pertain to all hyperacute simplices. See e.g.,\cite{alev2017graph} 
+\item Do low rank approximations of the gram matrix maintain any of the simplex properties? This yields a smaller representation of the graph ... what properties does this representation have?
+\item Embedding approximate distance matrix. 
 
 
 

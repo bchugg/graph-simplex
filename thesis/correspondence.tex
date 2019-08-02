@@ -7,8 +7,10 @@ In this chapter we introduce the graph simplex correspondence and explore its ma
 \section{Convex Polyhedra of Matrices}
 \label{sec:correspondence_polyhedra_matrices}
 Here we introduce the (perhaps complex) convex polytope associated with a given matrix. Let $\M\in \R^{n\times n}$ be symmetric and admitting of the eigendecomposition $\M=\sum_{i=1}^d \lambda_i \eig_i\eig_i^\tp$ for some $d\leq n$ (i.e., $\M$ has eigenvalue zero with multiplicity $n-d$) where the eigenvectors $\{\eig_i\}_{i=1}^d $ are orthonormal. Writing out the eigendecomposition as 
-\[\M=\Eig_M\Eval_M\Eig_M^\tp=(\Eig_M\Eval_M^{1/2})(\Eig_M\Eval_M^{1/2})^\tp,\]
-with $\Eig_M = (\vp_1,\dots,\vp_d)$, $\Eval_M=\diag(\lambda_1,\dots,\lambda_d)$ (note the respective absences of $\vp_{d+1},\dots,\vp_n$ and $\lambda_{d+1},\dots,\lambda_n$), suggests that we might consider $\Eval_M^{1/2}\Eig_M$ as a vertex matrix, thus $\M$ as a gram matrix. 
+\begin{equation*}
+\M=\Eig_M\Eval_M\Eig_M^\tp=(\Eig_M\Eval_M^{1/2})(\Eig_M\Eval_M^{1/2})^\tp,
+\end{equation*}
+with $\Eig_M = (\vp_1,\dots,\vp_d)$, $\Eval_M=\diag(\lambda_1,\dots,\lambda_d)$ (note the respective absences of $\vp_{d+1},\dots,\\\vp_n$ and $\lambda_{d+1},\dots,\lambda_n$), suggests that we might consider $\Eval_M^{1/2}\Eig_M$ as a vertex matrix, thus $\M$ as a gram matrix. 
 Inorexably compelled by this intuition, define the vertices $\sv_1,\dots,\sv_n$ given by the columns of $\Eval_M^{1/2}\Eig_M^\tp$, i.e.,  
 \begin{equation*}
     \sv_i = (\Eval_M^{1/2}\Eig_M^\tp) (\cdot,i) = (\eig_1(i)\lambda_1^{1/2}, \eig_2(i)\lambda_2^{1/2},\dots,\eig_d(i)\lambda_d^{1/2})^\tp\in \C^d,
@@ -201,13 +203,13 @@ We now proceed to demonstrating that  each hyperacute simplex is the inverse sim
 \begin{proof}
 	Using Equation \ref{eq:cos_theta_ij} from the discussion in Section \ref{sec:background_simplex_angles}, we can write the entries of $\Q_2$ as 
 	\[\frac{\la \bgamma_i,\bgamma_j\ra}{\norm{\bgamma_i}_2\norm{\bgamma_j}_2},\]
-	where $\{\bgamma_i\}$ are the vertices of $\ssplx^\du$ (note that this holds for $i=j$ as well). Lemma \ref{lem:dual_vertices_orthogonal} implies that these vertices are parallel to the outer normals of $\ssplx$, hence  $\bgamma_i = \kappa_i \u_i$ where $\kappa_i\in \R_{> 0}$. Therefore, 
+	where $\{\bgamma_i\}$ are the vertices of $\ssplx^\du$ (note that this holds for $i=j$ as well). Lemma \ref{lem:dual_faces_orthogonal} implies that these vertices are parallel to the outer normals of $\ssplx$, hence  $\bgamma_i = \kappa_i \u_i$ where $\kappa_i\in \R_{> 0}$. Therefore, 
 	\begin{equation*}
 	(\Q_1\Q_2\Q_1)(i,j) = \norm{\u_i}_2 \frac{\la \kappa_i\u_i,\kappa_j\u_j\ra}{\norm{\kappa_i\u_i}_2\norm{\kappa_j\u_j}_2}\norm{\u_j}_2 = \frac{\kappa_i\kappa_j}{|\kappa_i||\kappa_j|}\la \u_i,\u_j\ra = \la \u_i,\u_j\ra=\Q(i,j).\qedhere
 	\end{equation*}
 \end{proof}
 
-Let $\ssplx$ be a hyperacute simplex, and $\ssplx^\du$ its dual. The vertex matrix $\Sv^\du$ of $\ssplx^\du$ contains the outer normals of $\ssplx$ (see discussion on dual simplex in Section \ref{sec:dual_simplex}). Hence, taking $\vb*{Q}=(\Sv^\du)^\tp \Sv^\du$ in the above Lemma applied to the simplex $\ssplx$, we obtain explicit entries for this Gram matrix:  
+Let $\ssplx$ be a hyperacute simplex, and $\ssplx^\du$ its dual. The vertex matrix $\Sv^\du$ of $\ssplx^\du$ contains the outer normals of $\ssplx$ (see discussion on dual simplex in Section \ref{sec:background_dual_simplex}). Hence, taking $\vb*{Q}=(\Sv^\du)^\tp \Sv^\du$ in the above Lemma applied to the simplex $\ssplx$, we obtain explicit entries for this Gram matrix:  
 \begin{equation*}
     ((\Sv^\du)^\tp \Sv^\du)(i,j) = \begin{cases}
     \norm{\sv_i^\du}_2^{2},& \text{if }i=j,\\
@@ -215,7 +217,7 @@ Let $\ssplx$ be a hyperacute simplex, and $\ssplx^\du$ its dual. The vertex matr
     \end{cases}
 \end{equation*}
 We claim that $\Q$ is the Laplacian matrix of some graph $G$. First, the matrix is symmetric. Second,
-for each $i$, $\Q(i,i)=\norm{\sv_i^\du}_2^{2}>0$, and for $i\neq j$, $\Q(i,j) \leq 0$ since $\theta_{i,j}\leq \pi/2$ by assumption (note therefore the importance that $\ssplx$ is hyperacute). Finally, denote $\Sv^\du=(\sv_1^\du,\dots,\sv^\du_n)$, and recall from the construction of the dual simplex in Section \ref{sec:dual_simplex} that $\sv_n^\du=-\sum_{i<n}\sv^\du_i$. Therefore, for $i\neq n$, 
+for each $i$, $\Q(i,i)=\norm{\sv_i^\du}_2^{2}>0$, and for $i\neq j$, $\Q(i,j) \leq 0$ since $\theta_{i,j}\leq \pi/2$ by assumption (note therefore the importance that $\ssplx$ is hyperacute). Finally, denote $\Sv^\du=(\sv_1^\du,\dots,\sv^\du_n)$, and recall from the construction of the dual simplex in Section \ref{sec:background_dual_simplex} that $\sv_n^\du=-\sum_{i<n}\sv^\du_i$. Therefore, for $i\neq n$, 
 \begin{align*}
     \sum_{j=1}^n \Q(i,j) &= \sum_{j=1}^{n-1} \la \sv^\du_i,\sv^\du_j\ra + \la \sv^\du_i,-\sum_{j<n}\sv_j^\du\ra = \sum_{j<n}\la \sv^\du_i,\sv^\du_j\ra - \sum_{j<n}\la \sv^\du_i,\sv^\du_j\ra  = 0,
 \end{align*}
@@ -302,7 +304,8 @@ Indeed:
 (\L_{G\times H} f_{uv})(ij) &= \deg_{G\times H}((i,j))f_{uv}(ij) - \sum_{(k,\ell)\in \delta((i,j))} f_{uv}(k\ell) \\
 &= (\deg_G(i)+\deg_H(j))\vp_u(i)\bpsi_v(j) - \sum_{(k,\ell)\in \delta_{G\times H}((i,j))} \vp_u(i)\bpsi_v(j) \\
 &= (\deg_G(i)+\deg_H(j))\vp_u(i)\bpsi_v(j) - \sum_{k\in \delta_G(i)} \vp_u(k)\bpsi_v(j) - \sum_{\ell\in \delta_H(j)} \vp_u(i)\bpsi_v(\ell) \\
-&=\bigg(\deg_G(i)\vp_u(i) - \sum_{k\in\delta_G(i)}\vp_u(k)\bigg)\bpsi(j) + \bigg(\deg_H(j)\bpsi_v(j)-\sum_{\ell\in\delta_H(j)}\bpsi_v(\ell)\bigg)\vp_u(i) \\
+&=\bigg(\deg_G(i)\vp_u(i) - \sum_{k\in\delta_G(i)}\vp_u(k)\bigg)\bpsi(j) \\
+&\qquad + \bigg(\deg_H(j)\bpsi_v(j)-\sum_{\ell\in\delta_H(j)}\bpsi_v(\ell)\bigg)\vp_u(i) \\
 &= (\L_G \vp_u)(i) \cdot \bpsi_v(j) + (\L_H\bpsi_v)(j)\cdot \vp_u(i) \\
 &= \lambda_u\vp_u(i) \bpsi_v(j) + \mu_v\bpsi_v(j)\vp_u(i) \\
 &= (\lambda_u+\mu_v)\vp_u(i)\bpsi_v(j) = (\lambda_u+\mu_v)f_{uv}(ij),
@@ -314,31 +317,47 @@ as desired. Consequently, the product graph yields a simplex $\splx_{G\times H}\
 \subsection{Examples}
 \label{sec:examples}
 
-We now move onto concrete examples of the simplices of particular graphs whose eigenstructures we can compute explicitly. 
+We now move onto concrete examples of the simplices of particular graphs whose eigenstructures we can compute explicitly. We also compute the graph of perhaps the most well-known simplex:  the probability simplex. 
 
-\paragraph{The Complete Graph, $K_n$.}
-First let us consider the combinatorial simplex, $\splx^\comb(K_n)$.  The combinatorial Laplacian $\L_{K_n}$ has two eigenvalues: 0 with multiplicity 1 and $n$ with multiplicity $n-1$. To see this, observe that for any $\eig$ perpendicular to $\one$, we have 
+\paragraph{The complete graph, $K_n$.}
+Let us consider the combinatorial simplex $\splx=\splx_{K_n}$.  The Laplacian $\L_{K_n}$ has two eigenvalues: 0 with multiplicity 1 and $n$ with multiplicity $n-1$. To see this, observe that for any $\eig$ perpendicular to $\one$, we have 
 \begin{align*}
 \L_{K_n}\eig &= \bigg(\vp(1)(n-1)-\sum_{i\neq 1}\eg(i),\dots,\vp(n)(n-1)-\sum_{i\neq n}\eg(i)\bigg) \\
 &= \bigg(\vp(1)n - \sum_i \vp(i), \dots,\vp(n)n - \sum_i \vp(i)\bigg) \\
 &= (\vp(1)n,\dots,\vp(n)n) = n\eig,
 \end{align*}
-since $\sum_i\vp(i)=\la \eig,\one\ra =0$. \note{finish this}
+since $\sum_i\vp(i)=\la \eig,\one\ra =0$. Let $\Q$  described the rotation matrix which rotates each vector  by $\pi/4$  about each axis. Thus $\Q\e_1=\one$, and we can $n-1$ orthogonal eigenvectors $\Q\e_2,\dots,\Q\e_n$. The vertices of $\splx$  are thus given by $\sv_i(j) = \sqrt{n}(\Q\e_{j+1})(i)$. 
 
-\paragraph{Cycle Graph}
+\paragraph{The Cycle graph,  $C_n$.}
+The cycle graph $C_n$ has edge set $E=\{(i,j):j=i+1\mod n\}$. We assume that $n$ is even for this example. 
+We leave it to the reader to verify by direct computation  that the eigenvalues  and eigenvectors of $\L_{C_n}$ are given by 
+\[\vp_i(j) = \cos(\frac{2\pi(i-1)j}{n}),\quad \lambda_i = 2-2\cos(\frac{2\pi(i-1)}{n}),\]
+for $i=1,\dots,n/2+1$, and 
+\[\vp_i(j) = \cos(\frac{2\pi(i-n/2-1)j}{n}),\quad \lambda_i = 2-2\cos(\frac{2\pi(i-n/2-1)}{n}),\]
+for $i=n/2+2,\dots,n$. Therefore,  the vertices of $\splx_{C_n}$ are given by  
+\begin{equation*}
+\sv_i(j) = \begin{cases}
+\cos(\frac{2\pi(i-1)j}{n})\bigg(2-\cos(\frac{2\pi(i-\chi(j>n/2+1)n/2 -1)}{n})\bigg),& i\leq n/2+1, \\
+\sin(\frac{2\pi(i-n/2-1)j}{n})\bigg(2-\cos(\frac{2\pi(i-\chi(j>n/2+1)n/2 -1)}{n})\bigg),& i> n/2+1.
+\end{cases}
+\end{equation*}
 
-\paragraph{Path Graph}
 
 \paragraph{The probability simplex.} 
 Fix  $n\in\N$. The \emph{probability simplex} is the simplex $\widetilde{\splx}_p=\conv(\{\bchi_i\}_{i=1}^n \cup \{\zero\})$. It is most likely the simplex of greatest familiarity to mathematicians and computer scientists, being used to reason geometrically about probability distributions. The probability simplex has centroid $\one/n\neq\zero$ and we will consider its centred version 
 \[\splx_p \equiv \widetilde{\splx}_p -  \frac{\one}{n},\]
 which has vertices  $\sv_i = \bchi_i - \one/n$, $i<n$, and $\sv_n = -\one/n$. Note that $\sv_j-\sv_n = \bchi_j$ and so 
-$\la \bchi_i, \sv_j-\sv_n\ra = \delta_{ij}$. Taking  $\bgamma_i = \bchi_i$ and $\bgamma_n = -\sum_i \bchi_i = -\one$ thus gives us the dual vertices. The  angles between the facets of $\splx_p$ are thus defined by 
+$\la \bchi_i, \sv_j-\sv_n\ra = \delta_{ij}$. Taking  $\sv_i^\du = \bchi_i$ and $\sv_n^\du = -\sum_i \bchi_i = -\one$ thus gives us the dual vertices. The  angles between the facets of $\splx_p$ are thus defined by 
 \begin{equation*}
-\cos\theta_{ij}(\splx_p) = - \la \bchi_i,\bchi_j\ra = -\delta_{ij}, \; i,j\in[n-1],  \quad \text{and}\quad \cos\theta_{in}(\splx_p) = \frac{\la \bchi_i,\one\ra}{\norm{1}} = 1/\sqrt{n}, \;i\in[n].
+\cos\theta_{ij}(\splx_p) = - \la \bchi_i,\bchi_j\ra = -\delta_{ij}, 
 \end{equation*}
+for $i,j\in[n-1$ and 
+\begin{equation*}
+\cos\theta_{in}(\splx_p) = \frac{\la \bchi_i,\one\ra}{\norm{1}} = 1/\sqrt{n},
+\end{equation*}
+for all $i\in[n]$. 
 This implies  that $\theta_{ij}(\splx_p) = 0$ for $i\neq j$, $i,j\neq n$ and $\theta_{in}(\splx_p) \in =(0,\pi/2)$. 
-\note{The angles in $\splx_p$ and $\widetilde{\splx}_p$ don't change, but those it seems like those in the shifted simplex do. What is going on  here?}
+Using the  construction of Section~\ref{sec:simplex_to_graph}, we  associate to $\splx_p$ the graph with Laplacian matrix $\Sv(\splx_p^\du)^\to \Sv(\splx_p^\du)$, where $\Sv(\splx_p^\du)=(\sv_1^\du,\dots,\sv_n^\du)$. This matrix has $(i,j)$-th  entry $1$ for $i=j$, 1  for $i=n$ or $j=n$,  and 0 otherwise. This graph thus has each vertex connected  to $n$, but to  no others.  That  is, the graph of the probability simplex $\splx_p$ is  the star graph on  $n$ vertices. 
 
  
 
@@ -393,7 +412,7 @@ Property (ii) in the previous lemma was first noticed by Fielder~\cite[Chapter 6
 As Fiedler pointed out~\cite{fiedler1993geometric}, the correspondence also allows us to answer questions related to the distribution of angles of simplices. It is not, for example, a priori obvious that all distributions of angles  are possible in a hyperacute simplex, in the following sense. 
 
 \begin{lemma}
-	For every $n-1\leq k \leq {n\choose 2}$, there exists a hyperacute simplex on $n$ vertices with $k$ strictly acute interior angles. 
+	For every $n-1\leq k \leq \binom{n}{2}$, there exists a hyperacute simplex on $n$ vertices with $k$ strictly acute interior angles. 
 \end{lemma}
 \begin{proof}
 	Fix $k$ and consider a connected graph on $n$ vertices with $k$ edges (note the importance that $k\geq n-1$). The interior angles $\{\theta_{ij}^+\}_{i,j}$ of $\splx_G^+$ obey $\cos\theta_{ij} = w(i,j) / \sqrt{w(i)w(j)}$, hence $\theta_{ij}=\pi/2$ whenever $w(i,j)=0$, and $\theta_{ij}\in(0,\pi/2)$ for all $(i,j)\in E(G)$. Therefore, $\splx_G^+$ meets the desired criteria. 
@@ -851,7 +870,7 @@ Likewise, the vertices of $\splxn_0^+$ have coordinates
 \svn_i^+(j) = \evaln_j^{-1/2}\bigg(\vpn_j(i) - \frac{1}{n}\la \vpn_j,\one\ra\bigg).
 \end{equation*}
 
-Let $\cent=\cent(\splxn_0)$ be the centroid of the centred normalized Laplacian. Noting that $(\cent,\cent,\dots,\cent)=\cent\one^\tp$, 
+Let $\cent$ be the centroid of the centred normalized Laplacian. Noting that $(\cent,\cent,\dots,\cent)=\cent\one^\tp$, 
 the Gram Matrix of $\splxn_0$ is 
 \begin{align*}
 (\Svn-\cent\one^\tp)^\tp(\Svn-\cent\one^\tp) &= \Svn^\tp\Svn - \Svn^\tp\cent\one^\tp - \one\cent^\tp\Svn + \one\cent^\tp\cent\one^\tp \\

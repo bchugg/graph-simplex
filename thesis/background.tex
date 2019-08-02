@@ -9,17 +9,15 @@ We use the standard notation for sets of numbers: $\R$ (reals), $\N$ (naturals),
 We will often introduce new notation or definitions by using the notation $\equiv$. The complement of a set $U$ (with respect to what will be clear from context) is denoted $U^c$. 
 Given a set of scalars $K$, we let $K^{n\times m}$ denote the set of $n\times m$ matrices ($n$ rows and $m$ columns) with elements in $K$. Matrices will typically be denoted by uppercase letters in boldface, e.g., $\Q\in K^{n\times m}$. Matrices will also often be referred to as linear transformations and written, for example, as $\Q:K^m \to K^n$. 
 We let $\Q(i,\cdot)$ (resp., $\Q(\cdot,i)$) denote the $i$-th row (resp., column) of the matrix $\Q$. 
-For a set $U$, $K^U$ denotes the set of all functions from $U$ to $K$.  Elements of $K^U$ are also called vectors. For any $n\in\N$, set $[n]\equiv \{1,2,\dots,n\}$. As usual, we let $K^n=K^{[n]}$. \note{Might have to distinguish between vectors and points; unsure whether this is needed yet.} Vectors will typically be denoted by lowercase boldcase letters. Lowercase  greek letters will often be used for scalars. 
+For a set $U$, $K^U$ denotes the set of all functions from $U$ to $K$.  Elements of $K^U$ are also called vectors. For any $n\in\N$, set $[n]\equiv \{1,2,\dots,n\}$. As usual, we let $K^n=K^{[n]}$. Vectors will typically be denoted by lowercase boldcase letters. Lowercase  greek letters will often be used for scalars. It will often  be intuitively useful to identity vectors with their endpoints, rather than the traditional ``arrow'' originating from the origin. When this is the case, we will often use the word point instead of vector. We emphasize that they are formally the same object. 
 
-For $n\in \N$, let $\zero_n\in\R^n$ and $\one_n\in\R^n$ be the vectors of all zeroes and all ones, respectively. Let $\I_n$ and $\J_n$  refer to the $n\times n$ identity matrix and all-ones matrix respectively (so $\J_n=\one_n\one_n^\tp)$. When the dimension $n$ is understood from context, will typically omit it as a subscript. We use $\chi(E)$ or $\chi_E$ as the indicator of an event $E$, i.e., $\chi(E)=1$ if $E$ occurs, and 0 otherwise. For example, $\chi(i\in U)=1$ if $i\in U$, and 0 if $i\in U^c$.  Similarly, for $U\subset K$,  $\bchi_U\in\R^K$ is the indicator vector of the set $U$, so $\bchi_U(i)=\chi(i\in U)$. 
-By $\diag(x_1,x_2,\dots,x_n)$ we mean the $n\times n$ matrix $\D$ entries $\D(i,i)=x_i$ and $\D(i,j)=0$ for $i\neq j$. Given vectors $\v_1,\dots,\v_n$, we will often denote by $(\v_1,\dots,\v_n)$ the matrix whose $i$-th column is $\v_i$. The $i$-th coordinate of a vector $\x$ will be denoted either by $\x(i)$ or simply $x(i)$. We trust this will not be overly confusing.  For $1\leq p<\infty$, the \emph{$p$-norm} of $\x\in \R^d$ is 
+For $n\in \N$, let $\zero_n\in\R^n$ and $\one_n\in\R^n$ be the vectors of all zeroes and all ones. Let $\I_n$ and $\J_n$  refer to the $n\times n$ identity matrix and all-ones matrix respectively (so $\J_n=\one_n\one_n^\tp)$. When the dimension $n$ is understood from context, will typically omit it as a subscript. We use $\chi(E)$ or $\chi_E$ as the indicator of an event $E$, i.e., $\chi(E)=1$ if $E$ occurs, and 0 otherwise. For example, $\chi(i\in U)=1$ if $i\in U$, and 0 if $i\in U^c$.  Similarly, for $U\subset K$,  $\bchi_U\in\R^K$ is the indicator vector of the set $U$, so $\bchi_U(i)=\chi(i\in U)$. 
+By $\diag(x_1,x_2,\dots,x_n)$ we mean the $n\times n$ matrix $\Q$ entries $\Q(i,i)=x_i$ and $\Q(i,j)=0$ for $i\neq j$. Given vectors $\v_1,\dots,\v_n$, we will often denote by $(\v_1,\dots,\v_n)$ the matrix whose $i$-th column is $\v_i$. The $i$-th coordinate of a vector $\x$ will be denoted either by $\x(i)$ or simply $x(i)$. We trust this will not be overly confusing.  For $1\leq p<\infty$, the \emph{$p$-norm} of $\x\in \R^d$ is 
 \begin{equation}
 \label{eq:pnorm}
 \norm{\x}_p = \bigg(\sum_{i=1}^d x_i^p\bigg)^{1/p},
 \end{equation}
-while the \emph{0-norm} of $\x$ is the number of non-zero entries of $\x$, and is denoted by $\norm{\x}_0$.  Given a vector or matrix, we use the superscript $t$ to denote it's transpose, i.e.,, given $\Q$, $\Q^t$ is defined as $\Q^t(i,j) = \Q(j,i)$. The standard inner product on $\R^d$ is denoted as $\la\cdot,\cdot\ra$, that is, $\la \x,\y\ra = \sum_i x(i)y(i)$. Elementary properties of the inner product will often be used without justification, such as its bilinearity: $\la \x,\alpha\y_1+\y_2\ra  = \la \x,\alpha\y_1\ra + \la \x,\y_2\ra$ for $\alpha\in\R$.  We will sometimes use the notation $\perp$ to mean ``orthogonal to'', so $\x\perp\y$ iff $\la\x,\y\ra=0$. 
-
-We will often use the shorthand ``iff'' to mean ``if and only if''. We use $\delta_{ij}$ to denote the Kronecker delta function, i.e., $\delta_{ij} = 1$ if $i=j$ and 0 otherwise. We may sometimes include a comma and write $\delta_{i,j}$. 
+while the \emph{0-norm} of $\x$ is the number of non-zero entries of $\x$, and is denoted by $\norm{\x}_0$.  Given a vector or matrix, we use the superscript $t$ to denote it's transpose, i.e.,, given $\Q$, $\Q^t$ is defined as $\Q^t(i,j) = \Q(j,i)$. The standard inner product on $\R^d$ is denoted as $\la\cdot,\cdot\ra$, that is, $\la \x,\y\ra = \sum_i x(i)y(i)$. Elementary properties of the inner product will often be used without justification, such as its bilinearity: $\la \x,\alpha\y_1+\y_2\ra  = \la \x,\alpha\y_1\ra + \la \x,\y_2\ra$ for $\alpha\in\R$.  We will sometimes use the notation $\perp$ to mean ``orthogonal to'', so $\x\perp\y$ iff $\la\x,\y\ra=0$. We will often use the shorthand ``iff'' to mean ``if and only if''. We use $\delta_{ij}$ to denote the Kronecker delta function, i.e., $\delta_{ij} = 1$ if $i=j$ and 0 otherwise. We may sometimes include a comma and write $\delta_{i,j}$. 
 
 A set $\X\subset\R^m$ is \emph{convex} if for all $\x,\y\in\X$ and $\lambda\in(0,1)$, $\lambda\x + (1-\lambda)\y\in \X$. 
 The \emph{convex hull} of a finite set of points $X=\{\x_1,\dots,\x_k\}\subset \R^n$ is 
@@ -31,30 +29,33 @@ or equivalently, the smallest convex set containing $X$~\cite{grunbaum1967convex
 
 
 \section{Linear Algebra}
-\label{sec:background_linear}
-The results derived in this section can be found in any self-contained reference on spectral graph theory (see e.g., \cite{spielman2009spectral,chung1997spectral}). What's not graph-theoretic in nature---dimension, kernel, similarity, for example---may be found in a generic reference on linear algebra (e.g.,  \cite{axler1997linear}). We begin by stating a well-known but substantial result first proved by Cauchy (see \cite{hawkins1975cauchy} for the relevant history), which initiated the systematic study of the spectrum of matrices and which underpins the results in this dissertation. 
+\label{sec:background_linear} 
+We assume familiarity with the basic linear algebraic notions---similarity, dimension, range, etc. All relevant background material can be found in a standard reference, e.g. \cite{axler1997linear}. 
+We begin by stating a well-known but substantial result first proved by Cauchy (see \cite{hawkins1975cauchy} for the relevant history), which initiated the systematic study of the spectrum of matrices and which underpins the results in this dissertation. 
 
 \begin{theorem}[Spectral Theorem for real matrices]
 	\label{thm:spectral_theorem}
 	Every real, symmetric $n\times n$ matrix has a set of $n$ orthogonal eigenvectors and real eigenvalues.  
 \end{theorem}
 
+Next we state a result which will underpin our construction of the ``dual simplex'' in Section \ref{sec:background_dual_simplex}. 
+
 \begin{lemma}
 \label{lem:bi-orthogonal_bases}
 Let $\v_1,\dots,\v_k$ be a set of linearly independent vectors in $\R^n$. There exists a set of vectors, $\u_1,\dots,\u_k$ such that $\la \v_i,\u_j\ra = \delta_{ij}$ for all $i,j\in[k]$. The collections $\{\v_i\}$ and $\{\u_i\}$ are called \emph{biorthogonal} or \emph{dual bases}.  
 \end{lemma}
 
-Given the set $\{\v_i\}$ of linearly independent vectors, the complementary set $\{\u_i\}$ given by Lemma \ref{lem:bi-orthogonal_bases} is called the \emph{sister} or \emph{dual set to $\{\v_i\}$}. If $\{v_i\}$ constitutes a basis of the underlying space, then we might call $\{\u_i\}$ the \emph{sister} or \emph{dual basis}.  We present a simple observation which will be useful in later sections. 
+Given the set $\{\v_i\}$ of linearly independent vectors, the complementary set $\{\u_i\}$ given by Lemma \ref{lem:bi-orthogonal_bases} is called the \emph{sister} or \emph{dual set to $\{\v_i\}$}. If $\{\v_i\}$ constitutes a basis of the underlying space, then we might call $\{\u_i\}$ the \emph{sister} or \emph{dual basis}.  We present a simple observation which will be useful in later sections. 
 
 \begin{observation}
 \label{obs:bi-orthogonal_unique}
 Let $\{\v_1,\dots,\v_n\}\subset\R^n$ be a set of linearly independent vectors. The sister basis given by Lemma \ref{lem:bi-orthogonal_bases} is unique. 
 \end{observation}
 \begin{proof}
-Suppose $\{\u_i\}$ and $\{\w_i\}$ are biorthogonal bases. Fix $i\in[n]$. By independence, $\spn(\v_1,\dots,\v_{i-1},\v_{i+1},\dots,\v_n)$ is a hyperplane---that is, $\dim(\spn(\v_1,\dots,\v_{i-1},\v_{i+1},\dots,\v_n))^\perp=1$. Both $\u_i$ and $\w_i$ are orthogonal to this hyperplane (since they orthogonal to $\v_j$ for all $j\neq i$), thus are either parallel or anti-parallel. Therefore, there exists some $\alpha\in\R$ such that $\v_i=\alpha\w_i$. By definition, $\la \v_i,\u_i\ra = \la \v_i,\w_i\ra =1$, hence $\la \v_i,\alpha \w_i\ra = \la \v_i,\w_i\ra$ implying that $\alpha=1$. This demonstrates that $\u_i=\w_i$ for all $i$. 
+Suppose $\{\u_i\}$ and $\{\w_i\}$ are biorthogonal bases. Fix $i\in[n]$. By independence, $\spn(\v_1,\dots,\v_{i-1},\v_{i+1},\dots,\v_n)$ is a hyperplane---that is, \[\dim\spn(\v_1,\dots,\v_{i-1},\v_{i+1},\dots,\v_n)^\perp=1.\] Both $\u_i$ and $\w_i$ are orthogonal to this hyperplane (since they orthogonal to $\v_j$ for all $j\neq i$), thus are either parallel or anti-parallel. Therefore, there exists some $\alpha\in\R$ such that $\v_i=\alpha\w_i$. By definition, $\la \v_i,\u_i\ra = \la \v_i,\w_i\ra =1$, hence $\la \v_i,\alpha \w_i\ra = \la \v_i,\w_i\ra$ implying that $\alpha=1$. This demonstrates that $\u_i=\w_i$ for all $i$. 
 \end{proof}
 
-Let $\M\in\R^{n\times n}$ matrix. We recall that a vector $\eig$ satisfying $\M\eig=\lambda\eig$ is an \emph{eigenvector} of $\M$, and call $\lambda$ the associated \emph{eigenvalue}. It's clear that if $\eig$ is an eigenvector then so it $c\eig$ for any constant $c\in \R$. If $\M$ is Hermitian, then the Spectral theorem dictates that there exists an orthonormal basis consisting of eigenvectors $\{\eig_1,\eig_2,\dots,\eig_n\}$ of $\M$ whose corresponding eigenvalues $\{\lambda_1,\dots,\lambda_n\}$ are all real. Let $\Eig=(\eig_1,\eig_2,\dots,\eig_n)$ be the matrix whose $i$-th column is the $i$-th eigenvector of $\M$, and set $\Eval=\diag(\lambda_1,\dots,\lambda_n)$. Observe that 
+Let $\M\in\R^{n\times n}$ matrix. We recall that a vector $\eig$ satisfying $\M\eig=\lambda\eig$ is an \emph{eigenvector} of $\M$, and call $\lambda$ the associated \emph{eigenvalue}. It's clear that if $\eig$ is an eigenvector then so it $c\eig$ for any constant $c\in \R$. If $\M$ is real and symmetric, then the Spectral theorem dictates that there exists an orthonormal basis consisting of eigenvectors $\{\eig_1,\eig_2,\dots,\eig_n\}$ of $\M$ whose corresponding eigenvalues $\{\lambda_1,\dots,\lambda_n\}$ are all real. Let $\Eig=(\eig_1,\eig_2,\dots,\eig_n)$ be the matrix whose $i$-th column is the $i$-th eigenvector of $\M$, and set $\Eval=\diag(\lambda_1,\dots,\lambda_n)$. Observe that 
 \begin{equation}
 \label{eq:eig_decomp}
 \M\Eig=\M(\eig_1,\dots,\eig_n)=(\M\eig_1,\dots,\M\eig_n)=(\lambda_1\eig_1,\dots,\lambda_n\eig_n)=\Eig\Eval.
@@ -82,11 +83,10 @@ The following basic result will be useful for us.
 
 \subsection{Pseudoinverse}
 \label{sec:background_pseudoinverse}
-Moore-Penrose pseudo-inverse: Nice overview by Barata~\cite{barata2012moore}. Introduced by Moore~\cite{moore1920reciprocal}, rediscovered by Penrose~\cite{penrose1955generalized,penrose1956best}. Pseudoinverse of Laplacian discussed by Van Meighem \etal~\cite{van2017pseudoinverse}. 
 
-\TODO introduce properties and defns of pseudo inverse.
+If $\M$ is a singular matrix, a natural question to ask is whether there exists a matrix whose relationship to $\M$ ``approximates'', in some relevant sense, the relationship between a matrix and its inverse. This question  was asked and answered, on separate occasions, by both Elikam Moore and Sir Roger Penrose. Both discovered---originally Moore in 1921 and later Penrose in the 1950's---what is now known as the \emph{Moore-Penrose pseudoinverse} of a matrix~\cite{moore1920reciprocal, penrose1955generalized,penrose1956best}. It is defined as follows. 
 
-\begin{definition}[\cite{barata2012moore}]
+\begin{definition}[Moore-Penrose pseudoinverse~\cite{barata2012moore}]
 \label{def:pseudoinverse}
 Let $\M\in\C^{n\times m}$ for some $n,m\in\N$. We call a matrix $\M^+\in\C^{m\times n}$ satisfying both
 \begin{enumerate}
@@ -96,16 +96,18 @@ Let $\M\in\C^{n\times m}$ for some $n,m\in\N$. We call a matrix $\M^+\in\C^{m\ti
 the \emph{Moore-Penrose Pseudoinverse} of $\M$. 
 \end{definition}
 
+We will often drop the identifier ``Moore-Penrose'' and simply write that $\M^+$ is the pseudoinverse of $\M$. It's not immediate from  the definition, but the pseudoinverse of $\M$ has several desirable properties: When $\M$ is real, so is $\M^+$; $(\M^+)^+=\M$; $(\M^+\M)^\tp = \M^+\M$. Importantly, when $\M$ is invertible, then $\M^+=\M^{-1}$. Moreover, the pseudoinverse always exists: 
+
 \begin{lemma}[\cite{barata2012moore}]
 	\label{lem:pseudoinverse_properties}
-Let $\M\in \C^{n\times m}$. There exists a unique Pseudoinverse of $\M^+$ of $\M$. Moreover, the following properties hold: 
+Let $\M\in \C^{n\times m}$. The pseudoinverse  $\M^+$ of $\M$ exists and is unique. Moreover, the following properties hold: 
 \begin{enumerate}
     \item[(i).] $\M\M^+$ is an orthogonal projector obeying $\range(\M\M^+)=\range(\M)$; and 
     \item[(ii).] $\M^+\M$ is an orthogonal projector obeying $\range(\M^+\M)=\range(\M^+)$. 
 \end{enumerate}
 \end{lemma}
 
-. 
+Together, Definition \ref{def:pseudoinverse} and Lemma \ref{lem:pseudoinverse_properties} do not necessarily yield a way to obtain the pseudoinverse of a matrix $\M$. We  next demonstrate that when the eigendecomposition is known, we  can give a precise expression for the pseudoinverse. 
 
 \begin{lemma}
 Suppose $\M\in\C^{m\times m}$ admits the eigendecomposition 
@@ -136,39 +138,44 @@ so both required conditions hold, and we conclude that $\vb{Q}=\M^+$.
 \section{Spectral Graph Theory}
 \label{sec:background_spectral}
 
+Similarly to  Section \ref{sec:background_linear}, the results in this section can be found in any self-contained reference on (spectral) graph theory (see e.g., \cite{spielman2009spectral,chung1997spectral}).
+
 We begin with basic graph theory. 
 We denote a \emph{graph} by a triple $G=(V,E,w)$ where $V$ is the \emph{vertex set}, $E\subset V\times V$ is the \emph{edge set} and $w:V\times V\to\R_{\geq0}$ (the non-negative reals) a \emph{weight function}. We let the domain of $w$ be $V\times V$ for convenience; for $(i,j)\notin E$ we have $w((i,j))=0$. We call $G$ \emph{unweighted} if $w((i,j))=\chi_{(i,j)\in E}$ for all $i,j$. In this case, we may omit the weight function and simply write $G=(V,E)$. 
+Unless otherwise stated, $G$ will be undirected (edges do not have  directions) and connected (each vertex is reachable from every other vertex). 
 We will typically take $V=[n]$ for simplicity. For a  vertex $i\in V$, we denote the set of its neighbours by 
 \begin{equation}
 \label{eq:delta(i)}
 \delta_G(i) \equiv  \{j\in V:w(i,j)>0\},
 \end{equation}
-a set we call that \emph{neighbourhood} of $i$. The \emph{degree of $i$} if $\deg(i)\equiv |\delta(i)|$. The \emph{weight of $i$} if $w(i)\equiv \sum_{j\in \delta(i)}w(i,j)$. Note that if $G$ is unweighted, then $w(i)=\deg(i)$. If the degree of each vertex in $G$ is equal to $k$, we call $G$ a \emph{$k$-regular graph}. We call $G$ \emph{regular} if it is $k$-regular for some $k$. If $U\subset V$ contains only vertices with the same degree, we call it \emph{degree homogeneous}. 
-Abusing notation, we extend the weight function $w$ to sets of edges or vertices by setting $w(A)=\sum_{a\in A}w(a)$. 
+a set we call that \emph{neighbourhood} of $i$. The \emph{degree of $i$} if $\deg(i)\equiv |\delta(i)|$. The \emph{weight of $i$} if $w(i)\equiv \sum_{j\in \delta(i)}w(i,j)$. Note that if $G$ is unweighted, then $w(i)=\deg(i)$. If the degree of each vertex in $G$ is equal to $k$, we call $G$ a \emph{$k$-regular graph}. We call $G$ \emph{regular} if it is $k$-regular for some $k$. If $U\subset V$ contains only vertices with the same degree (resp., weight), we call it \emph{degree (resp., weight) homogeneous}. 
 For a set of subset of vertices $U$, the \emph{volume of $U$} is 
 \begin{equation}
 \label{eq:volU}
 \vol_G(U) \equiv \sum_{i\in U}w(i),
 \end{equation}
-and the volume of $G$ is $\vol(G) \equiv \vol_G(V(G))$. As usual, we will drop the subscript if the graph is clear from context. Given a subset $U\subset  V$, we write $G[U]$ to be the graph induced by $U$, i.e., $V(G[U])  = V\cap U$ and  $E(G[U]) = E \cap U \times U$. If a graph is connected  and acyclic (i.e., there is a unique path between each pair of vertices) we call it a \emph{tree}. It's well known that a tree on $n$ nodes has $n-1$ edges.  
+and the volume of $G$ is $\vol(G) \equiv \vol_G(V(G))$. As usual, we will drop the subscript if the graph is clear from context. 
+Owing to possible mental lapses and above average caffeine intake, we may sometimes abuse notation and extend the weight function $w$ to sets of edges or vertices by setting $w(A)=\sum_{a\in A}w(a)$. Thus, for instance, $w(U) = \vol(U)$, for $U\subset V$. (The more notation the better, right?) 
 
-Unless otherwise stated, we will assume that graphs are \emph{undirected}---that is, there is no orientation on the edges. Consequently, we identify each tuple $(i,j)$ with its sister pair $(j,i)$. This implies, for example, that when summing over all edges $(i,j)\in E$ we are \emph{not} summing over all vertices and their neighbours. Indeed, this latter summation double counts the edges: $\sum_{(i,j)\in E}=\frac{1}{2}\sum_{i}\sum_{j\in\delta(i)}$. We will often write $i\sim j$ to denote an edge $(i,j)$; so, for example, $\sum_{i\sim j}=\sum_{(i,j)\in E}$. 
+Given a subset $U\subset  V$, we write $G[U]$ to be the graph induced by $U$, i.e., $V(G[U])  = V\cap U$ and  $E(G[U]) = E \cap U \times U$. If a graph is connected  and acyclic (i.e., there is a unique path between each pair of vertices) we call it a \emph{tree}. It's well known that a tree on $n$ nodes has $n-1$ edges.  
+
+As mentioned above, we will typically  work  with undirected graphs. In this case, we identify each tuple $(i,j)$ with its sister pair $(j,i)$. This implies, for example, that when summing over all edges $(i,j)\in E$ we are \emph{not} summing over all vertices and their neighbours. Indeed, this latter summation double counts the edges: $\sum_{(i,j)\in E}=\frac{1}{2}\sum_{i}\sum_{j\in\delta(i)}$. We will often write $i\sim j$ to denote an edge $(i,j)$; so, for example, $\sum_{i\sim j}=\sum_{(i,j)\in E}$. 
 
 We will also appeal to so-called ``handshaking lemma'' for unweighted graphs, which states that $\sum_i \deg_G(i) = 2|E(G)|$; easily verified with a counting argument. 
 
 
-
-
-
 \subsection{Laplacian Matrices}
-Survey of Laplacian: ~\cite{merris1994laplacian}.  
+\label{sec:background_laplacian}
+Here we introduce various matrices of graphs, including the Laplacian. For a useful survey of Laplacian see~\cite{merris1994laplacian}.  
+
+
 Let $G=(V,E,w)$ be a graph, with $V=[n]$ and $|E|=m$. 
 Let $\W$ be the \emph{weight matrix} of $G$, i.e., $\W=\diag(w(1),w(2),\dots,w(n))$. 
-The \emph{degree matrix} of $G$ is $\diag(\deg(1),\deg(2),\dots,\deg(n))$. The \emph{adjacency matrix} of $G$ encodes the edge relations, namely, $\A_G(i,j)=w((i,j))$ for all $i\neq j$, and $\A_G(i,i)=0$ for all $i$. Notice that (for undirected graphs) $\A_G$ is symmetric.  If $G$ is unweighted, then $\W_G$ is also called the \emph{degree matrix of $G$}. 
+The \emph{degree matrix} of $G$ is \[\diag(\deg(1),\deg(2),\dots,\deg(n)).\] The \emph{adjacency matrix} of $G$ encodes the edge relations, namely, $\A_G(i,j)=w((i,j))$ for all $i\neq j$, and $\A_G(i,i)=0$ for all $i$. Notice that (for undirected graphs) $\A_G$ is symmetric.  Note that if $G$ is unweighted, then $\W_G$ and the degree matrix are equivalent. 
 The \emph{combinatorial Laplacian} of $G$ is the matrix 
 \begin{equation}
 \label{eq:L_G}
-\L_G=\W_G-\A_G.
+\L_G\equiv \W_G-\A_G.
 \end{equation}
 There are several useful representations of the Laplacian. Let $\L_{i,j}=w(i,j)(\chi_i-\chi_j) (\chi_i-\chi_j)^\tp\in \R^{V\times V}$, i.e., 
 \[\L_{i,j}(a,b)=\begin{cases}
@@ -182,11 +189,14 @@ Then
     \L_G=\sum_{i\sim j}\L_{i,j}.
 \end{equation}
 Another representation comes via the \emph{incidence matrix} of $G$, $\B_G\in \R^{E\times V}$, defined as follows. Place an arbitrary orientation on the edges of $G$ (say, for example, $(i,j)$ is directed from $i$ to $j$ iff $i<j$), and for an edge $e$, let $e^-\in V$ denote the vertex at which $e$ begins, and $e^+$ the vertex at which it ends. Set 
-\[\B_G(e,i)=\begin{cases}
+\begin{equation}
+\label{eq:B_G}
+\B_G(e,i)=\begin{cases}
 1&\text{if }i=e^-,\\
 -1&\text{if }i=e^+,\\
 0&\text{otherwise},
-\end{cases}\]
+\end{cases}
+\end{equation}
 or, equivalently, $\B_G(e,i) = (\chi_{(i=e^-)}-\chi_{(i=e^+)})$. Then,
 \begin{equation*}
    ( \B_G^\tp\W_G\B_G)(i,j)=\sum_{e\in E} \B_G^\tp(i,e)\B_G(e,j)=\sum_{e\in E}w(e)(\chi_{i=e^-}-\chi_{i=e^+})(\chi_{j=e^-}-\chi_{j=e^+}).
@@ -204,29 +214,29 @@ which is precisely $\L_G(i,j)$. That is, we have
  \label{eq:L=BTB}
  \L_G=(\W_G^{1/2}\B_G)^\tp(\W_G^{1/2}\B_G).
  \end{equation}
- We associate with $\L_G$ the quadratic form $\Lop_G:\R^V\to \R$ which acts on function $f:V\to \R$ as 
+ We associate with $\L_G$ the quadratic form $\Lop_G:\R^V\to \R$ which acts on functions $\f:V\to \R$ as 
 \begin{equation*}
- f\xmapsto{\Lop_G} f^\tp \L_G f.
+ f\xmapsto{\Lop_G} \f^\tp \L_G \f.
 \end{equation*}
 The Laplacian quadratic form will be crucial in our study of the geometry of graphs. Luckily for us then, its action on a vector is captured by an elegant closed-form formula. 
 Computing 
 \begin{equation*}
-    \L_{i,j}f = w(i,j)(\bchi_i -\bchi_j)(\bchi_i-\bchi_j)^\tp f = w(i,j)(f(i)-f(j))(\bchi_i-\bchi_j).
+    \L_{i,j}\f = w(i,j)(\bchi_i -\bchi_j)(\bchi_i-\bchi_j)^\tp \f = w(i,j)(\f(i)-\f(j))(\bchi_i-\bchi_j).
 \end{equation*}
 we find that 
-\[f^\tp \L_{i,j} f = w(i,j)(f(i)-f(j))^2.\]
+\[\f^\tp \L_{i,j} \f = w(i,j)(\f(i)-\f(j))^2.\]
 Therefore, applying Equation \ref{eq:Lsum} yields 
 \begin{equation}
 \label{eq:Lf}
-    \Lop_G(f) = f^\tp \bigg(\sum_{i\sim j} \L_{i,j}\bigg) f = \sum_{i\sim j}f^\tp \L_{i,j} f= \sum_{i\sim j} w(i,j)(f(i)-f(j))^2.
+    \Lop_G(\f) = \f^\tp \bigg(\sum_{i\sim j} \L_{i,j}\bigg) \f = \sum_{i\sim j}\f^\tp \L_{i,j} \f= \sum_{i\sim j} w(i,j)(\f(i)-\f(j))^2.
 \end{equation}
 
-The \emph{symmetric normalized Laplacian} or simply the \emph{normalized Laplacian} of $G$ is given by 
+Another Laplacian matrix associated with $G$ is the \emph{normalized Laplacian}, given by 
 \begin{equation}
 \label{eq:Ln_G}
     \Ln_G = \W_G^{-1/2} \L_G\W_G^{-1/2} = \I - \W_G^{-1/2} \A_G\W_{G}^{-1/2}.
 \end{equation} 
-To investigate $\Ln_G$ we may carry out a similar procedure to above. In particular, if we define $\Ln_{i,j}=\W_G^{-1/2} \L_{i,j}\W_G^{-1/2}$ then we obtain the equivalent of Equation \ref{eq:Lsum} for the normalized Laplacian:
+The normalized Laplacian is intimately related to various  phenomena, most notable random walks on the graph~\cite{chen2007resistance,chung1997spectral}. To investigate $\Ln_G$ we may carry out a similar procedure to above. In particular, if we define $\Ln_{i,j}=\W_G^{-1/2} \L_{i,j}\W_G^{-1/2}$ then we obtain the equivalent of Equation \ref{eq:Lsum} for the normalized Laplacian:
 \begin{equation}
 \label{eq:Lnsum}
     \Ln_G = \sum_{i\sim j}\Ln_{i,j}.
@@ -240,29 +250,8 @@ Using Equation \eqref{eq:Lnsum}, we see that
 the quadratic form $\Lnf_G$ associated with $\Ln_G$ acts as 
 \begin{equation}
 \label{eq:Lnf}
-    \Lnf_G(f) = \sum_{i\sim j} w(i,j)\bigg(\frac{f(i)}{\sqrt{w(i)}}-\frac{f(j)}{\sqrt{w(j)}}\bigg)^2.
+    \Lnf_G(\f) = \sum_{i\sim j} w(i,j)\bigg(\frac{\f(i)}{\sqrt{w(i)}}-\frac{\f(j)}{\sqrt{w(j)}}\bigg)^2.
 \end{equation}
-
-\paragraph{Pseudoinverse of \texorpdfstring{$\L_G$}{the combinatorial} and \texorpdfstring{$\Ln_G$}{normalized Laplacian.}}
-Since $\L_G$ and $\Ln_G$ are both symmetric, $\range(\L^\tp)=\range(\L)=\R^n \setminus \ker(\L)=\R^n \setminus \spn(\{\one\})$, and $\range(\Ln^\tp)=\range(\Ln)=\R^n \setminus \ker(\Ln)=\R^n \setminus \spn(\{\W^{1/2}\one\})$. It follows that the pseudo-inverses of these two Laplacians satisfy
-\begin{equation}
-\L_G(\L_G)^+ = (\L_G)^+\L_G = \I - \frac{1}{n}\one\one^\tp,\label{eq:LL+}|
-\end{equation}
-and 
-\begin{equation*}
-\Ln_G(\Ln_G)^+ = (\Ln_G)^+\Ln_G = \I - \frac{1}{n}\D_G^{1/2}\one(\D_G^{1/2}\one)^\tp.
-\end{equation*}
-
-
-
-We will make use  of the following Theorem, often  called the \emph{Kirchhoff Tree Theorem}, named after Gustav Kirchhoff for the work done in \cite{Kirchhoff1847}. It was first stated in its most familiar form by Maxwell~\cite{maxwell1873treatise}. We use the formulation found in~\cite{chaiken1978matrix}. 
-
-\begin{theorem}
-	\label{thm:matrix_tree_theorem}
-	Let $G=(V,E,w)$ be a connected, weighted, and undirected graph. Let $\L$ be $G$'s combinatorial Laplacian matrix. Then for all $i,j\in[n]$, 
-	\[\Gamma_G = (-1)^i(-1)^j \det(\L_{-i,-j}) = \frac{1}{n}\sum_{i=1}^{n-1} \lambda_i,\]
-	where $\lambda_1,\dots,\lambda_{n-1}$ are the non-zero eigenvalues of $G$, $\L_{-i,-j}$ is the matrix obtained by removing the $i$-th row and $j$-th column of $\L$, and $\Gamma_G$ is the weight of all spanning trees of $G$.  
-\end{theorem}
 
 
 
@@ -290,10 +279,53 @@ Conversely, if $\vp\in\ker(\Ln)$, define $vp'$ such that $\vp=\W^{1/2}\vp'$ (thi
 so $\L\vp=\zero$ (since $w(i)>0$ for all $i$). That is, each element in the kernel of $\Ln$ takes the form $\W^{1/2}\vp$ for $\vp\in\ker(\L)$. We conclude that 
 \[\ker(\Ln)=\spn(\{\W^{1/2}\bchi_{V_1},\dots,\W^{1/2}\bchi_{V_k}\}).\]
 
+We  end this section by discussing two properties of graph Laplacians. The first is  their pseudoinverse relationships, and the second is the remarkable link between the eigenvalues of the combinatorial  Laplacian and spanning trees of the graph. 
+
+\paragraph{Pseudoinverse of \texorpdfstring{$\L_G$}{the combinatorial} and \texorpdfstring{$\Ln_G$}{normalized Laplacian}.}
+Since $\L_G$ and $\Ln_G$ are both symmetric, $\range(\L^\tp)=\range(\L)=\R^n \setminus \ker(\L)=\R^n \setminus \spn(\{\one\})$, and $\range(\Ln^\tp)=\range(\Ln)=\R^n \setminus \ker(\Ln)=\R^n \setminus \spn(\{\W^{1/2}\one\})$. It follows by Lemma \ref{lem:pseudoinverse_properties} that the pseudoinverses of these two Laplacians satisfy
+\begin{equation}
+\label{eq:LL^+}
+\L_G\L_G^+ = \L_G^+\L_G = \I - \frac{1}{n}\one\one^\tp,,
+\end{equation}
+i.e., the projection onto $\spn(\one)^\perp$, and 
+\begin{equation}
+\label{eq:LnLn^+}
+\Ln_G\Ln_G^+ = \Ln_G^+\Ln_G = \I - \frac{1}{\vol(G)}\W_G^{1/2}\one(\W_G^{1/2}\one)^\tp = \I-\frac{1}{\vol(G)}\sqrt{\w}\sqrt{\w}^\tp,
+\end{equation}
+the projection onto $\spn(\w)^\perp$, where $\sqrt{\w}=(\sqrt{w(1)},\dots,\sqrt{w(n)})$. Note that the denominator in \eqref{eq:LnLn^+} is $\vol(G)$ instead of $n$ to ensure the result is a projection matrix. Put $\vb{P} = \I-\frac{1}{\vol(G)}\sqrt{\w}\sqrt{\w}^\tp$. Then 
+\begin{align*}
+\vb{P}^2 = \I - \frac{2}{\vol(G)}\sqrt{\w}\sqrt{\w}^\tp + \frac{1}{\vol(G)^2}\sqrt{\w}\sqrt{\w}^\tp\sqrt{\w}\sqrt{\w}^\tp = \vb{P},
+\end{align*}
+since $\sqrt{\w}^\tp\sqrt{\w}= \vol(G)$. 
+
+
+
+\paragraph{Kirchoff's  Theorem. }
+A  \emph{spanning tree} of a graph $G$ is a connected subgraph $T$ of $G$ with $V(T)=V(G)$ and $|E(T)| = |V(T)|-1$. That  is, $T$ contains the minimum number of edges possible to connect all vertices of $G$.   
+We will make use  of the following Theorem, often  called the \emph{Kirchhoff Tree Theorem}, named after Gustav Kirchhoff for the work done in \cite{Kirchhoff1847}. It was first stated in its most familiar form by Maxwell~\cite{maxwell1873treatise}. We use the formulation found in~\cite{chaiken1978matrix}. 
+
+\begin{theorem}
+	\label{thm:matrix_tree_theorem}
+	Let $G=(V,E,w)$ be a connected, weighted, and undirected graph. Let $\L$ be $G$'s combinatorial Laplacian matrix. Then for all $i,j\in[n]$, 
+	\[\Gamma_G = (-1)^i(-1)^j \det(\L_{-i,-j}) = \frac{1}{n}\sum_{i=1}^{n-1} \lambda_i,\]
+	where $\lambda_1,\dots,\lambda_{n-1}$ are the non-zero eigenvalues of $G$, $\L_{-i,-j}$ is the matrix obtained by removing the $i$-th row and $j$-th column of $\L$, and $\Gamma_G$ is the weight of all spanning trees of $G$.  
+\end{theorem}
+
+\begin{remark}
+	The  $\mathfrak{T}$ be the set of all spanning trees of a graph $G$. By the ``weight of all spanning trees'', we mean that
+	\begin{equation}
+	\label{eq:Gamma_G}
+	\Gamma_G = \sum_{T\in \mathfrak{T}} \prod_{i\in  V(T)} w_G(i).
+	\end{equation}
+	Thus, for $G$ unweighted, $\prod_{i\in V(T)}w_G(i)=1$ so $\Gamma_G$ simply counts the number of spanning trees. 
+\end{remark}
+
+
+
 
 \section{Electrical Flows}
 \label{sec:background_er}
-Given an undirected, weighted graph $G=(V,E,w)$, orient the edges of $G$ arbitrarily and encode this information in the matrix $\B$, as in Section ??. For an edge $e=(i,j)$ oriented from $i$ to $j$, denote $e^+=i$ and $e^-=j$. 
+Given an undirected, weighted graph $G=(V,E,w)$, orient the edges of $G$ arbitrarily and encode this information in the matrix $\B$, as in Section \ref{sec:background_laplacian}, Equation~\eqref{eq:B_G}. For an edge $e=(i,j)$ oriented from $i$ to $j$, denote $e^+=i$ and $e^-=j$. 
 We will consider $G$ as an electrical network. To do this, we imagine placing a resistor of resistance $1/w(e)$ on each edge $e$. Edges thus carry current between the nodes and, in general, higher weighted edges will carry more current.  
 An \emph{electrical flow $\f:E\to\R_{\geq 0}$} on $G$ assigns a current to each edge $e$ and respects, roughly speaking, Kirchoff's current law and Ohm's law. More precisely, let $\e$ be a vector describing the amount of current injected at each node. By Kirchoff's law, the amount of current passing through a vertex $i$ must be conserved. That is, 
 \[\sum_{e:i=e^+}f(e) - \sum_{e:i=e-}f(e) = e(i),\]
@@ -312,18 +344,26 @@ so that
 \label{eq:ohms_law}
 \f=\W\B\brho.
 \end{equation}
-Combining \eqref{eq:kirchoff} and \eqref{eq:ohms_law} we see that $\e=\B^\tp \f=\B^\tp \W\B \brho = \L_G\brho$, and so $\brho = \L_G^+\e$ whenever $\la \e,\one\ra$ (recall that $\L_G^+$ is the inverse of $\L_G$ in the space $\spn(\one)^\tp$).  
+Combining \eqref{eq:kirchoff} and \eqref{eq:ohms_law} we see that $\e=\B^\tp \f=\B^\tp \W\B \brho = \L_G\brho$, and so $\brho = \L_G^+\e$ whenever $\la \e,\one\ra=\zero$ (recall that $\L_G^+$ is the inverse of $\L_G$ in the space $\spn(\one)^\tp$).  
 
 The \emph{effective resistance} of an edge $e=(i,j)$ is the potential difference induced across the edge when one unit of current is injected at $i$ and extracted at $j$. That is, for $\e=\bchi_i-\bchi_j$, we want to measure $\rho(i)-\rho(j)$. We do this by noticing that 
-\[\rho(i)-\rho(j) = \la \bchi_i,\brho\ra - \la \bchi_j,\brho\ra = \la \bchi_i,\bchi_j,\L_G^+\e=\Lf_G^+(\bchi_i-\bchi_j).\]
-Note that here we've relied on the fact that $\bchi_i-\bchi_j\perp \one$. 
-
+\[\rho(i)-\rho(j) = \la \bchi_i,\brho\ra - \la \bchi_j,\brho\ra = \la \bchi_i-\bchi_j,\L_G^+\e\ra=\Lf_G^+(\bchi_i-\bchi_j).\]
+Note that here we've relied on the fact that $\bchi_i-\bchi_j\perp \one$. We cement the notion with a definition. 
 
 \begin{definition}
+	\label{def:effective_resistance}
 	The \emph{effective resistance} between nodes $i$ and $j$ is $\effr(i,j) \equiv \Lf_G^+(\bchi_i-\bchi_j)$.  
 \end{definition}
 
- Observe that starting with the equation $\Reff=\one\diag(\L_G^+(i,i))^\tp + \diag(\L_G^+(i,i))\one^\tp - 2\L_G^+$, \note{should explain where this equation comes from} it follows that $\x^\tp \Reff\x = -2\x^\tp \L_G^+\x$ for any $\x\in\spn(\one)^\perp$. Therefore, 
+We can relate the entries of the pseudoinverse Laplacian with the effective resistance as  follows. First let us introduce the \emph{effective resistance matrix of $G$}, denote $\Reff_G$,  with  entries $\Reff_G(i,j) = \effr(i,j)$. Noting  that 
+\begin{equation*}
+\Reff_G(i,j) = \bchi_i^\tp\L_G^+\bchi_i + \bchi_j^\tp \L_G^+\bchi_j -2 \bchi_i^\tp \L_G^+\bchi_j = \L_G^+(i,i) + \L_G^+(j,j) - 2\L_G^+(i,j),
+\end{equation*}
+we have 
+\begin{equation*}
+\Reff_G = \one \u ^\tp + \u\one^\tp - 2\L_G^+,
+\end{equation*}
+where  $\u=\diag(\L_G^+(i,i))$.  From here we  see that $\x^\tp \Reff_G\x = -2\x^\tp \L_G^+\x$ for any $\x\in\spn(\one)^\perp$. Therefore, 
 \begin{align}
 \L_G^+(i,j)&=\bchi_i^\tp \L_G^+\bchi_j \notag \\
 &= \bigg(\bchi_i-\frac{1}{n}\one\bigg)^\tp \L_G^+\bigg(\bchi_j-\frac{1}{n}\one\bigg) \notag \\
@@ -342,13 +382,14 @@ For $i=j$, this becomes
 \section{Simplices}
 \label{sec:background_simplices}
 
-\begin{figure}
-	\centering
-	\includegraphics[scale=0.6]{simplices}
-	\caption{Simplices in dimensions one, two, and three. We wish the reader luck in visualizing a simplex (or anything really) in more than three dimensions.}
-\end{figure}
+Finally we reach what is our main object of study. We begin by describing a  relationship  among a set  of vertices which,  roughly speaking,  generalizes the notion of ``non-collinearity'' to  higher dimensions. We are then able to properly define a simplex and its dual. We end the section by briefly discussing several  of the angles in a simplex. 
+
+\paragraph{Affine Independence.}
+In order to properly define simplices, we need to define the  notion of ``affine independence'' between  points.  In $\R^2$, for example, such a relationship characterizes the sets of three points which describe a triangle. 
+
 
 \begin{definition}
+	\label{def:affine_independence}
 A set of points $\x_1,\dots,\x_k$ are said to be \emph{affinely independent} if the only solution to $\sum_{i\in[n]}\alpha_i\x_i=\zero$ with $\sum_{i\in [n]}\alpha_i=0$ is $\alpha_1=\dots=\alpha_n=0$. 
 \end{definition}
 
@@ -366,6 +407,8 @@ Perhaps a more useful characterization of affine independence is the following.
 	implying that $\{\x_j-\x_i\}_{i\neq j}$ is not linearly independent. 
 \end{proof}
 
+The following lemma demonstrates that if we form a matrix of size $n-1\times n$ from the column vectors of $n$  affine independent vectors, then this matrix has full rank. Moreover, we may assume that the linear combination of the vectors is in fact an \emph{affine combination}, in the  following sense. 
+
 \begin{lemma}
 	\label{lem:barycentric_coeffs}
 	Let $\{\x_1,\dots,\x_n\}\subset\R^{n-1}$ be affinely independent, and let  $\y\in\R^{n-1}$ be arbitrary. Then there exists coefficients $\{\alpha_i\}\subset\R$ obeying $\sum_{i\in[n]}\alpha_i=1$ such that $\y=\sum_{i\in[n]}\alpha_i\x_i$. 
@@ -374,18 +417,23 @@ Perhaps a more useful characterization of affine independence is the following.
 	By Lemma \ref{lem:affine-linearly-independent}, the vectors $\bzeta_i=\x_i-\x_n$, $i<n$ are linearly independent and span $\R^{n-1}$. Therefore, there exist real numbers $\alpha_i$, $i<n$ with $\y-\x_n = \sum_{i<n} \alpha_i\bzeta_i$. Putting $\alpha_n=1-\sum_{i<n}\alpha_i$, we have $\y=\sum_{i<n}\alpha_i\bzeta_i + x_n = \sum_{i<n} \alpha_i\x_i + (1-\sum_{i<n}\alpha_i)\x_n = \sum_{i\in[n]}i \alpha_i\x_i$. It's immediate that $\sum_i\alpha_i=1$. 
 \end{proof}
 
+\paragraph{The simplex.} 
+We jump straight into the definition. 
+\begin{figure}
+	\centering
+	\includegraphics[scale=0.6]{simplices}
+	\caption{Simplices in dimensions one, two, and three. We wish the reader luck in visualizing a simplex (or anything really) in more than three dimensions.}
+\end{figure}
 
 
 \begin{definition}
-A \emph{simplex} $\splx$ in $\R^{n-1}$ is the convex hull of $n$ affinely independent vectors $\sv_1,\dots,\sv_n$. That is, 
-\begin{equation*}
-    \splx = \bigg\{\sum_{i=1}^n \sv_i \alpha_i: \alpha_i\geq 0,\; \sum_{i=1}^n \alpha_i=1\bigg\}. 
-\end{equation*}
+\label{def:simplex}
+A \emph{simplex} $\ssplx$ in $\R^{n-1}$ is the convex hull of $n$ affinely independent vectors $\sv_1,\dots,\sv_n$. That is, $\splx=\conv(\sv_1,\dots,\sv_n)$.  
 \end{definition}
 
-If we gather the vertices of the simplex $\splx$ into the \emph{vertex matrix} $\Sv=(\sv_1,\dots,\sv_n)$ whose columns are the vertex vectors of $\splx$, then we can write the simplex as 
+If we gather the vertices of the simplex $\ssplx$ into the \emph{vertex matrix} $\Sv=(\sv_1,\dots,\sv_n)$ whose columns are the vertex vectors of $\ssplx$, then we can write the simplex as 
 \begin{equation*}
-    \splx = \{\Sv \x:\x\geq \zero, \; \norm{\x}_1=1\}.
+    \ssplx = \{\Sv \x:\x\geq \zero, \; \norm{\x}_1=1\}.
 \end{equation*}
 Given a point $\p=\Sv\x\in\splx$, $\x$ is called the \emph{barycentric coordinate} of $\p$.  
 
@@ -400,23 +448,34 @@ The following observation demonstrates that $\splx\restriction_U$ is a well-defi
 	Any subset of an affinely independent set of vectors is again affinely independent. 
 \end{observation}
 \begin{proof}
-	Let $\{v_i\}_{i\in[n]}$ be a set of vectors and let $U\subsetneq[n]$ be a proper subset of $[n]$. If $\{\v_i\}_{i\in U}$ is not affinely independent, then there exists $\{\alpha_i\}_{j\in U}$ not all zero such that $\sum_{i\in U}\alpha_i\v_i=\zero$ and $\sum_i\alpha_i=0$. Taking $\alpha_j=0$ for $j\in U^c$ implies that $\sum_{i\in[n]}\alpha_i\v_i=\zero$ while maintaing that $\sum_{i}\alpha_i=0$. Hence $\{v_i\}_{i\in[n]}$ is not affinely independent. 
+	Let $\{v_i\}_{i\in[n]}$ be a set of vectors and let $U\subsetneq[n]$ be a proper subset of $[n]$. If $\{\v_i\}_{i\in U}$ is not affinely independent, then there exists $\{\alpha_i\}_{j\in U}$ not all zero such that $\sum_{i\in U}\alpha_i\v_i=\zero$ and $\sum_i\alpha_i=0$. Taking $\alpha_j=0$ for $j\in U^c$ implies that $\sum_{i\in[n]}\alpha_i\v_i=\zero$ while maintaining that $\sum_{i}\alpha_i=0$. Hence $\{v_i\}_{i\in[n]}$ is not affinely independent. 
 \end{proof}
 
-Trusting the reader's capacity for variation, depending on the situation we may adopt different notation for the faces of a simplex. Often times the vertical restriction symbol will be dropped and we will write only $\splx_U$; other times we will write $\splx[U]$, especially when the space reserved a subscript is being used for other purposes. 
+Trusting the reader's capacity for variation, depending on the situation we may adopt different notation for the faces of a simplex. Oftentimes the vertical restriction symbol will be dropped and we will write only $\splx_U$; other times we will write $\splx[U]$, especially when the space reserved a subscript is being used for other purposes. 
 
-The \emph{centroid} of a simplex is the point 
+In  our study of simplices we will be mainly concerned with their relative properties (e.g., volume, angles, shape, etc.) as opposed to their absolute  positions in space. Thus, it will often  be convenient to identity simplices which share the same relative properties, but are simply rotated and /or translated versions of one  another. We will call  such simplices \emph{congruent},  or occasionally \emph{isomorphic}. 
+Unfortunately for notational simplicity, it will be  required to  sometimes differentiate between simplices  which are congruent by translation only, and simplices which are congruent by translation \emph{and} rotation. Let us  call the former type of congruence \emph{translational congruence}. We will continue to  call the latter simply congruence. Thus, the set of translationally congruent simplices to a simplex $\ssplx$ is a subset of  those simplices which are congruent to $\ssplx$. 
+We use the symbol $\cong$ to denote translational congruency between simplices; so $\ssplx_1\cong\ssplx_2$ iff $\Sv(\splx_1)=\Sv(\splx_2) + \balpha\one^\tp$ for some $\balpha\in\R^{n-1}$. We use $\cong^\rot$  to denote general   congruency; so  $\ssplx_1\cong^\rot\ssplx_2$ iff  $\Sv(\ssplx_1)=\Q\Sv(\ssplx_2) + \balpha\one^\tp$ for some rotation matrix $\Q$  and $\balpha\in\R^{n-1}$. 
+We will  also define two congruence classes of simplices. Put
+\begin{equation}
+\label{eq:[ssplx]}
+[\ssplx] \equiv \{\ssplx': \ssplx'\cong\ssplx\},\quad \text{and} \quad [\ssplx]^\rot\equiv \{\ssplx':\ssplx'\cong^\rot\ssplx\}.
+\end{equation}.
+
+A brief note now on nomenclature. We will typically  use the symbol $\ssplx$ to denote an arbitrary simplex. Later, we will use the symbol $\splx$  to denote  the simplex associated  to a  graph. In  this way we hope to provide a clear separation between those statements which hold for general simplices and those which hold for simplices of a graph. 
+
+
+\paragraph{Centroids and altitudes.}
+Two fundamental objects related to a simplex are its centroid and altitudes. The \emph{centroid} of a simplex is the point 
 \begin{equation}
 \label{eq:centroid}
-\cent(\splx) \equiv \frac{1}{n}\Sv \one = \frac{1}{n}\sum_{i\in[n]}\sv_i.
+\cent(\ssplx) \equiv \frac{1}{n}\Sv \one = \frac{1}{n}\sum_{i\in[n]}\sv_i.
 \end{equation} 
 
-The centroid of a simplex can be thought of as its centre of mass, assuming that weight is distributed evenly across its surface. 
-
-Given a simplex $\splx$, an \emph{altitude between faces $\splx_U$ and $\splx_{U^c}$} is a vector which lies in the orthogonal complement of both $\splx_U$ and $\splx_{U^c}$ and points from one face to the other. 
+The centroid of a simplex can be thought of as its centre of mass, assuming that weight is distributed evenly across its surface. The \emph{altitude between faces $\ssplx_U$ and $\ssplx_{U^c}$} is a vector which lies in the orthogonal complement of both $\splx_U$ and $\splx_{U^c}$ and points from one face to the other. 
 We denote the altitude pointing from $\splx_{U^c}$ to $\splx_{U}$ as $\alt_(\splx_U)$. We can write the altitude as $\alt_U=\p-\q$ for some $\p\in \splx_{U^c}$ and $\q\in\splx_{U}$, and thus as $\Sv(\x_{U^c}-\x_{U})$ where $\x_{U^c}$ and $\x_{U}$ are the barycentric coordinates of $\p$ and $\q$. 
 
-We will use the symbol $\cong$ to denote isomorphism or congruency between simplices. That is, $\splx_1\cong\splx_2$ iff $\splx_1$ can be converted to $\splx_2$ via translation and rotation.  
+\textbf{Nota Bene:} While  we conceptualize of the altitude $\alt(\ssplx_U)$ as pointing from $\ssplx_U$  to  $\ssplx_{U^c}$, we  remark that since we are working in  $\R^{n-1}$  as  a vector  space,  $\alt(\ssplx_U)$ still ``begins'' at  the origin. 
 
 \begin{figure}
 	\centering
@@ -425,9 +484,10 @@ We will use the symbol $\cong$ to denote isomorphism or congruency between simpl
 	\label{fig:simplex_faces}
 \end{figure}
 
-\paragraph{Centred  simplex.} When discussing general graphs, it will be useful to study a  translated copy of $\splxn_G$ which is centred at the origin. Accordingly, given any simplex $\ssplx$ with vertices $\{\sv_i\}$, we let $\ssplx^0$ denote the simplex with vertices $\{\sv_i - \cent(\ssplx)\}$. It's clear that the centroid of $\ssplx^0$ is the origin: 
+\paragraph{Centred  simplex.}
+In later sections it will be convenient to work with a translated copy of a given simplex which is centred at the origin. Accordingly, given any simplex $\ssplx$ with vertices $\{\sv_i\}$, we let $\ssplx_0$ denote the simplex with vertices $\{\sv_i - \cent(\ssplx)\}$. Note that $\ssplx_0\in[\ssplx]$. It's clear that the centroid of $\ssplx_0$ is the origin: 
 \begin{align*}
-\cent(\ssplx^0) 
+\cent(\ssplx_0) 
 &= \frac{1}{n}(\sv_1-\cent(\ssplx),\;\dots\;\sv_n-\cent(\ssplx))\one \\
 &= \frac{1}{n}(\sv_1\;\dots\;\sv_n)\one - \frac{1}{n}(\cent(\ssplx)\;\dots\;\cent(\ssplx))\one = \cent(\ssplx) - \cent(\ssplx)=\zero.
 \end{align*}
@@ -435,20 +495,17 @@ We will use the symbol $\cong$ to denote isomorphism or congruency between simpl
 We solidify the concept with a definition. 
 
 \begin{definition}
-	Given a simplex $\ssplx$, the unique (up to rotation and translation) simplex with vertex matrix $\Sv(\ssplx) - (\cent(\ssplx)\;\dots\;\cent(\ssplx))$ centred at the origin is called the \emph{canonical (or centred) simplex corresponding to $\ssplx$} and is denoted $\ssplx^0$. 
+	\label{def:centred_simplex}
+	Given a simplex $\ssplx$, the unique (up to rotation and translation) simplex with vertex matrix $\Sv(\ssplx) - (\cent(\ssplx)\;\dots\;\cent(\ssplx))$ centred at the origin is called the \emph{canonical (or centred) simplex corresponding to $\ssplx$} and is denoted $\ssplx_0$. 
 \end{definition}
 
-In order to discuss translations of simplices, we will introduce equivalence classes. Given a simplex $\splx$, define $[\splx]$ as the set of all simplices which have the same inter-vertex distances but whose vertices have all been shifted by some constant vector: 
-\[[\splx] \equiv \{\splx+\balpha\one^\tp:\balpha\in\R^{n-1}\}.\]
+We may also refer to $\ssplx_0$ as the \emph{centred version of $\ssplx$} in order  spare  the author the agony induced by writing out the complete  sentence ``corresponding to the simplex $\ssplx$''. 
 
  
- 
-
-
 
 \subsection{Dual Simplex}
 \label{sec:background_dual_simplex}
-Let $\Sv=(\sv_1,\dots,\sv_n)\in\R^{n-1\times n}$ be the vertex matrix of a simplex $\splx\subset\R^{n-1}$. For each $i\in[n-1]$, put $\v_i=\sv_n-\sv_i$. Then $\{\v_1,\dots,\v_{n-1}\}$ is a linearly independent set, and thus admits a sister basis $\{\bgamma_1,\dots,\bgamma_{n-1}\}$ which together form biorthogonal bases of $\R^{n-1}$ (Lemma \ref{lem:bi-orthogonal_bases}). Put $\bgamma_n = -\sum_{i=1}^{n-1}\bgamma_i$.  
+Let $\Sv=(\sv_1,\dots,\sv_n)\in\R^{n-1\times n}$ be the vertex matrix of a simplex $\ssplx\subset\R^{n-1}$. For each $i\in[n-1]$, put $\v_i=\sv_n-\sv_i$. Then $\{\v_1,\dots,\v_{n-1}\}$ is a linearly independent set, and thus admits a sister basis $\{\bgamma_1,\dots,\bgamma_{n-1}\}$ which together form biorthogonal bases of $\R^{n-1}$ (Lemma \ref{lem:bi-orthogonal_bases}). Put $\bgamma_n = -\sum_{i=1}^{n-1}\bgamma_i$.  
 
 \begin{claim}
 The set 
@@ -460,7 +517,7 @@ Suppose not and let $\{\beta_i\}$ be such that $\sum_i \beta_i \bgamma_i =\zero$
 implying that $\{\bgamma_i\}_{i=1}^{n-1}$ is linearly dependent; a contradiction.  
 \end{proof}
 
-Therefore, the set $\{\bgamma_1,\dots,\bgamma_n\}$ determines a simplex, which we call the \emph{dual simplex} of $\splx$. Of course, it would highly suboptimal if the notion of a dual simplex depended on the labelling of the vertices of $\splx$. More specifically, we defined the vertices of the dual simplex $\bgamma_i$ with respect to the vectors $\sv_i-\sv_n$. It is not clear a priori whether the vertices of the dual simplex would change were we to relabel the indices of $\{\sv_i\}$. In fact, they do not---the demonstration of which is the purpose of the following lemma. 
+Therefore, the set $\{\bgamma_1,\dots,\bgamma_n\}$ determines a simplex, which we call the \emph{dual simplex} of $\ssplx$. Of course, it would highly suboptimal if the notion of a dual simplex depended on the labelling of the vertices of $\ssplx$. More specifically, we defined the vertices of the dual simplex $\bgamma_i$ with respect to the vectors $\sv_i-\sv_n$. It is not clear a priori whether the vertices of the dual simplex would change were we to relabel the indices of $\{\sv_i\}$. In fact, they do not---the demonstration of which is the purpose of the following lemma. 
 
 \begin{lemma}
 	\label{lem:dual_vertices_well-defined}
@@ -499,13 +556,16 @@ hence had we set $\v_i=\sv_k-\sv_i$ and defined $\bgamma_k = -\sum_{i\neq k}\bga
 
 \begin{definition}[Dual Simplex]
 \label{def:dual_simplex}
-Given a simplex $\splx_1\subset\R^{n-1}$ with vertex set $\Sv(\splx_1)=(\sv_1,\dots,\sv_n)$, a simplex $\splx_2\subset \R^{n-1}$ with vertex vectors $\Sv(\splx_2)=(\bgamma_1,\dots,\bgamma_n)$ is called a \emph{dual simplex} of $\splx_1$ if for all $k\in[n]$, $\{\bgamma_i\}_{i\neq k}$ is the sister basis to $\{\sv_i-\sv_k\}_{i\neq k}$. We denote the dual of the simplex $\splx$ as $\splx^\du$. 
+Given a simplex $\ssplx_1\subset\R^{n-1}$ with vertex set $\Sv(\splx_1)=(\sv_1,\dots,\sv_n)$, a simplex $\ssplx_2\subset \R^{n-1}$ with vertex vectors $\Sv(\ssplx_2)=(\bgamma_1,\dots,\bgamma_n)$ is called a \emph{dual simplex} of $\ssplx_1$ if for all $k\in[n]$, $\{\bgamma_i\}_{i\neq k}$ is the sister basis to $\{\sv_i-\sv_k\}_{i\neq k}$. We denote the dual of the simplex $\ssplx$ as $\ssplx^\du$. 
 \end{definition}
 
 We remark that in light of the previous lemma that in order to determine whether the vertices $\{\bgamma_i\}$ are the dual vertices to $\{\sv_i\}$ it suffices to check whether $\la \bgamma_i,\sv_j-\sv_k\ra=\delta_{ij}$ for a single $k\neq i,j$, as opposed to all $k\in[n]$. This will be done henceforth and will not be further remarked upon. 
-We also note that duality between simplices is not a relationship between individual simplices per se, but rather assigns to each congruence class of simplices a centred simplex. Indeed, let $[\splx]$ be a congruence class of simplices such that for every $\splx_1,\splx_2\in[\splx]$, $\Sv(\splx_1) = \Sv(\splx_2) + \balpha\one^\tp$ for some $\alpha\in\R^{n-1}$ (i.e., $\splx_1$ is a shifted version of $\splx_2$). Let $\splx_1^\du$ have vertices $\{\sv_i^\du\}$. Then
-\[\la \sv_i^\du,(\sv_j-\balpha) - (\sv_n-\balpha)\ra = \la \sv_i^\du,\sv_j-\sv_n\ra=\delta_{ij}, \]
-meaning that $\splx_1^*$ is also dual to $\splx_2$. We encapsulate this in an observation for easy recollection. 
+We also note that duality between simplices is not a relationship between individual simplices per se, but rather assigns to congruence class $[\ssplx]$ a centred simplex. Indeed, let $\ssplx_1\in[\ssplx]$
+and  let $\Sv(\ssplx^\du)=(\sv_1^\du,\dots,\sv_n^\du)$. We claim that  the vertices $\Sv(\ssplx^\du)$ are also dual to $\Sv(\ssplx_1^\du)=(\bgamma_1,\dots,\bgamma_n)$. Let  $\balpha\in\R^{n-1}$  be such that $\bgamma_i = \sv_i + \balpha\one^\tp$. Then, 
+\begin{align*}
+\la \sv_i^\du,\bgamma_j-\bgamma_n\ra &= \la \sv_i^\du,(\sv_j+\balpha) - (\sv_n+\balpha)\ra = \la \sv_i^\du,\sv_j-\sv_n\ra=\delta_{ij},
+\end{align*}
+meaning that $\ssplx^*$ is also dual to $\ssplx_1$. We encapsulate this in an observation for easy recollection. 
 
 \begin{observation}
 	\label{obs:dual_centred}
@@ -513,11 +573,11 @@ meaning that $\splx_1^*$ is also dual to $\splx_2$. We encapsulate this in an ob
 \end{observation}
 
 
-Observe that the dual simplex is always centred by construction (since $\bgamma_n=-\sum_{i<n}\bgamma_i$).  The following lemma demonstrates that, in the language of the preceding paragraph, if $\splx^\du$ is the dual of the congruence class $[\splx]$, then the dual of $[\splx^\du]$ is the representative of $[\splx]$ which is centred. 
+Observe that the dual simplex is always centred by construction (since $\bgamma_n=-\sum_{i<n}\bgamma_i$).  The following lemma demonstrates that, in the language of the preceding paragraph, if $\ssplx^\du$ is the dual of the congruence class $[\ssplx]$, then the dual of $[\ssplx^\du]$ is the representative of $[\ssplx]$ which is centred. 
 
 \begin{lemma}
 	\label{lem:dual_of_dual}
-	Let a simplex $\splx\in\R^{n-1}$ have vertices $\Sv=(\sv_i)$, $\splx^\du$ have vertices $\Sv=(\sv_i^\du)$ and $(\splx^\du)^\du$ have vertices $(\bgamma_i)$. Then, after potential re-ordering, $\bgamma_i = \sv_i-\sv_n$. 
+	Let a simplex $\ssplx\in\R^{n-1}$ have vertices $(\sv_i)$, $\ssplx^\du$ have vertices $(\sv_i^\du)$ and $(\ssplx^\du)^\du$ have vertices $(\bgamma_i)$. Then, after potential re-ordering of the indices, $\bgamma_i = \sv_i-\sv_n$ for $i<n$. 
 \end{lemma}
 \begin{proof}
 	We are given that $\la \sv_i^\du,\sv_j-\sv_n\ra=\delta_{ij}$ and $\la \bgamma_i,\sv_j^\du-\sv_n^\du\ra=\delta_{ij}$. Since dual bases are unique, it suffices to show that $\sv_i-\sv_n$ satisfies the relationships of $\bgamma_i$, and indeed $\la \sv_i-\sv_n,\sv_j^\du-\sv_n^\du\ra = \la \sv_i,\sv_j^\du-\sv_n^\du\ra - \la \sv_n,\sv_j^\du-\sv_n^\du\ra = \delta_{ij} - \delta_{in} = \delta_{ij}$. 
@@ -531,12 +591,13 @@ We summarize the discussion with the following theorem.
 
 \begin{theorem}
 	\label{thm:dual_simplex}
-Each simplex has a unique dual simplex. Moreover, if $\splx^\du$ is the dual of $\splx$, then $\splx_0$ is the dual of $\splx^\du$, where $\splx_0\cong \splx$ is centred. 
-  
-\end{theorem}
+Each simplex has a unique dual simplex. Moreover, if $\ssplx^\du$ is the dual of $\ssplx$, then $\splx_0$ is the dual of $\splx^\du$, where $\splx_0\cong \splx$ is centred. 
+  \end{theorem}
 \begin{proof}
 Existence follows from Lemma \ref{lem:bi-orthogonal_bases} using the construction above. Uniqueness follows from Observation \ref{obs:bi-orthogonal_unique} and Lemma \ref{lem:dual_vertices_well-defined}. The second part of the statement follows from Lemma \ref{lem:dual_of_dual}. 
 \end{proof}
+
+We end  this section  on dual simplices by giving a necessary condition of the relationship between a simplex and its dual. 
 
 \begin{lemma}
 	\label{lem:dual_faces_orthogonal}
@@ -565,7 +626,7 @@ There are several angles worth discussing in a simplex. For a simplex $\ssplx$, 
  \begin{equation*}
 \cos \phi_{ij}(\ssplx) = \frac{\la \bgamma_i,\bgamma_j\ra }{\norm{\bgamma_i}_2 \cdot \norm{\bgamma_j}_2},
 \end{equation*}
-where $\{\bgamma_i\}$ are the vertices of $\ssplx^D$. 
+where $\{\bgamma_i\}$ are the vertices of $\ssplx^\du$. 
 Now, define $\theta_{ij}(\ssplx)$ to be the angle between $\ssplx_\ic$ and $\ssplx_\jc$. Appealing to elementary geometry, we see that the angles $\phi_{ij}$ and $\theta_{ij}$ are \emph{supplementary}, i.e., their sum is $\pi$. Hence, 
 \begin{equation}
 \label{eq:cos_theta_ij}

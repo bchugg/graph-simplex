@@ -1,10 +1,4 @@
-\newcommand{\etalchar}[1]{$^{#1}$}
 \begin{thebibliography}{VMDC17}
-
-\bibitem[AALG17]{alev2017graph}
-Vedat~Levi Alev, Nima Anari, Lap~Chi Lau, and Shayan~Oveis Gharan.
-\newblock Graph clustering using effective resistance.
-\newblock {\em arXiv preprint arXiv:1711.06530}, 2017.
 
 \bibitem[ARV09]{arora2009expander}
 Sanjeev Arora, Satish Rao, and Umesh Vazirani.
@@ -60,6 +54,11 @@ Stephen~A Cook.
 \newblock The complexity of theorem-proving procedures.
 \newblock In {\em Proceedings of the third annual ACM symposium on Theory of
   computing}, pages 151--158. ACM, 1971.
+
+\bibitem[CZ07]{chen2007resistance}
+Haiyan Chen and Fuji Zhang.
+\newblock Resistance distance and the normalized laplacian spectrum.
+\newblock {\em Discrete Applied Mathematics}, 155(5):654--661, 2007.
 
 \bibitem[DG03]{dasgupta2003elementary}
 Sanjoy Dasgupta and Anupam Gupta.
@@ -204,6 +203,11 @@ Brendan~D McKay and Adolfo Piperno.
 \newblock Practical graph isomorphism, ii.
 \newblock {\em Journal of Symbolic Computation}, 60:94--112, 2014.
 
+\bibitem[Pap03]{papadimitriou2003computational}
+Christos~H Papadimitriou.
+\newblock {\em Computational complexity}.
+\newblock John Wiley and Sons Ltd., 2003.
+
 \bibitem[PC99]{pan1999complexity}
 Victor~Y Pan and Zhao~Q Chen.
 \newblock The complexity of the matrix eigenproblem.
@@ -246,12 +250,6 @@ Ernst Steinitz.
 Andrew~James Stothers.
 \newblock On the complexity of matrix multiplication.
 \newblock 2010.
-
-\bibitem[V{\etalchar{+}}13]{vishnoi2013lx}
-Nisheeth~K Vishnoi et~al.
-\newblock Lx= b.
-\newblock {\em Foundations and Trends{\textregistered} in Theoretical Computer
-  Science}, 8(1--2):1--141, 2013.
 
 \bibitem[VM13]{van2013double}
 P~Van~Mieghem.

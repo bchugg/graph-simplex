@@ -14,11 +14,11 @@ A level-1 auxiliary file: algorithmic_implications.aux
 A level-1 auxiliary file: conclusion.aux
 The style file: alpha.bst
 Database file #1: ref.bib.bib
-I was expecting a `,' or a `}'---line 270 of file ref.bib.bib
+I was expecting a `,' or a `}'---line 288 of file ref.bib.bib
  :  notes="(English transl. IRE Trans. Circuit Theory CT-5 (1958), 4-7)"
  :                                                                      .
 I'm skipping whatever remains of this entry
-Repeated entry---line 304 of file ref.bib.bib
+Repeated entry---line 322 of file ref.bib.bib
  : @incollection{karp1972reducibility
  :                                   ,
 I'm skipping whatever remains of this entry
@@ -30,43 +30,43 @@ Warning--can't use both volume and number fields in penrose1956best
 Warning--empty journal in stothers2010complexity
 You've used 50 entries,
             2543 wiz_defined-function locations,
-            868 strings with 11246 characters,
-and the built_in function-call counts, 19369 in all, are:
-= -- 2027
-> -- 690
-< -- 48
-+ -- 220
-- -- 212
-* -- 1274
-:= -- 3073
+            867 strings with 11184 characters,
+and the built_in function-call counts, 19256 in all, are:
+= -- 2014
+> -- 667
+< -- 49
++ -- 210
+- -- 202
+* -- 1260
+:= -- 3045
 add.period$ -- 163
 call.type$ -- 50
-change.case$ -- 271
+change.case$ -- 268
 chr.to.int$ -- 50
 cite$ -- 56
-duplicate$ -- 867
-empty$ -- 1500
-format.name$ -- 288
-if$ -- 4058
+duplicate$ -- 870
+empty$ -- 1507
+format.name$ -- 280
+if$ -- 4042
 int.to.chr$ -- 1
 int.to.str$ -- 0
-missing$ -- 55
-newline$ -- 254
+missing$ -- 56
+newline$ -- 253
 num.names$ -- 150
-pop$ -- 262
+pop$ -- 265
 preamble$ -- 1
-purify$ -- 329
+purify$ -- 327
 quote$ -- 0
-skip$ -- 715
+skip$ -- 713
 stack$ -- 0
-substring$ -- 1220
+substring$ -- 1226
 swap$ -- 173
-text.length$ -- 48
-text.prefix$ -- 27
+text.length$ -- 49
+text.prefix$ -- 28
 top$ -- 0
-type$ -- 372
+type$ -- 368
 warning$ -- 6
-while$ -- 202
+while$ -- 201
 width$ -- 52
-write$ -- 655
+write$ -- 654
 (There were 2 error messages)

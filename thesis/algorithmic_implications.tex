@@ -14,8 +14,8 @@ We begin with asymptotic notation which will be used to analyze the running time
 \paragraph{Simplex representations.}
 In order to discuss the algorithmics pertaining to simplices and convex polyhedra in general, we must discuss how such objects are represented by a machine. Clearly, we cannot simply enumerate all the points enclosed by a body in high-dimensional space. Instead we must concisely represent the boundaries of the polytope. The two most common such descriptions are 
 \begin{itemize}
-	\item \emph{\vdesc}, in which we are given the vertex vectors of the polytope; 
-	\item \emph{\hdesc}, in which we are given the parameters of the half-spaces whose intersection defines the polytope. That is, if $\ssplx=\bigcap_i \{\x:\la \z_i,\x\ra \geq b_i\}$, then an \hdesc of $\ssplx$ would be the vectors $\{\z_i\}$ and the scalars $\{b_i\}$. 
+	\item \textsf{V}-\emph{description}, in which we are given the vertex vectors of the polytope; 
+	\item \textsf{H}-\emph{description}, in which we are given the parameters of the half-spaces whose intersection defines the polytope. That is, if $\ssplx=\bigcap_i \{\x:\la \z_i,\x\ra \geq b_i\}$, then an \hdesc of $\ssplx$ would be the vectors $\{\z_i\}$ and the scalars $\{b_i\}$. 
 \end{itemize}
 
 It's not at all clear whether these descriptions are equivalent in the sense that one can easily generate one from the other. Indeed, the complexity of vertex enumeration (generating a \vdesc from an \hdesc) and facet enumeration (generating an \hdesc from a \vdesc) remains an open problem for general polytopes~\cite{kaibel2003some}, although there exist polynomial time algorithms when the polytopes are simplices (e.g., \cite{bremner1998primal}). We will return to this fact later on. 
@@ -24,7 +24,13 @@ It's not at all clear whether these descriptions are equivalent in the sense tha
 Some background on computational models and reductions will also be useful. For more details see~\cite{kleinberg2006algorithm} or \cite{knuth2011art}. We will use the typical computational model for analyzing algorithms. Without diving too far into the minutiae, we assume that single arithmetic operations require $O(1)$-time, i.e., constant. We will analyze the runtime of an algorithm as a function of how many bits it takes to represent the input. A common tool for providing upper bounds on the runtime of an algorithm is to ``reduce'' it to a problem for which a bound is already known. Assume problem $P$ requires time $\Omega(f_P(n))$ to solve---meaning that \emph{any} algorithm requires time $\Omega(f_P(n))$---where $n$ represents the size of the input and $f_P(n)$  is some function of $n$, e.g., $f_P(n) =  n^2\log n$. Let $Q$ be a distinct problem and suppose that for every instance of $P$ we can transform the input of $P$ to a valid input for $Q$, and transform the output of $Q$ to a valid output of $P$, both in time $O(f_P(n))$.  We have then established that $f_Q(n) = \Omega(f_P(n))$, where $f_Q$ the runtime required to solve $Q$, since we can solve $P$ in time $f_Q(n) + O(f_P(n))$ by transforming any input to $P$ to the input of $Q$, solving $Q$, and transforming the output back. Such a technique will be used extensively throughout the next few sections. 
 
 \paragraph{The complexity classes \NP, \NP-hard, and \NP-Complete.}
+For brevity, we restrict ourselves to a very brief presentation of these concepts. The interested reader can find more background in any reference  on computational  complexity theory. 
 
+The class \NP  is  the set of all decision problems\footnote{That is,  problems  to which we seek a yes/no answer.} which have solutions which are \emph{verifiable} in polynomial time. It is possible, for example, to check  in polynomial time whether  a given  set is in fact an independent set of a certain size. Thus the decision variant of \iset lies in \NP. \NP stands for ``non-deterministic polynomial time'', as it is formally the set of all  decision problems solvable by a non-deterministic Turing  Machine~\cite{papadimitriou2003computational}. 
+
+The class \NP-hard comprises all the problems to  which  any problem in \NP can be reduced in polynomial time (see above). That is, $P\in\NP$-hard iff for all  $Q\in\NP$,  $Q$ can be  reduced to $P$ in polynomial time. Thus,  to show that $P\in\NP$-hard, it suffices to reduce another problem $R\in\NP$-hard to  $P$ (in polynomial time) since,  in this  case, if all problems in \NP are  reducible  to  $R$  they are in turn  reducible  to  $P$. We  tend to think of \NP as the set of ``hard'' problems. 
+
+Finally,  the class \NP-complete is the intersection of the classes \NP and  \NP-hard. Informally then, it is  the  class of all ``hard'' decision problems. 
 
 
 
@@ -126,12 +132,12 @@ We can play a similar game by using the relationships furnished by the normalize
 
 Next we extract a result based on the most (in)famous problem in computational graph theory: Graph isomorphism. An \emph{isomorphism} between two graphs $G_1$ and $G_2$ is a bijection $f:V(G_1)\to V(G_2)$ such that $(u,v)\in E(G_1)$ iff $(f(u),f(v))\in E(G_2)$. We write $G_1\cong G_2$ if $G_1$ is isomorphic to $G_2$. The \graphiso problem asks, given $G_1,G_2$ whether they are isomorphic. 
 It's clear that $\graphiso\in\NP$, but whether it is \NP-complete remains an open question~\cite{mckay2014practical}. L{\'a}szl{\'o} Babai recently claims to have solved the problem in  quasipolynomial time~\cite{babai2016graph}; the work is still being verified. 
-Accordingly, we call a problem Graph-Isomorphism-Hard if it can be reduced to to \graphiso. 
+Accordingly, we call a problem \emph{Graph Isomorphism Hard} if it can be reduced to to \graphiso. 
 The more general problem of \emph{subgraph} isomorphism, which asks whether $G_1$ has a subgraph isomorphic to $G_2$, is \NP-complete~\cite{cook1971complexity, karp1972reducibility}. We are interested in the relationship between graph isomorphism and polytope congruence.  
 
 \begin{theorem}
 	\label{thm:simplex_congruence}
-Deciding whether two hyperacute simplices are congruent is Graph-Isomorphism-Hard. Moreover, given two hyperacute simplices $\splx_1\in\R^d$ and $\splx_2\in\R^k$, deciding whether there exists $k$-dimensional face of $\splx_1$ congruent to $\splx_2$ is \NP-hard. 
+Deciding whether two hyperacute simplices are congruent is Graph Isomorphism Hard. Moreover, given two hyperacute simplices $\splx_1\in\R^d$ and $\splx_2\in\R^k$, deciding whether there exists $k$-dimensional face of $\splx_1$ congruent to $\splx_2$ is \NP-hard. 
 \end{theorem}
 \begin{proof}
 	Let two graphs $G_1$ and $G_2$ be given. Compute their corresponding inverse simplices $\splx_1^+$ and $\splx_2^+$. 
@@ -240,7 +246,7 @@ An alternate way of seeing that constructing the inverse simplex from its dual i
  
  \begin{lemma}
  	\label{lem:S_vdesc_to_hdesc}
-	 Suppose we can compute an \hdesc of $\splx$ (resp., $\splx^+$) )given its \vdesc in time $t(n)$. Then a \vdesc of $\splx^+$ (resp., $\splx$) is recoverable in time $t(n) + O(n^2)$, implying by Lemma \ref{lem:S_to_S^+_vdesc} that $t(n) = \Omega(n^\tau)$. 
+	 Suppose that in time $t(n)$ we can compute an \hdesc of $\splx$ (resp., $\splx^+$) given its \vdesc. Then a \vdesc of $\splx^+$ (resp., $\splx$) is recoverable in time $t(n) + O(n^2)$, implying by Lemma \ref{lem:S_to_S^+_vdesc} that $t(n) = \Omega(n^\tau)$. 
  \end{lemma}
 
 We also note that a consequence of the relationship between the vertices of $\splx$ and the \hdesc of $\splx^+$ that given \vdesc of $\splx$ or $\splx^+$, we have immediate access to the \hdesc of its inverse. 
@@ -297,43 +303,44 @@ Due to the fact that $\splxn_G^+$ is not the dual of $\splxn_G$ Lemma \ref{lem:h
 
 
 \paragraph{Verification.}
-In time $O(n^{2.3727})$ we can compute $\Sv^\tp\Sv$. We can check whether this is equal to $\L_G$ for some $G$ by verifying whether (i) $\Sv^\tp\Sv\one=\zero$, (ii) $(\Sv^\tp\Sv)(i,i)>0$ for all $i$ and (iii) $(\Sv^\tp\Sv)(i,j)\leq 0$ for all $i\neq j$. These three steps require time $O(n^3)$. We can check whether $\Sv^\tp\Sv$ is equal to $\Ln_G$ for some $G$ by first ensuring, similarly to above, that (iii) holds and that $(\Sv^\tp\Sv)(i,i)=1$ for all $i$. Then we compute the kernel  of $\Sv^\tp\Sv$ in cubic time by means of Gaussian elimination~\cite{kailath1999fast} to obtain a vector $\v$ equal to $\sqrt{\w_G}$ (if indeed $\Sv^\tp\Sv=\Ln_G$) up to scaling. To determine whether $\v$ does represent valid weightings of the vertices, we check whether $(\Sv^\tp\Sv)(i,j)\v(j)$ is constant for all $i$. In  this case $\Sv^\tp\Sv$ is equal to the normalized Laplacian of some graph. This can also be done in cubic time. Therefore, 
+We  now turn  to discussing the complexity of  verifying whether  a given simplex is the simplex of graph. 
+In time $O(n^{2.3727})$ we can compute $\Sv^\tp\Sv$. We can check whether this is equal to $\L_G$ for some $G$ by verifying whether (i) $\Sv^\tp\Sv\one=\zero$, (ii) $(\Sv^\tp\Sv)(i,i)>0$ for all $i$ and (iii) $(\Sv^\tp\Sv)(i,j)\leq 0$ for all $i\neq j$. These three steps require time $O(n^3)$. We can check whether $\Sv^\tp\Sv$ is equal to $\Ln_G$ for some $G$ by first ensuring, similarly to above, that (iii) holds and that $(\Sv^\tp\Sv)(i,i)=1$ for all $i$. Then we compute the kernel  of $\Sv^\tp\Sv$ in cubic time by means of Gaussian elimination~\cite{kailath1999fast} to obtain a vector $\v$ equal to $\sqrt{\w_G}$ (if indeed $\Sv^\tp\Sv=\Ln_G$) up to scaling. To determine whether $\v$ does represent valid weightings of the vertices, we check whether $(\Sv^\tp\Sv)(i,j)\v(j)$ is constant for all $i$. In  this case $\Sv^\tp\Sv$ is equal to the normalized Laplacian of some graph. This can also be done in cubic time. We  therefore see that we can  verify whether a given simplex is the combinatorial or  normalized simplex of a graph in  cubic time. It's not clear whether it can be done faster, however. \note{Unsure, think about this.}
 
-Moreover, in cubic time we can check whether all the angles $\theta_{ij}$ between the faces $\ssplx_\ic$ and $\ssplx_\jc$ are non-obtuse, in which case $\ssplx$ is the inverse simplex of some graph. Beyond computing $\Sv(\ssplx)^\tp \Sv(\ssplx)$ however, it's not clear how to obtain the original graph or the combinatorial simplex. 
-
-
-
-
+Moreover, we note that in cubic time we can check whether all the angles $\theta_{ij}$ between the faces $\ssplx_\ic$ and $\ssplx_\jc$ are non-obtuse, in which case $\ssplx$ is the inverse simplex of some graph. 
 
 
 \section{Approximations} 
 \label{sec:algorithmics_approximations}
 Here we are concerned  with  approximations of various sorts. We begin  with an eye towards the problem of  dimensionality. Specifically, Theorem ~\ref{thm:graph-simplex} yields simplices of dimension $n-1$ for a graph on $n$ vertices. In  many application areas, graphs may have thousands  to  millions of vertices. Working in a Euclidean space  of  this  size can be unwieldy. Our  first  result, therefore, demonstrates that we can ``approximate'' the simplex in a lower dimensional space. 
 
-\subsection{Embedding \texorpdfstring{$\splx$}{the simplex} in lower dimensions}
-The idea is to  map each vertex to a  point in $\R^d$, for $d\ll n$, while maintaining the general form of the simplex. By this we mean that we'd like the distance between the new  points  to remain approximately  as they  were. If possible, we'd also  like to new, lower  dimensional  object (note that it won't  be  a simplex because there will  be  $n$ points in $ R^d$) to retain some of the properties which  relate it  to the underlying graph. In  particular, we'd like the gram matrix  of the new  points to  approximate the gram  matrix of the original  set  of points. As it turns out,  a  mapping meeting both  of these criteria exists and is computable  in polynomial time. It will   rely on the Johnson-Lindenstrauss Lemma~\cite{johnson1984extensions,dasgupta2003elementary}. 
+\subsection{Embedding \texorpdfstring{$\splx^+$}{the inverse simplex} in lower dimensions}
+\label{sec:algorithmics_JL}
+The idea is to  map each vertex to a  point in $\R^d$, for $d\ll n$, while maintaining the general form of the simplex. By this we mean that we'd like the distance between the new  points  to remain approximately  as they  were. If possible, we'd also  like to new, lower  dimensional  object (note that it won't  be  a simplex because there will  be  $n$ points in $ R^d$) to retain some of the properties which  relate it  to the underlying graph. In  particular, we'd like the gram matrix  of the new  points to  approximate the gram  matrix of the original  set  of points. As it turns out,  a  mapping meeting both  of these criteria exists and is computable  in polynomial time. It will   rely on the Johnson-Lindenstrauss  (JL) Lemma~\cite{johnson1984extensions,dasgupta2003elementary}. 
 
-\begin{theorem}[Johnson-Lindenstrauss Lemma]
-	Let $E\subset \R^k$ be a set of $n$ points, for some $k\in\N$. For any $\eps>0$ and $d\geq 8\log(n)\eps^{-2}$ there exists a map $g_\eps:\R^k\to\R^d$ such that 
+\begin{theorem}[Johnson-Lindenstrauss]
+	Let $\X\subset \R^k$ be a set of $n$ points, for some $k\in\N$. For any $\eps>0$ and $d\geq 8\log(n)\eps^{-2}$ there exists a map $g_\eps:\R^k\to\R^d$ such that 
 	\begin{equation*}
 	(1-\eps)\norm{\u-\v}_2^2 \leq \norm{g_\eps(\u) - g_\eps(\v)}_2^2 \leq (1+\eps)\norm{\u-\v}_2^2,
 	\end{equation*}
-	for all $\u,\v\in E$. 
+	for all $\u,\v\in \X$. 
 \end{theorem}
 
+%Thus $\norm{\sv_i^+-\o}_2^2 = \L_G^+(i,i)$ for all $i$. Note that we can compute this in linear time since 
+%\[\norm{\sv_i^+-\o}_2^2 = \norm{\sv_i^+}_2^2 = \frac{1}{W(\delta(\{i\}))}=\frac{1}{w(i)}.\]
 
-Consider inverse simplex for which we have $\norm{\sv_i^+-\sv_j^+}_2^2=r(i,j)$ where $r(i,j)$ is the effective resistance between vertices $i$ and $j$. Add a point $\o$ which is the centroid of these points. Thus $\norm{\sv_i^+-\o}_2^2 = \L_G^+(i,i)$ for all $i$. Note that we can compute this in linear time since 
-\[\norm{\sv_i^+-\o}_2^2 = \norm{\sv_i^+}_2^2 = \frac{1}{W(\delta(\{i\}))}=\frac{1}{w(i)}.\]
 
-Applying JL transform to obtain $n+1$ points in $\R^d$, for $d=O(\log(n)/\eps^2)$. Let $f$ be the mapping, e.g., $\sv_i^+$ mapped to $f(\sv_i^+)$. By JL, have 
-
+Now, let us suppose we have the vertices $\{\sv_i^+\}$ of the inverse simplex. Let $\X = \{\sv_i^+\}\cup\{\zero\}$. Apply the JL Lemma to $\X$ to  obtain $n+1$ points in $\R^d$, for $d=O(\log(n)/\eps^2)$. Let $f$ be the mapping, e.g., $\sv_i^+$ is sent to $f(\sv_i^+)$. By JL, have 
 \[(1-\eps)\norm{\x-\y}_2^2\leq  \norm{f(\x) -f(\y)}_2^2\leq (1+\eps)\norm{\x-\y}_2^2, \]
-for all $\x,\y\in \{\sv_1^+,\dots,\sv_n^+,\o\}$. 
-Apply a linear transformation to the points so that $f(\o)$ coincides with the origin $\zero\in\R^d$. Note that this does not affect the distances between the points themselves, and does not damage the approximation. Update $f$ to reflect this transformation. Then, 
-\[\norm{f(\sv_i^+)}_2^2 = \norm{f(\sv_i^+)-f(\o)}_2^2 = (1+\eps_{i,\o})\norm{\sv_i^+-\o}_2^2 = (1+\eps_{i,\o})\L_G^+(i,i).\]
-Hence, 
+for all $\x,\y\in \{\sv_1^+,\dots,\sv_n^+,\zero\}$. 
+Apply a linear transformation to the points so that $f(\zero)$ coincides with the origin $\zero\in\R^d$. Note that this does not affect the distances between the points themselves, and does not damage the approximation. Update $f$ to reflect this transformation. 
+For all $i,j$, let $\eps_{i,j}$ denote the true error of the mapping, i.e., 
+\[\norm{f(\sv_i^+)-f(\sv_j^+)}_2^2 = (1+\eps_{i,j})\norm{\sv_i^+-\sv_j^+}_2^2,\]
+where $|\eps_{i,j}|\leq \eps$. Define $\eps_{i,\zero}$ similarly. 
+Then, 
+\[\norm{f(\sv_i^+)}_2^2 = \norm{f(\sv_i^+)-f(\zero)}_2^2 = (1+\eps_{i,\o})\norm{\sv_i^+}_2^2 = (1+\eps_{i,\o})\L_G^+(i,i),\]
+hence, 
 \begin{align*}
-\norm{f(\sv_i^+)-f(\sv_j+)}_2^2 &= \la f(\sv_i^+)-f(\sv_j^+),f(\sv_i^+)-f(\sv_j+)\ra \\
+\norm{f(\sv_i^+)-f(\sv_j^+)}_2^2 &= \la f(\sv_i^+)-f(\sv_j^+),f(\sv_i^+)-f(\sv_j+)\ra \\
 &= \norm{f(\sv_i^+)}_2^2 + \norm{f(\sv_j^+)}_2^2 - 2\la f(\sv_i^+),f(\sv_j^+)\ra,  
 \end{align*}
 implying that 
@@ -347,7 +354,7 @@ implying that
 where 
 \[\varepsilon(i,j)\equiv \frac{1}{2}(\eps_{i,\o}-\eps_{i,j})\L_G^+(i,i) + (\eps_{j,\o}-\eps_{i,j})\L_G^+(i,j),\]
 is an error term dictated by $\eps_{i,j}, \eps_{i,\o}$ and $\eps_{j,\o}$. Setting 
-\[M\equiv \max_i \L_G^+(i,i),\]
+\[M= \max_i \L_G^+(i,i),\]
 we can bound the error term via repeated applications of the triangle inequality: 
 \begin{align*}
 |\varepsilon(i,j)|& \leq \frac{1}{2}\bigg(|(\eps_{i,\o}-\eps_{i,j})\L_G^+(i,i)| + |(\eps_{j,\o}-\eps_{i,j})\L_G^+(i,j|\bigg) \\
@@ -364,17 +371,21 @@ The JL mapping maintains other approximate information of the graph.  For  examp
 \begin{equation*}
 	\effr(i,j) = \frac{1}{w(i,j)} \Pr_{T\sim \mu}[(i,j)\in T],
 \end{equation*}
-where $\mu$ is the uniform distribution over all spanning trees~\cite{burton1993local}. 
+where $\mu$ is the uniform distribution over all spanning trees~\cite{burton1993local}. Hence, 
+\begin{equation*}
+\norm{f(\sv_i^+)-f(\sv_j^+)}_2^2 \in \frac{1}{w(i,j)}[(1-\eps),(1+\eps)]\Pr_{T\sim \mu}[(i,j)\in T].
+\end{equation*}
 	
 
 
 
 
-\subsection{Approximating the  distances of \texorpdfstring{$\splx_G^+$}{the inverse simplex}}
-
+\subsection{Approximating the  distances of \texorpdfstring{$\splx^+$}{the inverse simplex}}
+Here we  remark that we can leverage an elegant result of Spielman and Srivastava~\cite{spielman2011graph} in order to approximate  the distance matrix $\D(\{\sv_i^+\})$. 
 
 
 \begin{theorem}[\cite{spielman2011graph}]
+	\label{thm:er_approximation}
 	For any $\eps>0$ and graph $G=(V,E,w)$, there exists an algorithm which computes a matrix $\widetilde{\Reff}\in\R^{O(\log(n)\eps^{-2})\times n}$ such that 
 	\begin{equation*}
 	(1-\eps)r(i,j) \leq \norm{\widetilde{\Reff}(\bchi_i-\bchi_j)}_2^2 \leq (1+\eps) r(i,j).
@@ -383,21 +394,22 @@ where $\mu$ is the uniform distribution over all spanning trees~\cite{burton1993
 	\[r=\frac{\max_{i,j}w(i,j)}{\min_{i,j}w(i,j)}.\]
 \end{theorem}
 
-Given a graph $G=(V,E,w)$, we can compute all the approximate distances $\norm{\sv_i^+-\sv_j^+}_2^2=r(i,j)$ in time \[\widetilde{O}(|E|\log (r)/\eps^2)+O(|E| \log(n)/\eps^2)=\widetilde{O}(|E|/\eps^2),\]
+
+Given a graph $G=(V,E,w)$, we use the algorithm of Theorem \ref{thm:er_approximation} to compute all the approximate distances $\norm{\sv_i^+-\sv_j^+}_2^2=\effr(i,j)$ in time \[\widetilde{O}(|E|\log (r)/\eps^2)+O(|E| \log(n)/\eps^2)=\widetilde{O}(|E|/\eps^2),\]
 assuming $r=O(1)$. Note that we can compute a single effective resistance in time $O(\log n/\eps^2)$, since it involves simply computing the $\ell_2$ norm the vector $\widetilde{\Reff}(\bchi_i-\bchi_j)$ which is simply the difference of two columns of $\widetilde{\Reff}$. 
 
 
 
+\note{Will say more, but unclear exactly where this is heading.} 
 
 
 
 
+\subsection{Low Rank Approximations of \texorpdfstring{$\L_G$}{the Laplacian}}
+\label{sec:algorithmics_low_rank}
+In Section  \ref{sec:algorithmics_JL}, we asked how to reduce the  dimension of the  simplex  while (approximately) maintaining several of its  properties. However,  we might instead  reduce the dimensionality of the  Laplacian. This section explores this prospect. 
 
 
-
-\paragraph{Low Rank Approximation}
-
-\note{Define low rank approximation}
 Let us suppose the we have obtained a low rank---$k$, say---approximation of $\L_G$, written $\tL$. We might then ask several questions: 
 \begin{enumerate}
 	\item Is $\tL$ still a gram matrix? That is, can $\tL$ be written $\tSv^\tp\tSv$ where $\tSv$ is the vertex matrix of some set of points, $P=\{\p_1,\dots,\p_\ell\}$? If so, what is the relationship between $\Sv$ and $\tSv$, where $\Sv=\Sv(\splx_G)$ is the usual vertex matrix of the combinatorial simplex of $G$? If $\tL$ has rank $k$ then $P$ spans a subspace of dimension $k$ and $\conv(P)$ forms a polytope in that space. What is the relationship between the geometry of $\conv(P)$ and $\splx_G$?
@@ -406,6 +418,7 @@ Let us suppose the we have obtained a low rank---$k$, say---approximation of $\L
 
 Of course, we have chosen to work with $\L_G$ and $\splx_G$ for convenience; we could have asked the same questions of $\Ln_G$ and $\splxn_G$. 
 
+\note{Still working on this ---  unsure if there's anything here.}
 Let us examine a specific low rank approximation proposed by Drineas and Mahoney~\cite{drineas2005approximating}, which finds low rank approximations to Gram matrices. We will give a brief overview of their method in general, and then elaborate on how it applies to our case in particular. Let $\M\in\R^{n\times m}$ be a gram matrix. Using the probability distribution $F(i) = \M(i,i)^2 / \tr(\M^2)$ sample $a\leq m$ columns of $\M$ independently at random and with replacement, where $a$ is some given parameter. Let $I\subset[n]$, $|I|\leq a$, be the indices of sampled columns. Let $\bC\in\R^{n\times a}$ be the matrix formed by these columns (that is, $\bC=\M(\cdot,I)$).  Let $\Q$ be the matrix $\M(I,I)\in\R^{a\times a}$, i.e., the submatrix of $M$ with entries corresponding to indices in $I$, and $\Q^+_k$  the optimal rank $k$-approximation to $\Q^+$, the pseudoinverse of $\Q$ (section \ref{sec:background_pseudoinverse}). The low rank approximation to $\M$ is then 
 \begin{equation*}
 \tM \equiv \bC\M(I,I)_k^+\bC^\tp.

@@ -7,7 +7,9 @@ The previous chapter introduced the graph-simplex correspondence and devoted sev
 
 \section{Block Matrix Equations}
 \label{sec:block_matrix}
-In this section we derive matrix equations which relate the geometry of hyperacute simplices and their duals. The equations appeal to the relationship between hyperacute simplices and graphs by using well known results from the literature on electrical networks and effective resistance. The goal of this section is to demonstrate to the reader the utility of the graph-simplex correspondence in generating statements about hyperacute simplices, by hijacking our knowledge of graph theory. 
+In this section we present matrix equations pertaining to both hyperacute simplices and the effective resistance of graphs. The equations appeal to the relationship between hyperacute simplices and graphs by using well known results from the literature on electrical networks and effective resistance. The goal of this section is to demonstrate to the reader the utility of the graph-simplex correspondence in generating statements about hyperacute simplices by hijacking our knowledge of graph theory,  and vice versa. 
+
+We begin with a block matrix equation describing some aspects of  the geometry between a  hyperacute simplex and its dual. It is closely related to an equation given by Fiedler in Theorem 1.4.1 in \cite{fiedler2011matrices}. Instead  of a direct proof, we use the results of Van Mieghem \etal~\cite{van2017pseudoinverse} and prove it by leveraging aspects of the effective resistance of a graph.  
 
 Let a centred, hyperacute simplex $\ssplx$ be given.  Let $\bar{d}$ be the average squared distance between all the vertices of $\ssplx$, that is
 \begin{equation}
@@ -144,9 +146,11 @@ The relation between the Menger matrix and the volume combined with the matrix e
 \begin{lemma}
 	Let $\ssplx\subset\R^{n-1}$ be a hyperacute simplex, and let $G$ be its associated graph. Then $\ssplx$'s $n-1$ dimensional volume is 
 	\begin{equation*}
-	\vol(\ssplx) = \frac{1}{(n-1)!\cdot \Gamma_G}. 
+	\vol(\ssplx) = \frac{1}{(n-1)!\cdot \Gamma_G},
 	\end{equation*}
+	where $\Gamma_G$ is the total weight of all spanning  trees of $G$. 
 \end{lemma}
+We remind the reader that $\Gamma_G$ was discussed in  Section~\ref{sec:background_laplacian_spectrum}; see  Equation~\ref{eq:Gamma_G}  in particular. 
 Before proceeding to the proof, we remind the reader of the equation of the determinant of a matrix in terms of its co-factor expansion. Let $\Q\in\R^{m\times m}$. For any $i,j\in[m]$, let $\Q_{-i,-j}$ denote the matrix obtained by removing row $i$ and column $j$ from $\Q$. The cofactor expansion along row $i\in[n]$ is the relationship
 \begin{equation*}
 \det(\Q) = \sum_{k=1}^m (-1)^{i+k} \Q(i,k)\det(\Q_{-i,-k}),
@@ -267,6 +271,7 @@ Sharpe~\cite{sharpe1967theorem} said something about something which should prob
 
 
 \section{Inequalities}
+\label{sec:inequalities}
 In this section we demonstrate how the graph-simplex may be used to obtain both geometric and graph-theoretic inequalities. We begin with an inequality relating the quadratic form $\L$ to the ``weight'' of the cuts associated with the pseudoinverse.  It was first proved by Devriendt and Van Mieghem~\cite{devriendt2018simplex}. 
 
 

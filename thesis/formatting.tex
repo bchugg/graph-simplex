@@ -1,6 +1,6 @@
 % General
 \allowdisplaybreaks
-\setlength{\headheight}{14pt}
+\setlength{\headheight}{14.8pt}
 \setlength{\parskip}{0.5em}
 
 
@@ -37,12 +37,9 @@ citecolor=darkblue
 
 
 
-
-
-
-% Chapter styling without line, for toc, bib, etc. 
+% Chapter styling without line for frontmatter and backmatter.  
 \newcommand{\chapstylenoline}{\titleformat
-{\chapter}[block]{\sc}{\centering Chapter \ \thechapter}{0.1in} 
+{\chapter}[block]{}{}{0.1in} 
 {
     \centering 
     \vspace{0.1in}
@@ -54,27 +51,28 @@ citecolor=darkblue
 ]
 }
 
-% Chapter styling with line, for actual thesis chapters
+% Chapter styling with line, for midmatter chapters. 
 \newcommand{\chapstylewithline}{
-\titleformat
-{\chapter}[block]{\sc}{\centering Chapter \ \thechapter}{0.1in} 
-{
-    \centering 
-    \\\rule{12cm}{0.9pt}\\
-    \vspace{0.1in}
-    \centering\bfseries\large
-} 
-[
-\vspace{-1ex}
-%\rule{\textwidth}{0.3pt}
-]
+	\titleformat
+	{\chapter}[block]{}{\centering {\sc Chapter} \ \thechapter}{0.1in} 
+	{
+		\centering 
+		\\\rule{12cm}{0.9pt}\\
+		\vspace{0.1in}
+		\centering\bfseries\large
+	} 
+	[
+	\vspace{-1ex}
+	%\rule{\textwidth}{0.3pt}
+	]
 }
 
 
+
+%% Export Various Stylings for frontmatter, midmatter and backmatter
 
 
 % Export front matter styling
-
 \newcommand{\frontmatterstyling}{
 \chapstylenoline
 \pagenumbering{roman}
@@ -95,18 +93,7 @@ citecolor=darkblue
 \let\secsymbol\S
 \titleformat{\section}[block]{\normalfont\bfseries}{\secsymbol\thesection.}{0.5em}{\centering}[]
 \titleformat{\subsection}[block]{\normalfont\it}{\thesubsection.}{0.5em}{\centering}[\vspace{-0.6cm}\rule{\titlewidth}{0.5pt}\vspace{0.3cm}]
-\titleformat
-{\chapter}[block]{\sc}{\centering Chapter \ \thechapter}{0.1in} 
-{
-    \centering 
-    \\\rule{12cm}{0.9pt}\\
-    \vspace{0.1in}
-    \centering\bfseries\large
-} 
-[
-\vspace{-1ex}
-%\rule{\textwidth}{0.3pt}
-] 
+\chapstylewithline
 }
 
 \newcommand{\chapterquote}[2]
@@ -116,6 +103,7 @@ citecolor=darkblue
 --- #2
 \end{flushright}
 }
+
 
 % Export backmatter styling
 \newcommand{\backmatterstyling}{

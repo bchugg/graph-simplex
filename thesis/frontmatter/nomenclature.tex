@@ -9,7 +9,7 @@
 \setlength{\colwidth}{3.5cm}
 \setlength{\groupsep}{1cm}
 \setlength{\headingsep}{0.00cm}
-\setlength{\descsep}{10cm}
+\setlength{\descsep}{8cm}
 
 \textbf{Simplex Geometry}\\
 \vspace{\headingsep}
@@ -17,18 +17,21 @@
 	{$\ssplx$} & {General simplex} & Section \ref{sec:background_simplices} \\
 	$\ssplx^\du$ & Dual simplex to $\ssplx$ & Section \ref{sec:background_dual_simplex} \\
 	$\Sv(\ssplx)$ & Vertex matrix of simplex $\ssplx$ \\
-	$\splx_G$ ($\splxn_G$)  &  (Normalized) Simplex associated to graph $G$ & Section \ref{sec:graph_to_simplex} \\
+	$\splx_G$ ($\splxn_G$)  &  (Normalized) Simplex of $G$ & Section \ref{sec:graph_to_simplex} \\
 	$\splx^+_G$ ($\splxn^+_G$)	& Inverse simplex of $\splx_G$ ($\splxn_G$) & Section \ref{sec:simplex_to_graph}\\
 	{$\ssplx\restriction_U, \ssplx_U, \ssplx[U]$} & {Face of simplex $\ssplx$ restricted to $U$ } & Equation  \eqref{eq:T_U}\\ 
 	{$\Sv_G$ $(\Svn_G)$} & Vertex matrix of the simplex $\splx_G$ ($\splxn_G$) & Section \ref{sec:bijection_graphs_simplices}\\
 	{$\Sv_G^+$ $(\Svn_G^+)$} & Vertex matrix of the simplex $\splx_G^+$ ($\splxn_G^+$) \\
 	{$\{\sv_i\}$ ($\{\svn_i\})$} & {Vertex vectors of (normalized) simplex}\\
-	{$\alt(\ssplx_U)$} & {Altitude vector from $\ssplx_U$ to $\ssplx_{U^c}$} & Section \ref{sec:background_spectral}\\
+	{$\alt(\ssplx_U)$} & {Altitude vector from $\ssplx_U$ to $\ssplx_{U^c}$} & Section \ref{sec:background_simplices}\\
 	{$\cent(\ssplx_U)$} & {Centroid of simplex $\ssplx_U$} & Equation \eqref{eq:centroid} \\
 	$\El(\ssplx)$ & Steiner circumscribed ellipsoid  of $\ssplx$ & Definition \ref{def:steiner_ellipsoid}\\
-	$\bar{d}$ & Average squared distance in a simplex & Equation \eqref{eq:avg_squared_distance}\\
-	$\bxi$ & Average squared distance of each vertex minus $\bar{d}$ & Equation \eqref{eq:avg_squared_distance}\\
+	$\bar{d}$ & Avg. squared distance in a simplex & Equation \eqref{eq:avg_squared_distance}\\
+	$\bxi$ & Avg. squared distance of vertices minus $\bar{d}$ & Equation \eqref{eq:avg_squared_distance}\\
 	$\x_{U^c}$ & Barycentric coordinate for face $\ssplx_U$ & \\
+	$\splx_0$ & Canonical/Centred Simplex of $\splx$ & Definition \ref{def:centred_simplex} \\
+	$\cong,\cong^\rot$ & Congruency between simplices & Section \ref{sec:background_simplices} \\
+	$[\ssplx],[\ssplx]^\rot$ & Congruence classes of simplices & Equation \eqref{eq:[ssplx]}
 \end{longtable}
 \vspace{\groupsep}
 
@@ -42,10 +45,10 @@
 	$w_G(i,j)$ & Weight of edge $(i,j)$ in $G$ \\
 	$\delta_G(i)$ & Set of neighbours of $i$ in $G$ & Equation \eqref{eq:delta(i)}\\
 	$\delta_G U$ & Cut set of $U$ in $G$ \\
-	$w_G(i)$ & Weight of vertex $i\in V(G)$, i.e., $\sum_{j\in \delta_G(i)}w(i,j)$\\
+	$w_G(i)$ & Weight of vertex $i\in V(G)$\\
 	$\vol_G(U)$ & Volume of set $U$, i.e., $\sum_{i\in U}w(i)$ & Equation \eqref{eq:volU}\\
-	$\Gamma_G$ & Total weight of all spanning trees in $G$ & Section \ref{sec:background_laplacian_spectrum} \\
-	$\effr_G(i,j)$  & Effective resistance between vertices $i$ and $j$ in $G$ & Section \ref{sec:background_er}\\
+	$\Gamma_G$ & Total weight of all spanning trees in $G$ & Equation \eqref{eq:Gamma_G} \\
+	$\effr_G(i,j)$  & Effective resistance between $i$ and $j$ & Definition \ref{def:effective_resistance}\\
 	$\Reff_G$  & Effective resistance matrix & Section \ref{sec:background_er}\\
 	$\respol_G$ & Effective Polytope of $G$ & Equation \eqref{eq:res_pol}
 \end{longtable}
@@ -55,9 +58,11 @@
 \noindent \textbf{Linear Algebra \& Spectral Graph Theory}\\ 
 \vspace{\headingsep} 
 \begin{longtable}{p{\colwidth}p{\descsep}l}
-	{$\L_G$ ($\Ln_G$)} & {Combinatorial (Normalized) Laplacian Matrix of $G$} & Equations \eqref{eq:L_G}, \eqref{eq:Ln_G}\\
-	{$\Lf_G$ ($\Lnf_G$)} & Quadratic form associated with $\L_G$ ($\Ln_G$) & Equations \eqref{eq:Lf}, \eqref{eq:Lnf}\\
-	$\{\lambda_i(G)\}$ ($\{\lambda_i(G)\}$) & Eigenvalues of $\L_G$ ($\Ln_G$), sorted in decreasing order & Section \ref{sec:background_laplacian_spectrum}\\
+	{$\L_G$} & {Combinatorial Laplacian Matrix of $G$} & Equation \eqref{eq:L_G}\\
+	{$\Ln_G$} & {Normalized Laplacian Matrix of $G$} & Equation \eqref{eq:Ln_G}\\
+	{$\Lf_G$} & Quadratic form associated with $\L_G$  & Equation \eqref{eq:Lf}\\
+	{$\Lnf_G$} & Quadratic form associated with $\Ln_G$ & Equation \eqref{eq:Lnf}\\
+	$\{\lambda_i(G)\}$ ($\{\lambda_i(G)\}$) & Eigenvalues of $\L_G$ ($\Ln_G$) & Section \ref{sec:background_laplacian_spectrum}\\
 	$\Eval_G$ ($\Evaln_G$) & Diagonal Eigenvalue matrix of $\L_G$ ($\Ln_G$) \\
 	$\{\vp_i(G)\}$ ($\{\vpn_i(G)\}$) & Eigenvectors of $\L_G$ ($\Ln_G$)\\
 	{$\Eig_G$ ($\Eign_G$)} & Eigenvector matrix of $\L_G$ ($\Ln_G$)\\
