@@ -144,10 +144,12 @@ is called the \emph{Menger matrix of $X$}, the determinant of which is called th
 The relation between the Menger matrix and the volume combined with the matrix equations above, allows us to give a concise formula for the volume of any hyperacute simplex. This was first pointed out in \cite{van2017pseudoinverse}. 
 
 \begin{lemma}
+	\label{lem:volume}
 	Let $\ssplx\subset\R^{n-1}$ be a hyperacute simplex, and let $G$ be its associated graph. Then $\ssplx$'s $n-1$ dimensional volume is 
-	\begin{equation*}
-	\vol(\ssplx) = \frac{1}{(n-1)!\cdot \Gamma_G},
-	\end{equation*}
+	\begin{equation}
+	\label{eq:vol(T)}
+	\vol(\ssplx) = \frac{1}{(n-1)!\cdot \Gamma_G^{1/2}},
+	\end{equation}
 	where $\Gamma_G$ is the total weight of all spanning  trees of $G$. 
 \end{lemma}
 We remind the reader that $\Gamma_G$ was discussed in  Section~\ref{sec:background_laplacian_spectrum}; see  Equation~\ref{eq:Gamma_G}  in particular. 
@@ -194,6 +196,32 @@ We may now give the proof.
 	by Theorem~\ref{thm:matrix_tree_theorem}. It remains only to note that 
 	$-\sum_{j,k=1}^n r(j) r(k) = -(\sum_j r(j))^2 = - \la \one,\r\ra ^2 = - 4$ 
 	by  definition  of $\r$. 
+\end{proof}
+
+
+We can  use these results to produce a surprising equation concerning  the diagonal entries of the pseudoinverse Laplacian. In particular, $\L_G^+(i,i)$ is proportional to the ratio of the weight of  spanning trees in $G$ to this weight when the vertex $i$ is removed. 
+
+\begin{lemma}
+	\label{lem:L_G^+(i,i)_trees}
+	Let $G$ be a connected graph and fix $i\in V(G)$. Put $G_\ic=G[V\setminus \{i\}]$. Then 
+	\begin{equation}
+	\L_G^+(i,i) = \frac{(n-1)\Gamma_G^{1/2}}{n^2\Gamma_{G_\ic}^{1/2}}.
+	\end{equation}
+\end{lemma}
+\begin{proof}
+	Let $\splx^+$ be  the hyperacute simplex of $G$ with vertices $\sv_1^+,\dots,\sv_n^+$. 
+	For an arbitrary simplex $\ssplx$ with vertices $\{\gamma_i\}$, 
+Fiedler~\cite[Chapter 2]{fiedler2011matrices} gave  the formula \note{can we derive this ourselves?}
+	\begin{equation*}
+	\la \bgamma_i^\du,\bgamma_j^\du\ra= \frac{\vol(\bgamma_1,\dots,\bgamma_{i-1},\bgamma_{i+1},\dots,\bgamma_n)}{(n-1)^2 \vol(\ssplx)},
+	\end{equation*}
+	where $\{\bgamma_i^\du\}$ are the dual vertices. Translating this to a statement about $\splx$ and $\splx^+$ and applying Lemma~\ref{lem:volume} gives 
+	\begin{align*}
+	\L_G(i,i) = \norm{\sv_i}_2^2 &= \frac{\vol(\splx^+_\ic)}{(n-1)^2\vol(\splx^+)} \\
+	&= \frac{1}{(n-2)!\cdot \Gamma_{G_\ic}^{1/2}} \bigg/ \frac{(n-1)^2}{(n-1)!\cdot \Gamma_G^{1/2}},
+	\end{align*}
+	which  simplifies to the desired expression. 
+	
 \end{proof}
 
 
@@ -265,38 +293,55 @@ $\sum_{i\in\delta(\ell)}w(i,\ell)(\bS_T(k,\ell)-\bS_T(k,i)) = 1-(|\delta(\ell)|-
 \end{proof}
 
 
-Sharpe~\cite{sharpe1967theorem} said something about something which should probably be cited, but not exactly sure what it is yet. 
 
 
 
 
 \section{Inequalities}
 \label{sec:inequalities}
-In this section we demonstrate how the graph-simplex may be used to obtain both geometric and graph-theoretic inequalities. We begin with an inequality relating the quadratic form $\L$ to the ``weight'' of the cuts associated with the pseudoinverse.  It was first proved by Devriendt and Van Mieghem~\cite{devriendt2018simplex}. 
-
+In this section we demonstrate how the graph-simplex may be used to obtain both geometric and graph-theoretic inequalities. We begin with an inequality relating the quadratic form $\Lf$ to the ``weight'' of the cuts associated with the pseudoinverse.  It was first proved by Devriendt and Van Mieghem~\cite{devriendt2018simplex}. Interestingly, a parallel result for the normalized Laplacian form does not seem to exist. 
 
 \begin{lemma}
 For any $f$ with $\la f,\one\ra=0$, 
 \begin{equation*}
-    \Lf(f) \geq \frac{\norm{f}_1^2}{4W(\delta^+F^+)},
+    \Lf(f) \geq \frac{\norm{f}_1^2}{4w(\partial^+F^+)},
 \end{equation*}
 for $F^+\equiv \{i:f(i)\geq 0\}$. 
 \end{lemma}
 \begin{proof}
 Let $F^+$ be as above and let $F^-\equiv [n]\setminus F^+=\{i:f(i)<0\}$. Observe that 
 \begin{equation*}
-    \norm{f}_1=\sum_i |f(i)| = \la \chi_{F^+}-\chi_{F^-},f\ra = (\chi_{F^+}-\chi_{F^-})^\tp f = (\chi_{F^+}-\chi_{F^-})^\tp(\I-\J/n) f,
+    \norm{f}_1=\sum_i |f(i)| = \la \bchi_{F^+}-\bchi_{F^-},f\ra = (\bchi_{F^+}-\bchi_{F^-})^\tp f = (\bchi_{F^+}-\bchi_{F^-})^\tp(\I-\J/n) f,
 \end{equation*}
 where the last inequality follows since $f$ is orthogonal to $\one$ by assumption. Using the pseudoinverse relation \eqref{eq:sv+sv}, we can continue as 
 \begin{align*}
-    \norm{f}_1 &= (\chi_{F^+}-\chi_{F^-})^\tp(\Sv^+)^\tp \Sv f \\
-    &= (\chi_{F^+}-\one + \chi_{F^+})^\tp(\Sv^+)^\tp \Sv f \\
-    &=2\chi_{F^+}^\tp (\Sv^+)^\tp \Sv f - (\Sv^+\one)^\tp \Sv f \\
-    &= 2\la \Sv^+\chi_{F^+}, \chi_{F^+}^\tp (\Sv^+)^\tp \Sv f \ra &&\text{since }\Sv^+\one =\zero\\
-    &\leq 2\norm{\Sv\chi_{F^+}}_2 \cdot \norm{\Sv^+ f}_2 &&\text{by Cauchy-Schwartz}\\
-    &= 2\left(\chi_{F^+}\L^+\chi_{F^+}\cdot f^\tp \L f\right)^{1/2}.
+    \norm{f}_1 &= (\chi_{F^+}-\bchi_{F^-})^\tp(\Sv^+)^\tp \Sv f \\
+    &= (\bchi_{F^+}-\one + \bchi_{F^+})^\tp(\Sv^+)^\tp \Sv f \\
+    &=2\bchi_{F^+}^\tp (\Sv^+)^\tp \Sv f - (\Sv^+\one)^\tp \Sv f \\
+    &= 2\la \Sv^+\bchi_{F^+}, \bchi_{F^+}^\tp (\Sv^+)^\tp \Sv f \ra &&\text{since }\Sv^+\one =\zero\\
+    &\leq 2\norm{\Sv\chi_{F^+}}_2 \cdot \norm{\Sv^+ f}_2 &&\text{by Cauchy-Schwartz\footnote{Recall that the Cauchy inequality says $\la |\u,\v\ra| \leq \norm{\u}_2\norm{\v}_2$ for any vectors $\u$ and $\v$.}}\\
+    &= 2\left(\bchi_{F^+}\L^+\bchi_{F^+}\cdot f^\tp \L f\right)^{1/2}.
 \end{align*}
-Squaring both sides and recalling that $\chi_{F^+}\L^+\chi_{F^+} = W(\delta^+F^+)$ gives the desired result. 
+Squaring both sides and recalling that $\chi_{F^+}\L^+\chi_{F^+} = w(\delta^+F^+)$ gives the desired result. 
+\end{proof}
+
+Given the combinatorial simplex $\splx_G$ of the  graph $G$, it has a natural corresponding normalized simplex, namely $\splxn_G$. Using Cheeger's inequality~\cite{chung1997spectral}
+\begin{equation*}
+\cond_G \geq \lambdan_{n-1} \geq \frac{\cond_G^2}{2},
+\end{equation*}  
+where  $\lambdan_1\geq \lambdan_{n-1}>\lambdan_n=0$ are the eigenvalues of the normalized Laplacian of  $G$, and $\cond_G$ is the \emph{conductance of $G$}, 
+\begin{equation*}
+\cond_G\equiv \min_{U:vol(U)\leq \vol(G)/2} \frac{\vol(\partial U)}{|U|},
+\end{equation*}
+we can  relate  the centroids of $\splx_G$ to $\splxn_G$ as follows. 
+
+\begin{observation}
+	\begin{equation*}
+	\min_{U:\vol(U)\leq \vol(G)/2} \norm{\cent(\splx_U)}_2^4 |U|^2  \leq \min_{i=1}^n (\Svn\Svn^\tp)(i,i) \leq \min_{U:\vol(U)\leq \vol(G)/2} \norm{\cent(\splx_U)}_2^2 |U|.  
+	\end{equation*}
+\end{observation}
+\begin{proof}
+	Use that $\norm{\cent(\splx_U)}_2^2 =  |U|^{-2} \bchi_U\L_G\bchi_U$ (Section~\ref{sec:S_G}) and that $\Svn\Svn^\tp=\Evaln$ (Equation~\eqref{eq:SvSv^t}) and apply Cheeger's inequality. 
 \end{proof}
 
 \note{Still working on this content. Since $\Reff_G=n\sum_i\lambda_i^{-1}=n\tr(\Sv\Sv^\tp)$,
@@ -324,9 +369,10 @@ It's existence  and uniqueness is guaranteed by the following theorem.
 The Steiner ellipsoid of a simplex $\splx$ is unique and moreover, is the ellipsoid with minimum volume which contains $\splx$. 
 \end{theorem}
 
-Owing to its uniqueness, we denote the Steiner ellipsoid of the simplex $\splx$ by $\El(\splx)$. The following lemma gives an explicit representation of the circumscribed ellipsoid of the combinatorial simplex of $G$---which we will  henceforth call the \emph{(Steiner) circumscribed ellipsoid of $G$}---and of its inverse, which we call the \emph{inverse (Steiner) circumscibed Ellipsoid of $G$}. 
+Owing to its uniqueness, we denote the Steiner ellipsoid of the simplex $\splx$ by $\El(\splx)$. The following lemma gives an explicit representation of the circumscribed ellipsoid of the combinatorial simplex of $G$---which we will  henceforth call the \emph{(Steiner) circumscribed ellipsoid of $G$}---and of its inverse, which we call the \emph{inverse (Steiner) circumscribed Ellipsoid of $G$}. 
 
 \begin{lemma}[\cite{fiedler2005geometry}]
+	\label{lem:El(S)}
 The Steiner circumscribed ellipsoid  of $G$ and its inverse  are described by 
 \begin{equation}
 \label{eq:steinerE}
@@ -347,7 +393,7 @@ First we demonstrate that the vertices of $\splx$ are contained in $E$. Noticing
 \end{align*}
 so indeed the vertices $\sv_i$ are contained in $E$. Now, define the hyperplane 
 \[\H\equiv \bigg\{\x:\x^\tp \M \sv_i = -\frac{1}{n}\bigg\}.\]
-We claim that $\H$ is the affine plane containing the points $\{\sv_j\}_{j\neq i}$. Indeed, consider $\sv_j$ for some fixed $j\neq i$. Then, as above 
+We claim that $\H$ is the plane containing the points $\{\sv_j\}_{j\neq i}$. Indeed, consider $\sv_j$ for some fixed $j\neq i$. Then, as above 
 \[\sv_j^\tp \M\sv_i = \chi_j^\tp \left(\I-\frac{1}{n}\J\right) \chi_i = -\frac{1}{n}. \]
 It remains to show that $\H$ is parallel to the tangent plane of $E$ at the point $\sv_i$. But this tangent plane is defined by the equation~\cite{fiedler2005geometry} \note{Should figure out how this is actually done}
 \[\x^\tp \M\sv_i =\frac{n-1}{n},\]
@@ -415,9 +461,45 @@ Using this, we rewrite the summation on the right hand side of \eqref{eq:lem_cir
 The equation of the sphere in \eqref{eq:lem_circ_sphere2} now becomes $\frac{1}{4}r - \frac{1}{2}\balpha^\tp \D\balpha = \frac{1}{4}r$, i.e., $\balpha^\tp \D\balpha=\zero$ as was claimed.  Now, to see that this sphere contains the vertices of $\splx^+$,  $\{\sv_i^+\}$, we need only note that the barycentric coordinate of $\sv_\ell^+$ is $\bchi_\ell$ and that $\bchi_\ell^\tp \D \bchi_\ell = \sum_{i,j} \bchi_\ell(i) \D(i,j) \bchi_\ell(j) = \D(\ell,\ell) = 0$. 
 \end{proof}
 
-Until this point, we have been examining only the quadrics associated with the combinatorial simplices. We now consider the normalized simplices. Since all the vertices of the normalized simplex lie on the unit sphere, it's clear  that the circumscribed sphere of $\splxn_G$ is precisely $\{\x:\x^\tp\x=1\}$. 
+Until this point, we have been examining only the quadrics associated with the combinatorial simplices. We now consider the normalized simplices. Since all the vertices of the normalized simplex lie on the unit sphere, it's clear  that the circumscribed sphere of $\splxn_G$ is precisely $\{\x:\x^\tp\x=1\}$. It's not as straightforward  to see what they circumscribed ellipsoid, $\El(\splxn)$, is on the other hand. One might suspect that it obeys the  equation $\x^\tp \Svn+(\Svn^+)^\tp=1-1/n$, as this is the natural analogue of \eqref{eq:steinerE}. However, because $\Svn^+$ and $\Svn$ obey a non-constant pseudoinverse relation, this equation fails the first test: $\svn_i^\tp\Svn^+(\Svn^+)^\tp\svn_i = \bchi_i^\tp(\I-\sqrt{\w}\sqrt{\w}^\tp/\vol(G))\bchi_i=1-\sqrt{w(i)w(j)}/\vol(G)$ is non-constant. 
+However, at this point we recall that beyond being simply  the inverse simplex of $\splx$, $\splx^+$ is also its dual.  We might thus hazard a guess that the correct matrix is $\Svn^\du (\Svn^\du)^\tp$, where $\Svn^\du$ is the vertex matrix of $\splxn^\du$. This is in fact correct, but to see this we first need to demonstrate that any set of simplex vertices and their  duals obey the same relationship as do the vertices of the combinatorial simplex and its inverse. 
 
-\note{If time investigate the circumscribed ellipsoid of $\splxn_G$. Also perhaps the circumscribed sphere of $\splxn_G^+$?}.  
+\begin{lemma}
+	\label{lem:dot_dual_vertices}
+	Let  $\ssplx\subset\R^{n-1}$ be any simplex, and $\ssplx^\du$ its dual, where $\Sv=\Sv(\ssplx)=(\sv_i)$ and $\Sv^\du=\Sv(\ssplx^\du)=(\svnd_i)$. 
+	For all $i,j\in[n]$, $\la \svn_i,\svn_j^\du\ra=\delta_{i,j}-1/n$. 
+\end{lemma}
+\begin{proof}
+	By definition of the dual simplex, for all $i,j\neq n$, $\la \svn_i,\svnd_j-\svnd_n\ra = \delta_{ij}$. Recalling that $\svnd_n=-\sum_{\ell<n}\svnd_\ell$, write 
+	\begin{align*}
+	\la \svn_i,\svnd_n\ra &= - \sum_{\ell<n}\la \svn_i,\svnd_\ell\ra \\
+	&= -\sum_{\ell<n} \delta_{i,\ell} + \la \svn_i,\svnd_n\ra \\
+	&= -1 - (n-1)\la\svn_i,\svnd_n\ra.
+	\end{align*}
+	Rearranging the above yields $\la \svn_i,\svnd\ra = -1/n$. Therefore, $\la \svn_i,\svnd_j\ra = \delta_{ij} - 1/n$. It remains to show that $\la\svn_n,\svnd_n\ra=1-1/n$. Proceeding as above, we have 
+	\begin{align*}
+	\la\svn_n,\svnd_n\ra &= -\sum_{\ell<n}\la \svn,\svnd_\ell\ra = -\sum_{\ell<n} \frac{-1}{n} = \frac{n-1}{n}.\qedhere
+	\end{align*}
+\end{proof}
+
+From this we can extract the equations of $\El(\splxn)$ and $\El(\splxn^+)$. 
+
+\begin{corollary}
+	\label{cor:El(Sn)}
+	The normalized Steiner ellipsoid of $G$ is 
+	\begin{equation*}
+	\El(\splxn) = \bigg\{\x:\x^\tp \Svn^\du(\Svn^\du)^\tp\x = \frac{n-1}{n}\bigg\},
+	\end{equation*}
+	and the inverse is 
+	\begin{equation*}
+		\El(\splxn) = \bigg\{\x:\x^\tp (\Svn+)^\du((\Svn^+)^\du)^\tp\x = \frac{n-1}{n}\bigg\}.
+	\end{equation*}
+	where $\Svn^\du$ contains the vertices of $\splxn_G^\du$ and $(\Svn^+)^\du$ those of $(\splxn_G^+)^\du$. 
+\end{corollary}
+\begin{proof}
+	The computational is almost identical to that in the proof of Lemma~\ref{lem:El(S)}.
+\end{proof}
+
 
 
 \section{Resistive Polytope}
@@ -506,4 +588,3 @@ using Equation \eqref{eq:sum_double_ortho}. Hence,
 
 
 \section{Random Walks}
-Would like to think about this more but unclear if there's anything interesting here for now. 

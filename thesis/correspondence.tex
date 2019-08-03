@@ -491,16 +491,16 @@ Moreover, $\x\in \bigcap_i\H_i^{\geq }$ iff $\la \x,\sv_i^+\ra +1/n\geq 0$ for a
 for $(\H_i^+)^{\geq } \equiv \{\x\in\R^{n-1}:\la \x,\sv_i\ra + 1/n\geq 0\}$. 
 
 
-\subsubsection{Centroids and Altitudes} 
+\paragraph{Centroids and altitudes.} 
 We now turn to investigating the centroids and altitudes of the simplices, and how they relate to properties of the underlying graph. We begin by exploring the relationships between properties of the simplices themselves. 
 
 Recall that the altitude between $\splx[U]$ and $\splx[U^c]$ of a simplex $\splx$ is denoted $\alt(\splx_U)$ and is the unique vector $\p-\q$ where  $\p\in \splx_{U^c}$ and $\q\in\splx_{U}$ which lies in the orthogonal complement of both $\splx_U$ and $\splx_{U^c}$. One would thus expect that $\alt(\splx_U)$ and $\alt(\splx_{U^c})$ to be antiparallel; a fact verified by Lemma \ref{lem:complimentary_centroids}.  
 
 In what follows,  we will often write $\cent_U$ for $\cent(\splx_U)$ (resp., $\cent_U^+$ for $\cent(\splx_U^+)$) and $\alt_U$ for $\alt(\splx_U)$ (resp., $\alt_U^+$ for $\alt(\splx_U^+)$). 
 
-\begin{lemma}
+\begin{lemma}[\cite{devriendt2018simplex}]
 \label{lem:complimentary_centroids}
-Let $U\subset V$ be non-empty. Then the vectors $\cent(\splx_U)$ and $\cent(\splx_{U^c})$ are antiparallel. In particular, $(n-|U|)\cent(\splx_){U^c}) = |U|\cent(\splx_{U})$ and 
+Let $U\subset V$ be non-empty. Then the vectors $\cent(\splx_U)$ and $\cent(\splx_{U^c})$ are antiparallel. In particular, $(n-|U|)\cent(\splx_{U^c}) = |U|\cent(\splx_{U})$ and 
 \[\frac{\cent(\splx_U)}{\norm{\cent(\splx_U)}_2}=-\frac{\cent(\splx_{U^c})}{\norm{\cent(\splx_{U^c})}_2}.\]
 \end{lemma}
 \begin{proof}
@@ -545,7 +545,7 @@ For a simplex $\splx$ of a graph $G=(V,E)$ and any $U\subset V$, $U\neq\emptyset
 \end{equation}
 and 
 \begin{equation*}
-    \frac{\alt^+(\splx_U)}{\norm{\alt^+(\splx_{U})}_2}=\frac{c(\splx_{U^c})}{\norm{c(\splx_{U^c})}_2}=-\frac{c(\splx_{U})}{\norm{c(\splx_{U})}_2}.
+    \frac{\alt^+(\splx_U)}{\norm{\alt^+(\splx_{U})}_2}=\frac{\cent(\splx_{U^c})}{\norm{\cent(\splx_{U^c})}_2}=-\frac{\cent(\splx_{U})}{\norm{\cent(\splx_{U})}_2}.
 \end{equation*}
 \end{lemma}
 \begin{proof}
@@ -586,26 +586,26 @@ which is Equation \eqref{eq:alt_and_centroid}.
 \end{remark}
 
 Whereas the previous few lemmas explored relationships among $\splx_G$ and $\splx_G^+$ only, we now begin to observe several connections between the geometry of the simplices and properties of the graph. We begin by recalling that given $U\subset V(G)$ the \emph{cut-set} of $U$ is 
-\[\delta U \equiv (U\times U^c)\cap E(G)= \{(i,j)\in E(G): i\in U, j\in U^c\}.\]
+\[\partial U \equiv (U\times U^c)\cap E(G)= \{(i,j)\in E(G): i\in U, j\in U^c\}.\]
 Noting that $|\bchi_U(i)-\bchi_U(j)|=\chi_{(i,j)\in \delta U}$, we see that
 \begin{align*}
-w(\delta U) = \sum_{i,j\in E} w(i,j)|\bchi_U(i)-\bchi_U(j)| = \sum_{i,j\in E} w(i,j)(\bchi_U(i)-\bchi_U(j))^2 = \Lf(\bchi_U). 
+w(\partial U) = \sum_{i,j\in E} w(i,j)|\bchi_U(i)-\bchi_U(j)| = \sum_{i,j\in E} w(i,j)(\bchi_U(i)-\bchi_U(j))^2 = \Lf(\bchi_U). 
 \end{align*}
 Moreover, $\norm{\cent(\splx_U)}^2_2 = \la |U|^{-1} \Sv\bchi_U,|U|^{-1} \Sv\bchi_U\ra = |U|^{-2} \Lf(\bchi_U)$ and so 
 \begin{equation}
 \label{eq:c(S_U)}
-\norm{\cent(\splx_U)}_2^2 = \frac{w(\delta U)}{|U|^2}.
+\norm{\cent(\splx_U)}_2^2 = \frac{w(\partial U)}{|U|^2}.
 \end{equation}
 Via the same process we can also obtain an equivalent expression for the centroid of the inverse simplex: 
 \begin{equation}
 \label{eq:c(S+_U)}
-\norm{\cent(\splx^+_U)}_2^2 = \frac{w(\delta^+ U)}{|U|^2},
+\norm{\cent(\splx^+_U)}_2^2 = \frac{w(\partial^+ U)}{|U|^2},
 \end{equation}
-where we define $w(\delta^+U) \equiv  \la \Sv^+\chi_U,\Sv^+\chi_U\ra=\la \chi_U,\L^+\chi_U\ra$. Equations \eqref{eq:c(S_U)} and \eqref{eq:c(S+_U)} were also given in \cite{devriendt2018simplex}. As a sanity check, we note that the equations are consistent with the facts that $\norm{\sv_i}_2^2 = w(i)$ and $\norm{\sv_i^+}_2^2 = \L^+(i,i) = \Lnf^+(\bchi_i)$. These equations allow us to give an interesting correspondence between the sizes of the altitudes and cut-sets of $G$. 
+where we follow the notation of \cite{devriendt2018simplex} and define $w(\partial^+U) \equiv  \la \Sv^+\chi_U,\Sv^+\chi_U\ra=\la \chi_U,\L^+\chi_U\ra$. Equations \eqref{eq:c(S_U)} and \eqref{eq:c(S+_U)} were also given in \cite{devriendt2018simplex}. As a sanity check, we note that the equations are consistent with the facts that $\norm{\sv_i}_2^2 = w(i)$ and $\norm{\sv_i^+}_2^2 = \L^+(i,i) = \Lnf^+(\bchi_i)$. These equations allow us to give an interesting correspondence between the sizes of the altitudes and cut-sets of $G$. 
 
 \begin{lemma}
 \label{lem:||alt||}
-For any non-empty $U\subset V$, $\norm{\alt^+_U}_2^2=1/w(\delta U)$ and $\norm{\alt_U}_2^2 = 1/w(\delta^+ U)$.  
+For any non-empty $U\subset V$, $\norm{\alt^+_U}_2^2=1/w(\partial U)$ and $\norm{\alt_U}_2^2 = 1/w(\partial^+ U)$.  
 \end{lemma}
 \begin{proof}
 By definition of the altitude there exists barycentric coordinates $\x_U$ and $\x_{U^c}$ such that $a^+U = \Sv^+(\x_U-\x_{U^c})$. Combining this representation of $a^+_U$ with that given by Lemma \ref{lem:alt_and_centroid}, write 

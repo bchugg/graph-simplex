@@ -16,6 +16,7 @@
 \usepackage{graphicx}
 \usepackage{multirow}
 \usepackage{longtable}
+\usepackage{setspace}
 \graphicspath{{figures/}{../figures/}}
 
 
@@ -40,13 +41,14 @@
 \renewcommand{\baselinestretch}{1.0}\normalsize
 \cleardoublepage
 \phantomsection
-\addcontentsline{toc}{chapter}{\listfigurename}
+\addcontentsline{toc}{section}{\listfigurename}
 \listoffigures
 \include{frontmatter/nomenclature}
 
 
 % Mid matter
 \midmatterstyling
+%\onehalfspacing
 \include{introduction}
 \include{background}
 \include{correspondence}

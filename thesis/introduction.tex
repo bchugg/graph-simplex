@@ -1,15 +1,53 @@
 \chapter{Introduction}
 \label{chap:intro}
 
+This thesis is concerned with uniting two fundamental and hitherto mostly unrelated objects: the graph and the simplex. A graph is fundamentally a  \emph{combinatorial} object---by which we mean lacking inherent geometry. That is, it be described by two finite lists: a list of its \emph{nodes} or \emph{vertices} and a second of the connections between these vertices. No underlying geometric space need be defined. 
+The fact that we often picture graphs as being embedded in the plane is merely demonstrates that we often like to reason visually, and does not reflect any underlying geometry of the graph. Indeed, the same graph may be embedded in infinitely many ways in the plane.  
+Conversely, simplices---best thought of as high dimensional triangles---are inherently geometric.  Any complete description of a simplex must include, for  example, the distance between two of its vertices. 
+
+A deep connection between graphs and simplices might seem unlikely a priori, and  it is precisely this fact which makes such a connection worth studying. Such a connection was unknown until Miroslav Fiedler made the connection in his 1993 paper entitled "A geometric approach to the Laplacian matrix of a graph"~\cite{fiedler1993geometric}. Here he introduced what we will henceforth refer to as the \emph{graph-simplex correspondence}, proving the existence  of a bijection between graphs and hyperacute simplices. 
+
 
 
 \section{Prior Work}
 \label{chap:intro_prior_work}
 
 Steinitz's theorem which investigates the relationship between undirected graphs arising from convex polyhedra in $\R^3$~\cite{steinitz1922polyeder}. 
+Sharpe~\cite{sharpe1967theorem} said something about something which should probably be cited, but not exactly sure what it is yet. 
+
 
 \section{Contribution}
 \label{chap:intro_contribution}
+
+We view our main contribution as providing a self contained treatise  of the what we are  calling the graph-simplex correspondence. We include Fiedler's main results  on the topic, as well those newly discovered results of Devriendt and Van Mieghem~\cite{devriendt2018simplex}. We also expand on these results in several ways. 
+
+We state these contributions below, but let us first remark upon the  presentation of the aspects in this thesis which do not contain new results.  
+
+First, in his original paper on the correspondence and subsequent book on simplex geometry more generally~\cite{fiedler2011matrices}, Fiedler  investigated the correspondence by means of a (somewhat complicated) block matrix relationship involving the Gramian matrix of the outer normals of the simplex and its distance matrix. Devriendt  and Van Mieghem demonstrate that the correspondence can be stated more simply (in the author's opinion) in terms of the graph's Laplacian matrix, but investigate only the simplex associated to a given graph, and are less concerned with the graph associated to a simplex. Combining these two approaches, we also investigate the correspondence by means of the Laplacian, but 
+
+\begin{itemize}
+	\item First, although at first seemingly unrelated to the correspondence itself, we provide a  novel mathematical treatment of what we call the ``dual simplex'' of a given simplex. This object was remarked upon by Fiedler in his 2011 book~\cite{fiedler2011matrices}, but he did not investigate its properties. We present several general properties of  the dual simplex and use it to frame graph-simplex correspondence, especially of the normalized Laplacian. 
+	\item While Fiedler (implicitly) and Devriendt and Van Mieghem (explicitly) studied the correspondence by means of the combinatorial Laplacian of a graph, we expand the correspondence to the ``normalized'' Laplacian.  This matrix also describes the complete structure of the graph, but is more intimately related to several of its features, such as describing random walk dynamics~\cite{chung1997spectral}. We introduce this new mapping  along with the original in Section~\ref{sec:bijection_graphs_simplices}. 
+	We then study the properties of the simplex associated to the normalized Laplacian---which we term the ``normalized'' simplex   
+	\item  With regards to the normalized simplex, in Section~\ref{sec:Sn_G} we investigate its mathematical properties. This proves a more challenging task   than  in  the case of the combinatorial simplex because, as we will show, the inverse normalized simplex  is \emph{not} the dual of the normalized  simplex in general. 
+	\item We also uncover a link between the simplex of a graph and a geometric  object related to the effective resistance of the graph, which we call the ``effective polytope''. It seems that the existence of this object has been previously acknowledged (e.g., ~\cite{shayanNotes}), but never rigorously studied. This material appears in Section~\ref{sec:resistive_polytope}. 
+	\item Perhaps most significantly, we initiate the study of the algorithmic foundations of the correspondence (Chapter~\ref{chap:algorithmics}). This entails three distinct aspects. 
+	\begin{enumerate}
+		\item 	We explore several consequences for computational  complexity.  Owing to the ubiquity of graphs in theory and application, the complexity classes of many graph-theoretic problems are  well established (e.g., computing maximum-cuts and independent sets are ``hard'', while spanning trees are ``easy'', etc.) If, via the correspondence, such problems have analogues in the simplex then this has implications concerning the difficulty of these geometric problems. Moreover, while the analogues problems in the simplex domain may have known to be easy or hard  in general convex polytopes, understanding the complexity in (hyperacute) simplices may yield an improved understanding of the hardness ``threshold'' for such problems. 
+		\item We then explore the natural question of whether various aspects of the correspondence can be computed efficiently. For example, given $G$ how quickly can we compute $\splx_G$ or $\splx_G^+$ efficiently? What about computing $\splx_G$ given $\splx_G^+$, or vice  versa? Our results in this  space are mostly negative; transitioning between many of these objects require time no less than that required to perform an eigendecomposition of a Laplacian matrix. 
+		This is perhaps to be expected given that the mapping is based on the eigendecomposition of the Laplacian matrix. 
+		However, we emphasize is it not immediate; while the mapping relies on the eigendecomposition, it uses the relations between the eigenvalues and eigenvectors. It is a priori  feasible that the relationships are computable  more quickly than the eigenvalues and eigenvectors  themselves. 
+		\item Finally, we explore several approximations. Given that  the simplex of a graph with $n$ vertices lives in $\R^{n-1}$---a high dimensional  space---we might hope that we can ``approximately'' embed it  in  lower dimensions. We explore this possibility in Section~\ref{sec:algorithmics_JL}. Owing to the lower bounds achieved on the ``precise'' mappings between various objects mentioned above, we might hope that we can approximate several of these mappings. This is explored in Section~\ref{sec:algorithmics_approximations}. 
+		Instead of purely geometric approximations, we might also wonder what happens to the correspondence when we approximate the Laplacian with another. 
+	\end{enumerate}
+
+\end{itemize}
+
+\section{Organization}
+\label{sec:intro_organization}
+
+The rest of the thesis will be  organized as follows. Section~\ref{sec:background} will present the relevant background material in the areas of linear algebra, spectral graph theory, and simplex  geometry. Here we will also define and make some preliminary explorations of the dual simplex. The  background material  of Sections~\ref{sec:background_general}, \ref{sec:background_linear},  and \ref{sec:background_laplacian} is quite standard; the reader familiar with  these subject areas should  be able to skip  them without too much trouble. We  encourage all readers to peruse Section!\ref{sec:background_simplices} because, for one, the field  of simplex geometry is  less  well  studied  in general than the others and secondly, as stated above, we provide a novel treatment of  the dual simplex. 
+
 
 
 \section{Ideas and TODOs}

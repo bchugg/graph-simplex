@@ -179,41 +179,6 @@ Using this and a previous calculated formula for the entries of the pseudoinvers
 
 
 
-\subsection{Discrete Time Random Walks}
-In a \emph{discrete time random walk (DSRW)} we envision a walker who jumps from vertex $i$ to vertex $j$ with probability proportional to $w(i,j)$. To this end, one defines the transition matrix 
-\begin{equation*}
-\T(i,j) = \frac{w(i,j)}{w(i)}=\frac{\A_G(i,j)}{\sum_{k\in\delta(i)} \A_G(i,k)}.
-\end{equation*}
-It's clear that $\sum_i \T(i,j)=1$. 
-The probability that the walker is at node $i$ at time $t$ is the probability that that she was at node $j$ at time $t-1$ and transitioned to node $i$. Thus, 
-\begin{equation*}
-\pi_i(t)=\sum_{j}\pi_j(t-1)\T(i,j),
-\end{equation*}
-or, more succinctly, 
-\begin{equation*}
-\bpi(t) = \T\bpi(t-1).
-\end{equation*}
-The stationary distribution $\bpi(\infty)\equiv \lim_t \bpi(t)$  satisfies $\bpi(\infty)=\T\bpi(\infty)$,  which yields that 
-The stationary distribution of such a walk is given by 
-\[\pi_i = \frac{\sum_{j\in \delta(i)} w(i,j)}{\sum_{j,k\in V}w(i,j)},\]
-which, for an undirected and unweighted graph simplifies to $\pi_i=\deg(i)/2|E|$. 
-
-
-\subsection{Continuous Time Random Walks}
-
-A \emph{Continuous Time Random Walk}~\cite{masuda2017random} satisfies the equation 
-\begin{equation}
-\label{eq:ctrw_dynamics}
-\frac{d\bpi(t)}{dt}= -\bpi(t)^\tp\W^{-1} \L,
-\end{equation}
-hence 
-\begin{equation*}
-\bpi(t)^\tp = \bpi(0)^\tp \exp(-\W^{-1}\L t).
-\end{equation*}
-After converging to the stationary distribution there is, by definition, no change in the distribution. Therefore, $d\bpi(t)/dt=0$ and Equation \eqref{eq:ctrw_dynamics} reduces to 
-$-\bpi(t)\W^{-1}\L =\zero$. Therefore, $\bpi(t)\W^{-1}$ is a left eigenfunction of $\L$ or equivalently, $ \W^{-1}\bpi$ is a right eigenfunction with corresponding eigenvalue zero. Hence, $\W^{-1}\bpi\in\spn\{\one\}$, i.e., $\bpi\in\spn\{\w\}$. Since $\norm{\bpi(\infty)}_1=1$, we see that 
-\[\bpi(\infty) = \frac{\w}{\norm{\w}_1}.\]
-In particular, the CTRW shares the same stationary distribution as the DTRW. 
 
 
 
@@ -261,4 +226,39 @@ We can relate the eigenvalues of $G$ to the geometry of $\splx$ via the relation
 \item Embedding approximate distance matrix. 
 
 
+\subsection{Discrete Time Random Walks}
+In a \emph{discrete time random walk (DSRW)} we envision a walker who jumps from vertex $i$ to vertex $j$ with probability proportional to $w(i,j)$. To this end, one defines the transition matrix 
+\begin{equation*}
+\T(i,j) = \frac{w(i,j)}{w(i)}=\frac{\A_G(i,j)}{\sum_{k\in\delta(i)} \A_G(i,k)}.
+\end{equation*}
+It's clear that $\sum_i \T(i,j)=1$. 
+The probability that the walker is at node $i$ at time $t$ is the probability that that she was at node $j$ at time $t-1$ and transitioned to node $i$. Thus, 
+\begin{equation*}
+\pi_i(t)=\sum_{j}\pi_j(t-1)\T(i,j),
+\end{equation*}
+or, more succinctly, 
+\begin{equation*}
+\bpi(t) = \T\bpi(t-1).
+\end{equation*}
+The stationary distribution $\bpi(\infty)\equiv \lim_t \bpi(t)$  satisfies $\bpi(\infty)=\T\bpi(\infty)$,  which yields that 
+The stationary distribution of such a walk is given by 
+\[\pi_i = \frac{\sum_{j\in \delta(i)} w(i,j)}{\sum_{j,k\in V}w(i,j)},\]
+which, for an undirected and unweighted graph simplifies to $\pi_i=\deg(i)/2|E|$. 
+
+
+\subsection{Continuous Time Random Walks}
+
+A \emph{Continuous Time Random Walk}~\cite{masuda2017random} satisfies the equation 
+\begin{equation}
+\label{eq:ctrw_dynamics}
+\frac{d\bpi(t)}{dt}= -\bpi(t)^\tp\W^{-1} \L,
+\end{equation}
+hence 
+\begin{equation*}
+\bpi(t)^\tp = \bpi(0)^\tp \exp(-\W^{-1}\L t).
+\end{equation*}
+After converging to the stationary distribution there is, by definition, no change in the distribution. Therefore, $d\bpi(t)/dt=0$ and Equation \eqref{eq:ctrw_dynamics} reduces to 
+$-\bpi(t)\W^{-1}\L =\zero$. Therefore, $\bpi(t)\W^{-1}$ is a left eigenfunction of $\L$ or equivalently, $ \W^{-1}\bpi$ is a right eigenfunction with corresponding eigenvalue zero. Hence, $\W^{-1}\bpi\in\spn\{\one\}$, i.e., $\bpi\in\spn\{\w\}$. Since $\norm{\bpi(\infty)}_1=1$, we see that 
+\[\bpi(\infty) = \frac{\w}{\norm{\w}_1}.\]
+In particular, the CTRW shares the same stationary distribution as the DTRW. 
 
