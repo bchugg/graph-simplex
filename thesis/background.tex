@@ -1,5 +1,5 @@
 \chapter{Background and Fundamentals}
-\label{sec:background}
+\label{chap:background}
 This chapter is devoted to introducing the  pre-requisite knowledge necessary to grapple with the material in subsequent sections. The subject matter of this dissertation lies at the intersection of several mathematical topics, ensuring that any treatment  of the material will give rise to notational challenges. Nevertheless, we have strived---courageously, in the author's unbiased opinion---to use standard notation wherever possible in the hopes that readers familiar with spectral graph theory may skip this background material without losing the plot. 
 
 
@@ -30,7 +30,7 @@ or equivalently, the smallest convex set containing $X$~\cite{grunbaum1967convex
 
 \section{Linear Algebra}
 \label{sec:background_linear} 
-We assume familiarity with the basic linear algebraic notions---similarity, dimension, range, etc. All relevant background material can be found in a standard reference, e.g. \cite{axler1997linear}. 
+We assume familiarity with the basic linear algebraic notions---determinants, dimension, span, etc. We use the standard notation for these---$\det$, $\dim$, $\spn$, etc. All relevant background material can be found in a standard reference, e.g. \cite{axler1997linear}. 
 We begin by stating a well-known but substantial result first proved by Cauchy (see \cite{hawkins1975cauchy} for the relevant history), which initiated the systematic study of the spectrum of matrices and which underpins the results in this dissertation. 
 
 \begin{theorem}[Spectral Theorem for real matrices]
@@ -52,10 +52,10 @@ Given the set $\{\v_i\}$ of linearly independent vectors, the complementary set 
 Let $\{\v_1,\dots,\v_n\}\subset\R^n$ be a set of linearly independent vectors. The sister basis given by Lemma \ref{lem:bi-orthogonal_bases} is unique. 
 \end{observation}
 \begin{proof}
-Suppose $\{\u_i\}$ and $\{\w_i\}$ are biorthogonal bases. Fix $i\in[n]$. By independence, $\spn(\v_1,\dots,\v_{i-1},\v_{i+1},\dots,\v_n)$ is a hyperplane---that is, \[\dim\spn(\v_1,\dots,\v_{i-1},\v_{i+1},\dots,\v_n)^\perp=1.\] Both $\u_i$ and $\w_i$ are orthogonal to this hyperplane (since they orthogonal to $\v_j$ for all $j\neq i$), thus are either parallel or anti-parallel. Therefore, there exists some $\alpha\in\R$ such that $\v_i=\alpha\w_i$. By definition, $\la \v_i,\u_i\ra = \la \v_i,\w_i\ra =1$, hence $\la \v_i,\alpha \w_i\ra = \la \v_i,\w_i\ra$ implying that $\alpha=1$. This demonstrates that $\u_i=\w_i$ for all $i$. 
+Suppose $\{\u_i\}$ and $\{\w_i\}$ are biorthogonal bases. Fix $i\in[n]$. By independence, $\spn(\v_1,\dots,\\\v_{i-1},\v_{i+1},\dots,\v_n)$ is a hyperplane---that is, \[\dim\spn(\v_1,\dots,\v_{i-1},\v_{i+1},\dots,\v_n)^\perp=1.\] Both $\u_i$ and $\w_i$ are orthogonal to this hyperplane (since they orthogonal to $\v_j$ for all $j\neq i$), thus are either parallel or anti-parallel. Therefore, there exists some $\alpha\in\R$ such that $\v_i=\alpha\w_i$. By definition, $\la \v_i,\u_i\ra = \la \v_i,\w_i\ra =1$, hence $\la \v_i,\alpha \w_i\ra = \la \v_i,\w_i\ra$ implying that $\alpha=1$. This demonstrates that $\u_i=\w_i$ for all $i$. 
 \end{proof}
 
-Let $\M\in\R^{n\times n}$ matrix. We recall that a vector $\eig$ satisfying $\M\eig=\lambda\eig$ is an \emph{eigenvector} of $\M$, and call $\lambda$ the associated \emph{eigenvalue}. It's clear that if $\eig$ is an eigenvector then so it $c\eig$ for any constant $c\in \R$. If $\M$ is real and symmetric, then the Spectral theorem dictates that there exists an orthonormal basis consisting of eigenvectors $\{\eig_1,\eig_2,\dots,\eig_n\}$ of $\M$ whose corresponding eigenvalues $\{\lambda_1,\dots,\lambda_n\}$ are all real. Let $\Eig=(\eig_1,\eig_2,\dots,\eig_n)$ be the matrix whose $i$-th column is the $i$-th eigenvector of $\M$, and set $\Eval=\diag(\lambda_1,\dots,\lambda_n)$. Observe that 
+Let $\M\in\R^{n\times n}$. We recall that a vector $\eig$ satisfying $\M\eig=\lambda\eig$ is an \emph{eigenvector} of $\M$, and call $\lambda$ the associated \emph{eigenvalue}. It's clear that if $\eig$ is an eigenvector then so it $c\eig$ for any constant $c\in \R$. If $\M$ is real and symmetric, then the Spectral theorem dictates that there exists an orthonormal basis consisting of eigenvectors $\{\eig_1,\eig_2,\dots,\eig_n\}$ of $\M$ whose corresponding eigenvalues $\{\lambda_1,\dots,\lambda_n\}$ are all real. Let $\Eig=(\eig_1,\eig_2,\dots,\eig_n)$ be the matrix whose $i$-th column is the $i$-th eigenvector of $\M$, and set $\Eval=\diag(\lambda_1,\dots,\lambda_n)$. Observe that 
 \begin{equation}
 \label{eq:eig_decomp}
 \M\Eig=\M(\eig_1,\dots,\eig_n)=(\M\eig_1,\dots,\M\eig_n)=(\lambda_1\eig_1,\dots,\lambda_n\eig_n)=\Eig\Eval.
@@ -80,6 +80,19 @@ The following basic result will be useful for us.
 \begin{proof}
 	It suffices to show that $\dim\ker\Q = \dim\ker\Q^\tp \Q$, by rank-nullity. Clearly $\ker\Q \subset \ker\Q^\tp\Q$ since $\Q\f=\zero$ implies $\Q^\tp\Q\f=\zero$. Conversely, if $\Q^\tp\Q\f=\zero$ then $0=\f^\tp \Q^\tp \Q\f = \norm{\Q\f}_2^2$, implying that $\Q\f=\zero$.  
 \end{proof}
+
+We conclude with a formula for  the determinant of the minor of an invertible matrix.  It is often referred to as (a special  case of) \emph{Sylvester's identity}~\cite{sylvester1851xxxvii}. We state the version described by Viktor Prasolov~\cite{prasolov1994problems}. 
+
+\begin{lemma}
+	\label{lem:sylvester}
+	Let $\Q\in\R^{n\times n}$ have a non-zero determinant, and let $\emptyset\neq U\subsetneq[n]$. Then 
+	\begin{equation}
+	\label{eq:sylvester}
+	\det(\Q^{-1}[U,U]) \det(\Q) = \pm \det(\Q[U^c,U^c]). 
+	\end{equation}
+\end{lemma}
+
+
 
 \subsection{Pseudoinverse}
 \label{sec:background_pseudoinverse}
@@ -129,7 +142,7 @@ Since the eigenvectors are orthonormal by assumption, $\vp_i^\tp\vp_j=\delta_{i,
 Performing a similar computation then demonstrates that 
 \[\M\vb{Q}\M = \sum_{i=1}^k \vp_i\vp_i^\tp \sum_{j=1}^k \lambda_j\vp_j\vp_j^\tp=\sum_{i,j=1}\lambda_i \vp_i\vp_i^\tp\vp_j\vp_j^\tp=\sum_{i=1}^k \lambda_i \vp_i\vp_i^\tp =\M,\]
 and similarly, $\vb{Q}\M\vb{Q}=\vb{Q}$. Moreover, $\vp_i\vp_i^\tp (k,\ell)=\vp_i(k)\vp_i(\ell)=\vp_i(\ell)\vp_i(k)=(\vp_i\vp_i^\tp)^\tp (k,\ell)$ implying that $\vp_i\vp_i^\tp=(\vp_i\vp_i^\tp)^\tp$, so 
-\[(\vb{Q}\M)^\tp=(\M\vb{Q})^\tp =\bigg(\sum_{i=1}^k \vp_i\vp_i^\tp )\bigg)^\tp = \sum_{i=1}^k (\vp_i\vp_i^\tp)^\tp = \sum_{i=1}^k \vp_i\vp_i^\tp=\M\vb{Q}=\vb{Q}\M,\]
+\[(\vb{Q}\M)^\tp=(\M\vb{Q})^\tp =\bigg(\sum_{i=1}^k \vp_i\vp_i^\tp \bigg)^\tp = \sum_{i=1}^k (\vp_i\vp_i^\tp)^\tp = \sum_{i=1}^k \vp_i\vp_i^\tp=\M\vb{Q}=\vb{Q}\M,\]
 so both required conditions hold, and we conclude that $\vb{Q}=\M^+$. 
 \end{proof}
 
@@ -146,9 +159,9 @@ Unless otherwise stated, $G$ will be undirected (edges do not have  directions) 
 We will typically take $V=[n]$ for simplicity. For a  vertex $i\in V$, we denote the set of its neighbours by 
 \begin{equation}
 \label{eq:delta(i)}
-\delta_G(i) \equiv  \{j\in V:w(i,j)>0\},
+\partial_G(i) \equiv  \{j\in V:w(i,j)>0\},
 \end{equation}
-a set we call that \emph{neighbourhood} of $i$. The \emph{degree of $i$} if $\deg(i)\equiv |\delta(i)|$. The \emph{weight of $i$} if $w(i)\equiv \sum_{j\in \delta(i)}w(i,j)$. Note that if $G$ is unweighted, then $w(i)=\deg(i)$. If the degree of each vertex in $G$ is equal to $k$, we call $G$ a \emph{$k$-regular graph}. We call $G$ \emph{regular} if it is $k$-regular for some $k$. If $U\subset V$ contains only vertices with the same degree (resp., weight), we call it \emph{degree (resp., weight) homogeneous}. 
+a set we call that \emph{neighbourhood} of $i$. The \emph{degree of $i$} if $\deg(i)\equiv |\partial(i)|$. The \emph{weight of $i$} if $w(i)\equiv \sum_{j\in \partial(i)}w(i,j)$. Note that if $G$ is unweighted, then $w(i)=\deg(i)$. If the degree of each vertex in $G$ is equal to $k$, we call $G$ a \emph{$k$-regular graph}. We call $G$ \emph{regular} if it is $k$-regular for some $k$. If $U\subset V$ contains only vertices with the same degree (resp., weight), we call it \emph{degree (resp., weight) homogeneous}. 
 For a set of subset of vertices $U$, the \emph{volume of $U$} is 
 \begin{equation}
 \label{eq:volU}

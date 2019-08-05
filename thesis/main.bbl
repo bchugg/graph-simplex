@@ -203,11 +203,6 @@ Brendan~D McKay and Adolfo Piperno.
 \newblock Practical graph isomorphism, ii.
 \newblock {\em Journal of Symbolic Computation}, 60:94--112, 2014.
 
-\bibitem[MPL17]{masuda2017random}
-Naoki Masuda, Mason~A Porter, and Renaud Lambiotte.
-\newblock Random walks and diffusion on networks.
-\newblock {\em Physics reports}, 716:1--58, 2017.
-
 \bibitem[Pap03]{papadimitriou2003computational}
 Christos~H Papadimitriou.
 \newblock {\em Computational complexity}.
@@ -230,6 +225,11 @@ Roger Penrose.
 \newblock On best approximate solutions of linear matrix equations.
 \newblock In {\em Mathematical Proceedings of the Cambridge Philosophical
   Society}, volume~52, pages 17--19. Cambridge University Press, 1956.
+
+\bibitem[Pra94]{prasolov1994problems}
+Viktor~Vasil\_evich Prasolov.
+\newblock {\em Problems and theorems in linear algebra}, volume 134.
+\newblock American Mathematical Soc., 1994.
 
 \bibitem[Sha67]{sharpe1967theorem}
 GE~Sharpe.
@@ -255,6 +255,13 @@ Ernst Steinitz.
 Andrew~James Stothers.
 \newblock On the complexity of matrix multiplication.
 \newblock 2010.
+
+\bibitem[Syl51]{sylvester1851xxxvii}
+James~Joseph Sylvester.
+\newblock Xxxvii. on the relation between the minor determinants of linearly
+  equivalent quadratic functions.
+\newblock {\em The London, Edinburgh, and Dublin Philosophical Magazine and
+  Journal of Science}, 1(4):295--305, 1851.
 
 \bibitem[VM13]{van2013double}
 P~Van~Mieghem.

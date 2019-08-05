@@ -3,8 +3,8 @@
 \contentsline {figure}{\numberline {2.1}{\ignorespaces Simplices in dimensions one, two, and three. We wish the reader luck in visualizing a simplex (or anything really) in more than three dimensions.}}{17}{figure.2.1}
 \contentsline {figure}{\numberline {2.2}{\ignorespaces }}{19}{figure.2.2}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces A simplex of a graph and its inverse. }}{35}{figure.3.1}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces A simplex of a graph and its inverse. }}{36}{figure.3.1}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Summary of results for precise mappings. A slash refers to a difference in runtimes when the graph is available versus when it isn't. The quantity before the slash indicates the runtime \emph {without} the graph, after the slash the runtime \emph {with} the graph. A question mark indicates that the runtime isn't known.}}{71}{figure.5.1}
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Summary of results for precise mappings. A slash refers to a difference in runtimes when the graph is available versus when it isn't. The quantity before the slash indicates the runtime \emph {without} the graph, after the slash the runtime \emph {with} the graph. A question mark indicates that the runtime isn't known.}}{75}{figure.5.1}
 \addvspace {10\p@ }

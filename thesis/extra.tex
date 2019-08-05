@@ -262,3 +262,41 @@ $-\bpi(t)\W^{-1}\L =\zero$. Therefore, $\bpi(t)\W^{-1}$ is a left eigenfunction 
 \[\bpi(\infty) = \frac{\w}{\norm{\w}_1}.\]
 In particular, the CTRW shares the same stationary distribution as the DTRW. 
 
+
+This link between the volume of a simplex and $\Gamma_G$,  combined with the relationship between the distance matrix of a hyperacute simplex and the effective resistance of a graph allows us to derive new equations relating spanning trees with the effective resistances. For example: 
+
+\note{WRONG}
+\begin{lemma}
+	\label{lem:vol_and_spanning_trees}
+	Let $\splx^+$ be the inverse combinatorial simplex of the graph $G$.
+	For any $U\subsetneq  V(G)$ with $|U|=d$,  the volumes of $\splx^+$ and $\splx^+_{U}$ are related  as 
+	\begin{equation}
+	\label{eq:vol(splx+)vol(splx+_U)}
+	\vol^2(\splx^+_U) = \pm \frac{(-1)^{n+d}}{2^{n+d-2} [(d-1)!]^2[(n-1)!]^2 } \frac{\det(\D(\splx^+_{U^c}))}{\vol^2(\splx^+)},
+	\end{equation} 
+	while $\Gamma_{G}$ and $\Gamma_{G[U^c]}$ obey
+	\begin{equation}
+	\label{eq:Gamma_GGamma_GUc}
+	\Gamma_{G[U]}\Gamma_G = \pm  \frac{2^{d+n-2}}{(-1)^{d+n}\det\Reff_{G[U^c]}}.
+	\end{equation}
+\end{lemma}
+\begin{proof}
+	Let $\Q$  be the Menger matrix associated to the simplex $\splx_G^+$. The Menger matrix associated with the simplex $\splx^+_U$ is then  $\Q[U+1,U+1]$, where we use the shorthand $Q+1=Q\cup\{1\}$. (The addition of the 1 comes from that fact that the Menger matrix still has $(0 \;\one^\tp)$ as a first row and $(0\; \one)^\tp$ as a first column.) 
+	Lemma~\ref{lem:volume} then gives 
+	\[\vol^2(\splx^+_{U}) = \frac{(-1)^d}{2^{d-1} [(d-1)!]^2 } \det\Q[U+1,U+1].\] 
+	Using Sylvester's formula (Lemma~\ref{lem:sylvester}), write 
+	\[\det\Q[U+1,U+1] = \pm \frac{\det\Q[(U+1)^c,(U+1)^c]}{\det\Q}.\]
+	Now, notice that $\Q[(U+1)^c,(U+1)^c]$ is precisely the distance matrix associated to $\splx_{U^c}^+$, which we write as $\D(\Sv^+_{U^c})$.  Applying Lemma~\ref{lem:volume} to relate $\det\Q$ to $\vol(\splx^+)$ we obtain 
+	\begin{equation*}
+	\vol^2(\splx^+_U) = \pm \frac{(-1)^{n+d}}{2^{n+d-2} [(d-1)!]^2[(n-1)!]^2 } \frac{\det\D(\splx^+_{U^c})}{\vol^2(\splx^+)},
+	\end{equation*} 
+	which is \eqref{eq:vol(splx+)vol(splx+_U)}.
+	Lemma~\ref{lem:S_G_basic_properties} then implies that distance matrix of $\splx^+{U^c}$ is precisely the  effective resistance matrix of $G[U^c]$. Hence  $\det\D(\splx^+_{U^c})=\det\Reff_{G[U^c]}$. Translating the volume expressions in the above equation into expressions involving $\Gamma_G$ and $\Gamma_{G[U]}$ by Equation~\ref{eq:vol(T)} gives \eqref{eq:Gamma_GGamma_GUc}.  
+\end{proof}
+
+\begin{remark}
+	Since every hyperacute simplex is  the inverse combinatorial simplex of  some graph, Lemma~\ref{lem:vol_and_spanning_trees} applies to  all hyperacute simplices. 
+\end{remark}
+
+
+

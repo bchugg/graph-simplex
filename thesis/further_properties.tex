@@ -25,6 +25,7 @@ and put $\bxi=(\xi(1),\dots,\xi(n))$.
 Then we have the following result. 
 
 \begin{lemma}
+	\label{lem:block_inverse_simplex}
 	Let $\ssplx\subset\R^{n-1}$ be a hyperacute simplex with  squared distance matrix $\D$, and average squared distance vector $\bxi$. Denote by $\BGamma$ the vertex matrix of the dual simplex to $\ssplx$. Then, 
 	\begin{equation}
 	\label{eq:simplex_block_matrix}
@@ -58,7 +59,8 @@ and $\bxi$ as
 \bxi = \frac{1}{n}\Reff\one - \frac{1}{n^2} \one \one^\tp \Reff\one = \frac{1}{n}\Reff\one - \frac{1}{n^2} \J \Reff\one.
 \end{align*}
 Meanwhile, the dual simplex to $\splx$ is the simplex of the graph $G$, and hence obeys $\BGamma^\tp\BGamma=\L_G$. Consequently, letting $\u=\frac{1}{n}\Reff\one - \frac{1}{n^2} \J \Reff\one$, we can rewrite Equation \ref{eq:simplex_block_matrix} as the purely graph theoretic statement  
-\begin{equation*}
+\begin{equation}
+\label{eq:block_inverse_er}
 	-\frac{1}{2} \begin{pmatrix}
 0 & \one_n^\tp \\ 
 \one_n &  \Reff
@@ -67,7 +69,7 @@ Meanwhile, the dual simplex to $\splx$ is the simplex of the graph $G$, and henc
 \u^\tp \L_G\u + \frac{4}{n^2}R & -(\L_G\u + \frac{2}{n}\one)^\tp \\
 -(\L_G\u + \frac{2}{n}\one) & \L_G
 \end{pmatrix}^{-1}.
-\end{equation*}
+\end{equation}
 where $R=\sum_{i<j}\effr(i,j)$ is the total effective resistance in the graph. The above equality was proved by Van Mieghem \etal~\cite{van2017pseudoinverse}, and in a more general form by Fiedler~\cite{fiedler1993geometric,fiedler2011matrices}, but we prove it here for completeness. Multiplying out the left hand side, the top left-hand corner of the resulting block matrix is
 \[-\frac{1}{2}(\one^\tp\L_G - \frac{2}{n}\one^\tp \one) = 1,\]
 since $\one^\tp \L_G=\one^\tp\L_G^\tp =\zero$. Likewise the top-right hand corner is $\zero$. The bottom left-hand corner is 
@@ -104,22 +106,28 @@ and so
 as desired. 
 \end{proof}
 
-Putting aside simplex geometry for the moment, it is worth meditating on the significance of Equation \eqref{eq:simplex_block_matrix} as applied to electrical networks. As demonstrated in \cite{van2017pseudoinverse}, the result translates into the matrix equation 
+Owing to the various connections between graphs and simplices, the block matrix equation has several different flavours. Lemma~\ref{lem:block_inverse_simplex}, for example, provides an interpretation purely in terms of simplices, while Equation~\eqref{eq:block_inverse_er} provides a relationship between the Laplacian, its pseudoinverse, and  the effective resistance of the graph. 
+We can combine  these two interpretations to obtain the following relationship between a graph's Laplacian and its inverse (combinatorial) simplex. 
 
-\begin{equation}
-\label{eq:block_inverse}
--\frac{1}{2}\begin{pmatrix}
-0 & \one^\tp \\
-\one & \Reff
-\end{pmatrix} = 
-\begin{pmatrix}
-\u^\tp  \L_G \u  + 4R_G/n^2
-&  -(\L_G\u + \frac{2}{n}\one )^\tp \\
--(\L_G\u + \frac{2}{n}\one ) 
-& \L_G
-\end{pmatrix}^{-1},
-\end{equation}
-where $\u=\diag(\L_G^+(i,i))$, which is interesting in its own right. Taken together, Equations \eqref{eq:block_ST} and \eqref{eq:block_inverse} allow us to translate between knowledge of the effective resistance of a graph, and the underlying geometry of its simplex. For example, we can relate the volume of the simplex to the effective resistances in the graph. To see this, we need to introduce a particular object from the field of distance geometry. Let $\D(\X)$ be the distance matrix of a set $\X$ of $d$ points. The matrix 
+\begin{corollary}
+	For a  graph $G$ with inverse simplex $\splx^+$ which has distance matrix  $\D(\splx^+)$, 
+	\begin{equation}
+	\label{eq:block_inverse_graph_simplex}
+	-\frac{1}{2}\begin{pmatrix}
+	0 & \one^\tp \\
+	\one & \D(\splx_G^+)
+	\end{pmatrix} = 
+	\begin{pmatrix}
+	\u^\tp  \L_G \u  + 4R_G/n^2
+	&  -(\L_G\u + \frac{2}{n}\one )^\tp \\
+	-(\L_G\u + \frac{2}{n}\one ) 
+	& \L_G
+	\end{pmatrix}^{-1},
+	\end{equation}
+	where $\u=\diag(\L_G^+(i,i))$. 
+\end{corollary}
+
+One consequence of the above is a relation between the volume of the simplex and the effective resistances in the graph. To see this, we need to introduce a particular object from the field of distance geometry. Let $\D(\X)$ be the distance matrix of a set $\X$ of $d$ points. The matrix 
 \begin{equation}
 \label{eq:menger_matrix}
 \begin{pmatrix}
@@ -132,13 +140,14 @@ is called the \emph{Menger matrix of $X$}, the determinant of which is called th
 
 \begin{lemma}[\cite{menger1931new}]
 	\label{lem:menger_volume}
-	Let $\D(\X)$ be the distance matrix of a set $\X$ of $d$ points. The $d-1$ dimensional volume\footnote{That is, the volume as calculated in $\R^{d-1}$.} of the convex hull of $\X$ is proportional to the root of the determinant of the Menger matrix: 
-	\begin{equation*}
-	\vol(\conv(\X))^2 = \frac{(-1)^d}{((d-1)!)^2 2^{d-1}} \det\begin{pmatrix}
+	Let $\D(\X)$ be the distance matrix of a set $\X$ of $d$ points. The squared $d-1$ dimensional volume\footnote{That is, the volume as calculated in $\R^{d-1}$.} of the convex hull of $\X$ is proportional to the root of the determinant of the Menger matrix: 
+	\begin{equation}
+	\label{eq:vol(convX)}
+	\vol^2(\conv(\X)) = \frac{(-1)^d}{((d-1)!)^2 2^{d-1}} \det\begin{pmatrix}
 	0 & \one^\tp \\
 	\one & \D(\X)
 	\end{pmatrix}.
-	\end{equation*} 
+	\end{equation} 
 \end{lemma}
 
 The relation between the Menger matrix and the volume combined with the matrix equations above, allows us to give a concise formula for the volume of any hyperacute simplex. This was first pointed out in \cite{van2017pseudoinverse}. 
@@ -153,7 +162,7 @@ The relation between the Menger matrix and the volume combined with the matrix e
 	where $\Gamma_G$ is the total weight of all spanning  trees of $G$. 
 \end{lemma}
 We remind the reader that $\Gamma_G$ was discussed in  Section~\ref{sec:background_laplacian_spectrum}; see  Equation~\ref{eq:Gamma_G}  in particular. 
-Before proceeding to the proof, we remind the reader of the equation of the determinant of a matrix in terms of its co-factor expansion. Let $\Q\in\R^{m\times m}$. For any $i,j\in[m]$, let $\Q_{-i,-j}$ denote the matrix obtained by removing row $i$ and column $j$ from $\Q$. The cofactor expansion along row $i\in[n]$ is the relationship
+Before proceeding to the proof, we recall the equation of the determinant of a matrix in terms of its co-factor expansion. Let $\Q\in\R^{m\times m}$. For any $i,j\in[m]$, let $\Q_{-i,-j}$ denote the matrix obtained by removing row $i$ and column $j$ from $\Q$. The cofactor expansion along row $i\in[n]$ is the relationship
 \begin{equation*}
 \det(\Q) = \sum_{k=1}^m (-1)^{i+k} \Q(i,k)\det(\Q_{-i,-k}),
 \end{equation*}
@@ -165,7 +174,7 @@ We may now give the proof.
 \begin{proof}
 	Let $\D$ be the distance matrix of $\ssplx$, and recall that $\D=\Reff$ where $\Reff$ is the effective resistance matrix of the graph $G$. 
 	Set \[\r=-\bigg(\L_G\diag(\L_G^+(i,i)) + \frac{2}{n}\one\bigg), \quad \alpha = \diag(\L_G^+(i,i))^\tp \L_G\diag(\L_G^+(i,i)) + 4R_G/n^2.\] 
-	Combining Lemma \ref{lem:menger_volume} and Equation \ref{eq:block_inverse}, write 
+	Combining Lemma \ref{lem:menger_volume} and Equation \eqref{eq:block_inverse_graph_simplex}, write 
 	\begin{align*}
 	\vol(\ssplx)^2 &= \frac{(-1)^n }{((n-1)!)^2 2^{n-1}} \det\left(-2\begin{pmatrix}
 	\alpha & \r \\
@@ -198,35 +207,106 @@ We may now give the proof.
 	by  definition  of $\r$. 
 \end{proof}
 
-
-We can  use these results to produce a surprising equation concerning  the diagonal entries of the pseudoinverse Laplacian. In particular, $\L_G^+(i,i)$ is proportional to the ratio of the weight of  spanning trees in $G$ to this weight when the vertex $i$ is removed. 
+We can use these results to produce a surprising equation concerning  the diagonal entries of the Laplacian. In particular, $\L_G(i,i)$ is proportional to the ratio of the weight of  spanning trees in $G$ to this weight when the vertex $i$ is removed. 
 
 \begin{lemma}
-	\label{lem:L_G^+(i,i)_trees}
-	Let $G$ be a connected graph and fix $i\in V(G)$. Put $G_\ic=G[V\setminus \{i\}]$. Then 
+	\label{lem:L(i,i)_trees}
+	Let $G$ be a connected graph and fix $i\in V(G)$. 
+	The Put $G_\ic=G[V\setminus \{i\}]$. The diagonal entries of the combinatorial Laplacian are given by 
 	\begin{equation}
-	\L_G^+(i,i) = \frac{(n-1)\Gamma_G^{1/2}}{n^2\Gamma_{G_\ic}^{1/2}}.
+	\label{eq:L(i,i)_trees}
+	\L_G(i,i) = \frac{\Gamma_G}{\Gamma_{G_\ic}}.
+	\end{equation}
+	Moreover, if $\splx^+\subset\R^{n-1}$  is the inverse combinatorial simplex of $G$ then the volumes
+	of $\splx^+_\ic$ and $\splx^+$ are related as 
+	\begin{equation}
+	\label{eq:vol/vol}
+	\frac{\vol^2(\splx_\ic^+)}{\vol^2(\splx^+)} = (n-1)^2\L_G(i,i). 
 	\end{equation}
 \end{lemma}
 \begin{proof}
-	Let $\splx^+$ be  the hyperacute simplex of $G$ with vertices $\sv_1^+,\dots,\sv_n^+$. 
-	For an arbitrary simplex $\ssplx$ with vertices $\{\gamma_i\}$, 
-Fiedler~\cite[Chapter 2]{fiedler2011matrices} gave  the formula \note{can we derive this ourselves?}
+	We will begin with Equation~\eqref{eq:vol/vol}. 
+	Let $\splx^+$ have vertices $\sv_1^+,\dots,\sv_n^+$, and let $\Q$ be the Menger matrix associated with $\splx^+$. Sylvester's formula (Lemma~\ref{lem:sylvester}) gives us that 
 	\begin{equation*}
-	\la \bgamma_i^\du,\bgamma_j^\du\ra= \frac{\vol(\bgamma_1,\dots,\bgamma_{i-1},\bgamma_{i+1},\dots,\bgamma_n)}{(n-1)^2 \vol(\ssplx)},
+	\Q^{-1}(i+1,i+1) =\det\Q^{-1}(i+1,i+1)= \pm \frac{\det\Q(U,U)}{\det\Q},
 	\end{equation*}
-	where $\{\bgamma_i^\du\}$ are the dual vertices. Translating this to a statement about $\splx$ and $\splx^+$ and applying Lemma~\ref{lem:volume} gives 
+	where $U=\{i+1\}^c$. Observe that $\Q(U,U)$ is the Menger matrix of the simplex $\splx_\ic$, since we are simply removing the row and column corresponding to the $i$-th vertex. Translating the determinants of Menger matrices into statements about volumes of simplices via Equation~\eqref{eq:vol(T)} gives 
 	\begin{align*}
-	\L_G(i,i) = \norm{\sv_i}_2^2 &= \frac{\vol(\splx^+_\ic)}{(n-1)^2\vol(\splx^+)} \\
-	&= \frac{1}{(n-2)!\cdot \Gamma_{G_\ic}^{1/2}} \bigg/ \frac{(n-1)^2}{(n-1)!\cdot \Gamma_G^{1/2}},
+	\Q^{-1}(i+1,i+1) &= \pm \frac{[(n-2)!]^2 2^{n-2}}{(-1)^{n-1}}\vol^2(\splx_\ic^+) \bigg / \frac{[(n-1)!]^2 2^{n-1}}{(-1)^n} \vol^2(\splx^+) \\
+	&= \mp \frac{1}{2(n-1)^2}\frac{\vol^2(\splx_\ic^+)}{\vol^2(\splx^+)}. 
+	\end{align*} 
+	Via the block matrix equation \eqref{eq:block_inverse_graph_simplex} we have $\Q^{-1}(i+1,i+1) = -\frac{1}{2}\L_G(i,i)$. Plugging this into the above equation and noting that both $\L_G(i,i)$ and $\vol^2(\splx_\ic^+)/(2n^2\vol^2(\splx^+))$ are positive  gives the desired result. 
+	Equation~\eqref{eq:L(i,i)_trees} now comes from writing out the  simplex volumes $\vol(\splx_\ic^+)$ and $\vol(\splx^+)$ in terms of spanning trees of $G$ by \eqref{eq:vol(T)}, after using \eqref{eq:vol/vol}:
+	\begin{align*}
+	\L_G(i,i)  &= \frac{\vol^2(\splx^+_\ic)}{(n-1)^2\vol^2(\splx^+)} = \frac{1}{(n-2)!^2\cdot \Gamma_{G[\ic]}} \bigg/ \frac{(n-1)^2}{(n-1)!^2\cdot \Gamma_G} = \frac{\Gamma_{G}}{\Gamma_{G[\ic]}}.\qedhere
 	\end{align*}
-	which  simplifies to the desired expression. 
-	
+\end{proof}
+
+\begin{corollary}
+	For all $i\in[n]$, the length of the vertex vector $\sv_i$ of $\splx_G$ obeys
+	\begin{equation}
+	\label{eq:||sv_i||_vol}
+	\norm{\sv_i}_2^2 = \frac{\Gamma_G}{\Gamma_{G[\ic]}} = \frac{\vol^2(\splx_\ic^+)}{(n-1)^2\vol^2(\splx^+)}.
+	\end{equation}
+\end{corollary}
+\begin{proof}
+	Follows immediately from Lemma~\ref{lem:L(i,i)_trees}. 
+\end{proof}
+
+\begin{lemma}
+	\label{lem:volT_multi}
+	For any hyperacute simplex $\ssplx\subset\R^{n-1}$ and  $i\in[n]$, the following equations hold:
+	\begin{enumerate}
+		\item $\vol(\ssplx_\ic) = \sum_{j\neq i}\vol(\ssplx_\jc)\cos\theta_{ij}(\ssplx)$;
+		\item $\vol^2(\ssplx_\ic) =  \sum_{j\neq i}\vol^2(\ssplx_\jc) - \sum_{j,k\neq i,j\neq k} \vol(\ssplx_\jc)\vol(\ssplx_\kc)\cos\theta_{jk}(\ssplx)$; and
+		\item $(n-1)\vol(\ssplx_{\{i,j\}^c})\vol(\ssplx) = (n-2)\vol(\ssplx_\ic)\vol(\ssplx_\jc)\sin\theta_{ij}(\ssplx)$ for  all $j\neq i$. 
+	\end{enumerate}
+	Here, as usual, $\theta_{ij}(\ssplx)$ is the angle between $\ssplx_\ic$ and $\ssplx_\jc$. 
+\end{lemma}
+
+\begin{remark}
+	One might expect that the second equation in the above lemma follows immediately from squaring the first. However, performing the computation demonstrates that this is not the case. Hence the second equation is in  fact providing new information. 
+\end{remark}
+\begin{proof}
+	It suffices to take $\ssplx=\splx^+$, the  inverse combinatorial simplex of some graph $G$.  Let $\{\sv_i\}$ be the vertices of $\splx_G$, the combinatorial simplex of $G$. 	
+	We have $\L_G(i,j)=\la\sv_i,\sv_j\ra = \norm{\sv_i}_2\norm{\sv_j}_2\cos\phi_{ij}$, where $\phi_{ij}$ is the angle between $\sv_i$ and $\sv_j$. Since the vertices $\{\sv_i\}$ are  dual to those of $\splx^+_G$, we have $\cos\phi_{ij}=-\cos\theta^+_{ij}$ where $\theta^+_{ij}$ is the angle between $\splx^+_\ic$ and $\splx^+_\jc$. (We are applying the same reasoning here as in Sections~\ref{sec:background_simplex_angles} and~\ref{sec:simplex_to_graph}.) Combining this with the fact that $\L_G\one=\zero$ and Equation~\eqref{eq:||sv_i||_vol} gives
+	\begin{align*}
+	0 &= \sum_{j\in[n]} \L_G(i,j) = \norm{\sv_i}_2^2 - \sum_{j\neq i}\norm{\sv_i}_2\norm{\sv_j}_2\cos\theta_{ij}^+ \\
+	&= \frac{\vol(\splx_\ic^+)}{n^2\vol^2(\splx^+)} \bigg(\vol(\splx^+_\ic) - \sum_{j\neq i}\vol(\splx_\jc^+)\cos\theta_{ij}^+\bigg),
+	\end{align*}
+	which proves the first equation. To see the second,  note that $\L_G(i,k)=-\sum_{j\neq k}\L_G(i,k)$  (again using that $\L_G\one=\zero$). Applying  this twice, we obtain 
+	\[\L_G(i,i) = -\sum_{j\neq i}\L_G(i,j) = \sum_{j\neq i}\sum_{k\neq i}\L_G(k,j) = \sum_{j\neq i}\L_G(j,j) + \sum_{j,k\neq i,k\neq j}\L_G(k,j).\] 
+	As above,  translating this to expressions involving the volumes of facets of $\splx^+$ and then multiplying through by $n^2\vol(\splx^+)$ gives  
+	\begin{equation*}
+	\vol^2(\splx_\jc^+) = \sum_{j\neq i}\vol^2(\splx_\jc^+) - \sum_{j,k\neq i,k\neq j} \vol(\splx_\kc^+)\vol(\splx_\jc^+)\cos\theta_{kj}^+. 
+	\end{equation*}
+	It remains to  prove  the  third equation.  Let $\Q$ be  the Menger matrix of $\splx^+$, and  let $U=\{i,j\}$  and  $U_1=\{i+1,j+1\}$ for any $i\neq j$. Without loss of generality assume  $i<j$. 
+	Notice that $\Q(U_1^c,U_1^c)$ is the Menger matrix of the vertices $\{\sv_k\}_{k\neq i,j}$. 
+	Combining Sylvester's equation and our usual block matrix relation gives 
+	\begin{align*}
+	\frac{\det\Q(U_1^c,U_1^c)}{\det \Q} &= \pm \det \bigg(-\frac{1}{2}\L_G(U,U)\bigg) \\
+	&= 
+	\pm \frac{1}{4}\det\begin{pmatrix}
+	\norm{\sv_i}_2^2 & \la \sv_i,\sv_j\ra \\
+	\la \sv_i,\sv_j\ra & \norm{\sv_j}_2^2 
+	\end{pmatrix} \\
+	&=\pm \frac{1}{4}\norm{\sv_i}_2^2\norm{\sv_j}_2^2 - \la \sv_i,\sv_j\ra^2 \\
+	&= \pm\frac{1}{4}\norm{\sv_i}_2^2\norm{\sv_j}_2^2(1 - \cos^2\phi_{ij})
+	\end{align*}
+	where $\phi_{ij}$ is the angle between $\sv_i$ and $\sv_j$ (Section~\ref{sec:background_simplex_angles}). Since the vertices $\{\sv_i\}$ are the  duals  to those in $\splx^+$, we have $\cos\phi_{ij}=-\cos\theta_{ij}^+$  so \[\norm{\sv_i}_2^2\norm{\sv_j}_2^2(1 - \cos^2\phi_{ij}) = \norm{\sv_i}_2^2\norm{\sv_j}_2^2(1 - \cos^2\theta_{ij}^+) =  \norm{\sv_i}_2^2\norm{\sv_j}_2^2\sin^2\theta_{ij}^+.\]   
+	Writing $\det\Q(U_1^c,U_1^c)$  in terms of $\vol\splx_{U^c}^+$ and $\det \Q$  in terms of $\vol\splx^+$ by  means of Equation~\eqref{eq:vol(convX)}, and using Equation~\eqref{eq:||sv_i||_vol} to relate $\norm{\sv_i}_2^2$ and $\norm{\sv_j}_2^2$  to  the volumes of $\splx_\ic^+$  and $\splx_\jc^+$ then yields 
+	\begin{align*}
+	\frac{1}{4(n-1)^2(n-2)^2}\frac{\vol^2\splx_{U^c}^+}{\vol^2\splx^+} =  \frac{\vol^2\splx_\ic^+}{(n-1)^2\vol^2\splx^+}\frac{\vol^2\splx_\jc^+}{(n-1)^2\vol^2\splx^+}\sin^2\theta_{ij}^+.
+	\end{align*}
+	Notice that we have rid ourselves  of the ambiguity in sign because we see that both  sides are the square of some quantity, hence are  positive. 
+	Simplying and taking the square root of both sides of the above expression gives the third equation.
 \end{proof}
 
 
 
-Our next set of results demonstrate the the inverse relation can be used not only to infer geometry properties of simplices, but also graph-theoretic properties. A variant of the following  was proved by Fiedler~\cite{fiedler2011matrices}. 
+
+
+Our next set of results demonstrate the the inverse relation can be used not only to infer geometric properties of simplices, but also graph-theoretic properties. A variant of the following  was proved by Fiedler~\cite{fiedler2011matrices}. 
 
 \begin{lemma}
 	\label{lem:block_matrix_tree}
@@ -277,7 +357,7 @@ $\sum_{i\in\delta(\ell)}w(i,\ell)(\bS_T(k,\ell)-\bS_T(k,i)) = 1-(|\delta(\ell)|-
 	where $\bxi = \diag(\L_T^+(i,i))=\frac{1}{n}\Reff\one - \frac{1}{n^2} \J \Reff\one$ and $\d= (\deg(1),\dots,\deg(n))$. 
 \end{corollary}
 \begin{proof}
-	Let $\bS_T$ be as it was in  Lemma \ref{lem:block_matrix_tree}. It's well known  that in trees, the effective resistance between nodes $i,j$  is equal to $\sum_{s=1}^{r-1} 1/w(v_s,v_{s+1})$ where $i=v_1,\dots,v_r=j$ is the shortest path between $i$ and $j$ in $T$ (see e.g., \cite{ellens2011effective}). That is, $\Reff_T=\bS_T$. Since matrix inverses are unique, combining Equations \eqref{eq:block_ST} and \eqref{eq:block_inverse} yields 
+	Let $\bS_T$ be as it was in  Lemma \ref{lem:block_matrix_tree}. It's well known  that in trees, the effective resistance between nodes $i,j$  is equal to $\sum_{s=1}^{r-1} 1/w(v_s,v_{s+1})$ where $i=v_1,\dots,v_r=j$ is the shortest path between $i$ and $j$ in $T$ (see e.g., \cite{ellens2011effective}). That is, $\Reff_T=\bS_T$. Since matrix inverses are unique, combining Equations \eqref{eq:block_ST} and \eqref{eq:block_inverse_graph_simplex} yields 
 	\begin{equation*}
 	\begin{pmatrix}
 	\sum_{i\sim j}1/w(i,j)  & (\d-2\one)^\tp \\
@@ -344,8 +424,39 @@ we can  relate  the centroids of $\splx_G$ to $\splxn_G$ as follows.
 	Use that $\norm{\cent(\splx_U)}_2^2 =  |U|^{-2} \bchi_U\L_G\bchi_U$ (Section~\ref{sec:S_G}) and that $\Svn\Svn^\tp=\Evaln$ (Equation~\eqref{eq:SvSv^t}) and apply Cheeger's inequality. 
 \end{proof}
 
+We can translate several of the results obtained in the previous section on  volumes and spanning  into inequalities. 
+
+\begin{lemma}
+\label{lem:volT_inequalities}
+For any hyperacute simplex $\ssplx\subset\R^{n-1}$ and  $i\in[n]$, the following equations hold:
+\begin{enumerate}
+	\item $\vol\ssplx_\ic \leq \sum_{j\neq i}\vol\ssplx_\jc$;
+	\item $\sum_{j\neq i}\vol^2\ssplx_\jc\geq \vol^2\ssplx_\ic\geq   \sum_{j\neq i}\vol^2\ssplx_\jc - \sum_{j,k\neq i,j\neq k} \vol\ssplx_\jc\vol\ssplx_\kc$; and
+	\item $(n-1)\vol\ssplx_{\{i,j\}^c}\vol\ssplx \leq  (n-2)\vol(\ssplx_\ic)\vol(\ssplx_\jc)$ for  all $j\neq i$.
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+	Follows immediately from Lemma~\ref{lem:volT_multi} after  recalling that because $\ssplx$  is  hyperacute all interior  angles are at most $\pi/2$. We remark that for the second  equation  we have simply provided the  easy  upper bound provided by Equation 2 of Lemma~\ref{lem:volT_inequalities}. 
+\end{proof}
+
+More interestingly  however,  we can use the relation between volume of a  graph's inverse combinatorial s simplex and the weight of its spanning trees (Equation~\eqref{eq:vol(T)})  to give inequalities pertaining to the latter.  
+
+\begin{lemma}
+	For any weighted,  connected  graph  $G$ and all $i\in V(G)$, 
+	\begin{enumerate}
+		\item $\Gamma_{G_\ic}^{-1/2} \leq \sum_{j\neq i}\Gamma_{G_\jc}^{-1/2}$;
+		\item $\sum_{j\neq i}\Gamma_{G_\jc}^{-1} \geq \Gamma_{G_\ic}^{-1} \geq \sum_{j\neq i}\Gamma_{G_\jc}^{-1} - \sum_{j,k\neq i,j\neq k}\Gamma_{G_\jc}^{-1/2}\Gamma_{G_\kc}^{-1/2}$; and 
+		\item $\Gamma_{G_\ic}\Gamma_{G_\jc}\leq \Gamma_{G_{\{i,j\}^c}}\Gamma_G$ for all $j\neq i$. 
+	\end{enumerate}
+\end{lemma}
+\begin{proof}
+	All  equations follow from applying Lemma~\ref{lem:volT_inequalities}  together with Equation~\ref{eq:vol(T)} and simplifying. 
+\end{proof}
+
 \note{Still working on this content. Since $\Reff_G=n\sum_i\lambda_i^{-1}=n\tr(\Sv\Sv^\tp)$,
 facts/inequalities pertaining to the effective resistance can be translated to the simplex. }
+
+
 
 \section{Quadrics}
 \label{sec:quadrics}
