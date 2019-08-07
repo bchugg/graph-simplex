@@ -107,7 +107,10 @@ citecolor=darkblue
 
 % Export backmatter styling
 \newcommand{\backmatterstyling}{
-\chapstylenoline}
+\chapstylenoline
+\renewcommand{\chaptermark}[1]{ \markboth{##1}{} }
+}%
+
 
 
 

@@ -11,22 +11,22 @@ In this section we present matrix equations pertaining to both hyperacute simpli
 
 We begin with a block matrix equation describing some aspects of  the geometry between a  hyperacute simplex and its dual. It is closely related to an equation given by Fiedler in Theorem 1.4.1 in \cite{fiedler2011matrices}. Instead  of a direct proof, we use the results of Van Mieghem \etal~\cite{van2017pseudoinverse} and prove it by leveraging aspects of the effective resistance of a graph.  
 
-Let a centred, hyperacute simplex $\ssplx$ be given.  Let $\bar{d}$ be the average squared distance between all the vertices of $\ssplx$, that is
+Let a centred, hyperacute simplex $\ssplx$ be given, with $\Sv(\ssplx)=\{\bgamma_i\}$.  Let $\bar{d}$ be the average squared distance between all the vertices of $\ssplx$, that is
 \begin{equation}
 \label{eq:avg_squared_distance}
-\bar{d} \equiv  \frac{1}{n^2}\sum_{i\leq j} \norm{\bgamma_i-\bgamma_j^+}_2^2.
+\bar{d} \equiv  \frac{1}{n^2}\sum_{i\leq j} \norm{\bgamma_i-\bgamma_j}_2^2.
 \end{equation}
 Let $\xi(i)$ give the average squared distance of vertex $i$ from other vertices minus the total average distance, 
 \begin{equation}
 \label{eq:avg_sqd_distance_i}
-\xi(i) \equiv \frac{1}{n}\sum_{j} \norm{\bgamma_i^+-\bgamma_j^+}_2^2 - \bar{d},
+\xi(i) \equiv \frac{1}{n}\sum_{j} \norm{\bgamma_i-\bgamma_j}_2^2 - \bar{d},
 \end{equation}
 and put $\bxi=(\xi(1),\dots,\xi(n))$. 
 Then we have the following result. 
 
 \begin{lemma}
 	\label{lem:block_inverse_simplex}
-	Let $\ssplx\subset\R^{n-1}$ be a hyperacute simplex with  squared distance matrix $\D$, and average squared distance vector $\bxi$. Denote by $\BGamma$ the vertex matrix of the dual simplex to $\ssplx$. Then, 
+	Let $\ssplx\subset\R^{n-1}$ be a hyperacute simplex with  squared distance matrix $\D$, and average squared distance vector $\bxi$. Denote by $\BGamma$ the vertex matrix of $\ssplx^\du$, the dual simplex to $\ssplx$. Then, 
 	\begin{equation}
 	\label{eq:simplex_block_matrix}
 	-\frac{1}{2} \begin{pmatrix}
@@ -37,7 +37,7 @@ Then we have the following result.
 	-(\BGamma^\tp \BGamma\bxi + 2\one/n) & \BGamma^\tp \BGamma
 	\end{pmatrix}^{-1}.
 	\end{equation}
-	Moreover, the vertices of the dual simplex to $\splx$ and the distance matrix of $\splx$ are related by the equation
+	Moreover, the vertices $\ssplx^\du$ and the distance matrix of $\ssplx$ are related by the equation
 	\begin{equation}
 	\label{eq:lem_inverse_relation}
 	\BGamma^\tp \BGamma \D \BGamma^\tp \BGamma = -2\BGamma^\tp \BGamma,
@@ -50,7 +50,7 @@ Then we have the following result.
 \end{lemma}
 
 \begin{proof}
-As above, $\splx$ is the inverse simplex of some graph $G$, and therefore, $\D=\Reff$, where $\Reff$ is the effective resistance matrix. Therefore, we can rewrite $\xi(i)$ as 
+As above, $\ssplx$ is the inverse simplex of some graph $G$, and therefore, $\D=\Reff$, where $\Reff$ is the effective resistance matrix. Therefore, we can rewrite $\xi(i)$ as 
 \begin{align*}
 \frac{1}{n}\sum_j \effr(i,j) - \frac{1}{n^2}\sum_{i<j}\effr(i,j),
 \end{align*}
@@ -58,7 +58,7 @@ and $\bxi$ as
 \begin{align*}
 \bxi = \frac{1}{n}\Reff\one - \frac{1}{n^2} \one \one^\tp \Reff\one = \frac{1}{n}\Reff\one - \frac{1}{n^2} \J \Reff\one.
 \end{align*}
-Meanwhile, the dual simplex to $\splx$ is the simplex of the graph $G$, and hence obeys $\BGamma^\tp\BGamma=\L_G$. Consequently, letting $\u=\frac{1}{n}\Reff\one - \frac{1}{n^2} \J \Reff\one$, we can rewrite Equation \ref{eq:simplex_block_matrix} as the purely graph theoretic statement  
+Meanwhile, the dual simplex to $\ssplx$ is the simplex of the graph $G$, and hence obeys $\BGamma^\tp\BGamma=\L_G$. Consequently, letting $\u=\frac{1}{n}\Reff\one - \frac{1}{n^2} \J \Reff\one$, we can rewrite Equation \ref{eq:simplex_block_matrix} as the purely graph theoretic statement  
 \begin{equation}
 \label{eq:block_inverse_er}
 	-\frac{1}{2} \begin{pmatrix}
@@ -124,7 +124,7 @@ We can combine  these two interpretations to obtain the following relationship b
 	& \L_G
 	\end{pmatrix}^{-1},
 	\end{equation}
-	where $\u=\diag(\L_G^+(i,i))$. 
+	where $\u=\diag(\L_G^+(i,i))$. \note{Add the other relationships.}
 \end{corollary}
 
 One consequence of the above is a relation between the volume of the simplex and the effective resistances in the graph. To see this, we need to introduce a particular object from the field of distance geometry. Let $\D(\X)$ be the distance matrix of a set $\X$ of $d$ points. The matrix 
@@ -161,51 +161,9 @@ The relation between the Menger matrix and the volume combined with the matrix e
 	\end{equation}
 	where $\Gamma_G$ is the total weight of all spanning  trees of $G$. 
 \end{lemma}
-We remind the reader that $\Gamma_G$ was discussed in  Section~\ref{sec:background_laplacian_spectrum}; see  Equation~\ref{eq:Gamma_G}  in particular. 
-Before proceeding to the proof, we recall the equation of the determinant of a matrix in terms of its co-factor expansion. Let $\Q\in\R^{m\times m}$. For any $i,j\in[m]$, let $\Q_{-i,-j}$ denote the matrix obtained by removing row $i$ and column $j$ from $\Q$. The cofactor expansion along row $i\in[n]$ is the relationship
-\begin{equation*}
-\det(\Q) = \sum_{k=1}^m (-1)^{i+k} \Q(i,k)\det(\Q_{-i,-k}),
-\end{equation*}
-while the cofactor expansion along column $j\in[n]$ reads
-\begin{equation*}
-\det(\Q) = \sum_{k=1}^m (-1)^{j+k} \Q(k,j)\det(\Q_{-k,-j}). 
-\end{equation*}
-We may now give the proof. 
-\begin{proof}
-	Let $\D$ be the distance matrix of $\ssplx$, and recall that $\D=\Reff$ where $\Reff$ is the effective resistance matrix of the graph $G$. 
-	Set \[\r=-\bigg(\L_G\diag(\L_G^+(i,i)) + \frac{2}{n}\one\bigg), \quad \alpha = \diag(\L_G^+(i,i))^\tp \L_G\diag(\L_G^+(i,i)) + 4R_G/n^2.\] 
-	Combining Lemma \ref{lem:menger_volume} and Equation \eqref{eq:block_inverse_graph_simplex}, write 
-	\begin{align*}
-	\vol(\ssplx)^2 &= \frac{(-1)^n }{((n-1)!)^2 2^{n-1}} \det\left(-2\begin{pmatrix}
-	\alpha & \r \\
-	\r & \L_G
-	\end{pmatrix}^{-1}\right) \\
-	&= \frac{ -4}{((n-1)!)^2}\det\begin{pmatrix}
-	\alpha & \r \\
-	\r & \L_G
-	\end{pmatrix}^{-1},
-	\end{align*}
-	where we've employed the basic determinant properties $\det( \beta\Q)=\beta^{m}\det(\Q)$ for $\Q\in\R^{m\times m}$ and $\det(\Q^{-1})=\det(\Q)^{-1}$ for $\Q$ invertible. We are thus left with task of evaluating the above determinant. We claim it is equal to $-4\Gamma_G$,  which will complete the proof. 
-	Put 
-	\[\Q = \begin{pmatrix}
-	\alpha & \r\\ \r& \L_G
-	\end{pmatrix}\in\R^{n+1\times n+1}.\]
-	First we carry out a cofactor expansion along the first row, which yields 
-	\begin{align*}
-	\det(\Q) = \alpha \det(\L_G) + \sum_{j=2}^{n+1}(-1)^{1+j}r({j-1}) \det(\Q_{-1,-j}) = \sum_{j=1}^n (-1)^j r(j) \det(\Q_{-1,-j+1}).
-	\end{align*}
-	For each $j$, carrying out a cofactor expansion of the first column of $\Q_{-1,-j+1}$ yields 
-	\begin{align*}
-	\det(\Q_{-1,-j+1}) &= \sum_{k=1}^n (-1)^{k+1}r(k) \det(\L_{-k,-j}),
-	\end{align*}
-	hence, 
-	\begin{align*}
-	\det(\Q) = - \sum_{j=1}^n \sum_{k=1}^n r(j)r(k)(-1)^j(-1)^k  \det(\Q_{-k,-j}) = - \sum_{j=1}^n \sum_{k=1}^n r(j)r(k)\Gamma_G,
-	\end{align*}
-	by Theorem~\ref{thm:matrix_tree_theorem}. It remains only to note that 
-	$-\sum_{j,k=1}^n r(j) r(k) = -(\sum_j r(j))^2 = - \la \one,\r\ra ^2 = - 4$ 
-	by  definition  of $\r$. 
-\end{proof}
+
+We remind the reader that $\Gamma_G$ was discussed in  Section~\ref{sec:background_laplacian}; see  Equation~\ref{eq:Gamma_G}  in particular. The proof of Lemma~\ref{lem:volume} may  be  found in Appendix~\ref{sec:app_proofs_further}.   
+
 
 We can use these results to produce a surprising equation concerning  the diagonal entries of the Laplacian. In particular, $\L_G(i,i)$ is proportional to the ratio of the weight of  spanning trees in $G$ to this weight when the vertex $i$ is removed. 
 
@@ -226,16 +184,16 @@ We can use these results to produce a surprising equation concerning  the diagon
 \end{lemma}
 \begin{proof}
 	We will begin with Equation~\eqref{eq:vol/vol}. 
-	Let $\splx^+$ have vertices $\sv_1^+,\dots,\sv_n^+$, and let $\Q$ be the Menger matrix associated with $\splx^+$. Sylvester's formula (Lemma~\ref{lem:sylvester}) gives us that 
+	Let $\splx^+$ have vertices $\sv_1^+,\dots,\sv_n^+$, and let $\M$ be the Menger matrix associated with $\splx^+$. Sylvester's formula (Lemma~\ref{lem:sylvester}) gives us that 
 	\begin{equation*}
-	\Q^{-1}(i+1,i+1) =\det\Q^{-1}(i+1,i+1)= \pm \frac{\det\Q(U,U)}{\det\Q},
+	\M^{-1}(i+1,i+1) =\det\M^{-1}(i+1,i+1)= \pm \frac{\det\M(U,U)}{\det\M},
 	\end{equation*}
-	where $U=\{i+1\}^c$. Observe that $\Q(U,U)$ is the Menger matrix of the simplex $\splx_\ic$, since we are simply removing the row and column corresponding to the $i$-th vertex. Translating the determinants of Menger matrices into statements about volumes of simplices via Equation~\eqref{eq:vol(T)} gives 
+	where $U=\{i+1\}^c$. Observe that $\M(U,U)$ is the Menger matrix of the simplex $\splx_\ic$; we are simply removing the row and column corresponding to the $i$-th vertex. Translating the determinants of Menger matrices into statements about volumes of simplices via Equation~\eqref{eq:vol(T)} gives 
 	\begin{align*}
-	\Q^{-1}(i+1,i+1) &= \pm \frac{[(n-2)!]^2 2^{n-2}}{(-1)^{n-1}}\vol^2(\splx_\ic^+) \bigg / \frac{[(n-1)!]^2 2^{n-1}}{(-1)^n} \vol^2(\splx^+) \\
+	\M^{-1}(i+1,i+1) &= \pm \frac{[(n-2)!]^2 2^{n-2}}{(-1)^{n-1}}\vol^2(\splx_\ic^+) \bigg / \frac{[(n-1)!]^2 2^{n-1}}{(-1)^n} \vol^2(\splx^+) \\
 	&= \mp \frac{1}{2(n-1)^2}\frac{\vol^2(\splx_\ic^+)}{\vol^2(\splx^+)}. 
 	\end{align*} 
-	Via the block matrix equation \eqref{eq:block_inverse_graph_simplex} we have $\Q^{-1}(i+1,i+1) = -\frac{1}{2}\L_G(i,i)$. Plugging this into the above equation and noting that both $\L_G(i,i)$ and $\vol^2(\splx_\ic^+)/(2n^2\vol^2(\splx^+))$ are positive  gives the desired result. 
+	Via the block matrix equation \eqref{eq:block_inverse_graph_simplex} we have $\M^{-1}(i+1,i+1) = -\frac{1}{2}\L_G(i,i)$. Plugging this into the above equation and noting that both $\L_G(i,i)$ and $\vol^2(\splx_\ic^+)/(2n^2\vol^2(\splx^+))$ are positive  gives the desired result. 
 	Equation~\eqref{eq:L(i,i)_trees} now comes from writing out the  simplex volumes $\vol(\splx_\ic^+)$ and $\vol(\splx^+)$ in terms of spanning trees of $G$ by \eqref{eq:vol(T)}, after using \eqref{eq:vol/vol}:
 	\begin{align*}
 	\L_G(i,i)  &= \frac{\vol^2(\splx^+_\ic)}{(n-1)^2\vol^2(\splx^+)} = \frac{1}{(n-2)!^2\cdot \Gamma_{G[\ic]}} \bigg/ \frac{(n-1)^2}{(n-1)!^2\cdot \Gamma_G} = \frac{\Gamma_{G}}{\Gamma_{G[\ic]}}.\qedhere
@@ -280,11 +238,11 @@ We can use these results to produce a surprising equation concerning  the diagon
 	\begin{equation*}
 	\vol^2(\splx_\jc^+) = \sum_{j\neq i}\vol^2(\splx_\jc^+) - \sum_{j,k\neq i,k\neq j} \vol(\splx_\kc^+)\vol(\splx_\jc^+)\cos\theta_{kj}^+. 
 	\end{equation*}
-	It remains to  prove  the  third equation.  Let $\Q$ be  the Menger matrix of $\splx^+$, and  let $U=\{i,j\}$  and  $U_1=\{i+1,j+1\}$ for any $i\neq j$. Without loss of generality assume  $i<j$. 
-	Notice that $\Q(U_1^c,U_1^c)$ is the Menger matrix of the vertices $\{\sv_k\}_{k\neq i,j}$. 
+	It remains to  prove  the  third equation.  Let $\M$ be  the Menger matrix of $\splx^+$, and  let $U=\{i,j\}$  and  $U_1=\{i+1,j+1\}$ for any $i\neq j$. Without loss of generality assume  $i<j$. 
+	Notice that $\M(U_1^c,U_1^c)$ is the Menger matrix of the vertices $\{\sv_k\}_{k\neq i,j}$. 
 	Combining Sylvester's equation and our usual block matrix relation gives 
 	\begin{align*}
-	\frac{\det\Q(U_1^c,U_1^c)}{\det \Q} &= \pm \det \bigg(-\frac{1}{2}\L_G(U,U)\bigg) \\
+	\frac{\det\M(U_1^c,U_1^c)}{\det \M} &= \pm \det \bigg(-\frac{1}{2}\L_G(U,U)\bigg) \\
 	&= 
 	\pm \frac{1}{4}\det\begin{pmatrix}
 	\norm{\sv_i}_2^2 & \la \sv_i,\sv_j\ra \\
@@ -294,7 +252,7 @@ We can use these results to produce a surprising equation concerning  the diagon
 	&= \pm\frac{1}{4}\norm{\sv_i}_2^2\norm{\sv_j}_2^2(1 - \cos^2\phi_{ij})
 	\end{align*}
 	where $\phi_{ij}$ is the angle between $\sv_i$ and $\sv_j$ (Section~\ref{sec:background_simplex_angles}). Since the vertices $\{\sv_i\}$ are the  duals  to those in $\splx^+$, we have $\cos\phi_{ij}=-\cos\theta_{ij}^+$  so \[\norm{\sv_i}_2^2\norm{\sv_j}_2^2(1 - \cos^2\phi_{ij}) = \norm{\sv_i}_2^2\norm{\sv_j}_2^2(1 - \cos^2\theta_{ij}^+) =  \norm{\sv_i}_2^2\norm{\sv_j}_2^2\sin^2\theta_{ij}^+.\]   
-	Writing $\det\Q(U_1^c,U_1^c)$  in terms of $\vol\splx_{U^c}^+$ and $\det \Q$  in terms of $\vol\splx^+$ by  means of Equation~\eqref{eq:vol(convX)}, and using Equation~\eqref{eq:||sv_i||_vol} to relate $\norm{\sv_i}_2^2$ and $\norm{\sv_j}_2^2$  to  the volumes of $\splx_\ic^+$  and $\splx_\jc^+$ then yields 
+	Writing $\det\M(U_1^c,U_1^c)$  in terms of $\vol\splx_{U^c}^+$ and $\det \M$  in terms of $\vol\splx^+$ by  means of Equation~\eqref{eq:vol(convX)}, and using Equation~\eqref{eq:||sv_i||_vol} to relate $\norm{\sv_i}_2^2$ and $\norm{\sv_j}_2^2$  to  the volumes of $\splx_\ic^+$  and $\splx_\jc^+$ then yields 
 	\begin{align*}
 	\frac{1}{4(n-1)^2(n-2)^2}\frac{\vol^2\splx_{U^c}^+}{\vol^2\splx^+} =  \frac{\vol^2\splx_\ic^+}{(n-1)^2\vol^2\splx^+}\frac{\vol^2\splx_\jc^+}{(n-1)^2\vol^2\splx^+}\sin^2\theta_{ij}^+.
 	\end{align*}
@@ -323,31 +281,6 @@ Our next set of results demonstrate the the inverse relation can be used not onl
 \end{pmatrix} = \I.
  \end{equation}
 \end{lemma}
-\begin{proof}
-We begin by computing the left hand side of the matrix equation. Note that for connected trees on $n$ nodes, there are  precisely $n-1$ edges. Therefore, $\one^\tp \d-2n = \sum_i \deg(i) - 2n = 2|E| -2n = -2$, by the handshaking lemma. Since $\one^\tp\L_T=\zero$, it follows that the top row of the resulting matrix is as desired. Next, let us consider the term 
-\[\sum_{i\sim j}\frac{\one}{w(i,j)} + \bS_T(\d-2\one),\]
-which we need to demonstrate is equal to $\zero$. Consider the $k$-th row of the above vector, 
-\begin{equation}
-\label{eq:lem_block_matrix_tree}
-\sum_{i\sim j}\frac{1}{w(i,j)} + \sum_{\ell\in[n]}\bS_T(k,\ell)(\deg(\ell)-2).
-\end{equation}
-Denote the sum on the right by $S$. Fix some $(i,j)\in E$ and let us consider how many occurrences of $1/w(i,j)$ there are in $S$. Since $T$ is a tree, we may partition $V$ into two disjoint sets of vertices, $V_i$ and $V_j$ (so that $V_i\cup V_j=V$ and $V_i\cap V_j=\emptyset$) where $i\in V_i$,  $j\in V_j$, and $T[V_i]$, $T[V_j]$ are both connected trees. That is, the original graph $T$ is a union of $T[V_i]$, $T[V_j]$ and the edge $(i,j)$ which connects them. Now, the edge $(i,j)$ will be on the path between two vertices if and only if one lies in $V_i$ and the other in $V_j$. (Again, this is due to the fact that $T$ is a tree---there is thus no other path between the components  $V_i$ and $V_j$ other than via $(i,j)$.)   
-Assume without loss of generality that $k\in V_i$. Then,  by the above argument, $1/w(i,j)$ appears only in those terms $\bS_T(k,\ell)$ with $\ell\in V_j$. 
-Consequently, collecting and summing over all the terms $1/w(i,j)$, we may rewrite $S$ as 
-\[\sum_{i\sim j} \frac{1}{w(i,j)}\sum_{\ell \in V_j} (\deg_T(\ell)-2).\]
-Since $T[V_j]$ is a tree, $\sum_{\ell\in V_j}\deg_{T[V_j]}(\ell)=2(|V_j|-1)$ (using the same arguments as above). Moreover, $\deg_{T[V_j]}(\ell)=\deg_T(\ell)$ for every $\ell\in V_j\setminus \{j\}$, since no other vertex besides $j$ shares an edge with any vertex in $V_i$. On the other hand, since $(i,j)\in E$,  $\deg_{T[V_j]}(j) = \deg_T(j)-1$. Hence, 
-\[\sum_{\ell\in V_j}(\deg_T(\ell)-2) = 2(|V_i|-1) + 1 - 2|V_i| = -1.\]
-We have thus shown that $S=-\sum_{i\sim j}1/w(i,j)$, and so \eqref{eq:lem_block_matrix_tree} is indeed 0. Finally, we consider the term $\one^\tp \d - 2\one\one^\tp + \bS_T\L_T$, which we need to show is $-2I$. Let us expand  the $(k,\ell)$-th component of this matrix: 
-\begin{align*}
-\deg(\ell) - 2 + \sum_{i\in [n]} \bS_T(k,i)\L_T(\ell,k) &= \deg(\ell) - 2 + \bS_T(k,\ell)\L_T(\ell,\ell) + \sum_{i\neq \ell} \bS_T(k,i)\L_T(\ell,k)\\
-&= \deg(\ell) -2 + \bS_T(k,\ell)w(\ell) - \sum_{i\in\delta(\ell)} \bS_T(k,i) \\
-&= \deg(\ell) -2 + \sum_{i\in\delta(\ell)}w(i,\ell)(\bS_T(k,\ell) - \bS_T(k,i)).
-\end{align*}
-For $k=\ell$, we have $\bS_T(k,\ell)=0$ and $\bS_T(k,i)=\bS_T(\ell,i) = 1/w(i,\ell)$. It  follows that the above sum is $-2$, as desired. 
-Now consider $k\neq \ell$. 
-Fix $i\in \delta(\ell)$ and let $P=(k=v_1,\dots,v_r=\ell)$ be the unique path between $k$  and $\ell$. First, suppose that $i\in P$ so that $i=v_{r-1}$. Then $\bS_T(k,\ell) - \bS_T(k,i) = \sum_{s=1}^{r-1}1/w(v_s,v_{s+1}) - \sum_{s=1}^{r-2} 1/w(v_s,v_{s+1}) = 1/w(v_{r-1},v_r) = 1/w(i,\ell)$. Otherwise,  if $i\in P$ then the unique path  between $i$ and $k$ in $T$ is $P\cup\{\ell\} = (v_1,\dots,v_r,i)$. In  this case  $\bS_T(k,ell) - \bS_T(k,i) = \sum_{s=1}^{r-1}1/w(v_s,v_{s+1}) - (\sum_{s=1}^{r-1} 1/w(v_s,v_{s+1}) + 1/w(i,\ell)) = - 1/w(i,\ell)$. Finally, we note that there can be at most one neighbour of $\ell$ which is on the shortest path between $k$ and $\ell$. Therefore, 
-$\sum_{i\in\delta(\ell)}w(i,\ell)(\bS_T(k,\ell)-\bS_T(k,i)) = 1-(|\delta(\ell)|-1) = 2 - \deg(\ell)$, demonstrating that the $(k,\ell)$-th component is zero, completing the proof. 
-\end{proof}
 
 \begin{corollary}
 	Let $T$  be a weighted and connected tree. Then 
@@ -382,28 +315,11 @@ $\sum_{i\in\delta(\ell)}w(i,\ell)(\bS_T(k,\ell)-\bS_T(k,i)) = 1-(|\delta(\ell)|-
 In this section we demonstrate how the graph-simplex may be used to obtain both geometric and graph-theoretic inequalities. We begin with an inequality relating the quadratic form $\Lf$ to the ``weight'' of the cuts associated with the pseudoinverse.  It was first proved by Devriendt and Van Mieghem~\cite{devriendt2018simplex}. Interestingly, a parallel result for the normalized Laplacian form does not seem to exist. 
 
 \begin{lemma}
-For any $f$ with $\la f,\one\ra=0$, 
-\begin{equation*}
-    \Lf(f) \geq \frac{\norm{f}_1^2}{4w(\partial^+F^+)},
-\end{equation*}
+	\label{lem:ineq_f1}
+For any $f$ with $\la f,\one\ra=0$, $
+\Lf(f) \geq \norm{f}_1^2/4w(\partial^+F^+)$, 
 for $F^+\equiv \{i:f(i)\geq 0\}$. 
 \end{lemma}
-\begin{proof}
-Let $F^+$ be as above and let $F^-\equiv [n]\setminus F^+=\{i:f(i)<0\}$. Observe that 
-\begin{equation*}
-    \norm{f}_1=\sum_i |f(i)| = \la \bchi_{F^+}-\bchi_{F^-},f\ra = (\bchi_{F^+}-\bchi_{F^-})^\tp f = (\bchi_{F^+}-\bchi_{F^-})^\tp(\I-\J/n) f,
-\end{equation*}
-where the last inequality follows since $f$ is orthogonal to $\one$ by assumption. Using the pseudoinverse relation \eqref{eq:sv+sv}, we can continue as 
-\begin{align*}
-    \norm{f}_1 &= (\chi_{F^+}-\bchi_{F^-})^\tp(\Sv^+)^\tp \Sv f \\
-    &= (\bchi_{F^+}-\one + \bchi_{F^+})^\tp(\Sv^+)^\tp \Sv f \\
-    &=2\bchi_{F^+}^\tp (\Sv^+)^\tp \Sv f - (\Sv^+\one)^\tp \Sv f \\
-    &= 2\la \Sv^+\bchi_{F^+}, \bchi_{F^+}^\tp (\Sv^+)^\tp \Sv f \ra &&\text{since }\Sv^+\one =\zero\\
-    &\leq 2\norm{\Sv\chi_{F^+}}_2 \cdot \norm{\Sv^+ f}_2 &&\text{by Cauchy-Schwartz\footnote{Recall that the Cauchy inequality says $\la |\u,\v\ra| \leq \norm{\u}_2\norm{\v}_2$ for any vectors $\u$ and $\v$.}}\\
-    &= 2\left(\bchi_{F^+}\L^+\bchi_{F^+}\cdot f^\tp \L f\right)^{1/2}.
-\end{align*}
-Squaring both sides and recalling that $\chi_{F^+}\L^+\chi_{F^+} = w(\delta^+F^+)$ gives the desired result. 
-\end{proof}
 
 Given the combinatorial simplex $\splx_G$ of the  graph $G$, it has a natural corresponding normalized simplex, namely $\splxn_G$. Using Cheeger's inequality~\cite{chung1997spectral}
 \begin{equation*}
@@ -442,6 +358,7 @@ For any hyperacute simplex $\ssplx\subset\R^{n-1}$ and  $i\in[n]$, the following
 More interestingly  however,  we can use the relation between volume of a  graph's inverse combinatorial s simplex and the weight of its spanning trees (Equation~\eqref{eq:vol(T)})  to give inequalities pertaining to the latter.  
 
 \begin{lemma}
+	\label{lem:tree_inequalities}
 	For any weighted,  connected  graph  $G$ and all $i\in V(G)$, 
 	\begin{enumerate}
 		\item $\Gamma_{G_\ic}^{-1/2} \leq \sum_{j\neq i}\Gamma_{G_\jc}^{-1/2}$;
@@ -474,7 +391,7 @@ In $\R^3$, typical examples of quadrics are spheroids and ellipsoids ($\r=\zero$
 The \emph{Steiner Circumscribed Ellipsoid}, or simply the \emph{Steiner Ellipsoid} of a simplex $\splx$ with vertices $\{\sv_i\}$ is a quadric which contains the vertices and whose tangent plane at $\sv_i$ is parallel to the affine plane spanned by $\{\sv_j\}_{j\neq i}$. 
 \end{definition}
 
-It's existence  and uniqueness is guaranteed by the following theorem. 
+Its existence  and uniqueness is guaranteed by the following theorem. 
 
 \begin{theorem}[\cite{fiedler2005geometry}]
 The Steiner ellipsoid of a simplex $\splx$ is unique and moreover, is the ellipsoid with minimum volume which contains $\splx$. 
@@ -495,21 +412,7 @@ and
 \El(\splx^+_G) = \bigg\{\x: \x^\tp \Sv\Sv^\tp \x - \frac{n-1}{n}=0\bigg\}.
 \end{equation}
 \end{lemma}
-\begin{proof}
-We prove Equation  \eqref{eq:steinerE} only; Equation \eqref{eq:steinerE_inverse} follows similarly. 
-Set $\M=\Sv^+(\Sv^+)^\tp$ and $E=\{\x:\x^\tp \M\x=(n-1)/n\}$. The claim is that $\El(\splx)=E$.  
-First we demonstrate that the vertices of $\splx$ are contained in $E$. Noticing that $\J^2=n\J$, we compute 
-\begin{align*}
-    \sv_i^\tp \M \sv_i &= \chi_i^\tp \Sv^\tp \Sv^+(\Sv^+)^\tp \Sv \chi_i = \chi_i^\tp \left(\I-\frac{1}{n}\J\right)^2 \chi_i = \chi_i^\tp \left(\I-\frac{1}{n}\J\right) \chi_i = 1 - \frac{1}{n}, 
-\end{align*}
-so indeed the vertices $\sv_i$ are contained in $E$. Now, define the hyperplane 
-\[\H\equiv \bigg\{\x:\x^\tp \M \sv_i = -\frac{1}{n}\bigg\}.\]
-We claim that $\H$ is the plane containing the points $\{\sv_j\}_{j\neq i}$. Indeed, consider $\sv_j$ for some fixed $j\neq i$. Then, as above 
-\[\sv_j^\tp \M\sv_i = \chi_j^\tp \left(\I-\frac{1}{n}\J\right) \chi_i = -\frac{1}{n}. \]
-It remains to show that $\H$ is parallel to the tangent plane of $E$ at the point $\sv_i$. But this tangent plane is defined by the equation~\cite{fiedler2005geometry} \note{Should figure out how this is actually done}
-\[\x^\tp \M\sv_i =\frac{n-1}{n},\]
-which is clearly parallel to $\H$. This completes the proof.
-\end{proof}
+
 
  Perhaps a more insightful representation of $\El(\splx)$ comes from appealing to Equation \eqref{eq:SvSv+}, i.e., $\Sv\Sv^\tp = \Eval^{-1/2}$. Hence, by \eqref{eq:steinerE},
 \begin{equation}
@@ -535,63 +438,28 @@ Next we investigate the circumscribed sphere of the combinatorial  simplex. Simi
 	\label{lem:circ_sphere}
 	Let $\splx^+\subset\R^{n-1}$ be a hyperacute simplex. The circumscribed sphere  of $\splx^+$ exists and is given by the set of points $\{\x:\x=\Sv\balpha, \; \la \balpha,\one \ra = 1, \; \la \balpha,\D\balpha\ra =0\}$, which is a sphere centred at the point $\frac{1}{2}\Sv(\L_G\bxi + \one/n)$ with radius $\frac{1}{2}\sqrt{\bxi^\tp\L_G\bxi + 4R_G/n^2}$ where $G$ is $\splx^+$'s associated graph, and $\bxi = \diag(\L_G^+(i,i))$. 
 \end{lemma}
-\begin{proof}
-Set $\bzeta = \frac{1}{2}(\L_G\bxi + \one/n)$ and $r = \bxi^\tp \L_G\bxi+4R_G/n^2$. 
-Let us expand $\x$ in barycentric coordinates in accordance with Lemma \ref{lem:barycentric_coeffs}.  Put $\x=\sum_i \alpha_i\sv_i$ where $\sum_i\alpha_i=\sum_i\beta_i=1$. Let $\balpha=(\alpha_1,\dots,\alpha_n)$. 
-The claim is that the circumscribed sphere of $\splx^+$ is given by the equation 
-\begin{equation}
-\label{eq:lem_circ_sphere2}
-\norm{\x - \Sv\bzeta}_2^2 = \frac{1}{4}r,
-\end{equation}
-and that this equation is equivalent to $\balpha^\tp \D\balpha=0$. Note first that due to Equation \ref{eq:block_inverse}, $\la \one, -2\bzeta\ra = \la \one, -\L_G\bxi - \frac{2}{n}\one\ra = -2$, so $\bzeta=(\zeta_1,\dots,\zeta_{n-1})$ obeys $\sum_i \zeta_i=1$.  The left hand side of \eqref{eq:lem_circ_sphere2} then becomes 
-\begin{align*}
-\la \x-\Sv\bzeta,\x-\Sv\bzeta\ra &= \sum_{i,j\in[n]} (\alpha_i-\zeta_i)(\alpha_j-\zeta_j) \la \sv_i,\sv_j\ra \\
-&= \sum_{i,j\in[n]} (\alpha_i-\zeta_i)(\alpha_j-\zeta_j) \la \sv_i-\sv_n,\sv_j-\sv_n\ra,
-\end{align*} 
-where the last line uses that $\sv_n \sum_i(\alpha_i-\zeta_i)=\zero$. 
-Observing that 
-\begin{align*}
-\la \sv_i-\sv_n,\sv_j-\sv_n\ra &= \frac{1}{2}(\norm{\sv_i-\sv_n}_2^2 + \norm{\sv_j-\sv_n}_2^2 - \norm{\sv_i-\sv_j}_2^2),
-\end{align*}
-we may proceed as
-\begin{align}
-\la\x-\Sv\bzeta,\x-\Sv\bzeta\ra &= \frac{1}{2}\bigg(\sum_j (\alpha_j-\zeta_j) \sum_i (\alpha_i-\zeta_i)\norm{\sv_i-\sv_n}_2^2 \notag \\
-&\qquad + \sum_i (\alpha_i-\zeta_i) \sum_j (\alpha_j-\zeta_j)\norm{\sv_j-\sv_n}_2^2  \notag \\
-&\qquad - \sum_{i,j} (\alpha_i-\zeta_i)(\alpha_j-\zeta_j)\norm{\sv_i-\sv_j}_2^2 \bigg)\notag \\
-&= -\frac{1}{2}\sum_{i,j} (\alpha_i-\zeta_i)(\alpha_j-\zeta_j)\norm{\sv_i-\sv_j}_2^2. \label{eq:lem_circ_sphere}
-\end{align} 
-Recalling the block matrix equation \eqref{eq:block_inverse} for hyperacute simplices, for all $i$ we have $\one (\bxi^\tp \L_G\bxi + 4R_G/n^2) - \D(\L_G\bxi + 2\one /n) = \zero$, i.e., $r\one -2\D =\zero$. Hence 
-\[\la \D(i,\cdot),\bzeta\ra = \frac{r}{2}.\]
-Using this, we rewrite the summation on the right hand side of \eqref{eq:lem_circ_sphere} as 
-\begin{align*}
-\sum_{i,j}(\alpha_i-\zeta_i)(\alpha_j-\zeta_j)\D(i,j) &= \sum_i (\alpha_i-\zeta_i) \bigg(\sum_j\alpha_j \D(i,j) - \sum_j \alpha_j \D(i,j)\bigg) \\
-&= \sum_j\alpha_j \sum_i (\alpha_i-\zeta_i)\D(i,j) - \frac{1}{2}r \sum_i (\alpha_i-\zeta_i) \\
-&= \sum_j \alpha_j \bigg(\sum_i \alpha_i \D(i,j) - \frac{1}{2}r \bigg) \\
-&= \sum_{i,j} \alpha_i \D(i,j) \alpha_j -\frac{1}{2}r= \balpha^\tp \D\balpha - \frac{1}{2}r.
-\end{align*}
-The equation of the sphere in \eqref{eq:lem_circ_sphere2} now becomes $\frac{1}{4}r - \frac{1}{2}\balpha^\tp \D\balpha = \frac{1}{4}r$, i.e., $\balpha^\tp \D\balpha=\zero$ as was claimed.  Now, to see that this sphere contains the vertices of $\splx^+$,  $\{\sv_i^+\}$, we need only note that the barycentric coordinate of $\sv_\ell^+$ is $\bchi_\ell$ and that $\bchi_\ell^\tp \D \bchi_\ell = \sum_{i,j} \bchi_\ell(i) \D(i,j) \bchi_\ell(j) = \D(\ell,\ell) = 0$. 
-\end{proof}
 
 Until this point, we have been examining only the quadrics associated with the combinatorial simplices. We now consider the normalized simplices. Since all the vertices of the normalized simplex lie on the unit sphere, it's clear  that the circumscribed sphere of $\splxn_G$ is precisely $\{\x:\x^\tp\x=1\}$. It's not as straightforward  to see what they circumscribed ellipsoid, $\El(\splxn)$, is on the other hand. One might suspect that it obeys the  equation $\x^\tp \Svn+(\Svn^+)^\tp=1-1/n$, as this is the natural analogue of \eqref{eq:steinerE}. However, because $\Svn^+$ and $\Svn$ obey a non-constant pseudoinverse relation, this equation fails the first test: $\svn_i^\tp\Svn^+(\Svn^+)^\tp\svn_i = \bchi_i^\tp(\I-\sqrt{\w}\sqrt{\w}^\tp/\vol(G))\bchi_i=1-\sqrt{w(i)w(j)}/\vol(G)$ is non-constant. 
 However, at this point we recall that beyond being simply  the inverse simplex of $\splx$, $\splx^+$ is also its dual.  We might thus hazard a guess that the correct matrix is $\Svn^\du (\Svn^\du)^\tp$, where $\Svn^\du$ is the vertex matrix of $\splxn^\du$. This is in fact correct, but to see this we first need to demonstrate that any set of simplex vertices and their  duals obey the same relationship as do the vertices of the combinatorial simplex and its inverse. 
 
 \begin{lemma}
 	\label{lem:dot_dual_vertices}
-	Let  $\ssplx\subset\R^{n-1}$ be any simplex, and $\ssplx^\du$ its dual, where $\Sv=\Sv(\ssplx)=(\sv_i)$ and $\Sv^\du=\Sv(\ssplx^\du)=(\svnd_i)$. 
-	For all $i,j\in[n]$, $\la \svn_i,\svn_j^\du\ra=\delta_{i,j}-1/n$. 
+	Let  $\ssplx\subset\R^{n-1}$ be any simplex, and $\ssplx^\du$ its dual, where $\Sv=\Sv(\ssplx)=(\bgamma_i)$ and $\Sv^\du=\Sv(\ssplx^\du)=(\bgamma^\du_i)$. 
+	For all $i,j\in[n]$, $\la \bgamma_i,\bgamma_j^\du\ra=\delta_{i,j}-1/n$. 
 \end{lemma}
 \begin{proof}
-	By definition of the dual simplex, for all $i,j\neq n$, $\la \svn_i,\svnd_j-\svnd_n\ra = \delta_{ij}$. Recalling that $\svnd_n=-\sum_{\ell<n}\svnd_\ell$, write 
+	By definition of the dual simplex, for all $i,j\neq n$, $\la \bgamma_i,\bgamma^\du_j-\bgamma^\du_n\ra = \delta_{ij}$. Recalling that $\bgamma^\du_n=-\sum_{\ell<n}\bgamma^\du_\ell$, write 
 	\begin{align*}
-	\la \svn_i,\svnd_n\ra &= - \sum_{\ell<n}\la \svn_i,\svnd_\ell\ra \\
-	&= -\sum_{\ell<n} \delta_{i,\ell} + \la \svn_i,\svnd_n\ra \\
-	&= -1 - (n-1)\la\svn_i,\svnd_n\ra.
+	\la \bgamma_i,\bgamma^\du_n\ra &= - \sum_{\ell<n}\la \bgamma_i,\bgamma^\du_\ell\ra \\
+	&= -\sum_{\ell<n} \delta_{i,\ell} + \la \bgamma_i,\bgamma^\du_n\ra \\
+	&= -1 - (n-1)\la\bgamma_i,\bgamma^\du_n\ra.
 	\end{align*}
-	Rearranging the above yields $\la \svn_i,\svnd\ra = -1/n$. Therefore, $\la \svn_i,\svnd_j\ra = \delta_{ij} - 1/n$. It remains to show that $\la\svn_n,\svnd_n\ra=1-1/n$. Proceeding as above, we have 
+	Rearranging the above yields $\la \bgamma_i,\bgamma^\du\ra = -1/n$. Therefore, $\la \bgamma_i,\bgamma^\du_j\ra = \delta_{ij} - 1/n$. It remains to show that $\la\bgamma_n,\bgamma^\du_n\ra=1-1/n$. Proceeding as above, we have 
 	\begin{align*}
-	\la\svn_n,\svnd_n\ra &= -\sum_{\ell<n}\la \svn,\svnd_\ell\ra = -\sum_{\ell<n} \frac{-1}{n} = \frac{n-1}{n}.\qedhere
+	\la\bgamma_n,\bgamma^\du_n\ra &= -\sum_{\ell<n}\la \bgamma,\bgamma^\du_\ell\ra = -\sum_{\ell<n} \frac{-1}{n} = \frac{n-1}{n}.\qedhere
 	\end{align*}
 \end{proof}
+
 
 From this we can extract the equations of $\El(\splxn)$ and $\El(\splxn^+)$. 
 
@@ -608,7 +476,7 @@ From this we can extract the equations of $\El(\splxn)$ and $\El(\splxn^+)$.
 	where $\Svn^\du$ contains the vertices of $\splxn_G^\du$ and $(\Svn^+)^\du$ those of $(\splxn_G^+)^\du$. 
 \end{corollary}
 \begin{proof}
-	The computational is almost identical to that in the proof of Lemma~\ref{lem:El(S)}.
+	The computation is almost identical to that in the proof of Lemma~\ref{lem:El(S)}.
 \end{proof}
 
 
@@ -621,7 +489,7 @@ In this section we explore the relationship between the inverse combinatorial si
 \norm{\bmu_i-\bmu_j}_2^2 = \norm{\L_G^{+/2}(\bchi_i-\bchi_j)}_2^2 =  (\bchi_i-\bchi_j)^\tp \L_G^+(\bchi_i-\bchi_j)=\effr(i,j).
 \end{equation*}
 
-This embedding has been referred to as a \emph{resistive embedding}~\cite{shayanNotes,ding2011cover}, and is an example of an $\ell_2^2$ metric~\cite{arora2009expander} owing  to the fact that, as we saw in Section~\ref{sec:background_er},  that effective resistance is a metric. That being said however, while the mapping seems to be known, there is very little literature on its properties. 
+This embedding has been referred to as a \emph{resistive embedding}~\cite{shayanNotes,ding2011cover}, and is an example of an $\ell_2^2$ metric~\cite{arora2009expander} owing  to the well known fact that the effective resistance is a metric (e.g., ~\cite{klein1993resistance}). That being said however, while the mapping seems to be known~\cite{ghosh2008minimizing}, there is very little literature on its properties. 
 
 We  set 
 \begin{equation}
@@ -643,7 +511,7 @@ Recalling the formula for the vertices of the inverse simplex $\splx^+$ demonstr
 \begin{equation*}
 \mu_i(\ell) = \sum_{j\in[n]}\sv_\ell^+(j)\vp_j(i) = \sum_{j\in[n]}\sv_i^+(j)\vp_j(\ell).
 \end{equation*}
-Hence, in general, $\mu_i(\ell)\neq \sv_i(\ell)$. However, the dot products between the vertices of $\respol_G$ does respect  the same relationships as those between the vertices of $\splx_G^+$:
+Hence, in general, $\mu_i(\ell)\neq \sv_i^+(\ell)$. However, the dot products between the vertices of $\respol_G$ does respect  the same relationships as those between the vertices of $\splx_G^+$:
 \begin{align*}
 \la \bmu_i,\bmu_j\ra &=\sum_{\ell\in[n]} \L_G^{+/2}(\ell,i)\L_G^{+/2}(\ell,j) \\
 &= \la \L_G^{+/2}(\cdot,i),\L_G^{+/2}(\cdot,j)\ra \\

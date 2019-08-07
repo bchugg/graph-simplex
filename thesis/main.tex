@@ -1,6 +1,8 @@
 \documentclass[11pt, oneside]{book}
 \usepackage[margin=1.2in]{geometry}
 \usepackage{amsmath,amsthm,amssymb}
+\usepackage{setspace}
+\usepackage{hyperref}
 \usepackage{physics}
 \usepackage{color}
 \usepackage{xspace}
@@ -15,9 +17,8 @@
 \usepackage{graphicx}
 \usepackage{multirow}
 \usepackage{longtable}
-\usepackage{setspace}
 \graphicspath{{figures/}{../figures/}}
-\usepackage{hyperref}
+
 
 
 % Macros and formatting
@@ -49,7 +50,7 @@
 
 % Mid matter
 \midmatterstyling
-%\onehalfspacing
+\onehalfspacing
 \include{introduction}
 \include{background}
 \include{correspondence}
@@ -59,9 +60,11 @@
 
 
 % End matter
+\singlespacing 
 \backmatterstyling
 \bibliographystyle{alpha}
 \bibliography{ref.bib}
+\include{appendix}
 
 
 

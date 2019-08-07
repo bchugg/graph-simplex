@@ -94,11 +94,6 @@ Miroslav Fiedler.
 \newblock In {\em Combinatorial and Graph-Theoretical Problems in Linear
   Algebra}, pages 73--98. Springer, 1993.
 
-\bibitem[Fie98]{fiedler1998some}
-Miroslav Fiedler.
-\newblock Some characterizations of symmetric inverse m-matrices.
-\newblock {\em Linear algebra and its applications}, 275:179--187, 1998.
-
 \bibitem[Fie05]{fiedler2005geometry}
 Miroslav Fiedler.
 \newblock Geometry of the laplacian.
@@ -108,6 +103,11 @@ Miroslav Fiedler.
 Miroslav Fiedler.
 \newblock {\em Matrices and graphs in geometry}.
 \newblock Number 139. Cambridge University Press, 2011.
+
+\bibitem[GBS08]{ghosh2008minimizing}
+Arpita Ghosh, Stephen Boyd, and Amin Saberi.
+\newblock Minimizing effective resistance of a graph.
+\newblock {\em SIAM review}, 50(1):37--66, 2008.
 
 \bibitem[Gha15]{shayanNotes}
 Sharan Ghayan.
@@ -152,6 +152,11 @@ Volker Kaibel and Marc~E Pfetsch.
 \newblock Some algorithmic problems in polytope theory.
 \newblock In {\em Algebra, geometry and software systems}, pages 23--47.
   Springer, 2003.
+
+\bibitem[KR93]{klein1993resistance}
+Douglas~J Klein and Milan Randi{\'c}.
+\newblock Resistance distance.
+\newblock {\em Journal of mathematical chemistry}, 12(1):81--95, 1993.
 
 \bibitem[Kra83]{krause1983steinerellipsoide}
 Hans-Ulrich Krause.

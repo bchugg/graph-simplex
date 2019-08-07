@@ -51,9 +51,6 @@ Given the set $\{\v_i\}$ of linearly independent vectors, the complementary set 
 \label{obs:bi-orthogonal_unique}
 Let $\{\v_1,\dots,\v_n\}\subset\R^n$ be a set of linearly independent vectors. The sister basis given by Lemma \ref{lem:bi-orthogonal_bases} is unique. 
 \end{observation}
-\begin{proof}
-Suppose $\{\u_i\}$ and $\{\w_i\}$ are biorthogonal bases. Fix $i\in[n]$. By independence, $\spn(\v_1,\dots,\\\v_{i-1},\v_{i+1},\dots,\v_n)$ is a hyperplane---that is, \[\dim\spn(\v_1,\dots,\v_{i-1},\v_{i+1},\dots,\v_n)^\perp=1.\] Both $\u_i$ and $\w_i$ are orthogonal to this hyperplane (since they orthogonal to $\v_j$ for all $j\neq i$), thus are either parallel or anti-parallel. Therefore, there exists some $\alpha\in\R$ such that $\v_i=\alpha\w_i$. By definition, $\la \v_i,\u_i\ra = \la \v_i,\w_i\ra =1$, hence $\la \v_i,\alpha \w_i\ra = \la \v_i,\w_i\ra$ implying that $\alpha=1$. This demonstrates that $\u_i=\w_i$ for all $i$. 
-\end{proof}
 
 Let $\M\in\R^{n\times n}$. We recall that a vector $\eig$ satisfying $\M\eig=\lambda\eig$ is an \emph{eigenvector} of $\M$, and call $\lambda$ the associated \emph{eigenvalue}. It's clear that if $\eig$ is an eigenvector then so it $c\eig$ for any constant $c\in \R$. If $\M$ is real and symmetric, then the Spectral theorem dictates that there exists an orthonormal basis consisting of eigenvectors $\{\eig_1,\eig_2,\dots,\eig_n\}$ of $\M$ whose corresponding eigenvalues $\{\lambda_1,\dots,\lambda_n\}$ are all real. Let $\Eig=(\eig_1,\eig_2,\dots,\eig_n)$ be the matrix whose $i$-th column is the $i$-th eigenvector of $\M$, and set $\Eval=\diag(\lambda_1,\dots,\lambda_n)$. Observe that 
 \begin{equation}
@@ -77,9 +74,6 @@ The following basic result will be useful for us.
 	\label{lem:rank(QtQ)}
 	For any $\Q:\R^n\to\R^m$, $\rank(\Q) = \rank(\Q^\tp\Q)$. 
 \end{lemma}
-\begin{proof}
-	It suffices to show that $\dim\ker\Q = \dim\ker\Q^\tp \Q$, by rank-nullity. Clearly $\ker\Q \subset \ker\Q^\tp\Q$ since $\Q\f=\zero$ implies $\Q^\tp\Q\f=\zero$. Conversely, if $\Q^\tp\Q\f=\zero$ then $0=\f^\tp \Q^\tp \Q\f = \norm{\Q\f}_2^2$, implying that $\Q\f=\zero$.  
-\end{proof}
 
 We conclude with a formula for  the determinant of the minor of an invertible matrix.  It is often referred to as (a special  case of) \emph{Sylvester's identity}~\cite{sylvester1851xxxvii}. We state the version described by Viktor Prasolov~\cite{prasolov1994problems}. 
 
@@ -123,29 +117,15 @@ Let $\M\in \C^{n\times m}$. The pseudoinverse  $\M^+$ of $\M$ exists and is uniq
 Together, Definition \ref{def:pseudoinverse} and Lemma \ref{lem:pseudoinverse_properties} do not necessarily yield a way to obtain the pseudoinverse of a matrix $\M$. We  next demonstrate that when the eigendecomposition is known, we  can give a precise expression for the pseudoinverse. 
 
 \begin{lemma}
+\label{lem:pseudoinverse_eigendecomposition}
 Suppose $\M\in\C^{m\times m}$ admits the eigendecomposition 
-\[\M=\sum_{i=1}^k \lambda_i \vp_i\vp_i^\tp,\]
+$\M=\sum_{i=1}^k \lambda_i \vp_i\vp_i^\tp$, 
 where $\lambda_i$, $1\leq i\leq k$ are the non-zero eigenvalues of $\M$ with corresponding orthornomal eigenvectors $\vp_1,\dots,\vp_k$. Then the pseudoinverse of $\M$ is 
 \begin{equation}
     \label{eq:pseudoinverse}
     \M^+=\sum_{i=1}^k \frac{1}{\lambda_i}\vp_i\vp_i^\tp.
 \end{equation}
 \end{lemma}
-\begin{proof}
-Put $\vb{Q}=\sum_{i=1}^k \lambda_i^{-1}\vp_i\vp_I^\tp$. Since the pseudoinverse is unique, it suffices to show that $\vb{Q}$ satisfies the condition of Definition \ref{def:pseudoinverse}.
-Since the eigenvectors are orthonormal by assumption, $\vp_i^\tp\vp_j=\delta_{i,j}$ for all $i,j$. Hence,  
-\begin{align*}
-    \M\vb{Q}&= \sum_{i=1}^k \lambda_i\vp_i\vp_i^\tp \sum_{j=1}^k \lambda_j^{-1}\vp_j\vp_j^\tp = \sum_{i,j=1}^k \lambda_i\lambda_j^{-1} \vp_i\vp_i^\tp \vp_j\vp_j^\tp \\
-    &= \sum_{i=1}^k \lambda_i\lambda_i^{-1} \vp_i\vp_i^\tp\vp_i\vp_i^\tp 
-    = \sum_{i=1}^k \vp_i\vp_i^\tp = \vb{Q}\M.
-\end{align*}
-Performing a similar computation then demonstrates that 
-\[\M\vb{Q}\M = \sum_{i=1}^k \vp_i\vp_i^\tp \sum_{j=1}^k \lambda_j\vp_j\vp_j^\tp=\sum_{i,j=1}\lambda_i \vp_i\vp_i^\tp\vp_j\vp_j^\tp=\sum_{i=1}^k \lambda_i \vp_i\vp_i^\tp =\M,\]
-and similarly, $\vb{Q}\M\vb{Q}=\vb{Q}$. Moreover, $\vp_i\vp_i^\tp (k,\ell)=\vp_i(k)\vp_i(\ell)=\vp_i(\ell)\vp_i(k)=(\vp_i\vp_i^\tp)^\tp (k,\ell)$ implying that $\vp_i\vp_i^\tp=(\vp_i\vp_i^\tp)^\tp$, so 
-\[(\vb{Q}\M)^\tp=(\M\vb{Q})^\tp =\bigg(\sum_{i=1}^k \vp_i\vp_i^\tp \bigg)^\tp = \sum_{i=1}^k (\vp_i\vp_i^\tp)^\tp = \sum_{i=1}^k \vp_i\vp_i^\tp=\M\vb{Q}=\vb{Q}\M,\]
-so both required conditions hold, and we conclude that $\vb{Q}=\M^+$. 
-\end{proof}
-
 
 
 \section{Spectral Graph Theory}
@@ -227,17 +207,12 @@ which is precisely $\L_G(i,j)$. That is, we have
  \label{eq:L=BTB}
  \L_G=(\W_G^{1/2}\B_G)^\tp(\W_G^{1/2}\B_G).
  \end{equation}
- We associate with $\L_G$ the quadratic form $\Lop_G:\R^V\to \R$ which acts on functions $\f:V\to \R$ as 
-\begin{equation*}
- f\xmapsto{\Lop_G} \f^\tp \L_G \f.
-\end{equation*}
+ We associate with $\L_G$ the quadratic form $\Lop_G:\R^V\to \R$ which acts on functions $\f:V\to \R$ as $f\xmapsto{\Lop_G} \f^\tp \L_G \f$.
 The Laplacian quadratic form will be crucial in our study of the geometry of graphs. Luckily for us then, its action on a vector is captured by an elegant closed-form formula. 
 Computing 
-\begin{equation*}
-    \L_{i,j}\f = w(i,j)(\bchi_i -\bchi_j)(\bchi_i-\bchi_j)^\tp \f = w(i,j)(\f(i)-\f(j))(\bchi_i-\bchi_j).
-\end{equation*}
+$\L_{i,j}\f = w(i,j)(\bchi_i -\bchi_j)(\bchi_i-\bchi_j)^\tp \f = w(i,j)(\f(i)-\f(j))(\bchi_i-\bchi_j)$,
 we find that 
-\[\f^\tp \L_{i,j} \f = w(i,j)(\f(i)-\f(j))^2.\]
+$\f^\tp \L_{i,j} \f = w(i,j)(\f(i)-\f(j))^2$.
 Therefore, applying Equation \ref{eq:Lsum} yields 
 \begin{equation}
 \label{eq:Lf}
@@ -266,31 +241,13 @@ the quadratic form $\Lnf_G$ associated with $\Ln_G$ acts as
     \Lnf_G(\f) = \sum_{i\sim j} w(i,j)\bigg(\frac{\f(i)}{\sqrt{w(i)}}-\frac{\f(j)}{\sqrt{w(j)}}\bigg)^2.
 \end{equation}
 
+We now discuss  the spectrum of $\L_G$ and $\Ln_G$. Both the combinatorial and normalized Laplacian of an undirected graph $G$ are real, symmetric matrices. By the spectral theorem therefore, they both admit a basis of orthonormal eigenfunctions corresponding to real eigenvalues. 
 
+\begin{lemma}
+	\label{lem:laplacian_props}
+	Let $G=([n],E)$ be a connected graph. Then  $\ker\L_G=\spn(\one)$ and $\ker\Ln_G=\spn(\sqrt{\w})$. Moreover, both  $\L_G$ and $\Ln_G$ have a single zero eigenvalue (with corresponding eigenvector $\one$ and $\sqrt{\w}$, respectively); all other eigenvalues are strictly positive. 
+\end{lemma}
 
-
-\subsection{The Laplacian Spectrum}
-\label{sec:background_laplacian_spectrum}
-Both the combinatorial and normalized Laplacian of an undirected graph $G$ are real, symmetric matrices. By the spectral theorem therefore, they both admit a basis of orthonormal eigenfunctions corresponding to real eigenvalues. Focus for the moment on the combinatorial Laplacian  $\L_G$, with eigenvalues $\lambda_1\geq \lambda_2\geq \dots \geq \lambda_n$ and corresponding orthonormal eigenfunctions $\vp_1,\dots,\vp_n$. A straightforward consequence of Equation \ref{eq:L=BTB} is that all eigenvalues of $\L_G$ are non-negative. Let $\lambda$ be an eigenvalue with (unit) eigenvector $\vp$. Then,  \begin{equation*}
-    \lambda = \lambda\la \vp,\vp\ra = \la \lambda \vp,\vp\ra = \la \L_G\vp,\vp\ra = \la \B_G^\tp \B_G\vp,\vp\ra = \la \B_G\vp,\B_G\vp\ra =\norm{\B_G\vp}_2^2 \geq 0.
-\end{equation*}
-Let $V_1,\dots,V_k\subset V$, $V_i\cap V_j= \emptyset$ for $i\neq j$ be the disjoint vertex sets of the distinct connected components of $G$. (If $G$ is connected then $k=1$.) The quadratic form satisfies
-\[\Lf_G(f) = \sum_{\ell=1}^k \sum_{i\sim j, i,j\in V_\ell} w(i,j)(f(i)-f(j))^2. \]
-Suppose $\L\vp=\zero$. Then $\vp^\tp\L\vp=\Lf(\vp)=0$, which implies that $\vp(i)=\vp(j)$ for all $i,j\in V_\ell$. We can immediately see $k$ orthonormal vectors which satisfy this condition, namely \[\frac{1}{\sqrt{|V_1|}} \bchi_{V_1},\dots, \frac{1}{\sqrt{|V_k|}} \bchi_{V_k}.\]
-On the other hand, consider a non-zero vector $\vp$ which is orthogonal to all of the above vectors. Then 
-\[0=\sum_{i=1}^k \la \vp,\bchi_{V_i}\ra = \la \vp,\one \ra=\sum_{i=1}^k \vp(i),\]
-implying that there exists $\ell\in[k]$ such that $\vp(i)\neq\vp(j)$ for some $i,j\in V_\ell$. Hence, $\Lf(\vp)>0$ and so $\L\vp\neq 0$. Therefore, there are no other linearly independent eigenfunctions corresponding to the zero eigenvalue.  
-We have thus shown that 0 is an eigenvalue of $\L$ with multiplicity equal to the number of connected components and 
-\[\ker(\L)=\spn(\{\bchi_{V_1},\dots,\bchi_{V_k}\}).\]
-For the most part this thesis will deal with connected graphs, in which case $\ker(\L)=\spn(\{\one\})$.  
-
-A similar analysis holds for the normalized Laplacian. Using the same argument but replacing $\B$ with $\Bn$ demonstrates that its eigenvalues are non-negative. Its kernel can be determined as follows. For any eigenfunction $\vp$ of $\L$ corresponding to the zero eigenvalue, observe that 
-\[\Ln\W^{1/2}\vp = \W^{-1/2}\L\W^{-1/2}\W^{1/2}\vp = \W^{-1/2}\L\vp = \zero,\]
-so $\W^{1/2}\bchi_{V_1},\dots,\W^{1/2}\bchi_{V_k}$ lie in the kernel of $\Ln$.
-Conversely, if $\vp\in\ker(\Ln)$, define $vp'$ such that $\vp=\W^{1/2}\vp'$ (this is possible because $\W^{1/2}$ is diagonal---we simply factor out $\sqrt{w(i)}$ from $\vp(i)$ to obtain $\vp'(i)$). Then 
-\[\zero =\Ln\vp' = \W^{-1/2}\L \W^{-1/2}\W^{1/2}\vp = \W^{-1/2}\L\vp,\]
-so $\L\vp=\zero$ (since $w(i)>0$ for all $i$). That is, each element in the kernel of $\Ln$ takes the form $\W^{1/2}\vp$ for $\vp\in\ker(\L)$. We conclude that 
-\[\ker(\Ln)=\spn(\{\W^{1/2}\bchi_{V_1},\dots,\W^{1/2}\bchi_{V_k}\}).\]
 
 We  end this section by discussing two properties of graph Laplacians. The first is  their pseudoinverse relationships, and the second is the remarkable link between the eigenvalues of the combinatorial  Laplacian and spanning trees of the graph. 
 
@@ -319,9 +276,9 @@ We will make use  of the following Theorem, often  called the \emph{Kirchhoff Tr
 
 \begin{theorem}
 	\label{thm:matrix_tree_theorem}
-	Let $G=(V,E,w)$ be a connected, weighted, and undirected graph. Let $\L$ be $G$'s combinatorial Laplacian matrix. Then for all $i,j\in[n]$, 
-	\[\Gamma_G = (-1)^i(-1)^j \det(\L_{-i,-j}) = \frac{1}{n}\sum_{i=1}^{n-1} \lambda_i,\]
-	where $\lambda_1,\dots,\lambda_{n-1}$ are the non-zero eigenvalues of $G$, $\L_{-i,-j}$ is the matrix obtained by removing the $i$-th row and $j$-th column of $\L$, and $\Gamma_G$ is the weight of all spanning trees of $G$.  
+	Let $G=(V,E,w)$ be a connected, undirected graph. Let $\L$ be $G$'s combinatorial Laplacian matrix. Then for all $i,j\in[n]$, 
+	\[\Gamma_G = (-1)^i(-1)^j \det(\L_{-i,-j}) = \frac{1}{n}\prod_{i=1}^{n-1} \lambda_i,\]
+	where $\lambda_1,\dots,\lambda_{n-1}$ are the non-zero eigenvalues of $G$, $\L_{-i,-j}$ is the matrix obtained by removing the $i$-th row and $j$-th column of $\L_G$, and $\Gamma_G$ is the weight of all spanning trees of $G$.  
 \end{theorem}
 
 \begin{remark}
@@ -365,29 +322,18 @@ Note that here we've relied on the fact that $\bchi_i-\bchi_j\perp \one$. We cem
 
 \begin{definition}
 	\label{def:effective_resistance}
-	The \emph{effective resistance} between nodes $i$ and $j$ is $\effr(i,j) \equiv \Lf_G^+(\bchi_i-\bchi_j)$.  
+	The \emph{effective resistance} between nodes $i$ and $j$ is $\effr(i,j) \equiv \Lf_G^+(\bchi_i-\bchi_j)$, and the \emph{effective resistance matrix of $G$} is the matrix $\Reff_G$ with entries $\Reff_G(i,j)=\effr(i,j)$. The \emph{total effective resistance in the graph } is the quantity $R_G\equiv \frac{1}{2}\one^\tp\Reff_G\one$. 
 \end{definition}
 
-We can relate the entries of the pseudoinverse Laplacian with the effective resistance as  follows. First let us introduce the \emph{effective resistance matrix of $G$}, denote $\Reff_G$,  with  entries $\Reff_G(i,j) = \effr(i,j)$. Noting  that 
-\begin{equation*}
-\Reff_G(i,j) = \bchi_i^\tp\L_G^+\bchi_i + \bchi_j^\tp \L_G^+\bchi_j -2 \bchi_i^\tp \L_G^+\bchi_j = \L_G^+(i,i) + \L_G^+(j,j) - 2\L_G^+(i,j),
-\end{equation*}
-we have 
-\begin{equation*}
-\Reff_G = \one \u ^\tp + \u\one^\tp - 2\L_G^+,
-\end{equation*}
-where  $\u=\diag(\L_G^+(i,i))$.  From here we  see that $\x^\tp \Reff_G\x = -2\x^\tp \L_G^+\x$ for any $\x\in\spn(\one)^\perp$. Therefore, 
-\begin{align}
-\L_G^+(i,j)&=\bchi_i^\tp \L_G^+\bchi_j \notag \\
-&= \bigg(\bchi_i-\frac{1}{n}\one\bigg)^\tp \L_G^+\bigg(\bchi_j-\frac{1}{n}\one\bigg) \notag \\
-&= -\frac{1}{2}\bigg(\bchi_i-\frac{1}{n}\one\bigg)^\tp \Reff_G\bigg(\bchi_j-\frac{1}{n}\one\bigg) \notag \\
-&= \frac{1}{2n}\bigg(\sum_{k\in[n]}\effr(i,k)+\effr(j,k)\bigg) - \frac{1}{2}\effr(i,j) -\frac{R_G}{n^2}, \label{eq:L^+(i,j)}
-\end{align}
-where $R_G$ is the total effective resistance of the graph. 
-For $i=j$, this becomes 
-\begin{align}
-\L_G^+(i,i) = \frac{1}{n} \sum_{k\in[n]}\effr(i,k) - \frac{R_G}{n^2}.\label{eq:L^+(i,i)}
-\end{align}
+We can relate the entries of the pseudoinverse Laplacian with the effective resistance as follows.
+\begin{lemma}
+	\label{lem:er_props}
+	For any graph $G$, $\Reff_G = \one \u ^\tp + \u\one^\tp - 2\L_G^+$ where $\u=\diag(\L_G^+(i,i))$. Moreover, for all $i,j$ (including $i=j$), 
+	\begin{equation}
+	\label{eq:L^+(i,j)}
+	\L_G^+(i,j) = \frac{1}{2n}\bigg(\sum_{k\in[n]}\effr(i,k)+\effr(j,k)\bigg) - \frac{1}{2}\effr(i,j) -\frac{R_G}{n^2}.
+	\end{equation}
+\end{lemma}
 
 
 
@@ -412,13 +358,6 @@ Perhaps a more useful characterization of affine independence is the following.
 	\label{lem:affine-linearly-independent}
 	The set $\{\x_1,\dots,\x_k\}$ is affinely independent iff for each $j$, $\{\x_j-\x_i\}_{i\neq j}$ is linearly independent. 
 \end{lemma}
-\begin{proof}
-	Suppose that $\{\x_j-\x_i\}_{i\neq j}$ is not linearly independent, and let $\{\beta_i\}$ (not all zero) be such that $\sum_{i\neq j}\beta_i (\x_j-\x_j)=\zero$. Putting $\beta=\sum_i \beta_i$, we can write this as 
-	\[\sum_{i\neq j}\frac{\beta_i}{\beta}\x_i - \x_j=\zero.\]
-	But these coefficients sum to 0, i.e., $\sum_{i\neq j}\beta_i/\beta -1=1-1-0$, so $\{\x_i\}$ are not affinely independent. Conversely, suppose that $\sum_i\alpha_i\x_i=\zero$ where $\sum_i\alpha_i=0$ and $\alpha_k\neq 0$ for some $k$. Then, 
-	\[\zero =\sum_i\alpha_i\x_i = \sum_{i\neq j}\alpha_i\x_i + \alpha_j\x_j = \sum_{i\neq j}\alpha_i\x_i - \sum_{i\neq j}\alpha_i\x_j = \sum_{i\neq j}\alpha_i(\x_i-\x_j), \]
-	implying that $\{\x_j-\x_i\}_{i\neq j}$ is not linearly independent. 
-\end{proof}
 
 The following lemma demonstrates that if we form a matrix of size $n-1\times n$ from the column vectors of $n$  affine independent vectors, then this matrix has full rank. Moreover, we may assume that the linear combination of the vectors is in fact an \emph{affine combination}, in the  following sense. 
 
@@ -426,9 +365,6 @@ The following lemma demonstrates that if we form a matrix of size $n-1\times n$ 
 	\label{lem:barycentric_coeffs}
 	Let $\{\x_1,\dots,\x_n\}\subset\R^{n-1}$ be affinely independent, and let  $\y\in\R^{n-1}$ be arbitrary. Then there exists coefficients $\{\alpha_i\}\subset\R$ obeying $\sum_{i\in[n]}\alpha_i=1$ such that $\y=\sum_{i\in[n]}\alpha_i\x_i$. 
 \end{lemma}
-\begin{proof}
-	By Lemma \ref{lem:affine-linearly-independent}, the vectors $\bzeta_i=\x_i-\x_n$, $i<n$ are linearly independent and span $\R^{n-1}$. Therefore, there exist real numbers $\alpha_i$, $i<n$ with $\y-\x_n = \sum_{i<n} \alpha_i\bzeta_i$. Putting $\alpha_n=1-\sum_{i<n}\alpha_i$, we have $\y=\sum_{i<n}\alpha_i\bzeta_i + x_n = \sum_{i<n} \alpha_i\x_i + (1-\sum_{i<n}\alpha_i)\x_n = \sum_{i\in[n]}i \alpha_i\x_i$. It's immediate that $\sum_i\alpha_i=1$. 
-\end{proof}
 
 \paragraph{The simplex.} 
 We jump straight into the definition. 
@@ -460,9 +396,6 @@ The following observation demonstrates that $\splx\restriction_U$ is a well-defi
 	\label{obs:subset_affinely_independent}
 	Any subset of an affinely independent set of vectors is again affinely independent. 
 \end{observation}
-\begin{proof}
-	Let $\{v_i\}_{i\in[n]}$ be a set of vectors and let $U\subsetneq[n]$ be a proper subset of $[n]$. If $\{\v_i\}_{i\in U}$ is not affinely independent, then there exists $\{\alpha_i\}_{j\in U}$ not all zero such that $\sum_{i\in U}\alpha_i\v_i=\zero$ and $\sum_i\alpha_i=0$. Taking $\alpha_j=0$ for $j\in U^c$ implies that $\sum_{i\in[n]}\alpha_i\v_i=\zero$ while maintaining that $\sum_{i}\alpha_i=0$. Hence $\{v_i\}_{i\in[n]}$ is not affinely independent. 
-\end{proof}
 
 Trusting the reader's capacity for variation, depending on the situation we may adopt different notation for the faces of a simplex. Oftentimes the vertical restriction symbol will be dropped and we will write only $\splx_U$; other times we will write $\splx[U]$, especially when the space reserved a subscript is being used for other purposes. 
 
@@ -518,17 +451,15 @@ We may also refer to $\ssplx_0$ as the \emph{centred version of $\ssplx$} in ord
 
 \subsection{Dual Simplex}
 \label{sec:background_dual_simplex}
+Here we introduce the notion of the dual simplex of a given simplex. Even  though we provide a novel treatment  of  the object, the proofs in this section   are  relatively elementary. As such, they have been moved to Appendix~\ref{sec:app_proofs_background}. 
+
 Let $\Sv=(\sv_1,\dots,\sv_n)\in\R^{n-1\times n}$ be the vertex matrix of a simplex $\ssplx\subset\R^{n-1}$. For each $i\in[n-1]$, put $\v_i=\sv_n-\sv_i$. Then $\{\v_1,\dots,\v_{n-1}\}$ is a linearly independent set, and thus admits a sister basis $\{\bgamma_1,\dots,\bgamma_{n-1}\}$ which together form biorthogonal bases of $\R^{n-1}$ (Lemma \ref{lem:bi-orthogonal_bases}). Put $\bgamma_n = -\sum_{i=1}^{n-1}\bgamma_i$.  
 
 \begin{claim}
+	\label{claim:affine_independence}
 The set 
 $\{\bgamma_1,\dots,\bgamma_n\}$ is affinely independent. 
 \end{claim}
-\begin{proof}
-Suppose not and let $\{\beta_i\}$ be such that $\sum_i \beta_i \bgamma_i =\zero$ with $\sum_i\beta_i=0$. Then, 
-\[\zero = \sum_i\beta_i\bgamma_i = \sum_{i=1}^{n-1} \beta_i \bgamma_i - \bigg(\sum_{i=1}^{n-1} \beta_i\bigg)\sum_{j=1}^{n-1}\bgamma_j = \sum_{i=1}^{n-1}\bigg(\beta_i-\sum_{j=1}^{n-1}\beta_j\bigg)\bgamma_i,\]
-implying that $\{\bgamma_i\}_{i=1}^{n-1}$ is linearly dependent; a contradiction.  
-\end{proof}
 
 Therefore, the set $\{\bgamma_1,\dots,\bgamma_n\}$ determines a simplex, which we call the \emph{dual simplex} of $\ssplx$. Of course, it would highly suboptimal if the notion of a dual simplex depended on the labelling of the vertices of $\ssplx$. More specifically, we defined the vertices of the dual simplex $\bgamma_i$ with respect to the vectors $\sv_i-\sv_n$. It is not clear a priori whether the vertices of the dual simplex would change were we to relabel the indices of $\{\sv_i\}$. In fact, they do not---the demonstration of which is the purpose of the following lemma. 
 
@@ -536,23 +467,11 @@ Therefore, the set $\{\bgamma_1,\dots,\bgamma_n\}$ determines a simplex, which w
 	\label{lem:dual_vertices_well-defined}
 	Let $\{\sv_1,\dots,\sv_n\}$ be a set of affinely independent vectors. Fix $k\in [n-1]$ and define $\v_i=\sv_i-\sv_n$ for $i\in[n-1]$ and $\u_i=\sv_i-\sv_k$ for $i\in[n]\setminus\{k\}$. If $\{\bgamma_1,\dots,\bgamma_{n-1}\}$ is the sister basis to $\{\v_1,\dots,\v_{n-1}\}$ and $\bgamma_n = -\sum_{i=1}^{n-1}\bgamma_i$, then $\{\bgamma_1,\dots,\bgamma_{k-1},\bgamma_{k+1},\dots,\bgamma_{n}\}$ is the sister basis to $\{\u_1,\dots,\u_{k-1},\u_{k+1},\dots,\u_n\}$. 
 \end{lemma}
-\begin{proof}
-	We need to show that $\la \bgamma_i,\u_j\ra = \delta_{ij}$ for all $i,j\neq k$. For $i\neq n$, we have 
-	\begin{align*}
-	\la \bgamma_i, \sv_j-\sv_k\ra &= \la \bgamma_i,\sv_j-\sv_n+\sv_n-\sv_k\ra \\
-	&= \la \bgamma_i,\sv_j-\sv_n \ra - \la \bgamma_i,\sv_k-\sv_n\ra \\
-	&= \delta_{ij} - \delta_{ik} = \delta_{ij},
-	\end{align*}
-	since $i\neq k$. For $i=n$ meanwhile, 
-	\begin{align*}
-	\la \bgamma_n,\sv_j-\sv_k\ra &= -\sum_{\ell=1}^{n-1}\la \bgamma_\ell,\sv_j-\sv_n+\sv_n-\sv_k\ra \\
-	&= \sum_{\ell=1}^{n-1}\la \bgamma_\ell,\sv_j-\sv_n\ra - \sum_{\ell=1}^{n-1}\la  \bgamma_\ell,\sv_k-\sv_n\ra =\sum_{\ell}\delta_{j\ell}-\delta_{k\ell}=0. \qedhere
-	\end{align*}
-\end{proof}
+
 
 We also observe that, using the same notation as above, 
 \[-\sum_{i=1,i\neq k}^n \bgamma_i = -\bigg(\sum_{i=1,i\neq k}^{n-1} \bgamma_i\bigg) - \bgamma_n = -\sum_{i=1,i\neq k}^{n-1}\bgamma_i + \sum_{j=1}^{n-1} \bgamma_j = \bgamma_k,\]
-hence had we set $\v_i=\sv_k-\sv_i$ and defined $\bgamma_k = -\sum_{i\neq k}\bgamma_i$ (as we did for $k=n$), Lemma \ref{lem:dual_vertices_well-defined} demonstrates that we would produce the same set of vectors for the dual simplex. We honour the fact that the dual simplex is independent of labelling, i.e., well-defined, with the following definition. 
+hence had we set $\v_i=\sv_k-\sv_i$ and defined $\bgamma_k = -\sum_{i\neq k}\bgamma_i$ (as we did for $k=n$), Lemma \ref{lem:dual_vertices_well-defined} demonstrates that we would produce the same set of vectors for the dual simplex. We honour the fact that the dual simplex is independent of labelling with the following definition. 
 
 \begin{figure}
 	\centering
@@ -592,9 +511,6 @@ Observe that the dual simplex is always centred by construction (since $\bgamma_
 	\label{lem:dual_of_dual}
 	Let a simplex $\ssplx\in\R^{n-1}$ have vertices $(\sv_i)$, $\ssplx^\du$ have vertices $(\sv_i^\du)$ and $(\ssplx^\du)^\du$ have vertices $(\bgamma_i)$. Then, after potential re-ordering of the indices, $\bgamma_i = \sv_i-\sv_n$ for $i<n$. 
 \end{lemma}
-\begin{proof}
-	We are given that $\la \sv_i^\du,\sv_j-\sv_n\ra=\delta_{ij}$ and $\la \bgamma_i,\sv_j^\du-\sv_n^\du\ra=\delta_{ij}$. Since dual bases are unique, it suffices to show that $\sv_i-\sv_n$ satisfies the relationships of $\bgamma_i$, and indeed $\la \sv_i-\sv_n,\sv_j^\du-\sv_n^\du\ra = \la \sv_i,\sv_j^\du-\sv_n^\du\ra - \la \sv_n,\sv_j^\du-\sv_n^\du\ra = \delta_{ij} - \delta_{in} = \delta_{ij}$. 
-\end{proof} 
 
 \begin{remark}
 	The notion of the dual simplex expounded here is the same as the object discovered by Fiedler in his book~\cite[Chapter 5]{fiedler2011matrices}, which he calls the \emph{inverse simplex}. In a covert attempt to confuse the reader, we will reserve the name inverse simplex for a (sometimes) distinct object. Fiedler defines the inverse simplex with respect to the centroid of the given simplex, finding vectors $\u_i$ such that $\la \u_i,\sv_j-\cent\ra = \delta_{ij}-1/n$, where $\cent=\cent(\splx)$.  Such vectors then satisfy $\la \u_i,\sv_j-\sv_k\ra = \la \u_i,\sv_j-\cent-(\sv_k-\cent)\ra = \delta_{ij}-\delta_{ik}=\delta_{ij}$ for $i,j\neq k$, hence are the (unique) dual vertices. 
@@ -616,22 +532,6 @@ We end  this section  on dual simplices by giving a necessary condition of the r
 	\label{lem:dual_faces_orthogonal}
 	Let $\splx^\du$ be the dual of the simplex $\splx\in\R^{n-1}$. For all $U\subset[n]$, $\emptyset\neq U\neq[n]$, $\splx_U$ is orthogonal to $\splx_{U^c}^\du$.  
 \end{lemma}
-\begin{proof}
-Let $\Sv(\splx)=(\sv_1,\dots,\sv_n)$ and $\Sv(\splx^\du)=(\svd_1,\dots,\svd_n)$.  Let $\Sv\x\in \splx_U$ and $\Sv^\du\y_1,\Sv^\du\y_2\in \splx^\du_{U^c}$, where $\y_1$ and $\y_2$ are barycentric coordinates. Fix $k\in U^c$. We need to show that $\la \Sv\x,\Sv^\du\y_1-\Sv^\du\y_2\ra =0$. First, using $\norm{\y_i}=1$, $i=1,2$, write
-\begin{align*}
-	 \Sv^\du\y_1 - \Sv^\du\y_2 &= \sum_{j\in U^c} \svd_j(y_1(j)-y_2(j)) \\
-	 &=\sum_{j\in U^c\setminus \{k\}} \svd_j(y_1(j)-y_2(j)) + \svd_k(y_1(k)-y_2(k)) \\
-    &= \sum_{j\in U^c\setminus\{k\}}\svd_j(y_1(j)-y_2(j))  -\svd_k\bigg(\sum_{j\in U^c\setminus \{k\}} y_1(j)-y_2(j)\bigg) \\
-    &= \sum_{j\in U^c\setminus\{k\}} (\svd_j-\svd_k)(y_1(j)-y_2(j)). 
-\end{align*}
-Now, by definition, $\la \sv^i,\svd_j-\svd_k\ra = \delta_{i,j}$ for $i,j\neq k$ so it follows that 
-\begin{align*}
-\la \Sv\x,\Sv^\du(\y_1-\y_2)\ra &= \sum_{i\in U} x(i)\la \sv_i,\Sv^\du(\y_1-\y_2)\ra \\
-&= \sum_{i\in U}x(i)\sum_{j\in U^c\setminus \{k\}} \la \sv_i,\svd_j-\svd_k\ra (y_1(j)-y_2(j)) \\
-&=\sum_{i\in U} x(i) \sum_{j\in U^c\setminus\{k\}} \delta_{ij}(y_1(j)-y_2(j)) = 0, 
-\end{align*}
-since $U^c\setminus\{k\}\cap\{i\}=\emptyset$. 
-\end{proof}
 
 \subsection{Angles in a Simplex}
 \label{sec:background_simplex_angles}

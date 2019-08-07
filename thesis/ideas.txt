@@ -1,0 +1,20 @@
+\section{Ideas and TODOs}
+\begin{itemize}
+	\item Next sections to think more about: 
+	\begin{enumerate}
+		\item Inequalities (Section \ref{sec:inequalities}) 
+		\item Low Rank Approximations of $\L_G$ (Section \ref{sec:algorithmics_low_rank})
+		\item Could include more of Fiedler's results in Section \ref{sec:block_matrix}. Also should see if we can obtain  similar results vis-a-vis the normalized simplex . 
+		\item Keep thinking about the normalized simplex. 
+	\end{enumerate}
+\item Most promising new ideas: 
+\begin{enumerate}
+	\item Use algorithms and known results concerning effective results and translate them to simplex results. 
+\end{enumerate}
+\item Less promising new ideas: 
+\begin{enumerate}
+	\item  In ~\cite{fiedler1998some}, Fielder gives some sort of correspondence involving ``ultrametric matrices''. Look this up and understand it---could be interesting. 
+	\item Applications of Schur Complement? 
+\end{enumerate}
+\end{itemize}
+

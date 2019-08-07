@@ -47,7 +47,7 @@ The following result was first stated by Devriendt and Van Mieghem~\cite{devrien
 	The relationship $\norm{\alt(\splx^+_U)}_2^2 = w(\delta U)^{-1}$ (Lemma \ref{lem:alt}) for the inverse simplex of a graph $G$ demonstrates that the problem of computing a minimum length altitude in any hyperacute simplex is \NP-hard, because computing the  maximum weight cut in any weighted graph is \NP-hard~\cite{karp1972reducibility}.  Since the class of convex polytopes contains the class of hyperacute simplices, the result follows. 
 \end{proof}
 
-\begin{remark} In  the above statement and its proof, the description of the polytope and simplex was not specified. This is due to the fact that---as discussed above---for simplices there is a polynomial time algorithm to translate betweent the various descriptions. With regard to \NP-completeness therefore, the description makes no difference. 
+\begin{remark} In  the above statement and its proof, the description of the polytope and simplex was not specified. This is due to the fact that---as discussed above---for simplices there is a polynomial time algorithm to translate betweent the various descriptions. With regard to \NP-completeness therefore, the description makes no difference. Consequently, we will continue to ignore this distinction for the remainder of this section. 
 \end{remark}
 
 \begin{remark}
@@ -63,7 +63,7 @@ and so
 \begin{align*}
     \Lf(\bchi_I) = \sum_{i\sim j}w(i,j)(\bchi_I(i)-\bchi_I(j))^2 = \sum_{i\in I}\sum_{j:j\sim i} w(i,j) = \sum_{i\in I}w(i)=w(\delta I),
 \end{align*}
-where the second and fourth inequalities follows from the fact that $I$ is an independent set. Now, suppose we assign each vertex $i$ a weight $f(i)\geq 0$. The \mwis problem consists of maximizing $f(I)\equiv \sum_{i\in I}f(i)$ over all independent sets $I$. Clearly \mwis is \NP-hard in general, seeing as it reduces to the usual independent set maximization problem by taking $f(i)=1$ for all $i$. If $f$ is a linear function of the weights so that $f(i)=\alpha w(i)$ for all $i$ and some $\alpha> 0$, we call the corresponding problem $\alpha$-\vwis. We will focus on the case $\alpha=1$ for clarity, and call the  corresponding problem just \vwis. The difficulty of this problem is not immediately clear, since it is more structured than simply \mwis. The next lemma removes any doubt as to the problems tractability.   
+where the second and fourth inequalities follows from the fact that $I$ is an independent set. Now, suppose we assign each vertex $i$ a weight $f(i)\geq 0$. The \mwis problem consists of maximizing $f(I)\equiv \sum_{i\in I}f(i)$ over all independent sets $I$. Clearly \mwis is \NP-hard in general, seeing as it reduces to the usual independent set maximization problem by taking $f(i)=1$ for all $i$. If $f$ is a linear function of the weights so that $f(i)=\alpha w(i)$ for all $i$ and some $\alpha> 0$, we call the corresponding problem $\alpha$-\vwis. We will focus on the case $\alpha=1$ for clarity, and call the  corresponding problem just \vwis. The difficulty of this problem is not immediately clear, since it is more structured than simply \mwis. The next lemma removes any doubt as to the problem's tractability.   
 
 \begin{lemma}
 	\label{lem:vwis}
@@ -128,6 +128,16 @@ We can play a similar game by using the relationships furnished by the normalize
 	\[\max_{I\subset V(G)} |I|,\quad  \text{s.t.} \quad I \text{ is an independent set},\]
 	which is the \iset problem. 
 \end{proof}
+
+A \emph{clique} in a graph $G$ is a complete subgraph of $G$. The \maxclique problems asks, given  $G$, what is the  largest  $k$ such that $G$ has a clique of size $k$? Its decision version variant, \kclique, has parameters $G$ and $k$, and asks whether $G$ has a clique of size $k$. Karp~\cite{karp1972reducibility} demonstrated that $\kclique\in\NP$ and $\maxclique\in\NP$-hard.  
+
+\begin{lemma}
+	Given a polytope in either  \vdesc or \hdesc, consider finding a subset $U$ of the vertices such that none of the vertices in $U$ are orthogonal. The optimization version  of these problem is \NP-hard  while the  decision variant is \NP-complete, even in the case of hyperacute simplices. 
+\end{lemma}
+\begin{proof}
+	The optimization version corresponds to \maxclique while the decision variant corresponds to \kclique via the correspondence.   
+\end{proof}
+
 
 
 Next we extract a result based on the most (in)famous problem in computational graph theory: Graph isomorphism. An \emph{isomorphism} between two graphs $G_1$ and $G_2$ is a bijection $f:V(G_1)\to V(G_2)$ such that $(u,v)\in E(G_1)$ iff $(f(u),f(v))\in E(G_2)$. We write $G_1\cong G_2$ if $G_1$ is isomorphic to $G_2$. The \graphiso problem asks, given $G_1,G_2$ whether they are isomorphic. 

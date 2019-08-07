@@ -7,8 +7,8 @@
 \newlength{\headingsep} % Space between heading and symbols
 \newlength{\descsep} % Horizontal space for description
 \setlength{\colwidth}{3.5cm}
-\setlength{\groupsep}{1cm}
-\setlength{\headingsep}{0.00cm}
+\setlength{\groupsep}{0cm}
+\setlength{\headingsep}{-0.40cm}
 \setlength{\descsep}{8cm}
 
 \textbf{Simplex Geometry}\\
@@ -32,8 +32,9 @@
 	$\splx_0$ & Canonical/Centred Simplex of $\splx$ & Definition \ref{def:centred_simplex} \\
 	$\cong,\cong^\rot$ & Congruency between simplices & Section \ref{sec:background_simplices} \\
 	$[\ssplx],[\ssplx]^\rot$ & Congruence classes of simplices & Equation \eqref{eq:[ssplx]}\\
+	$\phi_{ij}$ ($\phi^+_{ij})$ & Angle between $\sv_i$ ($\sv_i^+)$ and $\sv_j$ ($\sv_j^+)$ &  \\
 	$\theta_{ij}$ ($\theta_{ij}^+)$ & Angle between $\splx_\ic$ ($\splx_\ic^+$) and $\splx_\jc$  ($\splx_\jc^+$) & Section~\ref{sec:background_simplex_angles} \\
-	$\H_i$ ($\H_i^+$) & Hyperplane containing $\splx_\ic$ ($\splx_\ic^+$) & Equation\todo 
+	$\H_i$ ($\H_i^+$) & Hyperplane containing $\splx_\ic$ ($\splx_\ic^+$) & Equation~\eqref{eq:Hi}
 \end{longtable}
 \vspace{\groupsep}
 
@@ -44,15 +45,16 @@
 	$V(G)$, $E(G)$ & Vertex set and edge set of graph $G$\\
 	$\A_G$ & {Adjacency matrix of graph $G$}\\
 	{$\W_G$} & {Weight matrix of graph $G$}\\
-	$G[U]$ & Graph restricted to vertices in $U$  & Section~\ref{sec:background_spectral}\\
+	$G[U],\, G_U$ & Graph restricted to vertices in $U$  & Section~\ref{sec:background_spectral}\\
 	$w_G(i,j)$ & Weight of edge $(i,j)$ in $G$ \\
-	$\delta_G(i)$ & Set of neighbours of $i$ in $G$ & Equation \eqref{eq:delta(i)}\\
-	$\delta_G U$ & Cut set of $U$ in $G$ \\
+	$\partial_G(i)$ & Set of neighbours of $i$ in $G$ & Equation \eqref{eq:delta(i)}\\
+	$\partial_G U$ & Cut set of $U$ in $G$ \\
 	$w_G(i)$ & Weight of vertex $i\in V(G)$\\
 	$\vol_G(U)$ & Volume of set $U$, i.e., $\sum_{i\in U}w(i)$ & Equation \eqref{eq:volU}\\
 	$\Gamma_G$ & Total weight of all spanning trees in $G$ & Equation \eqref{eq:Gamma_G} \\
 	$\effr_G(i,j)$  & Effective resistance between $i$ and $j$ & Definition \ref{def:effective_resistance}\\
 	$\Reff_G$  & Effective resistance matrix & Section \ref{sec:background_er}\\
+	$R_G$ & Total effective resistance of $G$ \\
 	$\respol_G$ & Effective Polytope of $G$ & Equation \eqref{eq:res_pol}
 \end{longtable}
 \vspace{\groupsep}
@@ -65,7 +67,7 @@
 	{$\Ln_G$} & {Normalized Laplacian Matrix of $G$} & Equation \eqref{eq:Ln_G}\\
 	{$\Lf_G$} & Quadratic form associated with $\L_G$  & Equation \eqref{eq:Lf}\\
 	{$\Lnf_G$} & Quadratic form associated with $\Ln_G$ & Equation \eqref{eq:Lnf}\\
-	$\{\lambda_i(G)\}$ ($\{\lambda_i(G)\}$) & Eigenvalues of $\L_G$ ($\Ln_G$) & Section \ref{sec:background_laplacian_spectrum}\\
+	$\{\lambda_i(G)\}$ ($\{\lambda_i(G)\}$) & Eigenvalues of $\L_G$ ($\Ln_G$) & Section \ref{sec:background_laplacian}\\
 	$\Eval_G$ ($\Evaln_G$) & Diagonal Eigenvalue matrix of $\L_G$ ($\Ln_G$) \\
 	$\{\vp_i(G)\}$ ($\{\vpn_i(G)\}$) & Eigenvectors of $\L_G$ ($\Ln_G$)\\
 	{$\Eig_G$ ($\Eign_G$)} & Eigenvector matrix of $\L_G$ ($\Ln_G$)\\

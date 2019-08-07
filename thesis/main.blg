@@ -5,6 +5,7 @@ A level-1 auxiliary file: frontmatter/titlepage.aux
 A level-1 auxiliary file: frontmatter/abstract.aux
 A level-1 auxiliary file: frontmatter/laysummary.aux
 A level-1 auxiliary file: frontmatter/acknowledgements.aux
+A level-1 auxiliary file: frontmatter/dedication.aux
 A level-1 auxiliary file: frontmatter/nomenclature.aux
 A level-1 auxiliary file: introduction.aux
 A level-1 auxiliary file: background.aux
@@ -14,59 +15,51 @@ A level-1 auxiliary file: algorithmic_implications.aux
 A level-1 auxiliary file: conclusion.aux
 The style file: alpha.bst
 Database file #1: ref.bib.bib
-I was expecting a `,' or a `}'---line 307 of file ref.bib.bib
- :  notes="(English transl. IRE Trans. Circuit Theory CT-5 (1958), 4-7)"
- :                                                                      .
-I'm skipping whatever remains of this entry
-Repeated entry---line 341 of file ref.bib.bib
- : @incollection{karp1972reducibility
- :                                   ,
-I'm skipping whatever remains of this entry
 Warning--there's a number but no series in chung1997spectral
 Warning--there's a number but no series in fiedler2011matrices
 Warning--empty journal in grunbaum1967convex
 Warning--can't use both volume and number fields in penrose1955generalized
 Warning--can't use both volume and number fields in penrose1956best
 Warning--empty journal in stothers2010complexity
-You've used 52 entries,
+You've used 53 entries,
             2543 wiz_defined-function locations,
-            878 strings with 11522 characters,
-and the built_in function-call counts, 19891 in all, are:
-= -- 2076
-> -- 683
-< -- 52
-+ -- 214
-- -- 206
-* -- 1303
-:= -- 3147
-add.period$ -- 169
-call.type$ -- 52
-change.case$ -- 277
-chr.to.int$ -- 52
-cite$ -- 58
-duplicate$ -- 901
-empty$ -- 1562
-format.name$ -- 288
-if$ -- 4171
+            886 strings with 11711 characters,
+and the built_in function-call counts, 20372 in all, are:
+= -- 2125
+> -- 719
+< -- 51
++ -- 227
+- -- 219
+* -- 1347
+:= -- 3231
+add.period$ -- 172
+call.type$ -- 53
+change.case$ -- 285
+chr.to.int$ -- 53
+cite$ -- 59
+duplicate$ -- 914
+empty$ -- 1589
+format.name$ -- 301
+if$ -- 4264
 int.to.chr$ -- 1
 int.to.str$ -- 0
-missing$ -- 59
-newline$ -- 263
-num.names$ -- 156
-pop$ -- 276
+missing$ -- 60
+newline$ -- 268
+num.names$ -- 159
+pop$ -- 280
 preamble$ -- 1
-purify$ -- 339
+purify$ -- 348
 quote$ -- 0
-skip$ -- 735
+skip$ -- 749
 stack$ -- 0
-substring$ -- 1265
-swap$ -- 176
-text.length$ -- 52
-text.prefix$ -- 30
+substring$ -- 1285
+swap$ -- 177
+text.length$ -- 51
+text.prefix$ -- 29
 top$ -- 0
-type$ -- 380
+type$ -- 388
 warning$ -- 6
-while$ -- 207
-width$ -- 54
-write$ -- 680
-(There were 2 error messages)
+while$ -- 213
+width$ -- 55
+write$ -- 693
+(There were 6 warnings)
