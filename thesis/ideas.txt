@@ -1,20 +1,17 @@
-\section{Ideas and TODOs}
-\begin{itemize}
-	\item Next sections to think more about: 
-	\begin{enumerate}
-		\item Inequalities (Section \ref{sec:inequalities}) 
-		\item Low Rank Approximations of $\L_G$ (Section \ref{sec:algorithmics_low_rank})
-		\item Could include more of Fiedler's results in Section \ref{sec:block_matrix}. Also should see if we can obtain  similar results vis-a-vis the normalized simplex . 
-		\item Keep thinking about the normalized simplex. 
-	\end{enumerate}
-\item Most promising new ideas: 
-\begin{enumerate}
-	\item Use algorithms and known results concerning effective results and translate them to simplex results. 
-\end{enumerate}
-\item Less promising new ideas: 
-\begin{enumerate}
-	\item  In ~\cite{fiedler1998some}, Fielder gives some sort of correspondence involving ``ultrametric matrices''. Look this up and understand it---could be interesting. 
-	\item Applications of Schur Complement? 
-\end{enumerate}
-\end{itemize}
+IDEAS / TODOS
+
+
+
+
+Next sections to think more about: 
+	- Inequalities. Have ratios of volumes and spanning trees relating to entries of the Laplacian. This says something about how large these ratios are, and therefore how volumes compare to one another. 
+	- Low Rank Approximations of LG. 
+	- Could include more of Fiedler's results in Section \ref{sec:block_matrix}. Also should see if we can obtain  similar results vis-a-vis the normalized simplex . 
+	- Keep thinking about the normalized simplex. Formalize Karel's method of finding dual vertices. Can this become an algorithm? How long would it take?
+
+
+New ideas:  
+	- IF we can relate the entries of L_G+ to something interesting in the graph via block matrix stuff, as we can for LG for example, then can perhaps develop new equations for the expected commute time of random walks on graphs.  
+	- Use algorithms and known results concerning effective results and translate them to simplex results. 
+	- Schur Complement stuff (maybe?) Should at least mention the Schur complement. 
 

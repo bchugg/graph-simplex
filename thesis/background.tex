@@ -13,10 +13,7 @@ For a set $U$, $K^U$ denotes the set of all functions from $U$ to $K$.  Elements
 
 For $n\in \N$, let $\zero_n\in\R^n$ and $\one_n\in\R^n$ be the vectors of all zeroes and all ones. Let $\I_n$ and $\J_n$  refer to the $n\times n$ identity matrix and all-ones matrix respectively (so $\J_n=\one_n\one_n^\tp)$. When the dimension $n$ is understood from context, will typically omit it as a subscript. We use $\chi(E)$ or $\chi_E$ as the indicator of an event $E$, i.e., $\chi(E)=1$ if $E$ occurs, and 0 otherwise. For example, $\chi(i\in U)=1$ if $i\in U$, and 0 if $i\in U^c$.  Similarly, for $U\subset K$,  $\bchi_U\in\R^K$ is the indicator vector of the set $U$, so $\bchi_U(i)=\chi(i\in U)$. 
 By $\diag(x_1,x_2,\dots,x_n)$ we mean the $n\times n$ matrix $\Q$ entries $\Q(i,i)=x_i$ and $\Q(i,j)=0$ for $i\neq j$. Given vectors $\v_1,\dots,\v_n$, we will often denote by $(\v_1,\dots,\v_n)$ the matrix whose $i$-th column is $\v_i$. The $i$-th coordinate of a vector $\x$ will be denoted either by $\x(i)$ or simply $x(i)$. We trust this will not be overly confusing.  For $1\leq p<\infty$, the \emph{$p$-norm} of $\x\in \R^d$ is 
-\begin{equation}
-\label{eq:pnorm}
-\norm{\x}_p = \bigg(\sum_{i=1}^d x_i^p\bigg)^{1/p},
-\end{equation}
+$\norm{\x}_p = \bigg(\sum_{i=1}^d x_i^p\bigg)^{1/p}$,
 while the \emph{0-norm} of $\x$ is the number of non-zero entries of $\x$, and is denoted by $\norm{\x}_0$.  Given a vector or matrix, we use the superscript $t$ to denote it's transpose, i.e.,, given $\Q$, $\Q^t$ is defined as $\Q^t(i,j) = \Q(j,i)$. The standard inner product on $\R^d$ is denoted as $\la\cdot,\cdot\ra$, that is, $\la \x,\y\ra = \sum_i x(i)y(i)$. Elementary properties of the inner product will often be used without justification, such as its bilinearity: $\la \x,\alpha\y_1+\y_2\ra  = \la \x,\alpha\y_1\ra + \la \x,\y_2\ra$ for $\alpha\in\R$.  We will sometimes use the notation $\perp$ to mean ``orthogonal to'', so $\x\perp\y$ iff $\la\x,\y\ra=0$. We will often use the shorthand ``iff'' to mean ``if and only if''. We use $\delta_{ij}$ to denote the Kronecker delta function, i.e., $\delta_{ij} = 1$ if $i=j$ and 0 otherwise. We may sometimes include a comma and write $\delta_{i,j}$. 
 
 A set $\X\subset\R^m$ is \emph{convex} if for all $\x,\y\in\X$ and $\lambda\in(0,1)$, $\lambda\x + (1-\lambda)\y\in \X$. 
@@ -68,7 +65,7 @@ A symmetric matrix $\vb*{Q}\in\R^{n\times n}$ is \emph{positive semidefinite (PS
     \Q^{1/2} \equiv \Eig\Eval^{1/2}\Eig^\tp = \sum_{i\in[n]}\sqrt{\lambda_i}\vp_i\vp_i^\tp.
 \end{equation*}
 
-The following basic result will be useful for us. 
+It's easily verified that $(\Q^{1/2})^2 = \Q$. The following basic result will be useful for us. 
 
 \begin{lemma}
 	\label{lem:rank(QtQ)}
@@ -224,7 +221,7 @@ Another Laplacian matrix associated with $G$ is the \emph{normalized Laplacian},
 \label{eq:Ln_G}
     \Ln_G = \W_G^{-1/2} \L_G\W_G^{-1/2} = \I - \W_G^{-1/2} \A_G\W_{G}^{-1/2}.
 \end{equation} 
-The normalized Laplacian is intimately related to various  phenomena, most notable random walks on the graph~\cite{chen2007resistance,chung1997spectral}. To investigate $\Ln_G$ we may carry out a similar procedure to above. In particular, if we define $\Ln_{i,j}=\W_G^{-1/2} \L_{i,j}\W_G^{-1/2}$ then we obtain the equivalent of Equation \ref{eq:Lsum} for the normalized Laplacian:
+The normalized Laplacian is intimately related to various  phenomena, most notable random walks on the graph~\cite{chen2007resistance,chung1997spectral}. To investigate $\Ln_G$ we may carry out a similar procedure to above. In particular, if we define $\Ln_{i,j}=\W_G^{-1/2} \L_{i,j}\W_G^{-1/2}$ then we obtain the equivalent of Equation~\eqref{eq:Lsum} for the normalized Laplacian:
 \begin{equation}
 \label{eq:Lnsum}
     \Ln_G = \sum_{i\sim j}\Ln_{i,j}.
@@ -234,7 +231,7 @@ Likewise,
    \W_G^{-1/2}\Bn_G^\tp \W_G\Bn_G\W_G^{-1/2} =  \W_G^{-1/2}\L_G\W_G^{-1/2}=\Ln_G
 \end{equation*}
 As we've done here, we will typically emphasize the associate of elements associated to the normalized Laplacian with a hat.
-Using Equation \eqref{eq:Lnsum}, we see that 
+Using Equation~\eqref{eq:Lnsum}, we see that 
 the quadratic form $\Lnf_G$ associated with $\Ln_G$ acts as 
 \begin{equation}
 \label{eq:Lnf}
@@ -370,8 +367,20 @@ The following lemma demonstrates that if we form a matrix of size $n-1\times n$ 
 We jump straight into the definition. 
 \begin{figure}
 	\centering
-	\includegraphics[scale=0.6]{simplices}
-	\caption{Simplices in dimensions one, two, and three. We wish the reader luck in visualizing a simplex (or anything really) in more than three dimensions.}
+	\begin{minipage}{0.45\textwidth}
+		\includegraphics[scale=0.6]{simplices}
+		\subcaption{}
+		\label{fig:simplices}
+	\end{minipage}
+	\hspace{0.08\textwidth}
+	\begin{minipage}{0.45\textwidth}
+		\flushright
+		\includegraphics[scale=0.6]{affine_independence}
+		\subcaption{}
+		\label{fig:affine_independence}
+	\end{minipage}
+	\caption{(a) Simplices in dimensions one, two, and three. We wish the reader luck in visualizing a simplex (or anything really) in more than three dimensions. (b) Example of affine dependence and independence.  Here $x_1,x_2,x_3$ are not affinely independent, as evidenced by the fact that $x_2-x_1$ and $x_2-x_3$ are parallel. $y_1,y_2,y_3$ on the other hand, are affinely independent; one can easily visualize the triangle formed by their convex hull. We emphasize that the arrows representing the difference between two vectors, e.g., $x_2-x_1$, represent their \emph{direction only} and  not their absolute position.} 
+	\label{fig:simplex+independence}
 \end{figure}
 
 
@@ -425,9 +434,21 @@ We denote the altitude pointing from $\splx_{U^c}$ to $\splx_{U}$ as $\alt_(\spl
 
 \begin{figure}
 	\centering
-	\includegraphics[scale=0.5]{simplex_faces}
-	\caption{}
-	\label{fig:simplex_faces}
+	\begin{minipage}{0.45\textwidth}
+	\centering
+	\includegraphics[scale=0.5]{altitudes}
+	\subcaption{ }
+	\label{fig:altitudes}
+	\end{minipage}
+\hspace{0.08\textwidth}
+\begin{minipage}{0.45\textwidth}
+	\centering
+	\includegraphics[scale=0.5]{faces}
+	\subcaption{}
+	\label{fig:faces}
+\end{minipage}
+\caption{(a) The \emph{directions} of altitudes in a simplex. We emphasize that the arrows do not represent the actual altitudes themselves, which  are  vectors and hence originate at the origin. (b) A one  ($\ssplx_{\{2,3\}}$) and two ($\splx_{\{1,2,4\}}$) dimensional face of a three dimensional simplex. }
+\label{fig:faces+altitudes}
 \end{figure}
 
 \paragraph{Centred  simplex.}
@@ -451,6 +472,13 @@ We may also refer to $\ssplx_0$ as the \emph{centred version of $\ssplx$} in ord
 
 \subsection{Dual Simplex}
 \label{sec:background_dual_simplex}
+
+\begin{figure}
+	\centering
+	\includegraphics[scale=0.4]{dual_simplex}
+	\caption{An example of a simplex $\ssplx\subset\R^2$ (in black) and its dual, $\ssplx^\du$  (in gray).  The blue lines serve to emphasize the  fact that the dual vertex $\bgamma_1^\du$ is orthogonal to the face $\ssplx_{2,3}$ just as $\bgamma_3$ is to $\ssplx^\du_{1,2}$. }
+	\label{fig:dual_simplex}
+\end{figure}
 Here we introduce the notion of the dual simplex of a given simplex. Even  though we provide a novel treatment  of  the object, the proofs in this section   are  relatively elementary. As such, they have been moved to Appendix~\ref{sec:app_proofs_background}. 
 
 Let $\Sv=(\sv_1,\dots,\sv_n)\in\R^{n-1\times n}$ be the vertex matrix of a simplex $\ssplx\subset\R^{n-1}$. For each $i\in[n-1]$, put $\v_i=\sv_n-\sv_i$. Then $\{\v_1,\dots,\v_{n-1}\}$ is a linearly independent set, and thus admits a sister basis $\{\bgamma_1,\dots,\bgamma_{n-1}\}$ which together form biorthogonal bases of $\R^{n-1}$ (Lemma \ref{lem:bi-orthogonal_bases}). Put $\bgamma_n = -\sum_{i=1}^{n-1}\bgamma_i$.  
@@ -472,18 +500,6 @@ Therefore, the set $\{\bgamma_1,\dots,\bgamma_n\}$ determines a simplex, which w
 We also observe that, using the same notation as above, 
 \[-\sum_{i=1,i\neq k}^n \bgamma_i = -\bigg(\sum_{i=1,i\neq k}^{n-1} \bgamma_i\bigg) - \bgamma_n = -\sum_{i=1,i\neq k}^{n-1}\bgamma_i + \sum_{j=1}^{n-1} \bgamma_j = \bgamma_k,\]
 hence had we set $\v_i=\sv_k-\sv_i$ and defined $\bgamma_k = -\sum_{i\neq k}\bgamma_i$ (as we did for $k=n$), Lemma \ref{lem:dual_vertices_well-defined} demonstrates that we would produce the same set of vectors for the dual simplex. We honour the fact that the dual simplex is independent of labelling with the following definition. 
-
-\begin{figure}
-	\centering
-	\begin{minipage}{0.45\textwidth}
-		\centering
-		\includegraphics[scale=0.6]{altitude}
-	\end{minipage}
-	\begin{minipage}{0.45\textwidth}
-		\centering
-		\includegraphics[scale=0.7]{altitude2}
-	\end{minipage}
-\end{figure}
 
 
 \begin{definition}[Dual Simplex]
@@ -535,6 +551,12 @@ We end  this section  on dual simplices by giving a necessary condition of the r
 
 \subsection{Angles in a Simplex}
 \label{sec:background_simplex_angles}
+
+\begin{figure}
+	\centering
+	\includegraphics[scale=0.2]{angles}
+	\caption{The angles in a simplex and its dual. The angle $\phi^\du_{ij}$ between $\bgamma^\du_i$ and $\bgamma^\du_i$ is the same as that between $-\bgamma_i^\du$ and $-\bgamma_j^\du$. From here  we  see that $\theta_{ij}+\phi^\du_{ij}=\pi$.}
+\end{figure}
 There are several angles worth discussing in a simplex. For a simplex $\ssplx$, let $\phi_{ij}(\ssplx)$ be the angle between the outer normals to $\splx_\ic$ and $\splx_\jc$. As usual, the paranthetical $(\ssplx)$ will typically be dropped when the simplex is understood from context. Using the notion of the dual simplex introduced in the previous section, we can write 
  \begin{equation*}
 \cos \phi_{ij}(\ssplx) = \frac{\la \bgamma_i,\bgamma_j\ra }{\norm{\bgamma_i}_2 \cdot \norm{\bgamma_j}_2},

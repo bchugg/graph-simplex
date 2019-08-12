@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  7 AUG 2019 21:20
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  12 AUG 2019 17:14
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1366,8 +1366,39 @@ Package graphics Info: Driver file: pdftex.def on input line 96.
 \Gin@req@height=\dimen169
 \Gin@req@width=\dimen170
 )
+(/usr/local/texlive/2016/texmf-dist/tex/latex/caption/subcaption.sty
+Package: subcaption 2016/02/20 v1.1-142 Sub-captions (AR)
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/caption/caption.sty
+Package: caption 2016/02/21 v3.3-144 Customizing captions (AR)
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/caption/caption3.sty
+Package: caption3 2016/02/04 v1.7-139 caption3 kernel (AR)
+Package caption3 Info: TeX engine: e-TeX on input line 67.
+\captionmargin=\dimen171
+\captionmargin@=\dimen172
+\captionwidth=\dimen173
+\caption@tempdima=\dimen174
+\caption@indent=\dimen175
+\caption@parindent=\dimen176
+\caption@hangindent=\dimen177
+)
+\c@ContinuedFloat=\count149
+Package caption Info: hyperref package is loaded.
+)
+\c@subfigure=\count150
+\c@subtable=\count151
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/wrapfig/wrapfig.sty
+\wrapoverhang=\dimen178
+\WF@size=\dimen179
+\c@WF@wrappedlines=\count152
+\WF@box=\box45
+\WF@everypar=\toks28
+Package: wrapfig 2003/01/31  v 3.6
+)
 (/usr/local/texlive/2016/texmf-dist/tex/latex/multirow/multirow.sty
-\bigstrutjot=\dimen171
+\bigstrutjot=\dimen180
 )
 (/usr/local/texlive/2016/texmf-dist/tex/latex/tools/longtable.sty
 Package: longtable 2014/10/28 v4.11 Multi-page Table package (DPC)
@@ -1375,26 +1406,26 @@ Package: longtable 2014/10/28 v4.11 Multi-page Table package (DPC)
 \LTright=\skip72
 \LTpre=\skip73
 \LTpost=\skip74
-\LTchunksize=\count149
-\LTcapwidth=\dimen172
-\LT@head=\box45
-\LT@firsthead=\box46
-\LT@foot=\box47
-\LT@lastfoot=\box48
-\LT@cols=\count150
-\LT@rows=\count151
-\c@LT@tables=\count152
-\c@LT@chunks=\count153
-\LT@p@ftn=\toks28
+\LTchunksize=\count153
+\LTcapwidth=\dimen181
+\LT@head=\box46
+\LT@firsthead=\box47
+\LT@foot=\box48
+\LT@lastfoot=\box49
+\LT@cols=\count154
+\LT@rows=\count155
+\c@LT@tables=\count156
+\c@LT@chunks=\count157
+\LT@p@ftn=\toks29
 )
 (./macros.tex) (./formatting.tex
-\c@theorem=\count154
-\c@lemma=\count155
-\c@corollary=\count156
-\c@claim=\count157
-\c@observation=\count158
-\c@definition=\count159
-\c@remark=\count160
+\c@theorem=\count158
+\c@lemma=\count159
+\c@corollary=\count160
+\c@claim=\count161
+\c@observation=\count162
+\c@definition=\count163
+\c@remark=\count164
 Package hyperref Info: Option `colorlinks' set `true' on input line 36.
 ) (./main.aux (./frontmatter/titlepage.aux)
 (./frontmatter/abstract.aux) (./frontmatter/laysummary.aux)
@@ -1404,20 +1435,20 @@ Package hyperref Info: Option `colorlinks' set `true' on input line 36.
 (./algorithmic_implications.aux) (./conclusion.aux) (./appendix.aux))
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -1427,15 +1458,15 @@ LaTeX Font Info:    ... okay on input line 29.
 * layout: <same size as paper>
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
 * modes: 
-* h-part:(L,W,R)=(86.72377pt, 440.84746pt, 86.72377pt)
-* v-part:(T,H,B)=(86.72377pt, 621.52245pt, 86.72377pt)
+* h-part:(L,W,R)=(72.26999pt, 469.75502pt, 72.26999pt)
+* v-part:(T,H,B)=(72.26999pt, 650.43001pt, 72.26999pt)
 * \paperwidth=614.295pt
 * \paperheight=794.96999pt
-* \textwidth=440.84746pt
-* \textheight=621.52245pt
-* \oddsidemargin=14.45378pt
-* \evensidemargin=14.45378pt
-* \topmargin=-17.42001pt
+* \textwidth=469.75502pt
+* \textheight=650.43001pt
+* \oddsidemargin=0.0pt
+* \evensidemargin=0.0pt
+* \topmargin=-31.8738pt
 * \headheight=14.8pt
 * \headsep=19.8738pt
 * \topskip=11.0pt
@@ -1453,19 +1484,19 @@ LaTeX Font Info:    ... okay on input line 29.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-\AtBeginShipoutBox=\box49
-Package hyperref Info: Link coloring ON on input line 29.
+\AtBeginShipoutBox=\box50
+Package hyperref Info: Link coloring ON on input line 31.
 (/usr/local/texlive/2016/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 
 (/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
-\c@section@level=\count161
+\c@section@level=\count165
 )
-LaTeX Info: Redefining \ref on input line 29.
-LaTeX Info: Redefining \pageref on input line 29.
-LaTeX Info: Redefining \nameref on input line 29.
+LaTeX Info: Redefining \ref on input line 31.
+LaTeX Info: Redefining \pageref on input line 31.
+LaTeX Info: Redefining \nameref on input line 31.
 
 (./main.out) (./main.out)
 \@outlinefile=\write3
@@ -1474,17 +1505,17 @@ LaTeX Info: Redefining \nameref on input line 29.
 
 (/usr/local/texlive/2016/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count162
-\scratchdimen=\dimen173
-\scratchbox=\box50
-\nofMPsegments=\count163
-\nofMParguments=\count164
-\everyMPshowfont=\toks29
-\MPscratchCnt=\count165
-\MPscratchDim=\dimen174
-\MPnumerator=\count166
-\makeMPintoPDFobject=\count167
-\everyMPtoPDFconversion=\toks30
+\scratchcounter=\count166
+\scratchdimen=\dimen182
+\scratchbox=\box51
+\nofMPsegments=\count167
+\nofMParguments=\count168
+\everyMPshowfont=\toks30
+\MPscratchCnt=\count169
+\MPscratchDim=\dimen183
+\MPnumerator=\count170
+\makeMPintoPDFobject=\count171
+\everyMPtoPDFconversion=\toks31
 ) (/usr/local/texlive/2016/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
 
@@ -1500,6 +1531,15 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: longtable package is loaded.
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/caption/ltcaption.sty
+Package: ltcaption 2013/06/09 v1.4-94 longtable captions (AR)
+)
+Package caption Info: wrapfig package is loaded.
+Package caption Info: End \AtBeginDocument code.
+
 (/usr/local/texlive/2016/texmf-dist/tex/latex/titlesec/block.tss
 File: block.tss 2016/03/15
 )
@@ -1526,7 +1566,7 @@ es/oxford_logo.png>])
 entifier (name{page.i}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.36 \include{frontmatter/abstract}
+l.38 \include{frontmatter/abstract}
                                     [1
 
 
@@ -1570,14 +1610,14 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 \openout4 = `main.toc'.
 
  [6]
-(./main.lof)
+(./main.lof [7
+
+
+])
 \tf@lof=\write5
 \openout5 = `main.lof'.
 
- [7
-
-
-]
+ [8]
 \openout2 = `frontmatter/nomenclature.aux'.
 
  (./frontmatter/nomenclature.tex
@@ -1585,71 +1625,118 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 \groupsep=\skip76
 \headingsep=\skip77
 \descsep=\skip78
- [8
+ [9
 
 
-]) [9]
+]
+
+LaTeX Warning: Reference `eq:pnorm' on page x undefined on input line 78.
+
+) [10]
 \openout2 = `introduction.aux'.
 
  (./introduction.tex
 Chapter 1.
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 12.
-(/usr/local/texlive/2016/texmf-dist/tex/latex/base/omscmr.fd
-File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-)
-LaTeX Font Info:    Font shape `OMS/cmr/bx/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/b/n' tried instead on input line 12.
- [1
+[1
 
 
 
 ]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 21.
+ (/usr/local/texlive/2016/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/bx/n' in size <10.95> not available
+(Font)              Font shape `OMS/cmsy/b/n' tried instead on input line 21.
+
+<figures/correspondence.png, id=454, 898.35625pt x 335.2525pt>
+File: figures/correspondence.png Graphic file (type png)
+
+<use figures/correspondence.png>
+Package pdftex.def Info: figures/correspondence.png used on input line 38.
+(pdftex.def)             Requested size: 359.33614pt x 134.09862pt.
+
+<figures/property_triangle.png, id=456, 330.23375pt x 187.70125pt>
+File: figures/property_triangle.png Graphic file (type png)
+
+<use figures/property_triangle.png>
+Package pdftex.def Info: figures/property_triangle.png used on input line 49.
+(pdftex.def)             Requested size: 165.11646pt x 93.85039pt.
+ [2]
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 29.
- [2] [3])
-[4]
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 60.
+ [3 <./figures/correspondence.png>]
+[4]) [5]
 \openout2 = `background.aux'.
 
  (./background.tex
 Chapter 2.
-[5
+[6
 
 
 
-] [6] [7] [8] [9] [10] [11] [12]
-LaTeX Font Info:    Try loading font information for U+euf on input line 285.
+] [7] [8] [9] [10] [11] [12]
+LaTeX Font Info:    Try loading font information for U+euf on input line 282.
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/amsfonts/ueuf.fd
 File: ueuf.fd 2013/01/14 v3.01 Euler Fraktur
 ) [13] [14]
-<../figures/simplices.png, id=569, 420.57124pt x 155.58125pt>
+<../figures/simplices.png, id=626, 420.57124pt x 155.58125pt>
 File: ../figures/simplices.png Graphic file (type png)
 
 <use ../figures/simplices.png>
-Package pdftex.def Info: ../figures/simplices.png used on input line 373.
+Package pdftex.def Info: ../figures/simplices.png used on input line 371.
 (pdftex.def)             Requested size: 252.3447pt x 93.34946pt.
- [15] [16 <../figures/simplices.png>]
-<../figures/simplex_faces.png, id=587, 420.57124pt x 183.68625pt>
-File: ../figures/simplex_faces.png Graphic file (type png)
 
-<use ../figures/simplex_faces.png>
-Package pdftex.def Info: ../figures/simplex_faces.png used on input line 428.
-(pdftex.def)             Requested size: 210.28511pt x 91.84288pt.
- [17 <../figures/simplex_faces.png>] [18]
-<../figures/altitude.png, id=601, 219.82124pt x 143.53625pt>
-File: ../figures/altitude.png Graphic file (type png)
+Overfull \hbox (40.95638pt too wide) in paragraph at lines 371--372
+[][] 
+ []
 
-<use ../figures/altitude.png>
-Package pdftex.def Info: ../figures/altitude.png used on input line 480.
-(pdftex.def)             Requested size: 131.89375pt x 86.1224pt.
+<figures/affine_independence.png, id=627, 295.1025pt x 125.46875pt>
+File: figures/affine_independence.png Graphic file (type png)
 
-<../figures/altitude2.png, id=602, 147.55125pt x 120.45pt>
-File: ../figures/altitude2.png Graphic file (type png)
+<use figures/affine_independence.png>
+Package pdftex.def Info: figures/affine_independence.png used on input line 378
+.
+(pdftex.def)             Requested size: 177.06285pt x 75.28181pt.
 
-<use ../figures/altitude2.png>
-Package pdftex.def Info: ../figures/altitude2.png used on input line 484.
-(pdftex.def)             Requested size: 103.28516pt x 84.3144pt.
- [19 <../figures/altitude.png> <../figures/altitude2.png>] [20]) [21]
+Overfull \hbox (3.19365pt too wide) in paragraph at lines 389--390
+[][]\OT1/cmr/m/sc/10.95 Definition \OT1/cmr/m/n/10.95 2.4\OT1/cmr/m/sc/10.95 . 
+[]\OT1/cmr/m/n/10.95 A \OT1/cmr/m/it/10.95 sim-plex $\OMS/cmsy/m/n/10.95 T$ \OT
+1/cmr/m/n/10.95 in $\U/msb/m/n/10.95 R[]$ \OT1/cmr/m/n/10.95 is the con-vex hul
+l of $\OML/cmm/m/it/10.95 n$ \OT1/cmr/m/n/10.95 affinely in-de-pen-dent vec-tor
+s $[][]\OML/cmm/m/it/10.95 ; [] ; [][]$\OT1/cmr/m/n/10.95 .
+ []
+
+[15] [16 <../figures/simplices.png> <./figures/affine_independence.png>]
+<figures/altitudes.png, id=644, 323.2075pt x 206.7725pt>
+File: figures/altitudes.png Graphic file (type png)
+
+<use figures/altitudes.png>
+Package pdftex.def Info: figures/altitudes.png used on input line 439.
+(pdftex.def)             Requested size: 161.60335pt x 103.38599pt.
+
+<figures/faces.png, id=645, 303.1325pt x 197.73875pt>
+File: figures/faces.png Graphic file (type png)
+ <use figures/faces.png>
+Package pdftex.def Info: figures/faces.png used on input line 446.
+(pdftex.def)             Requested size: 151.56587pt x 98.86913pt.
+
+[17 <./figures/altitudes.png> <./figures/faces.png>]
+<figures/dual_simplex.png, id=650, 602.25pt x 312.16624pt>
+File: figures/dual_simplex.png Graphic file (type png)
+
+<use figures/dual_simplex.png>
+Package pdftex.def Info: figures/dual_simplex.png used on input line 478.
+(pdftex.def)             Requested size: 240.89572pt x 124.86427pt.
+ [18 <./figures/dual_simplex.png>] [19]
+<figures/angles.png, id=671, 634.37pt x 496.85625pt>
+File: figures/angles.png Graphic file (type png)
+ <use figures/angles.png>
+Package pdftex.def Info: figures/angles.png used on input line 557.
+(pdftex.def)             Requested size: 126.87175pt x 99.36948pt.
+
+[20 <./figures/angles.png>]) [21]
 \openout2 = `correspondence.aux'.
 
  (./correspondence.tex
@@ -1658,42 +1745,108 @@ Chapter 3.
 
 
 
-] [23] [24] [25] [26] [27] [28] [29] [30] [31] [32] [33] [34]
-<../figures/inverse_relations.png, id=743, 412.54124pt x 212.795pt>
-File: ../figures/inverse_relations.png Graphic file (type png)
+] [23] [24] [25] [26] [27] [28] [29]
+<figures/GandH.png, id=759, 367.3725pt x 283.0575pt>
+File: figures/GandH.png Graphic file (type png)
+ <use figures/GandH.png>
+Package pdftex.def Info: figures/GandH.png used on input line 293.
+(pdftex.def)             Requested size: 110.21259pt x 84.9179pt.
 
-<use ../figures/inverse_relations.png>
-Package pdftex.def Info: ../figures/inverse_relations.png used on input line 41
-8.
-(pdftex.def)             Requested size: 206.27011pt x 106.39723pt.
- [35 <../figures/inverse_relations.png>]
-[36] [37] [38] [39] [40] [41] [42] [43] [44] [45] [46] [47] [48]) [49]
+<figures/GxH.png, id=760, 438.63875pt x 318.18875pt>
+File: figures/GxH.png Graphic file (type png)
+ <use figures/GxH.png>
+Package pdftex.def Info: figures/GxH.png used on input line 298.
+(pdftex.def)             Requested size: 131.59264pt x 95.45735pt.
+
+[30 <./figures/GandH.png> <./figures/GxH.png>] [31]
+Overfull \hbox (1.76295pt too wide) in paragraph at lines 355--356
+[] []\OT1/cmr/bx/n/10.95 The prob-a-bil-ity sim-plex.[] \OT1/cmr/m/n/10.95 Fix 
+$\OML/cmm/m/it/10.95 n \OMS/cmsy/m/n/10.95 2 \U/msb/m/n/10.95 N$\OT1/cmr/m/n/10
+.95 . The \OT1/cmr/m/it/10.95 prob-a-bil-ity sim-plex \OT1/cmr/m/n/10.95 is the
+ sim-plex $[] = [](\OMS/cmsy/m/n/10.95 f[][]g[] [
+ []
+
+[32] [33] [34] <figures/HI_plane.png, id=812, 232.87pt x 368.37625pt>
+File: figures/HI_plane.png Graphic file (type png)
+
+<use figures/HI_plane.png>
+Package pdftex.def Info: figures/HI_plane.png used on input line 483.
+(pdftex.def)             Requested size: 116.43471pt x 184.18767pt.
+ [35 <./figures/HI_plane.png>] [36] [37] [38]
+[39] [40] [41] [42] [43]
+<figures/Hin_plane.png, id=915, 338.26375pt x 490.83376pt>
+File: figures/Hin_plane.png Graphic file (type png)
+
+<use figures/Hin_plane.png>
+Package pdftex.def Info: figures/Hin_plane.png used on input line 808.
+(pdftex.def)             Requested size: 101.4799pt x 147.25125pt.
+
+<figures/Hin_plane2.png, id=916, 250.9375pt x 248.93pt>
+File: figures/Hin_plane2.png Graphic file (type png)
+
+<use figures/Hin_plane2.png>
+Package pdftex.def Info: figures/Hin_plane2.png used on input line 813.
+(pdftex.def)             Requested size: 125.46843pt x 124.46469pt.
+ [44] [45 <./figures/Hin_plane.png> <./figures/Hin_plane2.png>] [46] [47]) [48]
 \openout2 = `further_properties.aux'.
 
-
-(./further_properties.tex
+ (./further_properties.tex
 Chapter 4.
-[50
+[49
 
 
 
-] [51] [52] [53] [54] [55] [56] [57] [58] [59] [60] [61] [62] [63]) [64]
+] [50] [51] [52] [53] [54] [55] [56] [57] [58] [59] [60]
+<figures/res_embedding.png, id=1124, 467.7475pt x 182.6825pt>
+File: figures/res_embedding.png Graphic file (type png)
+
+<use figures/res_embedding.png>
+Package pdftex.def Info: figures/res_embedding.png used on input line 540.
+(pdftex.def)             Requested size: 233.87317pt x 91.34102pt.
+ [61 <./figures/res_embedding.png>] [62])
+[63]
 \openout2 = `algorithmic_implications.aux'.
 
-
-(./algorithmic_implications.tex
+ (./algorithmic_implications.tex
 Chapter 5.
-[65
+[64
 
 
 
-] [66] [67] [68] [69] [70] [71] [72] [73] [74] [75] [76] [77] [78] [79]
-[80] [81] [82]) [83]
+] [65] <figures/NP_diagram.png, id=1173, 843.15pt x 493.845pt>
+File: figures/NP_diagram.png Graphic file (type png)
+
+<use figures/NP_diagram.png>
+Package pdftex.def Info: figures/NP_diagram.png used on input line 37.
+(pdftex.def)             Requested size: 236.08038pt x 138.27565pt.
+ [66 <./figures/NP_diagram.png>]
+<figures/graph.png, id=1184, 227.85126pt x 180.675pt>
+File: figures/graph.png Graphic file (type png)
+ <use figures/graph.png>
+Package pdftex.def Info: figures/graph.png used on input line 79.
+(pdftex.def)             Requested size: 91.13889pt x 72.2687pt.
+
+<figures/independent_sets.png, id=1185, 227.85126pt x 180.675pt>
+File: figures/independent_sets.png Graphic file (type png)
+
+<use figures/independent_sets.png>
+Package pdftex.def Info: figures/independent_sets.png used on input line 84.
+(pdftex.def)             Requested size: 91.13889pt x 72.2687pt.
+
+<figures/cliques.png, id=1186, 227.85126pt x 180.675pt>
+File: figures/cliques.png Graphic file (type png)
+
+<use figures/cliques.png>
+Package pdftex.def Info: figures/cliques.png used on input line 89.
+(pdftex.def)             Requested size: 91.13889pt x 72.2687pt.
+ [67] [68 <./figures/graph.png> <./figures/independent_sets.png> <./figures/cli
+ques.png>] [69] [70] [71] [72] [73] [74] [75] [76]
+[77] [78] [79] [80]) [81] [82]
 \openout2 = `conclusion.aux'.
 
  (./conclusion.tex
 Chapter 6.
-) [84
+) [83
 
 
 
@@ -1701,23 +1854,23 @@ Chapter 6.
 Missing character: There is no â in font cmr10!
 Missing character: There is no € in font cmr10!
 Missing character: There is no ” in font cmr10!
- [85
+ [84
 
 
-] [86] [87]) [88]
+] [85] [86]) [87]
 \openout2 = `appendix.aux'.
 
  (./appendix.tex
 Appendix A.
-[89
+[88
 
 
-] [90] [91] [92] [93] [94] [95]
+] [89] [90] [91] [92] [93] [94]
 
-LaTeX Warning: Reference `lem:]ineq_f1' on page 96 undefined on input line 237.
+LaTeX Warning: Reference `lem:]ineq_f1' on page 95 undefined on input line 237.
 
 
-[96] [97]) [98]
+[95] [96]) [97]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 71.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 71.
  (./main.aux (./frontmatter/titlepage.aux)
@@ -1729,7 +1882,7 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 71.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 71.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 71.
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: A3216B99BEA2EADB7F9DAE09FC26F628;3394.
+(rerunfilecheck)             Checksum: BF5412392FE0ED06B672A31BC70AEA7E;3394.
 
 
 LaTeX Warning: There were undefined references.
@@ -1737,13 +1890,13 @@ LaTeX Warning: There were undefined references.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 71.
  ) 
 Here is how much of TeX's memory you used:
- 16742 strings out of 493014
- 280492 string characters out of 6133351
- 376377 words of memory out of 5000000
- 19586 multiletter control sequences out of 15000+600000
+ 18005 strings out of 493014
+ 303560 string characters out of 6133351
+ 405316 words of memory out of 5000000
+ 20809 multiletter control sequences out of 15000+600000
  20972 words of font info for 77 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 40i,21n,43p,10398b,490s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 42i,21n,43p,10398b,504s stack positions out of 5000i,500n,10000p,200000b,80000s
 pdfTeX warning (dest): name{Hfootnote.11} has been referenced but does not ex
 ist, replaced by a fixed one
 
@@ -1776,10 +1929,10 @@ e/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/
 texmf-dist/fonts/type1/public/amsfonts/euler/eufm10.pfb></usr/local/texlive/201
 6/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive
 /2016/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on main.pdf (108 pages, 830887 bytes).
+Output written on main.pdf (108 pages, 1027755 bytes).
 PDF statistics:
- 1580 PDF objects out of 1728 (max. 8388607)
- 1405 compressed objects within 15 object streams
- 418 named destinations out of 1000 (max. 500000)
- 431 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1652 PDF objects out of 1728 (max. 8388607)
+ 1464 compressed objects within 15 object streams
+ 430 named destinations out of 1000 (max. 500000)
+ 496 words of extra memory for PDF output out of 10000 (max. 10000000)
 

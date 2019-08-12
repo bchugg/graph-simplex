@@ -1,17 +1,31 @@
 \chapter{Introduction}
 \label{chap:intro}
+\chapterquote{Confusion is the natural  state of the mathematician.}{Lior Silberman}
 
-This thesis is concerned with uniting two fundamental and hitherto mostly unrelated objects: the graph and the simplex. A graph is fundamentally a  \emph{combinatorial} object---by which we mean lacking inherent geometry. That is, it be described by two finite lists: a list of its \emph{nodes} or \emph{vertices} and a second of the connections between these vertices. No underlying geometric space need be defined. 
-The fact that we often picture graphs as being embedded in the plane is merely demonstrates that we often like to reason visually, and does not reflect any underlying geometry of the graph. Indeed, the same graph may be embedded in infinitely many ways in the plane.  
-Conversely, simplices---best thought of as high dimensional triangles---are inherently geometric.  Any complete description of a simplex must include, for  example, the distance between two of its vertices. 
+\chapterquote{What if I slept a little more and forgot about all this nonsense.}{Franz Kafka}
 
-A deep connection between graphs and simplices might seem unlikely a priori, and  it is precisely this fact which makes such a connection worth studying. Such a connection was unknown until Miroslav Fiedler made the connection in his 1993 paper entitled "A geometric approach to the Laplacian matrix of a graph"~\cite{fiedler1993geometric}. Here he introduced what we will henceforth refer to as the \emph{graph-simplex correspondence}, proving the existence  of a bijection between graphs and hyperacute simplices. 
+
+This thesis is concerned with uniting two fundamental mathematical objects: the graph and the simplex. A graph is fundamentally a  \emph{combinatorial} object---it can be described purely by means of finite sets and must not refer to any underlying geometric space.  
+Simplices, on  the other hand, are inherently  geometric. As essentially high dimensional triangles, any complete description of a simplex must, for example, include the distance between its vertices. Thus, a simplex cannot be divorced from an  underlying metric space. 
+
+The pessimistic reader may at  this point interject that graphs can \emph{of course} be viewed geometrically. For instance, he or she continues, it  is well-known that the shortest path between two vertices constitutes  a metric on  the graph. We in turn interrupt the interrupter and remark that while graphs \emph{can} be  given  geometric interpretations, it is \emph{not necessary} that  they are. Indeed, a graph can  be described by two finite lists: a list of its vertices and a second of the connections between these vertices (perhaps with  weights  given  to the  edges.) No underlying geometric space need be defined. 
+
+Due  to the combinatorial  nature of the graph and the geometric nature of the simplex, a connection between the two objects might seem unlikely a priori. It is precisely this fact which makes such a connection worth studying. 
+The original  link  between graphs and simplices was uncovered by 
+Miroslav Fiedler  in his 1993 paper entitled ``A geometric approach to the Laplacian matrix of a graph"~\cite{fiedler1993geometric}. Here he introduced aspects the machinery needed to define a central  object in what we will henceforth refer to as the \emph{graph-simplex correspondence}: a bijection between connected, weighted graphs and hyperacute simplices. 
+
+Unfortunately (we believe) for  the mathematical community,  Fiedler's work in this area  has  gone relatively unnoticed. Convinced as we are of  the beauty and  utility of such  work, this dissertation aims to present Fiedler's  results in a concise, clarifying, and self-contained fashion,  expand on his results, and explore new applications of the correspondence.   Our primary motivation is to convince the reader that the correspondence is a  useful tool for studying both graphs and simplices,  and  can  shed light on various  aspects of both of these objects which are  overlooked by other  methods. 
 
 
 
 \section{Prior Work}
 \label{chap:intro_prior_work}
 
+As we stated  above, Miroslav Fiedler was the ``primary  mover''  in  uncovering the graph-simplex correspondence~\cite{fiedler1993geometric,fiedler1998some,fiedler2011matrices}. In particular, he associated with each symmetric matrix $\Q$ whose range space is orthogonal to the all ones vector (i.e.,  $\Q\one=\zero$) a unique (up to congruence) hyperacute simplex. Since the Laplacian  matrix  $\L_G$ of a connected, weighted graph  $G$ obeys this constraint, this associates with  each such graph a hyperacute simplex  $\splx_G^+$.   
+For  reasons which will become clear later, we call $\splx_G^+$ the \emph{inverse (combinatorial) simplex of $G$}. The  association  was  made via a matrix equation which involved several somewhat complex components, including  the gram matrix of the outer normals of the simplex and  the radius of its circumscribed ellipsoid. While this matrix representation is useful for various reasons---elaborated upon in  Section~\ref{sec:block_matrix}---the correspondence can  be simplified  by means of working solely  with the Graph's Laplacian  matrix. This is the approach  recently taken by Devriendt  and  Van  Mieghem~\cite{devriendt2018simplex}. As the first paper to  revisit Fiedler's results, they focus on simplifying and summarizing Fiedler's main  results and focus mainly on one  side of the correspondence---namely,  given  a graph,  they examine  the properties of  its associated  simplices. 
+Devriendt and  Van Mieghem also make explicit the connection between a graph's simplex and  its  inverse  simplex. 
+
+There 
 Steinitz's theorem which investigates the relationship between undirected graphs arising from convex polyhedra in $\R^3$~\cite{steinitz1922polyeder}. 
 Sharpe~\cite{sharpe1967theorem} said something about something which should probably be cited, but not exactly sure what it is yet. 
 
@@ -19,18 +33,41 @@ Sharpe~\cite{sharpe1967theorem} said something about something which should prob
 \section{Contribution}
 \label{chap:intro_contribution}
 
+\begin{figure}
+	\centering 
+	\includegraphics[scale=0.4]{correspondence}
+	\caption{An illustration of the various objects and relationships in the graph-simplex correspondence. The combinatorial simplices sit to the right of $G$, while the normalized simplices sit to the left. We see that  $\splx_G$ and $\splx_G^+$ are duals to one another. The normalized simplices,  on the other hand, are not each others duals as exemplied by the discontinuity of the arrows. The arrows between $G$ and each of its simplices demonstrates how the relationship is formed.  }
+\end{figure}
+
+
 We view our main contribution as providing a self contained treatise  of the what we are  calling the graph-simplex correspondence. We include Fiedler's main results  on the topic, as well those newly discovered results of Devriendt and Van Mieghem~\cite{devriendt2018simplex}. We also expand on these results in several ways. 
 
 We state these contributions below, but let us first remark upon the  presentation of the aspects in this thesis which do not contain new results.  
 
+\begin{wrapfigure}{R}{0.5\linewidth}
+	\centering
+	\includegraphics[scale=0.5]{property_triangle}
+	\caption{A visualization of how the correspondence can be used to apply graph-theoretic knowledge to the geometry  of the simplices and vice versa. For example, leveraging that the geometry of $\splx_G^+$ is intimately related to the effective resistances of $G$ and relating the equations of $\splx_G^+$  to those of $\splx_G$ via duality allows us  to, say, express equations of spanning trees in terms of effective resistances.  }
+	\label{fig:property_triangle}
+\end{wrapfigure} 
+
+
 First, in his original paper on the correspondence and subsequent book on simplex geometry more generally~\cite{fiedler2011matrices}, Fiedler  investigated the correspondence by means of a (somewhat complicated) block matrix relationship involving the Gramian matrix of the outer normals of the simplex and its distance matrix. Devriendt  and Van Mieghem demonstrate that the correspondence can be stated more simply (in the author's opinion) in terms of the graph's Laplacian matrix, but investigate only the simplex associated to a given graph, and are less concerned with the graph associated to a simplex. Combining these two approaches, we also investigate the correspondence by means of the Laplacian, but 
+
+
 
 \begin{itemize}
 	\item {\bf Introduction of the Dual Simplex.} First, although at first seemingly unrelated to the correspondence itself, we provide a  novel mathematical treatment of what we call the ``dual simplex'' of a given simplex. This object was remarked upon by Fiedler in his 2011 book~\cite{fiedler2011matrices}, but he did not investigate its properties. We present several general properties of  the dual simplex and use it to frame graph-simplex correspondence, especially of the normalized Laplacian. 
 	\item {\bf Extension of Correspondence to the Normalized Laplacian. }While Fiedler (implicitly) and Devriendt and Van Mieghem (explicitly) studied the correspondence by means of the combinatorial Laplacian of a graph, we expand the correspondence to the ``normalized'' Laplacian.  This matrix also describes the complete structure of the graph, but is more intimately related to several of its features, such as describing random walk dynamics~\cite{chung1997spectral}. We introduce this new mapping  along with the original in Section~\ref{sec:bijection_graphs_simplices}. 
 	We then study the properties of the simplex associated to the normalized Laplacian---which we term the ``normalized'' simplex   
-	\item {\bf First analysis of the Normalized Simplex. } With regards to the normalized simplex, in Section~\ref{sec:Sn_G} we investigate its mathematical properties. This proves a more challenging task   than  in  the case of the combinatorial simplex because, as we will show, the inverse normalized simplex  is \emph{not} the dual of the normalized  simplex in general. 
-	\item {\bf New Graph Equations and Inequalities.} Combining Fiedler's block matrix approach with that of Devriendt and Van Mieghem, we are able to uncover several new relationships. For example, between the  entries of the Laplacian and the total  weight of spanning trees in  the graph (Lemma~\ref{lem:L(i,i)_trees}), between the vertices of $\splx_G$  and the volumes of its faces (Equation~\eqref{eq:||sv_i||_vol}), between the Laplacian and the volumes of facets of $\splx$ (Equation~\eqref{eq:vol/vol})). We also  obtain new inequalities pertaining to the spanning trees of $G$ (Lemma~\ref{lem:tree_inequalities}). 
+	\item {\bf First analysis of the Normalized Simplex. } With regards to the normalized simplex, in Section~\ref{sec:Sn_G} we investigate its mathematical properties. This proves a more challenging task   than  in  the case of the combinatorial simplex because, as we will show, the inverse normalized simplex  is \emph{not} the dual of the normalized  simplex in general.
+	\item {\bf New Graph Equations and Inequalities.} 
+	Combining Fiedler's block matrix approach with that of Devriendt and Van Mieghem, we are able to uncover several new relationships. 
+	
+	For example, between the  entries of the Laplacian and the total  weight of spanning trees in  the graph (Lemma~\ref{lem:L(i,i)_trees}), between the vertices of $\splx_G$  and the volumes of its faces (Equation~\eqref{eq:||sv_i||_vol}), between the Laplacian and the volumes of facets of $\splx$ (Equation~\eqref{eq:vol/vol})). We also  obtain new inequalities pertaining to the spanning trees of $G$ (Lemma~\ref{lem:tree_inequalities}). More text this is more text 
+	More text this is more text 
+	
+	More text this is more text More text this is more text More text this is more text More text this is more text More text this is more text More text this is more text More text this is more text More text this is more text More text this is more text More text this is more text More text this is more text More text this is more text More text this is more text More text this is more text More text this is more text More text this is more text More text this is more text More text this is more text 
 	\item {\bf Link between Resistive Polytope and $\splx_G^+$.} We also uncover a link between the simplex of a graph and a geometric  object related to the effective resistance of the graph, which we call the ``effective polytope''. It seems that the existence of this object has been previously acknowledged (e.g., ~\cite{shayanNotes}), but never rigorously studied. This material appears in Section~\ref{sec:resistive_polytope}. 
 	\item {\bf Algorithmic Analysis of the Correspondence.} Perhaps most significantly, we initiate the study of the algorithmic foundations of the correspondence (Chapter~\ref{chap:algorithmics}). This entails three distinct aspects. 
 	\begin{enumerate}

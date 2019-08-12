@@ -1,6 +1,8 @@
 \chapter{Further Properties of the Correspondence}
 \label{chap:further_properties}
 
+\chapterquote{Everything is  funny,  if you can laugh at it.}{Lewis Carroll.}
+
 The previous chapter introduced the graph-simplex correspondence and devoted several sections to the basic properties of the simplices associated to a given graph. In this chapter we  continue the study of the correspondence and present several of its more significant and advanced properties.  
 
 
@@ -498,12 +500,6 @@ We  set
 \end{equation}
 and  call  $\respol_G$ the \emph{resistive polytope of $G$}. Note that $\L_G^{+/2}$ is $\respol_G$'s vertex matrix. As usual, we may omit the subscript $G$ for convenience. We emphasize that while the vertices $\{\bmu_i\}$ obey the same pairwise  distances as  those of the inverse simplex $\splx_G^+$, $\respol_G$  is not the same object as $\splx_G^+$. First, of course, there is  the fact that it sits in  $\R^n$. However,  we also note that the entries of $\mu_i$ (the first $n-1$, at least) do not match those of $\sv_i^+$. Indeed, 
 
-%\begin{claim}
-%	\note{Sort this out. Seems true but should make sure.} The polytope defined by the vertices $\{\bmu_i\}$ sits in an $n-1$ dimensional subspace. That  is, there exists a linear map $\T:\R^n\to\R^{n-1}$ such that $\T\bmu\subset\R^{n-1}$ is a simplex.
-%\end{claim}
-
-%Based on above, should have  that $\T\bmu$ is a shifted/rotated/reflected copy of $\splx$. So there exists a map $\M:\R^{n-1}\to\R^{n-1}$ such that $\M\T\bmu=\Sv$. 
-
 \begin{align*}
 \mu_i(\ell) = \L_G^{+/2}(\ell,i) = \sum_{j\in[n]}\lambda_j^{-1/2}\vp_j\vp_j^\tp(\ell,i) = \sum_{j\in[n]}\lambda_j^{-1/2}\vp_j(\ell)\vp_j(i).
 \end{align*}
@@ -539,6 +535,13 @@ One therefore begins to suspect that $\respol_G$ is the same object of  $\splx_G
 	since $\vp_i\in\spn(\one)^\perp$  for all $i<n$. Hence  $\la \one,\p\ra=0$ meaning that $\la \one,\p-\q\ra=0$ as well. 
 \end{proof}
 
+\begin{figure}
+	\centering
+	\includegraphics[scale=0.5]{res_embedding}
+	\caption{The resistive embedding (in orange;  light) of a graph with three nodes sits in a plane (gray) which is parallel to the all ones vector. }
+	\label{fig:res_embedding}
+\end{figure}
+
 The relationship between $\re$ and $\splx$ gives us an alternate way to prove equalities such as \eqref{eq:c(S_U)}: There exists an isometry\footnote{A distance preserving map.} between $\re$ and $\splx$, so 
 \begin{equation*}
 \norm{\cent(\splx^+_U)}_2^2 = \norm{\cent(\re_U)}_2^2 = \frac{1}{|U|^2} \norm{\L_G^{+/2}\bchi_U}_2^2 = \frac{1}{|U|^2}w(\delta^+ U).
@@ -567,3 +570,31 @@ using Equation \eqref{eq:sum_double_ortho}. Hence,
 
 
 \section{Random Walks}
+In this section we briefly highlight a few connections between stochastic process on $G$ and  the geometry of its inverse combinatorial simplex $\splx_G^+$. 
+
+First  we  note that the total effective resistance translates to the total pairwise distance in the simplex: 
+\begin{align}
+\Rtot_G = \frac{1}{2}\sum_{i,j\in[n]} \effr(i,j) = \frac{1}{2}\sum_{i,j\in[n]}\norm{\sv_i^+-\sv_j^+}_2^2. \label{eq:rtot_simplex}
+\end{align}
+This connection gives us a new way to prove certain identities. For example, 
+\begin{align*}
+\sum_{i,j\in[n]}\norm{\sv_i^+-\sv_j^+}_2^2 &= n\sum_{in[n]}\norm{\sv_i^+}_2^2 + n\sum_{j\in[n]}\norm{\sv_j^+}_2^2 - 2\sum_{i,j\in[n]}\la\sv_i^+,\sv_j^+\ra \\ 
+&= n\sum_{\in[n]}\L_G^+(i,i) + n\sum_{j\in[n]}\L_G^+(j,j) - 2\sum_{i\in[n]}\la \L_G(i,\cdot),\one\ra = 2n\Tr(\L_G^+),
+\end{align*}
+since $\L_G^+\one=\zero$. 
+Hence, by \eqref{eq:rtot_simplex},
+\begin{equation*}
+\Rtot_G=n\Tr(L_G^+) = n\sum_{i\in[n]}\sum_{j<n} \frac{1}{\lambda_i}\vp_i(j)^2 =\sum_{j<n}\frac{1}{\lambda_j}\norm{\vp_j}_2^2 = \sum_{j<n}\frac{1}{\lambda_j}.
+\end{equation*}
+This is of course a well-known equation---originally produced by Klein  and Randi\'{c}~\cite{klein1993resistance}---but the interest resides in the fact that it can be derived via the graph-simplex correspondence.  
+
+We also note that this gives us another tool with  which to compute the effective resistance of certain graphs.  Notice that the computation above immediately leads to $\Rtot_G = n\sum_{i\in[n]}\norm{\sv_i^+}_2^2$. Let $K_n^\alpha$ denote the complete graph on $n$ vertices where each edge has weight $\alpha$. By Corollary~\ref{cor:Lkn+_laplacian}, $\L_{K_n^\alpha}^+=\L_H$ for some graph $H$. Therefore, $\L_{K_n^\alpha}=\L_H^+$ and  $\norm{\sv_i^+(H)}_2^2 = \norm{\sv_i(\L_{K_n^\alpha})}_2^2$.  If $K_n$ is the unweighted complete graph, we see that $\L_{K_n^\alpha}=\alpha\L_{K_n}$. Using  that $L_{K_n}$ has eigenvalue $n$ with multiplicity $n-1$  (Section~\ref{sec:examples}) gives $L_{K_n^\alpha}=\alpha n\sum_{i<n}\vp_i\vp_i^\tp$, meaning that $\L_{K_n^\alpha}=\L_H^+$ has eigenvalue $\alpha n$ with multiplicity $n-1$. The effective resistance of $H$ is then 
+\begin{equation*}
+\Rtot_H = n\Tr(\L_H^+) = \alpha(n-1). 
+\end{equation*}
+Moreover, $\L_H$ has eigenvalue $(\alpha n)^{-1}$ with multiplicity $n-1$, and  is therefore a complete graph with weights $(\alpha n^2)^{-1}$. We have proven the  following:  
+
+\begin{lemma}
+	For any complete graph $H$ on $n$ vertices with uniform edge weights  $(\alpha n^2)^{-1}$ for any $\alpha$,  $\Rtot_H = \alpha (n-1)$. 
+\end{lemma}
+

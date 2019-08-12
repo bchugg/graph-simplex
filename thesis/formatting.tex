@@ -88,6 +88,7 @@ citecolor=darkblue
 }
 
 \newcommand{\midmatterstyling}{%
+\onehalfspacing
 \headingstyle
 \pagenumbering{arabic}
 \let\secsymbol\S
@@ -96,17 +97,20 @@ citecolor=darkblue
 \chapstylewithline
 }
 
-\newcommand{\chapterquote}[2]
-{ \begin{flushright}
+\newcommand{\chapterquote}[2]{
+\begin{adjustwidth}{8em}{2em}
+\begin{flushright}
 \textit{#1} \\
-\vspace{0.3cm}
+\vspace{0.1cm}
 --- #2
 \end{flushright}
+\end{adjustwidth}
 }
 
 
 % Export backmatter styling
 \newcommand{\backmatterstyling}{
+\onehalfspacing
 \chapstylenoline
 \renewcommand{\chaptermark}[1]{ \markboth{##1}{} }
 }%

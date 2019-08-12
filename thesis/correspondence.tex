@@ -1,12 +1,15 @@
 \chapter{The Graph-Simplex Correspondence}
 \label{chap:correspondence}
 
+\chapterquote{The right understanding of any matter and a misunderstanding of the same matter do not wholly exclude each other.
+}{Franz Kafka, The  Trial.}
+
 In this chapter we introduce the graph simplex correspondence and explore its mathematical foundations and properties. While the focus of this dissertation is the bijective relationship between graphs and simplices, we begin by introducing the more general relationship between matrices and convex polytopes. The correspondence between graphs and simplices will then follow as a consequence. 
 
 
 \section{Convex Polyhedra of Matrices}
 \label{sec:correspondence_polyhedra_matrices}
-Here we introduce the (perhaps complex) convex polytope associated with a given matrix. Let $\M\in \R^{n\times n}$ be symmetric and admitting of the eigendecomposition $\M=\sum_{i=1}^d \lambda_i \eig_i\eig_i^\tp$ for some $d\leq n$ (i.e., $\M$ has eigenvalue zero with multiplicity $n-d$) where the eigenvectors $\{\eig_i\}_{i=1}^d $ are orthonormal. Writing out the eigendecomposition as 
+Here we introduce the polytope associated with a given matrix. Let $\M\in \R^{n\times n}$ be PSD,  symmetric and admitting of the eigendecomposition $\M=\sum_{i=1}^d \lambda_i \eig_i\eig_i^\tp$ for some $d\leq n$ (i.e., $\M$ has eigenvalue zero with multiplicity $n-d$) where the eigenvectors $\{\eig_i\}_{i=1}^d $ are orthonormal. Writing out the eigendecomposition as 
 \begin{equation*}
 \M=\Eig_M\Eval_M\Eig_M^\tp=(\Eig_M\Eval_M^{1/2})(\Eig_M\Eval_M^{1/2})^\tp,
 \end{equation*}
@@ -124,10 +127,7 @@ The vertices $\{\sv_i\}$  and $\{\svn_i\}$ are affinely independent.
 $\sum_{i=1}^n \alpha_i\sv_i = \zero$, i.e., $\balpha\in\ker(\Sv)$. Since $\ker(\Sv)=\ker(\Sv^\tp\Sv)=\ker(\L)=\spn(\{\one\})$, there exists some $k\in \R$ such that $\balpha=k\one$. If $\la \balpha,\one\ra = \la k\one,\one\ra=kn=0$ however, then we must have $k=0$, demonstrating that $\alpha_i=0$ for all $i$. Hence the vectors $\{\sv_i\}$ are affinely independent. Likewise, if $\balpha\in\ker(\Svn)=\ker(\Ln)=\spn(\{\sqrt{\w}\})$, then $\balpha=k\sqrt{\w}$. But $\la k\sqrt{\w},\one\ra = k\sum_{i}w(i)=0$, so $\balpha=\zero$. 
 \end{proof}
 
-Consequently, we will often refer to $\splx_G$ as the \emph{combinatorial simplex of $G$} or simply the \emph{simplex of $G$}, and to $\splxn_G$ as the \emph{normalized simplex of $G$}. If $G$ is clear from context we will often drop it from the subscript. As per Section \ref{sec:inverse_polytope}, we also introduce the \emph{inverse simplex} and \emph{inverse normalized simplex of $G$}, which have respective vertex matrices
-\begin{equation*}
-\Sv^+ = \Eval^{-1/2}\Eig^\tp,\qquad \text{and} \qquad \Svn^+ = \Evaln^{-1/2}\Eign^\tp.
-\end{equation*}
+Consequently, we will often refer to $\splx_G$ as the \emph{combinatorial simplex of $G$} or simply the \emph{simplex of $G$}, and to $\splxn_G$ as the \emph{normalized simplex of $G$}. If $G$ is clear from context we will often drop it from the subscript. As per Section \ref{sec:inverse_polytope}, we also introduce the \emph{inverse simplex} and \emph{inverse normalized simplex of $G$}, which have respective vertex matrices $\Sv^+ = \Eval^{-1/2}\Eig^\tp$ and $\Svn^+ = \Evaln^{-1/2}\Eign^\tp$.  
 
 We will often refer to the pair $\splx_G$ and $\splx_G^+$ as the \emph{combinatorial simplices of $G$}, and the pair $\splxn_G$ and $\splxn_G^+$ as the \emph{normalized simplices of $G$}, to avoid the tedious task of constantly referring to, say, the combinatorial simplex and its inverse. 
 
@@ -286,10 +286,25 @@ implying that $\norm{\svn_i(G)}_2 = \norm{\svn_i(H)}$.
 \paragraph{Product graphs.}
 We begin with the definition of a product graph. 
 
+\begin{figure}
+	\centering
+	\begin{minipage}{0.45\textwidth}
+		\centering
+		\includegraphics[scale=0.3]{GandH}
+	%	\subcaption{}
+	\end{minipage}
+\begin{minipage}{0.45\textwidth}
+	\centering
+	\includegraphics[scale=0.3]{GxH}
+%	\subcaption{}
+\end{minipage}
+\caption{Two graphs and their product graph.}
+\end{figure}
+
 \begin{definition}
 	\label{def:product_graphs}
 	Given two graphs $G=(V(G),E(G))$ and $H=(V(H), E(H))$, the \emph{product graph of $G$ and $H$} is the graph with vertex set $V(G)\times V(H)$ and edge set
-	$\{((i_1,j),(i_2,j)):(i_1,i_2)\in E(G), j\in V(H)\}\cup\{((i,j_1),(i,j_2)):(j_1,j_2)\in E(H), i\in V(G)\}$. It is typically denoted $G\times H$. 
+	$\{((i_1,j),(i_2,j)):(i_1,i_2)\in E(G), j\in V(H)\}\cup\{((i,j_1),(i,j_2)):(j_1,j_2)\in E(H), i\in V(G)\}$. It is denoted $G\times H$. 
 \end{definition} 
 
 In order to investigate the simplex of a product graph, we must better understand its eigenstructure. 
@@ -386,13 +401,14 @@ Property (ii) in the previous lemma was first noticed by Fielder~\cite[Chapter 6
 	The combinatorial simplex $\splx_G$ of a graph $G$ is hyperacute iff $\L_G^+$ is a Laplacian.
 \end{lemma}
 \begin{proof}
-	Using Equation \ref{eq:cos_theta_ij} and the fact that $\splx_G^+=\splx_G^\du$ (Observation \ref{obs:inverse_is_dual}), we have
+	Using Equation~\eqref{eq:cos_theta_ij} and the fact that $\splx_G^+=\splx_G^\du$ (Observation \ref{obs:inverse_is_dual}), we have
 	\[\cos \theta_{ij} = -\frac{\la \sv_i^+,\sv_j^+\ra }{\norm{\sv_i^+}_2 \norm{\sv_j^+}_2},\]
 	where we recall that $\theta_{ij}$ is the angle between $\splx_\ic$ and $\splx_\jc$. Thus, $\splx_G$ is hyperacute iff
 	 \[-\la \sv_i^+,\sv_j^+\ra\\/\norm{\sv_i^+}_2 \norm{\sv_j^+}_2 \in[0,1],\] which occurs iff $\la \sv_i^+,\sv_j^+\ra \leq 0$. In this case $\L_G^+(i,j)\leq 0$, implying that $\L_G^+$ is a Laplacian (recall that it already satisfies the other required properties: $\L_G^+\one=\zero$ and $\L_G^+(i,i)\geq 0$). 
 \end{proof}
 
 \begin{corollary}
+	\label{cor:Lkn+_laplacian}
 	The combinatorial simplex of the complete graph,  $\splx_{K_n}$, is hyperacute. 
 \end{corollary}
 \begin{proof}
@@ -411,14 +427,6 @@ As Fiedler pointed out~\cite{fiedler1993geometric}, the correspondence also allo
 	Fix $k$ and consider a connected graph on $n$ vertices with $k$ edges (note the importance that $k\geq n-1$). The interior angles $\{\theta_{ij}^+\}_{i,j}$ of $\splx_G^+$ obey $\cos\theta_{ij} = w(i,j) / \sqrt{w(i)w(j)}$, hence $\theta_{ij}=\pi/2$ whenever $w(i,j)=0$, and $\theta_{ij}\in(0,\pi/2)$ for all $(i,j)\in E(G)$. Therefore, $\splx_G^+$ meets the desired criteria. 
 \end{proof}
 
-
-
-\begin{figure}
-	\centering
-	\includegraphics[scale=0.5]{inverse_relations}
-	\caption{A simplex of a graph and its inverse. }
-	\label{fig:inverse_relations}
-\end{figure}
 
 
 The following lemma presents an alternate characterization of the simplex, and was first proved by Devriendt  and Van Mieghem~\cite{devriendt2018simplex}. As they notice, the following representation provides an easy way to check whether a given point lies inside the simplex. As our proof is similar  to theirs, we move  it to  Appendix~\ref{sec:app_proofs_correspondence}. 
@@ -469,6 +477,13 @@ Moreover, $\x\in \bigcap_i\H_i^{\geq }$ iff $\la \x,\sv_i^+\ra +1/n\geq 0$ for a
 \splx^+=\bigcap_i (\H_i^+)^{\geq },
 \end{equation}
 for $(\H_i^+)^{\geq } \equiv \{\x\in\R^{n-1}:\la \x,\sv_i\ra + 1/n\geq 0\}$. 
+
+\begin{figure}
+	\centering
+	\includegraphics[scale=0.5]{HI_plane}
+	\caption{An illustration of the combinatorial simplex $\splx_G\subset\R^3$ and its face $\splx_\ic$ contained in the hyperplane $\H_i$. }
+	\label{fig:Hi_plane}
+\end{figure}
 
 
 \paragraph{Centroids and altitudes.} 
@@ -596,7 +611,7 @@ By definition of the altitude there exists barycentric coordinates $\x_U$ and $\
 \begin{align*}
     \norm{a^+_U}_2 = \frac{\la a^+_U,a^+_U\ra }{\norm{a^+_U}_2} = \frac{\la \Sv^+(\x_{U^c}-\x_{U}), c_{U^c}\ra }{\norm{c_{U^c}}_2} = \frac{\la \Sv^+(\x_{U^c}-\x_{U}), \Sv\bchi_{U^c}\ra }{\sqrt{w(\partial U^c)}},
 \end{align*}
-where the final equality comes from using the definition of the centroid in the numerator, and Equation \ref{eq:c(S_U)} in the denominator. Recalling the relation between $\Sv$ and $\Sv^+$ given by Equation \ref{eq:sv+sv} and that $\x_U$ and $\x_{U^c}$ are barycentric coordinates, we can rewrite the above as 
+where the final equality comes from using the definition of the centroid in the numerator, and Equation~\eqref{eq:c(S_U)} in the denominator. Recalling the relation between $\Sv$ and $\Sv^+$ given by Equation~\eqref{eq:sv+sv} and that $\x_U$ and $\x_{U^c}$ are barycentric coordinates, we can rewrite the above as 
 \[\frac{(\x_{U^c}-\x_{U})^\tp(\I-\one\one^\tp/n)\bchi_{U^c}}{\sqrt{w(\partial U^c)}}=\frac{1}{\sqrt{w(\partial U^c)}}. \]
 Squaring both sides while noting that $\partial U = \partial U^c$ completes the proof of the first equality. For the second, we proceed in precisely the same manner to obtain $\norm{a_U}_2^2 = 1/w(\partial^+ U^c)$. However, it's not immediately obvious that $w(\partial^+U^c)=w(\partial^+U)$. To see this, first recall that $\Sv^+\one = \Eval^{-1/2}\Eig^\tp\one = \zero$, and so 
 \begin{align*}
@@ -786,6 +801,22 @@ except perhaps to demonstrate that $\Lnf^+(\bchi_U)\geq 0$ for all $U\subset V$.
 	Consequently, $\sum_{i\in F} (\la \x,\svn_i^+\ra + \beta_i^{F_c}) \geq \sum_{i\in F^c}(-\beta_i^{F^c} +\beta_i^{F^c})=0$, so indeed $\x\in \Hn_F$. The proof for the $\splxn^+_G$ and $\Hn_F^+$ is almost identical. 
 \end{proof}
 
+\begin{figure}
+	\centering
+	\begin{minipage}{0.45\textwidth}
+		\centering
+		\includegraphics[scale=0.3]{Hin_plane}
+		\subcaption{}
+	\end{minipage}
+	\begin{minipage}{0.45\textwidth}
+	\centering
+	\includegraphics[scale=0.5]{Hin_plane2}
+	\subcaption{}
+\end{minipage}
+\caption{An illustration of the fact that, in general, $\splxn_\ic$ is not contained in $\Hn_i=\{\x:\la \x,\svn_i^+\ra + \beta_i=0\}$. }
+\label{fig:Hin_planes}
+\end{figure}
+
 We might expect that Lemma \ref{lem:SUn_subset} yields a hyperplane representation of the normalized simplex, as did Lemma \ref{lem:SUsubset} for the combinatorial simplex. Unfortunately however, the issue is once again complicated by the vertex weights and the relation between $\Svn^+$ and $\Svn$. Let us illustrate the problem by focusing on $\splxn$. 
 
 As opposed to Section \ref{sec:S_G}, $\splxn_\ic $ is not contained in the hyperplane $\Hn_i = \{\x: \la \x,\svn_i^+\ra + \beta_i=0\}$, where we take $\beta_i = \beta_i^{\{i\}^c} = \sqrt{w(i)}\max_{j\neq i}\sqrt{w(j)} / \vol(G)$. To see this, take any $k\notin \argmax_{j\neq i} \sqrt{w(j)}$ (such a $k$ exists iff the graph is not regular) and note that while $\sv_k\in\splxn_U$ it is not in $\Hn_i$: 
@@ -813,7 +844,7 @@ We might, however, try a different tactic. Note that in the case of the combinat
  
 \begin{lemma}
 	\label{lem:hdesc_dual}
-	Let $\ssplx\subset\R^{n-1}$ be a centred simplex with $\ssplx=\bigcap_{i=1}^n  \{\x\in\R^{n-1}: \la \x,\z_i\ra \geq  \alpha_i\}$. Then $\{-\z_i/(\alpha_i n)\}$ are the vertices of $\ssplx^D$. 
+	Let $\ssplx\subset\R^{n-1}$ be a centred simplex with $\ssplx=\bigcap_{i=1}^n  \{\x\in\R^{n-1}: \la \x,\z_i\ra \geq  \alpha_i\}$. Then $\{-\z_i/(\alpha_i n)\}$ are the vertices of $\ssplx^\du$. 
 \end{lemma}
 \begin{proof}
 	As usual, let $\{\sv_i\}$ be the vertices of $\ssplx$. Put $\bgamma_i = -\z_i/(\alpha_i n)$. We need to show that $\{\bgamma_i\}_{i=1}^{n-1}$ is the sister basis to $\{\sv_i-\sv_n\}_{i=1}^{n-1}$. Let $H_i$ be the boundary of the halfspace $\{\x:\la \x,\z_i\ra \geq \alpha_i\}$, so $H_i = \{\x:\la \x,\z_i\ra = \alpha_i\}$. Enumerate the vertices $\{\sv_i\}$ such that $\splx_\ic \subset H_i$. Fix $i\in[n-1]$. We claim that 

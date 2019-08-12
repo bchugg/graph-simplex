@@ -32,9 +32,16 @@ The class \NP-hard comprises all the problems to  which  any problem in \NP can 
 
 Finally,  the class \NP-complete is the intersection of the classes \NP and  \NP-hard. Informally then, it is  the  class of all ``hard'' decision problems. 
 
+\begin{figure}
+	\centering
+	\includegraphics[scale=0.28]{NP_diagram}
+	\caption{Illustration of the relationships between the  classes \NP,  \NP-hard, and \NP-complete. ``Poly-time'' refers to problems with polynomial time solutions. Such algorithms can trivially be verified  in polynomial time, hence  are a  subset of problems in \NP. We emphasize that the diagram is  for intuitive purposes only,  and may not reflect the true relationships between these classes. For example, in  the unlikely  case that \textsf{P}=\NP (i.e., all problems in  \NP are solvable in polynomail time), then the regions ``Poly time'', \NP and \NP-complete coincide.}
+\end{figure}
+
 
 
 \section{Computational Complexity}
+\label{sec:algorithmics_complexity}
 
 In this section we investigate the relationships between problems in one domain---either the graph-theoretic or geometric domain---and their analogues in the other. The following result exemplifies the power of the graph-simplex correspondence in yielding results which seem otherwise to be difficult to obtain (certainly more difficult than the following proof, at any rate).  
 The following result was first stated by Devriendt and Van Mieghem~\cite{devriendt2018simplex}, although it was stated only for inverse simplices of graphs. We observe that it can be generalized as follows. 
@@ -64,6 +71,27 @@ and so
     \Lf(\bchi_I) = \sum_{i\sim j}w(i,j)(\bchi_I(i)-\bchi_I(j))^2 = \sum_{i\in I}\sum_{j:j\sim i} w(i,j) = \sum_{i\in I}w(i)=w(\delta I),
 \end{align*}
 where the second and fourth inequalities follows from the fact that $I$ is an independent set. Now, suppose we assign each vertex $i$ a weight $f(i)\geq 0$. The \mwis problem consists of maximizing $f(I)\equiv \sum_{i\in I}f(i)$ over all independent sets $I$. Clearly \mwis is \NP-hard in general, seeing as it reduces to the usual independent set maximization problem by taking $f(i)=1$ for all $i$. If $f$ is a linear function of the weights so that $f(i)=\alpha w(i)$ for all $i$ and some $\alpha> 0$, we call the corresponding problem $\alpha$-\vwis. We will focus on the case $\alpha=1$ for clarity, and call the  corresponding problem just \vwis. The difficulty of this problem is not immediately clear, since it is more structured than simply \mwis. The next lemma removes any doubt as to the problem's tractability.   
+
+\begin{figure}
+	\centering
+	\begin{minipage}{0.3\textwidth}
+		\centering
+		\includegraphics[scale=0.4]{graph}
+		\subcaption{}
+	\end{minipage}
+	\begin{minipage}{0.3\textwidth}
+		\centering
+		\includegraphics[scale=0.4]{independent_sets}
+		\subcaption{}
+	\end{minipage}
+	\begin{minipage}{0.3\textwidth}
+		\centering
+		\includegraphics[scale=0.4]{cliques}
+		\subcaption{}
+	\end{minipage}
+	\caption{(a) A connected  graph. (b) Two of its independent sets; one in red (dark) and one yellow (light). The red set constitutes a maximum sized independent set. (c) Two of its cliques; one in blue (dark), one  turquoise (light). The blue  set constitutes a maximum sized clique.}
+	\label{fig:is+cliques}
+\end{figure}
 
 \begin{lemma}
 	\label{lem:vwis}
@@ -363,8 +391,7 @@ implying that
 \end{align*}
 where 
 \[\varepsilon(i,j)\equiv \frac{1}{2}(\eps_{i,\o}-\eps_{i,j})\L_G^+(i,i) + (\eps_{j,\o}-\eps_{i,j})\L_G^+(i,j),\]
-is an error term dictated by $\eps_{i,j}, \eps_{i,\o}$ and $\eps_{j,\o}$. Setting 
-\[M= \max_i \L_G^+(i,i),\]
+is an error term dictated by $\eps_{i,j}, \eps_{i,\o}$ and $\eps_{j,\o}$. Setting $M= \max_i \L_G^+(i,i)$ 
 we can bound the error term via repeated applications of the triangle inequality: 
 \begin{align*}
 |\varepsilon(i,j)|& \leq \frac{1}{2}\bigg(|(\eps_{i,\o}-\eps_{i,j})\L_G^+(i,i)| + |(\eps_{j,\o}-\eps_{i,j})\L_G^+(i,j|\bigg) \\

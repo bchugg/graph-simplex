@@ -14,6 +14,7 @@ A level-1 auxiliary file: further_properties.aux
 A level-1 auxiliary file: algorithmic_implications.aux
 A level-1 auxiliary file: conclusion.aux
 The style file: alpha.bst
+A level-1 auxiliary file: appendix.aux
 Database file #1: ref.bib.bib
 Warning--there's a number but no series in chung1997spectral
 Warning--there's a number but no series in fiedler2011matrices
@@ -21,45 +22,45 @@ Warning--empty journal in grunbaum1967convex
 Warning--can't use both volume and number fields in penrose1955generalized
 Warning--can't use both volume and number fields in penrose1956best
 Warning--empty journal in stothers2010complexity
-You've used 53 entries,
+You've used 54 entries,
             2543 wiz_defined-function locations,
-            886 strings with 11711 characters,
-and the built_in function-call counts, 20372 in all, are:
-= -- 2125
-> -- 719
-< -- 51
-+ -- 227
-- -- 219
-* -- 1347
-:= -- 3231
-add.period$ -- 172
-call.type$ -- 53
-change.case$ -- 285
-chr.to.int$ -- 53
-cite$ -- 59
-duplicate$ -- 914
-empty$ -- 1589
-format.name$ -- 301
-if$ -- 4264
+            891 strings with 11803 characters,
+and the built_in function-call counts, 20723 in all, are:
+= -- 2163
+> -- 727
+< -- 52
++ -- 229
+- -- 221
+* -- 1371
+:= -- 3287
+add.period$ -- 175
+call.type$ -- 54
+change.case$ -- 290
+chr.to.int$ -- 54
+cite$ -- 60
+duplicate$ -- 929
+empty$ -- 1618
+format.name$ -- 305
+if$ -- 4335
 int.to.chr$ -- 1
 int.to.str$ -- 0
-missing$ -- 60
-newline$ -- 268
-num.names$ -- 159
-pop$ -- 280
+missing$ -- 61
+newline$ -- 273
+num.names$ -- 162
+pop$ -- 283
 preamble$ -- 1
-purify$ -- 348
+purify$ -- 354
 quote$ -- 0
-skip$ -- 749
+skip$ -- 760
 stack$ -- 0
-substring$ -- 1285
-swap$ -- 177
-text.length$ -- 51
-text.prefix$ -- 29
+substring$ -- 1317
+swap$ -- 178
+text.length$ -- 52
+text.prefix$ -- 30
 top$ -- 0
-type$ -- 388
+type$ -- 396
 warning$ -- 6
-while$ -- 213
-width$ -- 55
-write$ -- 693
+while$ -- 217
+width$ -- 56
+write$ -- 706
 (There were 6 warnings)
