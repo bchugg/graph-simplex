@@ -43,20 +43,36 @@ def plot_simplex_helper3D(xdata, ydata, zdata, ax, c):
 				z = [zdata[i], zdata[j]]
 				ax.plot(x,y,z, plot_style) # Plot
 
+	# Get rid of colored axes planes
+	# First remove fill
+	ax.xaxis.pane.fill = False
+	ax.yaxis.pane.fill = False
+	ax.zaxis.pane.fill = False
+
+	# Now set color to white 
+	ax.xaxis.pane.set_edgecolor('w')
+	ax.yaxis.pane.set_edgecolor('w')
+	ax.zaxis.pane.set_edgecolor('w')
+
+	# Bonus: To get rid of the grid as well:
+	ax.grid(False)
+
+	ax.set_axis_off() # Turn axes off
+
 	# Plot centroid
-	#ax.plot([0],[0],[0], 'ko')
-	#ax.text(0,0+eps,0,'c', size=12, color='k')
+	ax.plot([0],[0],[0], 'ko')
+	ax.text(0,0+eps,0,'c', size=12, color='k')
 			
 	# Label axes
-	ax.set_xlabel('x')
-	ax.set_ylabel('y')
-	ax.set_zlabel('z')
+	#ax.set_xlabel('x')
+	#ax.set_ylabel('y')
+	#ax.set_zlabel('z')
 
 
 	# Annotate vertices
 	for i in range(4):
 		ax.text(xdata[i], ydata[i]+eps, zdata[i], 
-			i, size=12, color=c)
+			i+1, size=12, color=c)
 		
 
 def plot_simplex_helper2D(xdata, ydata, c='r'):
@@ -74,18 +90,20 @@ def plot_simplex_helper2D(xdata, ydata, c='r'):
 				plt.plot(x,y,plot_style)
 
 	# Plot centroid
-	#plt.plot(0,0,'ko')
-	#plt.text(0,0+eps, 'c', size=12, color='k')
+	plt.plot(0,0,'ko')
+	plt.text(0,0+eps, 'c', size=12, color='k')
 
 	# Label axes
-	plt.xlabel('x')
-	plt.ylabel('y')
-	plt.axis('scaled')
+	#plt.xlabel('x')
+	#plt.ylabel('y')
+	#plt.axis('scaled')
+
+	plt.axis('off')
 
 	# Annotate vertices
 	for i in range(3):
 		plt.text(xdata[i], ydata[i]+eps,
-			i, size=12, color=c)
+			i+1, size=12, color=c)
 
 
 

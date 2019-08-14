@@ -1,7 +1,7 @@
 \chapter{Further Properties of the Correspondence}
 \label{chap:further_properties}
 
-\chapterquote{Everything is  funny,  if you can laugh at it.}{Lewis Carroll.}
+\chapterquote{Everything is  funny,  if you can laugh at it.}{Lewis Carroll}
 
 The previous chapter introduced the graph-simplex correspondence and devoted several sections to the basic properties of the simplices associated to a given graph. In this chapter we  continue the study of the correspondence and present several of its more significant and advanced properties.  
 
@@ -315,7 +315,7 @@ Our next set of results demonstrate the the inverse relation can be used not onl
 \section{Inequalities}
 \label{sec:inequalities}
 In this section we demonstrate how the graph-simplex may be used to obtain both geometric and graph-theoretic inequalities. We begin with an inequality relating the quadratic form $\Lf$ to the ``weight'' of the cuts associated with the pseudoinverse.  It was first proved by Devriendt and Van Mieghem~\cite{devriendt2018simplex}. Interestingly, a parallel result for the normalized Laplacian form does not seem to exist. 
-
+ 
 \begin{lemma}
 	\label{lem:ineq_f1}
 For any $f$ with $\la f,\one\ra=0$, $
@@ -554,7 +554,7 @@ Additionally, just as $\splx_G^+$  has  the inverse $\splx_G$, $\respol_G$  has 
 \end{equation*}
 where 
 \begin{align*}
-\L_G^{1/2}\L_G^{+/2} &= \sum_{r,s=1}^{n-1}\lambda_r^{1/2}\lambda_s^{1/2}\vp_r\vp_r^\tp\vp_s\vp_s^\tp = \sum_{r=1}^{n-1} \vp_r\vp_r^\tp,
+\L_G^{1/2}\L_G^{+/2} &= \sum_{r,s=1}^{n-1}\lambda_r^{1/2}\lambda_s^{-1/2}\vp_r\vp_r^\tp\vp_s\vp_s^\tp = \sum_{r=1}^{n-1} \vp_r\vp_r^\tp,
 \end{align*}
 and 
 \begin{align*}
@@ -597,4 +597,82 @@ Moreover, $\L_H$ has eigenvalue $(\alpha n)^{-1}$ with multiplicity $n-1$, and  
 \begin{lemma}
 	For any complete graph $H$ on $n$ vertices with uniform edge weights  $(\alpha n^2)^{-1}$ for any $\alpha$,  $\Rtot_H = \alpha (n-1)$. 
 \end{lemma}
+
+\subsection{Continuous Time Random Walks}
+
+In this section  we investigate how a random walk in a hyperacute simplex  is governed by the eigenvalues  and eigenvectors of its associated graph. 
+We examine a continuous time random walk \note{Say more about where this comes from} which  obeys the equation 
+\begin{equation*}
+\frac{d \bpi(t)}{dt } = -\L_G\W_G^{-1/2} \bpi(t),
+\end{equation*}
+which has the solution $\bpi(t)  = \exp(-\L_G\W_G^{-1/2}t)\bpi(0)$. This, however, is relative unsightful in terms of  analyzing the dynamics of $\bpi(t)$ in terms of the  graph.  Instead, in  what follows we seek  to develop a solution to $\bpi(t)$ in terms of the  eigendecomposition of  $G$.  Define $\bpi_1(t) = \W^{-1/2}\pi(t)$ and $\bpi_2(t) = \Eign^\tp \bpi_1(t)$, where we recall that $\Eign^\tp$ is the eigenvector matrix  of  $\Ln_G$.  Then 
+\begin{equation*}
+\frac{d \bpi_1(t)}{dt} = \W^{-1/2}\frac{d \bpi(t)}{dt} = -\W^{-1/2}\L_G\W^{-1/2}\W^{-1/2}\bpi(t) = - \Ln_G\bpi_1(t),
+\end{equation*}
+and, using the eigendecomposition of $\Ln_G$,   
+\begin{equation*}
+\frac{ d\bpi_2(t)}{dt} = \Eign^\tp \frac{d\bpi_1(t)}{dt} = -\Eign^\tp \Ln_G \bpi_1(t) = -\Eign^\tp \Eign\Evaln\Eign^\tp \bpi_1(t) = -\Evaln  \bpi_2(t),
+\end{equation*}
+since  $\Eign^\tp\Eign=\I$. This equation  has the solution 
+\begin{equation*}
+\bpi_2(t) = \exp(-\Evaln t)\bpi_2(0) = \begin{pmatrix}
+e^{-\lambda_1 t}  & &\\
+& \ddots  & \\
+&& e^{-\lambda_{n-1} t}
+\end{pmatrix}  \bpi_2(0).
+\end{equation*}
+
+\begin{figure}
+	\centering
+	\begin{minipage}{0.32\textwidth}
+		\centering
+		\includegraphics[scale=0.6]{dynamics1}
+		\subcaption{}
+	\end{minipage}
+	\begin{minipage}{0.32\textwidth}
+		\centering
+		\includegraphics[scale=0.4]{dynamics3}
+		\subcaption{}
+	\end{minipage}
+	\begin{minipage}{0.32\textwidth}
+		\centering
+		\includegraphics[scale=0.6]{dynamics2}
+		\subcaption{}
+	\end{minipage}
+	\caption{Random walk dynamics plotted as points  in the simplex.}
+\end{figure}
+
+Combining the  definitions of $\bpi_1$  and $\bpi_2$ gives $\bpi_2(t)  = \Eign^\tp \bpi_1(t) = \Eign^\tp \W^{-1/2}\bpi(t)$, hence 
+$\bpi(t) = \W^{1/2} \Eign \bpi_2(t)$. As a point in the  simplex this gives 
+\begin{equation*}
+\p(t)  = \Sv\bpi(t) = \Eval^{1/2}\Eig^\tp \W^{1/2}\Eign \bpi_2(t) = \Y\bpi_2(t),
+\end{equation*}
+after definining $\Y\equiv \Eval^{1/2}\Eig^\tp \W^{1/2}\Eign$. As a point in the normalized simplex, we have 
+\begin{equation*}
+\q(t) = \Svn\bpi(t) = \Evaln^{1/2}\Eign^\tp\W^{1/2}\Eign\bpi_2(t) = \Yn\bpi_2(t),
+\end{equation*}
+where $\Yn= \Evaln^{1/2}\Eign^\tp\W^{1/2}\Eign$. We thus  see that the matrices 
+\begin{equation*}
+\Y = \begin{pmatrix}
+\lambda_1^{1/2}\sum_{i\in[n]} \vp_1(i)\vpn_1(i) w_i^{1/2} & \dots &  \lambda_1^{1/2}\sum_{i\in[n]} \vp_1(i)\vpn_{n-1}(i) w_i^{1/2} \\
+\vdots & \ddots & \vdots \\
+\lambda_{n-1}^{1/2}\sum_{i\in[n]} \vp_{n-1}(i)\vpn_1(i) w_i^{1/2} & \dots &  \lambda_{n-1}^{1/2}\sum_{i\in[n]} \vp_{n-1}(i)\vpn_{n-1}(i) w_i^{1/2} 
+\end{pmatrix},
+\end{equation*}
+and  
+\begin{equation*}
+\Yn  = \begin{pmatrix}
+\lambdan_1^{1/2}\sum_{i\in[n]} \vpn_1(i)\vpn_1(i) w_i^{1/2} & \dots &  \lambdan_1^{1/2}\sum_{i\in[n]} \vpn_1(i)\vpn_{n-1}(i) w_i^{1/2} \\
+\vdots & \ddots & \vdots \\
+\lambdan_{n-1}^{1/2}\sum_{i\in[n]} \vpn_{n-1}(i)\vpn_1(i) w_i^{1/2} & \dots &  \lambdan_{n-1}^{1/2}\sum_{i\in[n]} \vpn_{n-1}(i)\vpn_{n-1}(i) w_i^{1/2} 
+\end{pmatrix},
+\end{equation*}
+govern the dynamics of the random walk in  $\splx_G$ and $\splxn_G$, respectively.  More specifically, letting $\Y=(\y_1\;\dots\;\y_n)$ we have 
+\[\p(t) = \sum_{i\in[n-1]} \y_i (\bpi_2(t))(i) = \sum_{i\in[n-1]}  \y_i e^{-\lambda_i t} \Eign^\tp \W^{-1/2}\bpi(0)(i).\]
+
+
+
+
+
+
 

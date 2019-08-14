@@ -65,7 +65,7 @@ def ctrw(G, x0, iters):
 	Winv = list(map(lambda i: 1/float(L[i,i]), range(N)))
 	M = np.matmul(np.diag(Winv), L)
 
-	h = 0.001
+	h = 0.1
 	x = np.zeros((iters, N))
 	x[0,:] = x0
 

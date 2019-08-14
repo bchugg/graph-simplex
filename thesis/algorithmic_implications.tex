@@ -455,53 +455,72 @@ Let us suppose the we have obtained a low rank---$k$, say---approximation of $\L
 
 Of course, we have chosen to work with $\L_G$ and $\splx_G$ for convenience; we could have asked the same questions of $\Ln_G$ and $\splxn_G$. 
 
-\note{Still working on this ---  unsure if there's anything here.}
-Let us examine a specific low rank approximation proposed by Drineas and Mahoney~\cite{drineas2005approximating}, which finds low rank approximations to Gram matrices. We will give a brief overview of their method in general, and then elaborate on how it applies to our case in particular. Let $\M\in\R^{n\times m}$ be a gram matrix. Using the probability distribution $F(i) = \M(i,i)^2 / \tr(\M^2)$ sample $a\leq m$ columns of $\M$ independently at random and with replacement, where $a$ is some given parameter. Let $I\subset[n]$, $|I|\leq a$, be the indices of sampled columns. Let $\bC\in\R^{n\times a}$ be the matrix formed by these columns (that is, $\bC=\M(\cdot,I)$).  Let $\Q$ be the matrix $\M(I,I)\in\R^{a\times a}$, i.e., the submatrix of $M$ with entries corresponding to indices in $I$, and $\Q^+_k$  the optimal rank $k$-approximation to $\Q^+$, the pseudoinverse of $\Q$ (section \ref{sec:background_pseudoinverse}). The low rank approximation to $\M$ is then 
+We begin by considering the natural rank-$k$ approximation to $\L_G$: 
 \begin{equation*}
-\tM \equiv \bC\M(I,I)_k^+\bC^\tp.
+\L_k\equiv \sum_{i=1}^k \lambda_k\vp_k\vp_k^\tp.
 \end{equation*}
-
-\begin{theorem}[\cite{drineas2005approximating}]
-	Let $\M$ be a gram matrix and let $\tM$ be as above. Let $\eps>0$,  $k\leq c\in\N$. If $c=\Omega(k/\eps^4)$, then 
-	\begin{equation*}
-	\norm{\M-\tM}_\kappa \leq \norm{\M-\M_k}_\kappa + \eps \tr(\M^2),
-	\end{equation*}
-	for $\kappa=2,F$. 
-\end{theorem}
-
-Let us analyze how this result translates to the case when $\M=\L_G$. Let $I$ and $\bC$ be as above. First we observe that $\L_G(I,I)$ is simply the Laplacian on the subgraph $G[I]$. Put $\tG = G[I]$. Performing an eigendecomposition, write 
-\begin{equation*}
-\L_\tG = \sum_{r=1}^{|I|} \mu_r \bnu_r\bnu_r^\tp,
-\end{equation*}
-for where $\mu_1\geq \mu_2\geq \dots \geq \mu_{|I|}=0$ and $\{\bnu_r\}$ are the eigenvalues and eigenvectors of $\L_\tG$, respectively. The results of Section \ref{sec:background_pseudoinverse} then dictate that 
-\begin{equation*}
-\L_\tG^+ = \sum_{r=1}^{|I|} \frac{1}{\mu_r} \bnu_r\bnu_r^\tp,
-\end{equation*}
-and so the best rank $k$ approximation to $\L_\tG$ is given by 
-\begin{equation*}
-\L_k \equiv (\L_\tG^+)_k = \sum_{r=1}^{k} \frac{1}{\mu_r} \bnu_r\bnu_r^\tp.
-\end{equation*}
-The approximation for $\L_G$ is thus given by $\tL=\bC\L_k\bC^\tp=\bC\L_k^{1/2}\L_k^{\tp/2}\bC^\tp = (\L_k^{\tp/2}\bC^\tp)^\tp \L_k^{\tp/2}\bC^\tp$. That is, we can view $\tL$ as the gram matrix of the vectors given by the columns of $\tSv =  (\L_k^{\tp/2}\bC^\tp)$. 
-
-Let us examine $\tSv^\tp=\C\L_k^{\tp/2}$. First consider $\rank(\bC)$, which we claim is $|I|$. Suppose $\bC\f=\zero$, where $\f:I \to \R$. Extend $\f$ to $\hf:[n]\to\R$ by setting $\hf(u)=0$ for all $u\in [n]\setminus I$. Then 
-\[(\L_G\hf)(k) = \sum_{i\in[n]}\L_G(k,i)\hf(i) = \sum_{i\in I}\L_G(k,i) \f(i) + \sum_{i\in[n]\setminus I} \L_G(k,i)\hf(i) = \sum_{i\in I}\bC(k,i) \f(i) = 0,\]
-implying that $\L_G\hf=\zero$, so $\hf\in\spn(\one))$. However, as long as $|I|\neq[n]$, this is impossible since  $\hf([n]\setminus I)=\zero$. Therefore, so long as $c<n$, we have $\rank(\bC) = c$. 
-We now claim that $\rank(\bC\L_k^{\tp/2}) = \rank(\L_k^{\tp/2})$, which is easier to prove in the abstract. 
-
-\begin{lemma}
-	Let $\bS:\R^n\to\R^\ell$, $T\in\R^m\to\R^n$ be linear maps with $\rank(\bS)=\ell$. Then $\rank(\bS\T) = \rank(\T)$. 
-\end{lemma}
+Clearly $\L_k$ has rank $k$.  It is, moreover, a symmetric PSD matrix.  Section~\ref{sec:correspondence_polyhedra_matrices} thus yields the polytope $\P_k\equiv \P_{\L_k}$ associated  with $\L_k$. More  explicitly, if 
+ $\Eval_k=\diag(\lambda_1,\dots,\lambda_n)$ is the diagonal  matrix containing the first $k$  eigenvalues and $\Eig_k = (\vp_1\;\dots;\vp_k)$, then $\L_k$ is the Gram matrix of the vertices described be the matrix $\Sv_k = \Eval_k^{1/2}\Eig_k^\tp=(\sv_1^\k,\dots,\sv_n^\k)$ where $\sv_i^\k=(\vp_1(i)\lambda_1^{1/2},\dots,\vp_k(i)\lambda_k^{1/2})$. Let us emphasize that we  are using  the subscript $(k)$ to signify that these vertices are  those belonging to  $\P_k$. 
+ 
+ To  summarize, the rank $k$ approximation to $\L_G$, $\L_k$  yields an  $n$-vertex polytope  $\P_k\subset\R^k$. Naturally, one would hope that $\P_k$    ``approximates'' various features of $\splx_G$, as it is precisely $\splx_G$ projected  onto a particular $k$-dimensional subspace. The next few results  demonstrate that this is true under certain  assumptions placed on the distribution of the eigenvalues. 
+ 
+ The first property worth noticing is that $\P_k$ remains  centred at the  origin. Indeed,  $\cent(\P_k) = \frac{1}{n}\Sv_k\one = \frac{1}{n}\Eval_k^{1/2}\Eig_k^\tp\one=\zero_k$.  Next, we might wonder  whether the lengths of the  centroids to different faces  are similar in $\splx_G$ and $\P_k$. For  $U\subset [n]$ and compute 
+ 
+ \begin{align*}
+ \L_G-\L_k = \sum_{i\in[n-1]}\lambda_i\vp_i\vp_i^\tp - \sum_{i\in[k]}\lambda_i\vp_i\vp_i^\tp = \sum_{i=k+1}^{n-1}\lambda_i  \vp_i\vp_i^\tp 
+ \end{align*}
+ 
+ \begin{align*}
+ \bigg|\norm{\cent(\splx_G[U])}_2^2 - \norm{\cent(\P_k[U])}_2^2\bigg| &= \frac{1}{|U|^2}\bigg| \bchi_U^\tp \Sv^\tp\Sv\bchi_U - \bchi_U^\tp \Sv_k^\tp\Sv_k\bchi_U \bigg| \\
+ &= \frac{1}{|U|^2} \bigg|\bchi_U^\tp (\L_G-\L_k)\bchi_U\bigg| \\
+ &\leq  \frac{1}{|U|^2} \sum_{i=k+1}^{n-1}|\lambda_i \bchi_U^\tp \vp_i\vp^\tp\bchi_U |=   \frac{1}{|U|^2} \sum_{i=k+1}^{n-1}\la \bchi_U,\vp_i\ra^2,
+ \end{align*}
+ where, by Cauchy-Schwarz, $\la \bchi_U,\vp_i\ra^2 \leq \norm{\bchi_U}_2^2 \norm{\vp_i}_2^2 = |U|^2$, 
+ hence  
+ \begin{align}
+  \bigg|\norm{\cent(\splx_G[U])}_2^2 - \norm{\cent(\P_k[U])}_2^2\bigg| &\leq \sum_{i=k+1}^{n-1}  \lambda_i  \leq \lambda_{k+1} (n-(k+1)). \label{eq:|cS-cP|}
+ \end{align}
+ Thus, if $\lambda_k$ is sufficiently small as a function  of $n$ and $k$, the lengths of the centroids are approximately equal. We summarize with  the following Lemma. 
+ 
+ \begin{lemma}
+ 	If $\lambda_{k+1} = o((n-k)^{-1})$, then  $ \bigg|\norm{\cent(\splx_G[U])}_2^2 - \norm{\cent(\P_k[U])}_2^2\bigg| = o(1)$. 
+ \end{lemma}
 \begin{proof}
-	If $\T\f=\zero$ then clearly $\bS\T\f=\zero$ so $\dim\ker(\T)\leq \dim\ker(\bS\T)$. On the other hand, if $\bS\T\f=\zero$ then because $\bS$ is full rank, $\T\f=\zero$ implying that $\dim \ker \T\ge \ker\bS\T$. 	By the rank nullity Theorem (e.g., ~\cite{axler1997linear}) $\rank(\bS\T) + \dim\ker \bS\T = n = \rank(\T) + \dim\ker\T$ from which the result follows immediately. 
+	Assume $\lambda_k = o((n-k)^{-1})$ and apply Equation~\eqref{eq:|cS-cP|}. 
 \end{proof}
 
-Taking $\bC=\bS$ and $\T=\L_k^{\tp/2}$ in the above lemma gives that $\rank(\bC\L_k^{\tp/2})=k$. Consequently, the vertex matrix $\tSv\in\R^{|I|\times n}$ contains $n$ vectors in $\R^{|I|}$. Moreover, 
-\[\rank(\tL) = \rank(\tSv^\tp \tSv) = \rank(\tSv)=k,\]
-meaning the $n$ vectors span a $k$-dimensional space. 
+\begin{remark}
+	The  above result should seem intuitively plausible.  How  well $\L_k$ approximates $\L_G$ relies precisely on the size of $\lambda_k$. We should  thus expect  the same to be  true  of $\P_k$ and  $\splx_G$. 
+\end{remark}
 
-One might hope that the approximation matrix $\tL$ was a Laplacian, but this does not seem to be the case in general. While it is true that $\tL(i,i)\geq 0$ (by virtue of being a gram matrix) and that $\tL\one=\zero$ (this follows since $\bC^\tp\one =\zero$ because the rows of $\bC^\tp$ are columns and hence rows of $\L_G$). However, 
-\[\tL(i,j) = \sum_{r,s=1}^c \bC(i,r)\bC(j,s)\L_k(r,s),\]
-which does not look to be necessarily non-positive. 
+\note{Interplay between good approximations for $\P_k$ to $\splx_G$ and $\P_k^+$ to $\splx_G^+$?} 
+
+Next, we  investigate the relative distances between  the vertex vectors. 
+
+\begin{align*}
+\bigg| \norm{\sv_i-\sv_j}_2^2 - \norm{\sv_i^\k-\sv_j^\k}_2^2  \bigg| &= \left| \sum_{\ell\in[n-1]} (\sv_i(\ell)-\sv_j(\ell))^2  - \sum_{\ell\in[k]}(\sv_i(\ell) - \sv_j(\ell))^2 \right|\\ 
+&= \left| \sum_{\ell\in[n-1]} \lambda_\ell(\vp_\ell(i)-\vp_\ell(j))^2  - \sum_{\ell\in[k]}\lambda_\ell(\vp_\ell(i) - \vp_\ell(j))^2 \right|\\ 
+&=\left| \sum_{\ell=k+1}^{n-1} \lambda_\ell(\vp_\ell(i)-\vp_\ell(j))^2 \right|\\ 
+&\leq \lambda_{k+1} \sum_{\ell=k+1}^{n-1} |\vp_\ell(i)-\vp_\ell(j)|^2.
+\end{align*}
+The  goal is  thus to bound the final summation in  terms of some function of $n$ or $k$, so that we may provide sufficient conditions on $\lambda_{k+1}$ in order for $\norm{\sv_i^\k-\sv_j^\k}_2^2$ to approximate $\norm{\sv_i-\sv_j}_2^2$. We proceed as follows. 
+\begin{align*}
+\sum_{\ell=k+1}^{n-1} |\vp_\ell(i)-\vp_\ell(j)|^2 &= \bigg|\sum_{\ell=k+1}^{n-1} |\vp_\ell(i)-\vp_\ell(j)|^2\bigg| \\
+&= \bigg|\sum_{\ell={k+1}}^{n-1} \vp_\ell(i)^2 + \vp_\ell(j)^2 - 2\vp_\ell(i)\vp_\ell(j) \bigg|\\
+&\leq \sum_{\ell=k+1}^{n-1} \vp_\ell(i)^2 + \sum_{\ell=k+1}^{n-1} \vp_\ell(j)^2 + 2\bigg|\sum_{\ell=k+1}^{n-1} \vp_\ell(i)\vp_\ell(j)\bigg| \\
+&\leq \sum_{\ell=k+1}^{n-1} \vp_\ell(i)^2 + \sum_{\ell=k+1}^{n-1} \vp_\ell(j)^2 + 2\bigg(\sum_{\ell=k+1}^{n-1}\vp_\ell(i)^2\sum_{m=k+1}^{n-1}\vp_m(j)^2\bigg) ^{1/2} \\
+&\leq \sum_{\ell\in[n]} \vp_\ell(i)^2 + \sum_{\ell\in[n]}^{n-1} \vp_\ell(j)^2 + 2\bigg(\sum_{\ell\in[n]}^{n-1}\vp_\ell(i)^2\sum_{m=k+1}^{n-1}\vp_m(j)^2\bigg) ^{1/2}. 
+\end{align*} 
+Now,  recall that due to double orthogonality of the eigenvector matrix we  have $\sum_{\ell=1}^n \vp_\ell(i)\vp_\ell(j) = \delta_{ij}$.  The above quantity is therefore  equal to 6. Consequently, combining the previous few equations yields 
+\begin{equation*}
+\bigg| \norm{\sv_i-\sv_j}_2^2 - \norm{\sv_i^\k-\sv_j^\k}_2^2\leq 6\lambda_{k+1}=O(\lambda_{k+1}). 
+\end{equation*}
+
+\begin{lemma}
+	If $\lambda_{k+1}=o(1)$ then $\bigg| \norm{\sv_i-\sv_j}_2^2 - \norm{\sv_i^\k-\sv_j^\k}_2^2= o(1)$. 
+\end{lemma}
+
+
 
 
 

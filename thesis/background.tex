@@ -5,7 +5,7 @@ This chapter is devoted to introducing the  pre-requisite knowledge necessary to
 
 \section{General Notation}
 \label{sec:background_general}
-We use the standard notation for sets of numbers: $\R$ (reals), $\N$ (naturals), $\Z$ (integers), $\C$ (complex).  We use the subscript $\geq 0$ (resp., $>0$) to restrict a relevant set to its non-negative (resp., positive) elements ($\R_{\geq 0}$, for example). 
+We use the standard notation for sets of numbers: $\R$ (reals), $\N$ (naturals), $\Z$ (integers).  We use the subscript $\geq 0$ (resp., $>0$) to restrict a relevant set to its non-negative (resp., positive) elements ($\R_{\geq 0}$, for example). 
 We will often introduce new notation or definitions by using the notation $\equiv$. The complement of a set $U$ (with respect to what will be clear from context) is denoted $U^c$. 
 Given a set of scalars $K$, we let $K^{n\times m}$ denote the set of $n\times m$ matrices ($n$ rows and $m$ columns) with elements in $K$. Matrices will typically be denoted by uppercase letters in boldface, e.g., $\Q\in K^{n\times m}$. Matrices will also often be referred to as linear transformations and written, for example, as $\Q:K^m \to K^n$. 
 We let $\Q(i,\cdot)$ (resp., $\Q(\cdot,i)$) denote the $i$-th row (resp., column) of the matrix $\Q$. 
@@ -59,17 +59,17 @@ Moreover, if $\{\eig_i\}_i$ are assumed to be orthonormal then $\Eval\Eval^\inte
     \M=\Eig\Eval\Eig^\tp = \sum_{i\in[n]}\lambda_i\eig_i\eig_i^\tp,
 \end{equation}
 which is called the \emph{eigendecomposition} of $\M$. 
-
-A symmetric matrix $\vb*{Q}\in\R^{n\times n}$ is \emph{positive semidefinite (PSD)} if $\x^\tp\Q\x \geq 0$ for all $\x\in\R^n$. If $\Q$ is PSD, then we define 
+If $\M$ obeys  $\x^\tp\M\x\geq 0$ for all  $\x\in\R^n$, then we  call $\M$ \emph{positive semidefinite (PSD)}. Importantly, if $\M$ is PSD, then its eigenvalues are non-negative. Indeed, with the  eigendecomposition of $\M$ as  above,  
+\[0\leq \vp_k^\tp \M\vp_k =\sum_{i\in[n]}\lambda_i \vp_k^\tp\vp_i\vp_i^\tp\vp_k = \lambda_k\vp_k^\tp\vp_k\vp_k^\tp\vp_k=\lambda_k,\]
+for any $k$ since $\{\vp_i\}$ are orthonormal. Thus,  if  $\M$ is PSD we define 
 \begin{equation*}
-    \Q^{1/2} \equiv \Eig\Eval^{1/2}\Eig^\tp = \sum_{i\in[n]}\sqrt{\lambda_i}\vp_i\vp_i^\tp.
+    \M^{1/2} \equiv \Eig\Eval^{1/2}\Eig^\tp = \sum_{i\in[n]}\sqrt{\lambda_i}\vp_i\vp_i^\tp.
 \end{equation*}
-
-It's easily verified that $(\Q^{1/2})^2 = \Q$. The following basic result will be useful for us. 
+It's easily verified that $(\M^{1/2})^2 = \M$. The following basic  result will be useful; the proof can  be found in the appendix. 
 
 \begin{lemma}
 	\label{lem:rank(QtQ)}
-	For any $\Q:\R^n\to\R^m$, $\rank(\Q) = \rank(\Q^\tp\Q)$. 
+	For any $\M:\R^n\to\R^m$, $\rank(\M) = \rank(\M^\tp\M)$. 
 \end{lemma}
 
 We conclude with a formula for  the determinant of the minor of an invertible matrix.  It is often referred to as (a special  case of) \emph{Sylvester's identity}~\cite{sylvester1851xxxvii}. We state the version described by Viktor Prasolov~\cite{prasolov1994problems}. 
@@ -151,7 +151,7 @@ Given a subset $U\subset  V$, we write $G[U]$ to be the graph induced by $U$, i.
 
 As mentioned above, we will typically  work  with undirected graphs. In this case, we identify each tuple $(i,j)$ with its sister pair $(j,i)$. This implies, for example, that when summing over all edges $(i,j)\in E$ we are \emph{not} summing over all vertices and their neighbours. Indeed, this latter summation double counts the edges: $\sum_{(i,j)\in E}=\frac{1}{2}\sum_{i}\sum_{j\in\delta(i)}$. We will often write $i\sim j$ to denote an edge $(i,j)$; so, for example, $\sum_{i\sim j}=\sum_{(i,j)\in E}$. 
 
-We will also appeal to so-called ``handshaking lemma'' for unweighted graphs, which states that $\sum_i \deg_G(i) = 2|E(G)|$; easily verified with a counting argument. 
+We will also appeal to the so-called ``handshaking lemma'' for unweighted graphs, which states that $\sum_i \deg_G(i) = 2|E(G)|$; easily verified with a counting argument. 
 
 
 \subsection{Laplacian Matrices}
@@ -507,7 +507,7 @@ hence had we set $\v_i=\sv_k-\sv_i$ and defined $\bgamma_k = -\sum_{i\neq k}\bga
 Given a simplex $\ssplx_1\subset\R^{n-1}$ with vertex set $\Sv(\splx_1)=(\sv_1,\dots,\sv_n)$, a simplex $\ssplx_2\subset \R^{n-1}$ with vertex vectors $\Sv(\ssplx_2)=(\bgamma_1,\dots,\bgamma_n)$ is called a \emph{dual simplex} of $\ssplx_1$ if for all $k\in[n]$, $\{\bgamma_i\}_{i\neq k}$ is the sister basis to $\{\sv_i-\sv_k\}_{i\neq k}$. We denote the dual of the simplex $\ssplx$ as $\ssplx^\du$. 
 \end{definition}
 
-We remark that in light of the previous lemma that in order to determine whether the vertices $\{\bgamma_i\}$ are the dual vertices to $\{\sv_i\}$ it suffices to check whether $\la \bgamma_i,\sv_j-\sv_k\ra=\delta_{ij}$ for a single $k\neq i,j$, as opposed to all $k\in[n]$. This will be done henceforth and will not be further remarked upon. 
+We remark that in light of the previous lemma, in order to determine whether the vertices $\{\bgamma_i\}$ are the dual vertices to $\{\sv_i\}$ it suffices to check whether $\la \bgamma_i,\sv_j-\sv_k\ra=\delta_{ij}$ for a single $k\neq i,j$, as opposed to all $k\in[n]$. This will be done henceforth and will not be further remarked upon. 
 We also note that duality between simplices is not a relationship between individual simplices per se, but rather assigns to congruence class $[\ssplx]$ a centred simplex. Indeed, let $\ssplx_1\in[\ssplx]$
 and  let $\Sv(\ssplx^\du)=(\sv_1^\du,\dots,\sv_n^\du)$. We claim that  the vertices $\Sv(\ssplx^\du)$ are also dual to $\Sv(\ssplx_1^\du)=(\bgamma_1,\dots,\bgamma_n)$. Let  $\balpha\in\R^{n-1}$  be such that $\bgamma_i = \sv_i + \balpha\one^\tp$. Then, 
 \begin{align*}
