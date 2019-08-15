@@ -1,6 +1,8 @@
 \chapter{Algorithmics}
 \label{chap:algorithmics}
 
+\chapterquote{I'm smart enough to know that I'm dumb. }{Richard Feynman}
+
 This final technical chapter will discuss some of the algorithmic foundations and consequences of the graph-simplex correspondence. Vis-\`{a}-vis foundations, we will chiefly be concerned with transitioning between a graph and its various simplices. We will explore lower bounds for how quickly this can be done if we wish to obtain the precise result\footnote{Ignoring issues of floating point number accuracy}, and whether we can ``approximate'' any of the constructions (e.g., given the graph $G$ can we quickly obtain a simplex which serves as an approximation\footnote{The notion of approximating a simplex is rather ambiguous and will be expounded upon at a later time.} to $\splx_G$.) With respect to algorithmic consequences on the other hand, we will attempt to leverage knowledge we have in the hitherto relatively unrelated areas of computational graph theory and high-dimensional computational geometry to draw new conclusions about the complexity of several problems in these areas. For instance, if a  graph theoretic problem has an analogue in the simplex, any fact regarding the problems difficulty---whether it's NP-complete, say---translates to an immediate result about its geometric counterpart. In particular, since the simplex of a graph can be generate in polynomial time given the graph (due to the fact that an eigendecomposition can be computed in polynomial time) and vice versa, problems which are solvable in polynomial in either the simplex or graph domain  translate to polynomial (yet perhaps not optimal!) problems in the other domain and likewise, problems which are \NP-hard in one domain have analogues which are \NP-hard in the other. 
 
 For the benefit of the (undoubtedly confused) reader unfamiliar with computational complexity and reductions, we begin the chapter with a short section containing this background material. We will also discuss computational representations of a simplex therein. 
@@ -51,7 +53,7 @@ The following result was first stated by Devriendt and Van Mieghem~\cite{devrien
 	Computing the altitude of minimum length in a hyperacute polytope is \NP-hard. Consequently, computing the minimum length altitude in general polyhedra is \NP-hard. 
 \end{lemma}
 \begin{proof}
-	The relationship $\norm{\alt(\splx^+_U)}_2^2 = w(\delta U)^{-1}$ (Lemma \ref{lem:alt}) for the inverse simplex of a graph $G$ demonstrates that the problem of computing a minimum length altitude in any hyperacute simplex is \NP-hard, because computing the  maximum weight cut in any weighted graph is \NP-hard~\cite{karp1972reducibility}.  Since the class of convex polytopes contains the class of hyperacute simplices, the result follows. 
+	The relationship $\norm{\alt(\splx^+_U)}_2^2 = w(\partial U)^{-1}$ (Lemma \ref{lem:alt}) for the inverse simplex of a graph $G$ demonstrates that the problem of computing a minimum length altitude in any hyperacute simplex is \NP-hard, because computing the  maximum weight cut in any weighted graph is \NP-hard~\cite{karp1972reducibility}.  Since the class of convex polytopes contains the class of hyperacute simplices, the result follows. 
 \end{proof}
 
 \begin{remark} In  the above statement and its proof, the description of the polytope and simplex was not specified. This is due to the fact that---as discussed above---for simplices there is a polynomial time algorithm to translate betweent the various descriptions. With regard to \NP-completeness therefore, the description makes no difference. Consequently, we will continue to ignore this distinction for the remainder of this section. 
@@ -65,10 +67,10 @@ The remainder of this section is dedicated to obtaining more results of this typ
 
 We begin by investigating independent sets. Given a graph $G=(V,E,w)$, recall that an \emph{independent set} is a subset $I\subset V$ such that if $i,j\in I$ then $(i,j)\notin E$. 
 The weight of an independent set is nicely described by the Laplacian quadratic form. If $I$ is an independent set note that 
-\[\vol(I) = w(\delta I),\] 
+\[\vol(I) = w(\partial I),\] 
 and so 
 \begin{align*}
-    \Lf(\bchi_I) = \sum_{i\sim j}w(i,j)(\bchi_I(i)-\bchi_I(j))^2 = \sum_{i\in I}\sum_{j:j\sim i} w(i,j) = \sum_{i\in I}w(i)=w(\delta I),
+    \Lf(\bchi_I) = \sum_{i\sim j}w(i,j)(\bchi_I(i)-\bchi_I(j))^2 = \sum_{i\in I}\sum_{j:j\sim i} w(i,j) = \sum_{i\in I}w(i)=w(\partial I),
 \end{align*}
 where the second and fourth inequalities follows from the fact that $I$ is an independent set. Now, suppose we assign each vertex $i$ a weight $f(i)\geq 0$. The \mwis problem consists of maximizing $f(I)\equiv \sum_{i\in I}f(i)$ over all independent sets $I$. Clearly \mwis is \NP-hard in general, seeing as it reduces to the usual independent set maximization problem by taking $f(i)=1$ for all $i$. If $f$ is a linear function of the weights so that $f(i)=\alpha w(i)$ for all $i$ and some $\alpha> 0$, we call the corresponding problem $\alpha$-\vwis. We will focus on the case $\alpha=1$ for clarity, and call the  corresponding problem just \vwis. The difficulty of this problem is not immediately clear, since it is more structured than simply \mwis. The next lemma removes any doubt as to the problem's tractability.   
 
@@ -103,15 +105,15 @@ where the second and fourth inequalities follows from the fact that $I$ is an in
 
 	Construct a graph $H=(V(H), E(H))$ as follows. For each vertex $u\in V(G)$, create $\deg_G(u)+1$ vertices $u_0,u_1,\dots,u_{\deg_G(u)}$ in $V(H)$. For $1\leq k\leq \deg_G(u)$ set \[w_H(u_k) =  \frac{1}{\deg_G(u)}.\] Construct the edge set $E(H)$ such that the neighbours of each vertex are described by 
 	\begin{equation*}
-	\delta_{H}(u_k) = \{u_0\}\cup \bigcup_{v\in \delta_G(u)}\{v_\ell: 0\leq \ell\leq \deg_G(v) \}.
+	\partial_{H}(u_k) = \{u_0\}\cup \bigcup_{v\in \partial_G(u)}\{v_\ell: 0\leq \ell\leq \deg_G(v) \}.
  	\end{equation*}
 	In words, $u_k$ is connected to all the vertices representing $v$ if $(u,v)\in E(G)$, and to $u_0$. Now, let $I\subset V(G)$ be an independent set in $G$ and consider the set
 	\[J = \{v_k: v\in I, 1\leq k\leq \deg_G(v)\}.\]
 	We claim that $J$ is an independent set in $H$. 
-	Indeed, if $v_k,u_\ell\in J$ and  $(v_k,u_\ell) \in E(H)$ for some $k\in[\deg_G(v)]$, $\ell\in[\deg_G(u)]$ then $v\in d_G(u)$ by definition of $\delta_H(u)$. Since $I$ is an independent set however, both $u$ and $v$ are not in $I$, a contradiction. This demonstrates that $J$ is bonafide independent set. Moreover, 
+	Indeed, if $v_k,u_\ell\in J$ and  $(v_k,u_\ell) \in E(H)$ for some $k\in[\deg_G(v)]$, $\ell\in[\deg_G(u)]$ then $v\in d_G(u)$ by definition of $\partial_H(u)$. Since $I$ is an independent set however, both $u$ and $v$ are not in $I$, a contradiction. This demonstrates that $J$ is bonafide independent set. Moreover, 
 	\[\vol_H(J) = \sum_{v\in I}\sum_{k=1}^{\deg_G(u)} w_H(v_k) = \sum_{v\in I}\sum_{k=1}^{\deg_G(u)} \frac{1}{\deg_G(u)} = |I|.\]
 
-	Conversely, let $J$ be an independent set in $H$. We claim that there exists an independent $J'$ in $H$ with $\vol_H(J')\geq \vol_H(J)$ containing only vertices of the form $v_\ell$ for $\ell\geq 1$, i.e., not $v_0$. Initially, set $J'=J$ but suppose $v_0\in J$. Replace $v_0$ by $v_1,\dots,v_{\deg_G(v)}$ in $J'$.  None of the these vertices share edges, and aside from one another, $v_\ell$ and $v_0$ for $\ell>0$ have the same edge set. It follows that $J'$ remains an independent set. Moreover, since $w_H(v_0) < w_H(v_\ell)$ by construction, we have $\vol_H(J)< \vol_H(J')$. Let us remark further that if $J$ contains vertices $\{v_\ell\}_{\ell\in F}$ for some $F\subsetneq  [\deg_G(v)]$, then we may add the missing vertices $v_k$, $k\in [\deg_G(v)]\setminus F$ while maintaining the property that $J$ is an independent set (this follows since $\delta_H(v_k) = \delta_H(v_\ell)$ for all  $\ell,k\geq1$). We have thus argued that every maximal independent set in $H$ can be written in the form $J= \cup_{v\in I}\{v_k: 1\leq k\leq \deg_G(v)\}$ for some set $I\subset V(G)$. We now claim that $I$ is an independent set in $G$. The argument is similar to above: If not, then $u,v\in I$ with $u\sim v$, but this implies that $v_k\sim v_\ell$ in $H$ meaning that $J$ is not an independent set.  Additionally, as above, $\vol_H(J)=|I|$. Therefore, there exists an independent set $J$ in $H$ with $\vol_H(J)\geq k$ iff there exists an independent set $I$ in $G$ with $|I|\geq k$, concluding the argument. 
+	Conversely, let $J$ be an independent set in $H$. We claim that there exists an independent $J'$ in $H$ with $\vol_H(J')\geq \vol_H(J)$ containing only vertices of the form $v_\ell$ for $\ell\geq 1$, i.e., not $v_0$. Initially, set $J'=J$ but suppose $v_0\in J$. Replace $v_0$ by $v_1,\dots,v_{\deg_G(v)}$ in $J'$.  None of the these vertices share edges, and aside from one another, $v_\ell$ and $v_0$ for $\ell>0$ have the same edge set. It follows that $J'$ remains an independent set. Moreover, since $w_H(v_0) < w_H(v_\ell)$ by construction, we have $\vol_H(J)< \vol_H(J')$. Let us remark further that if $J$ contains vertices $\{v_\ell\}_{\ell\in F}$ for some $F\subsetneq  [\deg_G(v)]$, then we may add the missing vertices $v_k$, $k\in [\deg_G(v)]\setminus F$ while maintaining the property that $J$ is an independent set (this follows since $\partial_H(v_k) = \partial_H(v_\ell)$ for all  $\ell,k\geq1$). We have thus argued that every maximal independent set in $H$ can be written in the form $J= \cup_{v\in I}\{v_k: 1\leq k\leq \deg_G(v)\}$ for some set $I\subset V(G)$. We now claim that $I$ is an independent set in $G$. The argument is similar to above: If not, then $u,v\in I$ with $u\sim v$, but this implies that $v_k\sim v_\ell$ in $H$ meaning that $J$ is not an independent set.  Additionally, as above, $\vol_H(J)=|I|$. Therefore, there exists an independent set $J$ in $H$ with $\vol_H(J)\geq k$ iff there exists an independent set $I$ in $G$ with $|I|\geq k$, concluding the argument. 
 \end{proof}
 
 This result allows us to conclude that certain optimizations problems in hyperacute simplices---thus convex polytopes in general---are \NP-hard. 
@@ -127,7 +129,7 @@ This result allows us to conclude that certain optimizations problems in hyperac
 \begin{proof}
 	Let $\P$ be the combinatorial simplex of a graph $G$. Using that $\la \sv_i,\sv_j\ra = w(i,j)$, the condition that $\la \sv_i,\sv_j\ra =0$ for all $i,j\in I$ translates to $(i,j)\in E(G)$ for all $i,j\in I$. Moreover, Equation \eqref{eq:c(S_U)} in Section \ref{sec:S_G} gives us  
 	\begin{align*}
-	\frac{|I|}{\norm{c(\splx_I)}_2^2} = w_G(\delta I) = \vol(I),
+	\frac{|I|}{\norm{c(\splx_I)}_2^2} = w_G(\partial I) = \vol(I),
 	\end{align*}
 	for $I$ an independent set. 
 	The above optimization problem can consequently be formulated as 
@@ -146,9 +148,9 @@ We can play a similar game by using the relationships furnished by the normalize
 	is \NP-hard. In particular, it is hard for those polytopes and simplices with all vertices on the unit sphere. 
 \end{lemma}
 \begin{proof}
-	The proof is similar to the previous lemma. For $\P$ the normalized simplex of a graph $G$, the condition $\la \sv_i,\sv_j\ra=0$ once again implies that $I$ must be an independent set. Notice that for such an $I$, if $i\in I$ then $\delta(i) \cap I^c = \delta(i)$ (none of $i$'s neighbours are in $I$). Therefore, Equation \eqref{eq:Lnf(chiU)} yields 
+	The proof is similar to the previous lemma. For $\P$ the normalized simplex of a graph $G$, the condition $\la \sv_i,\sv_j\ra=0$ once again implies that $I$ must be an independent set. Notice that for such an $I$, if $i\in I$ then $\partial(i) \cap I^c = \partial(i)$ (none of $i$'s neighbours are in $I$). Therefore, Equation \eqref{eq:Lnf(chiU)} yields 
 	\begin{align*}
-	\Lnf(\bchi_I)=\sum_{i\in I}\frac{1}{w(i)}\sum_{j\in I^c\cap \delta(i)} w(i,j) = \sum_{i\in I}\frac{w(i)}{w(i)} = |I|.
+	\Lnf(\bchi_I)=\sum_{i\in I}\frac{1}{w(i)}\sum_{j\in I^c\cap \partial(i)} w(i,j) = \sum_{i\in I}\frac{w(i)}{w(i)} = |I|.
 	\end{align*}
 	Equation \eqref{eq:c(SnU)} then implies that 
 	\[\norm{c(\P_I)}_2^2=\frac{1}{|I|^2}\Lnf_G(\bchi_I)=\frac{1}{|I|},\]
@@ -344,14 +346,14 @@ Due to the fact that $\splxn_G^+$ is not the dual of $\splxn_G$ Lemma \ref{lem:h
 We  now turn  to discussing the complexity of  verifying whether  a given simplex is the simplex of graph. 
 In time $O(n^{2.3727})$ we can compute $\Sv^\tp\Sv$. We can check whether this is equal to $\L_G$ for some $G$ by verifying whether (i) $\Sv^\tp\Sv\one=\zero$, (ii) $(\Sv^\tp\Sv)(i,i)>0$ for all $i$ and (iii) $(\Sv^\tp\Sv)(i,j)\leq 0$ for all $i\neq j$. These three steps require time $O(n^3)$. We can check whether $\Sv^\tp\Sv$ is equal to $\Ln_G$ for some $G$ by first ensuring, similarly to above, that (iii) holds and that $(\Sv^\tp\Sv)(i,i)=1$ for all $i$. Then we compute the kernel  of $\Sv^\tp\Sv$ in cubic time by means of Gaussian elimination~\cite{kailath1999fast} to obtain a vector $\v$ equal to $\sqrt{\w_G}$ (if indeed $\Sv^\tp\Sv=\Ln_G$) up to scaling. To determine whether $\v$ does represent valid weightings of the vertices, we check whether $(\Sv^\tp\Sv)(i,j)\v(j)$ is constant for all $i$. In  this case $\Sv^\tp\Sv$ is equal to the normalized Laplacian of some graph. This can also be done in cubic time. We  therefore see that we can  verify whether a given simplex is the combinatorial or  normalized simplex of a graph in  cubic time. It's not clear whether it can be done faster, however. \note{Unsure, think about this.}
 
-Moreover, we note that in cubic time we can check whether all the angles $\theta_{ij}$ between the faces $\ssplx_\ic$ and $\ssplx_\jc$ are non-obtuse, in which case $\ssplx$ is the inverse simplex of some graph. 
+Finally, we note that in cubic time we can check whether all the angles $\theta_{ij}$ between the faces $\ssplx_\ic$ and $\ssplx_\jc$ are non-obtuse, in which case $\ssplx$ is the inverse simplex of some graph. 
 
 
 \section{Approximations} 
 \label{sec:algorithmics_approximations}
-Here we are concerned  with  approximations of various sorts. We begin  with an eye towards the problem of  dimensionality. Specifically, Theorem ~\ref{thm:graph-simplex} yields simplices of dimension $n-1$ for a graph on $n$ vertices. In  many application areas, graphs may have thousands  to  millions of vertices. Working in a Euclidean space  of  this  size can be unwieldy. Our  first  result, therefore, demonstrates that we can ``approximate'' the simplex in a lower dimensional space. 
+Here we are concerned  with  approximations of various sorts. We begin  with an eye towards the problem of  dimensionality. Specifically, Theorem ~\ref{thm:graph-simplex} yields simplices of dimension $n-1$ for a graph on $n$ vertices. In  many application areas, graphs may have thousands  to  millions of vertices. Working in a Euclidean space  of  this  size can be unwieldy. Our first two  sections,  therefore, attempt dimensionality reduction. The first  considers the problem of reducing the dimensionality of the simplex itself. The second considers low rank approximations of  the Laplacian which are  shown to yield polytopes on  $n$ vertices. We see that, depending on the rank of the  approximation and the eigenvalues of the Laplacian, certain properties of this polytope approximate  those of the simplex. This provides some  theoretical justification for  the  recent work of Torres \etal~\cite{torres2019geometric}. 
 
-\subsection{Embedding \texorpdfstring{$\splx^+$}{the inverse simplex} in lower dimensions}
+\subsection{Dimensionality  Reduction: \texorpdfstring{$\splx^+$}{the inverse simplex}}
 \label{sec:algorithmics_JL}
 The idea is to  map each vertex to a  point in $\R^d$, for $d\ll n$, while maintaining the general form of the simplex. By this we mean that we'd like the distance between the new  points  to remain approximately  as they  were. If possible, we'd also  like to new, lower  dimensional  object (note that it won't  be  a simplex because there will  be  $n$ points in $ R^d$) to retain some of the properties which  relate it  to the underlying graph. In  particular, we'd like the gram matrix  of the new  points to  approximate the gram  matrix of the original  set  of points. As it turns out,  a  mapping meeting both  of these criteria exists and is computable  in polynomial time. It will   rely on the Johnson-Lindenstrauss  (JL) Lemma~\cite{johnson1984extensions,dasgupta2003elementary}. 
 
@@ -364,7 +366,7 @@ The idea is to  map each vertex to a  point in $\R^d$, for $d\ll n$, while maint
 \end{theorem}
 
 %Thus $\norm{\sv_i^+-\o}_2^2 = \L_G^+(i,i)$ for all $i$. Note that we can compute this in linear time since 
-%\[\norm{\sv_i^+-\o}_2^2 = \norm{\sv_i^+}_2^2 = \frac{1}{W(\delta(\{i\}))}=\frac{1}{w(i)}.\]
+%\[\norm{\sv_i^+-\o}_2^2 = \norm{\sv_i^+}_2^2 = \frac{1}{W(\partial(\{i\}))}=\frac{1}{w(i)}.\]
 
 
 Now, let us suppose we have the vertices $\{\sv_i^+\}$ of the inverse simplex. Let $\X = \{\sv_i^+\}\cup\{\zero\}$. Apply the JL Lemma to $\X$ to  obtain $n+1$ points in $\R^d$, for $d=O(\log(n)/\eps^2)$. Let $f$ be the mapping, e.g., $\sv_i^+$ is sent to $f(\sv_i^+)$. By JL, have 
@@ -414,77 +416,47 @@ where $\mu$ is the uniform distribution over all spanning trees~\cite{burton1993
 \end{equation*}
 	
 
-
-
-
-\subsection{Approximating the  distances of \texorpdfstring{$\splx^+$}{the inverse simplex}}
-Here we  remark that we can leverage an elegant result of Spielman and Srivastava~\cite{spielman2011graph} in order to approximate  the distance matrix $\D(\{\sv_i^+\})$. 
-
-
-\begin{theorem}[\cite{spielman2011graph}]
-	\label{thm:er_approximation}
-	For any $\eps>0$ and graph $G=(V,E,w)$, there exists an algorithm which computes a matrix $\widetilde{\Reff}\in\R^{O(\log(n)\eps^{-2})\times n}$ such that 
-	\begin{equation*}
-	(1-\eps)r(i,j) \leq \norm{\widetilde{\Reff}(\bchi_i-\bchi_j)}_2^2 \leq (1+\eps) r(i,j).
-	\end{equation*}
-	The algorithm runs in time $\widetilde{O}( |E|\log (r)/\eps^2)$, where 
-	\[r=\frac{\max_{i,j}w(i,j)}{\min_{i,j}w(i,j)}.\]
-\end{theorem}
-
-
-Given a graph $G=(V,E,w)$, we use the algorithm of Theorem \ref{thm:er_approximation} to compute all the approximate distances $\norm{\sv_i^+-\sv_j^+}_2^2=\effr(i,j)$ in time \[\widetilde{O}(|E|\log (r)/\eps^2)+O(|E| \log(n)/\eps^2)=\widetilde{O}(|E|/\eps^2),\]
-assuming $r=O(1)$. Note that we can compute a single effective resistance in time $O(\log n/\eps^2)$, since it involves simply computing the $\ell_2$ norm the vector $\widetilde{\Reff}(\bchi_i-\bchi_j)$ which is simply the difference of two columns of $\widetilde{\Reff}$. 
-
-
-
-\note{Will say more, but unclear exactly where this is heading.} 
-
-
-
-
-\subsection{Low Rank Approximations of \texorpdfstring{$\L_G$}{the Laplacian}}
+\subsection{Dimensionality Reduction: \texorpdfstring{$\L_G$}{the Laplacian}}
 \label{sec:algorithmics_low_rank}
 In Section  \ref{sec:algorithmics_JL}, we asked how to reduce the  dimension of the  simplex  while (approximately) maintaining several of its  properties. However,  we might instead  reduce the dimensionality of the  Laplacian. This section explores this prospect. 
 
 
-Let us suppose the we have obtained a low rank---$k$, say---approximation of $\L_G$, written $\tL$. We might then ask several questions: 
+Let us suppose the we have obtained a low rank---$k$, say---approximation of $\L_G$, written $\L_k$. We might then ask several questions: 
 \begin{enumerate}
-	\item Is $\tL$ still a gram matrix? That is, can $\tL$ be written $\tSv^\tp\tSv$ where $\tSv$ is the vertex matrix of some set of points, $P=\{\p_1,\dots,\p_\ell\}$? If so, what is the relationship between $\Sv$ and $\tSv$, where $\Sv=\Sv(\splx_G)$ is the usual vertex matrix of the combinatorial simplex of $G$? If $\tL$ has rank $k$ then $P$ spans a subspace of dimension $k$ and $\conv(P)$ forms a polytope in that space. What is the relationship between the geometry of $\conv(P)$ and $\splx_G$?
-	\item Is $\tL$ useful in helping estimate properties of the simplex $\splx_G$? For example, if one could bound the difference in the quadratic products of $\L_G$ and $\tL$, this would imply (via the results in Section \ref{sec:S_G}) that we could estimate many of the properties of $\splx_G$. 
-	\end{enumerate}
+	\item Is $\L_k$ still a gram matrix? That is, can $\L_k$ be written $\tSv^\tp\tSv$ where $\tSv$ is the vertex matrix of some set of points, $P=\{\p_1,\dots,\p_\ell\}$? If so, what is the relationship between $\Sv$ and $\tSv$, where $\Sv=\Sv(\splx_G)$ is the usual vertex matrix of the combinatorial simplex of $G$? If $\L_k$ has rank $k$ then $P$ spans a subspace of dimension $k$ and $\conv(P)$ forms a polytope in that space. What is the relationship between the geometry of $\conv(P)$ and $\splx_G$?
+	\item Is $\L_k$ useful in helping estimate properties of the simplex $\splx_G$? For example, if one could bound the difference in the quadratic products of $\L_G$ and $\L_k$, this would imply (via the results in Section \ref{sec:S_G}) that we could estimate many of the properties of $\splx_G$. 
+\end{enumerate}
 
 Of course, we have chosen to work with $\L_G$ and $\splx_G$ for convenience; we could have asked the same questions of $\Ln_G$ and $\splxn_G$. 
 
 We begin by considering the natural rank-$k$ approximation to $\L_G$: 
 \begin{equation*}
-\L_k\equiv \sum_{i=1}^k \lambda_k\vp_k\vp_k^\tp.
+\L_k\equiv \sum_{i=1}^k \lambda_k\vp_k\vp_k^\tp,
 \end{equation*}
+where we recall that  we've ordered  the eigenvalues  as $\lambda_1\geq \lambda_2\geq \dots\lambda_{n-1}>\lambda_n=0$. 
 Clearly $\L_k$ has rank $k$.  It is, moreover, a symmetric PSD matrix.  Section~\ref{sec:correspondence_polyhedra_matrices} thus yields the polytope $\P_k\equiv \P_{\L_k}$ associated  with $\L_k$. More  explicitly, if 
- $\Eval_k=\diag(\lambda_1,\dots,\lambda_n)$ is the diagonal  matrix containing the first $k$  eigenvalues and $\Eig_k = (\vp_1\;\dots;\vp_k)$, then $\L_k$ is the Gram matrix of the vertices described be the matrix $\Sv_k = \Eval_k^{1/2}\Eig_k^\tp=(\sv_1^\k,\dots,\sv_n^\k)$ where $\sv_i^\k=(\vp_1(i)\lambda_1^{1/2},\dots,\vp_k(i)\lambda_k^{1/2})$. Let us emphasize that we  are using  the subscript $(k)$ to signify that these vertices are  those belonging to  $\P_k$. 
- 
- To  summarize, the rank $k$ approximation to $\L_G$, $\L_k$  yields an  $n$-vertex polytope  $\P_k\subset\R^k$. Naturally, one would hope that $\P_k$    ``approximates'' various features of $\splx_G$, as it is precisely $\splx_G$ projected  onto a particular $k$-dimensional subspace. The next few results  demonstrate that this is true under certain  assumptions placed on the distribution of the eigenvalues. 
- 
- The first property worth noticing is that $\P_k$ remains  centred at the  origin. Indeed,  $\cent(\P_k) = \frac{1}{n}\Sv_k\one = \frac{1}{n}\Eval_k^{1/2}\Eig_k^\tp\one=\zero_k$.  Next, we might wonder  whether the lengths of the  centroids to different faces  are similar in $\splx_G$ and $\P_k$. For  $U\subset [n]$ and compute 
- 
- \begin{align*}
- \L_G-\L_k = \sum_{i\in[n-1]}\lambda_i\vp_i\vp_i^\tp - \sum_{i\in[k]}\lambda_i\vp_i\vp_i^\tp = \sum_{i=k+1}^{n-1}\lambda_i  \vp_i\vp_i^\tp 
- \end{align*}
- 
- \begin{align*}
- \bigg|\norm{\cent(\splx_G[U])}_2^2 - \norm{\cent(\P_k[U])}_2^2\bigg| &= \frac{1}{|U|^2}\bigg| \bchi_U^\tp \Sv^\tp\Sv\bchi_U - \bchi_U^\tp \Sv_k^\tp\Sv_k\bchi_U \bigg| \\
- &= \frac{1}{|U|^2} \bigg|\bchi_U^\tp (\L_G-\L_k)\bchi_U\bigg| \\
- &\leq  \frac{1}{|U|^2} \sum_{i=k+1}^{n-1}|\lambda_i \bchi_U^\tp \vp_i\vp^\tp\bchi_U |=   \frac{1}{|U|^2} \sum_{i=k+1}^{n-1}\la \bchi_U,\vp_i\ra^2,
- \end{align*}
- where, by Cauchy-Schwarz, $\la \bchi_U,\vp_i\ra^2 \leq \norm{\bchi_U}_2^2 \norm{\vp_i}_2^2 = |U|^2$, 
- hence  
- \begin{align}
-  \bigg|\norm{\cent(\splx_G[U])}_2^2 - \norm{\cent(\P_k[U])}_2^2\bigg| &\leq \sum_{i=k+1}^{n-1}  \lambda_i  \leq \lambda_{k+1} (n-(k+1)). \label{eq:|cS-cP|}
- \end{align}
- Thus, if $\lambda_k$ is sufficiently small as a function  of $n$ and $k$, the lengths of the centroids are approximately equal. We summarize with  the following Lemma. 
- 
- \begin{lemma}
- 	If $\lambda_{k+1} = o((n-k)^{-1})$, then  $ \bigg|\norm{\cent(\splx_G[U])}_2^2 - \norm{\cent(\P_k[U])}_2^2\bigg| = o(1)$. 
- \end{lemma}
+$\Eval_k=\diag(\lambda_1,\dots,\lambda_n)$ is the diagonal  matrix containing the first $k$  eigenvalues (meaning those  associated  with  $\lambda_1,\dots,\lambda_k$) and $\Eig_k = (\vp_1\;\dots;\vp_k)$, then $\L_k$ is the Gram matrix of the vertices described be the matrix $\Sv_k = \Eval_k^{1/2}\Eig_k^\tp=(\sv_1^\k,\dots,\sv_n^\k)$ where $\sv_i^\k=(\vp_1(i)\lambda_1^{1/2},\dots,\vp_k(i)\lambda_k^{1/2})$. Let us emphasize that we  are using  the subscript $(k)$ to signify that these vertices are  those belonging to  $\P_k$. 
+
+To  summarize, the rank $k$ approximation to $\L_G$, $\L_k$  yields an  $n$-vertex polytope  $\P_k\subset\R^k$. Naturally, one would hope that $\P_k$    ``approximates'' various features of $\splx_G$, as it is precisely $\splx_G$ projected  onto a particular $k$-dimensional subspace. The next few results  demonstrate that this is true under certain  assumptions placed on the distribution of the eigenvalues. 
+
+The first property worth noticing is that $\P_k$ remains  centred at the  origin. Indeed,  $\cent(\P_k) = \frac{1}{n}\Sv_k\one = \frac{1}{n}\Eval_k^{1/2}\Eig_k^\tp\one=\zero_k$.  Next, we might wonder  whether the lengths of the  centroids to different faces  are similar in $\splx_G$ and $\P_k$. Fix  $U\subset [n]$ and compute 
+
+\begin{align*}
+\bigg|\norm{\cent(\splx_G[U])}_2^2 - \norm{\cent(\P_k[U])}_2^2\bigg| &= \frac{1}{|U|^2}\bigg| \bchi_U^\tp \Sv^\tp\Sv\bchi_U - \bchi_U^\tp \Sv_k^\tp\Sv_k\bchi_U \bigg| \\
+&= \frac{1}{|U|^2} \bigg|\bchi_U^\tp (\L_G-\L_k)\bchi_U\bigg| \\
+&=  \frac{1}{|U|^2} \bigg|\bchi_U^\tp \bigg( \sum_{i\in[n-1]}\lambda_i\vp_i\vp_i^\tp - \sum_{i\in[k]}\lambda_i\vp_i\vp_i^\tp\bigg)\bchi_U\bigg|\\
+&\leq  \frac{1}{|U|^2} \sum_{i=k+1}^{n-1}|\lambda_i \bchi_U^\tp \vp_i\vp^\tp\bchi_U |=   \frac{1}{|U|^2} \sum_{i=k+1}^{n-1}\la \bchi_U,\vp_i\ra^2,
+\end{align*}
+where, by Cauchy-Schwarz, $\la \bchi_U,\vp_i\ra^2 \leq \norm{\bchi_U}_2^2 \norm{\vp_i}_2^2 = |U|^2$, 
+hence  
+\begin{align}
+\bigg|\norm{\cent(\splx_G[U])}_2^2 - \norm{\cent(\P_k[U])}_2^2\bigg| &\leq \sum_{i=k+1}^{n-1}  \lambda_i  \leq \lambda_{k+1} (n-(k+1)). \label{eq:|cS-cP|}
+\end{align}
+Thus, if $\lambda_k$ is sufficiently small as a function  of $n$ and $k$, the lengths of the centroids are approximately equal. We summarize with  the following Lemma. 
+
+\begin{lemma}
+	If $\lambda_{k+1} = o((n-k)^{-1})$, then  $ \bigg|\norm{\cent(\splx_G[U])}_2^2 - \norm{\cent(\P_k[U])}_2^2\bigg| = o(1)$. 
+\end{lemma}
 \begin{proof}
 	Assume $\lambda_k = o((n-k)^{-1})$ and apply Equation~\eqref{eq:|cS-cP|}. 
 \end{proof}
@@ -492,8 +464,6 @@ Clearly $\L_k$ has rank $k$.  It is, moreover, a symmetric PSD matrix.  Section~
 \begin{remark}
 	The  above result should seem intuitively plausible.  How  well $\L_k$ approximates $\L_G$ relies precisely on the size of $\lambda_k$. We should  thus expect  the same to be  true  of $\P_k$ and  $\splx_G$. 
 \end{remark}
-
-\note{Interplay between good approximations for $\P_k$ to $\splx_G$ and $\P_k^+$ to $\splx_G^+$?} 
 
 Next, we  investigate the relative distances between  the vertex vectors. 
 
@@ -519,6 +489,32 @@ Now,  recall that due to double orthogonality of the eigenvector matrix we  have
 \begin{lemma}
 	If $\lambda_{k+1}=o(1)$ then $\bigg| \norm{\sv_i-\sv_j}_2^2 - \norm{\sv_i^\k-\sv_j^\k}_2^2= o(1)$. 
 \end{lemma}
+
+Summarizing, we see  that under assumptions on the sizes of the eigenvalues (which relates  directly to  how good of an approximation $\L_k$ is to $\L_G$), the features of the  polytope $\P_k$  will  approximate  those of $\splx_G$. As we stated previously, this could help explain in part the success of the experiments run by Torres \etal~\cite{torres2019geometric}.  In their work, they assume they are given  $\P_k$ and  attempt to reconstruct certain  graph  features,  most notably its connectivity.  Since  the connectivity of  a  graph  is related to  the centroids of $\splx_G$ (Section~\ref{sec:S_G}), if $k$ is sufficiently small then  the centroids $\P_k$ will recover this connectivity.  
+
+
+
+
+\subsection{Distance Matrix of \texorpdfstring{$\splx_G^+$}{the inverse combinatorial simplex}}
+We end with  a brief section which demonstrates that we can leverage several results from the literature on Laplacian optimization to approximate the  distance matrix  of $\splx_G^+$. 
+An elegant result of Spielman and Srivastava~\cite{spielman2011graph} allows to  build a matrix which approximately  represents the effective resistances.  
+
+
+\begin{theorem}[\cite{spielman2011graph}]
+	\label{thm:er_approximation}
+	For any $\eps>0$ and graph $G=(V,E,w)$, there exists an algorithm which computes a matrix $\widetilde{\Reff}\in\R^{O(\log(n)\eps^{-2})\times n}$ such that 
+	\begin{equation*}
+	(1-\eps)r(i,j) \leq \norm{\widetilde{\Reff}(\bchi_i-\bchi_j)}_2^2 \leq (1+\eps) r(i,j).
+	\end{equation*}
+	The algorithm runs in time $\widetilde{O}( |E|\log (r)/\eps^2)$, where 
+	\[r=\frac{\max_{i,j}w(i,j)}{\min_{i,j}w(i,j)}.\]
+\end{theorem}
+
+
+Therefore, given a graph $G=(V,E,w)$, we use the algorithm of Theorem \ref{thm:er_approximation} to compute all the approximate distances $\norm{\sv_i^+-\sv_j^+}_2^2=\effr(i,j)$ in time \[\widetilde{O}(|E|\log (r)/\eps^2)+O(|E| \log(n)/\eps^2)=\widetilde{O}(|E|/\eps^2),\]
+assuming $r=O(1)$. Note that we can compute a single effective resistance in time $O(\log n/\eps^2)$, since it involves simply computing the $\ell_2$ norm the vector $\widetilde{\Reff}(\bchi_i-\bchi_j)$ which is simply the difference of two columns of $\widetilde{\Reff}$. 
+
+
 
 
 

@@ -19,48 +19,49 @@ Database file #1: ref.bib.bib
 Warning--there's a number but no series in chung1997spectral
 Warning--there's a number but no series in fiedler2011matrices
 Warning--empty journal in grunbaum1967convex
+Warning--empty school in kant1993algorithms
 Warning--can't use both volume and number fields in penrose1955generalized
 Warning--can't use both volume and number fields in penrose1956best
 Warning--empty journal in stothers2010complexity
-You've used 54 entries,
+You've used 75 entries,
             2543 wiz_defined-function locations,
-            893 strings with 11855 characters,
-and the built_in function-call counts, 20794 in all, are:
-= -- 2169
-> -- 744
-< -- 51
-+ -- 236
-- -- 228
-* -- 1380
-:= -- 3304
-add.period$ -- 175
-call.type$ -- 54
-change.case$ -- 292
-chr.to.int$ -- 54
-cite$ -- 60
-duplicate$ -- 928
-empty$ -- 1615
-format.name$ -- 311
-if$ -- 4346
+            1003 strings with 14910 characters,
+and the built_in function-call counts, 29138 in all, are:
+= -- 2970
+> -- 1233
+< -- 56
++ -- 410
+- -- 399
+* -- 2023
+:= -- 4738
+add.period$ -- 237
+call.type$ -- 75
+change.case$ -- 429
+chr.to.int$ -- 75
+cite$ -- 82
+duplicate$ -- 1230
+empty$ -- 2175
+format.name$ -- 503
+if$ -- 5980
 int.to.chr$ -- 1
 int.to.str$ -- 0
-missing$ -- 61
-newline$ -- 273
-num.names$ -- 162
-pop$ -- 284
+missing$ -- 87
+newline$ -- 379
+num.names$ -- 225
+pop$ -- 414
 preamble$ -- 1
-purify$ -- 356
+purify$ -- 521
 quote$ -- 0
-skip$ -- 761
+skip$ -- 1014
 stack$ -- 0
-substring$ -- 1308
-swap$ -- 178
-text.length$ -- 51
-text.prefix$ -- 29
+substring$ -- 1700
+swap$ -- 202
+text.length$ -- 56
+text.prefix$ -- 32
 top$ -- 0
-type$ -- 396
-warning$ -- 6
-while$ -- 218
-width$ -- 56
-write$ -- 706
-(There were 6 warnings)
+type$ -- 540
+warning$ -- 7
+while$ -- 297
+width$ -- 76
+write$ -- 971
+(There were 7 warnings)

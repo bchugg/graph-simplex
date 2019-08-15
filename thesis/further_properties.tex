@@ -3,7 +3,7 @@
 
 \chapterquote{Everything is  funny,  if you can laugh at it.}{Lewis Carroll}
 
-The previous chapter introduced the graph-simplex correspondence and devoted several sections to the basic properties of the simplices associated to a given graph. In this chapter we  continue the study of the correspondence and present several of its more significant and advanced properties.  
+The previous chapter introduced the graph-simplex correspondence and devoted several sections to the basic properties of the simplices associated to a given graph. In this chapter we  continue the study of the correspondence and present several of its more significant (but perhaps more complicated) properties.  
 
 
 
@@ -39,7 +39,7 @@ Then we have the following result.
 	-(\BGamma^\tp \BGamma\bxi + 2\one/n) & \BGamma^\tp \BGamma
 	\end{pmatrix}^{-1}.
 	\end{equation}
-	Moreover, the vertices $\ssplx^\du$ and the distance matrix of $\ssplx$ are related by the equation
+	Moreover, the vertices of $\ssplx^\du$ and the distance matrix of $\ssplx$ are related by the equation
 	\begin{equation}
 	\label{eq:lem_inverse_relation}
 	\BGamma^\tp \BGamma \D \BGamma^\tp \BGamma = -2\BGamma^\tp \BGamma,
@@ -126,7 +126,7 @@ We can combine  these two interpretations to obtain the following relationship b
 	& \L_G
 	\end{pmatrix}^{-1},
 	\end{equation}
-	where $\u=\diag(\L_G^+(i,i))$. \note{Add the other relationships.}
+	where $\u=\diag(\L_G^+(i,i))$. Moreover,  $\L_G\Reff_G\L_G=-2\L_G$ and for all $\x\in\spn(\one)^\perp$, $\Reff_G\L_G\Reff_G\x=-2\Reff_G\x$. 
 \end{corollary}
 
 One consequence of the above is a relation between the volume of the simplex and the effective resistances in the graph. To see this, we need to introduce a particular object from the field of distance geometry. Let $\D(\X)$ be the distance matrix of a set $\X$ of $d$ points. The matrix 
@@ -372,10 +372,6 @@ More interestingly  however,  we can use the relation between volume of a  graph
 	All  equations follow from applying Lemma~\ref{lem:volT_inequalities}  together with Equation~\ref{eq:vol(T)} and simplifying. 
 \end{proof}
 
-\note{Still working on this content. Since $\Reff_G=n\sum_i\lambda_i^{-1}=n\tr(\Sv\Sv^\tp)$,
-facts/inequalities pertaining to the effective resistance can be translated to the simplex. }
-
-
 
 \section{Quadrics}
 \label{sec:quadrics}
@@ -569,7 +565,8 @@ using Equation \eqref{eq:sum_double_ortho}. Hence,
 
 
 
-\section{Random Walks}
+\section{Effective  Resistance  \&  Dynamics}
+\label{sec:dynamics}
 In this section we briefly highlight a few connections between stochastic process on $G$ and  the geometry of its inverse combinatorial simplex $\splx_G^+$. 
 
 First  we  note that the total effective resistance translates to the total pairwise distance in the simplex: 
@@ -599,9 +596,12 @@ Moreover, $\L_H$ has eigenvalue $(\alpha n)^{-1}$ with multiplicity $n-1$, and  
 \end{lemma}
 
 \subsection{Continuous Time Random Walks}
+\label{sec:random_walks}
+This current section is for the reader who is less interested  in the  mathematics  behind the graph-simplex correspondence, and is reading only for the vague  hope  that some of the underlying geometry will be aesthetically pleasing. While  the  content has certainly failed in the vein thus far, this section  is the closest we will come to remedying the situation. 
 
-In this section  we investigate how a random walk in a hyperacute simplex  is governed by the eigenvalues  and eigenvectors of its associated graph. 
-We examine a continuous time random walk \note{Say more about where this comes from} which  obeys the equation 
+Consider a  random walk on a graph. The probability distribution  governing the dynamics is a barycentric  coordinate: each coordinate is non-negative and they sum to one. Therefore, we can represent the probability distribution as a point in the simplex and the probability  distribution as a function of time as a path in the simplex. See Figure~\ref{fig:random_walk} for an illustration. In what follows we give equations which determine the dynamics of the path in the simplex as a function of the eigenvalues  and eigenvectors  of the graph. 
+
+We will examine a continuous time random walk which  obeys the equation 
 \begin{equation*}
 \frac{d \bpi(t)}{dt } = -\L_G\W_G^{-1/2} \bpi(t),
 \end{equation*}
@@ -639,7 +639,8 @@ e^{-\lambda_1 t}  & &\\
 		\includegraphics[scale=0.6]{dynamics2}
 		\subcaption{}
 	\end{minipage}
-	\caption{Random walk dynamics plotted as points  in the simplex.}
+	\caption{Random walk dynamics plotted as points  in the simplex. Figures (a) and (b) are plotted using the normalized simplex;  figure (c) uses  the normalized simplex. The  underlying graph of Figure (a) has edges $(1,2)$, $(2,3)$, $(3,4)$, $(2,4)$, that underling (b) edges $(1,2)$ and $(2,3)$ and that of (c) is the complete graph  $K_4$. }
+	\label{fig:random_walk}
 \end{figure}
 
 Combining the  definitions of $\bpi_1$  and $\bpi_2$ gives $\bpi_2(t)  = \Eign^\tp \bpi_1(t) = \Eign^\tp \W^{-1/2}\bpi(t)$, hence 
@@ -668,8 +669,8 @@ and
 \end{pmatrix},
 \end{equation*}
 govern the dynamics of the random walk in  $\splx_G$ and $\splxn_G$, respectively.  More specifically, letting $\Y=(\y_1\;\dots\;\y_n)$ we have 
-\[\p(t) = \sum_{i\in[n-1]} \y_i (\bpi_2(t))(i) = \sum_{i\in[n-1]}  \y_i e^{-\lambda_i t} \Eign^\tp \W^{-1/2}\bpi(0)(i).\]
-
+\[\p(t) = \sum_{i\in[n-1]} \y_i (\bpi_2(t))(i) = \sum_{i\in[n-1]}  \y_i e^{-\lambda_i t} \Eign^\tp \W^{-1/2}\bpi(0)(i),\]
+and a similar  equation for $\q(t)$. 
 
 
 

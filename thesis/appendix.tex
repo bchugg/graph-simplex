@@ -1,13 +1,13 @@
 \appendix 
-\chapter{Appendix}
+\chapter{Omitted Proofs}
 \label{chap:app}
 
-\section{Omitted  Proofs---Chapter~\ref{chap:background}}
+\section{Chapter~\ref{chap:background}}
 \label{sec:app_proofs_background}
 
 
 \begin{proof}[Proof  of  Observation~\ref{obs:bi-orthogonal_unique}]
-	Suppose $\{\u_i\}$ and $\{\w_i\}$ are biorthogonal bases. Fix $i\in[n]$. By independence, $\spn(\v_1,\dots,\\\v_{i-1},\v_{i+1},\dots,\v_n)$ is a hyperplane---that is, \[\dim\spn(\v_1,\dots,\v_{i-1},\v_{i+1},\dots,\v_n)^\perp=1.\] Both $\u_i$ and $\w_i$ are orthogonal to this hyperplane (since they orthogonal to $\v_j$ for all $j\neq i$), thus are either parallel or anti-parallel. Therefore, there exists some $\alpha\in\R$ such that $\v_i=\alpha\w_i$. By definition, $\la \v_i,\u_i\ra = \la \v_i,\w_i\ra =1$, hence $\la \v_i,\alpha \w_i\ra = \la \v_i,\w_i\ra$ implying that $\alpha=1$. This demonstrates that $\u_i=\w_i$ for all $i$. 
+	Suppose $\{\u_i\}$ and $\{\w_i\}$ are biorthogonal bases. Fix $i\in[n]$. By independence, $\spn(\v_1,\dots,\v_{i-1},\v_{i+1},\dots,\v_n)$ is a hyperplane---that is, \[\dim\spn(\v_1,\dots,\v_{i-1},\v_{i+1},\dots,\v_n)^\perp=1.\] Both $\u_i$ and $\w_i$ are orthogonal to this hyperplane (since they orthogonal to $\v_j$ for all $j\neq i$), thus are either parallel or anti-parallel. Therefore, there exists some $\alpha\in\R$ such that $\v_i=\alpha\w_i$. By definition, $\la \v_i,\u_i\ra = \la \v_i,\w_i\ra =1$, hence $\la \v_i,\alpha \w_i\ra = \la \v_i,\w_i\ra$ implying that $\alpha=1$. This demonstrates that $\u_i=\w_i$ for all $i$. 
 \end{proof}
 
 \begin{proof}[Proof of Lemma~\ref{lem:rank(QtQ)}]
@@ -79,9 +79,9 @@
 \end{proof}
 
 \begin{proof}[Proof of Claim~\ref{claim:affine_independence}]
-	Suppose not and let $\{\beta_i\}$ be such that $\sum_i \beta_i \bgamma_i =\zero$ with $\sum_i\beta_i=0$. Then, 
-	\[\zero = \sum_i\beta_i\bgamma_i = \sum_{i=1}^{n-1} \beta_i \bgamma_i - \bigg(\sum_{i=1}^{n-1} \beta_i\bigg)\sum_{j=1}^{n-1}\bgamma_j = \sum_{i=1}^{n-1}\bigg(\beta_i-\sum_{j=1}^{n-1}\beta_j\bigg)\bgamma_i,\]
-	implying that $\{\bgamma_i\}_{i=1}^{n-1}$ is linearly dependent; a contradiction.  
+	Suppose not and let $\{\beta_i\}$ be such that $\sum_i \beta_i \bgamma^\du_i =\zero$ with $\sum_i\beta_i=0$. Then, 
+	\[\zero = \sum_i\beta_i\bgamma^\du_i = \sum_{i=1}^{n-1} \beta_i \bgamma^\du_i - \bigg(\sum_{i=1}^{n-1} \beta_i\bigg)\sum_{j=1}^{n-1}\bgamma^\du_j = \sum_{i=1}^{n-1}\bigg(\beta_i-\sum_{j=1}^{n-1}\beta_j\bigg)\bgamma^\du_i,\]
+	implying that $\{\bgamma^\du_i\}_{i=1}^{n-1}$ is linearly dependent; a contradiction.  
 \end{proof}
 
 \begin{proof}[Proof of Observation~\ref{obs:subset_affinely_independent}]
@@ -104,7 +104,7 @@
 
 
 \begin{proof}[Proof of Lemma~\ref{lem:dual_of_dual}]
-	We are given that $\la \sv_i^\du,\sv_j-\sv_n\ra=\delta_{ij}$ and $\la \bgamma_i,\sv_j^\du-\sv_n^\du\ra=\delta_{ij}$. Since dual bases are unique, it suffices to show that $\sv_i-\sv_n$ satisfies the relationships of $\bgamma_i$, and indeed $\la \sv_i-\sv_n,\sv_j^\du-\sv_n^\du\ra = \la \sv_i,\sv_j^\du-\sv_n^\du\ra - \la \sv_n,\sv_j^\du-\sv_n^\du\ra = \delta_{ij} - \delta_{in} = \delta_{ij}$. 
+	We are given that $\la \bgamma_i^\du,\bgamma_j-\bgamma_n\ra=\delta_{ij}$ and $\la \sv_i,\bgamma_j^\du-\bgamma_n^\du\ra=\delta_{ij}$. Since dual bases are unique, it suffices to show that $\bgamma_i-\bgamma_n$ satisfies the relationships of $\sv_i$, and indeed $\la \bgamma_i-\bgamma_n,\bgamma_j^\du-\bgamma_n^\du\ra = \la \bgamma_i,\bgamma_j^\du-\bgamma_n^\du\ra - \la \bgamma_n,\bgamma_j^\du-\bgamma_n^\du\ra = \delta_{ij} - \delta_{in} = \delta_{ij}$. 
 \end{proof} 
 
 \begin{proof}[Proof of Lemma~\ref{lem:dual_faces_orthogonal}]
@@ -124,7 +124,7 @@
 	since $U^c\setminus\{k\}\cap\{i\}=\emptyset$. 
 \end{proof}
 
-\section{Omitted Proofs---Chapter~\ref{chap:correspondence}}
+\section{Chapter~\ref{chap:correspondence}}
 \label{sec:app_proofs_correspondence}
 
 \begin{proof}[Proof of Lemma~\ref{lem:prod_graph_eigenstructure}]
@@ -159,7 +159,7 @@
 	hence $\splx\subset E$. This completes the proof. 
 \end{proof}
 
-\section{Omitted Proofs---Chapter~\ref{chap:further_properties}}
+\section{Chapter~\ref{chap:further_properties}}
 \label{sec:app_proofs_further}
 
 \begin{proof}[Proof of Lemma~\ref{lem:volume}]
@@ -309,6 +309,36 @@
 
 
 
+
+\chapter{Effective Resistance}
+\label{sec:app_er}
+
+Here we provide a derivation of effective resistance using the analogy of a graph as an electrical network. 
+
+Given an undirected, weighted graph $G=(V,E,w)$, orient the edges of $G$ arbitrarily and encode this information in the matrix $\B$, as in Section \ref{sec:background_laplacian}, Equation~\eqref{eq:B_G}. For an edge $e=(i,j)$ oriented from $i$ to $j$, denote $e^+=i$ and $e^-=j$. 
+We will consider $G$ as an electrical network. To do this, we imagine placing a resistor of resistance $1/w(e)$ on each edge $e$. Edges thus carry current between the nodes and, in general, higher weighted edges will carry more current.  
+An \emph{electrical flow $\f:E\to\R_{\geq 0}$} on $G$ assigns a current to each edge $e$ and respects, roughly speaking, Kirchoff's current law and Ohm's law. More precisely, let $\e$ be a vector describing the amount of current injected at each node. By Kirchoff's law, the amount of current passing through a vertex $i$ must be conserved. That is, 
+\[\sum_{e:i=e^+}f(e) - \sum_{e:i=e-}f(e) = e(i),\]
+or, more succinctly, 
+\begin{equation}
+\label{eq:kirchoff}
+\B^\tp \f=\e. 
+\end{equation}
+Note that this property is also called \emph{flow conversation} in the network flow literature. 
+By Ohm's law, the amount of flow across an edge is proportional to the difference of potential at its endpoints. The constant of proportionality is the inverse of the resistance of that edge, i.e., the weight of the edge. Let $\brho:V\to\R_{\geq 0}$ describe the potential at each vertex. For $e=(i,j)$ with $i=e^+$, $j=e^-$, $\brho$ is defined by the relationship 
+\begin{equation*}
+f(e) = w(e)(\rho(i)-\rho(j)) = w(e) (\B(e,i)\rho(i) + \B(e,j)\rho(j)),
+\end{equation*}
+so that
+\begin{equation}
+\label{eq:ohms_law}
+\f=\W\B\brho.
+\end{equation}
+Combining \eqref{eq:kirchoff} and \eqref{eq:ohms_law} we see that $\e=\B^\tp \f=\B^\tp \W\B \brho = \L_G\brho$, and so $\brho = \L_G^+\e$ whenever $\la \e,\one\ra=\zero$ (recall that $\L_G^+$ is the inverse of $\L_G$ in the space $\spn(\one)^\tp$).  
+
+The \emph{effective resistance} of an edge $e=(i,j)$ is the potential difference induced across the edge when one unit of current is injected at $i$ and extracted at $j$. That is, for $\e=\bchi_i-\bchi_j$, we want to measure $\rho(i)-\rho(j)$. We do this by noticing that 
+\[\rho(i)-\rho(j) = \la \bchi_i,\brho\ra - \la \bchi_j,\brho\ra = \la \bchi_i-\bchi_j,\L_G^+\e\ra=\Lf_G^+(\bchi_i-\bchi_j).\]
+Note that here we've relied on the fact that $\bchi_i-\bchi_j\perp \one$. We cement the notion with a definition. 
 
 
 

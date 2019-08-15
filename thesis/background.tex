@@ -1,6 +1,9 @@
 \chapter{Background and Fundamentals}
 \label{chap:background}
-This chapter is devoted to introducing the  pre-requisite knowledge necessary to grapple with the material in subsequent sections. The subject matter of this dissertation lies at the intersection of several mathematical topics, ensuring that any treatment  of the material will give rise to notational challenges. Nevertheless, we have strived---courageously, in the author's unbiased opinion---to use standard notation wherever possible in the hopes that readers familiar with spectral graph theory may skip this background material without losing the plot. 
+
+\chapterquote{I have got my result, but I do not know yet how to get it. 
+}{Carl Friedrich Gauss}
+This chapter is devoted to introducing the  pre-requisite knowledge necessary to grapple with the material in subsequent sections. The subject matter of this dissertation lies at the intersection of several mathematical topics, ensuring that any treatment  of the material will give rise to notational challenges. Nevertheless, we have strived---courageously, in the author's unbiased opinion---to use standard notation wherever possible in the hopes that readers familiar with spectral graph theory may skip this background material without losing the plot. Omitted proofs  can be found  in  Appendix~\ref{sec:app_proofs_background}. 
 
 
 \section{General Notation}
@@ -149,14 +152,14 @@ Owing to possible mental lapses and above average caffeine intake, we may someti
 
 Given a subset $U\subset  V$, we write $G[U]$ to be the graph induced by $U$, i.e., $V(G[U])  = V\cap U$ and  $E(G[U]) = E \cap U \times U$. If a graph is connected  and acyclic (i.e., there is a unique path between each pair of vertices) we call it a \emph{tree}. It's well known that a tree on $n$ nodes has $n-1$ edges.  
 
-As mentioned above, we will typically  work  with undirected graphs. In this case, we identify each tuple $(i,j)$ with its sister pair $(j,i)$. This implies, for example, that when summing over all edges $(i,j)\in E$ we are \emph{not} summing over all vertices and their neighbours. Indeed, this latter summation double counts the edges: $\sum_{(i,j)\in E}=\frac{1}{2}\sum_{i}\sum_{j\in\delta(i)}$. We will often write $i\sim j$ to denote an edge $(i,j)$; so, for example, $\sum_{i\sim j}=\sum_{(i,j)\in E}$. 
+As mentioned above, we will typically  work  with undirected graphs. In this case, we identify each tuple $(i,j)$ with its sister pair $(j,i)$. This implies, for example, that when summing over all edges $(i,j)\in E$ we are \emph{not} summing over all vertices and their neighbours. Indeed, this latter summation double counts the edges: $\sum_{(i,j)\in E}=\frac{1}{2}\sum_{i}\sum_{j\in\partial(i)}$. We will often write $i\sim j$ to denote an edge $(i,j)$; so, for example, $\sum_{i\sim j}=\sum_{(i,j)\in E}$. 
 
 We will also appeal to the so-called ``handshaking lemma'' for unweighted graphs, which states that $\sum_i \deg_G(i) = 2|E(G)|$; easily verified with a counting argument. 
 
 
 \subsection{Laplacian Matrices}
 \label{sec:background_laplacian}
-Here we introduce various matrices of graphs, including the Laplacian. For a useful survey of Laplacian see~\cite{merris1994laplacian}.  
+Here we introduce various matrices of graphs, including the Laplacian. See  the survey by Merris~\cite{merris1994laplacian} for an excellent overview of the Laplacian, and that by Mohar~\cite{mohar1991laplacian} for an overview of its spectrum. 
 
 
 Let $G=(V,E,w)$ be a graph, with $V=[n]$ and $|E|=m$. 
@@ -292,34 +295,14 @@ We will make use  of the following Theorem, often  called the \emph{Kirchhoff Tr
 
 \section{Electrical Flows}
 \label{sec:background_er}
-Given an undirected, weighted graph $G=(V,E,w)$, orient the edges of $G$ arbitrarily and encode this information in the matrix $\B$, as in Section \ref{sec:background_laplacian}, Equation~\eqref{eq:B_G}. For an edge $e=(i,j)$ oriented from $i$ to $j$, denote $e^+=i$ and $e^-=j$. 
-We will consider $G$ as an electrical network. To do this, we imagine placing a resistor of resistance $1/w(e)$ on each edge $e$. Edges thus carry current between the nodes and, in general, higher weighted edges will carry more current.  
-An \emph{electrical flow $\f:E\to\R_{\geq 0}$} on $G$ assigns a current to each edge $e$ and respects, roughly speaking, Kirchoff's current law and Ohm's law. More precisely, let $\e$ be a vector describing the amount of current injected at each node. By Kirchoff's law, the amount of current passing through a vertex $i$ must be conserved. That is, 
-\[\sum_{e:i=e^+}f(e) - \sum_{e:i=e-}f(e) = e(i),\]
-or, more succinctly, 
-\begin{equation}
-\label{eq:kirchoff}
-\B^\tp \f=\e. 
-\end{equation}
-Note that this property is also called \emph{flow conversation} in the network flow literature. 
-By Ohm's law, the amount of flow across an edge is proportional to the difference of potential at its endpoints. The constant of proportionality is the inverse of the resistance of that edge, i.e., the weight of the edge. Let $\brho:V\to\R_{\geq 0}$ describe the potential at each vertex. For $e=(i,j)$ with $i=e^+$, $j=e^-$, $\brho$ is defined by the relationship 
-\begin{equation*}
-f(e) = w(e)(\rho(i)-\rho(j)) = w(e) (\B(e,i)\rho(i) + \B(e,j)\rho(j)),
-\end{equation*}
-so that
-\begin{equation}
-\label{eq:ohms_law}
-\f=\W\B\brho.
-\end{equation}
-Combining \eqref{eq:kirchoff} and \eqref{eq:ohms_law} we see that $\e=\B^\tp \f=\B^\tp \W\B \brho = \L_G\brho$, and so $\brho = \L_G^+\e$ whenever $\la \e,\one\ra=\zero$ (recall that $\L_G^+$ is the inverse of $\L_G$ in the space $\spn(\one)^\tp$).  
 
-The \emph{effective resistance} of an edge $e=(i,j)$ is the potential difference induced across the edge when one unit of current is injected at $i$ and extracted at $j$. That is, for $\e=\bchi_i-\bchi_j$, we want to measure $\rho(i)-\rho(j)$. We do this by noticing that 
-\[\rho(i)-\rho(j) = \la \bchi_i,\brho\ra - \la \bchi_j,\brho\ra = \la \bchi_i-\bchi_j,\L_G^+\e\ra=\Lf_G^+(\bchi_i-\bchi_j).\]
-Note that here we've relied on the fact that $\bchi_i-\bchi_j\perp \one$. We cement the notion with a definition. 
+One of  the most successful physical interpretations of a graph arises from considering it as an electrical network~\cite{ellens2011effective,tetali1991random}. 
+We imagine placing a resistor of resistance $1/w(i,j)$ on each edge $(i,j)\in E(G)$. Injecting current at one or more of the vertices results in an \emph{electrical flow} in the graph. While this physical interpretation  is intuitively useful, it is  not necessary for understanding  the notions of electrical flows. Consequently, we move a more involved discussion on electrical flows to Appendix~\ref{sec:app_er} and present only the required definitions  and results here. The key concept is that of the ``effective resistance'' between  two vertices:  
+
 
 \begin{definition}
 	\label{def:effective_resistance}
-	The \emph{effective resistance} between nodes $i$ and $j$ is $\effr(i,j) \equiv \Lf_G^+(\bchi_i-\bchi_j)$, and the \emph{effective resistance matrix of $G$} is the matrix $\Reff_G$ with entries $\Reff_G(i,j)=\effr(i,j)$. The \emph{total effective resistance in the graph } is the quantity $R_G\equiv \frac{1}{2}\one^\tp\Reff_G\one$. 
+	The \emph{effective resistance} between nodes $i$ and $j$ is $\effr(i,j) \equiv \Lf_G^+(\bchi_i-\bchi_j)$, and the \emph{effective resistance matrix of $G$} is the matrix $\Reff_G$ with entries $\Reff_G(i,j)=\effr(i,j)$. The \emph{total effective resistance in the graph } is the quantity $\Rtot_G\equiv \frac{1}{2}\one^\tp\Reff_G\one$. 
 \end{definition}
 
 We can relate the entries of the pseudoinverse Laplacian with the effective resistance as follows.
@@ -328,7 +311,7 @@ We can relate the entries of the pseudoinverse Laplacian with the effective resi
 	For any graph $G$, $\Reff_G = \one \u ^\tp + \u\one^\tp - 2\L_G^+$ where $\u=\diag(\L_G^+(i,i))$. Moreover, for all $i,j$ (including $i=j$), 
 	\begin{equation}
 	\label{eq:L^+(i,j)}
-	\L_G^+(i,j) = \frac{1}{2n}\bigg(\sum_{k\in[n]}\effr(i,k)+\effr(j,k)\bigg) - \frac{1}{2}\effr(i,j) -\frac{R_G}{n^2}.
+	\L_G^+(i,j) = \frac{1}{2n}\bigg(\sum_{k\in[n]}\effr(i,k)+\effr(j,k)\bigg) - \frac{1}{2}\effr(i,j) -\frac{\Rtot_G}{n^2}.
 	\end{equation}
 \end{lemma}
 
@@ -341,7 +324,7 @@ We can relate the entries of the pseudoinverse Laplacian with the effective resi
 Finally we reach what is our main object of study. We begin by describing a  relationship  among a set  of vertices which,  roughly speaking,  generalizes the notion of ``non-collinearity'' to  higher dimensions. We are then able to properly define a simplex and its dual. We end the section by briefly discussing several  of the angles in a simplex. 
 
 \paragraph{Affine Independence.}
-In order to properly define simplices, we need to define the  notion of ``affine independence'' between  points.  In $\R^2$, for example, such a relationship characterizes the sets of three points which describe a triangle. 
+In order to properly define simplices, we need to define the  notion of ``affine independence'' between  points.  In $\R^2$, for example, such a relationship characterizes the sets of three points which describe a triangle. See Figure~\ref{fig:affine_independence} for an  illustration of affine dependence and independence.  
 
 
 \begin{definition}
@@ -364,7 +347,7 @@ The following lemma demonstrates that if we form a matrix of size $n-1\times n$ 
 \end{lemma}
 
 \paragraph{The simplex.} 
-We jump straight into the definition. 
+We jump straight into the definition; see Figure~\ref{fig:simplices} for several examples. 
 \begin{figure}
 	\centering
 	\begin{minipage}{0.45\textwidth}
@@ -386,7 +369,7 @@ We jump straight into the definition.
 
 \begin{definition}
 \label{def:simplex}
-A \emph{simplex} $\ssplx$ in $\R^{n-1}$ is the convex hull of $n$ affinely independent vectors $\sv_1,\dots,\sv_n$. That is, $\splx=\conv(\sv_1,\dots,\sv_n)$.  
+A \emph{simplex} $\ssplx$ in $\R^{n-1}$ is the convex hull of $n$ affinely independent vectors $\sv_1,\dots,\sv_n$. That is, $\splx=\conv(\bgamma_1,\dots,\bgamma_n)$.  
 \end{definition}
 
 If we gather the vertices of the simplex $\ssplx$ into the \emph{vertex matrix} $\Sv=(\sv_1,\dots,\sv_n)$ whose columns are the vertex vectors of $\ssplx$, then we can write the simplex as 
@@ -400,7 +383,7 @@ As is illustrated in two and three dimensions by the triangle and the tetrahedro
 \label{eq:T_U}
     \ssplx\restriction_U \equiv \{\Sv\x: \x\geq 0,\;\norm{\x}_1=1,\;x(i)=0\text{ for all }i\in U^c\}.
 \end{equation}
-The following observation demonstrates that $\splx\restriction_U$ is a well-defined simplex. 
+If $|U|=n-1$, we call $\ssplx_U$ a \emph{facet}. Figure~\ref{fig:faces} illustrates a two-dimensional   facet and one-dimensional  face of a simplex in $\R^3$. The following observation demonstrates that $\splx\restriction_U$ is a well-defined simplex. 
 \begin{observation}
 	\label{obs:subset_affinely_independent}
 	Any subset of an affinely independent set of vectors is again affinely independent. 
@@ -421,13 +404,15 @@ A brief note now on nomenclature. We will typically  use the symbol $\ssplx$ to 
 
 
 \paragraph{Centroids and altitudes.}
-Two fundamental objects related to a simplex are its centroid and altitudes. The \emph{centroid} of a simplex is the point 
+Two fundamental objects related to a simplex are its centroids and altitudes (Figure~\ref{fig:faces+altitudes}). The \emph{centroid} of a simplex is the point 
 \begin{equation}
 \label{eq:centroid}
-\cent(\ssplx) \equiv \frac{1}{n}\Sv \one = \frac{1}{n}\sum_{i\in[n]}\sv_i.
+\cent(\ssplx) \equiv \frac{1}{n}\Sv \one = \frac{1}{n}\sum_{i\in[n]}\bgamma_i.
 \end{equation} 
 
-The centroid of a simplex can be thought of as its centre of mass, assuming that weight is distributed evenly across its surface. The \emph{altitude between faces $\ssplx_U$ and $\ssplx_{U^c}$} is a vector which lies in the orthogonal complement of both $\splx_U$ and $\splx_{U^c}$ and points from one face to the other. 
+The centroid of a simplex can be thought of as its centre of mass, assuming that weight is distributed evenly across its surface. 
+We can also of course discuss  the  centroid of a face $\ssplx_U$, which is $\cent(\ssplx_U) = |U|^{-1}\Sv\bchi_U$. 
+The \emph{altitude between faces $\ssplx_U$ and $\ssplx_{U^c}$} is a vector which lies in the orthogonal complement of both $\splx_U$ and $\splx_{U^c}$ and points from one face to the other. 
 We denote the altitude pointing from $\splx_{U^c}$ to $\splx_{U}$ as $\alt_(\splx_U)$. We can write the altitude as $\alt_U=\p-\q$ for some $\p\in \splx_{U^c}$ and $\q\in\splx_{U}$, and thus as $\Sv(\x_{U^c}-\x_{U})$ where $\x_{U^c}$ and $\x_{U}$ are the barycentric coordinates of $\p$ and $\q$. 
 
 \textbf{Nota Bene:} While  we conceptualize of the altitude $\alt(\ssplx_U)$ as pointing from $\ssplx_U$  to  $\ssplx_{U^c}$, we  remark that since we are working in  $\R^{n-1}$  as  a vector  space,  $\alt(\ssplx_U)$ still ``begins'' at  the origin. 
@@ -481,37 +466,38 @@ We may also refer to $\ssplx_0$ as the \emph{centred version of $\ssplx$} in ord
 \end{figure}
 Here we introduce the notion of the dual simplex of a given simplex. Even  though we provide a novel treatment  of  the object, the proofs in this section   are  relatively elementary. As such, they have been moved to Appendix~\ref{sec:app_proofs_background}. 
 
-Let $\Sv=(\sv_1,\dots,\sv_n)\in\R^{n-1\times n}$ be the vertex matrix of a simplex $\ssplx\subset\R^{n-1}$. For each $i\in[n-1]$, put $\v_i=\sv_n-\sv_i$. Then $\{\v_1,\dots,\v_{n-1}\}$ is a linearly independent set, and thus admits a sister basis $\{\bgamma_1,\dots,\bgamma_{n-1}\}$ which together form biorthogonal bases of $\R^{n-1}$ (Lemma \ref{lem:bi-orthogonal_bases}). Put $\bgamma_n = -\sum_{i=1}^{n-1}\bgamma_i$.  
+Let $\Sv=(\bgamma_1,\dots,\bgamma_n)\in\R^{n-1\times n}$ be the vertex matrix of a simplex $\ssplx\subset\R^{n-1}$. For each $i\in[n-1]$, put $\v_i=\bgamma_n-\bgamma_i$. Then $\{\v_1,\dots,\v_{n-1}\}$ is a linearly independent set, and thus admits a sister basis $\{\bgamma^\du_1,\dots,\bgamma^\du_{n-1}\}$ which together form biorthogonal bases of $\R^{n-1}$ (Lemma \ref{lem:bi-orthogonal_bases}). Put $\bgamma^\du_n = -\sum_{i=1}^{n-1}\bgamma^\du_i$.  
 
 \begin{claim}
 	\label{claim:affine_independence}
 The set 
-$\{\bgamma_1,\dots,\bgamma_n\}$ is affinely independent. 
+$\{\bgamma^\du_1,\dots,\bgamma^\du_n\}$ is affinely independent. 
 \end{claim}
 
-Therefore, the set $\{\bgamma_1,\dots,\bgamma_n\}$ determines a simplex, which we call the \emph{dual simplex} of $\ssplx$. Of course, it would highly suboptimal if the notion of a dual simplex depended on the labelling of the vertices of $\ssplx$. More specifically, we defined the vertices of the dual simplex $\bgamma_i$ with respect to the vectors $\sv_i-\sv_n$. It is not clear a priori whether the vertices of the dual simplex would change were we to relabel the indices of $\{\sv_i\}$. In fact, they do not---the demonstration of which is the purpose of the following lemma. 
+Therefore, the set $\{\bgamma^\du_1,\dots,\bgamma^\du_n\}$ determines a simplex, which we call the \emph{dual simplex} of $\ssplx$. Of course, it would highly suboptimal if the notion of a dual simplex depended on the labelling of the vertices of $\ssplx$. More specifically, we defined the vertices of the dual simplex $\bgamma^\du_i$ with respect to the vectors $\{\bgamma_i-\bgamma_n\}$. It is not clear a priori whether the vertices of the dual simplex would change were we to relabel the indices of $\{\bgamma_i\}$. In fact, they do not---the demonstration of which is the purpose of the following lemma. 
 
 \begin{lemma}
 	\label{lem:dual_vertices_well-defined}
-	Let $\{\sv_1,\dots,\sv_n\}$ be a set of affinely independent vectors. Fix $k\in [n-1]$ and define $\v_i=\sv_i-\sv_n$ for $i\in[n-1]$ and $\u_i=\sv_i-\sv_k$ for $i\in[n]\setminus\{k\}$. If $\{\bgamma_1,\dots,\bgamma_{n-1}\}$ is the sister basis to $\{\v_1,\dots,\v_{n-1}\}$ and $\bgamma_n = -\sum_{i=1}^{n-1}\bgamma_i$, then $\{\bgamma_1,\dots,\bgamma_{k-1},\bgamma_{k+1},\dots,\bgamma_{n}\}$ is the sister basis to $\{\u_1,\dots,\u_{k-1},\u_{k+1},\dots,\u_n\}$. 
+	Let $\{\bgamma_1,\dots,\bgamma_n\}$ be a set of affinely independent vectors. Fix $k\in [n-1]$ and define $\v_i=\bgamma_i-\bgamma_n$ for $i\in[n-1]$ and $\u_i=\bgamma_i-\bgamma_k$ for $i\in[n]\setminus\{k\}$. If $\{\bgamma^\du_1,\dots,\bgamma^\du_{n-1}\}$ is the sister basis to $\{\v_1,\dots,\v_{n-1}\}$ and $\bgamma^\du_n = -\sum_{i=1}^{n-1}\bgamma_i$, then $\{\bgamma^\du_1,\dots,\bgamma^\du_{k-1},\bgamma^\du_{k+1},\dots,\bgamma^\du_{n}\}$ is the sister basis to $\{\u_1,\dots,\u_{k-1},\u_{k+1},\dots,\u_n\}$. 
 \end{lemma}
 
 
 We also observe that, using the same notation as above, 
-\[-\sum_{i=1,i\neq k}^n \bgamma_i = -\bigg(\sum_{i=1,i\neq k}^{n-1} \bgamma_i\bigg) - \bgamma_n = -\sum_{i=1,i\neq k}^{n-1}\bgamma_i + \sum_{j=1}^{n-1} \bgamma_j = \bgamma_k,\]
-hence had we set $\v_i=\sv_k-\sv_i$ and defined $\bgamma_k = -\sum_{i\neq k}\bgamma_i$ (as we did for $k=n$), Lemma \ref{lem:dual_vertices_well-defined} demonstrates that we would produce the same set of vectors for the dual simplex. We honour the fact that the dual simplex is independent of labelling with the following definition. 
+\[-\sum_{i=1,i\neq k}^n \bgamma^
+\du_i = -\bigg(\sum_{i=1,i\neq k}^{n-1} \bgamma^\du_i\bigg) - \bgamma^\du_n = -\sum_{i=1,i\neq k}^{n-1}\bgamma^\du_i + \sum_{j=1}^{n-1} \bgamma^\du_j = \bgamma^\du_k,\]
+hence had we set $\v_i=\bgamma_k-\bgamma_i$ and defined $\bgamma^\du_k = -\sum_{i\neq k}\bgamma^\du_i$ (as we did for $k=n$), Lemma \ref{lem:dual_vertices_well-defined} demonstrates that we would produce the same set of vectors for the dual simplex. What a relief! We honour the fact that the dual simplex is independent of labelling with the following definition. 
 
 
 \begin{definition}[Dual Simplex]
 \label{def:dual_simplex}
-Given a simplex $\ssplx_1\subset\R^{n-1}$ with vertex set $\Sv(\splx_1)=(\sv_1,\dots,\sv_n)$, a simplex $\ssplx_2\subset \R^{n-1}$ with vertex vectors $\Sv(\ssplx_2)=(\bgamma_1,\dots,\bgamma_n)$ is called a \emph{dual simplex} of $\ssplx_1$ if for all $k\in[n]$, $\{\bgamma_i\}_{i\neq k}$ is the sister basis to $\{\sv_i-\sv_k\}_{i\neq k}$. We denote the dual of the simplex $\ssplx$ as $\ssplx^\du$. 
+Given a simplex $\ssplx_1\subset\R^{n-1}$ with vertex set $\Sv(\splx_1)=(\bgamma_1,\dots,\bgamma_n)$, a simplex $\ssplx_2\subset \R^{n-1}$ with vertex vectors $\Sv(\ssplx_2)=(\bgamma^\du_1,\dots,\bgamma^\du_n)$ is called a \emph{dual simplex} of $\ssplx_1$ if for all $k\in[n]$, $\{\bgamma^\du_i\}_{i\neq k}$ is the sister basis to $\{\bgamma_i-\bgamma_k\}_{i\neq k}$. We denote the dual of the simplex $\ssplx$ as $\ssplx^\du$. 
 \end{definition}
 
-We remark that in light of the previous lemma, in order to determine whether the vertices $\{\bgamma_i\}$ are the dual vertices to $\{\sv_i\}$ it suffices to check whether $\la \bgamma_i,\sv_j-\sv_k\ra=\delta_{ij}$ for a single $k\neq i,j$, as opposed to all $k\in[n]$. This will be done henceforth and will not be further remarked upon. 
+Figure~\ref{fig:dual_simplex} illustrates a simplex and its dual. We remark that in light of the previous lemma, in order to determine whether the vertices $\{\bgamma^\du_i\}$ are the dual vertices to $\{\bgamma_i\}$ it suffices to check whether $\la \bgamma^\du_i,\bgamma_j-\bgamma_k\ra=\delta_{ij}$ for a single $k\neq i,j$, as opposed to all $k\in[n]$. This will be done henceforth and will not be further remarked upon. 
 We also note that duality between simplices is not a relationship between individual simplices per se, but rather assigns to congruence class $[\ssplx]$ a centred simplex. Indeed, let $\ssplx_1\in[\ssplx]$
-and  let $\Sv(\ssplx^\du)=(\sv_1^\du,\dots,\sv_n^\du)$. We claim that  the vertices $\Sv(\ssplx^\du)$ are also dual to $\Sv(\ssplx_1^\du)=(\bgamma_1,\dots,\bgamma_n)$. Let  $\balpha\in\R^{n-1}$  be such that $\bgamma_i = \sv_i + \balpha\one^\tp$. Then, 
+and  let $\Sv(\ssplx^\du)=(\bgamma_1^\du,\dots,\bgamma_n^\du)$. We claim that  the vertices $\Sv(\ssplx^\du)$ are also dual to $\Sv(\ssplx_1)=(\sv_1,\dots,\sv_n)$. As  usual, let $\Sv(\ssplx)=(\bgamma_i)$. Let  $\balpha\in\R^{n-1}$  be such that $\sv_i = \bgamma_i + \balpha$ (such an $\balpha$ exists by definition of $[\ssplx]$). Then, 
 \begin{align*}
-\la \sv_i^\du,\bgamma_j-\bgamma_n\ra &= \la \sv_i^\du,(\sv_j+\balpha) - (\sv_n+\balpha)\ra = \la \sv_i^\du,\sv_j-\sv_n\ra=\delta_{ij},
+\la \bgamma_i^\du,\sv_j-\sv_n\ra &= \la \bgamma_i^\du,(\bgamma_j+\balpha) - (\bgamma_n+\balpha)\ra = \la \bgamma_i^\du,\bgamma_j-\bgamma_n\ra=\delta_{ij},
 \end{align*}
 meaning that $\ssplx^*$ is also dual to $\ssplx_1$. We encapsulate this in an observation for easy recollection. 
 
@@ -521,22 +507,22 @@ meaning that $\ssplx^*$ is also dual to $\ssplx_1$. We encapsulate this in an ob
 \end{observation}
 
 
-Observe that the dual simplex is always centred by construction (since $\bgamma_n=-\sum_{i<n}\bgamma_i$).  The following lemma demonstrates that, in the language of the preceding paragraph, if $\ssplx^\du$ is the dual of the congruence class $[\ssplx]$, then the dual of $[\ssplx^\du]$ is the representative of $[\ssplx]$ which is centred. 
+Observe that the dual simplex is always centred by construction (since $\bgamma^\du_n=-\sum_{i<n}\bgamma^\du_i$).  The following lemma demonstrates that, in the language of the preceding paragraph, if $\ssplx^\du$ is the dual of the congruence class $[\ssplx]$, then the dual of $[\ssplx^\du]$ is the representative of $[\ssplx]$ which is centred. 
 
 \begin{lemma}
 	\label{lem:dual_of_dual}
-	Let a simplex $\ssplx\in\R^{n-1}$ have vertices $(\sv_i)$, $\ssplx^\du$ have vertices $(\sv_i^\du)$ and $(\ssplx^\du)^\du$ have vertices $(\bgamma_i)$. Then, after potential re-ordering of the indices, $\bgamma_i = \sv_i-\sv_n$ for $i<n$. 
+	Let a simplex $\ssplx\in\R^{n-1}$ have vertices $(\bgamma_i)$, $\ssplx^\du$ have vertices $(\bgamma_i^\du)$ and $(\ssplx^\du)^\du$ have vertices $(\sv_i)$. Then, after potential re-ordering the indices, $\sv_i = \bgamma_i-\bgamma_n$ for $i<n$. 
 \end{lemma}
 
 \begin{remark}
-	The notion of the dual simplex expounded here is the same as the object discovered by Fiedler in his book~\cite[Chapter 5]{fiedler2011matrices}, which he calls the \emph{inverse simplex}. In a covert attempt to confuse the reader, we will reserve the name inverse simplex for a (sometimes) distinct object. Fiedler defines the inverse simplex with respect to the centroid of the given simplex, finding vectors $\u_i$ such that $\la \u_i,\sv_j-\cent\ra = \delta_{ij}-1/n$, where $\cent=\cent(\splx)$.  Such vectors then satisfy $\la \u_i,\sv_j-\sv_k\ra = \la \u_i,\sv_j-\cent-(\sv_k-\cent)\ra = \delta_{ij}-\delta_{ik}=\delta_{ij}$ for $i,j\neq k$, hence are the (unique) dual vertices. 
+	The notion of the dual simplex expounded here is the same as the object discovered by Fiedler in his book~\cite[Chapter 5]{fiedler2011matrices}, which he calls the \emph{inverse simplex}. In a covert attempt to confuse the reader, we will reserve the name inverse simplex for a (sometimes) distinct object. Fiedler defines the inverse simplex with respect to the centroid of the given simplex, finding vectors $\u_i$ such that $\la \u_i,\bgamma_j-\cent\ra = \delta_{ij}-1/n$, where $\cent=\cent(\splx)$.  Such vectors then satisfy $\la \u_i,\sv_j-\bgamma_k\ra = \la \u_i,\bgamma_j-\cent-(\bgamma_k-\cent)\ra = \delta_{ij}-\delta_{ik}=\delta_{ij}$ for $i,j\neq k$, hence are the (unique) dual vertices. 
 \end{remark}
 
 We summarize the discussion with the following theorem. 
 
 \begin{theorem}
 	\label{thm:dual_simplex}
-Each simplex has a unique dual simplex. Moreover, if $\ssplx^\du$ is the dual of $\ssplx$, then $\splx_0$ is the dual of $\splx^\du$, where $\splx_0\cong \splx$ is centred. 
+Each simplex has a unique dual simplex. Moreover, if $\ssplx^\du$ is the dual of $\ssplx$, then $\ssplx_0$ is the dual of $\ssplx^\du$, where $\ssplx_0\cong \ssplx$ is centred. 
   \end{theorem}
 \begin{proof}
 Existence follows from Lemma \ref{lem:bi-orthogonal_bases} using the construction above. Uniqueness follows from Observation \ref{obs:bi-orthogonal_unique} and Lemma \ref{lem:dual_vertices_well-defined}. The second part of the statement follows from Lemma \ref{lem:dual_of_dual}. 
@@ -546,7 +532,7 @@ We end  this section  on dual simplices by giving a necessary condition of the r
 
 \begin{lemma}
 	\label{lem:dual_faces_orthogonal}
-	Let $\splx^\du$ be the dual of the simplex $\splx\in\R^{n-1}$. For all $U\subset[n]$, $\emptyset\neq U\neq[n]$, $\splx_U$ is orthogonal to $\splx_{U^c}^\du$.  
+	Let $\ssplx^\du$ be the dual of the simplex $\ssplx\in\R^{n-1}$. For all $U\subset[n]$, $\emptyset\neq U\neq[n]$, $\ssplx_U$ is orthogonal to $\splx_{U^c}^\du$.  
 \end{lemma}
 
 \subsection{Angles in a Simplex}
@@ -557,17 +543,17 @@ We end  this section  on dual simplices by giving a necessary condition of the r
 	\includegraphics[scale=0.2]{angles}
 	\caption{The angles in a simplex and its dual. The angle $\phi^\du_{ij}$ between $\bgamma^\du_i$ and $\bgamma^\du_i$ is the same as that between $-\bgamma_i^\du$ and $-\bgamma_j^\du$. From here  we  see that $\theta_{ij}+\phi^\du_{ij}=\pi$.}
 \end{figure}
-There are several angles worth discussing in a simplex. For a simplex $\ssplx$, let $\phi_{ij}(\ssplx)$ be the angle between the outer normals to $\splx_\ic$ and $\splx_\jc$. As usual, the paranthetical $(\ssplx)$ will typically be dropped when the simplex is understood from context. Using the notion of the dual simplex introduced in the previous section, we can write 
+There are several angles worth discussing in a simplex. For a simplex $\ssplx$, let $\phi^\du_{ij}(\ssplx)$ be the angle between the outer normals to $\ssplx_\ic$ and $\ssplx_\jc$. As usual, the paranthetical $(\ssplx)$ will typically be dropped when the simplex is understood from context. Using the notion of the dual simplex introduced in the previous section, we can write 
  \begin{equation*}
-\cos \phi_{ij}(\ssplx) = \frac{\la \bgamma_i,\bgamma_j\ra }{\norm{\bgamma_i}_2 \cdot \norm{\bgamma_j}_2},
+\cos \phi^\du_{ij}(\ssplx) = \frac{\la \bgamma^\du_i,\bgamma^\du_j\ra }{\norm{\bgamma^\du_i}_2 \cdot \norm{\bgamma^\du_j}_2},
 \end{equation*}
-where $\{\bgamma_i\}$ are the vertices of $\ssplx^\du$. 
-Now, define $\theta_{ij}(\ssplx)$ to be the angle between $\ssplx_\ic$ and $\ssplx_\jc$. Appealing to elementary geometry, we see that the angles $\phi_{ij}$ and $\theta_{ij}$ are \emph{supplementary}, i.e., their sum is $\pi$. Hence, 
+where $\{\bgamma^\du_i\}$ are the vertices of $\ssplx^\du$. The superscript represents  the fact that the angle is between the  vertices of the dual simplex. 
+Now, define $\theta_{ij}(\ssplx)$ to be the angle between $\ssplx_\ic$ and $\ssplx_\jc$. Appealing to elementary geometry, we see that the angles $\phi^\du_{ij}$ and $\theta_{ij}$ are \emph{supplementary}, i.e., their sum is $\pi$. Hence, 
 \begin{equation}
 \label{eq:cos_theta_ij}
-\cos \theta_{ij}(\ssplx) = - \frac{\la \bgamma_i,\bgamma_j\ra }{\norm{\bgamma_i}_2 \cdot \norm{\bgamma_j}_2},
+\cos \theta_{ij}(\ssplx) = - \frac{\la \bgamma^\du_i,\bgamma^\du_j\ra }{\norm{\bgamma^\du_i}_2 \cdot \norm{\bgamma^\du_j}_2},
 \end{equation}
-where we've used that $\cos(\phi_{ij}) = \cos(\pi - \theta_{ij}) = -\cos(\theta_{ij})$. 
+where we've used that $\cos(\phi^\du_{ij}) = \cos(\pi - \theta_{ij}) = -\cos(\theta_{ij})$. This allows us to define the notion of  hyperacuteness in simplices as follows. 
 
 \begin{definition}
 	\label{def:hyperacute}

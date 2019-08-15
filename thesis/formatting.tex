@@ -4,7 +4,7 @@
 \setlength{\parskip}{0.5em}
 
 
-%%  THEOREMS %%
+%%  THEOREM STYLES %%
 \newtheoremstyle{tstyle}
   {}% space above
   {}% space below
@@ -109,10 +109,11 @@ citecolor=darkblue
 
 
 % Export backmatter styling
-\newcommand{\backmatterstyling}{
-\onehalfspacing
-\chapstylenoline
-\renewcommand{\chaptermark}[1]{ \markboth{##1}{} }
+\newcommand{\backmatterstyling}{%
+\pagestyle{plain}
+\singlespacing%
+\chapstylenoline%
+\renewcommand{\chaptermark}[1]{ \markboth{##1}{} }%
 }%
 
 

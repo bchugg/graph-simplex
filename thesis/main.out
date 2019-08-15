@@ -33,19 +33,22 @@
 \BOOKMARK [1][-]{section.4.2}{Inequalities}{chapter.4}% 33
 \BOOKMARK [1][-]{section.4.3}{Quadrics}{chapter.4}% 34
 \BOOKMARK [1][-]{section.4.4}{Resistive Polytope}{chapter.4}% 35
-\BOOKMARK [1][-]{section.4.5}{Random Walks}{chapter.4}% 36
+\BOOKMARK [1][-]{section.4.5}{Effective Resistance \046 Dynamics}{chapter.4}% 36
 \BOOKMARK [2][-]{subsection.4.5.1}{Continuous Time Random Walks}{section.4.5}% 37
 \BOOKMARK [0][-]{chapter.5}{Algorithmics}{}% 38
 \BOOKMARK [1][-]{section.5.1}{Preliminaries}{chapter.5}% 39
 \BOOKMARK [1][-]{section.5.2}{Computational Complexity}{chapter.5}% 40
 \BOOKMARK [1][-]{section.5.3}{There and Back Again: A Tale of Graphs and Simplices}{chapter.5}% 41
 \BOOKMARK [1][-]{section.5.4}{Approximations}{chapter.5}% 42
-\BOOKMARK [2][-]{subsection.5.4.1}{Embedding the inverse simplex in lower dimensions}{section.5.4}% 43
-\BOOKMARK [2][-]{subsection.5.4.2}{Approximating the distances of the inverse simplex}{section.5.4}% 44
-\BOOKMARK [2][-]{subsection.5.4.3}{Low Rank Approximations of the Laplacian}{section.5.4}% 45
+\BOOKMARK [2][-]{subsection.5.4.1}{Dimensionality Reduction: the inverse simplex}{section.5.4}% 43
+\BOOKMARK [2][-]{subsection.5.4.2}{Dimensionality Reduction: the Laplacian}{section.5.4}% 44
+\BOOKMARK [2][-]{subsection.5.4.3}{Distance Matrix of the inverse combinatorial simplex}{section.5.4}% 45
 \BOOKMARK [0][-]{chapter.6}{Conclusion}{}% 46
 \BOOKMARK [1][-]{section.6.1}{Open Problems and Future Directions}{chapter.6}% 47
-\BOOKMARK [0][-]{appendix.A}{Appendix}{}% 48
-\BOOKMARK [1][-]{section.A.1}{Omitted Proofs\204Chapter 2}{appendix.A}% 49
-\BOOKMARK [1][-]{section.A.2}{Omitted Proofs\204Chapter 3}{appendix.A}% 50
-\BOOKMARK [1][-]{section.A.3}{Omitted Proofs\204Chapter 4}{appendix.A}% 51
+\BOOKMARK [0][-]{Item.20}{Bibliography}{}% 48
+\BOOKMARK [0][-]{chapter*.29}{Appendix}{}% 49
+\BOOKMARK [0][-]{appendix.A}{Omitted Proofs}{}% 50
+\BOOKMARK [1][-]{section.A.1}{Chapter 2}{appendix.A}% 51
+\BOOKMARK [1][-]{section.A.2}{Chapter 3}{appendix.A}% 52
+\BOOKMARK [1][-]{section.A.3}{Chapter 4}{appendix.A}% 53
+\BOOKMARK [0][-]{appendix.B}{Effective Resistance}{}% 54

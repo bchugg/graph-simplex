@@ -1,4 +1,5 @@
-\begin{thebibliography}{VMDC17}
+\newcommand{\etalchar}[1]{$^{#1}$}
+\begin{thebibliography}{WMRB15}
 
 \bibitem[ARV09]{arora2009expander}
 Sanjeev Arora, Satish Rao, and Umesh Vazirani.
@@ -16,16 +17,45 @@ L{\'a}szl{\'o} Babai.
 \newblock In {\em Proceedings of the forty-eighth annual ACM symposium on
   Theory of Computing}, pages 684--697. ACM, 2016.
 
+\bibitem[BCD{\etalchar{+}}07]{brass2007simultaneous}
+Peter Brass, Eowyn Cenek, Cristian~A Duncan, Alon Efrat, Cesim Erten, Dan~P
+  Ismailescu, Stephen~G Kobourov, Anna Lubiw, and Joseph~SB Mitchell.
+\newblock On simultaneous planar graph embeddings.
+\newblock {\em Computational Geometry}, 36(2):117--130, 2007.
+
+\bibitem[BDR{\etalchar{+}}04]{bengio2004learning}
+Yoshua Bengio, Olivier Delalleau, Nicolas~Le Roux, Jean-Fran{\c{c}}ois
+  Paiement, Pascal Vincent, and Marie Ouimet.
+\newblock Learning eigenfunctions links spectral embedding and kernel pca.
+\newblock {\em Neural computation}, 16(10):2197--2219, 2004.
+
 \bibitem[BFM98]{bremner1998primal}
 David Bremner, Komei Fukuda, and Ambros Marzetta.
 \newblock Primal—dual methods for vertex and facet enumeration.
 \newblock {\em Discrete \& Computational Geometry}, 20(3):333--357, 1998.
+
+\bibitem[BH03]{brand2003unifying}
+Matthew Brand and Kun Huang.
+\newblock A unifying theorem for spectral embedding and clustering.
+\newblock In {\em AISTATS}, 2003.
 
 \bibitem[BH12]{barata2012moore}
 Jo{\~a}o Carlos~Alves Barata and Mahir~Saleh Hussein.
 \newblock The {M}oore--{P}enrose pseudoinverse: A tutorial review of the
   theory.
 \newblock {\em Brazilian Journal of Physics}, 42(1-2):146--165, 2012.
+
+\bibitem[BKR12]{blasius2012simultaneous}
+Thomas Bl{\"a}sius, Stephen~G Kobourov, and Ignaz Rutter.
+\newblock Simultaneous embedding of planar graphs.
+\newblock {\em arXiv preprint arXiv:1204.5853}, 2012.
+
+\bibitem[BN02]{belkin2002laplacian}
+Mikhail Belkin and Partha Niyogi.
+\newblock Laplacian eigenmaps and spectral techniques for embedding and
+  clustering.
+\newblock In {\em Advances in neural information processing systems}, pages
+  585--591, 2002.
 
 \bibitem[BP93]{burton1993local}
 Robert Burton and Robin Pemantle.
@@ -37,6 +67,11 @@ Robert Burton and Robin Pemantle.
 Arthur Cayley.
 \newblock On a theorem in the geometry of position.
 \newblock {\em Cambridge Mathematical Journal}, 2:267--271, 1841.
+
+\bibitem[CC00]{cox2000multidimensional}
+Trevor~F Cox and Michael~AA Cox.
+\newblock {\em Multidimensional scaling}.
+\newblock Chapman and hall/CRC, 2000.
 
 \bibitem[CG97]{chung1997spectral}
 Fan~RK Chung and Fan~Chung Graham.
@@ -60,10 +95,20 @@ Haiyan Chen and Fuji Zhang.
 \newblock Resistance distance and the normalized laplacian spectrum.
 \newblock {\em Discrete Applied Mathematics}, 155(5):654--661, 2007.
 
+\bibitem[DFPP90]{de1990draw}
+Hubert De~Fraysseix, J{'a}nos Pach, and Richard Pollack.
+\newblock How to draw a planar graph on a grid.
+\newblock {\em Combinatorica}, 10(1):41--51, 1990.
+
 \bibitem[DG03]{dasgupta2003elementary}
 Sanjoy Dasgupta and Anupam Gupta.
 \newblock An elementary proof of a theorem of johnson and lindenstrauss.
 \newblock {\em Random Structures \& Algorithms}, 22(1):60--65, 2003.
+
+\bibitem[DH97]{dean1997rectangle}
+Alice~M Dean and Joan~P Hutchinson.
+\newblock Rectangle-visibility representations of bipartite graphs.
+\newblock {\em Discrete Applied Mathematics}, 75(1):9--25, 1997.
 
 \bibitem[DLP11]{ding2011cover}
 Jian Ding, James~R Lee, and Yuval Peres.
@@ -71,22 +116,28 @@ Jian Ding, James~R Lee, and Yuval Peres.
 \newblock In {\em Proceedings of the forty-third annual ACM symposium on Theory
   of computing}, pages 61--70. ACM, 2011.
 
-\bibitem[DM05]{drineas2005approximating}
-Petros Drineas and Michael~W Mahoney.
-\newblock Approximating a gram matrix for improved kernel-based learning.
-\newblock In {\em International Conference on Computational Learning Theory},
-  pages 323--337. Springer, 2005.
-
 \bibitem[DVM18]{devriendt2018simplex}
 Karel Devriendt and Piet Van~Mieghem.
 \newblock The simplex geometry of graphs.
 \newblock {\em arXiv preprint arXiv:1807.06475}, 2018.
+
+\bibitem[EKLN05]{erten2005simultaneous}
+Cesim Erten, Stephen~G Kobourov, Vu~Le, and Armand Navabi.
+\newblock Simultaneous graph drawing: Layout algorithms and visualization
+  schemes.
+\newblock {\em J. Graph Algorithms Appl.}, 9(1):165--182, 2005.
 
 \bibitem[Ell11]{ellens2011effective}
 Wendy Ellens.
 \newblock {\em Effective resistance and other graph measures for network
   robustness}.
 \newblock PhD thesis, Master thesis, Leiden University, 2011.
+
+\bibitem[ELM16]{evans2016simultaneous}
+William~S Evans, Giuseppe Liotta, and Fabrizio Montecchiani.
+\newblock Simultaneous visibility representations of plane st-graphs using
+  l-shapes.
+\newblock {\em Theoretical Computer Science}, 645:100--111, 2016.
 
 \bibitem[Fie93]{fiedler1993geometric}
 Miroslav Fiedler.
@@ -104,6 +155,11 @@ Miroslav Fiedler.
 \newblock {\em Matrices and graphs in geometry}.
 \newblock Number 139. Cambridge University Press, 2011.
 
+\bibitem[FR91]{fruchterman1991graph}
+Thomas~MJ Fruchterman and Edward~M Reingold.
+\newblock Graph drawing by force-directed placement.
+\newblock {\em Software: Practice and experience}, 21(11):1129--1164, 1991.
+
 \bibitem[GBS08]{ghosh2008minimizing}
 Arpita Ghosh, Stephen Boyd, and Amin Saberi.
 \newblock Minimizing effective resistance of a graph.
@@ -120,6 +176,11 @@ Branko Gr{\"u}nbaum, Victor Klee, Micha~A Perles, and Geoffrey~Colin Shephard.
 \newblock Convex polytopes.
 \newblock 1967.
 
+\bibitem[GT01]{gross2001topological}
+Jonathan~L Gross and Thomas~W Tucker.
+\newblock {\em Topological graph theory}.
+\newblock Courier Corporation, 2001.
+
 \bibitem[Haw75]{hawkins1975cauchy}
 Thomas Hawkins.
 \newblock Cauchy and the spectral theory of matrices.
@@ -129,6 +190,16 @@ Thomas Hawkins.
 William~B Johnson and Joram Lindenstrauss.
 \newblock Extensions of lipschitz mappings into a hilbert space.
 \newblock {\em Contemporary mathematics}, 26(189-206):1, 1984.
+
+\bibitem[Jol11]{jolliffe2011principal}
+Ian Jolliffe.
+\newblock {\em Principal component analysis}.
+\newblock Springer, 2011.
+
+\bibitem[Kan93]{kant1993algorithms}
+Goossen Kant.
+\newblock {\em Algorithms for drawing planar graphs}.
+\newblock PhD thesis, 1993.
 
 \bibitem[Kar72]{karp1972reducibility}
 Richard~M Karp.
@@ -141,6 +212,11 @@ Gustav Kirchhoff.
 \newblock Uber die autlgsung der gleichungen, auf welche man bei der unter-
   suchung der linearen verteilung galvanischer strijme gefuhrt wird.
 \newblock {\em Ann. Phys. Chem.}, 72:497--508, 1847.
+
+\bibitem[KK{\etalchar{+}}89]{kamada1989algorithm}
+Tomihisa Kamada, Satoru Kawai, et~al.
+\newblock An algorithm for drawing general undirected graphs.
+\newblock {\em Information processing letters}, 31(1):7--15, 1989.
 
 \bibitem[Knu11]{knuth2011art}
 Donald~E Knuth.
@@ -178,6 +254,17 @@ Jon Kleinberg and Eva Tardos.
 \newblock {\em Algorithm design}.
 \newblock Pearson Education India, 2006.
 
+\bibitem[KW78]{kruskal1978multidimensional}
+Joseph~B Kruskal and Myron Wish.
+\newblock {\em Multidimensional scaling}, volume~11.
+\newblock Sage, 1978.
+
+\bibitem[MACO91]{mohar1991laplacian}
+Bojan Mohar, Y~Alavi, G~Chartrand, and OR~Oellermann.
+\newblock The laplacian spectrum of graphs.
+\newblock {\em Graph theory, combinatorics, and applications}, 2(871-898):12,
+  1991.
+
 \bibitem[Max73]{maxwell1873treatise}
 James~Clerk Maxwell.
 \newblock {\em A treatise on electricity and magnetism}, volume~1.
@@ -208,10 +295,10 @@ Brendan~D McKay and Adolfo Piperno.
 \newblock Practical graph isomorphism, ii.
 \newblock {\em Journal of Symbolic Computation}, 60:94--112, 2014.
 
-\bibitem[MPL17]{masuda2017random}
-Naoki Masuda, Mason~A Porter, and Renaud Lambiotte.
-\newblock Random walks and diffusion on networks.
-\newblock {\em Physics reports}, 716:1--58, 2017.
+\bibitem[NR04]{nishizeki2004planar}
+Takao Nishizeki and Md~Saidur Rahman.
+\newblock {\em Planar graph drawing}, volume~12.
+\newblock World Scientific Publishing Company, 2004.
 
 \bibitem[Pap03]{papadimitriou2003computational}
 Christos~H Papadimitriou.
@@ -241,10 +328,15 @@ Viktor~Vasil\_evich Prasolov.
 \newblock {\em Problems and theorems in linear algebra}, volume 134.
 \newblock American Mathematical Soc., 1994.
 
-\bibitem[Sha67]{sharpe1967theorem}
-GE~Sharpe.
-\newblock Theorem on resistive networks.
-\newblock {\em Electronics letters}, 3(10):444--445, 1967.
+\bibitem[RS00]{roweis2000nonlinear}
+Sam~T Roweis and Lawrence~K Saul.
+\newblock Nonlinear dimensionality reduction by locally linear embedding.
+\newblock {\em science}, 290(5500):2323--2326, 2000.
+
+\bibitem[SCL18]{salnikov2018simplicial}
+Vsevolod Salnikov, Daniele Cassese, and Renaud Lambiotte.
+\newblock Simplicial complexes and complex systems.
+\newblock {\em European Journal of Physics}, 40(1):014001, 2018.
 
 \bibitem[Spi09]{spielman2009spectral}
 Daniel Spielman.
@@ -273,6 +365,21 @@ James~Joseph Sylvester.
 \newblock {\em The London, Edinburgh, and Dublin Philosophical Magazine and
   Journal of Science}, 1(4):295--305, 1851.
 
+\bibitem[Tam13]{tamassia2013handbook}
+Roberto Tamassia.
+\newblock {\em Handbook of graph drawing and visualization}.
+\newblock Chapman and Hall/CRC, 2013.
+
+\bibitem[TCER19]{torres2019geometric}
+Leo Torres, Kevin~S Chan, and Tina Eliassi-Rad.
+\newblock Geometric laplacian eigenmap embedding.
+\newblock {\em arXiv preprint arXiv:1905.09763}, 2019.
+
+\bibitem[Tet91]{tetali1991random}
+Prasad Tetali.
+\newblock Random walks and the effective resistance of networks.
+\newblock {\em Journal of Theoretical Probability}, 4(1):101--109, 1991.
+
 \bibitem[VM13]{van2013double}
 P~Van~Mieghem.
 \newblock Double orthogonality and the nature of networks.
@@ -287,5 +394,10 @@ Piet Van~Mieghem, Karel Devriendt, and H~Cetinay.
 Virginia~Vassilevska Williams.
 \newblock Multiplying matrices faster than coppersmith-winograd.
 \newblock In {\em STOC}, volume~12, pages 887--898. Citeseer, 2012.
+
+\bibitem[WMRB15]{wu2015emergent}
+Zhihao Wu, Giulia Menichetti, Christoph Rahmede, and Ginestra Bianconi.
+\newblock Emergent complex network geometry.
+\newblock {\em Scientific reports}, 5:10073, 2015.
 
 \end{thebibliography}
