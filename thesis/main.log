@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  15 AUG 2019 23:13
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  16 AUG 2019 00:17
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1429,10 +1429,10 @@ Package: longtable 2014/10/28 v4.11 Multi-page Table package (DPC)
 Package hyperref Info: Option `colorlinks' set `true' on input line 36.
 ) (./main.aux (./frontmatter/titlepage.aux)
 (./frontmatter/abstract.aux) (./frontmatter/laysummary.aux)
-(./frontmatter/acknowledgements.aux) (./frontmatter/dedication.aux)
-(./frontmatter/nomenclature.aux) (./introduction.aux) (./background.aux)
-(./correspondence.aux) (./further_properties.aux)
-(./algorithmic_implications.aux) (./conclusion.aux) (./appendix.aux))
+(./frontmatter/acknowledgements.aux) (./frontmatter/nomenclature.aux)
+(./introduction.aux) (./background.aux) (./correspondence.aux)
+(./further_properties.aux) (./algorithmic_implications.aux) (./conclusion.aux)
+(./appendix.aux))
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 31.
@@ -1547,7 +1547,7 @@ File: block.tss 2016/03/15
 
 
 (./frontmatter/titlepage.tex
-<figures/oxford_logo.png, id=221, 116.1138pt x 138.7584pt>
+<figures/oxford_logo.png, id=216, 116.1138pt x 138.7584pt>
 File: figures/oxford_logo.png Graphic file (type png)
 
 <use figures/oxford_logo.png>
@@ -1586,38 +1586,32 @@ l.38 \include{frontmatter/abstract}
 
 
 
-]
-\openout2 = `frontmatter/dedication.aux'.
-
- (./frontmatter/dedication.tex)
-[4
-
-
-
 ] (./main.toc
 LaTeX Font Info:    Try loading font information for U+msa on input line 1.
- (/usr/local/texlive/2016/texmf-dist/tex/latex/amsfonts/umsa.fd
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
 LaTeX Font Info:    Try loading font information for U+msb on input line 1.
+
 (/usr/local/texlive/2016/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) [5
+) [4
 
 
 ])
 \tf@toc=\write4
 \openout4 = `main.toc'.
 
- [6]
-(./main.lof [7
+ [5]
+(./main.lof [6
 
 
 ])
 \tf@lof=\write5
 \openout5 = `main.lof'.
 
- [8]
+ [7]
 \openout2 = `frontmatter/nomenclature.aux'.
 
  (./frontmatter/nomenclature.tex
@@ -1625,14 +1619,14 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 \groupsep=\skip76
 \headingsep=\skip77
 \descsep=\skip78
- [9
+ [8
 
 
 ]
 
-LaTeX Warning: Reference `eq:pnorm' on page x undefined on input line 78.
+LaTeX Warning: Reference `eq:pnorm' on page ix undefined on input line 78.
 
-) [10]
+) [9]
 \openout2 = `introduction.aux'.
 
  (./introduction.tex
@@ -1649,7 +1643,7 @@ File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 LaTeX Font Info:    Font shape `OMS/cmr/bx/n' in size <10.95> not available
 (Font)              Font shape `OMS/cmsy/b/n' tried instead on input line 21.
  [2]
-<figures/correspondence.png, id=521, 898.35625pt x 335.2525pt>
+<figures/correspondence.png, id=510, 898.35625pt x 335.2525pt>
 File: figures/correspondence.png Graphic file (type png)
 
 <use figures/correspondence.png>
@@ -1658,7 +1652,7 @@ Package pdftex.def Info: figures/correspondence.png used on input line 55.
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 66.
  [3]
-<figures/property_triangle.png, id=558, 330.23375pt x 187.70125pt>
+<figures/property_triangle.png, id=548, 330.23375pt x 187.70125pt>
 File: figures/property_triangle.png Graphic file (type png)
 
 <use figures/property_triangle.png>
@@ -1679,7 +1673,7 @@ LaTeX Font Info:    Try loading font information for U+euf on input line 285.
 (/usr/local/texlive/2016/texmf-dist/tex/latex/amsfonts/ueuf.fd
 File: ueuf.fd 2013/01/14 v3.01 Euler Fraktur
 ) [14] [15]
-<../figures/simplices.png, id=727, 420.57124pt x 155.58125pt>
+<../figures/simplices.png, id=717, 420.57124pt x 155.58125pt>
 File: ../figures/simplices.png Graphic file (type png)
 
 <use ../figures/simplices.png>
@@ -1690,7 +1684,7 @@ Overfull \hbox (40.95638pt too wide) in paragraph at lines 354--355
 [][] 
  []
 
-<figures/affine_independence.png, id=728, 295.1025pt x 125.46875pt>
+<figures/affine_independence.png, id=718, 295.1025pt x 125.46875pt>
 File: figures/affine_independence.png Graphic file (type png)
 
 <use figures/affine_independence.png>
@@ -1707,20 +1701,20 @@ s $[][]\OML/cmm/m/it/10.95 ; [] ; [][]$\OT1/cmr/m/n/10.95 .
  []
 
 [16 <../figures/simplices.png> <./figures/affine_independence.png>] [17]
-<figures/altitudes.png, id=744, 323.2075pt x 206.7725pt>
+<figures/altitudes.png, id=734, 323.2075pt x 206.7725pt>
 File: figures/altitudes.png Graphic file (type png)
 
 <use figures/altitudes.png>
 Package pdftex.def Info: figures/altitudes.png used on input line 424.
 (pdftex.def)             Requested size: 161.60335pt x 103.38599pt.
 
-<figures/faces.png, id=745, 303.1325pt x 197.73875pt>
+<figures/faces.png, id=735, 303.1325pt x 197.73875pt>
 File: figures/faces.png Graphic file (type png)
  <use figures/faces.png>
 Package pdftex.def Info: figures/faces.png used on input line 431.
 (pdftex.def)             Requested size: 151.56587pt x 98.86913pt.
 
-<figures/dual_simplex.png, id=746, 602.25pt x 312.16624pt>
+<figures/dual_simplex.png, id=736, 602.25pt x 312.16624pt>
 File: figures/dual_simplex.png Graphic file (type png)
 
 <use figures/dual_simplex.png>
@@ -1728,7 +1722,7 @@ Package pdftex.def Info: figures/dual_simplex.png used on input line 463.
 (pdftex.def)             Requested size: 240.89572pt x 124.86427pt.
  [18 <./figures/altitudes.png> <./figures/faces.png>] [19 <./figures/dual_simpl
 ex.png>] [20]
-<figures/angles.png, id=775, 634.37pt x 496.85625pt>
+<figures/angles.png, id=764, 634.37pt x 496.85625pt>
 File: figures/angles.png Graphic file (type png)
  <use figures/angles.png>
 Package pdftex.def Info: figures/angles.png used on input line 543.
@@ -1744,13 +1738,13 @@ Chapter 3.
 
 
 ] [23] [24] [25] [26] [27] [28] [29]
-<figures/GandH.png, id=854, 367.3725pt x 283.0575pt>
+<figures/GandH.png, id=844, 367.3725pt x 283.0575pt>
 File: figures/GandH.png Graphic file (type png)
  <use figures/GandH.png>
 Package pdftex.def Info: figures/GandH.png used on input line 293.
 (pdftex.def)             Requested size: 110.21259pt x 84.9179pt.
 
-<figures/GxH.png, id=855, 438.63875pt x 318.18875pt>
+<figures/GxH.png, id=845, 438.63875pt x 318.18875pt>
 File: figures/GxH.png Graphic file (type png)
  <use figures/GxH.png>
 Package pdftex.def Info: figures/GxH.png used on input line 298.
@@ -1764,7 +1758,7 @@ $\OML/cmm/m/it/10.95 n \OMS/cmsy/m/n/10.95 2 \U/msb/m/n/10.95 N$\OT1/cmr/m/n/10
  sim-plex $[] = [](\OMS/cmsy/m/n/10.95 f[][]g[] [
  []
 
-[32] [33] [34] <figures/HI_plane.png, id=906, 232.87pt x 368.37625pt>
+[32] [33] [34] <figures/HI_plane.png, id=896, 232.87pt x 368.37625pt>
 File: figures/HI_plane.png Graphic file (type png)
 
 <use figures/HI_plane.png>
@@ -1772,14 +1766,14 @@ Package pdftex.def Info: figures/HI_plane.png used on input line 480.
 (pdftex.def)             Requested size: 116.43471pt x 184.18767pt.
  [35 <./figures/HI_plane.png>] [36] [37] [38]
 [39] [40] [41] [42] [43]
-<figures/Hin_plane.png, id=1010, 338.26375pt x 490.83376pt>
+<figures/Hin_plane.png, id=1000, 338.26375pt x 490.83376pt>
 File: figures/Hin_plane.png Graphic file (type png)
 
 <use figures/Hin_plane.png>
 Package pdftex.def Info: figures/Hin_plane.png used on input line 803.
 (pdftex.def)             Requested size: 101.4799pt x 147.25125pt.
 
-<figures/Hin_plane2.png, id=1011, 250.9375pt x 248.93pt>
+<figures/Hin_plane2.png, id=1001, 250.9375pt x 248.93pt>
 File: figures/Hin_plane2.png Graphic file (type png)
 
 <use figures/Hin_plane2.png>
@@ -1795,32 +1789,32 @@ Chapter 4.
 
 
 ] [49] [50] [51] [52] [53] [54] [55] [56] [57] [58] [59]
-<figures/res_embedding.png, id=1210, 467.7475pt x 182.6825pt>
+<figures/res_embedding.png, id=1200, 467.7475pt x 182.6825pt>
 File: figures/res_embedding.png Graphic file (type png)
 
 <use figures/res_embedding.png>
-Package pdftex.def Info: figures/res_embedding.png used on input line 536.
+Package pdftex.def Info: figures/res_embedding.png used on input line 534.
 (pdftex.def)             Requested size: 233.87317pt x 91.34102pt.
  [60 <./figures/res_embedding.png>] [61]
-[62] <figures/dynamics1.png, id=1236, 185.0112pt x 146.34676pt>
+[62] <figures/dynamics1.png, id=1225, 185.0112pt x 146.34676pt>
 File: figures/dynamics1.png Graphic file (type png)
 
 <use figures/dynamics1.png>
-Package pdftex.def Info: figures/dynamics1.png used on input line 629.
+Package pdftex.def Info: figures/dynamics1.png used on input line 627.
 (pdftex.def)             Requested size: 111.00757pt x 87.80872pt.
 
-<figures/dynamics3.png, id=1237, 355.5684pt x 287.27325pt>
+<figures/dynamics3.png, id=1226, 355.5684pt x 287.27325pt>
 File: figures/dynamics3.png Graphic file (type png)
 
 <use figures/dynamics3.png>
-Package pdftex.def Info: figures/dynamics3.png used on input line 634.
+Package pdftex.def Info: figures/dynamics3.png used on input line 632.
 (pdftex.def)             Requested size: 142.22482pt x 114.90726pt.
 
-<figures/dynamics2.png, id=1238, 214.6419pt x 179.2296pt>
+<figures/dynamics2.png, id=1227, 214.6419pt x 179.2296pt>
 File: figures/dynamics2.png Graphic file (type png)
 
 <use figures/dynamics2.png>
-Package pdftex.def Info: figures/dynamics2.png used on input line 639.
+Package pdftex.def Info: figures/dynamics2.png used on input line 637.
 (pdftex.def)             Requested size: 128.78613pt x 107.53857pt.
  [63 <./figures/dynamics1.png> <./figures/dynamics3.png> <./figures/dynamics2.p
 ng>]) [64]
@@ -1832,27 +1826,27 @@ Chapter 5.
 
 
 
-] [66] <figures/NP_diagram.png, id=1273, 843.15pt x 493.845pt>
+] [66] <figures/NP_diagram.png, id=1263, 843.15pt x 493.845pt>
 File: figures/NP_diagram.png Graphic file (type png)
 
 <use figures/NP_diagram.png>
 Package pdftex.def Info: figures/NP_diagram.png used on input line 39.
 (pdftex.def)             Requested size: 236.08038pt x 138.27565pt.
  [67 <./figures/NP_diagram.png>]
-<figures/graph.png, id=1284, 227.85126pt x 180.675pt>
+<figures/graph.png, id=1274, 227.85126pt x 180.675pt>
 File: figures/graph.png Graphic file (type png)
  <use figures/graph.png>
 Package pdftex.def Info: figures/graph.png used on input line 81.
 (pdftex.def)             Requested size: 91.13889pt x 72.2687pt.
 
-<figures/independent_sets.png, id=1285, 227.85126pt x 180.675pt>
+<figures/independent_sets.png, id=1275, 227.85126pt x 180.675pt>
 File: figures/independent_sets.png Graphic file (type png)
 
 <use figures/independent_sets.png>
 Package pdftex.def Info: figures/independent_sets.png used on input line 86.
 (pdftex.def)             Requested size: 91.13889pt x 72.2687pt.
 
-<figures/cliques.png, id=1286, 227.85126pt x 180.675pt>
+<figures/cliques.png, id=1276, 227.85126pt x 180.675pt>
 File: figures/cliques.png Graphic file (type png)
 
 <use figures/cliques.png>
@@ -1865,47 +1859,47 @@ ques.png>] [70] [71] [72] [73] [74] [75] [76] [77]
 
  (./conclusion.tex
 Chapter 6.
-) [84
+[84
 
 
 
-] (./main.bbl
+]) [85] (./main.bbl
 Missing character: There is no â in font cmr10!
 Missing character: There is no € in font cmr10!
 Missing character: There is no ” in font cmr10!
- [85
+ [86
 
 
-] [86] [87] [88]) [89]
+] [87] [88] [89]) [90]
 \openout2 = `appendix.aux'.
 
  (./appendix.tex
 Appendix A.
-[90
+[91
 
 
-] [91] [92] [93] [94] [95] [96]
+] [92] [93] [94] [95] [96] [97]
 
-LaTeX Warning: Reference `lem:]ineq_f1' on page 97 undefined on input line 237.
+LaTeX Warning: Reference `lem:]ineq_f1' on page 98 undefined on input line 237.
 
 
-[97] [98] [99]
+[98] [99] [100]
 Appendix B.
-[100
+[101
 
-]) [101]
+]) [102]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 74.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 74.
  (./main.aux (./frontmatter/titlepage.aux)
 (./frontmatter/abstract.aux) (./frontmatter/laysummary.aux)
-(./frontmatter/acknowledgements.aux) (./frontmatter/dedication.aux)
-(./frontmatter/nomenclature.aux) (./introduction.aux) (./background.aux)
-(./correspondence.aux) (./further_properties.aux)
-(./algorithmic_implications.aux) (./conclusion.aux) (./appendix.aux))
+(./frontmatter/acknowledgements.aux) (./frontmatter/nomenclature.aux)
+(./introduction.aux) (./background.aux) (./correspondence.aux)
+(./further_properties.aux) (./algorithmic_implications.aux) (./conclusion.aux)
+(./appendix.aux))
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 74.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 74.
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: E1BD8F373E5FEA5963634BA7CA8A7807;3596.
+(rerunfilecheck)             Checksum: 4477ED9C4BCD87F7D7B9F2D3049976C0;3553.
 
 
 LaTeX Warning: There were undefined references.
@@ -1913,10 +1907,10 @@ LaTeX Warning: There were undefined references.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 74.
  ) 
 Here is how much of TeX's memory you used:
- 18088 strings out of 493014
- 305172 string characters out of 6133351
- 408797 words of memory out of 5000000
- 20855 multiletter control sequences out of 15000+600000
+ 18078 strings out of 493014
+ 304979 string characters out of 6133351
+ 408352 words of memory out of 5000000
+ 20853 multiletter control sequences out of 15000+600000
  21331 words of font info for 78 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  42i,21n,43p,10398b,501s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1953,10 +1947,10 @@ ve/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive
 /texmf-dist/fonts/type1/public/amsfonts/euler/eufm10.pfb></usr/local/texlive/20
 16/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texliv
 e/2016/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on main.pdf (112 pages, 1157295 bytes).
+Output written on main.pdf (112 pages, 1159481 bytes).
 PDF statistics:
  1776 PDF objects out of 2073 (max. 8388607)
  1576 compressed objects within 16 object streams
- 463 named destinations out of 1000 (max. 500000)
- 543 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 462 named destinations out of 1000 (max. 500000)
+ 535 words of extra memory for PDF output out of 10000 (max. 10000000)
 

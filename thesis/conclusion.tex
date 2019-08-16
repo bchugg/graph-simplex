@@ -5,17 +5,30 @@
 \chapterquote{One must imagine Sisyphus happy.}{Albert Camus, The Myth of Sisyphus.}
 
 
-This dissertation has expounded  and  expanded upon the graph-simplex correspondence, a mapping  between graphs and simplices  first uncovered by Miroslav Fiedler. 
-We expanded upon his results in various ways. First, we extended the correspondence to the normalized Laplacian, rather than simply the combinatorial Laplacian. We investigated  the properties of the simplices given by the normalized Laplacian 
+This dissertation has expounded  and  expanded upon the graph-simplex correspondence, which associates with each connected, weighted graph $G$ four simplices: $\splx_G$, $\splx_G^+$ (the combinatorial simplices), $\splxn_G$, and $\splxn_G^+$ (the normalized simplices).  
+Presenting and building on  the previous work of Fiedler~\cite{fiedler1993geometric,fiedler2011matrices} and Devriendt and Van Mieghem~\cite{devriendt2018simplex}, we have seen the synthesis of the geometry of these  simplices with properties of the graph. In particular, we have seen that 
+\begin{enumerate}
+	\item The geometry of $\splx_G$ is closely related to  the connectivity of $G$, the geometry of  $\splx_G^+$ is related the effective resistance of $G$, while its volume is inversely proportional to the total weight of spanning trees  in $G$; 
+	\item The dual simplex of $\splx_G$ is $\splx_G^+$, while the  dual of $\splxn_G$ is, in general, distinct from $\splxn_G^+$; 
+	\item Matrix equations can  be used to relate the graph to the  simplex,  thus yielding new insights into  both objects.  
+\end{enumerate}
 
+We also explored the  algorithmic underpinnings  of  the correspondence, and established that 
+\begin{enumerate}
+	\item[4.] transitioning between various objects in the correspondence (exactly) typically takes cubic time; 
+	\item[5.] the correspondence can be used to help classify the computational complexity of geometric problems; and 
+	\item[6.] There exist low dimensional  approximations  to the simplices which approximately maintain their Gram matrix relations, and low rank  approximations to the Laplacian  which yield low dimensional polytopes which approximate the geometry  of $\splx_G$ and $\splx_G^+$. 
+\end{enumerate}
+The main goal,  however,  was not to achieve any particular results but rather to demonstrate the utility of  the graph-simplex correspondence as  a tool with which  to  analyze  graphs. We hope we have succeeded in our role as evangelist and  convinced the reader to include the correspondence in their mathematical toolkit. We end  by listing several possible directions for future work. 
 
 \section{Open Problems and Future Directions}
 \label{sec:open_problems}
 
 We believe there are several exciting  avenues for further  research. 
-\begin{enumerate}
+\begin{itemize}
 	\item In Section~\ref{sec:algorithmics_complexity} we gave several  examples of how various graph  theoretic problems translate to the simplex and vice  versa, and examined what implications this had for computational complexity. Due to time and space constraints we were unable to fully explore this area; and it seems likely that we have left many  results untapped.  For example, we mostly explored how specific \NP-complete graph problems translated to \NP-complete polyhedral problems. It could be fruitful to explore the converse. More importantly for possible applications, problems which are easy (meaning, solvable in polynomial time) in one domain may have analogues  in the other, which would result in new polynomial  time  algorithms. 
-	\item Embedding the approximate distance matrix
-	\item Generating an explicit equation for the dual of $\splxn_G$ and $\splx_G^+$. 
-\end{enumerate}
+	\item While  we gave implicit conditions on the  dual of $\splxn_G$ and $\splxn_G^+$, we were unable to give their explicit equations. It  would be desirable to discover what these are.   
+	\item In Section~\ref{sec:algorithmics_distance_matrix} it was noted that the distance matrix of $\splx_G^+$ can be approximated. It would  be interesting to explore whether  it's possible to  use this to generate an  approximate embedding of $\splx_G^+$. The connection between  $\splx_G^+$  and the resistive polytope  (Section~\ref{sec:resistive_polytope}) might be of use here. 
+	\item Section~\ref{sec:block_matrix} deals  mostly with block equations  concerning the normalized simplex $\splx_G$ and  Laplacian $\L_G$. It could be fruitful to explore whether similar  equations  hold for the other simplices. 
+\end{itemize}
 

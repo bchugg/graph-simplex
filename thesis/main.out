@@ -1,54 +1,53 @@
 \BOOKMARK [1][-]{chapter*.2}{Abstract}{}% 1
 \BOOKMARK [1][-]{chapter*.3}{Lay Summary}{}% 2
 \BOOKMARK [1][-]{chapter*.4}{Acknowledgements}{}% 3
-\BOOKMARK [1][-]{chapter*.5}{Dedication}{}% 4
-\BOOKMARK [1][-]{section*.7}{List of Figures}{}% 5
-\BOOKMARK [1][-]{chapter*.9}{Nomenclature}{}% 6
-\BOOKMARK [0][-]{chapter.1}{Introduction}{}% 7
-\BOOKMARK [1][-]{section.1.1}{Prior Work}{chapter.1}% 8
-\BOOKMARK [1][-]{section.1.2}{Contribution}{chapter.1}% 9
-\BOOKMARK [1][-]{section.1.3}{Organization}{chapter.1}% 10
-\BOOKMARK [0][-]{chapter.2}{Background and Fundamentals}{}% 11
-\BOOKMARK [1][-]{section.2.1}{General Notation}{chapter.2}% 12
-\BOOKMARK [1][-]{section.2.2}{Linear Algebra}{chapter.2}% 13
-\BOOKMARK [2][-]{subsection.2.2.1}{Pseudoinverse}{section.2.2}% 14
-\BOOKMARK [1][-]{section.2.3}{Spectral Graph Theory}{chapter.2}% 15
-\BOOKMARK [2][-]{subsection.2.3.1}{Laplacian Matrices}{section.2.3}% 16
-\BOOKMARK [1][-]{section.2.4}{Electrical Flows}{chapter.2}% 17
-\BOOKMARK [1][-]{section.2.5}{Simplices}{chapter.2}% 18
-\BOOKMARK [2][-]{subsection.2.5.1}{Dual Simplex}{section.2.5}% 19
-\BOOKMARK [2][-]{subsection.2.5.2}{Angles in a Simplex}{section.2.5}% 20
-\BOOKMARK [0][-]{chapter.3}{The Graph-Simplex Correspondence}{}% 21
-\BOOKMARK [1][-]{section.3.1}{Convex Polyhedra of Matrices}{chapter.3}% 22
-\BOOKMARK [2][-]{subsection.3.1.1}{The Inverse Polytope}{section.3.1}% 23
-\BOOKMARK [1][-]{section.3.2}{A Bijection Between Graphs and Simplices}{chapter.3}% 24
-\BOOKMARK [2][-]{subsection.3.2.1}{The Simplices of a Graph}{section.3.2}% 25
-\BOOKMARK [2][-]{subsection.3.2.2}{The Graph of a Simplex}{section.3.2}% 26
-\BOOKMARK [1][-]{section.3.3}{Examples \046 Simplices of Special Graphs}{chapter.3}% 27
-\BOOKMARK [2][-]{subsection.3.3.1}{Examples}{section.3.3}% 28
-\BOOKMARK [1][-]{section.3.4}{Properties of the Combinatorial Simplex and its inverse}{chapter.3}% 29
-\BOOKMARK [1][-]{section.3.5}{Properties of the normalized Simplex and and its inverse}{chapter.3}% 30
-\BOOKMARK [0][-]{chapter.4}{Further Properties of the Correspondence}{}% 31
-\BOOKMARK [1][-]{section.4.1}{Block Matrix Equations}{chapter.4}% 32
-\BOOKMARK [1][-]{section.4.2}{Inequalities}{chapter.4}% 33
-\BOOKMARK [1][-]{section.4.3}{Quadrics}{chapter.4}% 34
-\BOOKMARK [1][-]{section.4.4}{Resistive Polytope}{chapter.4}% 35
-\BOOKMARK [1][-]{section.4.5}{Effective Resistance \046 Dynamics}{chapter.4}% 36
-\BOOKMARK [2][-]{subsection.4.5.1}{Continuous Time Random Walks}{section.4.5}% 37
-\BOOKMARK [0][-]{chapter.5}{Algorithmics}{}% 38
-\BOOKMARK [1][-]{section.5.1}{Preliminaries}{chapter.5}% 39
-\BOOKMARK [1][-]{section.5.2}{Computational Complexity}{chapter.5}% 40
-\BOOKMARK [1][-]{section.5.3}{There and Back Again: A Tale of Graphs and Simplices}{chapter.5}% 41
-\BOOKMARK [1][-]{section.5.4}{Approximations}{chapter.5}% 42
-\BOOKMARK [2][-]{subsection.5.4.1}{Dimensionality Reduction: the inverse simplex}{section.5.4}% 43
-\BOOKMARK [2][-]{subsection.5.4.2}{Dimensionality Reduction: the Laplacian}{section.5.4}% 44
-\BOOKMARK [2][-]{subsection.5.4.3}{Distance Matrix of the inverse combinatorial simplex}{section.5.4}% 45
-\BOOKMARK [0][-]{chapter.6}{Conclusion}{}% 46
-\BOOKMARK [1][-]{section.6.1}{Open Problems and Future Directions}{chapter.6}% 47
-\BOOKMARK [0][-]{Item.20}{Bibliography}{}% 48
-\BOOKMARK [0][-]{chapter*.29}{Appendix}{}% 49
-\BOOKMARK [0][-]{appendix.A}{Omitted Proofs}{}% 50
-\BOOKMARK [1][-]{section.A.1}{Chapter 2}{appendix.A}% 51
-\BOOKMARK [1][-]{section.A.2}{Chapter 3}{appendix.A}% 52
-\BOOKMARK [1][-]{section.A.3}{Chapter 4}{appendix.A}% 53
-\BOOKMARK [0][-]{appendix.B}{Effective Resistance}{}% 54
+\BOOKMARK [1][-]{section*.6}{List of Figures}{}% 4
+\BOOKMARK [1][-]{chapter*.8}{Nomenclature}{}% 5
+\BOOKMARK [0][-]{chapter.1}{Introduction}{}% 6
+\BOOKMARK [1][-]{section.1.1}{Prior Work}{chapter.1}% 7
+\BOOKMARK [1][-]{section.1.2}{Contribution}{chapter.1}% 8
+\BOOKMARK [1][-]{section.1.3}{Organization}{chapter.1}% 9
+\BOOKMARK [0][-]{chapter.2}{Background and Fundamentals}{}% 10
+\BOOKMARK [1][-]{section.2.1}{General Notation}{chapter.2}% 11
+\BOOKMARK [1][-]{section.2.2}{Linear Algebra}{chapter.2}% 12
+\BOOKMARK [2][-]{subsection.2.2.1}{Pseudoinverse}{section.2.2}% 13
+\BOOKMARK [1][-]{section.2.3}{Spectral Graph Theory}{chapter.2}% 14
+\BOOKMARK [2][-]{subsection.2.3.1}{Laplacian Matrices}{section.2.3}% 15
+\BOOKMARK [1][-]{section.2.4}{Electrical Flows}{chapter.2}% 16
+\BOOKMARK [1][-]{section.2.5}{Simplices}{chapter.2}% 17
+\BOOKMARK [2][-]{subsection.2.5.1}{Dual Simplex}{section.2.5}% 18
+\BOOKMARK [2][-]{subsection.2.5.2}{Angles in a Simplex}{section.2.5}% 19
+\BOOKMARK [0][-]{chapter.3}{The Graph-Simplex Correspondence}{}% 20
+\BOOKMARK [1][-]{section.3.1}{Convex Polyhedra of Matrices}{chapter.3}% 21
+\BOOKMARK [2][-]{subsection.3.1.1}{The Inverse Polytope}{section.3.1}% 22
+\BOOKMARK [1][-]{section.3.2}{A Bijection Between Graphs and Simplices}{chapter.3}% 23
+\BOOKMARK [2][-]{subsection.3.2.1}{The Simplices of a Graph}{section.3.2}% 24
+\BOOKMARK [2][-]{subsection.3.2.2}{The Graph of a Simplex}{section.3.2}% 25
+\BOOKMARK [1][-]{section.3.3}{Examples \046 Simplices of Special Graphs}{chapter.3}% 26
+\BOOKMARK [2][-]{subsection.3.3.1}{Examples}{section.3.3}% 27
+\BOOKMARK [1][-]{section.3.4}{Properties of the Combinatorial Simplex and its inverse}{chapter.3}% 28
+\BOOKMARK [1][-]{section.3.5}{Properties of the normalized Simplex and and its inverse}{chapter.3}% 29
+\BOOKMARK [0][-]{chapter.4}{Further Properties of the Correspondence}{}% 30
+\BOOKMARK [1][-]{section.4.1}{Block Matrix Equations}{chapter.4}% 31
+\BOOKMARK [1][-]{section.4.2}{Inequalities}{chapter.4}% 32
+\BOOKMARK [1][-]{section.4.3}{Quadrics}{chapter.4}% 33
+\BOOKMARK [1][-]{section.4.4}{Resistive Polytope}{chapter.4}% 34
+\BOOKMARK [1][-]{section.4.5}{Effective Resistance \046 Dynamics}{chapter.4}% 35
+\BOOKMARK [2][-]{subsection.4.5.1}{Continuous Time Random Walks}{section.4.5}% 36
+\BOOKMARK [0][-]{chapter.5}{Algorithmics}{}% 37
+\BOOKMARK [1][-]{section.5.1}{Preliminaries}{chapter.5}% 38
+\BOOKMARK [1][-]{section.5.2}{Computational Complexity}{chapter.5}% 39
+\BOOKMARK [1][-]{section.5.3}{There and Back Again: A Tale of Graphs and Simplices}{chapter.5}% 40
+\BOOKMARK [1][-]{section.5.4}{Approximations}{chapter.5}% 41
+\BOOKMARK [2][-]{subsection.5.4.1}{Dimensionality Reduction: the inverse simplex}{section.5.4}% 42
+\BOOKMARK [2][-]{subsection.5.4.2}{Dimensionality Reduction: the Laplacian}{section.5.4}% 43
+\BOOKMARK [2][-]{subsection.5.4.3}{Distance Matrix of the inverse combinatorial simplex}{section.5.4}% 44
+\BOOKMARK [0][-]{chapter.6}{Conclusion}{}% 45
+\BOOKMARK [1][-]{section.6.1}{Open Problems and Future Directions}{chapter.6}% 46
+\BOOKMARK [0][-]{section.6.1}{Bibliography}{}% 47
+\BOOKMARK [0][-]{chapter*.28}{Appendix}{}% 48
+\BOOKMARK [0][-]{appendix.A}{Omitted Proofs}{}% 49
+\BOOKMARK [1][-]{section.A.1}{Chapter 2}{appendix.A}% 50
+\BOOKMARK [1][-]{section.A.2}{Chapter 3}{appendix.A}% 51
+\BOOKMARK [1][-]{section.A.3}{Chapter 4}{appendix.A}% 52
+\BOOKMARK [0][-]{appendix.B}{Effective Resistance}{}% 53
