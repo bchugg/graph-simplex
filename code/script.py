@@ -6,7 +6,8 @@ import matplotlib.pyplot as plt
 
 
 
-d = 2
+d = 3
+dynamics = False
 
 if d == 2: 
 	G = nx.Graph()
@@ -18,7 +19,9 @@ if d == 2:
 	#G = nx.complete_graph(3)
 	evals,evecs = laplacian_decomposition(G)
 	S, Sinv = simplex_vertices(evals, evecs)
-	f = plot_simplex([S],2, ['k'])
+	evalsn, evecsn = laplacian_decomposition(G,True)
+	Sn, Sinvn = simplex_vertices(evalsn, evecsn)
+	f = plot_simplex([S,Sn],2, ['b','g'])
 
 	#c = centroid(S)
 	#print(c)
@@ -34,13 +37,17 @@ elif d== 3:
 	G = nx.Graph()
 	G.add_nodes_from(range(1,4))
 	G.add_edge(1,2)
+	#G.add_edge(1,3)
 	G.add_edge(2,3)
 	G.add_edge(3,4)
-	G.add_edge(4,2)
-	G = nx.complete_graph(4)
-	evals,evecs = laplacian_decomposition(G, True)
+	#G.add_edge(4,2)
+	G.add_edge(1,4)
+	#G = nx.complete_graph(4)
+	evals,evecs = laplacian_decomposition(G)
 	S, Sinv = simplex_vertices(evals, evecs)
-	f = plot_simplex([S],3, ['k'])
+	evalsn, evecsn = laplacian_decomposition(G,True)
+	Sn, Sinvn = simplex_vertices(evalsn, evecsn)
+	f = plot_simplex([Sinv,Sinvn],3, ['r','y'])
 	
 	inits = [[1,0,0,0],
 			 [0,1,0,1],
@@ -51,18 +58,19 @@ elif d== 3:
 
 iters = 100
 #styles = ['r.', 'b.', 'g.', 'y.']
-for i,x in enumerate(inits): 
-	s = sum(x)
-	x0 = list(map(lambda i: i/float(s), x))
-	x = ctrw(G, x0, iters)
-	print(x)
-	f = plot_rw(x[::1,:], S, f)
+if dynamics: 
+	for i,x in enumerate(inits): 
+		s = sum(x)
+		x0 = list(map(lambda i: i/float(s), x))
+		x = ctrw(G, x0, iters)
+		print(x)
+		f = plot_rw(x[::1,:], S, f)
 
 
 #f.title('Simplex of K4')
 fig = plt.gcf()
 f.show()
-fig.savefig('../thesis/figures/dynamics4.png')
+fig.savefig('../thesis/figures/ex')
 
 
 #print('Centroid', centroid(S))

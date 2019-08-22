@@ -3,7 +3,73 @@
 
 \chapterquote{Everything is  funny,  if you can laugh at it.}{Lewis Carroll}
 
-The previous chapter introduced the graph-simplex correspondence and devoted several sections to the basic properties of the simplices associated to a given graph. In this chapter we  continue the study of the correspondence and present several of its more significant (but perhaps more complicated) properties.  
+The previous chapter introduced the graph-simplex correspondence and devoted several sections to the basic properties of the simplices associated to a given graph. In this chapter we  continue the study of the correspondence and present several of its more significant (but perhaps more complicated) properties.  We begin,  however, by demonstrating that  some of the interplay of properties between $\splx_G$ and $\splx_G^+$ generalizes to the dual simplex. 
+
+\section{General Properties of Dual Simplex }
+A natural thought  after  studying the pair of combinatorial simplices of a graph  is  to  wonder  how many of their properties  generalize to dual all pairs of dual simplices. In Section~\ref{sec:S_G} we used the properties of the Laplacian and  its  pseudoinverse to relate  the vertices of $\splx_G$ and $\splx_G^+$. Here we demonstrate that these relationships can be generalized. We begin with the vertices of an arbitrary simplex  and its  dual. 
+
+
+\begin{lemma}
+	\label{lem:dot_dual_vertices}
+	Let  $\ssplx\subset\R^{n-1}$ be any simplex, and $\ssplx^\du$ its dual, where $\Sv=\Sv(\ssplx)=(\bgamma_i)$ and $\Sv^\du=\Sv(\ssplx^\du)=(\bgamma^\du_i)$. 
+	For all $i,j\in[n]$, $\la \bgamma_i,\bgamma_j^\du\ra=\delta_{i,j}-1/n$. 
+\end{lemma}
+\begin{proof}
+	By definition of the dual simplex, for all $i,j\neq n$, $\la \bgamma_i,\bgamma^\du_j-\bgamma^\du_n\ra = \delta_{ij}$. Recalling that $\bgamma^\du_n=-\sum_{\ell<n}\bgamma^\du_\ell$, write 
+	\begin{align*}
+	\la \bgamma_i,\bgamma^\du_n\ra &= - \sum_{\ell<n}\la \bgamma_i,\bgamma^\du_\ell\ra 
+	= -\sum_{\ell<n} \delta_{i,\ell} + \la \bgamma_i,\bgamma^\du_n\ra 
+	= -1 - (n-1)\la\bgamma_i,\bgamma^\du_n\ra.
+	\end{align*}
+	Rearranging the above yields $\la \bgamma_i,\bgamma_j^\du\ra = -1/n$. Therefore, $\la \bgamma_i,\bgamma^\du_j\ra = \delta_{ij} - 1/n$. It remains to show that $\la\bgamma_n,\bgamma^\du_n\ra=1-1/n$. Proceeding as above, we have 
+	\begin{align*}
+	\la\bgamma_n,\bgamma^\du_n\ra &= -\sum_{\ell<n}\la \bgamma,\bgamma^\du_\ell\ra = -\sum_{\ell<n} \frac{-1}{n} = \frac{n-1}{n}.\qedhere
+	\end{align*}
+\end{proof}
+
+As we explained in Section~\ref{sec:Sn_G}, crucial to many of the proofs pertaining to  the combinatorial  simplices is the fact that $\L_G\L_G^+=\L_G^+\L_G=\I-\J/n$. We now demonstrate that this property can be  extended  to arbitrary (centred)  simplices, as follows.
+
+
+
+  
+
+\begin{lemma}
+	\label{lem:dual_pseudoinverse}
+	Let $\ssplx\subset\R^{n-1}$ be an arbitrary centred  simplex, and $\ssplx^\du$ its dual. Put $\Sv=\Sv(\ssplx)=(\bgamma_i)$ and $\Sv^\du=\Sv(\ssplx)=(\bgamma_i^\du)$ as usual. Then $\Sv^\du\Sv^\tp = \Sv(\Sv^\du)^\tp=\I$ and $(\Sv^\du)^\tp\Sv^\du$ is the Moore-Penrose pseudoinverse of $\Sv^\tp\Sv$. 
+\end{lemma}
+\begin{proof}
+	First we inquire into the relationship between $\Sv$ and $\Sv^\du$. Put $\M=(\bgamma_1-\bgamma_n,\dots,\bgamma_{n-1}-\bgamma_n)$ and $\Q = (\bgamma^\du_1,\dots,\bgamma_{n-1}^\du)$. By definition, $\{\bgamma_i^\du\}$ is the dual  basis to $\{\bgamma_i-\bgamma_n\}$. Thus, by Observation~\ref{obs:bi-orthogonal_unique}, $\Q^\tp=\M^{-1}$ (we are working in $\R^{n-1}$), so  $\M\Q^\tp=I$. The $(i,j)$-th component of this matrix product can therefore be expressed as 
+	\begin{align}
+	\delta_{ij} = \M\Q^\tp(i,j) &= \sum_{\ell=1}^{n-1} (\bgamma_\ell(i) - \bgamma_n(i))\bgamma_\ell^\du(j) = \delta_{ij}= \sum_{\ell=1}^{n-1} \bgamma_\ell(i)\bgamma^\du_\ell(j) - \bgamma_n(i)\sum_{\ell=1}^{n-1}\bgamma^\du_\ell(j).\label{eq:lem_dual_pseudoinverse1}
+	\end{align}
+	Now,  since $\ssplx^\du$ is centred, 
+	\begin{equation*}
+	0=	(\Sv^\du\one)(j) = \sum_{\ell\in[n]} \bgamma_\ell^\du(j),
+	\end{equation*}
+	implying that $\sum_{\ell=1}^{n-1}\bgamma_\ell^\du(j) = - \bgamma_n^\du(j)$. Equation~\eqref{eq:lem_dual_pseudoinverse1} can then be written as 
+	$
+	\sum_{\ell=1}^{n} \bgamma_\ell(i)\bgamma_\ell^\du(j)=\delta_{ij},
+	$
+	implying that the components of $\Sv^\du\Sv^\tp$ are
+	\begin{align*}
+	(\Sv^\du\Sv^\tp)(i,j) &= \sum_{\ell=1}^n \bgamma_\ell^\du(i)\bgamma_\ell(j)=\delta_{ij},
+	\end{align*}
+	so that $\Sv^\du\Sv^\tp=I$. A similar argument  holds for $\Sv(\Sv^\du)^\tp$, \emph{mutatis mutandis}.  
+	
+	We now proceed to demonstrating the pseudoinverse relation between $\Sv^\tp\Sv$ and $(\Sv^\du)^\tp\Sv^\du$. Recall that to demonstrate that  a matrix $\B_1$ is the pseudoinverse of $\B_2$, we need  to show that (i) $\B_1\B_2\B_1=\B_1$, (ii) $\B_2\B_1\B_2=\B_2$, (iii) $(\B_1\B_2)^\tp = \B_1\B_2$ and  (iv)  $(\B_2\B_1)^\tp = \B_2\B_1$ (Definition~\ref{def:simplex}). Using the relationship between  $\Sv^\du$ and  $\Sv$ given above, these become simple computations. For instance, 
+	\begin{equation*}
+	\Sv^\tp\Sv(\Sv^\du)^\tp\Sv^\du\Sv^\tp\Sv = \Sv^\tp \I^2 \Sv=\Sv^\tp\Sv,
+	\end{equation*}
+	and, 
+	\begin{align*}
+	((\Sv^\du)^\tp\Sv^\du \Sv^\tp\Sv)^\tp = ((\Sv^\du)^\tp\I\Sv)^\tp = \Sv^\tp\Sv^\du = \I-\frac{\J}{n} = (\Sv^\du)^\tp\Sv = (\Sv^\du)^\tp\I\Sv = (\Sv^\du)^\tp\Sv^\du\Sv^\tp\Sv.
+	\end{align*} 
+	Thus  conditions (i) and (iii) hold between $\Sv^\tp\Sv$ and  $(\Sv^\du)^\tp\Sv^\du$, and conditions (ii) and (iv) follow similarly. 
+\end{proof}
+
+
+
+Far from simply being an interesting but inconsequential phenomena of dual simplices, in the next section  we  will leverage these  relationships to prove useful block matrix equations pertaining both  to graphs and  simplices. Thus,  we again witness  the use of the graph-simplex correspondence in  generating new insights applicable to  both domains. 
 
 \section{Block Matrix Equations}
 \label{sec:block_matrix}
@@ -58,7 +124,7 @@ and $\bxi$ as
 \begin{align*}
 \bxi = \frac{1}{n}\Reff\one - \frac{1}{n^2} \one \one^\tp \Reff\one = \frac{1}{n}\Reff\one - \frac{1}{n^2} \J \Reff\one.
 \end{align*}
-Meanwhile, the dual simplex to $\ssplx$ is the simplex of the graph $G$, and hence obeys $\BGamma^\tp\BGamma=\L_G$. Consequently, letting $\u=\frac{1}{n}\Reff\one - \frac{1}{n^2} \J \Reff\one$, we can rewrite Equation \ref{eq:simplex_block_matrix} as the purely graph theoretic statement  
+Meanwhile, the dual simplex to $\ssplx$ is the simplex of the graph $G$, and hence obeys $\BGamma^\tp\BGamma=\L_G$. Consequently, letting $\u=\frac{1}{n}\Reff\one - \frac{1}{n^2} \J \Reff\one$, we can rewrite Equation~\eqref{eq:simplex_block_matrix} as the purely graph theoretic statement  
 \begin{equation}
 \label{eq:block_inverse_er}
 	-\frac{1}{2} \begin{pmatrix}
@@ -81,7 +147,7 @@ where, using that $\Reff=\bxi \one^\tp + \one \bxi^\tp -2\L_G^+$ and $\one^\tp\L
 \begin{align}
 \Reff\L_G = \one\bxi^\tp \L_G - 2\bigg(\I-\frac{1}{n}\J\bigg).\label{eq:lem_block_matrix2}
 \end{align}
-Equation \eqref{eq:lem_block_matrix} thus becomes 
+Equation~\eqref{eq:lem_block_matrix} thus becomes 
 \begin{align*}
 \frac{1}{n}\Reff\one -\frac{2}{n^2}R \one - \bigg(\I-\frac{1}{n}\J\bigg)\bxi &= \frac{1}{n}\Reff\one - \frac{2}{n^2}R\one - \bigg(\I-\frac{1}{n}\J\bigg)\bigg(\frac{1}{n}\Reff\one - \frac{1}{n^2}\J\Reff\one\bigg) \\
 &= -\frac{2}{n^2} R\one + \frac{1}{n^2}\Reff\one + \frac{1}{n^2}\J\Reff\one - \frac{1}{n^3}\J^2\Reff\one \\
@@ -126,6 +192,40 @@ We can combine  these two interpretations to obtain the following relationship b
 	\end{equation}
 	where $\u=\diag(\L_G^+(i,i))$. Moreover,  $\L_G\Reff_G\L_G=-2\L_G$ and for all $\x\in\spn(\one)^\perp$, $\Reff_G\L_G\Reff_G\x=-2\Reff_G\x$. 
 \end{corollary}
+
+\begin{lemma}
+	For any centred simplex $\ssplx\subset\R^{n-1}$  with distance matrix $\D_\ssplx$ and vertex  matrix $\Sv$, it holds  that $\D_\ssplx = \one\bxi^\tp + \bxi\one^\tp - 2\Sv^\tp\Sv$.
+\end{lemma}
+\begin{proof}
+	Fix  $k,\ell\in[n]$. We have 
+	\begin{equation*}
+	(\bxi\one^\tp)(k,\ell) = \frac{1}{n}\sum_j\norm{\bgamma_k-\bgamma_j}_2^2 - \bar{d},\quad (\one\bxi^\tp)(k,\ell) = \frac{1}{n}\sum_j\norm{\bgamma_\ell-\bgamma_j}_2^2 - \bar{d},\quad -2\Sv^\tp\Sv = -2\la \bgamma_k,\bgamma_\ell\ra.
+	\end{equation*}
+	Expanding the norm in terms of dot products yields 
+	\begin{align*}
+	(\bxi\one^\tp + \one\bxi^\tp - 2\Sv^\tp\Sv)(k,\ell) 
+	\end{align*} 
+	
+	
+\end{proof}
+
+\begin{lemma}
+	\label{lem:block_general_simplex}
+	For any centred simplex $\ssplx\subset\R^{n-1}$ with distance  matrix $\D_\ssplx$, 
+	\begin{equation*}
+	-\frac{1}{2}\begin{pmatrix}
+	0 & \one^\tp \\
+	\one & \D_\ssplx
+	\end{pmatrix} = \begin{pmatrix}
+	\bxi^\tp\Q\bxi + 4\bar{d}  &  -(\Q\bxi  + \frac{2}{n}\one)^\tp  \\
+	-(\Q\bxi  + \frac{2}{n}\one) &  \Q
+	\end{pmatrix}^{-1},
+	\end{equation*}
+	where $\Q=(\Sv^\du)^\tp\Sv^\du$, and $\Sv^\du$ is the vertex matrix of $\ssplx^\du$. 
+\end{lemma}
+\begin{proof}
+	content...
+\end{proof}
 
 One consequence of the above is a relation between the volume of the simplex and the effective resistances in the graph. To see this, we need to introduce a particular object from the field of distance geometry. Let $\D(\X)$ be the distance matrix of a set $\X$ of $d$ points. The matrix 
 \begin{equation}
@@ -387,7 +487,7 @@ In $\R^3$, typical examples of quadrics are spheroids and ellipsoids ($\r=\zero$
 The \emph{Steiner Circumscribed Ellipsoid}, or simply the \emph{Steiner Ellipsoid} of a simplex $\splx$ with vertices $\{\sv_i\}$ is a quadric which contains the vertices and whose tangent plane at $\sv_i$ is parallel to the affine plane spanned by $\{\sv_j\}_{j\neq i}$. 
 \end{definition}
 
-Its existence  and uniqueness is guaranteed by the following theorem. 
+Figure~\ref{fig:ellipsoid_and_sphere} illustrates  the Steiner ellipsoid of a generic simplex. Its existence  and uniqueness is guaranteed by the following theorem. 
 
 \begin{theorem}[\cite{fiedler2005geometry}]
 The Steiner ellipsoid of a simplex $\splx$ is unique and moreover, is the ellipsoid with minimum volume which contains $\splx$. 
@@ -428,6 +528,13 @@ This allows us to give explicit formulas for the semi-axes of $\El(\splx)$.
 	The diagonal matrix $\D=\Eval^{-1/2} (\frac{n}{n-1})^{1/2}$ has entries $D(i,i) = \e_i(\frac{n}{(n-1)\lambda_i})^{1/2}$, and equation  \eqref{eq:steinerE2} demonstrates  that  $\El(\splx_G) = \{\x:\x^\tp \D^2\x=1\}$. Apply the definition of semi-axes. 
 \end{proof}
 
+\begin{figure}
+	\centering
+	\includegraphics[scale=0.4]{ellipsoid_and_sphere}
+	\caption{A simplex $\ssplx\subset\R^2$ and  its corresponding Steiner circumscribed ellipsoid in orange (light) and circumscribed sphere in purple (dark). The arrows illustrate the semi-axes of the ellipsoid.}
+	\label{fig:ellipsoid_and_sphere}
+\end{figure}
+
 Next we investigate the circumscribed sphere of the combinatorial  simplex. Similarly to the circumscribed ellipsoid, the \emph{cirscumscribed sphere  of a convex body $\P$} is the sphere whose boundary contains all the vertices of $\P$. The circumscribed sphere does not exist in general. However, just as it is possible to always draw a circle containing the endpoints  of a triangle, so the circumscribed sphere of a hyperacute simplex always exists  as is demonstrated  by the following lemma.  
 
 \begin{lemma}[\cite{fiedler1993geometric}]
@@ -435,26 +542,10 @@ Next we investigate the circumscribed sphere of the combinatorial  simplex. Simi
 	Let $\splx^+\subset\R^{n-1}$ be a hyperacute simplex. The circumscribed sphere  of $\splx^+$ exists and is given by the set of points $\{\x:\x=\Sv\balpha, \; \la \balpha,\one \ra = 1, \; \la \balpha,\D\balpha\ra =0\}$, which is a sphere centred at the point $\frac{1}{2}\Sv(\L_G\bxi + \one/n)$ with radius $\frac{1}{2}\sqrt{\bxi^\tp\L_G\bxi + 4R_G/n^2}$ where $G$ is $\splx^+$'s associated graph, and $\bxi = \diag(\L_G^+(i,i))$. 
 \end{lemma}
 
-Until this point, we have been examining only the quadrics associated with the combinatorial simplices. We now consider the normalized simplices. Since all the vertices of the normalized simplex lie on the unit sphere, it's clear  that the circumscribed sphere of $\splxn_G$ is precisely $\{\x:\x^\tp\x=1\}$. It's not as straightforward  to see what they circumscribed ellipsoid, $\El(\splxn)$, is on the other hand. One might suspect that it obeys the  equation $\x^\tp \Svn+(\Svn^+)^\tp=1-1/n$, as this is the natural analogue of \eqref{eq:steinerE}. However, because $\Svn^+$ and $\Svn$ obey a non-constant pseudoinverse relation, this equation fails the first test: $\svn_i^\tp\Svn^+(\Svn^+)^\tp\svn_i = \bchi_i^\tp(\I-\sqrt{\w}\sqrt{\w}^\tp/\vol(G))\bchi_i=1-\sqrt{w(i)w(j)}/\vol(G)$ is non-constant. 
+
+Until this point, we have been examining only the quadrics associated with the combinatorial simplices. We now consider the normalized simplices. Since all the vertices of the normalized simplex lie on the unit sphere, it's clear  that the circumscribed sphere of $\splxn_G$ is precisely $\{\x:\x^\tp\x=1\}$. It's not as straightforward  to see what they circumscribed ellipsoid, $\El(\splxn)$, is on the other hand. One might suspect that it obeys the  equation $\x^\tp \Svn^+(\Svn^+)^\tp=1-1/n$, as this is the natural analogue of \eqref{eq:steinerE}. However, because $\Svn^+$ and $\Svn$ obey a non-constant pseudoinverse relation, this equation fails the first test: $\svn_i^\tp\Svn^+(\Svn^+)^\tp\svn_i = \bchi_i^\tp(\I-\sqrt{\w}\sqrt{\w}^\tp/\vol(G))\bchi_i=1-\sqrt{w(i)w(j)}/\vol(G)$ is non-constant. 
 However, at this point we recall that beyond being simply  the inverse simplex of $\splx$, $\splx^+$ is also its dual.  We might thus hazard a guess that the correct matrix is $\Svn^\du (\Svn^\du)^\tp$, where $\Svn^\du$ is the vertex matrix of $\splxn^\du$. This is in fact correct, but to see this we first need to demonstrate that any set of simplex vertices and their  duals obey the same relationship as do the vertices of the combinatorial simplex and its inverse. 
 
-\begin{lemma}
-	\label{lem:dot_dual_vertices}
-	Let  $\ssplx\subset\R^{n-1}$ be any simplex, and $\ssplx^\du$ its dual, where $\Sv=\Sv(\ssplx)=(\bgamma_i)$ and $\Sv^\du=\Sv(\ssplx^\du)=(\bgamma^\du_i)$. 
-	For all $i,j\in[n]$, $\la \bgamma_i,\bgamma_j^\du\ra=\delta_{i,j}-1/n$. 
-\end{lemma}
-\begin{proof}
-	By definition of the dual simplex, for all $i,j\neq n$, $\la \bgamma_i,\bgamma^\du_j-\bgamma^\du_n\ra = \delta_{ij}$. Recalling that $\bgamma^\du_n=-\sum_{\ell<n}\bgamma^\du_\ell$, write 
-	\begin{align*}
-	\la \bgamma_i,\bgamma^\du_n\ra &= - \sum_{\ell<n}\la \bgamma_i,\bgamma^\du_\ell\ra \\
-	&= -\sum_{\ell<n} \delta_{i,\ell} + \la \bgamma_i,\bgamma^\du_n\ra \\
-	&= -1 - (n-1)\la\bgamma_i,\bgamma^\du_n\ra.
-	\end{align*}
-	Rearranging the above yields $\la \bgamma_i,\bgamma^\du\ra = -1/n$. Therefore, $\la \bgamma_i,\bgamma^\du_j\ra = \delta_{ij} - 1/n$. It remains to show that $\la\bgamma_n,\bgamma^\du_n\ra=1-1/n$. Proceeding as above, we have 
-	\begin{align*}
-	\la\bgamma_n,\bgamma^\du_n\ra &= -\sum_{\ell<n}\la \bgamma,\bgamma^\du_\ell\ra = -\sum_{\ell<n} \frac{-1}{n} = \frac{n-1}{n}.\qedhere
-	\end{align*}
-\end{proof}
 
 
 From this we can extract the equations of $\El(\splxn)$ and $\El(\splxn^+)$. 

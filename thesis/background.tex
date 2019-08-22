@@ -45,11 +45,11 @@ Next we state a result which will underpin our construction of the ``dual simple
 Let $\v_1,\dots,\v_k$ be a set of linearly independent vectors in $\R^n$. There exists a set of vectors, $\u_1,\dots,\u_k$ such that $\la \v_i,\u_j\ra = \delta_{ij}$ for all $i,j\in[k]$. The collections $\{\v_i\}$ and $\{\u_i\}$ are called \emph{biorthogonal} or \emph{dual bases}.  
 \end{lemma}
 
-Given the set $\{\v_i\}$ of linearly independent vectors, the complementary set $\{\u_i\}$ given by Lemma \ref{lem:bi-orthogonal_bases} is called the \emph{sister} or \emph{dual set to $\{\v_i\}$}. If $\{\v_i\}$ constitutes a basis of the underlying space, then we might call $\{\u_i\}$ the \emph{sister} or \emph{dual basis}.  We present a simple observation which will be useful in later sections. 
+Given the set $\{\v_i\}$ of linearly independent vectors, the complementary set $\{\u_i\}$ given by Lemma \ref{lem:bi-orthogonal_bases} is called the \emph{sister} or \emph{dual set to $\{\v_i\}$}. If $\{\v_i\}$ constitutes a basis of the underlying space, then we might call $\{\u_i\}$ the \emph{sister} or \emph{dual basis}.  We present a simple observation which will be useful in later sections. As usual, the  reader can find the proof in  Appendix~\ref{sec:app_proofs_background}. 
 
 \begin{observation}
 \label{obs:bi-orthogonal_unique}
-Let $\{\v_1,\dots,\v_n\}\subset\R^n$ be a set of linearly independent vectors. The sister basis given by Lemma \ref{lem:bi-orthogonal_bases} is unique. 
+Let $\{\v_1,\dots,\v_n\}\subset\R^n$ be a set of linearly independent vectors. The sister basis given by Lemma \ref{lem:bi-orthogonal_bases} is unique. Moreover, if we let $\M\in\R^{n\times n}$ have as columns the vectors  $\v_i$, and $\Q$ have as columns the vectors  of the  sister basis, then $\Q^\tp=\M^{-1}$.  
 \end{observation}
 
 Let $\M\in\R^{n\times n}$. We recall that a vector $\eig$ satisfying $\M\eig=\lambda\eig$ is an \emph{eigenvector} of $\M$, and call $\lambda$ the associated \emph{eigenvalue}. It's clear that if $\eig$ is an eigenvector then so it $c\eig$ for any constant $c\in \R$. If $\M$ is real and symmetric, then the Spectral theorem dictates that there exists an orthonormal basis consisting of eigenvectors $\{\eig_1,\eig_2,\dots,\eig_n\}$ of $\M$ whose corresponding eigenvalues $\{\lambda_1,\dots,\lambda_n\}$ are all real. Let $\Eig=(\eig_1,\eig_2,\dots,\eig_n)$ be the matrix whose $i$-th column is the $i$-th eigenvector of $\M$, and set $\Eval=\diag(\lambda_1,\dots,\lambda_n)$. Observe that 
@@ -95,12 +95,12 @@ If $\M$ is a singular matrix, a natural question to ask is whether there exists 
 
 \begin{definition}[Moore-Penrose pseudoinverse~\cite{barata2012moore}]
 \label{def:pseudoinverse}
-Let $\M\in\C^{n\times m}$ for some $n,m\in\N$. We call a matrix $\M^+\in\C^{m\times n}$ satisfying both
+Let $\M\in\R^{n\times m}$ for some $n,m\in\N$. If  $\M^+\in\R^{m\times n}$ is such that
 \begin{enumerate}
     \item[(i).] $\M\M^+\M=\M$ and $\M^+\M\M^+=\M^+$;
-    \item[(ii).] $\M\M^+$ and $\M^+\M$ are hermitian, i.e., $\M\M^+=(\M\M^+)^\tp $, $\M^+\M=(\M^+\M)^\tp$; 
+    \item[(ii).] $\M\M^+$ and $\M^+\M$ are hermitian, i.e., $\M\M^+=(\M\M^+)^\tp $, $\M^+\M=(\M^+\M)^\tp$, 
 \end{enumerate}
-the \emph{Moore-Penrose Pseudoinverse} of $\M$. 
+we call $\M^+$ the \emph{Moore-Penrose Pseudoinverse} of $\M$. 
 \end{definition}
 
 We will often drop the identifier ``Moore-Penrose'' and simply write that $\M^+$ is the pseudoinverse of $\M$. It's not immediate from  the definition, but the pseudoinverse of $\M$ has several desirable properties: When $\M$ is real, so is $\M^+$; $(\M^+)^+=\M$; $(\M^+\M)^\tp = \M^+\M$. Importantly, when $\M$ is invertible, then $\M^+=\M^{-1}$. Moreover, the pseudoinverse always exists: 

@@ -7,7 +7,24 @@
 
 
 \begin{proof}[Proof  of  Observation~\ref{obs:bi-orthogonal_unique}]
-	Suppose $\{\u_i\}$ and $\{\w_i\}$ are biorthogonal bases. Fix $i\in[n]$. By independence, $\spn(\v_1,\dots,\v_{i-1},\v_{i+1},\dots,\v_n)$ is a hyperplane---that is, \[\dim\spn(\v_1,\dots,\v_{i-1},\v_{i+1},\dots,\v_n)^\perp=1.\] Both $\u_i$ and $\w_i$ are orthogonal to this hyperplane (since they orthogonal to $\v_j$ for all $j\neq i$), thus are either parallel or anti-parallel. Therefore, there exists some $\alpha\in\R$ such that $\v_i=\alpha\w_i$. By definition, $\la \v_i,\u_i\ra = \la \v_i,\w_i\ra =1$, hence $\la \v_i,\alpha \w_i\ra = \la \v_i,\w_i\ra$ implying that $\alpha=1$. This demonstrates that $\u_i=\w_i$ for all $i$. 
+	We begin by  proving uniqueness. 
+	Suppose $\{\u_i\}$ and $\{\w_i\}$ are both biorthogonal bases of $\{\v_i\}$. We will show that $\u_i=\w_i$  for all $i$. Fix $i\in[n]$. By independence, $\spn(\v_1,\dots,\v_{i-1},\v_{i+1},\dots,\v_n)$ is a hyperplane---that is, \[\dim\spn(\v_1,\dots,\v_{i-1},\v_{i+1},\dots,\v_n)^\perp=1.\] (Recall  that we are  working in $\R^n$ and with bases thereof.) Both $\u_i$ and $\w_i$ are orthogonal to this hyperplane (since they orthogonal to $\v_j$ for all $j\neq i$), thus are either parallel or anti-parallel. Therefore, there exists some $\alpha\in\R$ such that $\v_i=\alpha\w_i$. By definition, $\la \v_i,\u_i\ra = \la \v_i,\w_i\ra =1$, hence $\la \v_i,\alpha \w_i\ra = \la \v_i,\w_i\ra$ implying that $\alpha=1$. This demonstrates that $\u_i=\w_i$ for all $i$. 
+	
+	Next we demonstrate that  $\Q^\tp=\M^{-1}$ where $\Q=(\u_1,\dots,\u_n)$ and $\M=(\v_1,\dots,\v_n)$. By the orthogonality relationships of dual bases, we have  
+	\[\Q^\tp\M = \begin{pmatrix}
+	\u_1^\tp \\
+	\vdots  \\
+	\u_n^\tp
+	\end{pmatrix}
+	\begin{pmatrix}
+	\v_1 & \dots & \v_n
+	\end{pmatrix} = \begin{pmatrix}
+	\la \u_1,\v_1\ra & \dots & \la \u_1,\v_n \\
+	\vdots & \ddots & \vdots  \\
+	\la \u_n,\v_1\ra & \dots & \la \u_n,\v_n\ra 
+	\end{pmatrix} = \I_n.
+	\]
+	Observing that $\M^{-1}$ exists by independence of $\{\v_1,\dots,\v_n\}$ we apply it  to  both sides of the  above to obtain   $\Q^\tp=\M^{-1}$. 
 \end{proof}
 
 \begin{proof}[Proof of Lemma~\ref{lem:rank(QtQ)}]
@@ -234,7 +251,7 @@
 	$\sum_{i\in\delta(\ell)}w(i,\ell)(\bS_T(k,\ell)-\bS_T(k,i)) = 1-(|\delta(\ell)|-1) = 2 - \deg(\ell)$, demonstrating that the $(k,\ell)$-th component is zero, completing the proof. 
 \end{proof}
 
-\begin{proof}[Proof of Lemma~\ref{lem:]ineq_f1}]
+\begin{proof}[Proof of Lemma~\ref{lem:ineq_f1}]
 	Let $F^+$ be as above and let $F^-\equiv [n]\setminus F^+=\{i:f(i)<0\}$. Observe that 
 	\begin{equation*}
 	\norm{f}_1=\sum_i |f(i)| = \la \bchi_{F^+}-\bchi_{F^-},f\ra = (\bchi_{F^+}-\bchi_{F^-})^\tp f = (\bchi_{F^+}-\bchi_{F^-})^\tp(\I-\J/n) f,
@@ -338,12 +355,139 @@ Combining \eqref{eq:kirchoff} and \eqref{eq:ohms_law} we see that $\e=\B^\tp \f=
 
 The \emph{effective resistance} of an edge $e=(i,j)$ is the potential difference induced across the edge when one unit of current is injected at $i$ and extracted at $j$. That is, for $\e=\bchi_i-\bchi_j$, we want to measure $\rho(i)-\rho(j)$. We do this by noticing that 
 \[\rho(i)-\rho(j) = \la \bchi_i,\brho\ra - \la \bchi_j,\brho\ra = \la \bchi_i-\bchi_j,\L_G^+\e\ra=\Lf_G^+(\bchi_i-\bchi_j).\]
-Note that here we've relied on the fact that $\bchi_i-\bchi_j\perp \one$. We cement the notion with a definition. 
+Note that here we've relied on the fact that $\bchi_i-\bchi_j\perp \one$. This gives  rise to Definition~\ref{def:effective_resistance}. 
 
 
 
 
+\chapter{Figures}
+\label{sec:app_figures}
 
+\begin{figure}[h]
+	\centering 
+	\begin{subfigure}[b]{0.16\textwidth}
+		\centering
+		\includegraphics[scale=0.25]{g1}
+	\end{subfigure}
+\begin{subfigure}[b]{0.16\textwidth}
+	\includegraphics[scale=0.25]{g2}
+\end{subfigure}
+\begin{subfigure}[b]{0.16\textwidth}
+	\includegraphics[scale=0.25]{g3}
+\end{subfigure}
+\begin{subfigure}[b]{0.16\textwidth}
+	\includegraphics[scale=0.25]{g4}
+\end{subfigure}
+\begin{subfigure}[b]{0.16\textwidth}
+	\includegraphics[scale=0.25]{g5}
+\end{subfigure}
+\begin{subfigure}[b]{0.16\textwidth}
+	\includegraphics[scale=0.25]{g6}
+\end{subfigure}\\
+\vspace{0.3cm}
+\begin{subfigure}[b]{0.16\textwidth}
+	\centering
+	\includegraphics[scale=0.3]{g1_comb}
+\end{subfigure}
+\begin{subfigure}[b]{0.16\textwidth}
+	\centering
+	\includegraphics[scale=0.3]{g2_comb}
+\end{subfigure}
+\begin{subfigure}[b]{0.16\textwidth}
+	\centering
+	\includegraphics[scale=0.3]{g3_comb}
+\end{subfigure}
+\begin{subfigure}[b]{0.16\textwidth}
+	\centering
+	\includegraphics[scale=0.3]{g4_comb}
+\end{subfigure}
+\begin{subfigure}[b]{0.16\textwidth}
+	\centering
+	\includegraphics[scale=0.3]{g5_comb}
+\end{subfigure}
+\begin{subfigure}[b]{0.16\textwidth}
+	\centering
+	\includegraphics[scale=0.3]{g6_comb}
+\end{subfigure}\\
+\vspace{0.3cm}
+\begin{subfigure}[b]{0.16\textwidth}
+	\centering
+	\includegraphics[scale=0.3]{g1_norm}
+\end{subfigure}
+\begin{subfigure}[b]{0.16\textwidth}
+	\centering
+	\includegraphics[scale=0.3]{g2_norm}
+\end{subfigure}
+\begin{subfigure}[b]{0.16\textwidth}
+	\centering
+	\includegraphics[scale=0.3]{g3_norm}
+\end{subfigure}
+\begin{subfigure}[b]{0.16\textwidth}
+	\centering
+	\includegraphics[scale=0.3]{g4_norm}
+\end{subfigure}
+\begin{subfigure}[b]{0.16\textwidth}
+	\centering
+	\includegraphics[scale=0.3]{g5_norm}
+\end{subfigure}
+\begin{subfigure}[b]{0.16\textwidth}
+	\centering
+	\includegraphics[scale=0.3]{g6_norm}
+\end{subfigure}\\
+
+\vspace{0.3cm}
+\begin{subfigure}[b]{0.16\textwidth}
+	\centering
+	\includegraphics[scale=0.3]{g1_norm_comb}
+\end{subfigure}
+\begin{subfigure}[b]{0.16\textwidth}
+	\centering
+	\includegraphics[scale=0.3]{g2_norm_comb}
+\end{subfigure}
+\begin{subfigure}[b]{0.16\textwidth}
+	\centering
+	\includegraphics[scale=0.3]{g3_norm_comb}
+\end{subfigure}
+\begin{subfigure}[b]{0.16\textwidth}
+	\centering
+	\includegraphics[scale=0.3]{g4_norm_comb}
+\end{subfigure}
+\begin{subfigure}[b]{0.16\textwidth}
+	\centering
+	\includegraphics[scale=0.3]{g5_norm_comb}
+\end{subfigure}
+\begin{subfigure}[b]{0.16\textwidth}
+	\centering
+	\includegraphics[scale=0.3]{g6_norm_comb}
+\end{subfigure}\\
+\vspace{0.3cm}
+\begin{subfigure}[b]{0.16\textwidth}
+	\centering
+	\includegraphics[scale=0.3]{g1_norm_comb_inv}
+\end{subfigure}
+\begin{subfigure}[b]{0.16\textwidth}
+	\centering
+	\includegraphics[scale=0.3]{g2_norm_comb_inv}
+\end{subfigure}
+\begin{subfigure}[b]{0.16\textwidth}
+	\centering
+	\includegraphics[scale=0.3]{g3_norm_comb_inv}
+\end{subfigure}
+\begin{subfigure}[b]{0.16\textwidth}
+	\centering
+	\includegraphics[scale=0.3]{g4_norm_comb_inv}
+\end{subfigure}
+\begin{subfigure}[b]{0.16\textwidth}
+	\centering
+	\includegraphics[scale=0.3]{g5_norm_comb_inv}
+\end{subfigure}
+\begin{subfigure}[b]{0.16\textwidth}
+	\centering
+	\includegraphics[scale=0.3]{g6_norm_comb_inv}
+\end{subfigure}
+\caption{The six  unique unweighted  graphs on four vertices, up to isomorphism, and a comparison of all of their simplices. Below each graph in the first row are  its two combinatorial simplices  ($\splx_G$ and $\splx_G^+$), then its two  normalized simplices ($\splxn_G$ and $\splxn_G^+$), then its combinatorial and normalized simplex ($\splx_G$ and $\splxn_G$), followed in  the final  row  by the two inverse simplices ($\splx_G^+$ and $\splxn_G^+$).  The combinatorial simplex and its  inverse are coloured blue and red respectively, and the normalized simplex and its inverse are in green and yellow respectively. The relative size of the the simplices in each subfigure are to scale but the same scale  is not maintained across figures.  }
+\label{fig:all_simplices}
+\end{figure}
 
 
 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  16 AUG 2019 00:17
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  22 AUG 2019 15:47
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1547,7 +1547,7 @@ File: block.tss 2016/03/15
 
 
 (./frontmatter/titlepage.tex
-<figures/oxford_logo.png, id=216, 116.1138pt x 138.7584pt>
+<figures/oxford_logo.png, id=224, 116.1138pt x 138.7584pt>
 File: figures/oxford_logo.png Graphic file (type png)
 
 <use figures/oxford_logo.png>
@@ -1643,7 +1643,7 @@ File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 LaTeX Font Info:    Font shape `OMS/cmr/bx/n' in size <10.95> not available
 (Font)              Font shape `OMS/cmsy/b/n' tried instead on input line 21.
  [2]
-<figures/correspondence.png, id=510, 898.35625pt x 335.2525pt>
+<figures/correspondence.png, id=542, 898.35625pt x 335.2525pt>
 File: figures/correspondence.png Graphic file (type png)
 
 <use figures/correspondence.png>
@@ -1652,28 +1652,72 @@ Package pdftex.def Info: figures/correspondence.png used on input line 55.
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 66.
  [3]
-<figures/property_triangle.png, id=548, 330.23375pt x 187.70125pt>
+<figures/property_triangle.png, id=580, 330.23375pt x 187.70125pt>
 File: figures/property_triangle.png Graphic file (type png)
 
 <use figures/property_triangle.png>
 Package pdftex.def Info: figures/property_triangle.png used on input line 73.
 (pdftex.def)             Requested size: 165.11646pt x 93.85039pt.
- [4 <./figures/correspondence.png>] [5 <./figures/property_triangle.png>]) [6]
+ [4 <./figures/correspondence.png>] [5 <./figures/property_triangle.png>]
+<figures/example_d=2_graph.png, id=611, 211.79124pt x 204.765pt>
+File: figures/example_d=2_graph.png Graphic file (type png)
+
+<use figures/example_d=2_graph.png>
+Package pdftex.def Info: figures/example_d=2_graph.png used on input line 100.
+(pdftex.def)             Requested size: 63.53786pt x 61.42996pt.
+
+<figures/example_d=2_comb.png, id=612, 351.59355pt x 279.32355pt>
+File: figures/example_d=2_comb.png Graphic file (type png)
+
+<use figures/example_d=2_comb.png>
+Package pdftex.def Info: figures/example_d=2_comb.png used on input line 106.
+(pdftex.def)             Requested size: 105.47887pt x 83.7977pt.
+
+<figures/example_d=2_norm.png, id=613, 352.31625pt x 272.09656pt>
+File: figures/example_d=2_norm.png Graphic file (type png)
+
+<use figures/example_d=2_norm.png>
+Package pdftex.def Info: figures/example_d=2_norm.png used on input line 111.
+(pdftex.def)             Requested size: 105.69568pt x 81.6296pt.
+
+<figures/example_d=3_graph.png, id=614, 202.7575pt x 192.72pt>
+File: figures/example_d=3_graph.png Graphic file (type png)
+
+<use figures/example_d=3_graph.png>
+Package pdftex.def Info: figures/example_d=3_graph.png used on input line 117.
+(pdftex.def)             Requested size: 60.82771pt x 57.81644pt.
+
+<figures/example_d=3_comb.png, id=615, 225.12105pt x 171.2799pt>
+File: figures/example_d=3_comb.png Graphic file (type png)
+
+<use figures/example_d=3_comb.png>
+Package pdftex.def Info: figures/example_d=3_comb.png used on input line 123.
+(pdftex.def)             Requested size: 112.56024pt x 85.63974pt.
+
+<figures/example_d=3_norm.png, id=616, 203.8014pt x 160.07805pt>
+File: figures/example_d=3_norm.png Graphic file (type png)
+
+<use figures/example_d=3_norm.png>
+Package pdftex.def Info: figures/example_d=3_norm.png used on input line 128.
+(pdftex.def)             Requested size: 101.90044pt x 80.03882pt.
+ [6 <./figures/example_d=2_graph.png> <./figures/example_d=2_comb.png> <./figur
+es/example_d=2_norm.png> <./figures/example_d=3_graph.png> <./figures/example_d
+=3_comb.png> <./figures/example_d=3_norm.png>]) [7]
 \openout2 = `background.aux'.
 
  (./background.tex
 Chapter 2.
-[7
+[8
 
 
 
-] [8] [9] [10] [11] [12] [13]
+] [9] [10] [11] [12] [13] [14]
 LaTeX Font Info:    Try loading font information for U+euf on input line 285.
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/amsfonts/ueuf.fd
 File: ueuf.fd 2013/01/14 v3.01 Euler Fraktur
-) [14] [15]
-<../figures/simplices.png, id=717, 420.57124pt x 155.58125pt>
+) [15] [16]
+<../figures/simplices.png, id=771, 420.57124pt x 155.58125pt>
 File: ../figures/simplices.png Graphic file (type png)
 
 <use ../figures/simplices.png>
@@ -1684,7 +1728,7 @@ Overfull \hbox (40.95638pt too wide) in paragraph at lines 354--355
 [][] 
  []
 
-<figures/affine_independence.png, id=718, 295.1025pt x 125.46875pt>
+<figures/affine_independence.png, id=772, 295.1025pt x 125.46875pt>
 File: figures/affine_independence.png Graphic file (type png)
 
 <use figures/affine_independence.png>
@@ -1700,257 +1744,106 @@ l of $\OML/cmm/m/it/10.95 n$ \OT1/cmr/m/n/10.95 affinely in-de-pen-dent vec-tor
 s $[][]\OML/cmm/m/it/10.95 ; [] ; [][]$\OT1/cmr/m/n/10.95 .
  []
 
-[16 <../figures/simplices.png> <./figures/affine_independence.png>] [17]
-<figures/altitudes.png, id=734, 323.2075pt x 206.7725pt>
+[17 <../figures/simplices.png> <./figures/affine_independence.png>] [18]
+<figures/altitudes.png, id=787, 323.2075pt x 206.7725pt>
 File: figures/altitudes.png Graphic file (type png)
 
 <use figures/altitudes.png>
 Package pdftex.def Info: figures/altitudes.png used on input line 424.
 (pdftex.def)             Requested size: 161.60335pt x 103.38599pt.
 
-<figures/faces.png, id=735, 303.1325pt x 197.73875pt>
+<figures/faces.png, id=788, 303.1325pt x 197.73875pt>
 File: figures/faces.png Graphic file (type png)
  <use figures/faces.png>
 Package pdftex.def Info: figures/faces.png used on input line 431.
 (pdftex.def)             Requested size: 151.56587pt x 98.86913pt.
 
-<figures/dual_simplex.png, id=736, 602.25pt x 312.16624pt>
+<figures/dual_simplex.png, id=789, 602.25pt x 312.16624pt>
 File: figures/dual_simplex.png Graphic file (type png)
 
 <use figures/dual_simplex.png>
 Package pdftex.def Info: figures/dual_simplex.png used on input line 463.
 (pdftex.def)             Requested size: 240.89572pt x 124.86427pt.
- [18 <./figures/altitudes.png> <./figures/faces.png>] [19 <./figures/dual_simpl
-ex.png>] [20]
-<figures/angles.png, id=764, 634.37pt x 496.85625pt>
+ [19 <./figures/altitudes.png> <./figures/faces.png>] [20 <./figures/dual_simpl
+ex.png>] [21]
+<figures/angles.png, id=818, 634.37pt x 496.85625pt>
 File: figures/angles.png Graphic file (type png)
  <use figures/angles.png>
 Package pdftex.def Info: figures/angles.png used on input line 543.
 (pdftex.def)             Requested size: 126.87175pt x 99.36948pt.
 )
-[21 <./figures/angles.png>]
+[22 <./figures/angles.png>]
 \openout2 = `correspondence.aux'.
 
  (./correspondence.tex
 Chapter 3.
-[22
+[23
 
 
 
-] [23] [24] [25] [26] [27] [28] [29]
-<figures/GandH.png, id=844, 367.3725pt x 283.0575pt>
+] [24] [25] [26] [27] [28] [29] [30]
+<figures/GandH.png, id=897, 367.3725pt x 283.0575pt>
 File: figures/GandH.png Graphic file (type png)
  <use figures/GandH.png>
-Package pdftex.def Info: figures/GandH.png used on input line 293.
+Package pdftex.def Info: figures/GandH.png used on input line 295.
 (pdftex.def)             Requested size: 110.21259pt x 84.9179pt.
 
-<figures/GxH.png, id=845, 438.63875pt x 318.18875pt>
+<figures/GxH.png, id=898, 438.63875pt x 318.18875pt>
 File: figures/GxH.png Graphic file (type png)
  <use figures/GxH.png>
-Package pdftex.def Info: figures/GxH.png used on input line 298.
+Package pdftex.def Info: figures/GxH.png used on input line 300.
 (pdftex.def)             Requested size: 131.59264pt x 95.45735pt.
 
-[30 <./figures/GandH.png> <./figures/GxH.png>] [31]
-Overfull \hbox (1.76295pt too wide) in paragraph at lines 352--353
+[31 <./figures/GandH.png> <./figures/GxH.png>] [32]
+Overfull \hbox (1.76295pt too wide) in paragraph at lines 354--355
 [] []\OT1/cmr/bx/n/10.95 The prob-a-bil-ity sim-plex.[] \OT1/cmr/m/n/10.95 Fix 
 $\OML/cmm/m/it/10.95 n \OMS/cmsy/m/n/10.95 2 \U/msb/m/n/10.95 N$\OT1/cmr/m/n/10
 .95 . The \OT1/cmr/m/it/10.95 prob-a-bil-ity sim-plex \OT1/cmr/m/n/10.95 is the
  sim-plex $[] = [](\OMS/cmsy/m/n/10.95 f[][]g[] [
  []
 
-[32] [33] [34] <figures/HI_plane.png, id=896, 232.87pt x 368.37625pt>
+[33] [34] [35] <figures/HI_plane.png, id=949, 232.87pt x 368.37625pt>
 File: figures/HI_plane.png Graphic file (type png)
 
 <use figures/HI_plane.png>
-Package pdftex.def Info: figures/HI_plane.png used on input line 480.
+Package pdftex.def Info: figures/HI_plane.png used on input line 482.
 (pdftex.def)             Requested size: 116.43471pt x 184.18767pt.
- [35 <./figures/HI_plane.png>] [36] [37] [38]
-[39] [40] [41] [42] [43]
-<figures/Hin_plane.png, id=1000, 338.26375pt x 490.83376pt>
+ [36 <./figures/HI_plane.png>] [37] [38] [39]
+[40] [41] [42] [43] [44]
+<figures/Hin_plane.png, id=1053, 338.26375pt x 490.83376pt>
 File: figures/Hin_plane.png Graphic file (type png)
 
 <use figures/Hin_plane.png>
-Package pdftex.def Info: figures/Hin_plane.png used on input line 803.
+Package pdftex.def Info: figures/Hin_plane.png used on input line 805.
 (pdftex.def)             Requested size: 101.4799pt x 147.25125pt.
 
-<figures/Hin_plane2.png, id=1001, 250.9375pt x 248.93pt>
+<figures/Hin_plane2.png, id=1054, 250.9375pt x 248.93pt>
 File: figures/Hin_plane2.png Graphic file (type png)
 
 <use figures/Hin_plane2.png>
-Package pdftex.def Info: figures/Hin_plane2.png used on input line 808.
+Package pdftex.def Info: figures/Hin_plane2.png used on input line 810.
 (pdftex.def)             Requested size: 125.46843pt x 124.46469pt.
- [44 <./figures/Hin_plane.png> <./figures/Hin_plane2.png>] [45] [46]) [47]
+ [45 <./figures/Hin_plane.png> <./figures/Hin_plane2.png>] [46] [47]) [48]
 \openout2 = `further_properties.aux'.
 
  (./further_properties.tex
 Chapter 4.
-[48
+[49
 
 
 
-] [49] [50] [51] [52] [53] [54] [55] [56] [57] [58] [59]
-<figures/res_embedding.png, id=1200, 467.7475pt x 182.6825pt>
+] [50] [51] [52] [53] [54] [55] [56] [57] [58] [59]
+<figures/ellipsoid_and_sphere.png, id=1240, 501.875pt x 322.20375pt>
+File: figures/ellipsoid_and_sphere.png Graphic file (type png)
+
+<use figures/ellipsoid_and_sphere.png>
+Package pdftex.def Info: figures/ellipsoid_and_sphere.png used on input line 53
+3.
+(pdftex.def)             Requested size: 200.74643pt x 128.87921pt.
+ [60 <./figures/ellipsoid_and_sphere.png>] [61] [62] <figures/res_embedding.png
+, id=1272, 467.7475pt x 182.6825pt>
 File: figures/res_embedding.png Graphic file (type png)
 
 <use figures/res_embedding.png>
-Package pdftex.def Info: figures/res_embedding.png used on input line 534.
-(pdftex.def)             Requested size: 233.87317pt x 91.34102pt.
- [60 <./figures/res_embedding.png>] [61]
-[62] <figures/dynamics1.png, id=1225, 185.0112pt x 146.34676pt>
-File: figures/dynamics1.png Graphic file (type png)
-
-<use figures/dynamics1.png>
-Package pdftex.def Info: figures/dynamics1.png used on input line 627.
-(pdftex.def)             Requested size: 111.00757pt x 87.80872pt.
-
-<figures/dynamics3.png, id=1226, 355.5684pt x 287.27325pt>
-File: figures/dynamics3.png Graphic file (type png)
-
-<use figures/dynamics3.png>
-Package pdftex.def Info: figures/dynamics3.png used on input line 632.
-(pdftex.def)             Requested size: 142.22482pt x 114.90726pt.
-
-<figures/dynamics2.png, id=1227, 214.6419pt x 179.2296pt>
-File: figures/dynamics2.png Graphic file (type png)
-
-<use figures/dynamics2.png>
-Package pdftex.def Info: figures/dynamics2.png used on input line 637.
-(pdftex.def)             Requested size: 128.78613pt x 107.53857pt.
- [63 <./figures/dynamics1.png> <./figures/dynamics3.png> <./figures/dynamics2.p
-ng>]) [64]
-\openout2 = `algorithmic_implications.aux'.
-
- (./algorithmic_implications.tex
-Chapter 5.
-[65
-
-
-
-] [66] <figures/NP_diagram.png, id=1263, 843.15pt x 493.845pt>
-File: figures/NP_diagram.png Graphic file (type png)
-
-<use figures/NP_diagram.png>
-Package pdftex.def Info: figures/NP_diagram.png used on input line 39.
-(pdftex.def)             Requested size: 236.08038pt x 138.27565pt.
- [67 <./figures/NP_diagram.png>]
-<figures/graph.png, id=1274, 227.85126pt x 180.675pt>
-File: figures/graph.png Graphic file (type png)
- <use figures/graph.png>
-Package pdftex.def Info: figures/graph.png used on input line 81.
-(pdftex.def)             Requested size: 91.13889pt x 72.2687pt.
-
-<figures/independent_sets.png, id=1275, 227.85126pt x 180.675pt>
-File: figures/independent_sets.png Graphic file (type png)
-
-<use figures/independent_sets.png>
-Package pdftex.def Info: figures/independent_sets.png used on input line 86.
-(pdftex.def)             Requested size: 91.13889pt x 72.2687pt.
-
-<figures/cliques.png, id=1276, 227.85126pt x 180.675pt>
-File: figures/cliques.png Graphic file (type png)
-
-<use figures/cliques.png>
-Package pdftex.def Info: figures/cliques.png used on input line 91.
-(pdftex.def)             Requested size: 91.13889pt x 72.2687pt.
- [68] [69 <./figures/graph.png> <./figures/independent_sets.png> <./figures/cli
-ques.png>] [70] [71] [72] [73] [74] [75] [76] [77]
-[78] [79] [80] [81] [82]) [83]
-\openout2 = `conclusion.aux'.
-
- (./conclusion.tex
-Chapter 6.
-[84
-
-
-
-]) [85] (./main.bbl
-Missing character: There is no â in font cmr10!
-Missing character: There is no € in font cmr10!
-Missing character: There is no ” in font cmr10!
- [86
-
-
-] [87] [88] [89]) [90]
-\openout2 = `appendix.aux'.
-
- (./appendix.tex
-Appendix A.
-[91
-
-
-] [92] [93] [94] [95] [96] [97]
-
-LaTeX Warning: Reference `lem:]ineq_f1' on page 98 undefined on input line 237.
-
-
-[98] [99] [100]
-Appendix B.
-[101
-
-]) [102]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 74.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 74.
- (./main.aux (./frontmatter/titlepage.aux)
-(./frontmatter/abstract.aux) (./frontmatter/laysummary.aux)
-(./frontmatter/acknowledgements.aux) (./frontmatter/nomenclature.aux)
-(./introduction.aux) (./background.aux) (./correspondence.aux)
-(./further_properties.aux) (./algorithmic_implications.aux) (./conclusion.aux)
-(./appendix.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 74.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 74.
-Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 4477ED9C4BCD87F7D7B9F2D3049976C0;3553.
-
-
-LaTeX Warning: There were undefined references.
-
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 74.
- ) 
-Here is how much of TeX's memory you used:
- 18078 strings out of 493014
- 304979 string characters out of 6133351
- 408352 words of memory out of 5000000
- 20853 multiletter control sequences out of 15000+600000
- 21331 words of font info for 78 fonts, out of 8000000 for 9000
- 1141 hyphenation exceptions out of 8191
- 42i,21n,43p,10398b,501s stack positions out of 5000i,500n,10000p,200000b,80000s
-pdfTeX warning (dest): name{Hfootnote.11} has been referenced but does not ex
-ist, replaced by a fixed one
-
-</usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbsy10.pfb>
-</usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><
-/usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></
-usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></us
-r/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/
-local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr
-/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr
-/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/
-local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></u
-sr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></us
-r/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/
-local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/lo
-cal/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/loca
-l/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/loca
-l/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib8.pfb></usr/
-local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib9.pfb></
-usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></us
-r/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/l
-ocal/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/loca
-l/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/t
-exlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/te
-xlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/tex
-live/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texli
-ve/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive
-/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2
-016/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/20
-16/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/local/texlive/2016
-/texmf-dist/fonts/type1/public/amsfonts/euler/eufm10.pfb></usr/local/texlive/20
-16/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texliv
-e/2016/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on main.pdf (112 pages, 1159481 bytes).
-PDF statistics:
- 1776 PDF objects out of 2073 (max. 8388607)
- 1576 compressed objects within 16 object streams
- 462 named destinations out of 1000 (max. 500000)
- 535 words of extra memory for PDF output out of 10000 (max. 10000000)
-
+Package pdftex.def Info: figures/res_embedding.png used on input line 625.
+(pdftex.def)             Requested size: 233.87317

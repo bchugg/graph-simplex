@@ -5,7 +5,6 @@ A level-1 auxiliary file: frontmatter/titlepage.aux
 A level-1 auxiliary file: frontmatter/abstract.aux
 A level-1 auxiliary file: frontmatter/laysummary.aux
 A level-1 auxiliary file: frontmatter/acknowledgements.aux
-A level-1 auxiliary file: frontmatter/dedication.aux
 A level-1 auxiliary file: frontmatter/nomenclature.aux
 A level-1 auxiliary file: introduction.aux
 A level-1 auxiliary file: background.aux
@@ -23,45 +22,45 @@ Warning--empty school in kant1993algorithms
 Warning--can't use both volume and number fields in penrose1955generalized
 Warning--can't use both volume and number fields in penrose1956best
 Warning--empty journal in stothers2010complexity
-You've used 75 entries,
+You've used 77 entries,
             2543 wiz_defined-function locations,
-            1003 strings with 14910 characters,
-and the built_in function-call counts, 29138 in all, are:
-= -- 2970
-> -- 1233
-< -- 56
-+ -- 410
-- -- 399
-* -- 2023
-:= -- 4738
-add.period$ -- 237
-call.type$ -- 75
-change.case$ -- 429
-chr.to.int$ -- 75
-cite$ -- 82
-duplicate$ -- 1230
-empty$ -- 2175
-format.name$ -- 503
-if$ -- 5980
+            1009 strings with 15038 characters,
+and the built_in function-call counts, 29659 in all, are:
+= -- 3019
+> -- 1249
+< -- 58
++ -- 415
+- -- 403
+* -- 2047
+:= -- 4823
+add.period$ -- 242
+call.type$ -- 77
+change.case$ -- 439
+chr.to.int$ -- 77
+cite$ -- 84
+duplicate$ -- 1255
+empty$ -- 2220
+format.name$ -- 511
+if$ -- 6086
 int.to.chr$ -- 1
 int.to.str$ -- 0
-missing$ -- 87
-newline$ -- 379
-num.names$ -- 225
-pop$ -- 414
+missing$ -- 88
+newline$ -- 388
+num.names$ -- 231
+pop$ -- 429
 preamble$ -- 1
-purify$ -- 521
+purify$ -- 533
 quote$ -- 0
-skip$ -- 1014
+skip$ -- 1037
 stack$ -- 0
-substring$ -- 1700
-swap$ -- 202
-text.length$ -- 56
-text.prefix$ -- 32
+substring$ -- 1715
+swap$ -- 204
+text.length$ -- 58
+text.prefix$ -- 34
 top$ -- 0
-type$ -- 540
+type$ -- 556
 warning$ -- 7
-while$ -- 297
-width$ -- 76
-write$ -- 971
+while$ -- 301
+width$ -- 78
+write$ -- 993
 (There were 7 warnings)

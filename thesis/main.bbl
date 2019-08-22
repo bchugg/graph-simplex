@@ -78,6 +78,15 @@ Fan~RK Chung and Fan~Chung Graham.
 \newblock {\em Spectral graph theory}.
 \newblock Number~92. American Mathematical Soc., 1997.
 
+\bibitem[Che14]{cheong2014ipe}
+Otfried Cheong.
+\newblock The ipe extensible drawing editor.
+\newblock {\em Online: http://ipe. otfried. org}, 2014.
+
+\bibitem[Chu19]{chugg2019graph}
+Ben Chugg.
+\newblock Graph-simplex correspondence software, 2019.
+
 \bibitem[CK78]{chaiken1978matrix}
 Seth Chaiken and Daniel~J Kleitman.
 \newblock Matrix tree theorems.

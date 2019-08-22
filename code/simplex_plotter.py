@@ -60,8 +60,8 @@ def plot_simplex_helper3D(xdata, ydata, zdata, ax, c):
 	ax.set_axis_off() # Turn axes off
 
 	# Plot centroid
-	ax.plot([0],[0],[0], 'ko')
-	ax.text(0,0+eps,0,'c', size=12, color='k')
+	#ax.plot([0],[0],[0], 'ko')
+	#ax.text(0,0+eps,0,'c', size=12, color='k')
 			
 	# Label axes
 	#ax.set_xlabel('x')
@@ -90,8 +90,8 @@ def plot_simplex_helper2D(xdata, ydata, c='r'):
 				plt.plot(x,y,plot_style)
 
 	# Plot centroid
-	plt.plot(0,0,'ko')
-	plt.text(0,0+eps, 'c', size=12, color='k')
+	#plt.plot(0,0,'ko')
+	#plt.text(0,0+eps, 'c', size=12, color='k')
 
 	# Label axes
 	#plt.xlabel('x')
@@ -103,7 +103,7 @@ def plot_simplex_helper2D(xdata, ydata, c='r'):
 	# Annotate vertices
 	for i in range(3):
 		plt.text(xdata[i], ydata[i]+eps,
-			i+1, size=12, color=c)
+			i+1, size=18, color=c)
 
 
 
