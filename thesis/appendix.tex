@@ -83,6 +83,62 @@
 	so $\L\vp=\zero$ (since $w(i)>0$ for all $i$). That is, each element in the kernel of $\Ln$ takes the form $\W^{1/2}\vp$ for $\vp\in\ker(\L)$. We conclude that $\ker(\Ln)=\spn(\sqrt{\w}$. 
 \end{proof}
 
+\begin{proof}[Proof of Lemma~\ref{lem:block_equation_graph}]
+	Throughout the proof let  $R=\Rtot_G$. We  need  to show that 
+	\begin{equation*}
+	%\label{eq:block_inverse_er}
+	-\frac{1}{2}\begin{pmatrix}
+	0 & \one_n^\tp \\ 
+	\one_n &  \Reff
+	\end{pmatrix}
+	\begin{pmatrix}
+	\bD^\tp \L_G\bD + \frac{4}{n^2}R & -(\L_G\bD + \frac{2}{n}\one)^\tp \\
+	-(\L_G\bD + \frac{2}{n}\one) & \L_G
+	\end{pmatrix} = \I.
+	\end{equation*}
+	
+	Multiplying out the left hand side, the top left-hand corner of the resulting block matrix is
+	\[-\frac{1}{2}(\one^\tp\L_G - \frac{2}{n}\one^\tp \one) = 1,\]
+	since $\one^\tp \L_G=\one^\tp\L_G^\tp =\zero$. Likewise the top-right hand corner is $\zero$. The bottom left-hand corner is 
+	\begin{equation}
+	\label{eq:lem_block_matrix}
+	-\frac{1}{2}\bigg(\one\bD^\tp \L_G\bD +\frac{4}{n^2} R \one - \Reff\L_G\bD - \frac{2}{n}\Reff\one\bigg),
+	\end{equation}
+	where, using that $\Reff=\bD \one^\tp + \one \bD^\tp -2\L_G^+$ and $\one^\tp\L_G=\zero$, 
+	\begin{align}
+	\Reff\L_G = \one\bD^\tp \L_G - 2\bigg(\I-\frac{1}{n}\J\bigg).\label{eq:lem_block_matrix2}
+	\end{align}
+	Observing that $\bD(i) = \L_G^+(i,i) = \frac{1}{n}(\Reff\one)(i)  - R/n^2$ due to Lemma~\ref{lem:er_props}, write   
+	\begin{equation*}
+	\bD = \frac{1}{n} \Reff\one - \frac{R}{n^2}\one = \frac{1}{n} \Reff\one - \frac{1}{2 n^2}\J\Reff\one,
+	\end{equation*}
+	(where we've used that $R=\frac{1}{2}\one^\tp\Reff\one$).  
+	After some re-arranging, Equation~\eqref{eq:lem_block_matrix} thus becomes 
+	\begin{align*}
+	\frac{1}{n}\Reff\one -\frac{2}{n^2}R \one - \bigg(\I-\frac{1}{n}\J\bigg)\bD &= \frac{1}{n}\Reff\one - \frac{2}{n^2}R\one - \bigg(\I-\frac{1}{n}\J\bigg)\bigg(\frac{1}{n}\Reff\one - \frac{1}{2n^2}\J\Reff\one\bigg) \\
+	&=\frac{1}{n}\Reff\one - \frac{1}{n^2}\J\Reff\one - \frac{1}{n}\Reff\one + \frac{1}{n^2}\J\Reff\one + \frac{1}{2n^2}\J\Reff\one  - \frac{1}{2n^3}\J^2\Reff\one \\
+	&=\zero,
+	\end{align*}
+	using that $\J^2 = n \J$. Finally, again using \eqref{eq:lem_block_matrix2}, the bottom right-hand side is 
+	\begin{align*}
+	\frac{1}{2}\one \bD^\tp \L_G + \frac{1}{n}\one\one^\tp - \frac{1}{2}\Reff\L_G &= \frac{1}{n}\J + \bigg(\I-\frac{1}{n}\J\bigg) = \I.
+	\end{align*}
+	This demonstrates that \eqref{eq:lem_block_matrix} holds. We now show that $\L_G \Reff\L_G = -2 \L_G$ and that $\Reff\L_G\Reff\x = -2\Reff\x$ for all $\x\in\spn(\one)^\perp$, which will complete the proof. Applying Equation \eqref{eq:lem_block_matrix2} we have 
+	\begin{align*}
+	\L_G\Reff\L_G = \L_G\one \bD^\tp\L_G = -2\L_G+ \frac{2}{n}\L_G\one\one^\tp = -2\L_G.
+	\end{align*}
+	In the same way as \eqref{eq:lem_block_matrix2} was derived, we see that 
+	\begin{equation*}
+	\L_G\Reff = \L_G\bD\one^\tp - 2\bigg(\I-\frac{1}{n}\J\bigg),
+	\end{equation*}
+	and so 
+	\begin{equation*}
+	\Reff\L_G\Reff= \bigg(\Reff\L_G\bD^\tp + \frac{2}{n}\one \bigg)\one^\tp -2\Reff,
+	\end{equation*}
+	as desired. 
+\end{proof}
+
+
 \begin{proof}[Proof of Lemma~\ref{lem:affine-linearly-independent}]
 	Suppose that $\{\x_j-\x_i\}_{i\neq j}$ is not linearly independent, and let $\{\beta_i\}$ (not all zero) be such that $\sum_{i\neq j}\beta_i (\x_j-\x_j)=\zero$. Putting $\beta=\sum_i \beta_i$, we can write this as 
 	\[\sum_{i\neq j}\frac{\beta_i}{\beta}\x_i - \x_j=\zero.\]
@@ -191,8 +247,8 @@
 	
 	We may now proceed  with the argument. 
 	Let $\D$ be the distance matrix of $\ssplx$, and recall that $\D=\Reff$ where $\Reff$ is the effective resistance matrix of the graph $G$. 
-	Set \[\r=-\bigg(\L_G\diag(\L_G^+(i,i)) + \frac{2}{n}\one\bigg), \quad \alpha = \diag(\L_G^+(i,i))^\tp \L_G\diag(\L_G^+(i,i)) + 4R_G/n^2.\] 
-	Combining Lemma \ref{lem:menger_volume} and Equation \eqref{eq:block_inverse_graph_simplex}, write 
+	Set \[\r=-\bigg(\L_G\bD + \frac{2}{n}\one\bigg), \quad \alpha = \bD^\tp \L_G\bD + 4\Rtot_G/n^2.\] 
+	Combining Lemma \ref{lem:menger_volume} and Equation~\eqref{eq:block_inverse_er}, write 
 	\begin{align*}
 	\vol(\ssplx)^2 &= \frac{(-1)^n }{((n-1)!)^2 2^{n-1}} \det\left(-2\begin{pmatrix}
 	\alpha & \r \\

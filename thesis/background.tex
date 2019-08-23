@@ -293,6 +293,8 @@ We will make use  of the following Theorem, often  called the \emph{Kirchhoff Tr
 
 
 
+
+
 \section{Electrical Flows}
 \label{sec:background_er}
 
@@ -308,12 +310,33 @@ We imagine placing a resistor of resistance $1/w(i,j)$ on each edge $(i,j)\in E(
 We can relate the entries of the pseudoinverse Laplacian with the effective resistance as follows.
 \begin{lemma}
 	\label{lem:er_props}
-	For any graph $G$, $\Reff_G = \one \u ^\tp + \u\one^\tp - 2\L_G^+$ where $\u=\diag(\L_G^+(i,i))$. Moreover, for all $i,j$ (including $i=j$), 
+	For any graph $G$, $\Reff_G = \one \bD ^\tp + \bD\one^\tp - 2\L_G^+$ where $\bD=\diag(\L_G^+(i,i))$. Moreover, for all $i,j$ (including $i=j$), 
 	\begin{equation}
 	\label{eq:L^+(i,j)}
 	\L_G^+(i,j) = \frac{1}{2n}\bigg(\sum_{k\in[n]}\effr(i,k)+\effr(j,k)\bigg) - \frac{1}{2}\effr(i,j) -\frac{\Rtot_G}{n^2}.
 	\end{equation}
 \end{lemma}
+
+Later, we will demonstrate that one of the simplices of a given graph $G$ is intimately  related to the  effective  resistance. The  following  block matrix  equation will help us generate statements concerning  the geometry of this simplex, and eventually, all  simplices. The following equation was first given in the following form by  Van Mieghem \etal~\cite{van2017pseudoinverse} and follows from a more general version proven by Fiedler~\cite{fiedler1993geometric, fiedler2011matrices}. 
+
+\begin{lemma}
+	\label{lem:block_equation_graph}
+	For a weighted graph $G$, let $\bD=\diag(\L_G^+(i,i))$ be the vector containing the diagonal  elements of $\L_G^+$. Then, 
+	\begin{equation}
+	\label{eq:block_inverse_er}
+	-\frac{1}{2} \begin{pmatrix}
+	0 & \one_n^\tp \\ 
+	\one_n &  \Reff
+	\end{pmatrix} = 
+	\begin{pmatrix}
+	\bD^\tp \L_G\bD + \frac{4}{n^2}\Rtot_G & -(\L_G\bD + \frac{2}{n}\one)^\tp \\
+	-(\L_G\bD + \frac{2}{n}\one) & \L_G
+	\end{pmatrix}^{-1}.
+	\end{equation}
+	Moreover, $\L_G\Reff_G\L_G=-2\L_G$ and  for all $\x\in\spn(\one)^\perp$, $\Reff_G\L_G\Reff_G\x=-2\Reff_G\x$. 
+\end{lemma}
+
+The proofs of Lemmas~\ref{lem:er_props} and \ref{lem:block_equation_graph} are found in Appendix~\ref{sec:app_proofs_background}. 
 
 
 

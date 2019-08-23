@@ -75,7 +75,7 @@ Far from simply being an interesting but inconsequential phenomena of dual simpl
 \label{sec:block_matrix}
 In this section we present matrix equations pertaining to both hyperacute simplices and the effective resistance of graphs. The equations appeal to the relationship between hyperacute simplices and graphs by using well known results from the literature on electrical networks and effective resistance. The goal of this section is to demonstrate to the reader the utility of the graph-simplex correspondence in generating statements about hyperacute simplices by hijacking our knowledge of graph theory,  and vice versa. 
 
-We begin with a block matrix equation describing some aspects of  the geometry between a  hyperacute simplex and its dual. It is closely related to an equation given by Fiedler in Theorem 1.4.1 in \cite{fiedler2011matrices}. Instead  of a direct proof, we use the results of Van Mieghem \etal~\cite{van2017pseudoinverse} and prove it by leveraging aspects of the effective resistance of a graph.  
+We begin with a block matrix equation describing some aspects of  the geometry between a  hyperacute simplex and its dual. It is closely related to an equation given by Fiedler in Theorem~1.4.1 in \cite{fiedler2011matrices}. Instead  of a direct proof, we use the results of Van Mieghem \etal~\cite{van2017pseudoinverse} and prove it by leveraging aspects of the effective resistance of a graph.  
 
 Let a centred, hyperacute simplex $\ssplx$ be given, with $\Sv(\ssplx)=\{\bgamma_i\}$.  Let $\bar{d}$ be the average squared distance between all the vertices of $\ssplx$, that is
 \begin{equation}
@@ -92,140 +92,149 @@ Then we have the following result.
 
 \begin{lemma}
 	\label{lem:block_inverse_simplex}
-	Let $\ssplx\subset\R^{n-1}$ be a hyperacute simplex with  squared distance matrix $\D$, and average squared distance vector $\bxi$. Denote by $\BGamma$ the vertex matrix of $\ssplx^\du$, the dual simplex to $\ssplx$. Then, 
+	Let $\ssplx\subset\R^{n-1}$ be a hyperacute simplex with  squared distance matrix $\D_\ssplx$, and average squared distance vector $\bxi$.
+	Let $\Q=(\Sv^\du)^\tp\Sv^\du$  where $\Sv^\du$ is the vertex matrix of $\ssplx^\du$.  Then, 
 	\begin{equation}
 	\label{eq:simplex_block_matrix}
 	-\frac{1}{2} \begin{pmatrix}
 	0 & \one_n^\tp \\ 
-	\one_n &  \D
+	\one_n &  \D_\ssplx
 	\end{pmatrix} = \begin{pmatrix}
-	\bxi^\tp \BGamma^\tp \BGamma\bxi + 4\overline{d} & -(\BGamma^\tp \BGamma\bxi + 2\one/n)^\tp \\
-	-(\BGamma^\tp \BGamma\bxi + 2\one/n) & \BGamma^\tp \BGamma
+	\bxi^\tp \Q\bxi + 4\overline{d} & -(\Q\bxi + 2\one/n)^\tp \\
+	-(\Q\bxi + 2\one/n) & \Q
 	\end{pmatrix}^{-1}.
 	\end{equation}
 	Moreover, the vertices of $\ssplx^\du$ and the distance matrix of $\ssplx$ are related by the equation
 	\begin{equation}
 	\label{eq:lem_inverse_relation}
-	\BGamma^\tp \BGamma \D \BGamma^\tp \BGamma = -2\BGamma^\tp \BGamma,
+	\Q \D_\ssplx \Q = -2\Q,
 	\end{equation}
 	and in the space $\spn(\one)^\perp$ it holds that 
 	\begin{equation*}
 	\label{eq:lem_inverse_relation2}
-	\D\BGamma^\tp \BGamma \D= -2\D.	
+	\D_\ssplx\Q \D_\ssplx= -2\D_\ssplx.	
 	\end{equation*}
 \end{lemma}
 
 \begin{proof}
 As above, $\ssplx$ is the inverse simplex of some graph $G$, and therefore, $\D=\Reff$, where $\Reff$ is the effective resistance matrix. Therefore, we can rewrite $\xi(i)$ as 
-\begin{align*}
+ \begin{align*}
 \frac{1}{n}\sum_j \effr(i,j) - \frac{1}{n^2}\sum_{i<j}\effr(i,j),
 \end{align*}
 and $\bxi$ as 
 \begin{align*}
 \bxi = \frac{1}{n}\Reff\one - \frac{1}{n^2} \one \one^\tp \Reff\one = \frac{1}{n}\Reff\one - \frac{1}{n^2} \J \Reff\one.
 \end{align*}
-Meanwhile, the dual simplex to $\ssplx$ is the simplex of the graph $G$, and hence obeys $\BGamma^\tp\BGamma=\L_G$. Consequently, letting $\u=\frac{1}{n}\Reff\one - \frac{1}{n^2} \J \Reff\one$, we can rewrite Equation~\eqref{eq:simplex_block_matrix} as the purely graph theoretic statement  
-\begin{equation}
-\label{eq:block_inverse_er}
+Meanwhile, the dual simplex to $\ssplx$ is the simplex of the graph $G$, and hence obeys $\Q=\L_G$. Consequently, letting $\bD=\frac{1}{n}\Reff\one - \frac{1}{n^2} \J \Reff\one$, we can rewrite Equation~\eqref{eq:simplex_block_matrix} as the purely graph theoretic statement  
+\begin{equation*}
+%\label{eq:block_inverse_er}
 	-\frac{1}{2} \begin{pmatrix}
 0 & \one_n^\tp \\ 
 \one_n &  \Reff
 \end{pmatrix} = 
 \begin{pmatrix}
-\u^\tp \L_G\u + \frac{4}{n^2}R & -(\L_G\u + \frac{2}{n}\one)^\tp \\
--(\L_G\u + \frac{2}{n}\one) & \L_G
-\end{pmatrix}^{-1}.
-\end{equation}
-where $R=\sum_{i<j}\effr(i,j)$ is the total effective resistance in the graph. The above equality was proved by Van Mieghem \etal~\cite{van2017pseudoinverse}, and in a more general form by Fiedler~\cite{fiedler1993geometric,fiedler2011matrices}, but we prove it here for completeness. Multiplying out the left hand side, the top left-hand corner of the resulting block matrix is
-\[-\frac{1}{2}(\one^\tp\L_G - \frac{2}{n}\one^\tp \one) = 1,\]
-since $\one^\tp \L_G=\one^\tp\L_G^\tp =\zero$. Likewise the top-right hand corner is $\zero$. The bottom left-hand corner is 
-\begin{equation}
-\label{eq:lem_block_matrix}
--\frac{1}{2}\bigg(\one\bxi^\tp \L_G\bxi +\frac{4}{n^2} R \one - \Reff\L_G\bxi - \frac{2}{n}\Reff\one\bigg),
-\end{equation}
-where, using that $\Reff=\bxi \one^\tp + \one \bxi^\tp -2\L_G^+$ and $\one^\tp\L_G=\zero$, 
-\begin{align}
-\Reff\L_G = \one\bxi^\tp \L_G - 2\bigg(\I-\frac{1}{n}\J\bigg).\label{eq:lem_block_matrix2}
-\end{align}
-Equation~\eqref{eq:lem_block_matrix} thus becomes 
-\begin{align*}
-\frac{1}{n}\Reff\one -\frac{2}{n^2}R \one - \bigg(\I-\frac{1}{n}\J\bigg)\bxi &= \frac{1}{n}\Reff\one - \frac{2}{n^2}R\one - \bigg(\I-\frac{1}{n}\J\bigg)\bigg(\frac{1}{n}\Reff\one - \frac{1}{n^2}\J\Reff\one\bigg) \\
-&= -\frac{2}{n^2} R\one + \frac{1}{n^2}\Reff\one + \frac{1}{n^2}\J\Reff\one - \frac{1}{n^3}\J^2\Reff\one \\
-&= -\frac{2}{n^2} R\one +\frac{1}{n^2} \J\Reff\one = \zero,
-\end{align*}
-using that $\J^2 = n \J$, $R=\frac{1}{2}\one^\tp \Reff\one$, and $\J\Reff\one = \one(\one^\tp \Reff\one) = \one R$. Finally, again using \eqref{eq:lem_block_matrix2}, the bottom right-hand side is 
-\begin{align*}
-\frac{1}{2}\one \bxi^\tp \L_G + \frac{1}{n}\one\one^\tp - \frac{1}{2}\Reff\L_G &= \frac{1}{n}\J + \bigg(\I-\frac{1}{n}\J\bigg) = \I.
-\end{align*}
-This demonstrates that \eqref{eq:lem_block_matrix} holds. We now show that $\L_G \Reff\L_G = -2 \L_G$ and that $\Reff\L_G\Reff\x = -2\Reff\x$ for all $\x\in\spn(\one)^\perp$, which will complete the proof. Applying Equation \eqref{eq:lem_block_matrix2} we have 
-\begin{align*}
-\L_G\Reff\L_G = \L_G\one \bxi^\tp\L_G = -2\L_G+ \frac{2}{n}\L_G\one\one^\tp = -2\L_G.
-\end{align*}
-In the same way as \eqref{eq:lem_block_matrix2} was derived, we see that 
-\begin{equation*}
-\L_G\Reff = \L_G\bxi\one^\tp - 2\bigg(\I-\frac{1}{n}\J\bigg),
+\bD^\tp \L_G\bD + \frac{4}{n^2}\Rtot_G & -(\L_G\bD + \frac{2}{n}\one)^\tp \\
+-(\L_G\bD + \frac{2}{n}\one) & \L_G
+\end{pmatrix}^{-1},
 \end{equation*}
-and so 
-\begin{equation*}
-\Reff\L_G\Reff= \bigg(\Reff\L_G\bxi^\tp + \frac{2}{n}\one \bigg)\one^\tp -2\Reff,
-\end{equation*}
-as desired. 
+which  is verified by Lemma~\ref{lem:block_equation_graph}. The other two conditions translate  to $\L_G\Reff_G\L_G=-2\L_G$ and $\Reff_G\L_G\Reff_G=-2\Reff_G$ on $\spn(\one)^\perp$,  which also holds  via Lemma~\ref{lem:block_equation_graph}. 
 \end{proof}
 
+\note{edit this}
 Owing to the various connections between graphs and simplices, the block matrix equation has several different flavours. Lemma~\ref{lem:block_inverse_simplex}, for example, provides an interpretation purely in terms of simplices, while Equation~\eqref{eq:block_inverse_er} provides a relationship between the Laplacian, its pseudoinverse, and  the effective resistance of the graph. 
 We can combine  these two interpretations to obtain the following relationship between a graph's Laplacian and its inverse (combinatorial) simplex. 
 
-\begin{corollary}
-	For a  graph $G$ with inverse simplex $\splx^+$ which has distance matrix  $\D(\splx^+)$, 
-	\begin{equation}
-	\label{eq:block_inverse_graph_simplex}
-	-\frac{1}{2}\begin{pmatrix}
-	0 & \one^\tp \\
-	\one & \D(\splx_G^+)
-	\end{pmatrix} = 
-	\begin{pmatrix}
-	\u^\tp  \L_G \u  + 4R_G/n^2
-	&  -(\L_G\u + \frac{2}{n}\one )^\tp \\
-	-(\L_G\u + \frac{2}{n}\one ) 
-	& \L_G
-	\end{pmatrix}^{-1},
-	\end{equation}
-	where $\u=\diag(\L_G^+(i,i))$. Moreover,  $\L_G\Reff_G\L_G=-2\L_G$ and for all $\x\in\spn(\one)^\perp$, $\Reff_G\L_G\Reff_G\x=-2\Reff_G\x$. 
-\end{corollary}
 
 \begin{lemma}
+	\label{lem:distance_matrix}
 	For any centred simplex $\ssplx\subset\R^{n-1}$  with distance matrix $\D_\ssplx$ and vertex  matrix $\Sv$, it holds  that $\D_\ssplx = \one\bxi^\tp + \bxi\one^\tp - 2\Sv^\tp\Sv$.
 \end{lemma}
 \begin{proof}
-	Fix  $k,\ell\in[n]$. We have 
+	Fix  $k,\ell\in[n]$. The proof purely computational. We have 
 	\begin{equation*}
-	(\bxi\one^\tp)(k,\ell) = \frac{1}{n}\sum_j\norm{\bgamma_k-\bgamma_j}_2^2 - \bar{d},\quad (\one\bxi^\tp)(k,\ell) = \frac{1}{n}\sum_j\norm{\bgamma_\ell-\bgamma_j}_2^2 - \bar{d},\quad -2\Sv^\tp\Sv = -2\la \bgamma_k,\bgamma_\ell\ra.
+	(\bxi\one^\tp)(k,\ell) = \frac{1}{n}\sum_j\norm{\bgamma_k-\bgamma_j}_2^2 - \bar{d},\quad (\one\bxi^\tp)(k,\ell) = \frac{1}{n}\sum_j\norm{\bgamma_\ell-\bgamma_j}_2^2 - \bar{d}, 
 	\end{equation*}
-	Expanding the norm in terms of dot products yields 
+	and  $-2\Sv^\tp\Sv = -2\la \bgamma_k,\bgamma_\ell\ra$. 
+	Expanding the norm in terms of dot products, write
 	\begin{align*}
-	(\bxi\one^\tp + \one\bxi^\tp - 2\Sv^\tp\Sv)(k,\ell) 
+	(\bxi\one^\tp + \one\bxi^\tp - 2\Sv^\tp\Sv)(k,\ell) &= \frac{1}{n}\bigg(\sum_j \norm{\bgamma_k-\bgamma_j}_2^2 + \sum_j\norm{\bgamma_\ell-\bgamma_j}_2^2 \bigg) - \frac{2}{n^2}\sum_{i<j} \norm{\bgamma_i-\bgamma_j}_2^2 -2\la\bgamma_k,\bgamma_\ell\ra \\ 
+	&=\frac{1}{n}\sum_j\left(\norm{\bgamma_k}_2^2 + \norm{\bgamma_j}_2^2+\norm{\bgamma_\ell}_2^2 +\norm{\bgamma_j}_2^2  -2\la \bgamma_k,\bgamma_j\ra -2\la\bgamma_\ell,\bgamma_j\ra\right) \\
+	&\qquad -\frac{1}{n^2}\sum_{i,j}\left(\norm{\bgamma_i}_2^2+\norm{\bgamma_j}_2^2-2\la\bgamma_i,\bgamma_j\ra\right)  -2\la \bgamma_k,\bgamma_\ell\ra. \\
+	&= \norm{\bgamma_k}_2^2 + \norm{\bgamma_\ell}_2^2 - 2\la\bgamma_k,\bgamma_\ell\ra + 2\bigg(\frac{1}{n}\sum_j\norm{\bgamma_j}_2^2 - \frac{1}{n^2}\sum_{i,j}\norm{\bgamma_j}_2^2\bigg)  \\
+	&\qquad +\frac{1}{n^2}\sum_{i,j} \la \bgamma_i,\bgamma_j\ra - \frac{2}{n}\sum_j (\la \bgamma_k,\bgamma_j\ra -\bgamma_\ell,\bgamma_j\ra).
 	\end{align*} 
-	
-	
+	Note that in the second  line we removed the factor of two from $\bar{d}$ by summing over all $i,j$ rather than simply $i<j$. 
+	Now, the first three terms in the final equation are  equal to $\norm{\bgamma_k-\bgamma_\ell}_2^2=\D_\ssplx(k,\ell)$. Therefore,  it remains  to show  that the final  three terms are zero. The first  of  these, $\frac{1}{n^2}\sum_{i,j}\norm{\bgamma_j}_2^2\bigg)$  is clearly   zero after noticing that the final summand is independent of $i$. As for the final two, we write them in terms of  the centroid of $\ssplx$ (which is $\zero$), as 
+	\begin{align*}
+	&\quad \frac{1}{n^2}\sum_{i,j} \la \bgamma_i,\bgamma_j\ra - \frac{2}{n}\sum_j (\la \bgamma_k,\bgamma_j\ra -\bgamma_\ell,\bgamma_j\ra) \\
+	&= \frac{1}{n^2}\bigg\la \sum_i\bgamma_i,\sum_j\bgamma_j\bigg\ra - \frac{2}{n}\bigg(\bigg\la \bgamma_k,\sum_j\bgamma_j\bigg\ra 
+	 -\bigg\la \bgamma_\ell,\sum_j\bgamma_j\bigg\ra\bigg) \\
+	&= \frac{1}{n^2}\la n\cent(\ssplx),n\cent(\ssplx)\ra - \frac{2}{n}(\la \bgamma_k,n\cent(\ssplx)\ra - \la \bgamma_\ell,n\cent(\ssplx)\ra \\
+	&= 0,
+	\end{align*}
+	as was to  be shown. 
 \end{proof}
+
+This can be used  to strengthen   the  result to  all simplices. \note{say more}
 
 \begin{lemma}
 	\label{lem:block_general_simplex}
-	For any centred simplex $\ssplx\subset\R^{n-1}$ with distance  matrix $\D_\ssplx$, 
-	\begin{equation*}
-	-\frac{1}{2}\begin{pmatrix}
-	0 & \one^\tp \\
-	\one & \D_\ssplx
-	\end{pmatrix} = \begin{pmatrix}
-	\bxi^\tp\Q\bxi + 4\bar{d}  &  -(\Q\bxi  + \frac{2}{n}\one)^\tp  \\
-	-(\Q\bxi  + \frac{2}{n}\one) &  \Q
-	\end{pmatrix}^{-1},
-	\end{equation*}
-	where $\Q=(\Sv^\du)^\tp\Sv^\du$, and $\Sv^\du$ is the vertex matrix of $\ssplx^\du$. 
+	The equations of Lemma~\ref{lem:block_inverse_simplex} hold for \emph{any} simplex $\ssplx\subset\R^{n-1}$. 
 \end{lemma}
 \begin{proof}
-	content...
+	Let us first assume that $\ssplx$ is centred. 
+	The proof proceeds very much as  does  that of Lemma~\ref{lem:block_equation_graph}, by computing the matrix product  
+	\[\begin{pmatrix}
+	0 & \one^\tp \\
+	\one & \D_\ssplx
+	\end{pmatrix} \begin{pmatrix}
+	\bxi^\tp\Q\bxi + 4\bar{d}  &  -(\Q\bxi  + \frac{2}{n}\one)^\tp  \\
+	-(\Q\bxi  + \frac{2}{n}\one) &  \Q
+	\end{pmatrix},\] and demonstrating that it equals $-2\I$. Instead of leverage  the relationship $\Reff_G=\one\bD^\tp+\bD\one^\tp - 2\L_G^+$ as was done  in that case, we use the more general equation $\D_\ssplx = \one\bxi^\tp+\bxi\one^\tp - 2\Sv^\tp\Sv$ given by Lemma~\ref{lem:distance_matrix}. However, since that proof  was given  in the appendix we will give this one here.  The top left corner of  the product of these two matrices is $-\one^\tp\Q\bxi-2/n \one^\tp\one = -2$ as $\one^\tp\Q = \one^\tp(\Sv^\du)^\tp\Sv^\du$ since $\ssplx^\du$ is centred by definition. Likewise,  the top right  hand corner is zero.  After expanding $\D_\ssplx$  in accordance with Lemma~\ref{lem:distance_matrix} the bottom left  corner becomes 
+	\begin{align}
+	&\one\bxi^\tp\Q\bxi+4\bar{d}\one - (\one\bxi^\tp+\bxi\one^\tp - 2\Sv^\tp\Sv)\Q\bxi -\frac{2}{n}\D_\ssplx\one = 4\bar{d}\one + 2\Sv^\tp\Sv\Q\bxi  -\frac{2}{n}\D_\ssplx\one. \label{eq:lem_block_general_simplex1}
+	\end{align}
+	Lemma~\ref{lem:dual_pseudoinverse} dictates that $\Q$ is the pseudoinverse of $\Sv^\tp\Sv$ so, by Lemma~\ref{lem:pseudoinverse_properties}, $\Sv^\tp\Sv\Q=\I-\J/n$ (of course, we're implicitly using that $\spn(\one)^\perp = \ker(\Sv)=\ker(\Sv^\tp\Sv)$). 
+	Moreover, after noting that 
+	\begin{equation*}
+	\bxi = \frac{1}{n}\D_\ssplx\one -\bar{d}\one,\quad \text{and}\quad  \bar{d} = \frac{1}{2n^2}\one^\tp\D\one,
+	\end{equation*}
+	we can  rewrite the right  hand side of Equation~\eqref{eq:lem_block_general_simplex1} as 
+	\begin{align*}
+	&\quad  4\bar{d}\one +2\bigg(\I-\frac{\J}{n}\bigg)\bigg(\frac{1}{n}\D_\ssplx\one-\bar{d}\one\bigg)  -\frac{2}{n}\D_\ssplx\one \\
+	&= 2\bar{d}\one -  \frac{2}{n^2}\J\D_\ssplx\one + \frac{2}{n}\J\bar{d}\one \\
+	&=\frac{1}{n^2}\J\D_\ssplx\one -  \frac{2}{n^2}\J\D_\ssplx\one + \frac{1}{n^3}\J^2\D_\ssplx\one \\
+	&= \frac{1}{n^2}\J\D_\ssplx\one -  \frac{2}{n^2}\J\D_\ssplx\one + \frac{1}{n^2}\J\D_\ssplx\one=\zero.
+	\end{align*}
+	Carrying out a similar  procedure for  the  bottom right corner, we  obtain  
+	\begin{align*}
+	-\one\bxi^\tp\Q-\frac{2}{n}\J+\D_\ssplx\Q &= -\one\bxi^\tp\Q-\frac{2}{n}\J  + (\one\bxi^\tp+\bxi\one^\tp -2\Sv^\tp\Sv)\Q \\
+	&= -\frac{2}{n}\J-2\bigg(\I-\frac{\J}{n}\bigg) = -2\I.
+	\end{align*}
+	The  final two equations follow via similar computations: 
+	\begin{align*}
+	\Q\D_\ssplx\Q = \Q(\one\bxi^\tp+\bxi\one^\tp-2\Sv^\tp\Sv)\Q = -2\Q\Sv^\tp\Sv\Q = -2\Sv^\tp\Sv,
+	\end{align*}
+	due to properties of the pseudoinverse (Lemma~\ref{lem:pseudoinverse_properties}), and if $\x\perp\one$ then 
+	\begin{align*}
+	\D_\ssplx \Q\D_\ssplx \x = \D_\ssplx \Q(\one\bxi^\tp  +\bxi\one^\tp - 2\Sv^\tp\Sv)\x = -2\D_\ssplx\Q \Sv^\tp\Sv\x = -2\D_\ssplx\bigg(\I-\frac{\J}{n}\bigg) \x = -2\D_\ssplx,
+	\end{align*}
+	which completes the proof if $\ssplx$ is centred. If $\ssplx$  is not centred, then we need only apply the relationship to its centred  version $\ssplx_0$, and note  that the quantities $\D_\ssplx, \bxi,\bar{d}$ and $\Q$ are the same for $\ssplx_0$ and $\ssplx$. The first three are the same because they deal with distances between vertices, which are invariant under linear transformations. $\Q$ is the  same due to  Observation~\ref{obs:dual_centred}. 
 \end{proof}
+
+\begin{remark}
+	We have thus  recovered Fiedler's block matrix relation.  
+\end{remark}
+
+
+\begin{corollary}
+	\begin{equation*}
+	-\frac{1}{2}\begin{pmatrix}
+	0 &  \one^\tp \\
+	\one & 
+	\end{pmatrix}
+	\end{equation*}
+\end{corollary}
 
 One consequence of the above is a relation between the volume of the simplex and the effective resistances in the graph. To see this, we need to introduce a particular object from the field of distance geometry. Let $\D(\X)$ be the distance matrix of a set $\X$ of $d$ points. The matrix 
 \begin{equation}
@@ -262,7 +271,7 @@ The relation between the Menger matrix and the volume combined with the matrix e
 	where $\Gamma_G$ is the total weight of all spanning  trees of $G$. 
 \end{lemma}
 
-We remind the reader that $\Gamma_G$ was discussed in  Section~\ref{sec:background_laplacian}; see  Equation~\ref{eq:Gamma_G}  in particular. The proof of Lemma~\ref{lem:volume} may  be  found in Appendix~\ref{sec:app_proofs_further}.   
+We remind the reader that $\Gamma_G$ was discussed in  Section~\ref{sec:background_laplacian}; see  Equation~\eqref{eq:Gamma_G}  in particular. The proof of Lemma~\ref{lem:volume} may  be  found in Appendix~\ref{sec:app_proofs_further}.   
 
 
 We can use these results to produce a surprising equation concerning  the diagonal entries of the Laplacian. In particular, $\L_G(i,i)$ is proportional to the ratio of the weight of  spanning trees in $G$ to this weight when the vertex $i$ is removed. 
