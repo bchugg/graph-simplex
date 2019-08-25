@@ -352,4 +352,81 @@ which does not look to be necessarily non-positive.
 
 
 
+Another representation comes via the \emph{incidence matrix} of $G$, $\B_G\in \R^{E\times V}$, defined as follows. Place an arbitrary orientation on the edges of $G$ (say, for example, $(i,j)$ is directed from $i$ to $j$ iff $i<j$), and for an edge $e$, let $e^-\in V$ denote the vertex at which $e$ begins, and $e^+$ the vertex at which it ends. Set 
+\begin{equation}
+\label{eq:B_G}
+\B_G(e,i)=\begin{cases}
+1&\text{if }i=e^-,\\
+-1&\text{if }i=e^+,\\
+0&\text{otherwise},
+\end{cases}
+\end{equation}
+or, equivalently, $\B_G(e,i) = (\chi_{(i=e^-)}-\chi_{(i=e^+)})$. Then,
+\begin{equation*}
+( \B_G^\tp\W_G\B_G)(i,j)=\sum_{e\in E} \B_G^\tp(i,e)\B_G(e,j)=\sum_{e\in E}w(e)(\chi_{i=e^-}-\chi_{i=e^+})(\chi_{j=e^-}-\chi_{j=e^+}).
+\end{equation*}
+Let $\alpha(e)=(\chi_{i=e^-}-\chi_{i=e^+})(\chi_{j=e^-}-\chi_{j=e^+})$. If $i=j$, then $\alpha(e)=1$ iff $e$ is incident to $i$, and 0 otherwise. If $i\neq j$, then $\alpha(e)=1$ for $e=(i,j)$ and 0 otherwise, regardless of whether $i=e^-$ and $j=e^+$ or vice versa (this is what ensures that the orientation we chose for the edges is inconsequential). Consequently, 
+\begin{align*}
+(\B_G^\tp\W_G\B_G)(i,j) = 
+\begin{cases}
+\sum_{e\ni i} w(e),&\text{if } i=j,\\
+-w((i,j)),&\text{otherwise}, 
+\end{cases}
+\end{align*}
+which is precisely $\L_G(i,j)$. That is, we have 
+\begin{equation}
+\label{eq:L=BTB}
+\L_G=(\W_G^{1/2}\B_G)^\tp(\W_G^{1/2}\B_G).
+\end{equation}
+
+
+Likewise, 
+\begin{equation*}
+\W_G^{-1/2}\Bn_G^\tp \W_G\Bn_G\W_G^{-1/2} =  \W_G^{-1/2}\L_G\W_G^{-1/2}=\Ln_G
+\end{equation*}
+
+
+First  we  note that the total effective resistance translates to the total pairwise distance in the simplex: 
+\begin{align}
+\Rtot_G = \frac{1}{2}\sum_{i,j\in[n]} \effr(i,j) = \frac{1}{2}\sum_{i,j\in[n]}\norm{\sv_i^+-\sv_j^+}_2^2. \label{eq:rtot_simplex}
+\end{align}
+This connection gives us a new way to prove certain identities. For example, 
+\begin{align*}
+\sum_{i,j\in[n]}\norm{\sv_i^+-\sv_j^+}_2^2 &= n\sum_{in[n]}\norm{\sv_i^+}_2^2 + n\sum_{j\in[n]}\norm{\sv_j^+}_2^2 - 2\sum_{i,j\in[n]}\la\sv_i^+,\sv_j^+\ra \\ 
+&= n\sum_{i\in[n]}\L_G^+(i,i) + n\sum_{j\in[n]}\L_G^+(j,j) - 2\sum_{i\in[n]}\la \L_G(i,\cdot),\one\ra = 2n\Tr(\L_G^+),
+\end{align*}
+since $\L_G^+\one=\zero$. 
+Hence, by \eqref{eq:rtot_simplex},
+\begin{equation*}
+\Rtot_G=n\Tr(L_G^+) = n\sum_{i\in[n]}\sum_{j<n} \frac{1}{\lambda_i}\vp_i(j)^2 =\sum_{j<n}\frac{1}{\lambda_j}\norm{\vp_j}_2^2 = \sum_{j<n}\frac{1}{\lambda_j}.
+\end{equation*}
+This is of course a well-known equation---originally produced by Klein  and Randi\'{c}~\cite{klein1993resistance}---but the interest resides in the fact that it can be derived via the graph-simplex correspondence.  
+
+
+\section{Normalized Laplacian}
+\note{Not worth fleshing out  until we have more content for this section.}
+
+Noting that 
+\begin{equation*}
+\cent(\splxn) = \frac{1}{n}\bigg(\sum_{\ell=1}^n \svn_\ell(1),\dots,\sum_{\ell=1}^n \svn_\ell(n)\bigg)^\tp,
+\end{equation*}
+we see that the vertices of $\splxn_0$ have coordinates
+\begin{equation*}
+\svn_i(j) - \cent(\splxn)(j) = \vpn_j(i)\lambdan_j^{1/2} - \frac{1}{n}\sum_{\ell=1}^n \vpn_j(\ell)\lambdan_j^{1/2} = \lambdan_j^{1/2} \bigg(\vpn_j(i) - \frac{1}{n}\la \vpn_j,\one\ra \bigg).
+\end{equation*}
+Likewise, the vertices of $\splxn_0^+$ have coordinates 
+\begin{equation*}
+\svn_i^+(j) = \evaln_j^{-1/2}\bigg(\vpn_j(i) - \frac{1}{n}\la \vpn_j,\one\ra\bigg).
+\end{equation*}
+
+Let $\cent$ be the centroid of the centred normalized Laplacian. Noting that $(\cent,\cent,\dots,\cent)=\cent\one^\tp$, 
+the Gram Matrix of $\splxn_0$ is 
+\begin{align*}
+(\Svn-\cent\one^\tp)^\tp(\Svn-\cent\one^\tp) &= \Svn^\tp\Svn - \Svn^\tp\cent\one^\tp - \one\cent^\tp\Svn + \one\cent^\tp\cent\one^\tp \\
+&= \Ln_G - \frac{1}{n} \Svn^\tp\Svn\one\one^\tp - \frac{1}{n}\one\one^\tp\Svn^\tp\Svn + \frac{1}{n^2}\Svn^\tp\Svn\one\one^\tp \\
+&= \Ln_G - \frac{1}{n}\Ln_G\J - \frac{1}{n} \J\Ln_G+ \frac{1}{n^2}\J\Ln_G\J.\\
+\end{align*}
+
+\note{What are the properties of this matrix? It has an eigenvector of $\one$ with eigenvalue 0, but it does not seem to be a Laplacian. }
+
 

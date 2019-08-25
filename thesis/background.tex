@@ -14,10 +14,14 @@ Given a set of scalars $K$, we let $K^{n\times m}$ denote the set of $n\times m$
 We let $\Q(i,\cdot)$ (resp., $\Q(\cdot,i)$) denote the $i$-th row (resp., column) of the matrix $\Q$. 
 For a set $U$, $K^U$ denotes the set of all functions from $U$ to $K$.  Elements of $K^U$ are also called vectors. For any $n\in\N$, set $[n]\equiv \{1,2,\dots,n\}$. As usual, we let $K^n=K^{[n]}$. Vectors will typically be denoted by lowercase boldcase letters. Lowercase  greek letters will often be used for scalars. It will often  be intuitively useful to identity vectors with their endpoints, rather than the traditional ``arrow'' originating from the origin. When this is the case, we will often use the word point instead of vector. We emphasize that they are formally the same object. 
 
+
+The standard inner product on $\R^d$ is denoted as $\la\cdot,\cdot\ra$, that is, $\la \x,\y\ra = \sum_i x(i)y(i)$. Elementary properties of the inner product will often be used without justification, such as its bilinearity: $\la \x,\alpha\y_1+\y_2\ra  = \la \x,\alpha\y_1\ra + \la \x,\y_2\ra$ for $\alpha\in\R$. 
 For $n\in \N$, let $\zero_n\in\R^n$ and $\one_n\in\R^n$ be the vectors of all zeroes and all ones. Let $\I_n$ and $\J_n$  refer to the $n\times n$ identity matrix and all-ones matrix respectively (so $\J_n=\one_n\one_n^\tp)$. When the dimension $n$ is understood from context, will typically omit it as a subscript. We use $\chi(E)$ or $\chi_E$ as the indicator of an event $E$, i.e., $\chi(E)=1$ if $E$ occurs, and 0 otherwise. For example, $\chi(i\in U)=1$ if $i\in U$, and 0 if $i\in U^c$.  Similarly, for $U\subset K$,  $\bchi_U\in\R^K$ is the indicator vector of the set $U$, so $\bchi_U(i)=\chi(i\in U)$. 
-By $\diag(x_1,x_2,\dots,x_n)$ we mean the $n\times n$ matrix $\Q$ entries $\Q(i,i)=x_i$ and $\Q(i,j)=0$ for $i\neq j$. Given vectors $\v_1,\dots,\v_n$, we will often denote by $(\v_1,\dots,\v_n)$ the matrix whose $i$-th column is $\v_i$. The $i$-th coordinate of a vector $\x$ will be denoted either by $\x(i)$ or simply $x(i)$. We trust this will not be overly confusing.  For $1\leq p<\infty$, the \emph{$p$-norm} of $\x\in \R^d$ is 
+By $\diag(x_1,x_2,\dots,x_n)$ we mean the $n\times n$ matrix $\Q$ entries $\Q(i,i)=x_i$ and $\Q(i,j)=0$ for $i\neq j$. Given vectors $\v_1,\dots,\v_n$, we will often denote by $(\v_1,\dots,\v_n)$  or  $(\v_i)$ the matrix whose $i$-th column is $\v_i$. 
+The  \emph{Gram matrix} of a set  of vectors $\x_1,\dots,\x_n$ is the matrix with $(i,j)$-th entry $\la \x_i,\x_j\ra$. 
+The $i$-th coordinate of a vector $\x$ will be denoted either by $\x(i)$ or simply $x(i)$. We trust this will not be overly confusing.  For $1\leq p<\infty$, the \emph{$p$-norm} of $\x\in \R^d$ is 
 $\norm{\x}_p = \bigg(\sum_{i=1}^d x_i^p\bigg)^{1/p}$,
-while the \emph{0-norm} of $\x$ is the number of non-zero entries of $\x$, and is denoted by $\norm{\x}_0$.  Given a vector or matrix, we use the superscript $t$ to denote it's transpose, i.e.,, given $\Q$, $\Q^t$ is defined as $\Q^t(i,j) = \Q(j,i)$. The standard inner product on $\R^d$ is denoted as $\la\cdot,\cdot\ra$, that is, $\la \x,\y\ra = \sum_i x(i)y(i)$. Elementary properties of the inner product will often be used without justification, such as its bilinearity: $\la \x,\alpha\y_1+\y_2\ra  = \la \x,\alpha\y_1\ra + \la \x,\y_2\ra$ for $\alpha\in\R$.  We will sometimes use the notation $\perp$ to mean ``orthogonal to'', so $\x\perp\y$ iff $\la\x,\y\ra=0$. We will often use the shorthand ``iff'' to mean ``if and only if''. We use $\delta_{ij}$ to denote the Kronecker delta function, i.e., $\delta_{ij} = 1$ if $i=j$ and 0 otherwise. We may sometimes include a comma and write $\delta_{i,j}$. 
+while the \emph{0-norm} of $\x$ is the number of non-zero entries of $\x$, and is denoted by $\norm{\x}_0$.  Given a vector or matrix, we use the superscript $t$ to denote it's transpose, i.e.,, given $\Q$, $\Q^t$ is defined as $\Q^t(i,j) = \Q(j,i)$.  We will sometimes use the notation $\perp$ to mean ``orthogonal to'', so $\x\perp\y$ iff $\la\x,\y\ra=0$. We will often use the shorthand ``iff'' to mean ``if and only if''. We use $\delta_{ij}$ to denote the Kronecker delta function, i.e., $\delta_{ij} = 1$ if $i=j$ and 0 otherwise. We may sometimes include a comma and write $\delta_{i,j}$. 
 
 A set $\X\subset\R^m$ is \emph{convex} if for all $\x,\y\in\X$ and $\lambda\in(0,1)$, $\lambda\x + (1-\lambda)\y\in \X$. 
 The \emph{convex hull} of a finite set of points $X=\{\x_1,\dots,\x_k\}\subset \R^n$ is 
@@ -42,17 +46,19 @@ Next we state a result which will underpin our construction of the ``dual simple
 
 \begin{lemma}
 \label{lem:bi-orthogonal_bases}
-Let $\v_1,\dots,\v_k$ be a set of linearly independent vectors in $\R^n$. There exists a set of vectors, $\u_1,\dots,\u_k$ such that $\la \v_i,\u_j\ra = \delta_{ij}$ for all $i,j\in[k]$. The collections $\{\v_i\}$ and $\{\u_i\}$ are called \emph{biorthogonal} or \emph{dual bases}.  
+Let $\v_1,\dots,\v_k$ be a set of linearly independent vectors in $\R^n$. There exists a set of vectors, $\u_1,\dots,\u_k$ such that $\la \v_i,\u_j\ra = \delta_{ij}$ for all $i,j\in[k]$. The collections $\{\v_i\}$ and $\{\u_i\}$ are called any of \emph{biorthogonal, dual} or \emph{sister sets} (or bases if $k=n$).   
 \end{lemma}
 
-Given the set $\{\v_i\}$ of linearly independent vectors, the complementary set $\{\u_i\}$ given by Lemma \ref{lem:bi-orthogonal_bases} is called the \emph{sister} or \emph{dual set to $\{\v_i\}$}. If $\{\v_i\}$ constitutes a basis of the underlying space, then we might call $\{\u_i\}$ the \emph{sister} or \emph{dual basis}.  We present a simple observation which will be useful in later sections. As usual, the  reader can find the proof in  Appendix~\ref{sec:app_proofs_background}. 
+We present a simple observation to do with dual bases which will be useful in later sections. As usual, the  reader can find the proof in  Appendix~\ref{sec:app_proofs_background}. 
 
 \begin{observation}
 \label{obs:bi-orthogonal_unique}
 Let $\{\v_1,\dots,\v_n\}\subset\R^n$ be a set of linearly independent vectors. The sister basis given by Lemma \ref{lem:bi-orthogonal_bases} is unique. Moreover, if we let $\M\in\R^{n\times n}$ have as columns the vectors  $\v_i$, and $\Q$ have as columns the vectors  of the  sister basis, then $\Q^\tp=\M^{-1}$.  
 \end{observation}
 
-Let $\M\in\R^{n\times n}$. We recall that a vector $\eig$ satisfying $\M\eig=\lambda\eig$ is an \emph{eigenvector} of $\M$, and call $\lambda$ the associated \emph{eigenvalue}. It's clear that if $\eig$ is an eigenvector then so it $c\eig$ for any constant $c\in \R$. If $\M$ is real and symmetric, then the Spectral theorem dictates that there exists an orthonormal basis consisting of eigenvectors $\{\eig_1,\eig_2,\dots,\eig_n\}$ of $\M$ whose corresponding eigenvalues $\{\lambda_1,\dots,\lambda_n\}$ are all real. Let $\Eig=(\eig_1,\eig_2,\dots,\eig_n)$ be the matrix whose $i$-th column is the $i$-th eigenvector of $\M$, and set $\Eval=\diag(\lambda_1,\dots,\lambda_n)$. Observe that 
+Let $\M\in\R^{n\times n}$. We recall that a vector $\eig$ satisfying $\M\eig=\lambda\eig$ is an \emph{eigenvector} of $\M$, and call $\lambda$ the associated \emph{eigenvalue}. 
+%It's clear that if $\eig$ is an eigenvector then so it $c\eig$ for any constant $c\in \R$. 
+If $\M$ is real and symmetric, then the spectral theorem dictates that there exists an orthonormal basis consisting of eigenvectors $\{\eig_1,\eig_2,\dots,\eig_n\}$ of $\M$ whose corresponding eigenvalues $\{\lambda_1,\dots,\lambda_n\}$ are all real. Let $\Eig=(\eig_1,\eig_2,\dots,\eig_n)$ be the matrix whose $i$-th column is the $i$-th eigenvector of $\M$, and set $\Eval=\diag(\lambda_1,\dots,\lambda_n)$. Observe that 
 \begin{equation}
 \label{eq:eig_decomp}
 \M\Eig=\M(\eig_1,\dots,\eig_n)=(\M\eig_1,\dots,\M\eig_n)=(\lambda_1\eig_1,\dots,\lambda_n\eig_n)=\Eig\Eval.
@@ -68,14 +74,14 @@ for any $k$ since $\{\vp_i\}$ are orthonormal. Thus,  if  $\M$ is PSD we define
 \begin{equation*}
     \M^{1/2} \equiv \Eig\Eval^{1/2}\Eig^\tp = \sum_{i\in[n]}\sqrt{\lambda_i}\vp_i\vp_i^\tp.
 \end{equation*}
-It's easily verified that $(\M^{1/2})^2 = \M$. The following basic  result will be useful; the proof can  be found in the appendix. 
+It's easily verified that $(\M^{1/2})^2 = \M$. The following basic  result will be useful. 
 
 \begin{lemma}
 	\label{lem:rank(QtQ)}
 	For any $\M:\R^n\to\R^m$, $\rank(\M) = \rank(\M^\tp\M)$. 
 \end{lemma}
 
-We conclude with a formula for  the determinant of the minor of an invertible matrix.  It is often referred to as (a special  case of) \emph{Sylvester's identity}~\cite{sylvester1851xxxvii}. We state the version described by Viktor Prasolov~\cite{prasolov1994problems}. 
+We conclude with a formula for  the determinant of a minor of an invertible matrix.  It is often referred to as (a special  case of) \emph{Sylvester's identity}~\cite{sylvester1851xxxvii}. We state the version described by Viktor Prasolov~\cite{prasolov1994problems}. 
 
 \begin{lemma}
 	\label{lem:sylvester}
@@ -164,7 +170,8 @@ Here we introduce various matrices of graphs, including the Laplacian. See  the 
 
 Let $G=(V,E,w)$ be a graph, with $V=[n]$ and $|E|=m$. 
 Let $\W$ be the \emph{weight matrix} of $G$, i.e., $\W=\diag(w(1),w(2),\dots,w(n))$. 
-The \emph{degree matrix} of $G$ is \[\diag(\deg(1),\deg(2),\dots,\deg(n)).\] The \emph{adjacency matrix} of $G$ encodes the edge relations, namely, $\A_G(i,j)=w((i,j))$ for all $i\neq j$, and $\A_G(i,i)=0$ for all $i$. Notice that (for undirected graphs) $\A_G$ is symmetric.  Note that if $G$ is unweighted, then $\W_G$ and the degree matrix are equivalent. 
+The \emph{degree matrix} of $G$ is $\diag(\deg(1),\deg(2),\dots,\deg(n))$. 
+The \emph{adjacency matrix} of $G$ encodes the edge relations, namely, $\A_G(i,j)=w((i,j))$ for all $i\neq j$, and $\A_G(i,i)=0$ for all $i$. Notice that (for undirected graphs) $\A_G$ is symmetric.  Note that if $G$ is unweighted, then $\W_G$ and the degree matrix are equivalent. 
 The \emph{combinatorial Laplacian} of $G$ is the matrix 
 \begin{equation}
 \label{eq:L_G}
@@ -181,33 +188,7 @@ Then
 \label{eq:Lsum}
     \L_G=\sum_{i\sim j}\L_{i,j}.
 \end{equation}
-Another representation comes via the \emph{incidence matrix} of $G$, $\B_G\in \R^{E\times V}$, defined as follows. Place an arbitrary orientation on the edges of $G$ (say, for example, $(i,j)$ is directed from $i$ to $j$ iff $i<j$), and for an edge $e$, let $e^-\in V$ denote the vertex at which $e$ begins, and $e^+$ the vertex at which it ends. Set 
-\begin{equation}
-\label{eq:B_G}
-\B_G(e,i)=\begin{cases}
-1&\text{if }i=e^-,\\
--1&\text{if }i=e^+,\\
-0&\text{otherwise},
-\end{cases}
-\end{equation}
-or, equivalently, $\B_G(e,i) = (\chi_{(i=e^-)}-\chi_{(i=e^+)})$. Then,
-\begin{equation*}
-   ( \B_G^\tp\W_G\B_G)(i,j)=\sum_{e\in E} \B_G^\tp(i,e)\B_G(e,j)=\sum_{e\in E}w(e)(\chi_{i=e^-}-\chi_{i=e^+})(\chi_{j=e^-}-\chi_{j=e^+}).
-\end{equation*}
-Let $\alpha(e)=(\chi_{i=e^-}-\chi_{i=e^+})(\chi_{j=e^-}-\chi_{j=e^+})$. If $i=j$, then $\alpha(e)=1$ iff $e$ is incident to $i$, and 0 otherwise. If $i\neq j$, then $\alpha(e)=1$ for $e=(i,j)$ and 0 otherwise, regardless of whether $i=e^-$ and $j=e^+$ or vice versa (this is what ensures that the orientation we chose for the edges is inconsequential). Consequently, 
-\begin{align*}
-(\B_G^\tp\W_G\B_G)(i,j) = 
-\begin{cases}
-\sum_{e\ni i} w(e),&\text{if } i=j,\\
--w((i,j)),&\text{otherwise}, 
-\end{cases}
-\end{align*}
-which is precisely $\L_G(i,j)$. That is, we have 
- \begin{equation}
- \label{eq:L=BTB}
- \L_G=(\W_G^{1/2}\B_G)^\tp(\W_G^{1/2}\B_G).
- \end{equation}
- We associate with $\L_G$ the quadratic form $\Lop_G:\R^V\to \R$ which acts on functions $\f:V\to \R$ as $f\xmapsto{\Lop_G} \f^\tp \L_G \f$.
+We associate with $\L_G$ the quadratic form $\Lop_G:\R^V\to \R$ which acts on functions $\f:V\to \R$ as $f\xmapsto{\Lop_G} \f^\tp \L_G \f$.
 The Laplacian quadratic form will be crucial in our study of the geometry of graphs. Luckily for us then, its action on a vector is captured by an elegant closed-form formula. 
 Computing 
 $\L_{i,j}\f = w(i,j)(\bchi_i -\bchi_j)(\bchi_i-\bchi_j)^\tp \f = w(i,j)(\f(i)-\f(j))(\bchi_i-\bchi_j)$,
@@ -229,10 +210,6 @@ The normalized Laplacian is intimately related to various  phenomena, most notab
 \label{eq:Lnsum}
     \Ln_G = \sum_{i\sim j}\Ln_{i,j}.
 \end{equation}
-Likewise, 
-\begin{equation*}
-   \W_G^{-1/2}\Bn_G^\tp \W_G\Bn_G\W_G^{-1/2} =  \W_G^{-1/2}\L_G\W_G^{-1/2}=\Ln_G
-\end{equation*}
 As we've done here, we will typically emphasize the associate of elements associated to the normalized Laplacian with a hat.
 Using Equation~\eqref{eq:Lnsum}, we see that 
 the quadratic form $\Lnf_G$ associated with $\Ln_G$ acts as 
@@ -257,16 +234,16 @@ Since $\L_G$ and $\Ln_G$ are both symmetric, $\range(\L^\tp)=\range(\L)=\R^n \se
 \label{eq:LL^+}
 \L_G\L_G^+ = \L_G^+\L_G = \I - \frac{1}{n}\one\one^\tp,,
 \end{equation}
-i.e., the projection onto $\spn(\one)^\perp$, and 
+i.e., the projection onto $\spn(\one)^\perp$ (the orthogonal  complement of  $\spn(\one)$), and 
 \begin{equation}
 \label{eq:LnLn^+}
 \Ln_G\Ln_G^+ = \Ln_G^+\Ln_G = \I - \frac{1}{\vol(G)}\W_G^{1/2}\one(\W_G^{1/2}\one)^\tp = \I-\frac{1}{\vol(G)}\sqrt{\w}\sqrt{\w}^\tp,
 \end{equation}
-the projection onto $\spn(\w)^\perp$, where $\sqrt{\w}=(\sqrt{w(1)},\dots,\sqrt{w(n)})$. Note that the denominator in \eqref{eq:LnLn^+} is $\vol(G)$ instead of $n$ to ensure the result is a projection matrix. Put $\vb{P} = \I-\frac{1}{\vol(G)}\sqrt{\w}\sqrt{\w}^\tp$. Then 
-\begin{align*}
+the projection onto $\spn(\w)^\perp$, where $\sqrt{\w}=(\sqrt{w(1)},\dots,\sqrt{w(n)})$. Note that the denominator in \eqref{eq:LnLn^+} is $\vol(G)$ instead of $n$ to ensure the result is a projection matrix.\footnote{Indeed, put $\vb{P} = \I-\frac{1}{\vol(G)}\sqrt{\w}\sqrt{\w}^\tp$. Then 
+$
 \vb{P}^2 = \I - \frac{2}{\vol(G)}\sqrt{\w}\sqrt{\w}^\tp + \frac{1}{\vol(G)^2}\sqrt{\w}\sqrt{\w}^\tp\sqrt{\w}\sqrt{\w}^\tp = \vb{P},
-\end{align*}
-since $\sqrt{\w}^\tp\sqrt{\w}= \vol(G)$. 
+$
+since $\sqrt{\w}^\tp\sqrt{\w}= \vol(G)$.}
 
 
 
@@ -336,7 +313,7 @@ Later, we will demonstrate that one of the simplices of a given graph $G$ is int
 	Moreover, $\L_G\Reff_G\L_G=-2\L_G$ and  for all $\x\in\spn(\one)^\perp$, $\Reff_G\L_G\Reff_G\x=-2\Reff_G\x$. 
 \end{lemma}
 
-The proofs of Lemmas~\ref{lem:er_props} and \ref{lem:block_equation_graph} are found in Appendix~\ref{sec:app_proofs_background}. 
+The proofs of Lemmas~\ref{lem:er_props} and \ref{lem:block_equation_graph} are, as usual, found in Appendix~\ref{sec:app_proofs_background}. 
 
 
 
@@ -414,16 +391,44 @@ If $|U|=n-1$, we call $\ssplx_U$ a \emph{facet}. Figure~\ref{fig:faces} illustra
 
 Trusting the reader's capacity for variation, depending on the situation we may adopt different notation for the faces of a simplex. Oftentimes the vertical restriction symbol will be dropped and we will write only $\splx_U$; other times we will write $\splx[U]$, especially when the space reserved a subscript is being used for other purposes. 
 
-In  our study of simplices we will be mainly concerned with their relative properties (e.g., volume, angles, shape, etc.) as opposed to their absolute  positions in space. Thus, it will often  be convenient to identity simplices which share the same relative properties, but are simply rotated and /or translated versions of one  another. We will call  such simplices \emph{congruent},  or occasionally \emph{isomorphic}. 
-Unfortunately for notational simplicity, it will be  required to  sometimes differentiate between simplices  which are congruent by translation only, and simplices which are congruent by translation \emph{and} rotation. Let us  call the former type of congruence \emph{translational congruence}. We will continue to  call the latter simply congruence. Thus, the set of translationally congruent simplices to a simplex $\ssplx$ is a subset of  those simplices which are congruent to $\ssplx$. 
-We use the symbol $\cong$ to denote translational congruency between simplices; so $\ssplx_1\cong\ssplx_2$ iff $\Sv(\splx_1)=\Sv(\splx_2) + \balpha\one^\tp$ for some $\balpha\in\R^{n-1}$. We use $\cong^\rot$  to denote general   congruency; so  $\ssplx_1\cong^\rot\ssplx_2$ iff  $\Sv(\ssplx_1)=\Q\Sv(\ssplx_2) + \balpha\one^\tp$ for some rotation matrix $\Q$  and $\balpha\in\R^{n-1}$. 
-We will  also define two congruence classes of simplices. Put
+In  our study of simplices we will be mainly concerned with their relative properties (e.g., volume, angles, shape, etc.) as opposed to their absolute  positions in space. Thus, it will often  be convenient to identify simplices which share the same relative properties, but are simply rotated and/or translated versions of one  another. We will call  such simplices \emph{congruent},  or occasionally \emph{isomorphic}. 
+Unfortunately for notational simplicity's sake, it will be  required to  sometimes differentiate between simplices  which are congruent by translation only, and simplices which are congruent by translation \emph{and} rotation. Let us  call the former type of congruence \emph{translational congruence},  and  the latter \emph{rotational congruence}. 
+%Thus, the set of translationally congruent simplices to a simplex $\ssplx$ is a subset of  those simplices which are congruent to $\ssplx$. 
+We use the symbol $\cong$ to denote translational congruency between simplices; so $\ssplx_1\cong\ssplx_2$ iff $\Sv(\splx_1)=\Sv(\splx_2) + \balpha\one^\tp$ for some $\balpha\in\R^{n-1}$. We will also occasionally make use of the following \emph{translational congruence class of simplices}: 
 \begin{equation}
 \label{eq:[ssplx]}
-[\ssplx] \equiv \{\ssplx': \ssplx'\cong\ssplx\},\quad \text{and} \quad [\ssplx]^\rot\equiv \{\ssplx':\ssplx'\cong^\rot\ssplx\}.
-\end{equation}.
+[\ssplx] \equiv \{\ssplx': \ssplx'\cong\ssplx\}.
+\end{equation}
+We will not require such notation for rotational congruence. 
 
-A brief note now on nomenclature. We will typically  use the symbol $\ssplx$ to denote an arbitrary simplex. Later, we will use the symbol $\splx$  to denote  the simplex associated  to a  graph. In  this way we hope to provide a clear separation between those statements which hold for general simplices and those which hold for simplices of a graph. 
+%We use $\cong^\rot$  to denote general   congruency; so  $\ssplx_1\cong^\rot\ssplx_2$ iff  $\Sv(\ssplx_1)=\Q\Sv(\ssplx_2) + \balpha\one^\tp$ for some rotation matrix $\Q$  and $\balpha\in\R^{n-1}$. 
+%We will  also define two congruence classes of simplices. Put
+%\begin{equation}
+%\label{eq:[ssplx]}
+%[\ssplx] \equiv \{\ssplx': \ssplx'\cong\ssplx\},\quad \text{and} \quad %[\ssplx]^\rot\equiv \{\ssplx':\ssplx'\cong^\rot\ssplx\}.
+%\end{equation}.
+
+\begin{figure}
+	\centering
+	\begin{minipage}{0.45\textwidth}
+		\centering
+		\includegraphics[scale=0.5]{altitudes}
+		\subcaption{ }
+		\label{fig:altitudes}
+	\end{minipage}
+	\hspace{0.08\textwidth}
+	\begin{minipage}{0.45\textwidth}
+		\centering
+		\includegraphics[scale=0.5]{faces}
+		\subcaption{}
+		\label{fig:faces}
+	\end{minipage}
+	\caption{(a) The \emph{directions} of altitudes in a simplex. We emphasize that the arrows do not represent the actual altitudes themselves, which  are  vectors and hence originate at the origin. (b) A one  ($\ssplx_{\{2,3\}}$) and two ($\splx_{\{1,2,4\}}$) dimensional face of a three dimensional simplex. }
+	\label{fig:faces+altitudes}
+\end{figure}
+
+
+Two brief notes now on nomenclature. First, we will typically  use the symbol $\ssplx$ to denote an arbitrary simplex. Later, we will use the symbol $\splx$  to denote  the simplex associated  to a  graph. In  this way we hope to provide a clear separation between those statements which hold for general simplices and those which hold for simplices of a graph. Secondly, due  to possible hyper-caffeination and apparent lack  of conscientiousness, we may  write the vertex matrix  $\Sv$ of a simplex $\ssplx$ as $(\bgamma_1,\dots,\bgamma_n)$, $(\bgamma_i)$, or $\{\bgamma_i\}$  as the case may be. Of course, they should be taken to mean  the  same  thing.  
 
 
 \paragraph{Centroids and altitudes.}
@@ -440,24 +445,6 @@ We denote the altitude pointing from $\splx_{U^c}$ to $\splx_{U}$ as $\alt_(\spl
 
 \textbf{Nota Bene:} While  we conceptualize of the altitude $\alt(\ssplx_U)$ as pointing from $\ssplx_U$  to  $\ssplx_{U^c}$, we  remark that since we are working in  $\R^{n-1}$  as  a vector  space,  $\alt(\ssplx_U)$ still ``begins'' at  the origin. 
 
-\begin{figure}
-	\centering
-	\begin{minipage}{0.45\textwidth}
-	\centering
-	\includegraphics[scale=0.5]{altitudes}
-	\subcaption{ }
-	\label{fig:altitudes}
-	\end{minipage}
-\hspace{0.08\textwidth}
-\begin{minipage}{0.45\textwidth}
-	\centering
-	\includegraphics[scale=0.5]{faces}
-	\subcaption{}
-	\label{fig:faces}
-\end{minipage}
-\caption{(a) The \emph{directions} of altitudes in a simplex. We emphasize that the arrows do not represent the actual altitudes themselves, which  are  vectors and hence originate at the origin. (b) A one  ($\ssplx_{\{2,3\}}$) and two ($\splx_{\{1,2,4\}}$) dimensional face of a three dimensional simplex. }
-\label{fig:faces+altitudes}
-\end{figure}
 
 \paragraph{Centred  simplex.}
 In later sections it will be convenient to work with a translated copy of a given simplex which is centred at the origin. Accordingly, given any simplex $\ssplx$ with vertices $\{\sv_i\}$, we let $\ssplx_0$ denote the simplex with vertices $\{\sv_i - \cent(\ssplx)\}$. Note that $\ssplx_0\in[\ssplx]$. It's clear that the centroid of $\ssplx_0$ is the origin: 

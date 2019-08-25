@@ -22,45 +22,45 @@ Warning--empty school in kant1993algorithms
 Warning--can't use both volume and number fields in penrose1955generalized
 Warning--can't use both volume and number fields in penrose1956best
 Warning--empty journal in stothers2010complexity
-You've used 77 entries,
+You've used 78 entries,
             2543 wiz_defined-function locations,
-            1009 strings with 15038 characters,
-and the built_in function-call counts, 29659 in all, are:
-= -- 3019
-> -- 1249
+            1016 strings with 15267 characters,
+and the built_in function-call counts, 30133 in all, are:
+= -- 3068
+> -- 1274
 < -- 58
-+ -- 415
-- -- 403
-* -- 2047
-:= -- 4823
-add.period$ -- 242
-call.type$ -- 77
-change.case$ -- 439
-chr.to.int$ -- 77
-cite$ -- 84
-duplicate$ -- 1255
-empty$ -- 2220
-format.name$ -- 511
-if$ -- 6086
++ -- 425
+- -- 412
+* -- 2088
+:= -- 4901
+add.period$ -- 245
+call.type$ -- 78
+change.case$ -- 446
+chr.to.int$ -- 78
+cite$ -- 85
+duplicate$ -- 1269
+empty$ -- 2252
+format.name$ -- 521
+if$ -- 6179
 int.to.chr$ -- 1
 int.to.str$ -- 0
-missing$ -- 88
-newline$ -- 388
-num.names$ -- 231
-pop$ -- 429
+missing$ -- 89
+newline$ -- 393
+num.names$ -- 234
+pop$ -- 433
 preamble$ -- 1
-purify$ -- 533
+purify$ -- 541
 quote$ -- 0
-skip$ -- 1037
+skip$ -- 1049
 stack$ -- 0
-substring$ -- 1715
-swap$ -- 204
+substring$ -- 1754
+swap$ -- 205
 text.length$ -- 58
 text.prefix$ -- 34
 top$ -- 0
-type$ -- 556
+type$ -- 564
 warning$ -- 7
-while$ -- 301
-width$ -- 78
-write$ -- 993
+while$ -- 306
+width$ -- 79
+write$ -- 1006
 (There were 7 warnings)

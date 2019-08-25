@@ -104,6 +104,13 @@ Haiyan Chen and Fuji Zhang.
 \newblock Resistance distance and the normalized laplacian spectrum.
 \newblock {\em Discrete Applied Mathematics}, 155(5):654--661, 2007.
 
+\bibitem[CZC18]{cai2018comprehensive}
+Hongyun Cai, Vincent~W Zheng, and Kevin Chen-Chuan Chang.
+\newblock A comprehensive survey of graph embedding: Problems, techniques, and
+  applications.
+\newblock {\em IEEE Transactions on Knowledge and Data Engineering},
+  30(9):1616--1637, 2018.
+
 \bibitem[DFPP90]{de1990draw}
 Hubert De~Fraysseix, J{'a}nos Pach, and Richard Pollack.
 \newblock How to draw a planar graph on a grid.

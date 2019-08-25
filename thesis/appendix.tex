@@ -254,10 +254,10 @@
 	\alpha & \r \\
 	\r & \L_G
 	\end{pmatrix}^{-1}\right) \\
-	&= \frac{ -4}{((n-1)!)^2}\det\begin{pmatrix}
+	&= \frac{ -4}{((n-1)!)^2}\left[\det\begin{pmatrix}
 	\alpha & \r \\
 	\r & \L_G
-	\end{pmatrix}^{-1},
+	\end{pmatrix}\right]^{-1},
 	\end{align*}
 	where we've employed the basic determinant properties $\det( \beta\Q)=\beta^{m}\det(\Q)$ for $\Q\in\R^{m\times m}$ and $\det(\Q^{-1})=\det(\Q)^{-1}$ for $\Q$ invertible. We are thus left with task of evaluating the above determinant. We claim it is equal to $-4\Gamma_G$,  which will complete the proof. 
 	Put 
@@ -383,12 +383,23 @@
 
 
 
-\chapter{Effective Resistance}
+\chapter{Intuition Behind Effective Resistance}
 \label{sec:app_er}
 
 Here we provide a derivation of effective resistance using the analogy of a graph as an electrical network. 
 
-Given an undirected, weighted graph $G=(V,E,w)$, orient the edges of $G$ arbitrarily and encode this information in the matrix $\B$, as in Section \ref{sec:background_laplacian}, Equation~\eqref{eq:B_G}. For an edge $e=(i,j)$ oriented from $i$ to $j$, denote $e^+=i$ and $e^-=j$. 
+Given an undirected, weighted graph $G=(V,E,w)$, 
+place an arbitrary orientation the edges (say, for example, $(i,j)$ is directed from $i$ to $j$ iff $i<j$) and for each edge $e$, let $e^-\in V$ denote the vertex at which $e$ ends, and $e^+$ the vertex at which it  begins. Set 
+\begin{equation}
+\label{eq:B_G}
+\B(e,i)=\begin{cases}
+1&\text{if }i=e^+,\\
+-1&\text{if }i=e^-,\\
+0&\text{otherwise},
+\end{cases}
+\end{equation}
+or, equivalently, $\B(e,i) = (\chi_{(i=e^+)}-\chi_{(i=e^-)})$.
+%For an edge $e=(i,j)$ oriented from $i$ to $j$, denote $e^+=i$ and $e^-=j$. 
 We will consider $G$ as an electrical network. To do this, we imagine placing a resistor of resistance $1/w(e)$ on each edge $e$. Edges thus carry current between the nodes and, in general, higher weighted edges will carry more current.  
 An \emph{electrical flow $\f:E\to\R_{\geq 0}$} on $G$ assigns a current to each edge $e$ and respects, roughly speaking, Kirchoff's current law and Ohm's law. More precisely, let $\e$ be a vector describing the amount of current injected at each node. By Kirchoff's law, the amount of current passing through a vertex $i$ must be conserved. That is, 
 \[\sum_{e:i=e^+}f(e) - \sum_{e:i=e-}f(e) = e(i),\]

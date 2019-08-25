@@ -30,11 +30,11 @@
 \BOOKMARK [0][-]{chapter.4}{Further Properties of the Correspondence}{}% 30
 \BOOKMARK [1][-]{section.4.1}{General Properties of Dual Simplex }{chapter.4}% 31
 \BOOKMARK [1][-]{section.4.2}{Block Matrix Equations}{chapter.4}% 32
-\BOOKMARK [1][-]{section.4.3}{Inequalities}{chapter.4}% 33
-\BOOKMARK [1][-]{section.4.4}{Quadrics}{chapter.4}% 34
-\BOOKMARK [1][-]{section.4.5}{Resistive Polytope}{chapter.4}% 35
-\BOOKMARK [1][-]{section.4.6}{Effective Resistance \046 Dynamics}{chapter.4}% 36
-\BOOKMARK [2][-]{subsection.4.6.1}{Continuous Time Random Walks}{section.4.6}% 37
+\BOOKMARK [2][-]{subsection.4.2.1}{Applications}{section.4.2}% 33
+\BOOKMARK [1][-]{section.4.3}{Inequalities}{chapter.4}% 34
+\BOOKMARK [1][-]{section.4.4}{Quadrics}{chapter.4}% 35
+\BOOKMARK [1][-]{section.4.5}{Resistive Polytope}{chapter.4}% 36
+\BOOKMARK [1][-]{section.4.6}{Continuous Time Random Walks}{chapter.4}% 37
 \BOOKMARK [0][-]{chapter.5}{Algorithmics}{}% 38
 \BOOKMARK [1][-]{section.5.1}{Preliminaries}{chapter.5}% 39
 \BOOKMARK [1][-]{section.5.2}{Computational Complexity}{chapter.5}% 40
@@ -51,5 +51,5 @@
 \BOOKMARK [1][-]{section.A.1}{Chapter 2}{appendix.A}% 51
 \BOOKMARK [1][-]{section.A.2}{Chapter 3}{appendix.A}% 52
 \BOOKMARK [1][-]{section.A.3}{Chapter 4}{appendix.A}% 53
-\BOOKMARK [0][-]{appendix.B}{Effective Resistance}{}% 54
+\BOOKMARK [0][-]{appendix.B}{Intuition Behind Effective Resistance}{}% 54
 \BOOKMARK [0][-]{appendix.C}{Figures}{}% 55

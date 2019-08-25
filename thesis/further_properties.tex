@@ -3,10 +3,12 @@
 
 \chapterquote{Everything is  funny,  if you can laugh at it.}{Lewis Carroll}
 
-The previous chapter introduced the graph-simplex correspondence and devoted several sections to the basic properties of the simplices associated to a given graph. In this chapter we  continue the study of the correspondence and present several of its more significant (but perhaps more complicated) properties.  We begin,  however, by demonstrating that  some of the interplay of properties between $\splx_G$ and $\splx_G^+$ generalizes to the dual simplex. 
+The previous chapter introduced the graph-simplex correspondence and devoted several sections to the basic properties of the simplices associated to a given graph. In this chapter we  continue the study of the correspondence and present several of its more significant (but perhaps more complicated) properties.  We begin,  however, by demonstrating that  some of the interplay between $\splx_G$ and $\splx_G^+$ generalizes to an arbitrary simplex and its dual. 
 
 \section{General Properties of Dual Simplex }
-A natural thought  after  studying the pair of combinatorial simplices of a graph  is  to  wonder  how many of their properties  generalize to dual all pairs of dual simplices. In Section~\ref{sec:S_G} we used the properties of the Laplacian and  its  pseudoinverse to relate  the vertices of $\splx_G$ and $\splx_G^+$. Here we demonstrate that these relationships can be generalized. We begin with the vertices of an arbitrary simplex  and its  dual. 
+Given that $\splx_G^+$  is the dual of $\splx_G$, it is natural to wonder whether some aspects of  their relationship are common to that between any simplex and its dual.  
+Here we demonstrate that this is indeed the case; in particular, the Gram matrices of any (centred) simplex and its dual enjoy  the same pseudoinverse relationship. We begin by investigating the vertices of a simplex and its dual. 
+
 
 
 \begin{lemma}
@@ -27,9 +29,9 @@ A natural thought  after  studying the pair of combinatorial simplices of a grap
 	\end{align*}
 \end{proof}
 
-As we explained in Section~\ref{sec:Sn_G}, crucial to many of the proofs pertaining to  the combinatorial  simplices is the fact that $\L_G\L_G^+=\L_G^+\L_G=\I-\J/n$. We now demonstrate that this property can be  extended  to arbitrary (centred)  simplices, as follows.
 
-
+We can now proceed  to proving the general pseudoinverse relationship between Gram matrices of a simplex and  its  dual. 
+As we explained in Section~\ref{sec:Sn_G}, crucial to many of the proofs pertaining to  the combinatorial  simplices is the fact that $\L_G\L_G^+=\L_G^+\L_G=\I-\J/n$. That  an equivalent property  holds for arbitrary simplices is therefore highly beneficial for their  study. 
 
   
 
@@ -64,18 +66,20 @@ As we explained in Section~\ref{sec:Sn_G}, crucial to many of the proofs pertain
 	\begin{align*}
 	((\Sv^\du)^\tp\Sv^\du \Sv^\tp\Sv)^\tp = ((\Sv^\du)^\tp\I\Sv)^\tp = \Sv^\tp\Sv^\du = \I-\frac{\J}{n} = (\Sv^\du)^\tp\Sv = (\Sv^\du)^\tp\I\Sv = (\Sv^\du)^\tp\Sv^\du\Sv^\tp\Sv.
 	\end{align*} 
-	Thus  conditions (i) and (iii) hold between $\Sv^\tp\Sv$ and  $(\Sv^\du)^\tp\Sv^\du$, and conditions (ii) and (iv) follow similarly. 
+	Conditions (i) and (iii) therefore  hold between $\Sv^\tp\Sv$ and  $(\Sv^\du)^\tp\Sv^\du$; conditions (ii) and (iv) follow similarly. 
 \end{proof}
 
 
+In the next  section, we  will demonstrate  that this insight allows us to  generalize results pertaining to hyperacute simplices to all simplices. 
+We thus witness another benefit of the correspondence: By leveraging knowledge  of $\splx_G$ and $\splx_G^+$ we  can  gain insights into the behaviour of general simplices. 
 
-Far from simply being an interesting but inconsequential phenomena of dual simplices, in the next section  we  will leverage these  relationships to prove useful block matrix equations pertaining both  to graphs and  simplices. Thus,  we again witness  the use of the graph-simplex correspondence in  generating new insights applicable to  both domains. 
+
 
 \section{Block Matrix Equations}
 \label{sec:block_matrix}
-In this section we present matrix equations pertaining to both hyperacute simplices and the effective resistance of graphs. The equations appeal to the relationship between hyperacute simplices and graphs by using well known results from the literature on electrical networks and effective resistance. The goal of this section is to demonstrate to the reader the utility of the graph-simplex correspondence in generating statements about hyperacute simplices by hijacking our knowledge of graph theory,  and vice versa. 
+In this section we are finally able  to satisfy those readers who have  wondered about the applicability of electrical  networks to the graph-simplex correspondence. Applying Lemma~\ref{lem:block_equation_graph}, we are able to  develop block matrix equations which relate the structure of $\splx_G$ and $\splx_G^+$. Then,  using the results of the previous section we generalize  these equations to arbitrary simplices.  
 
-We begin with a block matrix equation describing some aspects of  the geometry between a  hyperacute simplex and its dual. It is closely related to an equation given by Fiedler in Theorem~1.4.1 in \cite{fiedler2011matrices}. Instead  of a direct proof, we use the results of Van Mieghem \etal~\cite{van2017pseudoinverse} and prove it by leveraging aspects of the effective resistance of a graph.  
+Before we  begin, a brief remark on the relationship of the following results  and Fiedler's work. Fiedler's derivation of the graph-simplex correspondence relied on a matrix equation---an equation equivalent to our Lemma~\ref{lem:block_general_simplex},  in fact~\cite[Theorem 3.1]{fiedler1993geometric}. Conversely, we are obtaining such equations as a \emph{consequence} of the correspondence. It is our belief that different treatments of the material shed light on its different---and hopefully complementary---implications.  
 
 Let a centred, hyperacute simplex $\ssplx$ be given, with $\Sv(\ssplx)=\{\bgamma_i\}$.  Let $\bar{d}$ be the average squared distance between all the vertices of $\ssplx$, that is
 \begin{equation}
@@ -88,7 +92,7 @@ Let $\xi(i)$ give the average squared distance of vertex $i$ from other vertices
 \xi(i) \equiv \frac{1}{n}\sum_{j} \norm{\bgamma_i-\bgamma_j}_2^2 - \bar{d},
 \end{equation}
 and put $\bxi=(\xi(1),\dots,\xi(n))$. 
-Then we have the following result. 
+The following  results relates  the distance matrix of $\ssplx$ to the vertex  matrix of its dual. 
 
 \begin{lemma}
 	\label{lem:block_inverse_simplex}
@@ -117,11 +121,11 @@ Then we have the following result.
 \end{lemma}
 
 \begin{proof}
-As above, $\ssplx$ is the inverse simplex of some graph $G$, and therefore, $\D=\Reff$, where $\Reff$ is the effective resistance matrix. Therefore, we can rewrite $\xi(i)$ as 
+By Theorem~\ref{thm:graph-simplex}, $\ssplx$ is the inverse simplex of some graph $G$ and therefore $\D=\Reff$, where $\Reff$ is the effective resistance matrix (Lemma~\ref{lem:S_G_basic_properties}). Therefore, we can rewrite $\xi(i)$ as 
  \begin{align*}
 \frac{1}{n}\sum_j \effr(i,j) - \frac{1}{n^2}\sum_{i<j}\effr(i,j),
 \end{align*}
-and $\bxi$ as 
+whence,
 \begin{align*}
 \bxi = \frac{1}{n}\Reff\one - \frac{1}{n^2} \one \one^\tp \Reff\one = \frac{1}{n}\Reff\one - \frac{1}{n^2} \J \Reff\one.
 \end{align*}
@@ -135,14 +139,13 @@ Meanwhile, the dual simplex to $\ssplx$ is the simplex of the graph $G$, and hen
 \begin{pmatrix}
 \bD^\tp \L_G\bD + \frac{4}{n^2}\Rtot_G & -(\L_G\bD + \frac{2}{n}\one)^\tp \\
 -(\L_G\bD + \frac{2}{n}\one) & \L_G
-\end{pmatrix}^{-1},
+\end{pmatrix}^{-1}.
 \end{equation*}
-which  is verified by Lemma~\ref{lem:block_equation_graph}. The other two conditions translate  to $\L_G\Reff_G\L_G=-2\L_G$ and $\Reff_G\L_G\Reff_G=-2\Reff_G$ on $\spn(\one)^\perp$,  which also holds  via Lemma~\ref{lem:block_equation_graph}. 
+This equation is verified by Lemma~\ref{lem:block_equation_graph}. The final two equations in  the lemma translate to $\L_G\Reff_G\L_G=-2\L_G$ and $\Reff_G\L_G\Reff_G=-2\Reff_G$ on $\spn(\one)^\perp$. Both of these also hold  via Lemma~\ref{lem:block_equation_graph}. 
 \end{proof}
 
-\note{edit this}
-Owing to the various connections between graphs and simplices, the block matrix equation has several different flavours. Lemma~\ref{lem:block_inverse_simplex}, for example, provides an interpretation purely in terms of simplices, while Equation~\eqref{eq:block_inverse_er} provides a relationship between the Laplacian, its pseudoinverse, and  the effective resistance of the graph. 
-We can combine  these two interpretations to obtain the following relationship between a graph's Laplacian and its inverse (combinatorial) simplex. 
+
+While Lemma~\ref{lem:block_inverse_simplex} may be interesting, it is unfortunately restricted in its scope. In what follows we demonstrate that it can be generalized to hold for all simplices. Before we begin, we require a generalization of the statement $\R=\bD\one^\tp+\one\bD^\tp - 2\L_G^+$ to all distance  matrices (recall  that $\R$ is the  distance  matrix of $\splx_G^+$). This is accomplished by  the following lemma. 
 
 
 \begin{lemma}
@@ -175,7 +178,7 @@ We can combine  these two interpretations to obtain the following relationship b
 	as was to  be shown. 
 \end{proof}
 
-This can be used  to strengthen   the  result to  all simplices. \note{say more}
+We can now strengthen  Lemma~\ref{lem:block_inverse_simplex} to all simplices,  even those which  are not centred.   
 
 \begin{lemma}
 	\label{lem:block_general_simplex}
@@ -223,20 +226,12 @@ This can be used  to strengthen   the  result to  all simplices. \note{say more}
 \end{proof}
 
 \begin{remark}
-	We have thus  recovered Fiedler's block matrix relation.  
+	We have thus recovered Fiedler's block matrix relation~\cite{fiedler1993geometric}, although he does not give the same explicit   interpretation of  the entries as we do. As discussed above, it is interesting that Fiedler used the equation  as the basis for the corresponding while our approach is the reverse. 
 \end{remark}
 
-
-\begin{corollary}
-	\begin{equation*}
-	-\frac{1}{2}\begin{pmatrix}
-	0 &  \one^\tp \\
-	\one & 
-	\end{pmatrix}
-	\end{equation*}
-\end{corollary}
-
-One consequence of the above is a relation between the volume of the simplex and the effective resistances in the graph. To see this, we need to introduce a particular object from the field of distance geometry. Let $\D(\X)$ be the distance matrix of a set $\X$ of $d$ points. The matrix 
+\subsection{Applications}
+We now discuss several  uses of the equations developed above. 
+One consequence is a relation between the volume of the simplex and the effective resistances in the graph. To see this, we need to introduce a particular object from the field of distance geometry. Let $\D(\X)$ be the distance matrix of a set $\X$ of $d$ points. The matrix 
 \begin{equation}
 \label{eq:menger_matrix}
 \begin{pmatrix}
@@ -320,6 +315,8 @@ We can use these results to produce a surprising equation concerning  the diagon
 	Follows immediately from Lemma~\ref{lem:L(i,i)_trees}. 
 \end{proof}
 
+Next, we investigate the volumes of the facets in more detail. 
+
 \begin{lemma}
 	\label{lem:volT_multi}
 	For any hyperacute simplex $\ssplx\subset\R^{n-1}$ and  $i\in[n]$, the following equations hold:
@@ -387,27 +384,28 @@ Our next set of results demonstrate the the inverse relation can be used not onl
 \begin{pmatrix}
 \sum_{i\sim j}1/w(i,j)  & (\d-2\one)^\tp \\
 \d-2\one & \L_T
-\end{pmatrix} = \I.
+\end{pmatrix} = \I,
  \end{equation}
+ where  $\d=(\deg(1),\dots,\deg(n))$. 
 \end{lemma}
 
 \begin{corollary}
 	Let $T$  be a weighted and connected tree. Then 
 	\begin{equation*}
-	\bxi^\tp \L_T\bxi + \frac{4R_T}{n^2} = \sum_{i,j}  \frac{1}{w(i,j)}, \quad \text{and}\quad \L_G\bxi = \bigg(2-\frac{2}{n}\bigg)\one - \d,
+	\bD^\tp \L_T\bD + \frac{4R_T}{n^2} = \sum_{i,j}  \frac{1}{w(i,j)}, \quad \text{and}\quad \L_G\bD = \bigg(2-\frac{2}{n}\bigg)\one - \d,
 	\end{equation*}
-	where $\bxi = \diag(\L_T^+(i,i))=\frac{1}{n}\Reff\one - \frac{1}{n^2} \J \Reff\one$ and $\d= (\deg(1),\dots,\deg(n))$. 
+	where $\bD = \diag(\L_T^+(i,i))=\frac{1}{n}\Reff\one - \frac{1}{n^2} \J \Reff\one$ and $\d= (\deg(1),\dots,\deg(n))$. 
 \end{corollary}
 \begin{proof}
-	Let $\bS_T$ be as it was in  Lemma \ref{lem:block_matrix_tree}. It's well known  that in trees, the effective resistance between nodes $i,j$  is equal to $\sum_{s=1}^{r-1} 1/w(v_s,v_{s+1})$ where $i=v_1,\dots,v_r=j$ is the shortest path between $i$ and $j$ in $T$ (see e.g., \cite{ellens2011effective}). That is, $\Reff_T=\bS_T$. Since matrix inverses are unique, combining Equations \eqref{eq:block_ST} and \eqref{eq:block_inverse_graph_simplex} yields 
+	Let $\bS_T$ be as it was in  Lemma \ref{lem:block_matrix_tree}. It's well known  that in trees, the effective resistance between nodes $i,j$  is equal to $\sum_{s=1}^{r-1} 1/w(v_s,v_{s+1})$ where $i=v_1,\dots,v_r=j$ is the shortest path between $i$ and $j$ in $T$ (see e.g., \cite{ellens2011effective}). That is, $\Reff_T=\bS_T$. Since matrix inverses are unique, combining Equations \eqref{eq:block_ST} and~\eqref{eq:block_inverse_er} yields 
 	\begin{equation*}
 	\begin{pmatrix}
 	\sum_{i\sim j}1/w(i,j)  & (\d-2\one)^\tp \\
 	\d-2\one & \L_T
 	\end{pmatrix} = \begin{pmatrix}
-\bxi^\tp  \L_T \bxi  + 4R_T/n^2
-	&  -(\L_T\bxi + \frac{2}{n}\one )^\tp \\
-	-(\L_T\bxi + \frac{2}{n}\one ) 
+	\bD^\tp  \L_T \bD  + 4R_T/n^2
+	&  -(\L_T\bD + \frac{2}{n}\one )^\tp \\
+	-(\L_T\bD + \frac{2}{n}\one ) 
 	& \L_T
 	\end{pmatrix},
 	\end{equation*}  
@@ -421,7 +419,7 @@ Our next set of results demonstrate the the inverse relation can be used not onl
 
 \section{Inequalities}
 \label{sec:inequalities}
-In this section we demonstrate how the graph-simplex may be used to obtain both geometric and graph-theoretic inequalities. We begin with an inequality relating the quadratic form $\Lf$ to the ``weight'' of the cuts associated with the pseudoinverse.  It was first proved by Devriendt and Van Mieghem~\cite{devriendt2018simplex}. Interestingly, a parallel result for the normalized Laplacian form does not seem to exist. 
+In this section we demonstrate how the  correspondence may be used to obtain both geometric and graph-theoretic inequalities. We begin with an inequality relating the quadratic form $\Lf$ to the ``weight'' of the cuts associated with the pseudoinverse.  It was first proved by Devriendt and Van Mieghem~\cite{devriendt2018simplex}. Interestingly, a parallel result for the normalized Laplacian form does not seem to exist. As usual,  omitted proofs are found in the appendix. 
  
 \begin{lemma}
 	\label{lem:ineq_f1}
@@ -430,7 +428,9 @@ For any $f$ with $\la f,\one\ra=0$, $
 for $F^+\equiv \{i:f(i)\geq 0\}$. 
 \end{lemma}
 
-Given the combinatorial simplex $\splx_G$ of the  graph $G$, it has a natural corresponding normalized simplex, namely $\splxn_G$. Using Cheeger's inequality~\cite{chung1997spectral}
+Next we give an (admittedly, somewhat undecipherable) inequality relating the centroids of $\splx_G$ to the vertex matrix of $\splxn$. The motivation is simply to demonstrate the potential uses of known graph-theoretic inequalities in the simplex domain. 
+
+Using Cheeger's inequality~\cite{chung1997spectral},
 \begin{equation*}
 \cond_G \geq \lambdan_{n-1} \geq \frac{\cond_G^2}{2},
 \end{equation*}  
@@ -455,9 +455,9 @@ We can translate several of the results obtained in the previous section on  vol
 \label{lem:volT_inequalities}
 For any hyperacute simplex $\ssplx\subset\R^{n-1}$ and  $i\in[n]$, the following equations hold:
 \begin{enumerate}
-	\item $\vol\ssplx_\ic \leq \sum_{j\neq i}\vol\ssplx_\jc$;
-	\item $\sum_{j\neq i}\vol^2\ssplx_\jc\geq \vol^2\ssplx_\ic\geq   \sum_{j\neq i}\vol^2\ssplx_\jc - \sum_{j,k\neq i,j\neq k} \vol\ssplx_\jc\vol\ssplx_\kc$; and
-	\item $(n-1)\vol\ssplx_{\{i,j\}^c}\vol\ssplx \leq  (n-2)\vol(\ssplx_\ic)\vol(\ssplx_\jc)$ for  all $j\neq i$.
+	\item $\vol(\ssplx_\ic) \leq \sum_{j\neq i}\vol(\ssplx_\jc)$;
+	\item $\sum_{j\neq i}\vol^2\ssplx_\jc\geq \vol^2\ssplx_\ic\geq   \sum_{j\neq i}\vol^2(\ssplx_\jc) - \sum_{j,k\neq i,j\neq k} \vol(\ssplx_\jc)\vol(\ssplx_\kc)$; and
+	\item $(n-1)\vol\ssplx_{\{i,j\}^c}\vol(\ssplx) \leq  (n-2)\vol(\ssplx_\ic)\vol(\ssplx_\jc)$ for  all $j\neq i$.
 \end{enumerate}
 \end{lemma}
 \begin{proof}
@@ -553,11 +553,7 @@ Next we investigate the circumscribed sphere of the combinatorial  simplex. Simi
 
 
 Until this point, we have been examining only the quadrics associated with the combinatorial simplices. We now consider the normalized simplices. Since all the vertices of the normalized simplex lie on the unit sphere, it's clear  that the circumscribed sphere of $\splxn_G$ is precisely $\{\x:\x^\tp\x=1\}$. It's not as straightforward  to see what they circumscribed ellipsoid, $\El(\splxn)$, is on the other hand. One might suspect that it obeys the  equation $\x^\tp \Svn^+(\Svn^+)^\tp=1-1/n$, as this is the natural analogue of \eqref{eq:steinerE}. However, because $\Svn^+$ and $\Svn$ obey a non-constant pseudoinverse relation, this equation fails the first test: $\svn_i^\tp\Svn^+(\Svn^+)^\tp\svn_i = \bchi_i^\tp(\I-\sqrt{\w}\sqrt{\w}^\tp/\vol(G))\bchi_i=1-\sqrt{w(i)w(j)}/\vol(G)$ is non-constant. 
-However, at this point we recall that beyond being simply  the inverse simplex of $\splx$, $\splx^+$ is also its dual.  We might thus hazard a guess that the correct matrix is $\Svn^\du (\Svn^\du)^\tp$, where $\Svn^\du$ is the vertex matrix of $\splxn^\du$. This is in fact correct, but to see this we first need to demonstrate that any set of simplex vertices and their  duals obey the same relationship as do the vertices of the combinatorial simplex and its inverse. 
-
-
-
-From this we can extract the equations of $\El(\splxn)$ and $\El(\splxn^+)$. 
+However, at this point we recall that beyond being simply  the inverse simplex of $\splx$, $\splx^+$ is also its dual.  We might thus hazard a guess that the correct matrix is $\Svn^\du (\Svn^\du)^\tp$, where $\Svn^\du$ is the vertex matrix of $\splxn^\du$. The  following lemma  confirms this hypothesis. 
 
 \begin{corollary}
 	\label{cor:El(Sn)}
@@ -567,7 +563,7 @@ From this we can extract the equations of $\El(\splxn)$ and $\El(\splxn^+)$.
 	\end{equation*}
 	and the inverse is 
 	\begin{equation*}
-		\El(\splxn) = \bigg\{\x:\x^\tp (\Svn+)^\du((\Svn^+)^\du)^\tp\x = \frac{n-1}{n}\bigg\}.
+		\El(\splxn) = \bigg\{\x:\x^\tp (\Svn^+)^\du((\Svn^+)^\du)^\tp\x = \frac{n-1}{n}\bigg\}.
 	\end{equation*}
 	where $\Svn^\du$ contains the vertices of $\splxn_G^\du$ and $(\Svn^+)^\du$ those of $(\splxn_G^+)^\du$. 
 \end{corollary}
@@ -659,43 +655,19 @@ using Equation \eqref{eq:sum_double_ortho}. Hence,
 \bchi_i^\tp \L_G^{1/2}\L_G^{+/2}(\bchi_j-\bchi_k) = \delta_{ij} - \frac{1}{n} - (\delta_{ik}-\frac{1}{n}) = \delta_{ij}.
 \end{align*}
 
-\note{Still investigating this relationship and its properties.}
+To  conclude, there exists an isometry between the inverse combinatorial  simplex of a graph $G$ (which  lies in $\R^{n-1}$) and the effective  polytope, $\re_G$ of  $G$ (which  lies in $\R^n$). The resistive polytope lies in a hyperplane orthogonal to the  all-ones vector.  
 
 
 
-\section{Effective  Resistance  \&  Dynamics}
-\label{sec:dynamics}
-In this section we briefly highlight a few connections between stochastic process on $G$ and  the geometry of its inverse combinatorial simplex $\splx_G^+$. 
+%\section{Effective  Resistance  \&  Dynamics}
+%\label{sec:dynamics}
+%In this section we briefly highlight a few connections between stochastic process on $G$ and  the geometry of its inverse combinatorial simplex $\splx_G^+$. 
 
-First  we  note that the total effective resistance translates to the total pairwise distance in the simplex: 
-\begin{align}
-\Rtot_G = \frac{1}{2}\sum_{i,j\in[n]} \effr(i,j) = \frac{1}{2}\sum_{i,j\in[n]}\norm{\sv_i^+-\sv_j^+}_2^2. \label{eq:rtot_simplex}
-\end{align}
-This connection gives us a new way to prove certain identities. For example, 
-\begin{align*}
-\sum_{i,j\in[n]}\norm{\sv_i^+-\sv_j^+}_2^2 &= n\sum_{in[n]}\norm{\sv_i^+}_2^2 + n\sum_{j\in[n]}\norm{\sv_j^+}_2^2 - 2\sum_{i,j\in[n]}\la\sv_i^+,\sv_j^+\ra \\ 
-&= n\sum_{\in[n]}\L_G^+(i,i) + n\sum_{j\in[n]}\L_G^+(j,j) - 2\sum_{i\in[n]}\la \L_G(i,\cdot),\one\ra = 2n\Tr(\L_G^+),
-\end{align*}
-since $\L_G^+\one=\zero$. 
-Hence, by \eqref{eq:rtot_simplex},
-\begin{equation*}
-\Rtot_G=n\Tr(L_G^+) = n\sum_{i\in[n]}\sum_{j<n} \frac{1}{\lambda_i}\vp_i(j)^2 =\sum_{j<n}\frac{1}{\lambda_j}\norm{\vp_j}_2^2 = \sum_{j<n}\frac{1}{\lambda_j}.
-\end{equation*}
-This is of course a well-known equation---originally produced by Klein  and Randi\'{c}~\cite{klein1993resistance}---but the interest resides in the fact that it can be derived via the graph-simplex correspondence.  
 
-We also note that this gives us another tool with  which to compute the effective resistance of certain graphs.  Notice that the computation above immediately leads to $\Rtot_G = n\sum_{i\in[n]}\norm{\sv_i^+}_2^2$. Let $K_n^\alpha$ denote the complete graph on $n$ vertices where each edge has weight $\alpha$. By Corollary~\ref{cor:Lkn+_laplacian}, $\L_{K_n^\alpha}^+=\L_H$ for some graph $H$. Therefore, $\L_{K_n^\alpha}=\L_H^+$ and  $\norm{\sv_i^+(H)}_2^2 = \norm{\sv_i(\L_{K_n^\alpha})}_2^2$.  If $K_n$ is the unweighted complete graph, we see that $\L_{K_n^\alpha}=\alpha\L_{K_n}$. Using  that $L_{K_n}$ has eigenvalue $n$ with multiplicity $n-1$  (Section~\ref{sec:examples}) gives $L_{K_n^\alpha}=\alpha n\sum_{i<n}\vp_i\vp_i^\tp$, meaning that $\L_{K_n^\alpha}=\L_H^+$ has eigenvalue $\alpha n$ with multiplicity $n-1$. The effective resistance of $H$ is then 
-\begin{equation*}
-\Rtot_H = n\Tr(\L_H^+) = \alpha(n-1). 
-\end{equation*}
-Moreover, $\L_H$ has eigenvalue $(\alpha n)^{-1}$ with multiplicity $n-1$, and  is therefore a complete graph with weights $(\alpha n^2)^{-1}$. We have proven the  following:  
 
-\begin{lemma}
-	For any complete graph $H$ on $n$ vertices with uniform edge weights  $(\alpha n^2)^{-1}$ for any $\alpha$,  $\Rtot_H = \alpha (n-1)$. 
-\end{lemma}
-
-\subsection{Continuous Time Random Walks}
+\section{Continuous Time Random Walks}
 \label{sec:random_walks}
-This current section is for the reader who is less interested  in the  mathematics  behind the graph-simplex correspondence, and is reading only for the vague  hope  that some of the underlying geometry will be aesthetically pleasing. While  the  content has certainly failed in the vein thus far, this section  is the closest we will come to remedying the situation. 
+This current section is for the reader who is less interested  in the  mathematics  behind the graph-simplex correspondence, and is reading only for the vague  hope  that some of the underlying geometry will be aesthetically pleasing. While  the  content has certainly failed in this vein thus far, this section  is the closest we will come to remedying the situation. 
 
 Consider a  random walk on a graph. The probability distribution  governing the dynamics is a barycentric  coordinate: each coordinate is non-negative and they sum to one. Therefore, we can represent the probability distribution as a point in the simplex and the probability  distribution as a function of time as a path in the simplex. See Figure~\ref{fig:random_walk} for an illustration. In what follows we give equations which determine the dynamics of the path in the simplex as a function of the eigenvalues  and eigenvectors  of the graph. 
 
@@ -703,7 +675,7 @@ We will examine a continuous time random walk which  obeys the equation
 \begin{equation*}
 \frac{d \bpi(t)}{dt } = -\L_G\W_G^{-1/2} \bpi(t),
 \end{equation*}
-which has the solution $\bpi(t)  = \exp(-\L_G\W_G^{-1/2}t)\bpi(0)$. This, however, is relative unsightful in terms of  analyzing the dynamics of $\bpi(t)$ in terms of the  graph.  Instead, in  what follows we seek  to develop a solution to $\bpi(t)$ in terms of the  eigendecomposition of  $G$.  Define $\bpi_1(t) = \W^{-1/2}\pi(t)$ and $\bpi_2(t) = \Eign^\tp \bpi_1(t)$, where we recall that $\Eign^\tp$ is the eigenvector matrix  of  $\Ln_G$.  Then 
+which has the solution $\bpi(t)  = \exp(-\L_G\W_G^{-1/2}t)\bpi(0)$. This, however, is relatively unsightful in terms of  analyzing the dynamics of $\bpi(t)$ in terms of the  graph.  Instead, in  what follows we seek  to develop a solution to $\bpi(t)$ in terms of the  eigendecomposition of  $G$.  Define $\bpi_1(t) = \W^{-1/2}\pi(t)$ and $\bpi_2(t) = \Eign^\tp \bpi_1(t)$, where we recall that $\Eign^\tp$ is the eigenvector matrix  of  $\Ln_G$.  Then 
 \begin{equation*}
 \frac{d \bpi_1(t)}{dt} = \W^{-1/2}\frac{d \bpi(t)}{dt} = -\W^{-1/2}\L_G\W^{-1/2}\W^{-1/2}\bpi(t) = - \Ln_G\bpi_1(t),
 \end{equation*}
@@ -768,7 +740,7 @@ and
 \end{equation*}
 govern the dynamics of the random walk in  $\splx_G$ and $\splxn_G$, respectively.  More specifically, letting $\Y=(\y_1\;\dots\;\y_n)$ we have 
 \[\p(t) = \sum_{i\in[n-1]} \y_i (\bpi_2(t))(i) = \sum_{i\in[n-1]}  \y_i e^{-\lambda_i t} \Eign^\tp \W^{-1/2}\bpi(0)(i),\]
-and a similar  equation for $\q(t)$. \note{Still  thinking about this.} 
+and a similar  equation for $\q(t)$. 
 
 
 

@@ -6,7 +6,7 @@
 
 \chapterquote{Why, sometimes I've believed as many as six impossible things before  breakfast.}{Lewis Carroll, \emph{Alice's Adventures in Wonderland}}
 
-In this chapter we introduce the graph simplex correspondence and explore its mathematical foundations and properties. While the focus of this dissertation is the bijective relationship between graphs and simplices, we begin by introducing the more general relationship between matrices and convex polytopes. The correspondence between graphs and simplices will then follow as a consequence. 
+In this chapter we introduce the graph-simplex correspondence and explore its mathematical foundations. While the focus of this dissertation is specially on  the simplices  arising from the Laplacian  matrices of graphs, we begin by introducing the more general relationship between matrices and convex polytopes. The correspondence between graphs and simplices will then follow as a consequence. 
 
 
 \section{Convex Polyhedra of Matrices}
@@ -238,12 +238,14 @@ We summarize the material in Sections \ref{sec:graph_to_simplex} and \ref{sec:si
 Several observations are in order. 
 First, the astute reader may wonder why it was necessary in this section to explore the relation between a given hyperacute simplex $\ssplx$ and its corresponding graph by means of the dual simplex $\ssplx^\du$. A second, \emph{more} astute reader will then question the sanity  of the first, and point out that in order to demonstrate that $\ssplx$ is congruent to the inverse simplex of $G$, one would have to have a firm grasp of the structure of $\L_G^+$, which is much more poorly understood in general than $\L_G$. For instance, would one have to argue that there exists a graph $G$ such that $\Sv(\ssplx)^\tp \Sv(\ssplx) = \L_G^+$. This seems difficult to do in general since, for example, even the sign of the entries of $\L_G^+$ aren't known. 
 
-Second, considering that Theorem \ref{thm:graph-simplex} was proved using combinatorial simplices, one might wonder whether a similar relationship holds between ``normalized'' simplices and graphs. That is, given $\ssplx$, when is $\ssplx^\du$ the normalized simplex of a graph? Since the vertices of the normalized simplex lie on the unit sphere, we would require that $\norm{\sv_i^\du}_2=1$, which is clearly only holds for a very restricted class of simplex. \note{Assume this holds. We would then need to cosntruct a graph with weights obeying 
-	\[\cos\theta_{ij} = \frac{1}{\sqrt{w(i)w(j)}},\]
-	hence 
-	\[\frac{1}{\sqrt{w(i)}} = \sum_{j\neq i}\cos\theta_{ij}\sqrt{w(j)}.\]
-		Think more about whether this system of equations has a solution. 
-}
+Second, considering that Theorem \ref{thm:graph-simplex} was proved using combinatorial simplices, one might wonder whether a similar relationship holds between ``normalized'' simplices and graphs. That is, given $\ssplx$, when is $\ssplx^\du$ the normalized simplex of a graph? Since the vertices of the normalized simplex lie on the unit sphere, we would require that $\norm{\sv_i^\du}_2=1$, which only holds for a very restricted class of simplex. 
+
+%\note{Assume this holds. We would then need to cosntruct a graph with weights obeying 
+%	\[\cos\theta_{ij} = \frac{1}{\sqrt{w(i)w(j)}},\]
+%	hence 
+%	\[\frac{1}{\sqrt{w(i)}} = \sum_{j\neq i}\cos\theta_{ij}\sqrt{w(j)}.\]
+%		Think more about whether this system of equations has a solution. 
+%}
 
 
 \section{Examples \& Simplices of Special Graphs}
@@ -394,7 +396,8 @@ We now embark on our voyage to understand the mathematical properties of the sim
 
 
 
-Property (ii) in the previous lemma was first noticed by Fielder~\cite[Chapter 6]{fiedler2011matrices}, and was also remarked upon by Van Mieghem \etal~\cite{van2017pseudoinverse} who used it in their study of best spreader nodes in electrical networks. We will return to this connection in later sections. We now turn our attention to properties of the angles of a simplex.  
+Property (ii) in the previous lemma was first noticed by Fielder~\cite[Chapter 6]{fiedler2011matrices}, and was also remarked upon by Van Mieghem \etal~\cite{van2017pseudoinverse} who used it in their study of best spreader nodes in electrical networks. 
+We will return to this connection in later sections. We now turn our attention to properties of the angles of a simplex.  
 
 \begin{lemma}
 	The combinatorial simplex $\splx_G$ of a graph $G$ is hyperacute iff $\L_G^+$ is a Laplacian.
@@ -415,6 +418,24 @@ Property (ii) in the previous lemma was first noticed by Fielder~\cite[Chapter 6
 	It suffices to show by the previous lemma that $\L^+=\L_{K^n}^+$ is a Laplacian. We've already seen that $\L_G^+\one=\zero$ for any $G$, so it remains only to show that $\L^+(k,k)>0$ for all $k\in[n]$ and $\L^+(k,\ell)\leq 0$ for all $k\neq\ell$, i.e., that $\sign(\L(k,\ell))=\sign(\L^+(k,\ell))$ for all $k,\ell$. Recall from Section \ref{sec:examples} that $K_n$ has eigenvalue $n$ with multiplicity $n-1$ and a single zero eigenvalue. Hence, $\L=n\sum_{i<n}\vp_i\vp_i^\tp$ and $\L^+=n^{-1}\sum_{i<n}\vp_i\vp_i^\tp$. 
 	Therefore, $\sign(\L(k,\ell)) = \sign(n\sum_{i<n}\vp_i(k)\vp_i(\ell)) = \sign(\sum_{i<n}\vp_i(k)\vp_i(\ell)) = \sign(\L^+(k,\ell))$ which implies the result. 
 \end{proof}
+
+Before continuing, we make a brief  detour  to demonstrate how this result combined  with  the link between $\splx_G^+$ and the effective resistance of $G$ allows us to uncover the  total  effective  resistance of certain graphs. Recalling that  $\Rtot_G$  is the  total  effective resistance  in  $G$,  apply Lemma~\ref{lem:S_G_basic_properties} and write  
+\begin{align*}
+\Rtot_G &= \frac{1}{2}\sum_{i,j\in[n]} \effr(i,j) = \frac{1}{2}\sum_{i,j\in[n]}\norm{\sv_i^+-\sv_j^+}_2^2 \\ 
+&= \frac{n}{2}\sum_{in[n]}\norm{\sv_i^+}_2^2 + \frac{n}{2}\sum_{j\in[n]}\norm{\sv_j^+}_2^2 - 2\sum_{i,j\in[n]}\la\sv_i^+,\sv_j^+\ra \\ 
+&= n\sum_{i\in[n]}\norm{\sv_i^+}_2^2 - 2\sum_{i\in[n]}\la \L_G(i,\cdot),\one\ra = n\sum_{i\in[n]}\norm{\sv_i^+}_2^2.
+\end{align*}
+
+Let $K_n^\alpha$ denote the complete graph on $n$ vertices where each edge has weight $\alpha$. By Corollary~\ref{cor:Lkn+_laplacian}, $\L_{K_n^\alpha}^+=\L_H$ for some graph $H$. Therefore, $\L_{K_n^\alpha}=\L_H^+$ and  $\norm{\sv_i^+(H)}_2^2 = \norm{\sv_i(\L_{K_n^\alpha})}_2^2$.  If $K_n$ is the unweighted complete graph, we see that $\L_{K_n^\alpha}=\alpha\L_{K_n}$. Using  that $L_{K_n}$ has eigenvalue $n$ with multiplicity $n-1$  (Section~\ref{sec:examples}) gives $L_{K_n^\alpha}=\alpha n\sum_{i<n}\vp_i\vp_i^\tp$, meaning that $\L_{K_n^\alpha}=\L_H^+$ has eigenvalue $\alpha n$ with multiplicity $n-1$. The effective resistance of $H$ is then 
+\begin{equation*}
+\Rtot_H = n\Tr(\L_H^+) = \alpha(n-1). 
+\end{equation*}
+Moreover, $\L_H$ has eigenvalue $(\alpha n)^{-1}$ with multiplicity $n-1$, and  is therefore a complete graph with weights $(\alpha n^2)^{-1}$. We have proven the  following:  
+
+\begin{lemma}
+	For any complete graph $H$ on $n$ vertices with uniform edge weights  $(\alpha n^2)^{-1}$ for any $\alpha$,  $\Rtot_H = \alpha (n-1)$. 
+\end{lemma}
+
 
 
 As Fiedler pointed out~\cite{fiedler1993geometric}, the correspondence also allows us to answer questions related to the distribution of angles of simplices. It is not, for example, a priori obvious that all distributions of angles  are possible in a hyperacute simplex, in the following sense. 
@@ -439,7 +460,7 @@ For a simplex $\splx$ of a graph $G$,
 \end{equation}
 \end{lemma}
 
-Just as each facet of a tetrahedron is contained in a plane and each edge is contained in an infinite line, each face $\splx_U$ of a simplex $U$ is contained in a \emph{flat} \note{Need to define  this} of dimension $|U|-1$. The following lemma helps characterize these flats. 
+Just as each facet of a tetrahedron is contained in a plane and each edge is contained in an infinite line, each face $\splx_U$ of a simplex $U$ is contained in a \emph{flat} (i.e., a linear subspace shifted by some constant\footnote{Also  called an affine subspace.}) of dimension $|U|-1$. The following lemma helps characterize these flats. 
 
 \begin{lemma}
 \label{lem:SUsubset}
@@ -821,16 +842,20 @@ As opposed to Section \ref{sec:S_G}, $\splxn_\ic $ is not contained in the hyper
 by assumption. The other way to see this is to note that $\svn_i^+$ is not perpendicular to $\splxn_\ic$ in general by Corollary \ref{cor:Sn_orthog_iff_regular}. Thus, it is not  clear how to generate an analogous description to Equation \eqref{eq:S_alt_desc} for the normalized simplex. While this may seem relatively inconsequential, it severely complicates finding the dual of $\splxn_G$, which is the question we turn to next. 
 
 \paragraph{What is $\splxn_G^\du$ and and $(\splxn_G^+)^\du$?} 
-Given that $\splxn_G^+$ is not the dual of $\splxn_G$ in general, it  seems appropriate  to  ask ``what on  earth \emph{is} the dual of the normalized simplex?". Somewhat surprisingly, this question is intimately related to the hyperplane representation---or lack thereof---of $\splxn_G$. 
+Given that $\splxn_G^+$ is not the dual of $\splxn_G$ in general, it  seems appropriate  to  ask ``what on  earth \emph{is} the dual of the normalized simplex?". The question has an interesting  implicit answer when asked of  $\splxn_G^+$, as demonstrated by  the following  lemma. 
 
-Somewhat surprisingly, the question has a straightforward answer if we instead  ask about  $\splxn_G^+$. Using the same reasoning which was applied to $\splx_G^+$, we see that $\splxn_G^+$  is also hyperacute.
+\begin{lemma}
+	For any graph $G$, there  exists a graph $H$ such that the  dual  of $\splxn_G^+$ is the combinatorial  simplex of $H$.  
+\end{lemma} 
+\begin{proof}
+Using the same reasoning which was applied to $\splx_G^+$, we see that $\splxn_G^+$  is also hyperacute.
 This implies, by Theorem~\ref{thm:graph-simplex}, that its centred version is the inverse \emph{combinatorial} simplex of some graph $H$. That is,  $(\splxn_G^+)_0 = \splx_H^+$. Since all translationally congruent simplices  share the same dual, we have 
 \begin{equation*}
-(\splxn_G^+)^\du = (\splxn_G^+)^\du_0 = (\splx_H^+)^\du = \splx_H.
+(\splxn_G^+)^\du = (\splxn_G^+)^\du_0 = (\splx_H^+)^\du = \splx_H.\qedhere
 \end{equation*}
+\end{proof}
 
-\note{What's the relation between $G$ and $H$?}
-
+Unfortunately, this result is purely  existential and does not yield much insight as to  actual structure of $(\splxn_G^+)^\du$. In the  case of $\splxn_G$, somewhat surprisingly, the question is intimately related to the hyperplane representation---or lack thereof---of $\splxn_G$. 
 We can obtain an implicit representation for the dual vertices $\{\svnd_i\}$ by noting that they must satisfy  $\la \svnd_i,\svn_j-\svn_n\ra=\delta_{ij}$ for all $i,j\neq n$. This translates to 
 \begin{equation*}
 \sum_{\ell=1}^n \svnd_i(\ell)(\vpn_k(j)-\vpn_k(n))\lambdan_k^{1/2}=\delta_{ij},
@@ -871,35 +896,9 @@ Lemma \ref{lem:hdesc_dual} allows us to extract the dual given a hyperplane desc
 	\z_i\ra\}$. 
 \end{proof}
 
-Taken together, Lemmas \ref{lem:hdesc_dual} and \ref{lem:hdesc_centred} provide a path to try and determine the dual simplex of $\splxn_G$. In particular, if we could determine a hyperplane representation of any simplex congruent to $\splxn_G$,  then we can obtain a hyperplane representation of its centred version by Lemma \ref{lem:hdesc_centred} and to the dual of its centred version by Lemma \ref{lem:hdesc_dual}. Since the dual is common to all congruent simplices by Observation \ref{obs:dual_centred}, this would yield $\splx_G^\du$. The trick is simply to determine a hyperplane representation of $\splx_G$---which we leave as an exercise for the reader. Just kidding. 
+Taken together, Lemmas \ref{lem:hdesc_dual} and \ref{lem:hdesc_centred} provide a path to try and determine the dual simplex of $\splxn_G$. In particular, if we could determine a hyperplane representation of any simplex congruent to $\splxn_G$,  then we can obtain a hyperplane representation of its centred version by Lemma \ref{lem:hdesc_centred} and to the dual of its centred version by Lemma \ref{lem:hdesc_dual}. Since the dual is common to all congruent simplices by Observation \ref{obs:dual_centred}, this would yield $\splx_G^\du$. Unfortunately, obtaining such a representation is  not trivial. We leave the question as an  open problem. 
 
  
-\note{Not worth fleshing out  until we have more content for this section.}
-
-Noting that 
-\begin{equation*}
-\cent(\splxn) = \frac{1}{n}\bigg(\sum_{\ell=1}^n \svn_\ell(1),\dots,\sum_{\ell=1}^n \svn_\ell(n)\bigg)^\tp,
-\end{equation*}
-we see that the vertices of $\splxn_0$ have coordinates
-\begin{equation*}
-\svn_i(j) - \cent(\splxn)(j) = \vpn_j(i)\lambdan_j^{1/2} - \frac{1}{n}\sum_{\ell=1}^n \vpn_j(\ell)\lambdan_j^{1/2} = \lambdan_j^{1/2} \bigg(\vpn_j(i) - \frac{1}{n}\la \vpn_j,\one\ra \bigg).
-\end{equation*}
-Likewise, the vertices of $\splxn_0^+$ have coordinates 
-\begin{equation*}
-\svn_i^+(j) = \evaln_j^{-1/2}\bigg(\vpn_j(i) - \frac{1}{n}\la \vpn_j,\one\ra\bigg).
-\end{equation*}
-
-Let $\cent$ be the centroid of the centred normalized Laplacian. Noting that $(\cent,\cent,\dots,\cent)=\cent\one^\tp$, 
-the Gram Matrix of $\splxn_0$ is 
-\begin{align*}
-(\Svn-\cent\one^\tp)^\tp(\Svn-\cent\one^\tp) &= \Svn^\tp\Svn - \Svn^\tp\cent\one^\tp - \one\cent^\tp\Svn + \one\cent^\tp\cent\one^\tp \\
-&= \Ln_G - \frac{1}{n} \Svn^\tp\Svn\one\one^\tp - \frac{1}{n}\one\one^\tp\Svn^\tp\Svn + \frac{1}{n^2}\Svn^\tp\Svn\one\one^\tp \\
-&= \Ln_G - \frac{1}{n}\Ln_G\J - \frac{1}{n} \J\Ln_G+ \frac{1}{n^2}\J\Ln_G\J.\\
-\end{align*}
-
-\note{What are the properties of this matrix? It has an eigenvector of $\one$ with eigenvalue 0, but it does not seem to be a Laplacian. }
-
-
 
 
 
