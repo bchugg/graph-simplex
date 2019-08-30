@@ -6,12 +6,12 @@
 
 \chapterquote{Why, sometimes I've believed as many as six impossible things before  breakfast.}{Lewis Carroll, \emph{Alice's Adventures in Wonderland}}
 
-In this chapter we introduce the graph-simplex correspondence and explore its mathematical foundations. While the focus of this dissertation is specially on  the simplices  arising from the Laplacian  matrices of graphs, we begin by introducing the more general relationship between matrices and convex polytopes. The correspondence between graphs and simplices will then follow as a consequence. 
+In this chapter we introduce the graph-simplex correspondence and explore its mathematical foundations. While the focus of this dissertation is specifically on  the simplices  arising from the Laplacian  matrices of graphs, we begin by introducing the more general relationship between matrices and convex polytopes. The correspondence between graphs and simplices will then follow as a consequence. 
 
 
 \section{Convex Polyhedra of Matrices}
 \label{sec:correspondence_polyhedra_matrices}
-Here we introduce the polytope associated with a given matrix. Let $\M\in \R^{n\times n}$ be PSD and admitting of the eigendecomposition $\M=\sum_{i=1}^d \lambda_i \eig_i\eig_i^\tp$ for some $d\leq n$ (i.e., $\M$ has eigenvalue zero with multiplicity $n-d$) where the eigenvectors $\{\eig_i\}_{i=1}^d $ are orthonormal. Writing out the eigendecomposition as 
+Here we introduce the polytope associated with a given matrix  (we will use  the words polyhedron and polytope interchangeably throughout this manuscript). Let $\M\in \R^{n\times n}$ be PSD and admitting of the eigendecomposition $\M=\sum_{i=1}^d \lambda_i \eig_i\eig_i^\tp$ for some $d\leq n$ (i.e., $\M$ has eigenvalue zero with multiplicity $n-d$) where the eigenvectors $\{\eig_i\}_{i=1}^d $ are orthonormal. Writing out the eigendecomposition as 
 \begin{equation*}
 \M=\Eig_M\Eval_M\Eig_M^\tp=(\Eig_M\Eval_M^{1/2})(\Eig_M\Eval_M^{1/2})^\tp,
 \end{equation*}
@@ -25,13 +25,13 @@ where we emphasize that the vertex vector will have real entries since $\lambda_
 \pol_\M\equiv \conv(\sv_1,\dots,\sv_n).
 \end{equation*}
 Letting $\Sv=\Sv(\pol_\M)=(\sv_1,\dots,\sv_n)\in \R^{d\times n}$ be the matrix whose $i$-th column is the $i$-th vertex $\sv_i$---henceforth called the \emph{vertex matrix of $\P_M$}---we see that 
-$ \Sv=\Eval_M^{1/2}\Eig_M^\tp=(\Eig_M\Eval^{1/2})^\tp$, and 
+$ \Sv=\Eval_M^{1/2}\Eig_M^\tp=(\Eig_M\Eval_M^{1/2})^\tp$, and 
 \begin{equation*}
-    \Sv^\tp \Sv=(\Eig\Eval^{1/2}) (\Eig\Eval^{1/2})^\tp = \Eig \Eval\Eig^\tp =\M.
+    \Sv^\tp \Sv=(\Eig_M\Eval_M^{1/2}) (\Eig_M\Eval_M^{1/2})^\tp = \Eig_M \Eval_M\Eig_M^\tp =\M.
 \end{equation*}
-Observe that the polytope $\splx(\M)$ is $d$-dimensional, i.e., its vertices span a $d$-dimensional subspace, since
+Observe that the polytope $\ssplx_\M$ is $d$-dimensional, i.e., its vertices span a $d$-dimensional subspace, since
 $\rank(\Sv)=\rank(\Sv^\tp \Sv)=\rank(\M)=d$, 
-where we've employed Lemma \ref{lem:rank(QtQ)} and the fact that $\M$ has rank $d$ due to its eigendecomposition. We thus conceptualize $\P_M$ as a polytope in $\R^d$. 
+where we've employed Lemma \ref{lem:rank(QtQ)} and the fact that $\M$ has rank $d$ due to its eigendecomposition. We thus conceptualize $\P_\M$ as a polytope in $\R^d$. 
 
 \begin{remark}
 	The ordering of the non-zero eigenvalues did not enter our considerations when defining $\P_M$. Let us consider re-ordering the indices; take $\tau:[d]\to[d]$ to be any permutation and $\{\sv_i^\tau\}$ be the vertices as they would be defined under the ordering given by $\tau$. Hence $\sv_i^\tau(j) = \vp_{\tau^{-1}(j)}(i)\lambda_{\tau^{-1}(j)}^{1/2}$. The pairwise distances between these vertices then obey 
@@ -39,18 +39,18 @@ where we've employed Lemma \ref{lem:rank(QtQ)} and the fact that $\M$ has rank $
 	\norm{\sv_i^\tau-\sv_k^\tau}_2^2 = \sum_{j=1}^d \lambda_{\tau^{-1}(j)} (\vp_{\tau^{-1}(j)}(i)-\vp_{\tau^{-1}(j)}(k))^2 = \sum_{j=1}^d \lambda_{j} (\vp_{j}(i)-\vp_{j}(k))^2 = \norm{\sv_i-\sv_j}_2^2,
 	\end{equation*}
 	since $\tau$ is a bijection, hence summing over $\tau^{-1}(j)$ yields the same result as summing from 1 to $d$. 
-	Therefore, we see that the polytopes $\conv(\sv_1^\tau,\dots,\sv_n^\tau)$ and  $\conv(\sv_1,\dots,\sv_n)$ are congruent. In fact, since they share the same centroid they are simply rotations of one another. 
+	Therefore, we see that the polytopes $\conv(\sv_1^\tau,\dots,\sv_n^\tau)$ and  $\conv(\sv_1,\dots,\sv_n)$ are congruent. In fact, since they share the same centroid and are simply rotations of one another. 
 \end{remark}
 
 
 \subsection{The Inverse Polytope} 
 \label{sec:inverse_polytope}
 Given that we can associate a polytope with the matrix $\M$, it is natural to wonder about the relationship between this polytope and that associated to $\M^{-1}$ if $\M$ if invertible, or with its pseudoinverse $\M^+$ more generally. As illustrated in Section \ref{sec:background_pseudoinverse}, with the eigendecompition of $\M$ as above, we can write  the pseudoinverse as 
-\[\M^+=\sum_{i=1}^d \lambda_i^{-1} \eig_i\eig_i^\tp = \Eig_M \Eval_M^{-1/2}\Eig_M.\]
-We can thus associated with $\M^+$ a polytope $\pol_{\M^+}$, which has as its vertex matrix $\Sv(\pol_{\M^+})=(\Eig\Eval^{-1/2})^\tp$; that is, the vertices $\{\sv_i^+\}$ of $\pol_{\M^+}$ are defined by 
+\[\M^+=\sum_{i=1}^d \lambda_i^{-1} \eig_i\eig_i^\tp = \Eig_M \Eval_M^{-1}\Eig^\tp_M.\]
+We can thus associate with $\M^+$ a polytope $\pol_{\M^+}$, which has as its vertex matrix $\Sv(\pol_{\M^+})=(\Eig_M\Eval_M^{-1/2})^\tp$; that is, the vertices $\{\sv_i^+\}$ of $\pol_{\M^+}$ are defined by 
 $\sv_i^+(j)=\eig_j(i)/\lambda_j^{1/2}$. We call $\pol_{\M^+}$ the \emph{inverse polytope of $\M$}. 
 
-Let us observe several properties of the relationship between $\P_M$ and $\P_{M^+}$. In what follows we drop the subscript $M$ from the eigenvalue and eigenvector matrix. Note that because of the orthogonality relationships among eigenvectors of $\M$, 
+Let us observe several properties of the relationship between $\P_\M$ and $\P_{\M^+}$. In what follows we drop the subscript $M$ from the eigenvalue and eigenvector matrix. Note that because of the orthogonality relationships among eigenvectors of $\M$, 
 \[\Eig^\tp \Eig = \begin{pmatrix}
 \la \vp_1,\vp_1\ra & \dots & \la \vp_1,\vp_d \ra \\
 \vdots & \ddots & \vdots \\
@@ -60,19 +60,15 @@ Consequently,
 \begin{equation*}
 \M^+\M = \Eig\Eval\Eig^\tp \Eig\Eval^{-1}\Eig^\tp = \Eig\Eval\Eval^{-1}\Eig^\tp = \Eig\Eig^\tp,
 \end{equation*}
-and similarly $\M\M^+= \Eig\Eig^\tp$. As it happens, the vertex matrices of $\P_M$ and $\P_M^+$ satisfy the same pseudoinverse relation: 
+and similarly $\M\M^+= \Eig\Eig^\tp$. As it happens, the vertex matrices of $\P_\M$ and $\P_\M^+$ satisfy the same pseudoinverse relation: 
 \begin{equation*}
 \Sv^\tp\Sv^+ = \Eig \Eval^{1/2}\Eval^{-1/2}\Eig^\tp = \Eig\Eig^\tp, 
 \end{equation*}
-and $(\Sv^+)^\tp\Sv = \Eig\Eig^\tp$. Using the properties of the relationship between a matrix and its pseudoinverse immediately yields the following result. 
+and similarly, $(\Sv^+)^\tp\Sv = \Eig\Eig^\tp$. Using the properties of the relationship between a matrix and its pseudoinverse immediately yields the following result. 
 
 \begin{lemma}
 \label{lem:vertex_matrices_pseudoinverse}
-	Let $\Sv=\Sv(\M)$ and $\Sv^+=\Sv(\M^+)$ by the vertex matrices of $\P_M$ and $\P_{M^+}$ where $\M$ is a real and symmetric matrix. The matrices $\Sv^\tp\Sv^+$ and $(\Sv^+)^\tp\Sv$ are equal and moreover 
-	\begin{enumerate}
-		\item[(i).] act as the orthogonal projection onto $\range(\M)$;
-		\item[(ii).] $(\I-\Sv^\tp\Sv^+)$ acts as the orthogonal projection onto $\ker(\M)$. 
-	\end{enumerate}
+	Let $\Sv=\Sv(\M)$ and $\Sv^+=\Sv(\M^+)$ be the vertex matrices of $\P_M$ and $\P_{M^+}$ where $\M$ is a real and symmetric matrix. The matrices $\Sv^\tp\Sv^+$ and $(\Sv^+)^\tp\Sv$ are equal and act as the orthogonal projection onto $\range(\M)$.  Moreover,  $(\I-\Sv^\tp\Sv^+)$ acts as the orthogonal projection onto $\ker(\M)$. 
 \end{lemma}
 \begin{proof}
 	Apply Lemma \ref{lem:pseudoinverse_properties}. 
@@ -100,23 +96,19 @@ and likewise,
 \Svn^+(\Svn^+)^\tp = \Eval^{-1}.
 \end{equation}
 
-In summary, any real symmetric $n\times n$ matrix $\M$ of rank $d$ yields a $d$-dimensional convex polytope $\P_\M$ in $\C^{d\times d}$. If all eigenvalues are positive then the polytope sits in $\R^{d\times d}$. The vertex matrices of $\P_\M$ and $\P_{\M^+}$---the polytope of the pseudoinverse of $\M$---when multiplied together are equal to and hence satisfy the projection properties of $\M^+\M$. In the next section we will explore how to apply this result to graphs. 
+In summary, any real PSD matrix $\M\in\R^{n\times n}$ of rank $d$ yields a $d$-dimensional convex polytope $\P_\M$ in $\R^{d\times d}$.  The vertex matrices of $\P_\M$ and $\P_{\M^+}$---the polytope of the pseudoinverse of $\M$---when multiplied together are equal to and hence satisfy the projection properties of $\M^+\M$. In the next section we will explore how to apply this result to graphs. 
 
 
 \section{A Bijection Between Graphs and Simplices}
 \label{sec:bijection_graphs_simplices}
 This section introduces the graph-simplex correspondence---the core of which is a bijective mapping between the set of all (finite) connected, weighted, and undirected graphs and hyperacute simplices. 
-We begin by exploring the polytopes---and in particular the simplices---associated with a given graph. The subsequent section will then demonstrate how to extract a graph from an arbitrary hyperacute simplex. 
+We begin by exploring the simplces associated with a given graph. The subsequent section will then demonstrate how to extract a graph from an arbitrary hyperacute simplex. 
 
 \subsection{The Simplices of a Graph}
 \label{sec:graph_to_simplex}
-Fix an undirected, connected and weighted graph $G=(V,E,w)$. By means of the graph's adjacency and Laplacian matrices, the previous section yields several polytopes corresponding to $G$. 
-The adjacency matrix $\A_G$, for instance, yields a complex polytope of dimension $\rank(\A_G)$. However, while Theorem \ref{thm:spectral_theorem} dictates that $\A_G$ has real eigenvalues and a set of orthogonal eigenvectors, we do not in general know the rank of $\A_G$, nor much of the magnitudes of its eigenvalues. This makes it difficult to explore the structure of $\P_{\A_G}$. 
-
-
-We will instead focus on the polytopes generated by $G$'s Laplacian matrices;  $\splx_G\equiv \pol_{\L_G}$ and $\splxn_G\equiv \pol_{\Ln_G}$ corresponding to the combinatorial and normalized Laplacians, respectively.  (The reasoning behind the nomenclature will quickly become apparent.)
-We let $\Sv_G=\Sv(\P_{\L_G})=(\sv_1,\dots,\sv_n)$ and $\Svn_G=\Sv(\P_{\Ln_G})=(\svn_1,\dots,\svn_n)$ denote the vertices of $\splx_G$ and $\splxn_G$, respectively. 
-We recall that $\Sv=\Eval^{1/2}\Eig^\tp$ (resp., $\Svn=\Evaln^{1/2}\Eign^\tp)$) where $\Eval$ (resp., $\Evaln$) is the diagonal matrix containing the non-zero eigenvalues of $\L_G$ (resp., $\Ln_G$) and $\Eig$ (resp., $\Eign$) is the matrix of the corresponding (normalized) eigenvectors. 
+Fix a (connected, undirected, and) weighted graph $G=(V,E,w)$. The previous section yields several polytopes  related to $G$ by  means of its Laplacian matrices.  In particular, we  obtain  the polytopes $\splx_G\equiv \pol_{\L_G}$ and $\splxn_G\equiv \pol_{\Ln_G}$ corresponding to the combinatorial and normalized Laplacians, respectively.  (The reasoning behind the nomenclature will quickly become apparent.)
+We let $\Sv=\Sv(\splx_G)=(\sv_1,\dots,\sv_n)$ and $\Svn=\Sv(\splxn_G)=(\svn_1,\dots,\svn_n)$ denote the vertices of $\splx_G$ and $\splxn_G$, respectively. 
+We recall that $\Sv=\Eval^{1/2}\Eig^\tp$ (resp., $\Svn=\Evaln^{1/2}\Eign^\tp)$) where $\Eval$ (resp., $\Evaln$) is the diagonal matrix containing the non-zero eigenvalues of $\L_G$ (resp., $\Ln_G$) and $\Eig$ (resp., $\Eign$) the matrix of the corresponding (normalized) eigenvectors. 
 Since $\rank(\L_G)=\rank(\Ln_G)=n-1$, the polytopes $\splx_G$ and $\splxn_G$ are simplices---a fact which is demonstrated more directly by the following Lemma.  
 
 \begin{lemma}
@@ -124,16 +116,15 @@ Since $\rank(\L_G)=\rank(\Ln_G)=n-1$, the polytopes $\splx_G$ and $\splxn_G$ are
 The vertices $\{\sv_i\}$  and $\{\svn_i\}$ are affinely independent. 
 \end{lemma}
 \begin{proof}
-	We provide the proof in the case of $\{\sv_i\}$ only. 
-	Suppose $\balpha = (\alpha_1,\dots,\alpha_n)$ is such that 
-$\sum_{i=1}^n \alpha_i\sv_i = \zero$, i.e., $\balpha\in\ker(\Sv)$. Since $\ker(\Sv)=\ker(\Sv^\tp\Sv)=\ker(\L)=\spn(\{\one\})$, there exists some $k\in \R$ such that $\balpha=k\one$. If $\la \balpha,\one\ra = \la k\one,\one\ra=kn=0$ however, then we must have $k=0$, demonstrating that $\alpha_i=0$ for all $i$. Hence the vectors $\{\sv_i\}$ are affinely independent. Likewise, if $\balpha\in\ker(\Svn)=\ker(\Ln)=\spn(\{\sqrt{\w}\})$, then $\balpha=k\sqrt{\w}$. But $\la k\sqrt{\w},\one\ra = k\sum_{i}w(i)=0$, so $\balpha=\zero$. 
+Suppose $\balpha = (\alpha_1,\dots,\alpha_n)$ is such that 
+$\sum_{i=1}^n \alpha_i\sv_i = \zero$, i.e., $\balpha\in\ker(\Sv)$. Since $\ker(\Sv)=\ker(\Sv^\tp\Sv)=\ker(\L)=\spn(\{\one\})$, there exists some $k\in \R$ such that $\balpha=k\one$. If $\la \balpha,\one\ra = \la k\one,\one\ra=kn=0$ however, then we must have $k=0$, demonstrating that $\alpha_i=0$ for all $i$. Hence the vectors $\{\sv_i\}$ are affinely independent. Likewise, if $\balpha\in\ker(\Svn)=\ker(\Ln)=\spn(\{\sqrt{\w}\})$, then $\balpha=k\sqrt{\w}$. But $\la k\sqrt{\w},\one\ra = k\sum_{i}\sqrt{w(i)}=0$, so $\balpha=\zero$. As above, this implies that $\{\svn_i\}$ is affinely  independent. 
 \end{proof}
 
-Consequently, we will often refer to $\splx_G$ as the \emph{combinatorial simplex of $G$} or simply the \emph{simplex of $G$}, and to $\splxn_G$ as the \emph{normalized simplex of $G$}. If $G$ is clear from context we will often drop it from the subscript. As per Section \ref{sec:inverse_polytope}, we also introduce the \emph{inverse simplex} and \emph{inverse normalized simplex of $G$}, which have respective vertex matrices $\Sv^+ = \Eval^{-1/2}\Eig^\tp$ and $\Svn^+ = \Evaln^{-1/2}\Eign^\tp$.  
+We will refer to $\splx_G$ as the \emph{combinatorial simplex of $G$} or simply the \emph{simplex of $G$}, and to $\splxn_G$ as the \emph{normalized simplex of $G$}. If $G$ is clear from context we may drop it from the subscript. As per Section \ref{sec:inverse_polytope}, we also introduce the \emph{inverse simplex} and \emph{inverse normalized simplex of $G$}, which have respective vertex matrices $\Sv^+ = \Eval^{-1/2}\Eig^\tp$ and $\Svn^+ = \Evaln^{-1/2}\Eign^\tp$.  
 
 We will often refer to the pair $\splx_G$ and $\splx_G^+$ as the \emph{combinatorial simplices of $G$}, and the pair $\splxn_G$ and $\splxn_G^+$ as the \emph{normalized simplices of $G$}, to avoid the tedious task of constantly referring to, say, the combinatorial simplex and its inverse. 
 
-As illustrated by the discussion at the end of Section \ref{sec:inverse_polytope}, the vertex matrices of the polytope of a matrix and its inverse share the same relationship as the matrix and its pseudoinverse (Lemma \ref{lem:vertex_matrices_pseudoinverse}). Since this relationship is well understood for the Laplacian and its pseudoinverse, we may explicit compute the relationships between $\Sv,\Sv^+$ and $\Svn,\Svn^+$. 
+As illustrated by the discussion at the end of Section \ref{sec:inverse_polytope}, the vertex matrices of the polytope of a matrix and its inverse share the same relationship as the matrix and its pseudoinverse (Lemma \ref{lem:vertex_matrices_pseudoinverse}). Since this relationship is well understood for the Laplacian and its pseudoinverse, we may explicitly compute the relationships between $\Sv,\Sv^+$ and $\Svn,\Svn^+$. 
 
 Let $\widetilde{\Eig}$ be the matrix containing all eigenvectors of $\L_G$ (i.e., also containing $\one/\sqrt{n}$).  It is well known that $\widetilde{\Eig}$ is an orthogonal matrix (see e.g., \cite{van2013double}), i.e., $\wEig^\tp \wEig=\wEig\wEig^\tp=\I$, a property which is also called \emph{double orthogonality}. When expanded, this second equality implies that
 \begin{equation}
@@ -182,7 +173,7 @@ It is worth emphasizing the fact that this inverse relationship is a function of
 
 \subsection{The Graph of a Simplex}
 \label{sec:simplex_to_graph}
-We now proceed to demonstrating that  each hyperacute simplex is the inverse simplex of a graph $G$. This will constitute the second half of the bijective relationship between graphs and simplices. 
+We now proceed to demonstrating that  each centred hyperacute simplex is the inverse simplex of a graph $G$. This will constitute the second half of the bijective relationship between graphs and simplices. 
 
 \begin{lemma}
 	Given a simplex $\ssplx\subset\R^{n-1}$ centered at the origin, let $\{\u_i\}$ be vectors describing its outer normal directions, though with no particular length. Let $\vb*{Q}$ be their Gram matrix; i.e., $\vb*{Q}(i,j)=\la \u_i,\u_j\ra$. If $\vb*{Q}_1\in\R^{n\times n}$ is the diagonal matrix containing the norms of the outer normals, 
@@ -200,15 +191,15 @@ We now proceed to demonstrating that  each hyperacute simplex is the inverse sim
 	\vb*{Q} = \vb*{Q}_1 \vb*{Q}_2 \vb*{Q}_1$. 
 \end{lemma}
 \begin{proof}
-	Using Equation \ref{eq:cos_theta_ij} from the discussion in Section \ref{sec:background_simplex_angles}, we can write the entries of $\Q_2$ as 
-	\[\frac{\la \bgamma_i,\bgamma_j\ra}{\norm{\bgamma_i}_2\norm{\bgamma_j}_2},\]
-	where $\{\bgamma_i\}$ are the vertices of $\ssplx^\du$ (note that this holds for $i=j$ as well). Lemma \ref{lem:dual_faces_orthogonal} implies that these vertices are parallel to the outer normals of $\ssplx$, hence  $\bgamma_i = \kappa_i \u_i$ where $\kappa_i\in \R_{> 0}$. Therefore, 
+	Using Equation~\eqref{eq:cos_theta_ij} from the discussion in Section \ref{sec:background_simplex_angles}, we can write the entries of $\Q_2$ as 
+	\[\frac{\la \bgamma^\du_i,\bgamma^\du_j\ra}{\norm{\bgamma^\du_i}_2\norm{\bgamma^\du_j}_2},\]
+	where $\{\bgamma^\du_i\}$ are the vertices of $\ssplx^\du$ (note that this holds for $i=j$ as well). Lemma \ref{lem:dual_faces_orthogonal} implies that these vertices are parallel to the outer normals of $\ssplx$, hence  $\bgamma^\du_i = \kappa_i \u_i$ where $\kappa_i\in \R_{> 0}$. Therefore, 
 	\begin{equation*}
 	(\Q_1\Q_2\Q_1)(i,j) = \norm{\u_i}_2 \frac{\la \kappa_i\u_i,\kappa_j\u_j\ra}{\norm{\kappa_i\u_i}_2\norm{\kappa_j\u_j}_2}\norm{\u_j}_2 = \frac{\kappa_i\kappa_j}{|\kappa_i||\kappa_j|}\la \u_i,\u_j\ra = \la \u_i,\u_j\ra=\Q(i,j).\qedhere
 	\end{equation*}
 \end{proof}
 
-Let $\ssplx$ be a hyperacute simplex, and $\ssplx^\du$ its dual. The vertex matrix $\Sv^\du$ of $\ssplx^\du$ contains the outer normals of $\ssplx$ (see discussion on dual simplex in Section \ref{sec:background_dual_simplex}). Hence, taking $\vb*{Q}=(\Sv^\du)^\tp \Sv^\du$ in the above Lemma applied to the simplex $\ssplx$, we obtain explicit entries for this Gram matrix:  
+Let $\ssplx$ be a hyperacute simplex, and $\ssplx^\du$ its dual. The vertex matrix $\Sv^\du$ of $\ssplx^\du$ contains the outer normals of $\ssplx$ (see discussion on dual simplex in Section \ref{sec:background_dual_simplex}). Hence, taking $\vb*{Q}=(\Sv^\du)^\tp \Sv^\du$ in the above lemma applied to the simplex $\ssplx$, we obtain explicit entries for this Gram matrix:  
 \begin{equation*}
     ((\Sv^\du)^\tp \Sv^\du)(i,j) = \begin{cases}
     \norm{\sv_i^\du}_2^{2},& \text{if }i=j,\\
@@ -236,9 +227,9 @@ We summarize the material in Sections \ref{sec:graph_to_simplex} and \ref{sec:si
 \end{theorem}
 
 Several observations are in order. 
-First, the astute reader may wonder why it was necessary in this section to explore the relation between a given hyperacute simplex $\ssplx$ and its corresponding graph by means of the dual simplex $\ssplx^\du$. A second, \emph{more} astute reader will then question the sanity  of the first, and point out that in order to demonstrate that $\ssplx$ is congruent to the inverse simplex of $G$, one would have to have a firm grasp of the structure of $\L_G^+$, which is much more poorly understood in general than $\L_G$. For instance, would one have to argue that there exists a graph $G$ such that $\Sv(\ssplx)^\tp \Sv(\ssplx) = \L_G^+$. This seems difficult to do in general since, for example, even the sign of the entries of $\L_G^+$ aren't known. 
+First, the astute reader may wonder why it was necessary in this section to explore the relation between a given hyperacute simplex $\ssplx$ and its corresponding graph by means of the dual simplex $\ssplx^\du$. We point out that in order to demonstrate that $\ssplx$ is congruent to the inverse simplex of $G$, one would have to have a firm grasp of the structure of $\L_G^+$, which is much more poorly understood in general than $\L_G$. For instance, would one have to argue that there exists a graph $G$ such that $\Sv(\ssplx)^\tp \Sv(\ssplx) = \L_G^+$. This seems difficult to do in general since, for example, even the sign of the entries of $\L_G^+$ aren't known. 
 
-Second, considering that Theorem \ref{thm:graph-simplex} was proved using combinatorial simplices, one might wonder whether a similar relationship holds between ``normalized'' simplices and graphs. That is, given $\ssplx$, when is $\ssplx^\du$ the normalized simplex of a graph? Since the vertices of the normalized simplex lie on the unit sphere, we would require that $\norm{\sv_i^\du}_2=1$, which only holds for a very restricted class of simplex. 
+Second, considering that Theorem \ref{thm:graph-simplex} was proved using combinatorial simplices, one might wonder whether a similar relationship holds between ``normalized'' simplices and graphs. That is, given $\ssplx$, when is $\ssplx^\du$ the normalized simplex of a graph? Since the vertices of the normalized simplex lie on the unit sphere however, we would require that $\norm{\sv_i^\du}_2=1$. This only holds for a very restricted class of simplex. 
 
 %\note{Assume this holds. We would then need to cosntruct a graph with weights obeying 
 %	\[\cos\theta_{ij} = \frac{1}{\sqrt{w(i)w(j)}},\]
@@ -250,8 +241,9 @@ Second, considering that Theorem \ref{thm:graph-simplex} was proved using combin
 
 \section{Examples \& Simplices of Special Graphs}
 \label{sec:special_graphs}
-In this section we provide several examples of simplices of graphs in order to give the reader a more intuitive feeling of the correspondence. 
-Fix a connected and undirected graph $G=(V,E,w)$. 
+In this section we provide several examples of simplices of graphs in order to give the reader a more intuitive feeling of the correspondence. In Appendix~\ref{sec:app_figures}, we also give visualizations of all four simplices of all unweighted graphs on 4 vertices. 
+
+Fix a graph $G=(V,E,w)$. 
 We begin by considering the simplices generated by three special graphs relating to $G$---the complement graph $G^c$, an arbitrary subgraph of $G$, and the case in which $G$ is a product graph. 
 We then proceed to analyzing several concrete examples. 
 
@@ -311,7 +303,7 @@ We begin with the definition of a product graph.
 	$\{((i_1,j),(i_2,j)):(i_1,i_2)\in E(G), j\in V(H)\}\cup\{((i,j_1),(i,j_2)):(j_1,j_2)\in E(H), i\in V(G)\}$. It is denoted $G\times H$. 
 \end{definition} 
 
-In order to investigate the simplex of a product graph, we must better understand its eigenstructure. 
+In order to investigate the simplex of a product graph, we must better understand its eigenstructure. The proof can be found  in Appendix~\ref{sec:app_proofs_correspondence}. 
 
 \begin{lemma}
 	\label{lem:prod_graph_eigenstructure}
@@ -335,11 +327,11 @@ Let us consider the combinatorial simplex $\splx=\splx_{K_n}$.  The Laplacian $\
 &= \bigg(\vp(1)n - \sum_i \vp(i), \dots,\vp(n)n - \sum_i \vp(i)\bigg) \\
 &= (\vp(1)n,\dots,\vp(n)n) = n\eig,
 \end{align*}
-since $\sum_i\vp(i)=\la \eig,\one\ra =0$. Let $\Q$  described the rotation matrix which rotates each vector  by $\pi/4$  about each axis. Thus $\Q\e_1=\one$, and we can $n-1$ orthogonal eigenvectors $\Q\e_2,\dots,\Q\e_n$. The vertices of $\splx$  are thus given by $\sv_i(j) = \sqrt{n}(\Q\e_{j+1})(i)$. 
+since $\sum_i\vp(i)=\la \eig,\one\ra =0$. Let $\Q$  be the matrix which rotates each vector  by $\pi/4$  about each axis. Thus $\Q\e_1=\one$, and $n-1$ orthogonal eigenvectors are given by $\Q\e_2,\dots,\Q\e_n$. Hence the vertices of $\splx$  are given by $\sv_i(j) = \sqrt{n}(\Q\e_{j+1})(i)$. 
 
 \paragraph{The Cycle graph,  $C_n$.}
 The cycle graph $C_n$ has edge set $E=\{(i,j):j=i+1\mod n\}$. We assume that $n$ is even for this example. 
-We leave it to the reader to verify by direct computation  that the eigenvalues  and eigenvectors of $\L_{C_n}$ are given by 
+One can  verify  by direct computation  that the eigenvalues  and eigenvectors of $\L_{C_n}$ are given by 
 \[\vp_i(j) = \cos(\frac{2\pi(i-1)j}{n}),\quad \lambda_i = 2-2\cos(\frac{2\pi(i-1)}{n}),\]
 for $i=1,\dots,n/2+1$, and 
 \[\vp_i(j) = \cos(\frac{2\pi(i-n/2-1)j}{n}),\quad \lambda_i = 2-2\cos(\frac{2\pi(i-n/2-1)}{n}),\]
@@ -358,15 +350,15 @@ Fix  $n\in\N$. The \emph{probability simplex} is the simplex $\widetilde{\splx}_
 which has vertices  $\sv_i = \bchi_i - \one/n$, $i<n$, and $\sv_n = -\one/n$. Note that $\sv_j-\sv_n = \bchi_j$ and so 
 $\la \bchi_i, \sv_j-\sv_n\ra = \delta_{ij}$. Taking  $\sv_i^\du = \bchi_i$ and $\sv_n^\du = -\sum_i \bchi_i = -\one$ thus gives us the dual vertices. The  angles between the facets of $\splx_p$ are thus defined by 
 \begin{equation*}
-\cos\theta_{ij}(\splx_p) = - \la \bchi_i,\bchi_j\ra = -\delta_{ij}, 
+\cos\theta_{ij}(\splx_p) = - \frac{\la \bchi_i,\bchi_j\ra}{\norm{\bchi_i}_2\norm{\bchi_j}_2} = -\delta_{ij}, 
 \end{equation*}
 for $i,j\in[n-1]$ and 
 \begin{equation*}
-\cos\theta_{in}(\splx_p) = \frac{\la \bchi_i,\one\ra}{\norm{1}} = 1/\sqrt{n},
+\cos\theta_{in}(\splx_p) = -\frac{\la \bchi_i,-\one\ra}{\norm{\bchi_i}_2\norm{\one}_2} = 1/\sqrt{n},
 \end{equation*}
 for all $i\in[n]$. 
-This implies  that $\theta_{ij}(\splx_p) = 0$ for $i\neq j$, $i,j\neq n$ and $\theta_{in}(\splx_p) \in =(0,\pi/2)$. 
-Using the  construction of Section~\ref{sec:simplex_to_graph}, we  associate to $\splx_p$ the graph with Laplacian matrix $\Sv(\splx_p^\du)^\to \Sv(\splx_p^\du)$, where $\Sv(\splx_p^\du)=(\sv_1^\du,\dots,\sv_n^\du)$. This matrix has $(i,j)$-th  entry $1$ for $i=j$, 1  for $i=n$ or $j=n$,  and 0 otherwise. This graph thus has each vertex connected  to $n$, but to  no others.  That  is, the graph of the probability simplex $\splx_p$ is  the star graph on  $n$ vertices. 
+This implies  that $\theta_{ij}(\splx_p) = 0$ for $i\neq j$, $i,j\neq n$ and $\theta_{in}(\splx_p) \in (0,\pi/2)$. 
+Using the  construction of Section~\ref{sec:simplex_to_graph}, we  associate to $\splx_p$ the graph with Laplacian matrix $\Sv(\splx_p^\du)^\tp \Sv(\splx_p^\du)$, where $\Sv(\splx_p^\du)=(\sv_1^\du,\dots,\sv_n^\du)$. This matrix has $(i,j)$-th  entry $1$ for $i=j$, 1  for $i=n$ or $j=n$,  and 0 otherwise. This graph thus has each vertex connected  to $n$, but to  no others.  That  is, the graph of the probability simplex $\splx_p$ is  the star graph on  $n$ vertices. 
 
  
 
@@ -374,7 +366,7 @@ Using the  construction of Section~\ref{sec:simplex_to_graph}, we  associate to 
 
 \section{Properties of \texorpdfstring{$\splx_G$}{the Combinatorial Simplex} and \texorpdfstring{$\splx_G^+$}{its inverse}}
 \label{sec:S_G}
-We now embark on our voyage to understand the mathematical properties of the simplices of a graph. This section is devoted to the study of $\splx_G$ and $\splx_G^+$, while Section \ref{sec:Sn_G} is concerned with $\splxn_G$ and $\splxn_G^+$. For bibliographic purposes, we will encode many of the results as Lemmas even if they are relatively simple. There are many results, and this should enable easier accounting. We begin with three basic properties.
+We now embark on our voyage to understand the mathematical properties of the simplices of a graph. This section is devoted to the study of $\splx_G$ and $\splx_G^+$, while Section \ref{sec:Sn_G} is concerned with $\splxn_G$ and $\splxn_G^+$. For bibliographic purposes, we will encode many of the results as lemmas even if they are relatively simple. There are many results, and this should enable easier accounting. We begin with three basic ones. 
 
 \begin{lemma}
 	\label{lem:S_G_basic_properties}
@@ -411,11 +403,11 @@ We will return to this connection in later sections. We now turn our attention t
 
 \begin{corollary}
 	\label{cor:Lkn+_laplacian}
-	The combinatorial simplex of the complete graph,  $\splx_{K_n}$, is hyperacute. 
+	The combinatorial simplex $\splx_{K_n}$ of the complete graph $K_n$ is hyperacute. 
 \end{corollary}
 \begin{proof}
 	Let $\L=\L_{K_n}$. 
-	It suffices to show by the previous lemma that $\L^+=\L_{K^n}^+$ is a Laplacian. We've already seen that $\L_G^+\one=\zero$ for any $G$, so it remains only to show that $\L^+(k,k)>0$ for all $k\in[n]$ and $\L^+(k,\ell)\leq 0$ for all $k\neq\ell$, i.e., that $\sign(\L(k,\ell))=\sign(\L^+(k,\ell))$ for all $k,\ell$. Recall from Section \ref{sec:examples} that $K_n$ has eigenvalue $n$ with multiplicity $n-1$ and a single zero eigenvalue. Hence, $\L=n\sum_{i<n}\vp_i\vp_i^\tp$ and $\L^+=n^{-1}\sum_{i<n}\vp_i\vp_i^\tp$. 
+	It suffices to show by the previous lemma that $\L^+=\L_{K_n}^+$ is a Laplacian. We've already seen that $\L_G^+\one=\zero$ for any $G$, so it remains only to show that $\L^+(k,k)>0$ for all $k\in[n]$ and $\L^+(k,\ell)\leq 0$ for all $k\neq\ell$, i.e., that $\sign(\L(k,\ell))=\sign(\L^+(k,\ell))$ for all $k,\ell$. Recall from Section \ref{sec:examples} that $K_n$ has eigenvalue $n$ with multiplicity $n-1$ and a single zero eigenvalue. Hence, $\L=n\sum_{i<n}\vp_i\vp_i^\tp$ and $\L^+=n^{-1}\sum_{i<n}\vp_i\vp_i^\tp$. 
 	Therefore, $\sign(\L(k,\ell)) = \sign(n\sum_{i<n}\vp_i(k)\vp_i(\ell)) = \sign(\sum_{i<n}\vp_i(k)\vp_i(\ell)) = \sign(\L^+(k,\ell))$ which implies the result. 
 \end{proof}
 
@@ -438,13 +430,13 @@ Moreover, $\L_H$ has eigenvalue $(\alpha n)^{-1}$ with multiplicity $n-1$, and  
 
 
 
-As Fiedler pointed out~\cite{fiedler1993geometric}, the correspondence also allows us to answer questions related to the distribution of angles of simplices. It is not, for example, a priori obvious that all distributions of angles  are possible in a hyperacute simplex, in the following sense. 
+As Fiedler pointed out~\cite{fiedler1993geometric}, the correspondence also allows us to answer questions related to the distribution of angles in simplices. It is not, for example, a priori obvious that all distributions of angles  are possible in a hyperacute simplex, in the following sense. 
 
 \begin{lemma}
 	For every $n-1\leq k \leq \binom{n}{2}$, there exists a hyperacute simplex on $n$ vertices with $k$ strictly acute interior angles. 
 \end{lemma}
 \begin{proof}
-	Fix $k$ and consider a connected graph on $n$ vertices with $k$ edges (note the importance that $k\geq n-1$). The interior angles $\{\theta_{ij}^+\}_{i,j}$ of $\splx_G^+$ obey $\cos\theta_{ij} = w(i,j) / \sqrt{w(i)w(j)}$, hence $\theta_{ij}=\pi/2$ whenever $w(i,j)=0$, and $\theta_{ij}\in(0,\pi/2)$ for all $(i,j)\in E(G)$. Therefore, $\splx_G^+$ meets the desired criteria. 
+	Fix $k$ and consider a connected graph on $n$ vertices with $k$ edges (note the importance that $k\geq n-1$). The interior angles $\{\theta_{ij}^+\}_{i,j}$ of $\splx_G^+$ obey \[\cos\theta^+_{ij} = -\frac{\la \sv_i,\sv_j\ra}{\norm{\sv_i}_2\norm{\sv_j}_2} = \frac{w(i,j)}{ \sqrt{w(i)w(j)}},\] hence $\theta_{ij}=\pi/2$ whenever $w(i,j)=0$, and $\theta_{ij}\in(0,\pi/2)$ for all $(i,j)\in E(G)$. Therefore, $\splx_G^+$ meets the desired criteria. 
 \end{proof}
 
 
@@ -474,7 +466,7 @@ and
 \end{equation*}
 \end{lemma}
 \begin{proof}
-Let $\x\in\splx_U$ be arbitrary. For any $i\in U^c$ we have $\la \x,\sv_i^+\ra = -1/n$. Hence, for any $E\subset U^c$
+Let $\Sv\x\in\splx_U$ be arbitrary. For any $i\in U^c$ we have $\la \Sv\x,\sv_i^+\ra = \x^\tp\Sv^\tp\Sv^+\bchi_i=-1/n$ because $\x$ is a barycentric coordinate with  $x(i)=0$. Hence, for any $E\subset U^c$
 \[\sum_{i\in E}\la \x,\sv_i^+\ra + \frac{|E|}{n} = \sum_{i\in E}\bigg(\la \x,\sv_i^+\ra+\frac{1}{n}\bigg)=\sum_{i\in E}\bigg(\frac{1}{n}-\frac{1}{n}\bigg)=0,\]
 implying that $\x$ is in the desired set. 
 \end{proof}
@@ -484,6 +476,7 @@ Lemma \ref{lem:SUsubset} gives us an alternate way to prove Lemma \ref{lem:S_alt
 \label{eq:Hi}
  \H_i\equiv \{\x\in\R^{n-1}:\la \x,\sv_i^+\ra+1/n=0\}.
 \end{equation}
+See Figure~\ref{fig:Hi_plane} for an illustration. 
 All points in the simplex $\splx$ lie to one side of $\splx_{\{i\}^c}$, i.e., they lie in the halfspace 
 \[\H_i^{\geq } \equiv \{\x\in\R^{n-1}:\la \x,\sv_i^+\ra+1/n\geq0\}.\]
 (We know it is this halfspace because $\zero\in\splx\cap\H_i^{\geq }$.) The simplex is the interior of the region defined by the intersection of the faces $\splx_{\{i\}^c}$, i.e.,   
@@ -509,7 +502,7 @@ for $(\H_i^+)^{\geq } \equiv \{\x\in\R^{n-1}:\la \x,\sv_i\ra + 1/n\geq 0\}$.
 \paragraph{Centroids and altitudes.} 
 We now turn to investigating the centroids and altitudes of the simplices, and how they relate to properties of the underlying graph. We begin by exploring the relationships between properties of the simplices themselves. 
 
-Recall that the altitude between $\splx[U]$ and $\splx[U^c]$ of a simplex $\splx$ is denoted $\alt(\splx_U)$ and is the unique vector $\p-\q$ where  $\p\in \splx_{U^c}$ and $\q\in\splx_{U}$ which lies in the orthogonal complement of both $\splx_U$ and $\splx_{U^c}$. One would thus expect that $\alt(\splx_U)$ and $\alt(\splx_{U^c})$ to be antiparallel; a fact verified by Lemma \ref{lem:complimentary_centroids}.  
+Recall that the altitude between $\splx_U$ and $\splx_{U^c}$ of a simplex $\splx$ is denoted $\alt(\splx_U)$ and is the unique vector $\p-\q$ where  $\p\in \splx_{U^c}$ and $\q\in\splx_{U}$ which lies in the orthogonal complement of both $\splx_U$ and $\splx_{U^c}$. One would thus expect that $\alt(\splx_U)$ and $\alt(\splx_{U^c})$ to be antiparallel; a fact verified by Lemma \ref{lem:complimentary_centroids}.  
 
 In what follows,  we will often write $\cent_U$ for $\cent(\splx_U)$ (resp., $\cent_U^+$ for $\cent(\splx_U^+)$) and $\alt_U$ for $\alt(\splx_U)$ (resp., $\alt_U^+$ for $\alt(\splx_U^+)$). 
 
@@ -524,14 +517,14 @@ This is a straightforward computation: Observing that $\bchi_U=\one-\bchi_{U^c}$
 where we've used that $\Sv\one=\zero$. This proves the first result; the second follows from normalizing the two vectors.
 \end{proof}
 
-We would now like to examine the relationships between altitudes and centroids in the simplex and its inverse. We will demonstrate that centroids of opposing faces are antiparallel, and that the centroid of the face $U$ is parallel to the altitude of originating from the face generated by $U$ in its inverse. First however, we require the following technical result. 
+We would now like to examine the relationships between altitudes and centroids in the simplex and its inverse. We will demonstrate that centroids of opposing faces are antiparallel, and that the centroid of the face $U$ is parallel to the altitude originating from the face generated by $U$ in the dual simplex. First however, we require the following technical result. 
 
 \begin{lemma}
 	\label{lem:S_U_ortho_complement}
 	Any vector perpendicular to $\splx_U$ can be written as $\Sv^+(\f_{U^c}+\alpha \bchi_U)$ for some $\alpha\in\R$ and vector $\f_{U^c}$ such that $\f_{U^c}(U)=\zero$. 
 \end{lemma}
 \begin{proof}
-	Let $\y\in\R^{n-1}$ be orthogonal to $\splx_U$. Since $\rank(\Sv^+)=n-1$, we can find some $\z$ such that $\y=\Sv^+\z=\sum_{i\in U^c}\sv_i^+z(i) + \sum_{j\in U}\sv_j^+z(j)$. Define $\f$ by $\f(U^c)=\z(U^c)$ and $\f(U)=\zero$ and $\z_{U^c}$.  We can then write $\y$ as $\Sv^+\f+\sum_{j\in U}\sv_j^+z(j)$, so we must show that $\z(U)$ is a constant vector. The orthogonality of $\y$ to $\splx_U$ implies that for every two barycentric coordinates $\x_U$ and $\y_U$ with $\x(U^c)=\y(U^c)=\zero$, 
+	Let $\y\in\R^{n-1}$ be orthogonal to $\splx_U$. Since $\rank(\Sv^+)=n-1$, we can find some $\z$ such that $\y=\Sv^+\z=\sum_{i\in U^c}\sv_i^+z(i) + \sum_{j\in U}\sv_j^+z(j)$. Define $\f$ by $\f(U^c)=\z(U^c)$ and $\f(U)=\zero$. We can then write $\y$ as $\Sv^+\f+\sum_{j\in U}\sv_j^+z(j)$, so we must show that $\z(U)$ is a constant vector. The orthogonality of $\y$ to $\splx_U$ implies that for every two barycentric coordinates $\x_U$ and $\y_U$ with $\x(U^c)=\y(U^c)=\zero$, 
 	\begin{align}
 	0 &= \la \y,\Sv\x_U-\Sv\y_u\ra \notag \\
 	&= \sum_{i\in U^c}z(i) \la \sv_i^+,\Sv(\x_U-\y_U)\ra + \sum_{j\in U}z(j)\la \sv_j^+,\Sv(\x_U-\y_U)\ra  \notag \\
@@ -579,8 +572,8 @@ for some $\alpha,\beta\in\R$, and vectors $\f,\g$ with $\f(U)=\zero$ and $\g(U^c
 \end{equation}
 By Lemma \ref{lem:complimentary_centroids}, taking $\f=\pm\bchi_{U^c}/|U^c|$, $\g=\mp\bchi_U/|U|$, and $\alpha=\beta=0$ yield solutions to the above equation. We have thus obtained Equation \eqref{eq:alt_and_centroid} up to its sign; 
 it remains to determine whether $\alt(\splx_U)$ is parallel to antiparallel to $\cent(\splx_U)$. Since it is one of the two, we have 
-\[\frac{\la \alt_U,\cent^+_U\ra}{\norm{\alt_U}_2\norm{\cent^+U}_2}\in\{1,-1\},\]
-hence to see that they are antiparallel it suffices to show that $\la \alt_U,\cent^+U\ra<0$. Let $\alt_U= \Sv\y_{U^c}-\Sv\z_U$ for barycentric coordinates $\y_{U^c}$ and $\z_U$ representing the faces $\splx_{U^c}$ and $\splx_U$. Then, 
+\[\frac{\la \alt_U,\cent^+_U\ra}{\norm{\alt_U}_2\norm{\cent^+_U}_2}\in\{1,-1\},\]
+hence to see that they are antiparallel it suffices to show that $\la \alt_U,\cent^+_U\ra<0$. Let $\alt_U= \Sv\y_{U^c}-\Sv\z_U$ for barycentric coordinates $\y_{U^c}$ and $\z_U$ representing the faces $\splx_{U^c}$ and $\splx_U$. Then, 
 \begin{align*}
 \la \alt_U,\cent^+_U\ra &= \frac{1}{n}\la \Sv(\y_{U^c}-\z_U),\Sv\bchi^+_U\ra \\
 &= \frac{1}{n}(\y_{U^c}^\tp-\z_U^\tp)\bigg(\I-\frac{\J}{n}\bigg)\bchi_U\\ &=-\frac{1}{n}\z_U^\tp\bchi_U  - \frac{1}{n^2}(\y_{U^c}^\tp-\z_U^\tp)\one\one^\tp\bchi_U\\
@@ -604,7 +597,7 @@ Whereas the previous few lemmas explored relationships among $\splx_G$ and $\spl
 \[\partial U \equiv (U\times U^c)\cap E(G)= \{(i,j)\in E(G): i\in U, j\in U^c\}.\]
 Noting that $|\bchi_U(i)-\bchi_U(j)|=\chi_{(i,j)\in \partial U}$, we see that
 \begin{align*}
-w(\partial U) = \sum_{i,j\in E} w(i,j)|\bchi_U(i)-\bchi_U(j)| = \sum_{i,j\in E} w(i,j)(\bchi_U(i)-\bchi_U(j))^2 = \Lf(\bchi_U). 
+w(\partial U) = \sum_{i\sim j} w(i,j)|\bchi_U(i)-\bchi_U(j)| = \sum_{i\sim j } w(i,j)(\bchi_U(i)-\bchi_U(j))^2 = \Lf(\bchi_U). 
 \end{align*}
 Moreover, $\norm{\cent(\splx_U)}^2_2 = \la |U|^{-1} \Sv\bchi_U,|U|^{-1} \Sv\bchi_U\ra = |U|^{-2} \Lf(\bchi_U)$ and so 
 \begin{equation}
@@ -629,11 +622,11 @@ For any non-empty $U\subset V$, $\norm{\alt^+_U}_2^2=1/w(\partial U)$ and $\norm
 \begin{proof}
 By definition of the altitude there exists barycentric coordinates $\x_U$ and $\x_{U^c}$ such that $\alt^+_U = \Sv^+(\x_U-\x_{U^c})$. Combining this representation of $\alt^+_U$ with that given by Lemma \ref{lem:alt_and_centroid}, write 
 \begin{align*}
-    \norm{a^+_U}_2 = \frac{\la a^+_U,a^+_U\ra }{\norm{a^+_U}_2} = \frac{\la \Sv^+(\x_{U^c}-\x_{U}), c_{U^c}\ra }{\norm{c_{U^c}}_2} = \frac{\la \Sv^+(\x_{U^c}-\x_{U}), \Sv\bchi_{U^c}\ra }{\sqrt{w(\partial U^c)}},
+    \norm{\alt^+_U}_2 = \frac{\la \alt^+_U,\alt^+_U\ra }{\norm{\alt^+_U}_2} = \frac{\la \Sv^+(\x_{U^c}-\x_{U}), \cent_{U^c}\ra }{\norm{\cent_{U^c}}_2} = \frac{\la \Sv^+(\x_{U^c}-\x_{U}), \Sv\bchi_{U^c}\ra }{\sqrt{w(\partial U^c)}},
 \end{align*}
 where the final equality comes from using the definition of the centroid in the numerator, and Equation~\eqref{eq:c(S_U)} in the denominator. Recalling the relation between $\Sv$ and $\Sv^+$ given by Equation~\eqref{eq:sv+sv} and that $\x_U$ and $\x_{U^c}$ are barycentric coordinates, we can rewrite the above as 
 \[\frac{(\x_{U^c}-\x_{U})^\tp(\I-\one\one^\tp/n)\bchi_{U^c}}{\sqrt{w(\partial U^c)}}=\frac{1}{\sqrt{w(\partial U^c)}}. \]
-Squaring both sides while noting that $\partial U = \partial U^c$ completes the proof of the first equality. For the second, we proceed in precisely the same manner to obtain $\norm{a_U}_2^2 = 1/w(\partial^+ U^c)$. However, it's not immediately obvious that $w(\partial^+U^c)=w(\partial^+U)$. To see this, first recall that $\Sv^+\one = \Eval^{-1/2}\Eig^\tp\one = \zero$, and so 
+Squaring both sides while noting that $\partial U = \partial U^c$ completes the proof of the first equality. For the second, we proceed in precisely the same manner to obtain $\norm{\alt_U}_2^2 = 1/w(\partial^+ U^c)$. However, it's not immediately obvious that $w(\partial^+U^c)=w(\partial^+U)$. To see this, first recall that $\Sv^+\one = \Eval^{-1/2}\Eig^\tp\one = \zero$, and so 
 \begin{align*}
 w(\partial^+ U^c) &= \la \Sv^+\bchi_{U^c},\Sv^+\bchi_{U^c}\ra  \\
 &= \la \Sv^+(\one - \bchi_{U}),\Sv^+(\one - \bchi_{U})\ra  \\
@@ -695,14 +688,14 @@ Given the number of---often related and interacting---results in this section, i
 \section{Properties of \texorpdfstring{$\splxn_G$}{the normalized Simplex} and \texorpdfstring{$\splxn_G^+$}{and its inverse}}
 \label{sec:Sn_G}
 
-Here we study the normalized simplex $\splxn_G$ of the connected graph $G=(V,E,w)$---which we again fix throughout this section---a somewhat less accessible object than its unnormalized counterpart.  The normalized simplex is, roughly speaking, distorted by the weights of the vertices. Consequently, many of the relationships between $\splx_G$ and $\splx_G^+$ are lost between $\splxn_G$ and $\splxn_G^+$. The first issue is that, in general, $\splxn_G$ and its inverse are not centred at the origin. Indeed, recall that the zero eigenvector $\vpn_n$ of $\Ln_G$ sits in the space $\spn(\W^{1/2}_G\one)$, which is distinct from $\spn(\one)$ unless $\W^{1/2}_G=d\I$ for some $d$, in which case $G$ is regular.
+Here we study the normalized simplex $\splxn_G$ of the connected graph $G=(V,E,w)$---which we again fix throughout this section---a somewhat less accessible object than its unnormalized counterpart.  The normalized simplex is, roughly speaking, distorted by the weights of the vertices. Consequently, many of the relationships between $\splx_G$ and $\splx_G^+$ are lost between $\splxn_G$ and $\splxn_G^+$. The first issue is that, in general, $\splxn_G$ and its inverse are not centred at the origin. Indeed, recall that the zero eigenvector $\vpn_n$ of $\Ln_G$ sits in the space $\spn(\W^{1/2}_G\one)$, which is distinct from $\spn(\one)$ unless $\W^{1/2}_G=d\I$ for some $d$, in which case $G$ is regular (recall  that here, regular refers  to \emph{weight-regular}: each vertex has  the same weight, not only the same degree).
 If $G$ is not regular, we thus have that $\vp_i \in \spn(\W^{1/2}_G\one)\subset \spn(\one)^\perp$ for all $i<n$ implying that $\la \vp_i,\one\ra \neq 0$. In this case then,  
  \[\cent(\splxn_G) = \frac{1}{n} \Evaln^{1/2}\Eign^\tp \one = \frac{1}{n} \begin{pmatrix}
  \sqrt{\lambda_1}\la \vp_1,\one\ra \\
  \vdots \\
 \sqrt{ \lambda_{n-1}}\la \vp_{n-1},\one \ra
  \end{pmatrix}\neq \zero.\]
-The above argument proves the following.
+Since $\ker(\Ln_G^+)=\ker(\Ln_G)$, the same reasoning applies to $\splxn_G^+$. This argument proves the following.
 
 \begin{lemma}
 	\label{lem:centroid_normalized}
@@ -711,26 +704,44 @@ The above argument proves the following.
 
 Given this, one might wonder whether the origin is even a point in the simplex $\splxn$. It is easily seen that it is, however. Consider the barycentric coordinate $\u = \sqrt{\w}/\norm{\sqrt{\w}}_1$, where $\sqrt{\w}=(w(1)^{1/2}, \dots, w(n)^{1/2})$. Since all eigenvectors $\vpn_i$, $i<n$ are orthogonal to $\vp_n \in\spn(\w^{1/2})$ it follows that $\zero = \Svn\u\in\splxn$. 
 
-The next set of properties which don't hold between $\splxn$ and $\splxn^+$ are the orthogonality relationships present between a simplex and its dual. That is, in general $\splxn^+_G$ is the not the dual of $\splxn_G$. 
+The next set of properties which don't hold between $\splxn$ and $\splxn^+$ are the orthogonality relationships present between a simplex and its dual. Since dual simplices are centred by definition, Lemma~\ref{lem:centroid_normalized} demonstrates that $\splxn_G^+$ cannot be the dual  of $\splxn_G$ unless $G$ is regular. However, we might suspect that the centred simplex corresponding to $\splxn^+_G$ is dual to $\splxn_G$. The following lemma dashes these hopes.  
 
 \begin{lemma}
 	\label{lem:inverse_not_dual}
-	The inverse simplex $\splxn_G^+$ is the dual of $\splxn_G$ iff $G$ is regular. 
+	The centred simplex $(\splxn_G^+)_0$ is the dual of $\splxn_G$ iff $G$ is regular. 
 \end{lemma}
 \begin{proof}
-	For any $i,j,k\in\N$ write 
-	\begin{equation}
+	First note that for  any $i,j$,  
+	\begin{equation*}
+	\la \svn_i^+,\svn_j\ra = \bchi_i^\tp(\Svn^+)^\tp\Svn\bchi_j = \bchi_i^\tp\bigg(\I-\frac{\sqrt{\w}\sqrt{\w}}{\vol(G)}\bigg)\bchi_j = \delta_{ij} - \frac{\sqrt{w(i)w(j)}}{\vol(G)}.
+	\end{equation*}
+	Now if $G$ is regular then $\splxn^+_0=\splxn^+$ by Lemma~\ref{lem:centroid_normalized}. In  this case, for all $i,j\neq k$, 
+	\begin{equation*}
+	\la \svn_i^+,\svn_j-\svn_k\ra = \delta_{ij} - \delta_{ij} + \frac{\sqrt{w(i)w(k)}}{\vol(G)} - \frac{\sqrt{w(i)w(j)}}{\vol(G)} = \delta_{ij},
+	\end{equation*}
+	since $w(i)=w(j)=w(k)$. This proves duality. Now suppose that $G$ is not  regular.
+	For  any $j,k$ note  that,
+	\begin{align*}
+	\frac{1}{n}\sum_{\ell\in[n]}\la \svn_\ell^+,\svn_j-\svn_k\ra &= \frac{1}{n}\sum_{\ell\in[n]} \bigg(\delta_{\ell j}-\delta_{\ell k} + \frac{\sqrt{w(\ell)}}{\vol(G)}(\sqrt{w(k)}-\sqrt{w(j)})\bigg) \\ 
+	&= \frac{\sqrt{w(k)}-\sqrt{w(j)}}{n\vol(G)}\sum_{\ell\in[n]}\sqrt{w(\ell)} = \frac{\sqrt{w(k)}-\sqrt{w(j)}}{n\vol(G)}\norm{\sqrt{\w}}_1.
+	\end{align*}
+	Recall that the simplex $\splxn^+_0$ has vertices $\{\svn_i^+-\cent\}$ where $\cent=\cent(\splxn_G^+)$. 
+	For any $i,j\neq  k\in\N$ compute
+	\begin{align*}
+	\la \svn_i^+-\cent,\svn_j-\svn_k\ra &= \la \svn_i^+,\svn_j-\svn_k\ra - \frac{1}{n}\sum_{\ell\in[n]}\la \svn_\ell^+,\svn_j-\svn_k\ra \\
+	&= \delta_{ij} + \bigg(\frac{\sqrt{w(i)}}{\vol(G)}-\frac{\norm{\sqrt{\w}}_1}{n\vol(G)}\bigg)\bigg(\sqrt{w(k)} - \sqrt{w(j)}\bigg)
+	\end{align*}
+	Choose $j,k$ such that $w(j)\neq w(k)$ (this is  possible if $G$  is  not  regular). Then the above is equal to  $\delta_{ij}$ (which  is necessary if $\splxn^+_0$ is dual to $\splxn$) iff 
+	\begin{equation*}
 	\label{eq:lem_inverse_not_dual}
-	\la \svn_i^+,\svn_j-\svn_k\ra = \delta_{ij} - \delta_{ik} + \frac{\sqrt{w(i)w(k)}}{n} - \frac{\sqrt{w(i)w(j)}}{n}.
-	\end{equation}
-	First suppose that $G$ is regular; so  $w(r)=w(s)$ for all $r,s$. Then for $i\neq k$, Equation \eqref{eq:lem_inverse_not_dual} becomes $\la \svn_i^+,\svn_j-\svn_k\ra = \delta_{ij}$. Since $k$ was arbitrary, we see that $\{\svn_i^+\}$ is the sister pair of $\{\svn_j-\svn_k\}$. Conversely, suppose $G$ is not regular and let $i,k$ obey $0\neq w(i)\neq w(k)$. Taking $i=j\neq k$ in \eqref{eq:lem_inverse_not_dual} we see 
-	\[\la \svn_i^+,\svn_i-\svn_k\ra = 1 - \frac{\sqrt{w(i)}}{n}(\sqrt{w(k)}-\sqrt{w(i)})\neq 1,\]
-	so $\{\svn_i^+\}$ is not the sister set of $\{\svn_j-\svn_k\}$, completing the argument. 
+	\sqrt{w(i)} = \frac{1}{n}\norm{\sqrt{\w}}_1.
+	\end{equation*}
+	Thus, we see  that $\{\svn_i^+\cent\}$ is not the sister set of $\{\svn_j-\svn_k\}$, completing the argument. 
 \end{proof}
 
 A consequence of the previous Lemma is that we can no longer apply Lemma \ref{lem:dual_faces_orthogonal} (regarding the orthogonality of $\ssplx_U$ and $\ssplx_{U^c}^\du$) to obtain information concerning $\splxn_U$ and $\splxn_{U^c}^+$. The following two lemmas and corresponding corollary address the link between these faces, and---rather unfortunately---demonstrate that indeed, they are not orthogonal in general. 
 The first gives sufficient conditions under which the faces are orthogonal, the second provides necessary conditions. 
-Before we state the lemmas, recall from Section \ref{sec:background_spectral} that a subset of vertices is weight  (or degree) homogenous if each vertex in the set has the same weight. 
+Before we state the lemmas, recall from Section \ref{sec:background_spectral} that a subset of vertices is weight  homogenous if each vertex in the set has the same weight. 
 
 \begin{lemma}
 	\label{lem:Sn_perp_homogenous}
@@ -748,7 +759,7 @@ Before we state the lemmas, recall from Section \ref{sec:background_spectral} th
 
 \begin{lemma}
 	\label{lem:Sn_not_homogeneous}
-	Suppose  $U_1\subset V(G)$ is not degree homogeneous. Then for all $U_2\subset V(G)$ then faces $\splxn[U_1]$ (resp., $\splxn^+[U_1]$) and $\splxn^+[U_2]$ (resp., $\splxn[U_2]$) are not orthogonal. 
+	Suppose  $U_1\subset V(G)$ is not degree homogeneous. Then for all $U_2\subset V(G)$ the faces $\splxn[U_1]$ (resp., $\splxn^+[U_1]$) and $\splxn^+[U_2]$ (resp., $\splxn[U_2]$) are not orthogonal. 
 \end{lemma}
 \begin{proof}
 	We show that $\splxn[U_1]$ and $\splxn^+[U_2]$ are not orthogonal; the other case is nearly identical. Let $i,j\in U_1$ be such that $w(i)\neq w(j)$ and consider the points $\p=\Svn\bchi_i,\q=\Svn\bchi_j\in\splxn[U_1]$. For any $\Svn^+\x\in\splxn^+[U_2]$, performing the usual arithmetic yields
@@ -768,28 +779,15 @@ We state a consequence of Lemmas \ref{lem:Sn_perp_homogenous} and \ref{lem:Sn_no
 \end{proof}
 
 \paragraph{Centroids and altitudes.}
-Let us attempt to parallel the arguments given in Section~\ref{sec:S_G}  concerning the centroids and altitudes of $\splx_G$ and $\splx_G^+$. For the normalized Laplacian we have
+Let us attempt to parallel the arguments given in Section~\ref{sec:S_G}  concerning the centroids and altitudes of $\splx_G$ and $\splx_G^+$. Let  $U\subset  V$. For the normalized Laplacian we have
 \begin{align}
 \Lnf(\bchi_U)&=\sum_{i\sim j}w(i,j) \bigg(\frac{\bchi_U(i)}{\sqrt{w(i)}}-\frac{\bchi_U(j)}{\sqrt{w(j)}}\bigg)^2 \notag \\
-&= \sum_{i\in U,j\in U^c}w(i,j)\bigg(\frac{\bchi_U(i)}{\sqrt{w(i)}}-\frac{\bchi_U(j)}{\sqrt{w(j)}}\bigg)^2 \notag \\
-&= \sum_{i\in U,j\in U^c}w(i,j)\frac{\bchi_U(i)}{w(i)} \notag \\
-&= \sum_{i\in U}\frac{1}{w(i)} \sum_{j\in \partial(i)\cap U^c}w(i,j) \notag \\
-&= \sum_{i\in U}\frac{w_{G[i+U^c]}(i)}{w(i)}, \label{eq:Lnf(chiU)}
+&= \sum_{i,j\in U}w(i,j)\bigg(\frac{1}{\sqrt{w(i)}}-\frac{1}{\sqrt{w(j)}}\bigg)^2 + \sum_{i\in U,j\in U^c}w(i,j)\bigg(\frac{\bchi_U(i)}{\sqrt{w(i)}}\bigg)^2 \notag \\
+&= \sum_{i,j\in  U}\frac{w(i,j)}{w(i)w(j)}(\sqrt{w(i)}-\sqrt{w(j)})^2+ \sum_{i\in U,j\in U^c}\frac{w(i,j)}{w(i)} \notag \\
+&= \sum_{i\in U}\frac{1}{w(i)} \bigg\{\sum_{j\in U}\frac{w(i,j)}{w(j)}(\sqrt{w(i)}-\sqrt{w(j)})^2 + \sum_{j\in  U^c}w(i,j)\bigg\}. \label{eq:Lnf(chiU)}
 \end{align}
-where we've used the shorthand $i+U^c = \{i\}\cup U^c$ and we recall that $G[I]$ is the graph restricted to the vertices in $I$. 
-To interpret the above quantity, we might define  
-\[\gamma(i,B)\equiv \frac{w_{G[i+B^c]}(i)}{w(i)},\]
-as the \emph{fractional weight of $i$ in $B$}. 
-Further defining $\gamma(A,B)$ as the \emph{total fractional weight from $A$ to $B$}:
-\[\gamma(A,B) \equiv \sum_{i\in A}\gamma(i,B), \]
-we have 
-$\Lnf(\bchi_U) = \gamma(U,U^c)$, 
-and so the length of the centroid $c(\splxn_U)$ captures the total fraction of weight between $U$ and $U^c$:
-\begin{equation}
-\label{eq:c(SnU)}
-\norm{c(\splxn_U)}_2^2 = \frac{1}{|U|^2}\la \Svn\chi_U,\Svn\chi_U\ra = \frac{1}{|U|^2}\Lnf(\chi_U) = \frac{1}{|U|^2} \gamma(U,U^c),
-\end{equation}
-which is the equivalent to Equation \ref{eq:c(S_U)} for the normalized simplex. Performing a similar computation for $\cent(\splxn^+_U)$ doesn't seem to yield anything overly insightful. 
+Admittedly,  this lends itself much less easily  to interpretation than  in the  case of the  combinatorial simplex. However,  we  will see in Chapter~\ref{chap:algorithmics} that when  $U$ is an independent set this formula has  a more elegant form.  
+
 
 
 \paragraph{Alternate descriptions and duals.} As we did for the combinatorial simplices, we now try to formulate a hyperplane representation of the normalized simplices. As the reader will see, however, this is difficult due to the influence of the graph weights on their geometry. We begin with a lemma which is roughly the equivalent of Lemma \ref{lem:SUsubset} for the normalized simplex. 
@@ -861,7 +859,7 @@ We can obtain an implicit representation for the dual vertices $\{\svnd_i\}$ by 
 \sum_{\ell=1}^n \svnd_i(\ell)(\vpn_k(j)-\vpn_k(n))\lambdan_k^{1/2}=\delta_{ij},
 \end{equation*}
 but extracting values of $\svnd_i$ which meet this condition is not trivial. 
-We might, however, try a different tactic. Note that in the case of the combinatorial simplices, the dual vertices are encoded in their hyperplane representation by Equation \eqref{eq:S_alt_desc}: $\splx_G = \bigcap_i\{\x:\la \x,\sv_i^+\ra \geq -1/n\}$. It is thus  natural to wonder whether this relationship holds for every simplex, that is,  if given a simplex described as the intersection of haldspaces, say $\ssplx=\bigcap_i \{\x:\la \z_i,\x\ra \geq b_i\}$ are the vectors $\z_i$ are parallel to the dual vertices of $\ssplx$.  The following lemma gives gives sufficient conditions as to when this is the case. 
+We might, however, try a different tactic. Note that in the case of the combinatorial simplices, the dual vertices are encoded in their hyperplane representation by Equation \eqref{eq:S_alt_desc}: $\splx_G = \bigcap_i\{\x:\la \x,\sv_i^+\ra \geq -1/n\}$. It is thus  natural to wonder whether this relationship holds for every simplex, that is,  if given a simplex described as the intersection of halfspaces, say $\ssplx=\bigcap_i \{\x:\la \z_i,\x\ra \geq b_i\}$ are the vectors $\z_i$ are parallel to the dual vertices of $\ssplx$.  The following lemma gives  sufficient conditions as to when this is the case. 
 
  
 \begin{lemma}

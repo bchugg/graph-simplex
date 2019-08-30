@@ -1,5 +1,5 @@
-\documentclass[11pt, oneside]{book}
-\usepackage[margin=1in]{geometry}
+\documentclass[11pt,twside]{book}
+\usepackage[margin=1.2in]{geometry}
 \usepackage{amsmath,amsthm,amssymb}
 \usepackage{setspace}
 \usepackage{hyperref}
@@ -7,8 +7,10 @@
 \usepackage{color}
 \usepackage{xspace}
 \usepackage{mathtools}
-%\usepackage{tgpagella}
+%\usepackage{tgschola}
+\usepackage{tgtermes}
 %\usepackage{titlesec}
+%\usepackage{mathptmx}
 \usepackage[calcwidth]{titlesec}
 \usepackage{fancyhdr}
 \usepackage{etoolbox}
@@ -23,16 +25,16 @@
 
 
 
+
 % Macros and formatting
 \input{macros}
-\input{formatting}
+\input{formatting.tex}
 
 
 \begin{document}
 	
-
-
 % Front matter
+\frontmatter
 \frontmatterstyling
 \include{frontmatter/titlepage}
 \include{frontmatter/abstract}
@@ -42,6 +44,7 @@
 \pagestyle{plain}
 \renewcommand{\baselinestretch}{0.75}\normalsize
 \tableofcontents
+\addcontentsline{toc}{section}{Table of Contents}
 \renewcommand{\baselinestretch}{1.0}\normalsize
 \cleardoublepage
 \phantomsection
@@ -51,6 +54,7 @@
 
 
 % Mid matter
+\mainmatter
 \midmatterstyling
 \include{introduction}
 \include{background}

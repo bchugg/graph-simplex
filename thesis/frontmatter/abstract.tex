@@ -3,18 +3,20 @@
 
 
 
-We present and study the graph-simplex correspondence---a tool providing a series of relationships between connected, weighted graphs on $n$ vertices and simplices in $n-1$-dimensional Euclidean space. The core of the correspondence is a  bijection between graphs and hyperacute simplices, first uncovered by Miroslav Fiedler  in the 1990s. 
+We present and study the graph-simplex correspondence---a tool providing a series of relationships between each weighted, undirected graph  $G$ on $n$ vertices and simplices in $(n-1)$-dimensional Euclidean space. The core of the correspondence is a  bijection between graphs and hyperacute simplices, first uncovered by Miroslav Fiedler. We consolidate Fiedler's  work on  the subject and then  proceed to expand on it  in several  ways. 
 
+The first relates purely to  the mathematical  properties  of the  correspondence. Among  other things, we extend the correspondence to the normalized Laplacian matrix $\Ln_G$ (whereas previously only the combinatorial  Laplacian,  $\L_G$, had been investigated), develop new equations and  inequalities relating the aspects  of the simplex to those of the graph, and give an isometry between a graph's ``inverse combinatorial  simplex''  and an $n$-dimensional polytope arising from the Laplacian's pseudoinverse. 
+Here, the goal is to convince  the reader that the graph-simplex  correspondence can provide  new insights into the  structure of  both graphs and simplices and is consequently  worthy of being  included in their mathematical  toolbox.  
 
+Secondly, we examine the algorithmic underpinnings of the correspondence. We explore the complexity of transitioning between various objects---for instance, computing the simplex given the graph or vice versa. After giving lower bounds on such problems, we turn to approximating various aspects of the correspondence. In particular, we focus on low dimensional representations of  the simplices and provide theoretical justifications for recent empirical  work on Laplacian eigenmaps. 
 
-We begin by consolidating and elucidating Fiedler's  work on  the subject and then proceed to expand on it  in several  ways. The first relates purely to  the mathematical  properties  of the  correspondence. Among  other things, we extend the correspondence to the normalized Laplacian matrix (whereas previously only the combinatorial  Laplacian has been investigated), develop new equations and  inequalities relating the aspects  of the simplex to those of the graph, and give an isometry between a graph's ``inverse combinatorial  simplex''  and an $n$-dimensional polytope arising from the Laplacian's pseudoinverse. 
-Here, the goal is to convince  the reader that the graph-simplex  correspondence can provide  new insights into the  structure of  both graphs and simplices and consequently is worthy of being  included in their mathematical  toolbox.  Secondly, we examine the algorithmic underpinnings of the correspondence. We explore how quickly various aspects of  the correspondence can be  computed---computing the simplex of a graph or the graph of a simplex, for example. After giving lower bounds on such questions, we turn to approximating various aspects of the correspondence. In particular, we focus on low dimensional representations of  the simplices and provide theoretical justifications for recent empirical  work on Laplacian eigenmaps. 
+Of possible independent interest, we provide a formula for  the non-zero eigenvalues of $\Ln_G$  in terms of the total weight of spanning trees in $G$, relate the volume of an arbitrary simplex to the eigenvalues of the Gram matrix of its dual simplex (an object we introduce), and give an equation for the adjugate of $\Ln_G$ in terms of the weights of the vertices in  $G$.  
+ 
 
-The ubiquity of graphs in practical applications and, more recently popularized, geometric  perspectives on data sets makes a connection  between graphs and high-dimensional  geometry an  exciting avenue for research. 
-We hope to demonstrate that the  graph-simplex correspondence can provides meaningful insights at the intersection of  these  areas.  
+%The ubiquity of graphs in practical applications and, more recently popularized, geometric  perspectives on data sets makes a connection  between graphs and high-dimensional  geometry an  exciting avenue for research. We hope to demonstrate that the  graph-simplex correspondence can provide meaningful insights at the intersection of  these  areas.  
 
 \vspace{1cm}
-\noindent \textbf{Keywords:}  Graph theory,  simplex geometry, laplacian matrix, effective resistance,  convex  polyhedra. 
+\noindent \textbf{Keywords:}  Graph theory,  simplex geometry, Laplacian matrix, effective resistance,  convex  polyhedra. 
 
 
 

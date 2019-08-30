@@ -76,6 +76,9 @@ citecolor=darkblue
 \newcommand{\frontmatterstyling}{
 \chapstylenoline
 \pagenumbering{roman}
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0pt}
+\cfoot{\thepage}
 }
 
 % Mid matter styling -- Chapter and Section
@@ -85,10 +88,13 @@ citecolor=darkblue
 \renewcommand{\sectionmark}[1]{ \markright{{\em ##1}}{} }%
 \lhead{\leftmark}%
 \rhead{\rightmark}%
+\renewcommand{\headrulewidth}{0.5pt}
 }
 
 \newcommand{\midmatterstyling}{%
 \onehalfspacing
+%\newgeometry{twoside,margin=1.2in}
+%\doublespacing
 \headingstyle
 \pagenumbering{arabic}
 \let\secsymbol\S
@@ -98,7 +104,7 @@ citecolor=darkblue
 }
 
 \newcommand{\chapterquote}[2]{
-\begin{adjustwidth}{8em}{2em}
+\begin{adjustwidth}{12em}{2em}
 \begin{flushright}
 \textit{#1} \\
 \vspace{0.1cm}

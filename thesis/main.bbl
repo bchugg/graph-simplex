@@ -1,6 +1,11 @@
 \newcommand{\etalchar}[1]{$^{#1}$}
 \begin{thebibliography}{WMRB15}
 
+\bibitem[AALG17]{alev2017graph}
+Vedat~Levi Alev, Nima Anari, Lap~Chi Lau, and Shayan~Oveis Gharan.
+\newblock Graph clustering using effective resistance.
+\newblock {\em arXiv preprint arXiv:1711.06530}, 2017.
+
 \bibitem[ARV09]{arora2009expander}
 Sanjeev Arora, Satish Rao, and Umesh Vazirani.
 \newblock Expander flows, geometric embeddings and graph partitioning.
@@ -62,6 +67,12 @@ Robert Burton and Robin Pemantle.
 \newblock Local characteristics, entropy and limit theorems for spanning trees
   and domino tilings via transfer-impedances.
 \newblock {\em The Annals of Probability}, pages 1329--1371, 1993.
+
+\bibitem[Bro06]{brooks2006coefficients}
+Bernard~P Brooks.
+\newblock The coefficients of the characteristic polynomial in terms of the
+  eigenvalues and the elements of an n$\times$ n matrix.
+\newblock {\em Applied mathematics letters}, 19(6):511--515, 2006.
 
 \bibitem[Cay41]{cayley1841theorem}
 Arthur Cayley.
@@ -155,11 +166,57 @@ William~S Evans, Giuseppe Liotta, and Fabrizio Montecchiani.
   l-shapes.
 \newblock {\em Theoretical Computer Science}, 645:100--111, 2016.
 
+\bibitem[Fie54]{fiedler1954geometry}
+M~Fiedler.
+\newblock Geometry of the simplex in en, part i.
+\newblock {\em Casopis Pest. Mat}, 79:297--320, 1954.
+
+\bibitem[Fie55]{fiedler1955geometry}
+M~Fiedler.
+\newblock Geometry of the simplex in {$E_n$}, part iii.
+\newblock {\em Casopis Pest. Mat}, 80:462--476, 1955.
+
+\bibitem[Fie56]{fiedler1956geometry}
+M~Fiedler.
+\newblock Geometry of the simplex in en, part iii.
+\newblock {\em Casopis Pest. Mat}, 81:182--223, 1956.
+
+\bibitem[Fie73]{fiedler1973algebraic}
+Miroslav Fiedler.
+\newblock Algebraic connectivity of graphs.
+\newblock {\em Czechoslovak mathematical journal}, 23(2):298--305, 1973.
+
+\bibitem[Fie75]{fiedler1975property}
+Miroslav Fiedler.
+\newblock A property of eigenvectors of nonnegative symmetric matrices and its
+  application to graph theory.
+\newblock {\em Czechoslovak Mathematical Journal}, 25(4):619--633, 1975.
+
+\bibitem[Fie76]{fiedler1976aggregation}
+M~Fiedler.
+\newblock Aggregation in graphs.
+\newblock {\em Coll. Math. Soc. J. Bolyai}, 18:315--330, 1976.
+
+\bibitem[Fie89]{fiedler1989laplacian}
+Miroslav Fiedler.
+\newblock Laplacian of graphs and algebraic connectivity.
+\newblock {\em Banach Center Publications}, 25(1):57--70, 1989.
+
 \bibitem[Fie93]{fiedler1993geometric}
 Miroslav Fiedler.
 \newblock A geometric approach to the laplacian matrix of a graph.
 \newblock In {\em Combinatorial and Graph-Theoretical Problems in Linear
   Algebra}, pages 73--98. Springer, 1993.
+
+\bibitem[Fie95]{fiedler1995moore}
+Miroslav Fiedler.
+\newblock Moore-penrose involutions in the classes of laplacians and simplices.
+\newblock {\em Linear and Multilinear Algebra}, 39(1-2):171--178, 1995.
+
+\bibitem[Fie98]{fiedler1998some}
+Miroslav Fiedler.
+\newblock Some characterizations of symmetric inverse m-matrices.
+\newblock {\em Linear algebra and its applications}, 275:179--187, 1998.
 
 \bibitem[Fie05]{fiedler2005geometry}
 Miroslav Fiedler.
@@ -191,6 +248,11 @@ Sharan Ghayan.
 Branko Gr{\"u}nbaum, Victor Klee, Micha~A Perles, and Geoffrey~Colin Shephard.
 \newblock Convex polytopes.
 \newblock 1967.
+
+\bibitem[GR13]{godsil2013algebraic}
+Chris Godsil and Gordon~F Royle.
+\newblock {\em Algebraic graph theory}, volume 207.
+\newblock Springer Science \& Business Media, 2013.
 
 \bibitem[GT01]{gross2001topological}
 Jonathan~L Gross and Thomas~W Tucker.
@@ -395,6 +457,11 @@ Leo Torres, Kevin~S Chan, and Tina Eliassi-Rad.
 Prasad Tetali.
 \newblock Random walks and the effective resistance of networks.
 \newblock {\em Journal of Theoretical Probability}, 4(1):101--109, 1991.
+
+\bibitem[Vav95]{vavvrin1995miroslav}
+Zden{\vaccent{e}}k Vav{\vaccent{r}}{\'\i}n.
+\newblock Miroslav fiedler and vlastimil pt{\'a}k: life and work.
+\newblock {\em Linear algebra and its applications}, 223:3--29, 1995.
 
 \bibitem[VM13]{van2013double}
 P~Van~Mieghem.

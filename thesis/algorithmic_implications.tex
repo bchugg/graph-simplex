@@ -3,9 +3,11 @@
 
 \chapterquote{I'm smart enough to know that I'm dumb. }{Richard Feynman}
 
-This final technical chapter will discuss some of the algorithmic foundations and consequences of the graph-simplex correspondence. Vis-\`{a}-vis foundations, we will chiefly be concerned with transitioning between a graph and its various simplices. We will explore lower bounds for how quickly this can be done if we wish to obtain the precise result\footnote{Ignoring issues of floating point number accuracy}, and whether we can ``approximate'' any of the constructions (e.g., given the graph $G$ can we quickly obtain a simplex which serves as an approximation\footnote{The notion of approximating a simplex is rather ambiguous and will be expounded upon at a later time.} to $\splx_G$.) With respect to algorithmic consequences on the other hand, we will attempt to leverage knowledge we have in the hitherto relatively unrelated areas of computational graph theory and high-dimensional computational geometry to draw new conclusions about the complexity of several problems in these areas. For instance, if a  graph theoretic problem has an analogue in the simplex, any fact regarding the problems difficulty---whether it's NP-complete, say---translates to an immediate result about its geometric counterpart. In particular, since the simplex of a graph can be generate in polynomial time given the graph (due to the fact that an eigendecomposition can be computed in polynomial time) and vice versa, problems which are solvable in polynomial in either the simplex or graph domain  translate to polynomial (yet perhaps not optimal!) problems in the other domain and likewise, problems which are \NP-hard in one domain have analogues which are \NP-hard in the other. 
+\chapterquote{Beware of bugs in the above code; I have only\\ proved it correct, not tried it.}{Donald  Knuth}
 
-For the benefit of the (undoubtedly confused) reader unfamiliar with computational complexity and reductions, we begin the chapter with a short section containing this background material. We will also discuss computational representations of a simplex therein. 
+This final technical chapter will discuss some of the algorithmic foundations and consequences of the graph-simplex correspondence. Vis-\`{a}-vis foundations, we will chiefly be concerned with transitioning between a graph and its various simplices. We will explore lower bounds for how quickly this can be done if we wish to obtain the precise result\footnote{Ignoring issues of floating point number accuracy}, and whether we can ``approximate'' any of the constructions (e.g., given the graph $G$ can we quickly obtain a simplex which serves as an approximation\footnote{The notion of approximating a simplex is rather ambiguous and will be expounded upon at a later time.} to $\splx_G$.) With respect to algorithmic consequences on the other hand, we will attempt to leverage knowledge we have in the hitherto relatively unrelated areas of computational graph theory and high-dimensional computational geometry to draw new conclusions about the complexity of several problems in these areas. For instance, if a  graph theoretic problem has an analogue in the simplex, any fact regarding the problem's difficulty---whether it's NP-complete, say---translates to an immediate result about its geometric counterpart. In particular, since the simplex of a graph can be generated in polynomial time given the graph (due to the fact that an eigendecomposition can be computed in polynomial time) and vice versa, problems which are solvable in polynomial time in either the simplex or graph domain  translate to polynomially solvable (yet perhaps not optimal!) problems in the other domain and likewise, problems which are \NP-hard in one domain have analogues which are \NP-hard in the other. 
+
+For the benefit of the reader unfamiliar with computational complexity and reductions, we begin the chapter with a short section containing this background material. We will also discuss computational representations of a simplex therein. 
 
 \section{Preliminaries}
 \label{sec:algorithmics_prelims}
@@ -21,6 +23,8 @@ In order to discuss the algorithmics pertaining to simplices and convex polyhedr
 \end{itemize}
 
 It's not at all clear whether these descriptions are equivalent in the sense that one can easily generate one from the other. Indeed, the complexity of vertex enumeration (generating a \vdesc from an \hdesc) and facet enumeration (generating an \hdesc from a \vdesc) remains an open problem for general polytopes~\cite{kaibel2003some}, although there exist polynomial time algorithms when the polytopes are simplices (e.g., \cite{bremner1998primal}). We will return to this fact later on. 
+
+We end by remarking that when discussing general  polytopes, we continue  to work  in $\R^{n-1}$ as a vector space. Thus,  the vertices of the polytope are still vectors which begin at the origin. 
 
 \paragraph{Reductions.}
 Some background on computational models and reductions will also be useful. For more details see~\cite{kleinberg2006algorithm} or \cite{knuth2011art}. We will use the typical computational model for analyzing algorithms. Without diving too far into the minutiae, we assume that single arithmetic operations require $O(1)$-time, i.e., constant. We will analyze the runtime of an algorithm as a function of how many bits it takes to represent the input. A common tool for providing upper bounds on the runtime of an algorithm is to ``reduce'' it to a problem for which a bound is already known. Assume problem $P$ requires time $\Omega(f_P(n))$ to solve---meaning that \emph{any} algorithm requires time $\Omega(f_P(n))$---where $n$ represents the size of the input and $f_P(n)$  is some function of $n$, e.g., $f_P(n) =  n^2\log n$. Let $Q$ be a distinct problem and suppose that for every instance of $P$ we can transform the input of $P$ to a valid input for $Q$, and transform the output of $Q$ to a valid output of $P$, both in time $O(f_P(n))$.  We have then established that $f_Q(n) = \Omega(f_P(n))$, where $f_Q$ the runtime required to solve $Q$, since we can solve $P$ in time $f_Q(n) + O(f_P(n))$ by transforming any input to $P$ to the input of $Q$, solving $Q$, and transforming the output back. Such a technique will be used extensively throughout the next few sections. 
@@ -45,23 +49,26 @@ Finally,  the class \NP-complete is the intersection of the classes \NP and  \NP
 \section{Computational Complexity}
 \label{sec:algorithmics_complexity}
 
-In this section we investigate the relationships between problems in one domain---either the graph-theoretic or geometric domain---and their analogues in the other. The following result exemplifies the power of the graph-simplex correspondence in yielding results which seem otherwise to be difficult to obtain (certainly more difficult than the following proof, at any rate).  
-The following result was first stated by Devriendt and Van Mieghem~\cite{devriendt2018simplex}, although it was stated only for inverse simplices of graphs. We observe that it can be generalized as follows. 
+In this section we investigate the relationships between problems in one domain---either the graph-theoretic or geometric domain---and their analogues in the other. The following result exemplifies the power of the graph-simplex correspondence in yielding results which seem otherwise difficult to obtain (certainly more difficult than the following proof, at any rate).  
+It was first stated by Devriendt and Van Mieghem~\cite{devriendt2018simplex} for inverse combinatorial  simplices, and can be slightly generalized as follows.  
 
 \begin{lemma}
 	\label{lem:altitude_hard}
-	Computing the altitude of minimum length in a hyperacute polytope is \NP-hard. Consequently, computing the minimum length altitude in general polyhedra is \NP-hard. 
+	Computing the altitude of minimum length in any simplex is \NP-hard. 
 \end{lemma}
 \begin{proof}
-	The relationship $\norm{\alt(\splx^+_U)}_2^2 = w(\partial U)^{-1}$ (Lemma \ref{lem:alt}) for the inverse simplex of a graph $G$ demonstrates that the problem of computing a minimum length altitude in any hyperacute simplex is \NP-hard, because computing the  maximum weight cut in any weighted graph is \NP-hard~\cite{karp1972reducibility}.  Since the class of convex polytopes contains the class of hyperacute simplices, the result follows. 
+	The relationship $\norm{\alt(\splx^+_U)}_2^2 = w(\partial U)^{-1}$ (Lemma \ref{lem:alt}) for the inverse simplex of a graph $G$ demonstrates that the problem of computing a minimum length altitude in any hyperacute simplex is \NP-hard, because computing the  maximum weight cut in any weighted graph is \NP-hard~\cite{karp1972reducibility}.  Since the  class  of all hyperacute simplices is contained in the class of all simplices, the result follows.  
 \end{proof}
 
 \begin{remark} In  the above statement and its proof, the description of the polytope and simplex was not specified. This is due to the fact that---as discussed above---for simplices there is a polynomial time algorithm to translate betweent the various descriptions. With regard to \NP-completeness therefore, the description makes no difference. Consequently, we will continue to ignore this distinction for the remainder of this section. 
 \end{remark}
 
+
 \begin{remark}
-	As exemplified by the statement of Lemma \ref{lem:altitude_hard} the fact that a problem is \NP-hard for hyperacute simplices immediately implies that it is so for general polyhedra (since simplices are a subclass of polyhedra). We will still, however, often state a result in terms of general polyhedra because it seems most likely to be useful in this form. 
+Altitudes do  not have  an analogue in general polyhedra. However, for  those problems which do have analogues, 
+if they are \NP-hard for hyperacute simplices then are so for general polyhedra (since simplices are a subclass of polyhedra). Henceforth, we might use this observation  without justification. 
 \end{remark}
+
 
 The remainder of this section is dedicated to obtaining more results of this type. 
 
@@ -148,12 +155,14 @@ We can play a similar game by using the relationships furnished by the normalize
 	is \NP-hard. In particular, it is hard for those polytopes and simplices with all vertices on the unit sphere. 
 \end{lemma}
 \begin{proof}
-	The proof is similar to the previous lemma. For $\P$ the normalized simplex of a graph $G$, the condition $\la \sv_i,\sv_j\ra=0$ once again implies that $I$ must be an independent set. Notice that for such an $I$, if $i\in I$ then $\partial(i) \cap I^c = \partial(i)$ (none of $i$'s neighbours are in $I$). Therefore, Equation \eqref{eq:Lnf(chiU)} yields 
+	The proof is similar to the previous lemma. For $\P$ the normalized simplex of a graph $G$, the condition $\la \sv_i,\sv_j\ra=0$ once again implies that $I$ must be an independent set. Notice that for such an $I$, if $i\in I$ then $\partial(i) \cap I^c = \partial(i)$ (none of $i$'s neighbours are in $I$). Moreover, for $i,j\in I$, $w(i,j)=0$.  Therefore, Equation \eqref{eq:Lnf(chiU)} yields 
 	\begin{align*}
 	\Lnf(\bchi_I)=\sum_{i\in I}\frac{1}{w(i)}\sum_{j\in I^c\cap \partial(i)} w(i,j) = \sum_{i\in I}\frac{w(i)}{w(i)} = |I|.
 	\end{align*}
-	Equation \eqref{eq:c(SnU)} then implies that 
-	\[\norm{c(\P_I)}_2^2=\frac{1}{|I|^2}\Lnf_G(\bchi_I)=\frac{1}{|I|},\]
+	The  length  of the centroid  $\P_I$  is  then 
+	\begin{align*}
+	\norm{c(\P_I)}_2^2=\frac{1}{|I|^2}\bchi_I^\tp\Svn^\tp\Svn\bchi_I= \frac{1}{|I|^2}\Lnf_G(\bchi_I) =\frac{1}{|I|},
+	\end{align*} 
 	so the optimization problem can be formulated as 
 	\[\max_{I\subset V(G)} |I|,\quad  \text{s.t.} \quad I \text{ is an independent set},\]
 	which is the \iset problem. 
@@ -229,7 +238,7 @@ We begin by investigating the relationship between $\splx$ and $\splxn$, when ei
 \hline 
 	\end{tabular}
 	\renewcommand{\arraystretch}{1}
-\caption{Summary of results for precise mappings. A slash refers to a difference in runtimes when the graph is available versus when it isn't. The quantity before the slash indicates the runtime \emph{without} the graph, after the slash the runtime \emph{with} the graph. A question mark indicates that the runtime isn't known.}
+\caption{Summary of results for precise mappings. A slash refers to a difference in runtimes when the graph is available versus when it isn't. The quantity before the slash indicates the runtime \emph{without} the graph, after the slash the runtime \emph{with} the graph. A question mark or empty square indicates that no bounds are yet known. }
 \label{fig:mapping_results}
 \end{figure}
 
@@ -291,7 +300,7 @@ An alternate way of seeing that constructing the inverse simplex from its dual i
 
 We also note that a consequence of the relationship between the vertices of $\splx$ and the \hdesc of $\splx^+$ that given \vdesc of $\splx$ or $\splx^+$, we have immediate access to the \hdesc of its inverse. 
 
-A similar result for going from between the \hdesc of the combinatorial simplices. The argument runs as usual: Given an \hdesc of $\splx$, suppose we can generate an \hdesc of $\splx^+$ in time $t(n)$. We can obtain the vertices $\{\sv_i^+\}$ from the \hdesc of $\splx$, and the vertices $\{\sv_i\}$ from the \hdesc of $\splx^+$. Using these, we can then obtain the eigendecomposition of $G$ in time $O(n^2)$. That is, we can solve \lapdecomp in time $t(n) + O(n^2)$ yielding that $t(n) = \Omega(n^\tau)$. 
+A similar result holds for transitioning between the \hdesc of the combinatorial simplices. The argument runs as usual: Given an \hdesc of $\splx$, suppose we can generate an \hdesc of $\splx^+$ in time $t(n)$. We can obtain the vertices $\{\sv_i^+\}$ from the \hdesc of $\splx$, and the vertices $\{\sv_i\}$ from the \hdesc of $\splx^+$. Using these, we can then obtain the eigendecomposition of $G$ in time $O(n^2)$. That is, we can solve \lapdecomp in time $t(n) + O(n^2)$ yielding that $t(n) = \Omega(n^\tau)$. 
 
 \begin{lemma}
 	\label{lem:hdesc_to_hdesc}
@@ -351,11 +360,11 @@ Finally, we note that in cubic time we can check whether all the angles $\theta_
 
 \section{Approximations} 
 \label{sec:algorithmics_approximations}
-Here we are concerned  with  approximations of various sorts. We begin  with an eye towards the problem of  dimensionality. Specifically, Theorem ~\ref{thm:graph-simplex} yields simplices of dimension $n-1$ for a graph on $n$ vertices. In  many application areas, graphs may have thousands  to  millions of vertices. Working in a Euclidean space  of  this  size can be unwieldy. Our first two  sections,  therefore, attempt dimensionality reduction. The first  considers the problem of reducing the dimensionality of the simplex itself. The second considers low rank approximations of  the Laplacian which are  shown to yield polytopes on  $n$ vertices. We see that, depending on the rank of the  approximation and the eigenvalues of the Laplacian, certain properties of this polytope approximate  those of the simplex. This provides some  theoretical justification for  the  recent work of Torres \etal~\cite{torres2019geometric}. 
+Here we are concerned  with  approximations of various sorts. We begin  with an eye towards the problem of  dimensionality. Specifically, Theorem ~\ref{thm:graph-simplex} yields simplices of dimension $n-1$ for a graph on $n$ vertices. In  many application areas, graphs may have thousands  to  millions of vertices. Working in a Euclidean space  of  this  size can be unwieldy. Our first two  sections,  therefore, attempt dimensionality reduction. The first  considers the problem of reducing the dimensionality of the simplex itself. The second considers low rank approximations of  the Laplacian which are  shown to yield polytopes on  $n$ vertices. We see that, depending on the rank of the  approximation and the eigenvalues of the Laplacian, certain properties of this polytope approximate  those of the simplex. As we will see, this provides some  theoretical justification for  the  recent work of Torres \etal~\cite{torres2019geometric}. 
 
 \subsection{Dimensionality  Reduction: \texorpdfstring{$\splx^+$}{the inverse simplex}}
 \label{sec:algorithmics_JL}
-The idea is to  map each vertex to a  point in $\R^d$, for $d\ll n$, while maintaining the general form of the simplex. By this we mean that we'd like the distance between the new  points  to remain approximately  as they  were. If possible, we'd also  like to new, lower  dimensional  object (note that it won't  be  a simplex because there will  be  $n$ points in $ R^d$) to retain some of the properties which  relate it  to the underlying graph. In  particular, we'd like the gram matrix  of the new  points to  approximate the gram  matrix of the original  set  of points. As it turns out,  a  mapping meeting both  of these criteria exists and is computable  in polynomial time. It will   rely on the Johnson-Lindenstrauss  (JL) Lemma~\cite{johnson1984extensions,dasgupta2003elementary}. 
+The idea is to  map each vertex to a  point in $\R^d$, for $d\ll n$, while maintaining the general form of the simplex. By this we mean that we'd like the distance between the new  points  to remain approximately  as they  were. If possible, we'd also  like the new, lower  dimensional  object (note that it won't  be  a simplex because there will  be  $n$ points in $ \R^d$) to retain some of the properties which  relate it  to the underlying graph. In  particular, we'd like the gram matrix  of the new  points to  approximate the gram  matrix of the original  set  of points. As it turns out,  a  mapping meeting both  of these criteria exists and is computable  in polynomial time. It will   rely on the Johnson-Lindenstrauss  (JL) Lemma~\cite{johnson1984extensions,dasgupta2003elementary}. 
 
 \begin{theorem}[Johnson-Lindenstrauss]
 	Let $\X\subset \R^k$ be a set of $n$ points, for some $k\in\N$. For any $\eps>0$ and $d\geq 8\log(n)\eps^{-2}$ there exists a map $g_\eps:\R^k\to\R^d$ such that 
@@ -406,13 +415,13 @@ since $|\eps_{i,j}|, |\eps_{i,\o}|,|\eps_{j,\o}|\leq |\eps|$. Setting $f(\Sv^+) 
 \end{equation*}
 In other words, we can approximately recover the Gram matrix $\L_G^+=\Sv^+\Sv^+$ using the lower dimensional matrix $f(\Sv^+)$. 
 
-The JL mapping maintains other approximate information of the graph.  For  example,  it is well-known that the effective resistance between two vertices is related to the probability that this edge  is in a random  spanning  tree as 
+The JL mapping also maintains other approximate information of the graph.  For  example,  it is well-known that the effective resistance between two vertices is related to the probability that this edge  is in a random  spanning  tree as 
 \begin{equation*}
 	\effr(i,j) = \frac{1}{w(i,j)} \Pr_{T\sim \mu}[(i,j)\in T],
 \end{equation*}
 where $\mu$ is the uniform distribution over all spanning trees~\cite{burton1993local}. Hence, 
 \begin{equation*}
-\norm{f(\sv_i^+)-f(\sv_j^+)}_2^2 \in \frac{1}{w(i,j)}[(1-\eps),(1+\eps)]\Pr_{T\sim \mu}[(i,j)\in T].
+\norm{f(\sv_i^+)-f(\sv_j^+)}_2^2 \in \frac{1}{w(i,j)}\bigg[(1-\eps),(1+\eps)\bigg]\Pr_{T\sim \mu}[(i,j)\in T].
 \end{equation*}
 	
 
@@ -429,7 +438,7 @@ Let us suppose the we have obtained a low rank---$k$, say---approximation of $\L
 
 Of course, we have chosen to work with $\L_G$ and $\splx_G$ for convenience; we could have asked the same questions of $\Ln_G$ and $\splxn_G$. 
 
-We begin by considering the natural rank-$k$ approximation to $\L_G$: 
+Let us  consider the natural rank-$k$ approximation to $\L_G$: 
 \begin{equation*}
 \L_k\equiv \sum_{i=1}^k \lambda_k\vp_k\vp_k^\tp,
 \end{equation*}
@@ -490,7 +499,7 @@ Now,  recall that due to double orthogonality of the eigenvector matrix we  have
 	If $\lambda_{k+1}=o(1)$ then $\bigg| \norm{\sv_i-\sv_j}_2^2 - \norm{\sv_i^\k-\sv_j^\k}_2^2= o(1)$. 
 \end{lemma}
 
-Summarizing, we see  that under assumptions on the sizes of the eigenvalues (which relates  directly to  how good of an approximation $\L_k$ is to $\L_G$), the features of the  polytope $\P_k$  will  approximate  those of $\splx_G$. As we stated previously, this could help explain in part the success of the experiments run by Torres \etal~\cite{torres2019geometric}.  In their work, they assume they are given  $\P_k$ and  attempt to reconstruct certain  graph  features,  most notably its connectivity.  Since  the connectivity of  a  graph  is related to  the centroids of $\splx_G$ (Section~\ref{sec:S_G}), if $k$ is sufficiently small then  the centroids $\P_k$ will recover this connectivity.  
+Summarizing, we see  that under assumptions on the sizes of the eigenvalues (which relates  directly to  how good of an approximation $\L_k$ is to $\L_G$), the features of the  polytope $\P_k$  will  approximate  those of $\splx_G$. As we stated previously, this could help explain in part the success of the experiments run by Torres \etal~\cite{torres2019geometric}.  In their work, they assume they are given  $\P_k$ and  attempt to reconstruct certain  graph  features,  most notably its connectivity.  Since  the connectivity of  a  graph  is related to  the centroids of $\splx_G$ (Section~\ref{sec:S_G}), if $k$ is sufficiently small then  the centroids $\P_k$ will approximately  recover the edge relations. 
 
 
 
@@ -498,7 +507,7 @@ Summarizing, we see  that under assumptions on the sizes of the eigenvalues (whi
 \subsection{Distance Matrix of \texorpdfstring{$\splx_G^+$}{the inverse combinatorial simplex}}
 \label{sec:algorithmics_distance_matrix}
 We end with  a brief section which demonstrates that we can leverage several results from the literature on Laplacian optimization to approximate the  distance matrix  of $\splx_G^+$. 
-An elegant result of Spielman and Srivastava~\cite{spielman2011graph} allows to  build a matrix which approximately  represents the effective resistances.  
+An elegant result of Spielman and Srivastava~\cite{spielman2011graph} allows us to  build a matrix which approximately  represents the effective resistances.  
 
 
 \begin{theorem}[\cite{spielman2011graph}]
@@ -514,6 +523,15 @@ An elegant result of Spielman and Srivastava~\cite{spielman2011graph} allows to 
 
 Therefore, given a graph $G=(V,E,w)$, we use the algorithm of Theorem \ref{thm:er_approximation} to compute all the approximate distances $\norm{\sv_i^+-\sv_j^+}_2^2=\effr(i,j)$ in time \[\widetilde{O}(|E|\log (r)/\eps^2)+O(|E| \log(n)/\eps^2)=\widetilde{O}(|E|/\eps^2),\]
 assuming $r=O(1)$. Note that we can compute a single effective resistance in time $O(\log n/\eps^2)$, since it involves simply computing the $\ell_2$ norm the vector $\widetilde{\Reff}(\bchi_i-\bchi_j)$ which is simply the difference of two columns of $\widetilde{\Reff}$. 
+
+Ideally, after computing  $\widetilde{\Reff}$, we'd like to compute vertices which (approximately) obey the  distances represented by $\widetilde{\Reff}$ (note  that $\widetilde{\Reff}$ may not be a valid distance matrix since it  is only an approximation). The usual approach to generating points from a (true) distance matrix $\D$ is \emph{Multidimensional Scaling (MDS)}~\cite{kruskal1978multidimensional}. Typically, practitioners are interested  in  generating points which approximately  obey the pairwise distance in  $\D$, but  lie in a lower dimensional space. 
+While  this sounds promising, MDS relies on the the eigendecomposition of the distance matrix which requires cubic time. Of  course, this is too slow for our  purposes:  If we allow cubic time, then we can simply perform an  eigendecomposition of $\L_G$ and recover the vertices of $\splx_G^+$ exactly. Moreover, it's unclear whether MDS works when  the given distances are  only approximate. 
+
+
+We therefore  leave the reader with  the  following open problem:  
+
+\textbf{Problem:} Given an approximate Euclidean distance matrix $\tD$ and a parameter  $\eps>0$, can a set of vertices be computed which  obey  the distances given by $\tD$ within an additive factor of $\eps$  in sub-cubic time? 
+
 
 
 

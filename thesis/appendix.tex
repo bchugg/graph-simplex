@@ -171,31 +171,29 @@
 	since $i\neq k$. For $i=n$ meanwhile, 
 	\begin{align*}
 	\la \bgamma_n,\sv_j-\sv_k\ra &= -\sum_{\ell=1}^{n-1}\la \bgamma_\ell,\sv_j-\sv_n+\sv_n-\sv_k\ra \\
-	&= \sum_{\ell=1}^{n-1}\la \bgamma_\ell,\sv_j-\sv_n\ra - \sum_{\ell=1}^{n-1}\la  \bgamma_\ell,\sv_k-\sv_n\ra =\sum_{\ell}\delta_{j\ell}-\delta_{k\ell}=0. \qedhere
+	&= \sum_{\ell=1}^{n-1}\la \bgamma_\ell,\sv_j-\sv_n\ra - \sum_{\ell=1}^{n-1}\la  \bgamma_\ell,\sv_k-\sv_n\ra =\sum_{\ell}(\delta_{j\ell}-\delta_{k\ell})=0. \qedhere
 	\end{align*}
 \end{proof}
 
 
-\begin{proof}[Proof of Lemma~\ref{lem:dual_of_dual}]
-	We are given that $\la \bgamma_i^\du,\bgamma_j-\bgamma_n\ra=\delta_{ij}$ and $\la \sv_i,\bgamma_j^\du-\bgamma_n^\du\ra=\delta_{ij}$. Since dual bases are unique, it suffices to show that $\bgamma_i-\bgamma_n$ satisfies the relationships of $\sv_i$, and indeed $\la \bgamma_i-\bgamma_n,\bgamma_j^\du-\bgamma_n^\du\ra = \la \bgamma_i,\bgamma_j^\du-\bgamma_n^\du\ra - \la \bgamma_n,\bgamma_j^\du-\bgamma_n^\du\ra = \delta_{ij} - \delta_{in} = \delta_{ij}$. 
-\end{proof} 
-
 \begin{proof}[Proof of Lemma~\ref{lem:dual_faces_orthogonal}]
-	Let $\Sv(\splx)=(\sv_1,\dots,\sv_n)$ and $\Sv(\splx^\du)=(\svd_1,\dots,\svd_n)$.  Let $\Sv\x\in \splx_U$ and $\Sv^\du\y_1,\Sv^\du\y_2\in \splx^\du_{U^c}$, where $\y_1$ and $\y_2$ are barycentric coordinates. Fix $k\in U^c$. We need to show that $\la \Sv\x,\Sv^\du\y_1-\Sv^\du\y_2\ra =0$. First, using $\norm{\y_i}=1$, $i=1,2$, write
+	Let $\Sv=\Sv(\splx)=(\bgam_1,\dots,\bgam_n)$ and $\Sv^\du=\Sv(\splx^\du)=(\bgam^\du_1,\dots,\bgam^\du_n)$.  Let $\Sv\x\in \splx_U$ and $\Sv^\du\y_1,\Sv^\du\y_2\in \splx^\du_{U^c}$, where $\y_1$ and $\y_2$ are barycentric coordinates. Fix $k\in U^c$. We need to show that $\la \Sv\x,\Sv^\du\y_1-\Sv^\du\y_2\ra =0$. First, using $\norm{\y_i}=1$, $i=1,2$, write
 	\begin{align*}
-	\Sv^\du\y_1 - \Sv^\du\y_2 &= \sum_{j\in U^c} \svd_j(y_1(j)-y_2(j)) \\
-	&=\sum_{j\in U^c\setminus \{k\}} \svd_j(y_1(j)-y_2(j)) + \svd_k(y_1(k)-y_2(k)) \\
-	&= \sum_{j\in U^c\setminus\{k\}}\svd_j(y_1(j)-y_2(j))  -\svd_k\bigg(\sum_{j\in U^c\setminus \{k\}} y_1(j)-y_2(j)\bigg) \\
-	&= \sum_{j\in U^c\setminus\{k\}} (\svd_j-\svd_k)(y_1(j)-y_2(j)). 
+	\Sv^\du\y_1 - \Sv^\du\y_2 &= \sum_{j\in U^c} \bgam^\du_j(y_1(j)-y_2(j)) \\
+	&=\sum_{j\in U^c\setminus \{k\}} \bgam^\du_j(y_1(j)-y_2(j)) + \bgam^\du_k(y_1(k)-y_2(k)) \\
+	&= \sum_{j\in U^c\setminus\{k\}}\bgam^\du_j(y_1(j)-y_2(j))  -\bgam^\du_k\bigg(\sum_{j\in U^c\setminus \{k\}} y_1(j)-y_2(j)\bigg) \\
+	&= \sum_{j\in U^c\setminus\{k\}} (\bgam^\du_j-\bgam^\du_k)(y_1(j)-y_2(j)). 
 	\end{align*}
-	Now, by definition, $\la \sv^i,\svd_j-\svd_k\ra = \delta_{i,j}$ for $i,j\neq k$ so it follows that 
+	Now, by definition, $\la \bgam_i,\bgam^\du_j-\bgam^\du_k\ra = \delta_{i,j}$ for $i,j\neq k$ so it follows that 
 	\begin{align*}
-	\la \Sv\x,\Sv^\du(\y_1-\y_2)\ra &= \sum_{i\in U} x(i)\la \sv_i,\Sv^\du(\y_1-\y_2)\ra \\
-	&= \sum_{i\in U}x(i)\sum_{j\in U^c\setminus \{k\}} \la \sv_i,\svd_j-\svd_k\ra (y_1(j)-y_2(j)) \\
+	\la \Sv\x,\Sv^\du(\y_1-\y_2)\ra &= \sum_{i\in U} x(i)\la \bgam_i,\Sv^\du(\y_1-\y_2)\ra \\
+	&= \sum_{i\in U}x(i)\sum_{j\in U^c\setminus \{k\}} \la \bgam_i,\bgam^\du_j-\bgam^\du_k\ra (y_1(j)-y_2(j)) \\
 	&=\sum_{i\in U} x(i) \sum_{j\in U^c\setminus\{k\}} \delta_{ij}(y_1(j)-y_2(j)) = 0, 
 	\end{align*}
 	since $U^c\setminus\{k\}\cap\{i\}=\emptyset$. 
 \end{proof}
+
+
 
 \section{Chapter~\ref{chap:correspondence}}
 \label{sec:app_proofs_correspondence}
@@ -246,7 +244,7 @@
 	\end{equation*}
 	
 	We may now proceed  with the argument. 
-	Let $\D$ be the distance matrix of $\ssplx$, and recall that $\D=\Reff$ where $\Reff$ is the effective resistance matrix of the graph $G$. 
+	Let $\D$ be the distance matrix of $\ssplx$, and recall that $\D=\Reff$ where $\Reff$ is the effective resistance matrix of the graph $G$ (since $\ssplx$ is hyperacute by assumption). 
 	Set \[\r=-\bigg(\L_G\bD + \frac{2}{n}\one\bigg), \quad \alpha = \bD^\tp \L_G\bD + 4\Rtot_G/n^2.\] 
 	Combining Lemma \ref{lem:menger_volume} and Equation~\eqref{eq:block_inverse_er}, write 
 	\begin{align*}
@@ -327,7 +325,7 @@
 \begin{proof}[Proof of Lemma~\ref{lem:El(S)}]
 	We prove Equation  \eqref{eq:steinerE} only; Equation \eqref{eq:steinerE_inverse} follows similarly. 
 	Set $\M=\Sv^+(\Sv^+)^\tp$ and $E=\{\x:\x^\tp \M\x=(n-1)/n\}$. The claim is that $\El(\splx)=E$.  
-	First we demonstrate that the vertices of $\splx$ are contained in $E$. Noticing that $\J^2=n\J$, we compute 
+	First we demonstrate that the vertices of $\splx$ are contained in $E$. Noticing that $\J^2=n\J$, compute 
 	\begin{align*}
 	\sv_i^\tp \M \sv_i &= \bchi_i^\tp \Sv^\tp \Sv^+(\Sv^+)^\tp \Sv \bchi_i = \bchi_i^\tp \left(\I-\frac{1}{n}\J\right)^2 \bchi_i = \bchi_i^\tp \left(\I-\frac{1}{n}\J\right) \bchi_i = 1 - \frac{1}{n}, 
 	\end{align*}
@@ -335,20 +333,20 @@
 	\[\H\equiv \bigg\{\x:\x^\tp \M \sv_i = -\frac{1}{n}\bigg\}.\]
 	We claim that $\H$ is the plane containing the points $\{\sv_j\}_{j\neq i}$. Indeed, consider $\sv_j$ for some fixed $j\neq i$. Then, as above 
 	\[\sv_j^\tp \M\sv_i = \bchi_j^\tp \left(\I-\frac{1}{n}\J\right) \bchi_i = -\frac{1}{n}. \]
-	It remains to show that $\H$ is parallel to the tangent plane of $E$ at the point $\sv_i$. But this tangent plane is defined by the equation~\cite{fiedler2005geometry} \note{Should figure out how this is actually done}
+	It remains to show that $\H$ is parallel to the tangent plane of $E$ at the point $\sv_i$. But this tangent plane is defined by the equation~\cite{fiedler2005geometry} 
 	\[\x^\tp \M\sv_i =\frac{n-1}{n},\]
 	which is clearly parallel to $\H$. This completes the proof.
 \end{proof}
 
 \begin{proof}[Proof of Lemma~\ref{lem:circ_sphere}]
-	Set $\bzeta = \frac{1}{2}(\L_G\bxi + \one/n)$ and $r = \bxi^\tp \L_G\bxi+4R_G/n^2$. 
+	Set $\bzeta = \frac{1}{2}(\L_G\bD+ \one/n)$ and $r = \bD^\tp \L_G\bD 4\Rtot_G/n^2$. 
 	Let us expand $\x$ in barycentric coordinates in accordance with Lemma \ref{lem:barycentric_coeffs}.  Put $\x=\sum_i \alpha_i\sv_i$ where $\sum_i\alpha_i=\sum_i\beta_i=1$. Let $\balpha=(\alpha_1,\dots,\alpha_n)$. 
 	The claim is that the circumscribed sphere of $\splx^+$ is given by the equation 
 	\begin{equation}
 	\label{eq:lem_circ_sphere2}
 	\norm{\x - \Sv\bzeta}_2^2 = \frac{1}{4}r,
 	\end{equation}
-	and that this equation is equivalent to $\balpha^\tp \D\balpha=0$. Note first that due to Equation \ref{eq:block_inverse_er}, $\la \one, -2\bzeta\ra = \la \one, -\L_G\bxi - \frac{2}{n}\one\ra = -2$, so $\bzeta=(\zeta_1,\dots,\zeta_{n-1})$ obeys $\sum_i \zeta_i=1$.  The left hand side of \eqref{eq:lem_circ_sphere2} then becomes 
+	and that this equation is equivalent to $\balpha^\tp \D\balpha=0$. Note first that due to Equation \ref{eq:block_inverse_er}, $\la \one, -2\bzeta\ra = \la \one, -\L_G\bD - \frac{2}{n}\one\ra = -2$, so $\bzeta=(\zeta_1,\dots,\zeta_{n-1})$ obeys $\sum_i \zeta_i=1$.  The left hand side of \eqref{eq:lem_circ_sphere2} then becomes 
 	\begin{align*}
 	\la \x-\Sv\bzeta,\x-\Sv\bzeta\ra &= \sum_{i,j\in[n]} (\alpha_i-\zeta_i)(\alpha_j-\zeta_j) \la \sv_i,\sv_j\ra \\
 	&= \sum_{i,j\in[n]} (\alpha_i-\zeta_i)(\alpha_j-\zeta_j) \la \sv_i-\sv_n,\sv_j-\sv_n\ra,
@@ -365,7 +363,7 @@
 	&\qquad - \sum_{i,j} (\alpha_i-\zeta_i)(\alpha_j-\zeta_j)\norm{\sv_i-\sv_j}_2^2 \bigg)\notag \\
 	&= -\frac{1}{2}\sum_{i,j} (\alpha_i-\zeta_i)(\alpha_j-\zeta_j)\norm{\sv_i-\sv_j}_2^2. \label{eq:lem_circ_sphere}
 	\end{align} 
-	Recalling the block matrix equation \eqref{eq:block_inverse_er} for hyperacute simplices, for all $i$ we have $\one (\bxi^\tp \L_G\bxi + 4R_G/n^2) - \D(\L_G\bxi + 2\one /n) = \zero$, i.e., $r\one -2\D =\zero$. Hence 
+	Recalling the block matrix equation \eqref{eq:block_inverse_er} for hyperacute simplices, for all $i$ we have $\one (\bD^\tp \L_G\bD + 4\Rtot_G/n^2) - \D(\L_G\bD + 2\one /n) = \zero$, i.e., $r\one -2\D =\zero$. Hence 
 	\[\la \D(i,\cdot),\bzeta\ra = \frac{r}{2}.\]
 	Using this, we rewrite the summation on the right hand side of \eqref{eq:lem_circ_sphere} as 
 	\begin{align*}

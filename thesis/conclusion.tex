@@ -1,20 +1,21 @@
 \chapter{Conclusion}
 \label{chap:conclusion}
 
-\chapterquote{One has to belong to the intelligentsia to believe things like that: no ordinary man could be such a fool.}{George Orwell, Notes on Nationalism}
-\chapterquote{One must imagine Sisyphus happy.}{Albert Camus, The Myth of Sisyphus.}
+%\chapterquote{One has to belong to the intelligentsia to believe things like that: no ordinary man could be such a fool.}{George Orwell, \emph{Notes on Nationalism}}
+\chapterquote{One must imagine Sisyphus happy.}{Albert Camus,  \emph{The  Myth of Sisyphus}}
 
 
-This dissertation has expounded  and  expanded upon the graph-simplex correspondence, which associates with each connected, weighted graph $G$ four simplices: $\splx_G$, $\splx_G^+$ (the combinatorial simplices), $\splxn_G$, and $\splxn_G^+$ (the normalized simplices).  
-Presenting and building on  the previous work of Fiedler~\cite{fiedler1993geometric,fiedler2011matrices} and Devriendt and Van Mieghem~\cite{devriendt2018simplex}, we have seen the synthesis of the geometry of these  simplices with properties of the graph. In particular, we have seen that 
+This dissertation has expounded  and  expanded upon the graph-simplex correspondence, a relationship which associates with each connected, weighted graph $G$ four simplices: $\splx_G$, $\splx_G^+$ (the combinatorial simplices), $\splxn_G$, and $\splxn_G^+$ (the normalized simplices).  
+Presenting and building on  the previous work of Fiedler~\cite{fiedler1993geometric,fiedler2011matrices} and Devriendt and Van Mieghem~\cite{devriendt2018simplex}, we have seen the synthesis of the geometry of these  simplices with properties of the graph. At a high  level: 
 \begin{enumerate}
-	\item The geometry of $\splx_G$ is closely related to  the connectivity of $G$, the geometry of  $\splx_G^+$ is related the effective resistance of $G$, while its volume is inversely proportional to the total weight of spanning trees  in $G$; 
-	%\item The dual simplex of $\splx_G$ is $\splx_G^+$, while the  dual of $\splxn_G$ is, in general, distinct from $\splxn_G^+$; 
-	\item Matrix equations can  be used to relate the graph to the  simplex,  thus yielding new insights into  both objects.  
+	\item The geometry of $\splx_G$ is closely related to  the connectivity of $G$, the geometry of  $\splx_G^+$ is related the effective resistance of $G$.  The squared volume of $\splx_G$ is  proportional to  the number (total weight) of  spanning  trees in $G$,  to which  the  squared volume  of $\splx_G^+$ is inversely proportional; 
+	\item The volume of the faces of $\splx_G^+$ are closely related to the entries  of the Laplacian matrix and consequently to the length of the vertices of $\splx_G$;
+	\item  The Steiner Ellipsoids of $\splx_G$  and $\splx_G^+$ are determined by the eigenvalues of $\L_G$. For any of a  graph's simplices, the ratio   of the volume  of its Steiner  Ellipsoid  to its  own volume is a constant. 
 \end{enumerate}
-We also explored the  algorithmic underpinnings  of  the correspondence, and established that 
+More broadly,  we  have seen the use of matrix equations in relating the graph and its simplices, thus yielding new insights into  both objects. In  particular,  the correspondence has provided the insight used  to  give a general  formula  for both the volume  of a simplex and the it's Steiner Ellipsoid in terms of its  dual. It is has also yielded  insight into the properties of the dual simplex  in  general. 
+We also explored the  algorithmic underpinnings  of  the correspondence and established that 
 \begin{enumerate}
-	\item[3.] transitioning between various objects in the correspondence (exactly) typically takes cubic time; 
+	\item[3.] transitioning between various objects in the correspondence (exactly) is lower bounded  by the complexity of computing an eigendecompositon; 
 	\item[4.] the correspondence can be used to help classify the computational complexity of geometric problems; and 
 	\item[5.] There exist low dimensional  approximations  to the simplices which approximately maintain their Gram matrix relations, and low rank  approximations to the Laplacian  which yield low dimensional polytopes which approximate the geometry  of $\splx_G$ and $\splx_G^+$. 
 \end{enumerate}
@@ -27,7 +28,11 @@ We believe there are several exciting  avenues for further  research.
 \begin{itemize}
 	\item In Section~\ref{sec:algorithmics_complexity} we gave several  examples of how various graph  theoretic problems translate to the simplex and vice  versa, and examined what implications this had for computational complexity. Due to time and space constraints we were unable to fully explore this area; and it seems likely that we have left many  results untapped.  For example, we mostly explored how specific \NP-complete graph problems translated to \NP-complete polyhedral problems. It could be fruitful to explore the converse. More importantly for possible applications, problems which are easy (meaning, solvable in polynomial time) in one domain may have analogues  in the other, which would result in new polynomial  time  algorithms. 
 	\item While  we gave implicit conditions on the  dual of $\splxn_G$ and $\splxn_G^+$, we were unable to give their explicit equations. It  would be desirable to discover what these are.   
-	\item In Section~\ref{sec:algorithmics_distance_matrix} it was noted that the distance matrix of $\splx_G^+$ can be approximated. It would  be interesting to explore whether  it's possible to  use this to generate an  approximate embedding of $\splx_G^+$. The connection between  $\splx_G^+$  and the resistive polytope  (Section~\ref{sec:resistive_polytope}) might be of use here. 
-	\item Section~\ref{sec:block_matrix} deals  mostly with block equations  concerning the normalized simplex $\splx_G$ and  Laplacian $\L_G$. It could be fruitful to explore whether similar  equations  hold for the other simplices. 
+	\item In Section~\ref{sec:algorithmics_distance_matrix} we presented the problem of approximately embedding an (approximate) distance matrix  in sub-cubic time. This question  seems like an interesting one in general, even without considering our specific motivation. Related to  this is the  connection  between  $\splx_G^+$  and the resistive polytope,  $\re_G$ given in Section~\ref{sec:resistive_polytope}.  Given that $\L_G^+$ is a more widely  studied object than $\splx_G^+$, it' possible that knowledge concerning  the  pseudoinverse can be leveraged  to uncover properties of or optimize over  $\re_G$,  which should  translate to similar results  for $\splx_G^+$. 	
+	\item One implication  of  the correspondence that  we did not explore  was  that of proving the existence of  certain features in simplices and graphs.  For example, Alev \etal recently demonstrated that any graph  can be partitioned into subgraphs such that  each subgraph has a low maximum effective resistance  and only a fraction of the total edges lie between the subgraphs~\cite{alev2017graph}. This demonstrates that the vertices of any hyperacute simplex can be partitioned into  sets  such that the maximum pairwise distance between the vertices in any set is ``small'' and many  vertices  in distinct sets are orthogonal, or approximately so. 
+	Obtaining more results  of  this type is compelling.  
+
+	\item In  a  similar vein, it would be interesting to explore under what conditions  such results generalize  to all simplices. Are there, for instance, necessary and sufficient conditions on when structural  properties of hyperacute simplices  generalize to  all simplices? If so, then when studying properties which  meet  such conditions it would be sufficient  to restrict attention to inverse simplices of  graphs. Studying the underlying graph  might then provide  novel insights. 
+
 \end{itemize}
 

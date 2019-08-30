@@ -430,3 +430,65 @@ the Gram Matrix of $\splxn_0$ is
 \note{What are the properties of this matrix? It has an eigenvector of $\one$ with eigenvalue 0, but it does not seem to be a Laplacian. }
 
 
+
+
+\section{volume}
+
+We now seek to develop the equivalent of Lemma~\ref{lem:volume} but for the normalized simplex. To do so, let us define 
+\begin{equation}
+\Gamman_G\equiv \Gamma_G\prod_j\frac{1}{w(j)},
+\end{equation} 
+which we  might  consider  as a  kind  of  normalized graph  metric. Notice  that for all $i,j\in[n]$, $\Gamman_G = (-1)^{i+j}\det(\Ln_{-i,-j})(w(i)w(j))^{-1/2}$ by Lemma~\ref{lem:adjLn_constant}.  
+
+
+The  following result relates the volume of $\splxn^\du$ to  this normalized metric. 
+The proof  is quite  similar  to that of Lemma~\ref{lem:volume}; it  differs only in the fact that we are dealing  with the normalized simplex. Since this does change some of the  arithmetic we opt to give the proof (especially since that of Lemma~\ref{lem:volume}  is in the appendix), but  we will not elaborate on the details. The reader is invited to see Appendix~\ref{sec:app_proofs_further} for a more robust treatment of the minutiae. 
+
+\begin{lemma}
+	\label{lem:vol(Sn*)}
+	The volume of the dual to the normalized  simplex of a graph $G$ is related to  $\Gamman_G$  as
+	\begin{equation*}
+	\vol(\splxn^\du) = \Gamman_G^{-1/2}\bigg(\frac{n}{(n-1)! \norm{\w^{1/2}}_2^2}\bigg).
+	\end{equation*}
+\end{lemma}
+\begin{proof}
+	Let $\Dn$ be the distance matrix of $\splxn^\du$ and put $\rn=-(\Ln_G\bxin + \frac{2}{n}\one)$ and $\alphan = \bxin^\tp \Ln_G\bxin + 4\bar{d}$, 
+	where $\bxin$ and $\bar{d}$ are the average squared distance vector and total average squared distance of $\splxn^*$ (Equations~\eqref{eq:avg_sqd_distance_i} and~\eqref{eq:avg_squared_distance}). 
+	(We use the ``hat'' notation on  $\bxin$ and $\Dn$ to emphasize that we are working  with the normalized simplex.) 
+	Combining Menger's volume  formula  (Equation~\eqref{eq:vol(convX)}) with Theorem~\ref{thm:block_general_simplex} gives 
+	\begin{equation*}
+	\vol^2(\splxn^\du) = \frac{(-1)^n}{(n-1)!^2 2^{n-1}} \det\begin{pmatrix}
+	0&\one^\tp\\\one & \Dn
+	\end{pmatrix} = \frac{-4}{(n-1)!^2 }\bigg\{\det \begin{pmatrix}
+	\alphan & \rn^\tp \\
+	\rn & \Ln_G
+	\end{pmatrix}\bigg\}^{-1}.
+	\end{equation*}
+	Let $\M$ be the matrix of which  we are taking the determinant. Applying first a cofactor expansion along  the first  row  followed by an expansion  along  the first column gives
+	\begin{align*}
+	\det(\M) &= \alphan \det(\Ln_G) + \sum_{j=2}^{n+1}(-1)^{1+j}\rn({j-1}) \det(\M_{-1,-j}) \\
+	&= \sum_{j=2}^{n+1}(-1)^{1+j}\rn({j-1}) \sum_{i=2}^{n+1}(-1)^{(i-1)+1}\rn({i-1})\det\M(\{1,i\}^c,\{1,j\}^c) \\
+	&= -\sum_{i=1}^n\sum_{j=1}^n  \rn(i)\rn(j)(-1)^{i+j}\det(\Ln_{-i,-j}) \\
+	&= -\Gamman_G \sum_{i,j\in[n]} \rn(i)\rn(j) (w(i)w(j))^{1/2} \\
+	&= - \Gamman_G \la \rn,\sqrt{\w}\ra.
+	\end{align*}
+	Recalling that $\ker\Ln = \spn(\sqrt{\w})$ yields $\la \rn,\sqrt{\w}\ra = \frac{2}{n} \sum_i w(i)^{1/2}=\frac{2}{n}\norm{\sqrt{\w}}_2^2$, so 
+	\begin{align*}
+	\vol^2(\splxn^\du) &= \frac{-4}{(n-1)!^2 \det(\M)}  = \frac{n^2}{\Gamman_G (n-1)!^2 \norm{\sqrt{\w}}_2^2}.
+	\end{align*}
+	Taking the square  root of both sides completes the argument. 
+\end{proof}
+
+We can now use  the relationship between $\Gamma_G$ and $\Gamman_G$ to relate the  volumes of the duals of $\splx_G$  and $\splxn_G$. 
+
+\begin{corollary}
+	The ratio between  between the volumes of $\splxn_G^\du$  and $\splx_G^+$ obeys 
+	\begin{equation*}
+	\frac{\vol(\splxn^\du)}{\vol(\splx^+)} = \frac{n\prod_jw(j)^{1/2}}{(n-1)!\norm{\sqrt{\w}}_2^2}.
+	\end{equation*}
+\end{corollary}
+\begin{proof}
+	Combine Lemma~\ref{lem:vol(Sn*)} with the definition of $\Gamma_G$ and use that $\vol(\splx_G^+)= ((n-1)!\Gamma_G^{1/2})^{-1}$. 
+\end{proof}
+
+
