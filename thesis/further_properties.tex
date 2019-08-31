@@ -5,9 +5,9 @@
 
 The previous chapter introduced the graph-simplex correspondence and devoted several sections to the basic properties of the simplices associated to a given graph. In this chapter we  continue the study of the correspondence and present several of its more significant (but perhaps more complicated) properties.  We begin,  however, by demonstrating that  some of the interplay between $\splx_G$ and $\splx_G^+$ generalizes to an arbitrary simplex and its dual. 
 
-\section{General Properties of Dual Simplex }
+\section{A General Property of the Dual Simplex }
 Given that $\splx_G^+$  is the dual of $\splx_G$, it is natural to wonder whether some aspects of  their relationship are common to that between any simplex and its dual.  
-Here we demonstrate that this is indeed the case; in particular, the Gram matrices of any (centred) simplex and its dual enjoy  the same pseudoinverse relationship. 
+Here we demonstrate that this is indeed the case; in particular, the Gram matrix of any (centred) simplex and its dual enjoy  the same pseudoinverse relationship. 
 As we explained in Section~\ref{sec:Sn_G}, this relationship  is crucial to many of the proofs pertaining to  the combinatorial  simplices.
 That  an equivalent property  holds for arbitrary simplices is therefore highly beneficial for their  study. 
 
@@ -55,7 +55,7 @@ We thus witness another benefit of the correspondence: By leveraging knowledge  
 \label{sec:block_matrix}
 In this section we are finally able  to satisfy those readers who have  wondered about the applicability of electrical  networks to the graph-simplex correspondence. Applying Lemma~\ref{lem:block_equation_graph}, we are able to  develop block matrix equations which relate the structure of $\splx_G$ and $\splx_G^+$. Then,  using the results of the previous section we generalize  these equations to arbitrary simplices.  
 
-Before we  begin, a brief remark on the relationship of the following results  and Fiedler's work. Fiedler's derivation of the graph-simplex correspondence relied on a matrix equation---an equation equivalent to~\eqref{eq:simplex_block_matrix}, in fact~\cite[Theorem 3.1]{fiedler1993geometric}. Conversely, we are obtaining such equations as a \emph{consequence} of the correspondence. It is our belief that different treatments of the material shed light on its different---and hopefully complementary---implications.  
+Before we  begin, a brief remark on the relationship of the following results  and Fiedler's work. Fiedler's derivation of the graph-simplex correspondence relied on a matrix equation---an equation equivalent to~\eqref{eq:simplex_block_matrix}, in fact~\cite[Theorem 3.1]{fiedler1993geometric}. Conversely, we are obtaining such equations as a \emph{consequence} of the correspondence. It is our hope that different treatments of the material shed light on its different---and hopefully complementary---implications.  
 
 Let a centred, hyperacute simplex $\ssplx$ be given, with $\Sv(\ssplx)=\{\bgamma_i\}$.  Let $\bar{d}$ be the average squared distance between all the vertices of $\ssplx$, that is
 \begin{equation}
@@ -68,7 +68,7 @@ Let $\xi(i)$ give the average squared distance of vertex $i$ from other vertices
 \xi(i) \equiv \frac{1}{n}\sum_{j} \norm{\bgamma_i-\bgamma_j}_2^2 - \bar{d},
 \end{equation}
 and put $\bxi=(\xi(1),\dots,\xi(n))$. 
-The following  results relates  the distance matrix of $\ssplx$ to the vertex  matrix of its dual. 
+The following  results relate  the distance matrix of $\ssplx$ to the vertex  matrix of its dual. 
 
 \begin{lemma}
 	\label{lem:block_inverse_simplex}
@@ -97,7 +97,7 @@ The following  results relates  the distance matrix of $\ssplx$ to the vertex  m
 \end{lemma}
 
 \begin{proof}
-By Theorem~\ref{thm:graph-simplex}, $\ssplx$ is the inverse simplex of some graph $G$ and therefore $\D=\Reff$, where $\Reff$ is the effective resistance matrix (Lemma~\ref{lem:S_G_basic_properties}). Therefore, we can rewrite $\xi(i)$ as 
+By Theorem~\ref{thm:graph-simplex}, $\ssplx$ is the inverse simplex of some graph $G$ and therefore $\D=\D_\ssplx=\Reff$, where $\Reff$ is the effective resistance matrix (Lemma~\ref{lem:S_G_basic_properties}). Therefore, we can rewrite $\xi(i)$ as 
  \begin{align*}
 \frac{1}{n}\sum_j \effr(i,j) - \frac{1}{n^2}\sum_{i<j}\effr(i,j),
 \end{align*}
@@ -144,7 +144,7 @@ While Lemma~\ref{lem:block_inverse_simplex} may be interesting, it is unfortunat
 	&\qquad +\frac{1}{n^2}\sum_{i,j} \la \bgamma_i,\bgamma_j\ra - \frac{2}{n}\sum_j (\la \bgamma_k,\bgamma_j\ra -\bgamma_\ell,\bgamma_j\ra).
 	\end{align*} 
 	Note that in the second  line we removed the factor of two from $\bar{d}$ by summing over all $i,j$ rather than simply $i<j$. 
-	Now, the first three terms in the final equation are  equal to $\norm{\bgamma_k-\bgamma_\ell}_2^2=\D_\ssplx(k,\ell)$. Therefore,  it remains  to show  that the final  three terms are zero. The first  of  these, $\frac{1}{n^2}\sum_{i,j}\norm{\bgamma_j}_2^2$,  is clearly   zero after noticing that the final summand is independent of $i$. As for the final two, we write them in terms of  the centroid of $\ssplx$ (which is $\zero$), as 
+	Now, the first three terms in the final equation are  equal to $\norm{\bgamma_k-\bgamma_\ell}_2^2=\D_\ssplx(k,\ell)$. Therefore,  it remains  to show  that the final  three terms are zero. The first  of  these, $\frac{1}{n}\sum_j\norm{\bgam_j}_2^2 - \frac{1}{n^2}\sum_{i,j}\norm{\bgamma_j}_2^2$,  is clearly   zero after noticing that the final summand is independent of $i$. As for the final two, we write them in terms of  the centroid of $\ssplx$ (which is $\zero$), as 
 	\begin{align*}
 	&\quad \frac{1}{n^2}\sum_{i,j} \la \bgamma_i,\bgamma_j\ra - \frac{2}{n}\sum_j (\la \bgamma_k,\bgamma_j\ra -\bgamma_\ell,\bgamma_j\ra) \\
 	&= \frac{1}{n^2}\bigg\la \sum_i\bgamma_i,\sum_j\bgamma_j\bigg\ra - \frac{2}{n}\bigg(\bigg\la \bgamma_k,\sum_j\bgamma_j\bigg\ra 
@@ -203,7 +203,7 @@ We can now strengthen  Lemma~\ref{lem:block_inverse_simplex} to all simplices,  
 \end{proof}
 
 \begin{remark}
-	We have thus recovered Fiedler's block matrix relation~\cite{fiedler1993geometric}, although he does not give the same explicit   interpretation of  the entries as we do. As discussed above, it is interesting that Fiedler used the equation  as the basis for the corresponding while our approach is the reverse. 
+	We have thus recovered Fiedler's block matrix relation~\cite{fiedler1993geometric}, although he does not give the same explicit   interpretation of  the entries as we do. As discussed above, it is interesting that Fiedler used the equation  as the basis for the correspondence while our approach is the reverse. 
 \end{remark}
 
 \subsection{Applications}
@@ -221,7 +221,7 @@ is called the \emph{Menger matrix of $X$}, the determinant of which is called th
 
 \begin{lemma}[\cite{menger1931new}]
 	\label{lem:menger_volume}
-	Let $\D(\X)$ be the distance matrix of a set $\X$ of $d$ points. The squared $d-1$ dimensional volume\footnote{That is, the volume as calculated in $\R^{d-1}$.} of the convex hull of $\X$ is proportional to the root of the determinant of the Menger matrix: 
+	Let $\D(\X)$ be the distance matrix of a set $\X$ of $d$ points. The squared $d-1$ dimensional volume\footnote{That is, the volume as calculated in $\R^{d-1}$.} of the convex hull of $\X$ is proportional to the  determinant of the Menger matrix: 
 	\begin{equation}
 	\label{eq:vol(convX)}
 	\vol^2(\conv(\X)) = \frac{(-1)^d}{((d-1)!)^2 2^{d-1}} \det\begin{pmatrix}
@@ -247,12 +247,12 @@ This fact  was first pointed out by Van Mieghem \etal~\cite{van2017pseudoinverse
 We remind the reader that $\Gamma_G$ was discussed in  Section~\ref{sec:background_laplacian}; see  Equation~\eqref{eq:Gamma_G}  in particular. The proof of Lemma~\ref{lem:volume} may  be  found in Appendix~\ref{sec:app_proofs_further}.   
 
 
-We can use these results to produce a surprising equation concerning  the diagonal entries of the Laplacian. In particular, $\L_G(i,i)$ is proportional to the ratio of the weight of  spanning trees in $G$ to this weight when the vertex $i$ is removed. 
+We can use these results to produce an  equation relating the  diagonal entries of the Laplacian to the volume of $\splx_G^+$ and its facets.  
 
 \begin{lemma}
 	\label{lem:L(i,i)_trees}
 	Let $G$ be a connected graph and fix $i\in V(G)$. 
-	The Put $G_\ic=G[V\setminus \{i\}]$. If $\splx^+\subset\R^{n-1}$  is the inverse combinatorial simplex of $G$ then the volumes
+	Put $G_\ic=G[V\setminus \{i\}]$. If $\splx^+\subset\R^{n-1}$  is the inverse combinatorial simplex of $G$ then the volumes
 	of $\splx^+_\ic$ and $\splx^+$ are related as 
 	\begin{equation}
 	\label{eq:vol/vol}
@@ -303,17 +303,17 @@ The following second technical lemma will help with our eventual aim of demonstr
 \begin{proof}
 We make use of technique used by Godsil and Royle~\cite{godsil2013algebraic} to prove Kirchoff's matrix  tree theorem. For $\M'$ and  $\M''$  square, it  holds that $\det(\M'+\M'') = \sum_{U\subset[n]} \det \M'_U$, where  $\M'_U$ is the matrix obtained by replacing row $i$  in $\M'$ with row   $i$ of $\M''$  for  all $i\in U$. We will apply  this to the sum $t\I-\M$. Fix $U\subset[n]$ and  let  us consider $\det(t\I)_U$ for a moment. Letting $S_n$ denote the set of all permutations on $n$ vertices,  recall  that the determinant obeys  
 \begin{equation*}
-\det((t\I_I)_U) = \sum_{\tau\in S_n}\sgn(\tau)\prod_{i\in[n]}(t\I)_U(i,\tau(i)),
+\det((t\I)_U) = \sum_{\tau\in S_n}\sgn(\tau)\prod_{i\in[n]}(t\I)_U(i,\tau(i)),
 \end{equation*}
-where $\sgn(\tau)$ is the  sign  of the permutation. Now,  for  $i\notin  U$, the $i$-th row of $t\I$ is $t\e_i$, so $(t\I)_U(i,\tau(i)) = t\delta_{i,\tau(i)}$. Consequently, we can restrict  our attention to those permutations which fixes each $i\notin U$: 
+where $\sgn(\tau)$ is the  sign  of the permutation. Now,  for  $i\notin  U$, the $i$-th row of $t\I$ is $t\e_i$, so $(t\I)_U(i,\tau(i)) = t\delta_{i,\tau(i)}$. Consequently, we can restrict  our attention to those permutations which fix each $i\notin U$: 
 \begin{align*}
 \det((t\I)_U) &= \sum_{\substack{\tau \in S_n\\\tau(i)=i,i\in U^c}} \sgn(\tau) \prod_{j\in U} (t\I)_U(j,\tau(j))\prod_{i\notin U}(t\I)_U(i,\tau(i)) \\
 &=  \sum_{\substack{\tau \in S_n\\\tau(i)=i,i\in U^c}} \sgn(\tau) \bigg(\prod_{j\in U} (t\I)_U(j,\tau(j))\bigg)t^{n-|U|} \\
 &= t^{n-|U|}\sum_{\tau \in S_{U}} \sgn(\tau) \prod_{j\in U} (-\M)(j,\tau(j)) \\
 &= t^{n-|U|} \det(-\M(U,U)),  %= t^{n-|U|}(-1)^{|U|}\det(\Ln(U,U)).
 \end{align*}
-where we recall that $\M(U,U)$ denotes the submatrix of $\M$ indexed by the rows and columns of  $U$. It is worth remarking that the penultimate inequality follows because the  set of all permutations in $S_n$ which fix all elements of $U^c$ (i.e.,  do  not  change their positions) is in  one-to-one correspondence with the set of all permutations on $U$. The final equality then  uses the definition of the determinant. 
-Returning to the characteristic polynomial, and noting that $\det(-\M(U,U))=(-1)^{U|}\det(\M(U,U))$ write 
+where we recall that $\M(U,U)$ denotes the submatrix of $\M$ indexed by the rows and columns of  $U$. It is worth remarking that the penultimate inequality follows because the  set of all permutations in $S_n$ which fix the elements of $U^c$ (i.e.,  do  not  change their positions) is in  one-to-one correspondence with the set of all permutations on $U$. The final equality then  uses the definition of the determinant. 
+Returning to the characteristic polynomial, and noting that $\det(-\M(U,U))=(-1)^{|U|}\det(\M(U,U))$ write 
 \begin{align}
 \det(t\I - \M) &= \sum_{U\subset[n]} \det((t\I)_U) = \sum_{U\subset[n]}t^{n-|U|}(-1)^{|U|} \det(\M(U,U)) \notag \\
 &=\sum_{k=1}^n \sum_{U\subset[n],|U|=k}t^{n-k}(-1)^k\det(\M(U,U)).\label{eq:lem_prod_evalsn1}
@@ -332,7 +332,7 @@ which  is equivalent to the desired expression.
 
 
 We are  now almost ready to prove  that all cofactors of Gram  matrices of dual simplices are equal. We require one final tool,  however.  
-For $\M\in\R^{n\times n}$,  the \emph{adjugate} of $\M$, denoted by $\adj(\M)$ the matrix whose $(i,j)$-th entry is equal to the $(j,i)$-th  cofactor of $\M$, i.e., 
+Let $\M\in\R^{n\times n}$. The \emph{adjugate} of $\M$, denoted by $\adj(\M)$, is the matrix whose $(i,j)$-th entry is equal to the $(j,i)$-th  cofactor of $\M$, i.e., 
 \begin{equation*}
 \adj(\M)(i,j) = (-1)^{i+j}\det(\M_{-i,-j}),
 \end{equation*}
@@ -344,10 +344,10 @@ where $\M_{-i,-j}\in\R^{(n-1)\times( n-1)}$ is the matrix obtained by removing t
 
 \begin{lemma}
 	\label{lem:cofactors_equal}
-	Let $\BGamma$ be the vertex matrix of $n$ affinely independent points in  $\R^{n-1}$ whose  centroid is $\zero$,  i.e., $\BGamma\one=\zero$. Then (i) the cofactors of the Gram matrix  $\Q=\BGamma^\tp\BGamma$ are all equal to say number $\kappa(\Q)$ and (ii) $\prod_{i<n}\mu_i = n\cdot \kappa(\Q)$  where $\mu_1,\dots,\mu_{n-1}$ are the non-zero eigenvalues of $\Q$. 
+	Let $\BGamma$ be the vertex matrix of $n$ affinely independent points in  $\R^{n-1}$ whose  centroid is $\zero$,  i.e., $\BGamma\one=\zero$. Then (i) the cofactors of the Gram matrix  $\Q=\BGamma^\tp\BGamma$ are all equal to some number $\kappa(\Q)$ and (ii) $\prod_{i<n}\mu_i = n\cdot \kappa(\Q)$  where $\mu_1,\dots,\mu_{n-1}$ are the non-zero eigenvalues of $\Q$. 
 \end{lemma}
 \begin{proof}
-	Note that $\det\Q=\zero$ since  $\one\in\ker\Q$. Hence, using Equation~\eqref{eq:MadjM}, $\Q\adj\Q = \det(\Q)\I=\zero_{n\times n}$. Each column  of $\adj\Q$ is  thus in $\ker\Q=\ker\BGamma=\spn(\one)$ (here we using both  Lemma~\ref{lem:rank(QtQ)} and the fact that $\dim\ker\BGamma=1$ due to affine independence). Therefore, $\adj\Q = (\alpha_1\one,\alpha_2\one,\dots,\alpha_n\one)$ for some $\alpha_i\in\R$. However, since  $\Q$ is symmetric, $\Q_{-i,-j}=\Q_{-j,-i}$ for each $i,j\in[n]$, implying that $\adj\Q = (\adj\Q)^\tp$. This in turn implies that $\alpha_i=\alpha_j$  for all $i,j$, meaning that $\adj\Q$ is a constant matrix, say $\kappa(\Q)\J$,  which proves (i). (ii) now follows from applying  Lemma~\ref{lem:cofactors_technical} along with the fact that  since $\Q$ has rank $n-1$, it has $n-1$ non-zero eigenvalues. Hence, if $\mu_n$  is the single zero eigenvalue, 
+	Note that $\det\Q=\zero$ since  $\one\in\ker\Q$. Hence, using Equation~\eqref{eq:MadjM}, $\Q\adj\Q = \det(\Q)\I=\zero_{n\times n}$. Each column  of $\adj\Q$ is  thus in $\ker\Q=\ker\BGamma=\spn(\one)$ (here we're using both  Lemma~\ref{lem:rank(QtQ)} and the fact that $\dim\ker\BGamma=1$ due to affine independence). Therefore, $\adj\Q = (\alpha_1\one,\alpha_2\one,\dots,\alpha_n\one)$ for some $\alpha_i\in\R$. However, since  $\Q$ is symmetric, $\Q_{-i,-j}=\Q_{-j,-i}$ for each $i,j\in[n]$, implying that $\adj\Q = (\adj\Q)^\tp$. This in turn implies that $\alpha_i=\alpha_j$  for all $i,j$, meaning that $\adj\Q$ is a constant matrix equal to, say, $\kappa(\Q)\J$. This proves (i). (ii) now follows from applying  Lemma~\ref{lem:cofactors_technical} along with the fact that  since $\Q$ has rank $n-1$, it has $n-1$ non-zero eigenvalues. Hence, if $\mu_n$  is the single zero eigenvalue, 
 	\begin{equation*}
 	\prod_{j<n}\mu_j = \sum_{i=1}^n \prod_{j\neq i}\mu_i = \sum_i \det(\Q_{-i,-i}) = n\kappa(\Q).\qedhere 
 	\end{equation*}
@@ -369,13 +369,13 @@ Finally, we can  extract a general theorem about the volume of arbitrary simplic
 As per Lemma~\ref{lem:cofactors_equal}, let the cofactors of  $\Q$ be  equal to $\kappa(\Q)$. Take  $\r=-\Q\bxi-\frac{2}{n}\one$  as usual.  
 Combining Lemmas~\ref{lem:volume_cofactors} and~\ref{lem:cofactors_technical} gives  
 \begin{align*}
-\vol^2(\ssplx) &= \frac{4}{[(n-1)!]^2}\bigg(\kappa(Q)\sum_{i,j\in[n]} r(i)r(j)\bigg)^{-1} \\
-&= \frac{4}{[(n-1)!]^2\kappa(Q)}(\la \r,\one\ra^2)^{-1} = \frac{n}{[(n-1)!]^2\prod_{i<n}\mu_i},
+\vol^2(\ssplx) &= \frac{4}{[(n-1)!]^2}\bigg(\kappa(\Q)\sum_{i,j\in[n]} r(i)r(j)\bigg)^{-1} \\
+&= \frac{4}{[(n-1)!]^2\kappa(\Q)}(\la \r,\one\ra^2)^{-1} = \frac{n}{[(n-1)!]^2\prod_{i<n}\mu_i},
 \end{align*}
-where we've written $\kappa(Q)$ in terms of the eigenvalues by Lemma~\ref{lem:cofactors_equal} and used that $\la \r,\one\ra = -2$. 
+where we've written $\kappa(\Q)$ in terms of the eigenvalues by Lemma~\ref{lem:cofactors_equal} and used that $\la \r,\one\ra = -2$. 
 \end{proof}
 
-An immediate consequence of this theorem, we obtain the volume of the combinatorial simplex of a graph. 
+As an immediate consequence of this theorem, we obtain the volume of the combinatorial simplex of a graph. Our  result matches  that obtained by Van Mieghem \etal~\cite{van2017pseudoinverse}, but is gleaned  in a  different manner. 
 
 \begin{corollary}
 	\label{cor:vol(SG)}
@@ -404,7 +404,7 @@ Another consequence relates the volumes of the combinatorial simplices to the we
 
 Unfortunately,   it is  difficult to  garner  similar insights regarding the  normalized simplices. Indeed, because we do  not know what the duals of the normalized simplices are in general,  we cannot relate their volumes to the eigenvalues of $\Ln_G$. We can however, relate  the eigenvalues of $\Ln_G$ to the volumes of $\splx_G$ and  $\splx_G^+$.  To  do  this, we first need  to make a detour to  study the adjugate the normalized Laplacian. 
 
-It is well-known  that the adjugate is commutative with matrix multiplication~\cite{godsil2013algebraic}: $\adj(\M\Q) = \adj(\M\Q)$ for any $\M$ and  $\Q$. Applying this  to $\Ln$ (we drop the subscript), we have 
+It is well-known  that the adjugate is commutative with matrix multiplication~\cite{godsil2013algebraic}: $\adj(\M\Q) = \adj(\M)\adj(\Q)$ for any $\M$ and  $\Q$. Applying this  to $\Ln$ (we drop the subscript), we have 
 \begin{align*}
 \adj(\Ln) &= \adj(\W^{-1/2}\L_G\W^{-1/2}) \\
 &= \adj(\W^{-1/2})\adj(\L_G)\adj(\W^{-1/2}) \\
@@ -426,7 +426,7 @@ From the above we gather that each cofactor of $\Ln$  is not constant. This can,
 	For each $i,j\in[n]$, $(-1)^{i+j}\det(\Ln_{-i,-j}))(w(i)w(j))^{-1/2}$ is independent of $i$  and $j$  and equal to the  constant $\kappa(\Ln) = \Gamma_G\prod_k 1/w(k)$. 
 \end{lemma}
 \begin{proof}
-	Equation~\eqref{eq:adj(Ln)} implies that  $(-1)^{i+j}\det(\L_{-i,-j})=\adj(\Ln)(j,i) = \Gamma_G(\prod_k 1/w(k)) (w(i)w(j))^{1/2}$. Rearranging gives the result.  
+	Equation~\eqref{eq:adj(Ln)} implies that  \[(-1)^{i+j}\det(\L_{-i,-j})=\adj(\Ln)(j,i) = \Gamma_G\bigg(\prod_k \frac{1}{w(k)}\bigg) (w(i)w(j))^{1/2}.\] Rearranging gives the result.  
 \end{proof}
 
 
@@ -450,14 +450,14 @@ This allows us to relate the  eigenvalues of $\Ln$ to those of $\L_G$, and conse
 	This proves the first  equality. The second follows from writing $\Gamma_G$ in terms of the volumes of the combinatorial simplices as per Corollary~\ref{cor:vol(SG)/vol(S+)}. 
 \end{proof}
 
-Finally,  we remark that the previous lemma provides an explicit relationship  between the  eigenvalues of  $\Ln_G$ and those of $\L_G$. Indeed, combine Kirchoff's matrix tree theorem---Theorem~\ref{thm:matrix_tree_theorem}---with  Equation~\eqref{eq:prod_evalsn} gives 
+Finally,  we remark that the previous lemma provides an explicit relationship  between the  eigenvalues of  $\Ln_G$ and those of $\L_G$. Indeed, combining Kirchoff's matrix tree theorem---Theorem~\ref{thm:matrix_tree_theorem}---with  Equation~\eqref{eq:prod_evalsn} gives 
 \begin{equation*}
 	\prod_{i<n}\lambdan_i \lambda_i = \frac{\vol(G)}{n}\prod_{j\in[n]}\frac{1}{w(j)}.
 \end{equation*}
 
 
 
-We turn  to  investigating the   relationships between the volumes  of the facets  of a  simplex. 
+We now turn  to  investigating the   relationships between the volumes  of the facets  of a  simplex. Several of the following results  are given  by  Fiedler in  his most  recent  work on the subject~\cite{fiedler2011matrices}, but  he  does  not prove them by  means of  the correspondence. 
 
 \begin{lemma}
 	\label{lem:volT_multi}
@@ -480,7 +480,7 @@ We turn  to  investigating the   relationships between the volumes  of the facet
 	0 &= \sum_{j\in[n]} \L_G(i,j) = \norm{\sv_i}_2^2 - \sum_{j\neq i}\norm{\sv_i}_2\norm{\sv_j}_2\cos\theta_{ij}^+ \\
 	&= \frac{\vol(\splx_\ic^+)}{(n-1)^2\vol^2(\splx^+)} \bigg(\vol(\splx^+_\ic) - \sum_{j\neq i}\vol(\splx_\jc^+)\cos\theta_{ij}^+\bigg),
 	\end{align*}
-	implying that $\vol(\splx^+_\ic) - \sum_{j\neq i}\vol(\splx_\jc^+)\cos\theta_{ij}^+$ which proves the first equation. To see the second,  note that $\L_G(i,k)=-\sum_{j\neq k}\L_G(i,k)$  (again using that $\L_G\one=\zero$). Applying  this twice, we obtain 
+	implying that $\vol(\splx^+_\ic) - \sum_{j\neq i}\vol(\splx_\jc^+)\cos\theta_{ij}^+=0$ which proves the first equation. To see the second,  note that $\L_G(i,k)=-\sum_{j\neq k}\L_G(i,k)$  (again using that $\L_G\one=\zero$). Applying  this twice, we obtain 
 	\[\L_G(i,i) = -\sum_{j\neq i}\L_G(i,j) = \sum_{j\neq i}\sum_{k\neq i}\L_G(k,j) = \sum_{j\neq i}\L_G(j,j) + \sum_{j,k\neq i,k\neq j}\L_G(k,j).\] 
 	As above,  translating this to expressions involving the volumes of facets of $\splx^+$ and then multiplying through by $n^2\vol(\splx^+)$ gives  
 	\begin{equation*}
@@ -496,13 +496,13 @@ We turn  to  investigating the   relationships between the volumes  of the facet
 	\norm{\sv_i}_2^2 & \la \sv_i,\sv_j\ra \\
 	\la \sv_i,\sv_j\ra & \norm{\sv_j}_2^2 
 	\end{pmatrix} \\
-	&=\pm \frac{1}{4}\norm{\sv_i}_2^2\norm{\sv_j}_2^2 - \la \sv_i,\sv_j\ra^2 \\
+	&=\pm \frac{1}{4}\bigg(\norm{\sv_i}_2^2\norm{\sv_j}_2^2 - \la \sv_i,\sv_j\ra^2\bigg) \\
 	&= \pm\frac{1}{4}\norm{\sv_i}_2^2\norm{\sv_j}_2^2(1 - \cos^2\phi_{ij})
 	\end{align*}
 	where $\phi_{ij}$ is the angle between $\sv_i$ and $\sv_j$ (Section~\ref{sec:background_simplex_angles}). Since the vertices $\{\sv_i\}$ are the  duals  to those in $\splx^+$, we have $\cos\phi_{ij}=-\cos\theta_{ij}^+$  so \[\norm{\sv_i}_2^2\norm{\sv_j}_2^2(1 - \cos^2\phi_{ij}) = \norm{\sv_i}_2^2\norm{\sv_j}_2^2(1 - \cos^2\theta_{ij}^+) =  \norm{\sv_i}_2^2\norm{\sv_j}_2^2\sin^2\theta_{ij}^+.\]   
-	Writing $\det\M(U_1^c,U_1^c)$  in terms of $\vol\splx_{U^c}^+$ and $\det \M$  in terms of $\vol\splx^+$ by  means of Equation~\eqref{eq:vol(convX)}, and using Equation~\eqref{eq:||sv_i||_vol} to relate $\norm{\sv_i}_2^2$ and $\norm{\sv_j}_2^2$  to  the volumes of $\splx_\ic^+$  and $\splx_\jc^+$ then yields 
+	Writing $\det\M(U_1^c,U_1^c)$  in terms of $\vol(\splx_{U^c}^+)$ and $\det \M$  in terms of $\vol(\splx^+)$ by  means of Equation~\eqref{eq:vol(convX)}, and using~\eqref{eq:vol/vol} to relate $\norm{\sv_i}_2^2=\L_G(i,i)$ and $\norm{\sv_j}_2^2=\L_G(j,j)$  to  the volumes of $\splx_\ic^+$  and $\splx_\jc^+$ then yields 
 	\begin{align*}
-	\frac{1}{4(n-1)^2(n-2)^2}\frac{\vol^2\splx_{U^c}^+}{\vol^2\splx^+} =  \frac{\vol^2\splx_\ic^+}{(n-1)^2\vol^2\splx^+}\frac{\vol^2\splx_\jc^+}{(n-1)^2\vol^2\splx^+}\sin^2\theta_{ij}^+.
+	\frac{1}{4(n-1)^2(n-2)^2}\frac{\vol^2(\splx_{U^c}^+)}{\vol^2(\splx^+)} =  \frac{\vol^2(\splx_\ic^+)}{(n-1)^2\vol^2(\splx^+)}\frac{\vol^2(\splx_\jc^+)}{(n-1)^2\vol^2(\splx^+)}\sin^2\theta_{ij}^+.
 	\end{align*}
 	Notice that we have rid ourselves  of the ambiguity in sign because we see that both  sides are the square of some quantity, hence are  positive. 
 	Simplying and taking the square root of both sides of the above expression gives the third equation.
@@ -530,6 +530,8 @@ Our next set of results demonstrate the the inverse relation can be used not onl
  \end{equation}
  where  $\d=(\deg(1),\dots,\deg(n))$. 
 \end{lemma}
+
+This result is interesting insofar  as it lets us generate new statements concerning the effective resistance in trees. For example:  
 
 \begin{corollary}
 	Let $T$  be a weighted and connected tree. Then 
@@ -591,7 +593,7 @@ we can  relate  the centroids of $\splx_G$ to $\splxn_G$ as follows.
 	Use that $\norm{\cent(\splx_U)}_2^2 =  |U|^{-2} \bchi_U\L_G\bchi_U$ (Section~\ref{sec:S_G}) and that $\Svn\Svn^\tp=\Evaln$ (Equation~\eqref{eq:SvSv^t}) and apply Cheeger's inequality. 
 \end{proof}
 
-We can translate several of the results obtained in the previous section on  volumes and spanning  trees into inequalities. 
+We can also translate several of the results obtained in the previous section on  volumes and spanning  trees into inequalities. 
 
 \begin{lemma}
 \label{lem:volT_inequalities}
@@ -603,7 +605,7 @@ For any hyperacute simplex $\ssplx\subset\R^{n-1}$ and  $i\in[n]$, the following
 \end{enumerate}
 \end{lemma}
 \begin{proof}
-	Follows immediately from Lemma~\ref{lem:volT_multi} after  recalling that because $\ssplx$  is  hyperacute all interior  angles are at most $\pi/2$. We remark that for the second  equation  we have simply provided the  easy  upper bound provided by Equation 2 of Lemma~\ref{lem:volT_inequalities}. 
+	Follows immediately from Lemma~\ref{lem:volT_multi} after  recalling that because $\ssplx$  is  hyperacute all interior  angles are at most $\pi/2$. We remark that for the second  equation  we have simply provided the  easy  upper bound provided by Equation (2) of Lemma~\ref{lem:volT_multi}. 
 \end{proof}
 
 
@@ -622,7 +624,7 @@ In $\R^3$, typical examples of quadrics are spheroids and ellipsoids ($\r=\zero$
 
 \begin{definition}[\cite{krause1983steinerellipsoide}]
 \label{def:steiner_ellipsoid}
-The \emph{Steiner Circumscribed Ellipsoid}, or simply the \emph{Steiner Ellipsoid} of a simplex $\splx$ with vertices $\{\sv_i\}$ is a quadric which contains the vertices and whose tangent plane at $\sv_i$ is parallel to the affine plane spanned by $\{\sv_j\}_{j\neq i}$. 
+The \emph{Steiner Circumscribed Ellipsoid}, or simply the \emph{Steiner Ellipsoid} of a simplex $\ssplx$ with vertices $\{\bgam_i\}$ is a quadric which contains the vertices and whose tangent plane at $\bgam_i$ is parallel to the affine plane spanned by $\{\bgam_j\}_{j\neq i}$. 
 \end{definition}
 
 Figure~\ref{fig:ellipsoid_and_sphere} illustrates  the Steiner ellipsoid of a generic simplex. Its existence  and uniqueness is guaranteed by the following theorem. 
@@ -648,7 +650,7 @@ and
 \end{lemma}
 
 
- Perhaps a more insightful representation of $\El(\splx_G)$ comes from appealing to Equations~\eqref{eq:SvSv^t} and~\eqref{eq:SvSv+}, i.e., $\Sv^+(\Sv^+)^\tp = \Eval^{-1}$ and $\Sv\Sv^\tp=\Eval$.  Hence, by \eqref{eq:steinerE},
+ Perhaps more insightful representations of $\El(\splx_G)$ and $\El(\splx_G^+)$ come from appealing to Equations~\eqref{eq:SvSv^t} and~\eqref{eq:SvSv+}, i.e., $\Sv^+(\Sv^+)^\tp = \Eval^{-1}$ and $\Sv\Sv^\tp=\Eval$.  Applying  these,
 \begin{equation}
 \label{eq:steinerE2}
     \El(\splx_G) = \bigg\{\x:\x^\tp \Eval^{-1}\x = \frac{n-1}{n}\bigg\},\quad\text{and}\quad \El(\splx_G^+) = \bigg\{\x:\x^\tp \Eval\x = \frac{n-1}{n}\bigg\}
@@ -663,7 +665,7 @@ This allows us to give explicit formulas for the semi-axes of $\El(\splx)$.
  	for $i=1,\dots,n-1$. 
  \end{lemma}
 \begin{proof}
-	Consider $\El(\splx_G)$. The diagonal matrix $\bS=\Eval^{-1/2} (\frac{n}{n-1})^{1/2}$ has entries $D(i,i) = \e_i(\frac{n}{(n-1)\lambda_i})^{1/2}$, and equation  \eqref{eq:steinerE2} demonstrates  that  $\El(\splx_G) = \{\x:\x^\tp \bS^2\x=1\}$. Apply the definition of semi-axes. The argument is similar for $\El(\splx_G^+)$. 
+	Consider $\El(\splx_G)$. The diagonal matrix $\bS=\Eval^{-1/2} (\frac{n}{n-1})^{1/2}$ has entries $\bS(i,i) = \e_i(\frac{n}{(n-1)\lambda_i})^{1/2}$, and equation  \eqref{eq:steinerE2} demonstrates  that  $\El(\splx_G) = \{\x:\x^\tp \bS^2\x=1\}$. Apply the definition of semi-axes. The argument is similar for $\El(\splx_G^+)$. 
 \end{proof}
 
 \begin{figure}
@@ -673,18 +675,19 @@ This allows us to give explicit formulas for the semi-axes of $\El(\splx)$.
 	\label{fig:ellipsoid_and_sphere}
 \end{figure}
 
-The appearance of the  eigenvalues  in  the semi-axes allows us to relate the volumes of $\El(\splx_G)$ and $\El(\splx_G^+)$.  The volume of an  ellipsoid in $\R^{n-1}$ written in the standard  mentioned  above is )
+The appearance of the  eigenvalues  in  the semi-axes allows us to relate the volumes of $\El(\splx_G)$ and $\El(\splx_G^+)$.  The volume of an  ellipsoid in $\R^{n-1}$ written in the standard  form mentioned  above is 
 \begin{equation*}
-\frac{\pi^{\frac{n-1}{2}}}{\Gamma(\frac{n+1}{2})} \det(\bS^{-1}). 
+\frac{\pi^{\frac{n-1}{2}}}{\Gamma(\frac{n+1}{2})} \det(\bS^{-1}),
 \end{equation*}
+where $\Gamma(z)$ is the gamma function.  We emphasize  that the gamma function is distinct from $\Gamma_G$, the  total weight of spanning trees in $G$.  
 For $\El(\splx_G)$, $\bS = \sqrt{\frac{n}{n-1}} \Eval^{-1/2}$, so 
 \begin{align*}
 \vol(\El(\splx_G)) &= \frac{\pi^{\frac{n-1}{2}}}{\Gamma(\frac{n+1}{2})} \bigg(\frac{n-1}{n}\bigg)^{\frac{n-1}{2}} \det\Eval^{1/2} \\
 &= \frac{\pi^{\frac{n-1}{2}}}{\Gamma(\frac{n+1}{2})} \bigg(\frac{n-1}{n}\bigg)^{\frac{n-1}{2}}\bigg(\prod_{i<n}\lambda_i\bigg)^{1/2} \\
-&= \frac{\pi^{\frac{n-1}{2}}}{\Gamma(\frac{n+1}{2})} \bigg(\frac{n-1}{n}\bigg)^{\frac{n-1}{2}} \sqrt{n}\Gamma_G^{1/2}
+&= \frac{\pi^{\frac{n-1}{2}}}{\Gamma(\frac{n+1}{2})} \bigg(\frac{n-1}{n}\bigg)^{\frac{n-1}{2}} \sqrt{n}\Gamma_G^{1/2}.
 \end{align*}
 
-Moreover, as was noticed by Devriendt  and  Van Mieghem~\cite{devriendt2018simplex},  the linear dependence of both $\vol(\El(\splx_G)$ and $\vol(\splx_G)$ on $\Gamma_G^{1/2}$ (recall Lemma )implies that their ratio is independent of the particular graph $G$: 
+Moreover, as was noticed by Devriendt  and  Van Mieghem~\cite{devriendt2018simplex},  the linear dependence of both $\vol(\El(\splx_G)$ and $\vol(\splx_G)$ on $\Gamma_G^{1/2}$ (recall Corollary~\ref{cor:vol(SG)}) implies their ratio is independent of the particular graph $G$: 
 \begin{equation*}
 \frac{\vol(\El(\splx_G))}{\vol(\splx_G)} = \frac{\pi^{\frac{n-1}{2}}}{\Gamma(\frac{n+1}{2})} \bigg(\frac{n-1}{n}\bigg)^{\frac{n-1}{2}} \frac{(n-1)!}{\sqrt{n}}.
 \end{equation*}
@@ -693,7 +696,7 @@ A similar procedure may be performed  with $\vol(\El(\splx_G^+))$  and $\vol(\sp
 \begin{align*}
 \vol(\El(\splx_G^+)) = \frac{\pi^{\frac{n-1}{2}}}{\Gamma(\frac{n+1}{2})} \bigg(\frac{n-1}{n}\bigg)^{\frac{n-1}{2}} \det\Eval^{-1/2} = \frac{\pi^{\frac{n-1}{2}}}{\Gamma(\frac{n+1}{2})} \bigg(\frac{n-1}{n}\bigg)^{\frac{n-1}{2}} (n\Gamma_G)^{-1/2}.
 \end{align*}
-Of course, the ratio  of $\vol(\El(\splx_G^+))$ to $\vol(\splx^+_G)$ will be  the same as above. 
+The ratio  of $\vol(\El(\splx_G^+))$ to $\vol(\splx^+_G)$ is the same as above. 
 
 
 
@@ -721,7 +724,7 @@ However, at this point we recall that beyond being simply  the inverse simplex o
 \end{lemma}
 
 \begin{proof}
-	The computation is almost identical to that in the proof of Lemma~\ref{lem:El(S)}, except we  take $\M=\Sv^\du(\Sv^\du)^\tp$  we use the general relationship between  $\Sv^\tp\Sv$ and $\Sv^\du(\Sv^\du)^\tp$ given by Lemma~\ref{lem:dual_pseudoinverse}. 
+	The computation is almost identical to that in the proof of Lemma~\ref{lem:El(S)}, except we  take $\M=\Sv^\du(\Sv^\du)^\tp$ and use the general relationship between  $\Sv^\tp\Sv$ and $\Sv^\du(\Sv^\du)^\tp$ given by Lemma~\ref{lem:dual_pseudoinverse}. 
 \end{proof}
 
 
@@ -749,7 +752,7 @@ Recalling the formula for the vertices of the inverse simplex $\splx^+$ demonstr
 \begin{equation*}
 \mu_i(\ell) = \sum_{j\in[n]}\sv_\ell^+(j)\vp_j(i) = \sum_{j\in[n]}\sv_i^+(j)\vp_j(\ell).
 \end{equation*}
-Hence, in general, $\mu_i(\ell)\neq \sv_i^+(\ell)$. However, the dot products between the vertices of $\respol_G$ does respect  the same relationships as those between the vertices of $\splx_G^+$:
+Hence, in general, $\mu_i(\ell)\neq \sv_i^+(\ell)$. However, the dot product between the vertices of $\respol_G$ does respect  the same relationships as those between the vertices of $\splx_G^+$:
 \begin{align*}
 \la \bmu_i,\bmu_j\ra &=\sum_{\ell\in[n]} \L_G^{+/2}(\ell,i)\L_G^{+/2}(\ell,j) \\
 &= \la \L_G^{+/2}(\cdot,i),\L_G^{+/2}(\cdot,j)\ra \\
@@ -757,7 +760,7 @@ Hence, in general, $\mu_i(\ell)\neq \sv_i^+(\ell)$. However, the dot products be
 \end{align*}
 since $\L_G^{+/2}$ is symmetric and  $\L_G^{+/2}\L_G^{+/2}=\L_G^+$.  We can also see this from recalling that 
 \[\effr(i,j) = \L_G^+(i,i) + \L_G^+(j,j) - \frac{1}{2}\L_G^+(i,j),\]
-combined with the facts that $\norm{\bmu_i-\bmu_j}_2^2 = \effr(i,j)$ and $\norm{\bmu_i}_2^2 = \L_G^+(i,i)$. Moreover, the centroid of $\re_G$ also coincides with the origin  of $\R^n$: 
+combined with the facts that $\norm{\bmu_i-\bmu_j}_2^2 = \effr(i,j)$ and $\norm{\bmu_i}_2^2 = \L_G^+(i,i)$. The centroid of $\re_G$ also coincides with the origin  of $\R^n$: 
 \begin{equation*}
 \cent(\re_G) = \frac{1}{n}\L_G^{+/2}\one = \frac{1}{n}\sum_{i\in[n-1]}\lambda_i^{-1/2}\vp_i\vp_i^\tp \one = \zero.
 \end{equation*}
@@ -827,7 +830,7 @@ We will examine a continuous time random walk which  obeys the equation
 \begin{equation*}
 \frac{d \bpi(t)}{dt } = -\L_G\W_G^{-1/2} \bpi(t),
 \end{equation*}
-which has the solution $\bpi(t)  = \exp(-\L_G\W_G^{-1/2}t)\bpi(0)$. This, however, is relatively unsightful in terms of  analyzing the dynamics of $\bpi(t)$ in terms of the  graph.  Instead, in  what follows we seek  to develop a solution to $\bpi(t)$ in terms of the  eigendecomposition of  $G$.  Define $\bpi_1(t) = \W^{-1/2}\bpi(t)$ and $\bpi_2(t) = \Eign^\tp \bpi_1(t)$, where we recall that $\Eign^\tp$ is the eigenvector matrix  of  $\Ln_G$.  Then 
+and has the solution $\bpi(t)  = \exp(-\L_G\W_G^{-1/2}t)\bpi(0)$. This, however, is relatively unsightful in terms of  analyzing the dynamics of $\bpi(t)$ in terms of the  graph.  Instead, in  what follows we seek  to develop a solution to $\bpi(t)$ in terms of the  eigendecomposition of  $G$.  Define $\bpi_1(t) = \W^{-1/2}\bpi(t)$ and $\bpi_2(t) = \Eign^\tp \bpi_1(t)$, where we recall that $\Eign^\tp$ is the eigenvector matrix  of  $\Ln_G$.  Then 
 \begin{equation*}
 \frac{d \bpi_1(t)}{dt} = \W^{-1/2}\frac{d \bpi(t)}{dt} = -\W^{-1/2}\L_G\W^{-1/2}\W^{-1/2}\bpi(t) = - \Ln_G\bpi_1(t),
 \end{equation*}

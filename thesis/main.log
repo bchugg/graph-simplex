@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  30 AUG 2019 12:22
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  31 AUG 2019 18:43
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1299,9 +1299,6 @@ LaTeX Info: Thecontrolsequence`\]'isalreadyrobust on input line 129.
 \l_MT_above_shortintertext_sep=\dimen162
 \l_MT_below_shortintertext_sep=\dimen163
 )
-(/usr/local/texlive/2016/texmf-dist/tex/latex/tex-gyre/tgtermes.sty
-Package: tgtermes 2009/09/27 v1.2 TeX Gyre Termes as default roman family
-)
 (/usr/local/texlive/2016/texmf-dist/tex/latex/titlesec/titlesec.sty
 Package: titlesec 2016/03/21 v2.10.2 Sectioning titles
 \ttl@box=\box44
@@ -1430,37 +1427,29 @@ Package: longtable 2014/10/28 v4.11 Multi-page Table package (DPC)
 \c@definition=\count163
 \c@remark=\count164
 Package hyperref Info: Option `colorlinks' set `true' on input line 36.
-)
-
-LaTeX Warning: Unused global option(s):
-    [twside].
-
-(./main.aux (./frontmatter/titlepage.aux) (./frontmatter/abstract.aux)
-(./frontmatter/laysummary.aux) (./frontmatter/acknowledgements.aux)
-(./frontmatter/nomenclature.aux) (./introduction.aux) (./background.aux)
-(./correspondence.aux) (./further_properties.aux)
-(./algorithmic_implications.aux) (./conclusion.aux) (./appendix.aux))
+) (./main.aux (./frontmatter/titlepage.aux)
+(./frontmatter/abstract.aux) (./frontmatter/laysummary.aux)
+(./frontmatter/acknowledgements.aux) (./frontmatter/nomenclature.aux)
+(./introduction.aux) (./background.aux) (./correspondence.aux)
+(./further_properties.aux) (./algorithmic_implications.aux) (./conclusion.aux)
+(./appendix.aux))
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Try loading font information for OT1+qtm on input line 34.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
 
-(/usr/local/texlive/2016/texmf-dist/tex/latex/tex-gyre/ot1qtm.fd
-File: ot1qtm.fd 2009/09/25 v1.2 font definition file for OT1/qtm
-)
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -1468,7 +1457,7 @@ File: ot1qtm.fd 2009/09/25 v1.2 font definition file for OT1/qtm
 * paper: <default>
 * layout: <same size as paper>
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
-* modes: twoside 
+* modes: 
 * h-part:(L,W,R)=(86.72377pt, 440.84746pt, 86.72377pt)
 * v-part:(T,H,B)=(86.72377pt, 621.52245pt, 86.72377pt)
 * \paperwidth=614.295pt
@@ -1482,7 +1471,7 @@ File: ot1qtm.fd 2009/09/25 v1.2 font definition file for OT1/qtm
 * \headsep=19.8738pt
 * \topskip=11.0pt
 * \footskip=27.46295pt
-* \marginparwidth=116.0pt
+* \marginparwidth=62.0pt
 * \marginparsep=7.0pt
 * \columnsep=10.0pt
 * \skip\footins=10.0pt plus 4.0pt minus 2.0pt
@@ -1490,13 +1479,13 @@ File: ot1qtm.fd 2009/09/25 v1.2 font definition file for OT1/qtm
 * \voffset=0.0pt
 * \mag=1000
 * \@twocolumnfalse
-* \@twosidetrue
-* \@mparswitchtrue
+* \@twosidefalse
+* \@mparswitchfalse
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 \AtBeginShipoutBox=\box50
-Package hyperref Info: Link coloring ON on input line 34.
+Package hyperref Info: Link coloring ON on input line 37.
 (/usr/local/texlive/2016/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 
@@ -1505,9 +1494,9 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count165
 )
-LaTeX Info: Redefining \ref on input line 34.
-LaTeX Info: Redefining \pageref on input line 34.
-LaTeX Info: Redefining \nameref on input line 34.
+LaTeX Info: Redefining \ref on input line 37.
+LaTeX Info: Redefining \pageref on input line 37.
+LaTeX Info: Redefining \nameref on input line 37.
 
 (./main.out) (./main.out)
 \@outlinefile=\write3
@@ -1575,58 +1564,55 @@ es/oxford_logo.png>])
 
 
 (./frontmatter/abstract.tex
-
-LaTeX Font Warning: Font shape `OT1/qtm/m/sl' in size <10.95> not available
-(Font)              Font shape `OT1/qtm/m/it' tried instead on input line 1.
-
-[2
-
-
-
-]
 LaTeX Font Info:    Try loading font information for U+msa on input line 6.
- (/usr/local/texlive/2016/texmf-dist/tex/latex/amsfonts/umsa.fd
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
 LaTeX Font Info:    Try loading font information for U+msb on input line 6.
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)) [3]
+))pdfTeX warning (ext4): destination with the same identifier (name{page.i}) ha
+s been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.43 \include{frontmatter/abstract}
+                                    [1
+
+
+
+]
 \openout2 = `frontmatter/laysummary.aux'.
 
-
-(./frontmatter/laysummary.tex [4
-
+ (./frontmatter/laysummary.tex) [2
 
 
-]) [5]
+
+]
 \openout2 = `frontmatter/acknowledgements.aux'.
 
- (./frontmatter/acknowledgements.tex
-[6
+
+(./frontmatter/acknowledgements.tex) [3
 
 
 
-]) [7] [8
+] (./main.toc [4
 
 
-] (./main.toc [9])
+])
 \tf@toc=\write4
 \openout4 = `main.toc'.
 
- [10] (./main.lof
-Underfull \vbox (badness 7203) has occurred while \output is active []
-
- [11
+ [5] (./main.lof
+[6
 
 
 ])
 \tf@lof=\write5
 \openout5 = `main.lof'.
 
-
-[12]
+ [7] [8]
 \openout2 = `frontmatter/nomenclature.aux'.
 
  (./frontmatter/nomenclature.tex
@@ -1634,142 +1620,116 @@ Underfull \vbox (badness 7203) has occurred while \output is active []
 \groupsep=\skip76
 \headingsep=\skip77
 \descsep=\skip78
- [13
+ [9
 
 
-]) [14]
+]) [10]
 \openout2 = `introduction.aux'.
 
  (./introduction.tex
 Chapter 1.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [1
+[1
 
 
 
 
 ]
-LaTeX Font Info:    Try loading font information for OMS+qtm on input line 24.
-LaTeX Font Info:    No file OMSqtm.fd. on input line 24.
-
-
-LaTeX Font Warning: Font shape `OMS/qtm/b/n' undefined
-(Font)              using `OMS/cmsy/m/n' instead
-(Font)              for symbol `textsection' on input line 24.
-
-[2]
-Overfull \hbox (2.29509pt too wide) in paragraph at lines 55--56
-[]\OT1/qtm/m/n/10.95 There has also been work on graphs aris-ing from gen-eral 
-poly-he-dra, e.g., Steinitz's the-o-rem [[]].
- []
-
-<figures/example_d=2_graph.png, id=581, 211.79124pt x 204.765pt>
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 24.
+ (/usr/local/texlive/2016/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/bx/n' in size <10.95> not available
+(Font)              Font shape `OMS/cmsy/b/n' tried instead on input line 24.
+ [2]
+<figures/example_d=2_graph.png, id=577, 211.79124pt x 204.765pt>
 File: figures/example_d=2_graph.png Graphic file (type png)
 
 <use figures/example_d=2_graph.png>
 Package pdftex.def Info: figures/example_d=2_graph.png used on input line 64.
 (pdftex.def)             Requested size: 63.53786pt x 61.42996pt.
 
-<figures/example_d=2_comb.png, id=582, 351.59355pt x 279.32355pt>
+<figures/example_d=2_comb.png, id=578, 351.59355pt x 279.32355pt>
 File: figures/example_d=2_comb.png Graphic file (type png)
 
 <use figures/example_d=2_comb.png>
 Package pdftex.def Info: figures/example_d=2_comb.png used on input line 70.
 (pdftex.def)             Requested size: 105.47887pt x 83.7977pt.
 
-<figures/example_d=2_norm.png, id=583, 352.31625pt x 272.09656pt>
+<figures/example_d=2_norm.png, id=579, 352.31625pt x 272.09656pt>
 File: figures/example_d=2_norm.png Graphic file (type png)
 
 <use figures/example_d=2_norm.png>
 Package pdftex.def Info: figures/example_d=2_norm.png used on input line 75.
 (pdftex.def)             Requested size: 105.69568pt x 81.6296pt.
 
-<figures/example_d=3_graph.png, id=584, 202.7575pt x 192.72pt>
+<figures/example_d=3_graph.png, id=580, 202.7575pt x 192.72pt>
 File: figures/example_d=3_graph.png Graphic file (type png)
 
 <use figures/example_d=3_graph.png>
 Package pdftex.def Info: figures/example_d=3_graph.png used on input line 81.
 (pdftex.def)             Requested size: 60.82771pt x 57.81644pt.
 
-<figures/example_d=3_comb.png, id=585, 225.12105pt x 171.2799pt>
+<figures/example_d=3_comb.png, id=581, 225.12105pt x 171.2799pt>
 File: figures/example_d=3_comb.png Graphic file (type png)
 
 <use figures/example_d=3_comb.png>
 Package pdftex.def Info: figures/example_d=3_comb.png used on input line 87.
 (pdftex.def)             Requested size: 112.56024pt x 85.63974pt.
 
-<figures/example_d=3_norm.png, id=586, 203.8014pt x 160.07805pt>
+<figures/example_d=3_norm.png, id=582, 203.8014pt x 160.07805pt>
 File: figures/example_d=3_norm.png Graphic file (type png)
 
 <use figures/example_d=3_norm.png>
 Package pdftex.def Info: figures/example_d=3_norm.png used on input line 92.
 (pdftex.def)             Requested size: 101.90044pt x 80.03882pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [3]
-Overfull \hbox (10.58728pt too wide) in paragraph at lines 101--102
-\OT1/qtm/m/n/10.95 main re-sults on the topic as well those newly dis-cov-ered 
-re-sults of De-vriendt and Van Mieghem [[]].
- []
-
-
-LaTeX Font Warning: Font shape `OMS/qtm/m/n' undefined
-(Font)              using `OMS/cmsy/m/n' instead
-(Font)              for symbol `textbullet' on input line 107.
-
-[4 <./figures/example_d=2_graph.png> <./figures/example_d=2_comb.png> <./figure
-s/example_d=2_norm.png> <./figures/example_d=3_graph.png> <./figures/example_d=
-3_comb.png> <./figures/example_d=3_norm.png>]
-<figures/correspondence.png, id=640, 898.35625pt x 335.2525pt>
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 107.
+ [3] [4 <./figures/example_d=2_graph.png> <./figures/example_d=2_comb.png> <./f
+igures/example_d=2_norm.png> <./figures/example_d=3_graph.png> <./figures/examp
+le_d=3_comb.png> <./figures/example_d=3_norm.png>] <figures/correspondence.png,
+ id=635, 898.35625pt x 335.2525pt>
 File: figures/correspondence.png Graphic file (type png)
 
 <use figures/correspondence.png>
 Package pdftex.def Info: figures/correspondence.png used on input line 115.
 (pdftex.def)             Requested size: 359.33614pt x 134.09862pt.
-
-Underfull \vbox (badness 2096) has occurred while \output is active []
-
  [5 <./figures/correspondence.png>]
-Overfull \hbox (0.26534pt too wide) in paragraph at lines 132--133
-[]\OT1/qtm/b/n/10.95 Consequences for com-pu-ta-tional com-plex-ity. \OT1/qtm/m
-/n/10.95 We ex-plore sev-eral con-se-quences for com-
- []
-
-<figures/property_triangle.png, id=668, 330.23375pt x 187.70125pt>
+<figures/property_triangle.png, id=663, 330.23375pt x 187.70125pt>
 File: figures/property_triangle.png Graphic file (type png)
 
 <use figures/property_triangle.png>
 Package pdftex.def Info: figures/property_triangle.png used on input line 146.
 (pdftex.def)             Requested size: 165.11646pt x 93.85039pt.
-
-Underfull \vbox (badness 6445) has occurred while \output is active []
-
- [6])
-[7 <./figures/property_triangle.png>]
+ [6]) [7 <./figures/property_triangle.png>]
 \openout2 = `background.aux'.
 
- (./background.tex [8
 
-
-
-]
+(./background.tex
 Chapter 2.
 
 LaTeX Warning: Command \i invalid in math mode on input line 20.
 
-[9] [10] [11] [12] [13]
-Underfull \vbox (badness 10000) has occurred while \output is active []
+[8
 
- [14]
-[15]
+
+
+] [9] [10] [11] [12]
+Overfull \hbox (34.89691pt too wide) in paragraph at lines 178--183
+\OML/cmm/m/it/10.95 G$\OT1/cmr/m/n/10.95 , i.e., $[][] = [](\OML/cmm/m/it/10.95
+ w\OT1/cmr/m/n/10.95 (1)\OML/cmm/m/it/10.95 ; w\OT1/cmr/m/n/10.95 (2)\OML/cmm/m
+/it/10.95 ; [] ; w\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 n\OT1/cmr/m/n/10.95 )
+)$. The \OT1/cmr/m/it/10.95 de-gree ma-trix \OT1/cmr/m/n/10.95 of $\OML/cmm/m/i
+t/10.95 G$ \OT1/cmr/m/n/10.95 is $[]([](1)\OML/cmm/m/it/10.95 ; []\OT1/cmr/m/n/
+10.95 (2)\OML/cmm/m/it/10.95 ; [] ; []\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 n
+\OT1/cmr/m/n/10.95 ))$.
+ []
+
+[13] [14]
 LaTeX Font Info:    Try loading font information for U+euf on input line 269.
  (/usr/local/texlive/2016/texmf-dist/tex/latex/amsfonts/ueuf.fd
 File: ueuf.fd 2013/01/14 v3.01 Euler Fraktur
-) [16]
-[17] <../figures/simplices.png, id=830, 420.57124pt x 155.58125pt>
+)
+[15] <../figures/simplices.png, id=816, 420.57124pt x 155.58125pt>
 File: ../figures/simplices.png Graphic file (type png)
 
 <use ../figures/simplices.png>
@@ -1780,384 +1740,295 @@ Overfull \hbox (53.96469pt too wide) in paragraph at lines 361--362
 [][] 
  []
 
-<figures/affine_independence.png, id=831, 295.1025pt x 125.46875pt>
+<figures/affine_independence.png, id=817, 295.1025pt x 125.46875pt>
 File: figures/affine_independence.png Graphic file (type png)
 
 <use figures/affine_independence.png>
 Package pdftex.def Info: figures/affine_independence.png used on input line 368
 .
 (pdftex.def)             Requested size: 177.06285pt x 75.28181pt.
- [18 <../figures/simplices.png> <./figures/affine_independence.png>]
-<figures/altitudes.png, id=841, 323.2075pt x 206.7725pt>
+ [16]
+<figures/altitudes.png, id=827, 323.2075pt x 206.7725pt>
 File: figures/altitudes.png Graphic file (type png)
 
 <use figures/altitudes.png>
 Package pdftex.def Info: figures/altitudes.png used on input line 422.
 (pdftex.def)             Requested size: 161.60335pt x 103.38599pt.
 
-<figures/faces.png, id=842, 303.1325pt x 197.73875pt>
+<figures/faces.png, id=828, 303.1325pt x 197.73875pt>
 File: figures/faces.png Graphic file (type png)
  <use figures/faces.png>
 Package pdftex.def Info: figures/faces.png used on input line 429.
 (pdftex.def)             Requested size: 151.56587pt x 98.86913pt.
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [19]
-[20 <./figures/altitudes.png> <./figures/faces.png>]
-<figures/dual_simplex.png, id=853, 602.25pt x 312.16624pt>
+[17 <../figures/simplices.png> <./figures/affine_independence.png>] [18 <./figu
+res/altitudes.png> <./figures/faces.png>]
+<figures/dual_simplex.png, id=839, 602.25pt x 312.16624pt>
 File: figures/dual_simplex.png Graphic file (type png)
 
 <use figures/dual_simplex.png>
 Package pdftex.def Info: figures/dual_simplex.png used on input line 480.
 (pdftex.def)             Requested size: 240.89572pt x 124.86427pt.
- [21 <./figures/dual_simplex.png>] [22] [23]
-<figures/angles.png, id=884, 634.37pt x 496.85625pt>
+ [19 <./figures/dual_simplex.png>] [20] [21]
+<figures/angles.png, id=869, 634.37pt x 496.85625pt>
 File: figures/angles.png Graphic file (type png)
  <use figures/angles.png>
 Package pdftex.def Info: figures/angles.png used on input line 588.
 (pdftex.def)             Requested size: 126.87175pt x 99.36948pt.
 )
-[24 <./figures/angles.png>]
+[22 <./figures/angles.png>]
 \openout2 = `correspondence.aux'.
 
  (./correspondence.tex
 Chapter 3.
-[25
 
-
-
-]
-Overfull \hbox (20.6184pt too wide) in paragraph at lines 49--52
-\OT1/qtm/m/n/10.95 We can thus as-so-ciate with $[][]$ a poly-tope $\OMS/qtm/m/
-n/10.95 P[]$\OT1/qtm/m/n/10.95 , which has as its ver-tex ma-trix $[]\OT1/cmr/m
-/n/10.95 (\OMS/qtm/m/n/10.95 P[]\OT1/cmr/m/n/10.95 ) = ([][]\OT1/cmr/bx/n/10.95
- ^^C[]\OT1/cmr/m/n/10.95 )[]$\OT1/qtm/m/n/10.95 ;
+Overfull \hbox (2.68085pt too wide) in paragraph at lines 17--20
+\OT1/cmr/m/n/10.95 with $[][] = ([][]\OML/cmm/m/it/10.95 ; [] ; [][]\OT1/cmr/m/
+n/10.95 )$, $\OT1/cmr/bx/n/10.95 ^^C[] \OT1/cmr/m/n/10.95 = [](\OML/cmm/m/it/10
+.95 ^^U[]; [] ; ^^U[]\OT1/cmr/m/n/10.95 )$ (note the re-spec-tive ab-sences of 
+$[][]\OML/cmm/m/it/10.95 ; [] ; [][]$
  []
 
-[26] [27] [28] [29] [30] [31] [32]
-<figures/GandH.png, id=963, 367.3725pt x 283.0575pt>
+[23
+
+
+
+] [24] [25] [26] [27] [28] [29]
+<figures/GandH.png, id=945, 367.3725pt x 283.0575pt>
 File: figures/GandH.png Graphic file (type png)
  <use figures/GandH.png>
 Package pdftex.def Info: figures/GandH.png used on input line 289.
 (pdftex.def)             Requested size: 110.21259pt x 84.9179pt.
 
-<figures/GxH.png, id=964, 438.63875pt x 318.18875pt>
+<figures/GxH.png, id=946, 438.63875pt x 318.18875pt>
 File: figures/GxH.png Graphic file (type png)
  <use figures/GxH.png>
 Package pdftex.def Info: figures/GxH.png used on input line 294.
 (pdftex.def)             Requested size: 131.59264pt x 95.45735pt.
 
-[33 <./figures/GandH.png> <./figures/GxH.png>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [34]
-[35] [36] [37] [38] <figures/HI_plane.png, id=1028, 232.87pt x 368.37625pt>
+[30] [31 <./figures/GandH.png> <./figures/GxH.png>] [32] [33] [34] [35]
+<figures/HI_plane.png, id=1011, 232.87pt x 368.37625pt>
 File: figures/HI_plane.png Graphic file (type png)
 
 <use figures/HI_plane.png>
 Package pdftex.def Info: figures/HI_plane.png used on input line 496.
 (pdftex.def)             Requested size: 116.43471pt x 184.18767pt.
- [39 <./figures/HI_plane.png>] [40] [41]
-Underfull \vbox (badness 1147) has occurred while \output is active []
-
- [42]
-[43] [44] [45] [46] [47] [48]
-<figures/Hin_plane.png, id=1135, 338.26375pt x 490.83376pt>
+ [36 <./figures/HI_plane.png>] [37] [38] [39]
+[40] [41] [42] [43] [44]
+<figures/Hin_plane.png, id=1114, 338.26375pt x 490.83376pt>
 File: figures/Hin_plane.png Graphic file (type png)
 
 <use figures/Hin_plane.png>
 Package pdftex.def Info: figures/Hin_plane.png used on input line 824.
 (pdftex.def)             Requested size: 101.4799pt x 147.25125pt.
 
-<figures/Hin_plane2.png, id=1136, 250.9375pt x 248.93pt>
+<figures/Hin_plane2.png, id=1115, 250.9375pt x 248.93pt>
 File: figures/Hin_plane2.png Graphic file (type png)
 
 <use figures/Hin_plane2.png>
 Package pdftex.def Info: figures/Hin_plane2.png used on input line 829.
 (pdftex.def)             Requested size: 125.46843pt x 124.46469pt.
- [49 <./figures/Hin_plane.png> <./figures/Hin_plane2.png>] [50]) [51]
+ [45 <./figures/Hin_plane.png> <./figures/Hin_plane2.png>] [46]) [47]
 \openout2 = `further_properties.aux'.
 
- (./further_properties.tex [52
-
-
-
-]
+ (./further_properties.tex
 Chapter 4.
-[53] [54]
-Underfull \vbox (badness 1237) has occurred while \output is active []
 
- [55]
-[56] [57] [58] [59] [60]
-Overfull \hbox (1.75925pt too wide) in paragraph at lines 307--309
-\OT1/qtm/m/n/10.95 where $[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 ^^\\OT1/cmr
-/m/n/10.95 )$ \OT1/qtm/m/n/10.95 is the sign of the per-mu-ta-tion. Now, for $\
-OML/cmm/m/it/10.95 i [] U$\OT1/qtm/m/n/10.95 , the $\OML/cmm/m/it/10.95 i$\OT1/
-qtm/m/n/10.95 -th row of $\OML/cmm/m/it/10.95 t\OT1/cmr/bx/n/10.95 I$ \OT1/qtm/
-m/n/10.95 is $\OML/cmm/m/it/10.95 t[][]$\OT1/qtm/m/n/10.95 , so $\OT1/cmr/m/n/1
-0.95 (\OML/cmm/m/it/10.95 t\OT1/cmr/bx/n/10.95 I\OT1/cmr/m/n/10.95 )[](\OML/cmm
-/m/it/10.95 i; ^^\\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 i\OT1/cmr/m/n/10.95 )
-) =
+Overfull \hbox (3.22221pt too wide) in paragraph at lines 19--20
+[]\OT1/cmr/m/n/10.95 First we in-quire into the re-la-tion-ship be-tween $[]$ a
+nd $[][]$. Put $[] = ([][] \OMS/cmsy/m/n/10.95 ^^@ [][]\OML/cmm/m/it/10.95 ; []
+ ; [][] \OMS/cmsy/m/n/10.95 ^^@
  []
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Overfull \hbox (3.74083pt too wide) in paragraph at lines 26--32
+\OT1/cmr/m/n/10.95 implying that $[][] [][](\OML/cmm/m/it/10.95 j\OT1/cmr/m/n/1
+0.95 ) = \OMS/cmsy/m/n/10.95 ^^@[][]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 j\O
+T1/cmr/m/n/10.95 )$. Equa-tion [] can then be writ-ten as $[][] [][](\OML/cmm/m
+/it/10.95 i\OT1/cmr/m/n/10.95 )[][](\OML/cmm/m/it/10.95 j\OT1/cmr/m/n/10.95 ) =
 
- [61]
-[62] [63]
-Overfull \hbox (28.36613pt too wide) in paragraph at lines 429--430
-[]\OT1/qtm/m/n/10.95 Equation [] im-plies that $\OT1/cmr/m/n/10.95 (\OMS/qtm/m/
-n/10.95 ^^@\OT1/cmr/m/n/10.95 1)[] [][][] = []([])(\OML/cmm/m/it/10.95 j; i\OT1
-/cmr/m/n/10.95 ) = ^^@[]([][] 1\OML/cmm/m/it/10.95 =w\OT1/cmr/m/n/10.95 (\OML/c
-mm/m/it/10.95 k\OT1/cmr/m/n/10.95 ))(\OML/cmm/m/it/10.95 w\OT1/cmr/m/n/10.95 (\
-OML/cmm/m/it/10.95 i\OT1/cmr/m/n/10.95 )\OML/cmm/m/it/10.95 w\OT1/cmr/m/n/10.95
- (\OML/cmm/m/it/10.95 j\OT1/cmr/m/n/10.95 ))[]$\OT1/qtm/m/n/10.95 .
  []
 
-[64] [65]
-
-LaTeX Warning: Reference `eq:||sv_i||_vol' on page 66 undefined on input line 5
-03.
-
-[66]
-Overfull \hbox (17.70844pt too wide) in paragraph at lines 564--565
-\OT1/qtm/m/n/10.95 of the cuts as-so-ci-ated with the pseu-doin-verse. It was f
-irst proved by De-vriendt and Van Mieghem [[]].
- []
-
-[67] [68]
-Overfull \hbox (10.44081pt too wide) in paragraph at lines 651--652
-[]\OT1/qtm/m/n/10.95 Perhaps a more in-sight-ful rep-re-sen-ta-tion of $\OMS/qt
-m/m/n/10.95 E\OT1/cmr/m/n/10.95 (\OMS/qtm/m/n/10.95 S[]\OT1/cmr/m/n/10.95 )$ \O
-T1/qtm/m/n/10.95 comes from ap-peal-ing to Equa-tions [] and [],
- []
+[48
 
 
-Overfull \hbox (10.7053pt too wide) in paragraph at lines 666--667
-[]\OT1/qtm/m/n/10.95 Consider $\OMS/qtm/m/n/10.95 E\OT1/cmr/m/n/10.95 (\OMS/qtm
-/m/n/10.95 S[]\OT1/cmr/m/n/10.95 )$\OT1/qtm/m/n/10.95 . The di-ag-o-nal ma-trix
- $[] \OT1/cmr/m/n/10.95 = \OT1/cmr/bx/n/10.95 ^^C[]\OT1/cmr/m/n/10.95 ([])[]$ \
-OT1/qtm/m/n/10.95 has en-tries $\OML/cmm/m/it/10.95 D\OT1/cmr/m/n/10.95 (\OML/c
-mm/m/it/10.95 i; i\OT1/cmr/m/n/10.95 ) = [][]([])[]$\OT1/qtm/m/n/10.95 ,
- []
 
-<figures/ellipsoid_and_sphere.png, id=1378, 501.875pt x 322.20375pt>
+] [49] [50] [51] [52] [53] [54] [55] [56] [57] [58] [59] [60] [61] [62]
+<figures/ellipsoid_and_sphere.png, id=1351, 501.875pt x 322.20375pt>
 File: figures/ellipsoid_and_sphere.png Graphic file (type png)
 
 <use figures/ellipsoid_and_sphere.png>
 Package pdftex.def Info: figures/ellipsoid_and_sphere.png used on input line 67
-1.
+3.
 (pdftex.def)             Requested size: 200.74643pt x 128.87921pt.
- [69]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [70 <./figures/ellipsoid_and_sphere.png>] [71]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [72]
-<figures/res_embedding.png, id=1421, 467.7475pt x 182.6825pt>
+ [63] [64 <./figures/ellipsoid_and_sphere.png>] [65] [66] <figures/res_embeddin
+g.png, id=1394, 467.7475pt x 182.6825pt>
 File: figures/res_embedding.png Graphic file (type png)
 
 <use figures/res_embedding.png>
-Package pdftex.def Info: figures/res_embedding.png used on input line 782.
+Package pdftex.def Info: figures/res_embedding.png used on input line 785.
 (pdftex.def)             Requested size: 233.87317pt x 91.34102pt.
- [73 <./figures/res_embedding.png>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [74]
-<figures/dynamics1.png, id=1437, 185.0112pt x 146.34676pt>
+ [67 <./figures/res_embedding.png>] [68]
+<figures/dynamics1.png, id=1410, 185.0112pt x 146.34676pt>
 File: figures/dynamics1.png Graphic file (type png)
 
 <use figures/dynamics1.png>
-Package pdftex.def Info: figures/dynamics1.png used on input line 851.
+Package pdftex.def Info: figures/dynamics1.png used on input line 854.
 (pdftex.def)             Requested size: 111.00757pt x 87.80872pt.
 
-<figures/dynamics3.png, id=1438, 355.5684pt x 287.27325pt>
+<figures/dynamics3.png, id=1411, 355.5684pt x 287.27325pt>
 File: figures/dynamics3.png Graphic file (type png)
 
 <use figures/dynamics3.png>
-Package pdftex.def Info: figures/dynamics3.png used on input line 856.
+Package pdftex.def Info: figures/dynamics3.png used on input line 859.
 (pdftex.def)             Requested size: 142.22482pt x 114.90726pt.
 
-Overfull \hbox (1.15042pt too wide) in paragraph at lines 856--857
+Overfull \hbox (1.15042pt too wide) in paragraph at lines 859--860
  [][] 
  []
 
-<figures/dynamics2.png, id=1439, 214.6419pt x 179.2296pt>
+<figures/dynamics2.png, id=1412, 214.6419pt x 179.2296pt>
 File: figures/dynamics2.png Graphic file (type png)
 
 <use figures/dynamics2.png>
-Package pdftex.def Info: figures/dynamics2.png used on input line 861.
+Package pdftex.def Info: figures/dynamics2.png used on input line 864.
 (pdftex.def)             Requested size: 128.78613pt x 107.53857pt.
- [75 <./figures/dynamics1.png> <./figures/dynamics3.png> <./figures/dynamics2.p
-ng>]) [76]
+ [69 <./figures/dynamics1.png> <./figures/dynamics3.png> <./figures/dynamics2.p
+ng>]) [70]
 \openout2 = `algorithmic_implications.aux'.
 
  (./algorithmic_implications.tex
 Chapter 5.
-[77
+[71
 
 
 
-] [78] <figures/NP_diagram.png, id=1475, 843.15pt x 493.845pt>
+] [72] <figures/NP_diagram.png, id=1448, 843.15pt x 493.845pt>
 File: figures/NP_diagram.png Graphic file (type png)
 
 <use figures/NP_diagram.png>
-Package pdftex.def Info: figures/NP_diagram.png used on input line 43.
+Package pdftex.def Info: figures/NP_diagram.png used on input line 45.
 (pdftex.def)             Requested size: 236.08038pt x 138.27565pt.
- [79] [80 <./figures/NP_diagram.png>]
-<figures/graph.png, id=1493, 227.85126pt x 180.675pt>
+ [73 <./figures/NP_diagram.png>] [74]
+<figures/graph.png, id=1467, 227.85126pt x 180.675pt>
 File: figures/graph.png Graphic file (type png)
  <use figures/graph.png>
-Package pdftex.def Info: figures/graph.png used on input line 88.
+Package pdftex.def Info: figures/graph.png used on input line 96.
 (pdftex.def)             Requested size: 91.13889pt x 72.2687pt.
 
-<figures/independent_sets.png, id=1494, 227.85126pt x 180.675pt>
+<figures/independent_sets.png, id=1468, 227.85126pt x 180.675pt>
 File: figures/independent_sets.png Graphic file (type png)
 
 <use figures/independent_sets.png>
-Package pdftex.def Info: figures/independent_sets.png used on input line 93.
+Package pdftex.def Info: figures/independent_sets.png used on input line 101.
 (pdftex.def)             Requested size: 91.13889pt x 72.2687pt.
 
-<figures/cliques.png, id=1495, 227.85126pt x 180.675pt>
+<figures/cliques.png, id=1469, 227.85126pt x 180.675pt>
 File: figures/cliques.png Graphic file (type png)
 
 <use figures/cliques.png>
-Package pdftex.def Info: figures/cliques.png used on input line 98.
+Package pdftex.def Info: figures/cliques.png used on input line 106.
 (pdftex.def)             Requested size: 91.13889pt x 72.2687pt.
-
-Underfull \vbox (badness 2744) has occurred while \output is active []
-
- [81 <./figures/graph.png> <./figures/independent_sets.png> <./figures/cliques.
-png>]
-[82] [83]
-Overfull \hbox (0.25044pt too wide) in paragraph at lines 189--190
-[][]\OT1/qtm/m/sc/10.95 Theorem \OT1/qtm/m/n/10.95 5.1\OT1/qtm/m/sc/10.95 . []\
-OT1/qtm/m/it/10.95 De-cid-ing whether two hy-per-a-cute sim-plices are con-gru-
-ent is Graph Iso-mor-phism Hard.
+ [75 <./figures/graph.png> <./figures/independent_sets.png> <./figures/cliques.
+png>] [76] [77] [78] [79] [80] [81] [82] [83] [84]
+[85] [86] [87] [88]
+Overfull \hbox (16.67274pt too wide) in paragraph at lines 549--551
+\OT1/cmr/m/n/10.95 Now, re-call that due to dou-ble or-thog-o-nal-ity of the ei
+gen-vec-tor ma-trix we have $[][] [][](\OML/cmm/m/it/10.95 i\OT1/cmr/m/n/10.95 
+)[][](\OML/cmm/m/it/10.95 j\OT1/cmr/m/n/10.95 ) =
  []
 
-[84] [85] [86] [87] [88] [89] [90]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [91]
-[92] [93] [94] [95]) [96]
+[89]) [90]
 \openout2 = `conclusion.aux'.
 
  (./conclusion.tex
 Chapter 6.
-[97
+[91
 
 
 
-] [98]) [99] (./main.bbl [100
+] [92]) [93] (./main.bbl
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ” in font cmr10!
+ [94
 
 
-] [101] [102] [103] [104] [105]) [106]
+] [95] [96] [97] [98]) [99]
 \openout2 = `appendix.aux'.
 
-
-(./appendix.tex
+ (./appendix.tex
 Appendix A.
-
-Overfull \hbox (4.51419pt too wide) in paragraph at lines 10--11
-[]\OT1/qtm/m/n/10.95 We be-gin by prov-ing unique-ness. Sup-pose $\OMS/qtm/m/n/
-10.95 f\OT1/cmr/bx/n/10.95 u[]\OMS/qtm/m/n/10.95 g$ \OT1/qtm/m/n/10.95 and $\OM
-S/qtm/m/n/10.95 f[][]g$ \OT1/qtm/m/n/10.95 are both biorthog-
- []
-
-
-Overfull \hbox (77.10269pt too wide) in paragraph at lines 10--11
-\OT1/qtm/m/n/10.95 o-nal bases of $\OMS/qtm/m/n/10.95 f\OT1/cmr/bx/n/10.95 v[]\
-OMS/qtm/m/n/10.95 g$\OT1/qtm/m/n/10.95 . We will show that $\OT1/cmr/bx/n/10.95
- u[] \OT1/cmr/m/n/10.95 = [][]$ \OT1/qtm/m/n/10.95 for all $\OML/cmm/m/it/10.95
- i$\OT1/qtm/m/n/10.95 . Fix $\OML/cmm/m/it/10.95 i \OMS/qtm/m/n/10.95 2 \OT1/cm
-r/m/n/10.95 [\OML/cmm/m/it/10.95 n\OT1/cmr/m/n/10.95 ]$\OT1/qtm/m/n/10.95 . By 
-in-de-pen-dence, $[]\OT1/cmr/m/n/10.95 (\OT1/cmr/bx/n/10.95 v[]\OML/cmm/m/it/10
-.95 ; [] ; \OT1/cmr/bx/n/10.95 v[]\OML/cmm/m/it/10.95 ; \OT1/cmr/bx/n/10.95 v[]
-\OML/cmm/m/it/10.95 ; [] ; \OT1/cmr/bx/n/10.95 v[]\OT1/cmr/m/n/10.95 )$
- []
-
-
-Underfull \vbox (badness 1675) has occurred while \output is active []
-
- [107
+[100
 
 
 ]
 
-LaTeX Warning: Reference `eq:L=BTB' on page 108 undefined on input line 68.
+LaTeX Warning: Reference `eq:L=BTB' on page 101 undefined on input line 68.
 
-[108]
-Underfull \vbox (badness 6910) has occurred while \output is active []
+[101] [102]
+Overfull \hbox (1.90898pt too wide) in paragraph at lines 125--127
+\OT1/cmr/m/n/10.95 This demon-strates that [] holds. We now show that $[][][][]
+[] = \OMS/cmsy/m/n/10.95 ^^@\OT1/cmr/m/n/10.95 2[][]$ and that $[][][][][] =
+ []
 
- [109]
-[110] [111] [112]
-Underfull \vbox (badness 1057) has occurred while \output is active []
+[103] [104] [105] [106] [107] [108] [109] [110]
+Overfull \hbox (11.92229pt too wide) in paragraph at lines 365--367
+\OT1/cmr/m/n/10.95 Recalling the block ma-trix equa-tion [] for hy-per-a-cute s
+im-plices, for all $\OML/cmm/m/it/10.95 i$ \OT1/cmr/m/n/10.95 we have $\OT1/cmr
+/bx/n/10.95 1\OT1/cmr/m/n/10.95 ([][][][][] +
+ []
 
- [113]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [114]
-[115] [116]
-Underfull \vbox (badness 6559) has occurred while \output is active []
-
- [117]
-[118]
+[111]
 Appendix B.
+[112
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [119
-
-]
-[120]
+] [113]
 Appendix C.
-<figures/g1.png, id=1823, 245.91875pt x 224.84pt>
+<figures/g1.png, id=1801, 245.91875pt x 224.84pt>
 File: figures/g1.png Graphic file (type png)
  <use figures/g1.png>
 Package pdftex.def Info: figures/g1.png used on input line 435.
 (pdftex.def)             Requested size: 61.47952pt x 56.20985pt.
 
-<figures/g2.png, id=1824, 245.91875pt x 224.84pt>
+<figures/g2.png, id=1802, 245.91875pt x 224.84pt>
 File: figures/g2.png Graphic file (type png)
  <use figures/g2.png>
 Package pdftex.def Info: figures/g2.png used on input line 438.
 (pdftex.def)             Requested size: 61.47952pt x 56.20985pt.
 
-<figures/g3.png, id=1825, 245.91875pt x 224.84pt>
+<figures/g3.png, id=1803, 245.91875pt x 224.84pt>
 File: figures/g3.png Graphic file (type png)
  <use figures/g3.png>
 Package pdftex.def Info: figures/g3.png used on input line 441.
 (pdftex.def)             Requested size: 61.47952pt x 56.20985pt.
 
-<figures/g4.png, id=1826, 245.91875pt x 224.84pt>
+<figures/g4.png, id=1804, 245.91875pt x 224.84pt>
 File: figures/g4.png Graphic file (type png)
  <use figures/g4.png>
 Package pdftex.def Info: figures/g4.png used on input line 444.
 (pdftex.def)             Requested size: 61.47952pt x 56.20985pt.
 
-<figures/g5.png, id=1827, 245.91875pt x 224.84pt>
+<figures/g5.png, id=1805, 245.91875pt x 224.84pt>
 File: figures/g5.png Graphic file (type png)
  <use figures/g5.png>
 Package pdftex.def Info: figures/g5.png used on input line 447.
 (pdftex.def)             Requested size: 61.47952pt x 56.20985pt.
 
-<figures/g6.png, id=1828, 245.91875pt x 224.84pt>
+<figures/g6.png, id=1806, 245.91875pt x 224.84pt>
 File: figures/g6.png Graphic file (type png)
  <use figures/g6.png>
 Package pdftex.def Info: figures/g6.png used on input line 450.
 (pdftex.def)             Requested size: 61.47952pt x 56.20985pt.
 
-<figures/g1_comb.png, id=1829, 205.60815pt x 132.2541pt>
+<figures/g1_comb.png, id=1807, 205.60815pt x 132.2541pt>
 File: figures/g1_comb.png Graphic file (type png)
 
 <use figures/g1_comb.png>
 Package pdftex.def Info: figures/g1_comb.png used on input line 455.
 (pdftex.def)             Requested size: 61.68292pt x 39.67653pt.
 
-<figures/g2_comb.png, id=1830, 277.15546pt x 203.44005pt>
+<figures/g2_comb.png, id=1808, 277.15546pt x 203.44005pt>
 File: figures/g2_comb.png Graphic file (type png)
 
 <use figures/g2_comb.png>
@@ -2168,160 +2039,160 @@ Overfull \hbox (12.61006pt too wide) in paragraph at lines 459--460
  [][] 
  []
 
-<figures/g3_comb.png, id=1831, 191.15414pt x 171.64125pt>
+<figures/g3_comb.png, id=1809, 191.15414pt x 171.64125pt>
 File: figures/g3_comb.png Graphic file (type png)
 
 <use figures/g3_comb.png>
 Package pdftex.def Info: figures/g3_comb.png used on input line 463.
 (pdftex.def)             Requested size: 57.34668pt x 51.49275pt.
 
-<figures/g4_comb.png, id=1832, 206.6922pt x 171.64125pt>
+<figures/g4_comb.png, id=1810, 206.6922pt x 171.64125pt>
 File: figures/g4_comb.png Graphic file (type png)
 
 <use figures/g4_comb.png>
 Package pdftex.def Info: figures/g4_comb.png used on input line 467.
 (pdftex.def)             Requested size: 62.00813pt x 51.49275pt.
 
-<figures/g5_comb.png, id=1833, 196.5744pt x 215.72595pt>
+<figures/g5_comb.png, id=1811, 196.5744pt x 215.72595pt>
 File: figures/g5_comb.png Graphic file (type png)
 
 <use figures/g5_comb.png>
 Package pdftex.def Info: figures/g5_comb.png used on input line 471.
 (pdftex.def)             Requested size: 58.97276pt x 64.71828pt.
 
-<figures/g6_comb.png, id=1834, 209.94435pt x 159.7167pt>
+<figures/g6_comb.png, id=1812, 209.94435pt x 159.7167pt>
 File: figures/g6_comb.png Graphic file (type png)
 
 <use figures/g6_comb.png>
 Package pdftex.def Info: figures/g6_comb.png used on input line 475.
 (pdftex.def)             Requested size: 62.98378pt x 47.91537pt.
 
-<figures/g1_norm.png, id=1835, 181.75905pt x 164.7756pt>
+<figures/g1_norm.png, id=1813, 181.75905pt x 164.7756pt>
 File: figures/g1_norm.png Graphic file (type png)
 
 <use figures/g1_norm.png>
 Package pdftex.def Info: figures/g1_norm.png used on input line 480.
 (pdftex.def)             Requested size: 54.52812pt x 49.43304pt.
 
-<figures/g2_norm.png, id=1836, 211.7511pt x 165.13695pt>
+<figures/g2_norm.png, id=1814, 211.7511pt x 165.13695pt>
 File: figures/g2_norm.png Graphic file (type png)
 
 <use figures/g2_norm.png>
 Package pdftex.def Info: figures/g2_norm.png used on input line 484.
 (pdftex.def)             Requested size: 63.5258pt x 49.54146pt.
 
-<figures/g3_norm.png, id=1837, 202.356pt x 138.7584pt>
+<figures/g3_norm.png, id=1815, 202.356pt x 138.7584pt>
 File: figures/g3_norm.png Graphic file (type png)
 
 <use figures/g3_norm.png>
 Package pdftex.def Info: figures/g3_norm.png used on input line 488.
 (pdftex.def)             Requested size: 60.70726pt x 41.62784pt.
 
-<figures/g4_norm.png, id=1838, 195.49036pt x 134.06085pt>
+<figures/g4_norm.png, id=1816, 195.49036pt x 134.06085pt>
 File: figures/g4_norm.png Graphic file (type png)
 
 <use figures/g4_norm.png>
 Package pdftex.def Info: figures/g4_norm.png used on input line 492.
 (pdftex.def)             Requested size: 58.64755pt x 40.21855pt.
 
-<figures/g5_norm.png, id=1839, 195.129pt x 180.31364pt>
+<figures/g5_norm.png, id=1817, 195.129pt x 180.31364pt>
 File: figures/g5_norm.png Graphic file (type png)
 
 <use figures/g5_norm.png>
 Package pdftex.def Info: figures/g5_norm.png used on input line 496.
 (pdftex.def)             Requested size: 58.53914pt x 54.0945pt.
 
-<figures/g6_norm.png, id=1840, 179.9523pt x 161.1621pt>
+<figures/g6_norm.png, id=1818, 179.9523pt x 161.1621pt>
 File: figures/g6_norm.png Graphic file (type png)
 
 <use figures/g6_norm.png>
 Package pdftex.def Info: figures/g6_norm.png used on input line 500.
 (pdftex.def)             Requested size: 53.9861pt x 48.349pt.
 
-<figures/g1_norm_comb.png, id=1841, 209.583pt x 176.3388pt>
+<figures/g1_norm_comb.png, id=1819, 209.583pt x 176.3388pt>
 File: figures/g1_norm_comb.png Graphic file (type png)
 
 <use figures/g1_norm_comb.png>
 Package pdftex.def Info: figures/g1_norm_comb.png used on input line 506.
 (pdftex.def)             Requested size: 62.87538pt x 52.90204pt.
 
-<figures/g2_norm_comb.png, id=1842, 207.05354pt x 148.51485pt>
+<figures/g2_norm_comb.png, id=1820, 207.05354pt x 148.51485pt>
 File: figures/g2_norm_comb.png Graphic file (type png)
 
 <use figures/g2_norm_comb.png>
 Package pdftex.def Info: figures/g2_norm_comb.png used on input line 510.
 (pdftex.def)             Requested size: 62.11653pt x 44.55478pt.
 
-<figures/g3_norm_comb.png, id=1843, 196.21304pt x 183.5658pt>
+<figures/g3_norm_comb.png, id=1821, 196.21304pt x 183.5658pt>
 File: figures/g3_norm_comb.png Graphic file (type png)
 
 <use figures/g3_norm_comb.png>
 Package pdftex.def Info: figures/g3_norm_comb.png used on input line 514.
 (pdftex.def)             Requested size: 58.86436pt x 55.07016pt.
 
-<figures/g4_norm_comb.png, id=1844, 197.2971pt x 143.8173pt>
+<figures/g4_norm_comb.png, id=1822, 197.2971pt x 143.8173pt>
 File: figures/g4_norm_comb.png Graphic file (type png)
 
 <use figures/g4_norm_comb.png>
 Package pdftex.def Info: figures/g4_norm_comb.png used on input line 518.
 (pdftex.def)             Requested size: 59.18958pt x 43.14551pt.
 
-<figures/g5_norm_comb.png, id=1845, 205.2468pt x 146.7081pt>
+<figures/g5_norm_comb.png, id=1823, 205.2468pt x 146.7081pt>
 File: figures/g5_norm_comb.png Graphic file (type png)
 
 <use figures/g5_norm_comb.png>
 Package pdftex.def Info: figures/g5_norm_comb.png used on input line 522.
 (pdftex.def)             Requested size: 61.57451pt x 44.01276pt.
 
-<figures/g6_norm_comb.png, id=1846, 229.8186pt x 177.42285pt>
+<figures/g6_norm_comb.png, id=1824, 229.8186pt x 177.42285pt>
 File: figures/g6_norm_comb.png Graphic file (type png)
 
 <use figures/g6_norm_comb.png>
 Package pdftex.def Info: figures/g6_norm_comb.png used on input line 526.
 (pdftex.def)             Requested size: 68.9461pt x 53.22725pt.
 
-<figures/g1_norm_comb_inv.png, id=1847, 211.38976pt x 186.81795pt>
+<figures/g1_norm_comb_inv.png, id=1825, 211.38976pt x 186.81795pt>
 File: figures/g1_norm_comb_inv.png Graphic file (type png)
 
 <use figures/g1_norm_comb_inv.png>
 Package pdftex.def Info: figures/g1_norm_comb_inv.png used on input line 531.
 (pdftex.def)             Requested size: 63.4174pt x 56.0458pt.
 
-<figures/g2_norm_comb_inv.png, id=1848, 197.2971pt x 153.9351pt>
+<figures/g2_norm_comb_inv.png, id=1826, 197.2971pt x 153.9351pt>
 File: figures/g2_norm_comb_inv.png Graphic file (type png)
 
 <use figures/g2_norm_comb_inv.png>
 Package pdftex.def Info: figures/g2_norm_comb_inv.png used on input line 535.
 (pdftex.def)             Requested size: 59.18958pt x 46.18088pt.
 
-<figures/g3_norm_comb_inv.png, id=1849, 236.3229pt x 160.4394pt>
+<figures/g3_norm_comb_inv.png, id=1827, 236.3229pt x 160.4394pt>
 File: figures/g3_norm_comb_inv.png Graphic file (type png)
 
 <use figures/g3_norm_comb_inv.png>
 Package pdftex.def Info: figures/g3_norm_comb_inv.png used on input line 539.
 (pdftex.def)             Requested size: 70.8974pt x 48.13219pt.
 
-<figures/g4_norm_comb_inv.png, id=1850, 215.72595pt x 154.6578pt>
+<figures/g4_norm_comb_inv.png, id=1828, 215.72595pt x 154.6578pt>
 File: figures/g4_norm_comb_inv.png Graphic file (type png)
 
 <use figures/g4_norm_comb_inv.png>
 Package pdftex.def Info: figures/g4_norm_comb_inv.png used on input line 543.
 (pdftex.def)             Requested size: 64.71828pt x 46.39769pt.
 
-<figures/g5_norm_comb_inv.png, id=1851, 221.1462pt x 146.7081pt>
+<figures/g5_norm_comb_inv.png, id=1829, 221.1462pt x 146.7081pt>
 File: figures/g5_norm_comb_inv.png Graphic file (type png)
 
 <use figures/g5_norm_comb_inv.png>
 Package pdftex.def Info: figures/g5_norm_comb_inv.png used on input line 547.
 (pdftex.def)             Requested size: 66.34436pt x 44.01276pt.
 
-<figures/g6_norm_comb_inv.png, id=1852, 198.7425pt x 160.80075pt>
+<figures/g6_norm_comb_inv.png, id=1830, 198.7425pt x 160.80075pt>
 File: figures/g6_norm_comb_inv.png Graphic file (type png)
 
 <use figures/g6_norm_comb_inv.png>
 Package pdftex.def Info: figures/g6_norm_comb_inv.png used on input line 551.
 (pdftex.def)             Requested size: 59.6232pt x 48.24059pt.
-) [121
+) [114
 
  <./figures/g1.png> <./figures/g2.png> <./figures/g3.png> <./figures/g4.png> <.
 /figures/g5.png> <./figures/g6.png> <./figures/g1_comb.png> <./figures/g2_comb.
@@ -2333,73 +2204,70 @@ _norm_comb.png> <./figures/g4_norm_comb.png> <./figures/g5_norm_comb.png> <./fi
 gures/g6_norm_comb.png> <./figures/g1_norm_comb_inv.png> <./figures/g2_norm_com
 b_inv.png> <./figures/g3_norm_comb_inv.png> <./figures/g4_norm_comb_inv.png> <.
 /figures/g5_norm_comb_inv.png> <./figures/g6_norm_comb_inv.png>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 78.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 78.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 81.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 81.
  (./main.aux (./frontmatter/titlepage.aux)
 (./frontmatter/abstract.aux) (./frontmatter/laysummary.aux)
 (./frontmatter/acknowledgements.aux) (./frontmatter/nomenclature.aux)
 (./introduction.aux) (./background.aux) (./correspondence.aux)
 (./further_properties.aux) (./algorithmic_implications.aux) (./conclusion.aux)
 (./appendix.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 78.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 78.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 81.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 81.
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: A56550372634775668717043B50F741B;3728.
-
-
-LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+(rerunfilecheck)             Checksum: 21273AA06732C4F6436638F36A44CC12;3732.
 
 
 LaTeX Warning: There were undefined references.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 78.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 81.
  ) 
 Here is how much of TeX's memory you used:
- 18427 strings out of 493014
- 312162 string characters out of 6133351
- 413659 words of memory out of 5000000
- 21102 multiletter control sequences out of 15000+600000
- 61685 words of font info for 85 fonts, out of 8000000 for 9000
+ 18364 strings out of 493014
+ 311094 string characters out of 6133351
+ 412326 words of memory out of 5000000
+ 21051 multiletter control sequences out of 15000+600000
+ 21331 words of font info for 78 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  42i,21n,43p,10398b,501s stack positions out of 5000i,500n,10000p,200000b,80000s
 pdfTeX warning (dest): name{Hfootnote.13} has been referenced but does not ex
 ist, replaced by a fixed one
 
-{/usr/local/texlive/2016/texmf-dist/fonts/enc/dvips/tex-gyre/q-rm.enc}{/usr/loc
-al/texlive/2016/texmf-dist/fonts/enc/dvips/tex-gyre/q-rm-sc.enc}</usr/local/tex
-live/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texl
-ive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/local/texliv
-e/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/local/texlive/
-2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2
-016/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></usr/local/texliv
-e/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive
-/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2
-016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/201
-6/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2016/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/local/texlive/2016/
-texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib8.pfb></usr/local/texlive/2
-016/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib9.pfb></usr/local/texli
-ve/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive
-/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/20
-16/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2016/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2016/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2016/texmf-
-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/2016/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2016/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2016/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2016/texmf-dist/f
-onts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2016/texmf-dist/fon
-ts/type1/public/amsfonts/euler/eufm10.pfb></usr/local/texlive/2016/texmf-dist/f
-onts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2016/texmf-di
-st/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2016/texm
-f-dist/fonts/type1/public/tex-gyre/qtmb.pfb></usr/local/texlive/2016/texmf-dist
-/fonts/type1/public/tex-gyre/qtmbi.pfb></usr/local/texlive/2016/texmf-dist/font
-s/type1/public/tex-gyre/qtmr.pfb></usr/local/texlive/2016/texmf-dist/fonts/type
-1/public/tex-gyre/qtmri.pfb>
-Output written on main.pdf (135 pages, 2184760 bytes).
+</usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbsy10.pfb>
+</usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><
+/usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></
+usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></us
+r/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/
+local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr
+/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr
+/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/
+local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></u
+sr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></us
+r/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/
+local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/lo
+cal/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/loca
+l/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/loca
+l/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib8.pfb></usr/
+local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib9.pfb></
+usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></us
+r/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/l
+ocal/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/loca
+l/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/t
+exlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texl
+ive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texli
+ve/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texliv
+e/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/
+2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/20
+16/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2016
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2016/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/local/texlive/2016/te
+xmf-dist/fonts/type1/public/amsfonts/euler/eufm10.pfb></usr/local/texlive/2016/
+texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2
+016/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on main.pdf (125 pages, 2186612 bytes).
 PDF statistics:
- 2088 PDF objects out of 2487 (max. 8388607)
- 1798 compressed objects within 18 object streams
- 520 named destinations out of 1000 (max. 500000)
+ 2069 PDF objects out of 2073 (max. 8388607)
+ 1787 compressed objects within 18 object streams
+ 513 named destinations out of 1000 (max. 500000)
  744 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -492,3 +492,23 @@ We can now use  the relationship between $\Gamma_G$ and $\Gamman_G$ to relate th
 \end{proof}
 
 
+\begin{lemma}
+	
+	\vwis is \NP-Complete. 
+\end{lemma}
+\begin{proof}
+	Given a purported independent $I$, it is easily checkable in polynomial time whether $\vol(I)$ is of a certain size---hence \vwis is in \NP. 
+	To that it is \NP-hard, we reduce from \iset. Let $G=(V(G),E(G))$ and  $k\in\N$ be an instance of \iset. The intuition behind the following reduction is to create a separate graph $H$ which, for each independent set $I\subset V(G)$, has an independent set $J$ in $H$ such that  $\vol_H(J)=|I|$ in $H$ and conversely, for each maximal independent set $J$ in $H$ there exists an independent set $I$ in $G$ with $|I| = \vol_H(J)$. From this relationship it follows that $G,k$ constitutes a yes instance to \iset iff $H,k$ is a yes instance to \mwis.  After wordsmithing the intuition, let us proceed to the formal argument. 
+	
+	Construct a graph $H=(V(H), E(H))$ as follows. For each vertex $u\in V(G)$, create $\deg_G(u)+1$ vertices $u_0,u_1,\dots,u_{\deg_G(u)}$ in $V(H)$. For $1\leq k\leq \deg_G(u)$ set \[w_H(u_k) =  \frac{1}{\deg_G(u)}.\] Construct the edge set $E(H)$ such that the neighbours of each vertex are described by 
+	\begin{equation*}
+	\partial_{H}(u_k) = \{u_0\}\cup \bigcup_{v\in \partial_G(u)}\{v_\ell: 0\leq \ell\leq \deg_G(v) \}.
+	\end{equation*}
+	In words, $u_k$ is connected to all the vertices representing $v$ if $(u,v)\in E(G)$, and to $u_0$. Now, let $I\subset V(G)$ be an independent set in $G$ and consider the set
+	\[J = \{v_k: v\in I, 1\leq k\leq \deg_G(v)\}.\]
+	We claim that $J$ is an independent set in $H$. 
+	Indeed, if $v_k,u_\ell\in J$ and  $(v_k,u_\ell) \in E(H)$ for some $k\in[\deg_G(v)]$, $\ell\in[\deg_G(u)]$ then $v\in d_G(u)$ by definition of $\partial_H(u)$. Since $I$ is an independent set however, both $u$ and $v$ are not in $I$, a contradiction. This demonstrates that $J$ is bonafide independent set. Moreover, 
+	\[\vol_H(J) = \sum_{v\in I}\sum_{k=1}^{\deg_G(u)} w_H(v_k) = \sum_{v\in I}\sum_{k=1}^{\deg_G(u)} \frac{1}{\deg_G(u)} = |I|.\]
+	
+	Conversely, let $J$ be an independent set in $H$. We claim that there exists an independent $J'$ in $H$ with $\vol_H(J')\geq \vol_H(J)$ containing only vertices of the form $v_\ell$ for $\ell\geq 1$, i.e., not $v_0$. Initially, set $J'=J$ but suppose $v_0\in J$. Replace $v_0$ by $v_1,\dots,v_{\deg_G(v)}$ in $J'$.  None of the these vertices share edges, and aside from one another, $v_\ell$ and $v_0$ for $\ell>0$ have the same edge set. It follows that $J'$ remains an independent set. Moreover, since $w_H(v_0) < w_H(v_\ell)$ by construction, we have $\vol_H(J)< \vol_H(J')$. Let us remark further that if $J$ contains vertices $\{v_\ell\}_{\ell\in F}$ for some $F\subsetneq  [\deg_G(v)]$, then we may add the missing vertices $v_k$, $k\in [\deg_G(v)]\setminus F$ while maintaining the property that $J$ is an independent set (this follows since $\partial_H(v_k) = \partial_H(v_\ell)$ for all  $\ell,k\geq1$). We have thus argued that every maximal independent set in $H$ can be written in the form $J= \cup_{v\in I}\{v_k: 1\leq k\leq \deg_G(v)\}$ for some set $I\subset V(G)$. We now claim that $I$ is an independent set in $G$. The argument is similar to above: If not, then $u,v\in I$ with $u\sim v$, but this implies that $v_k\sim v_\ell$ in $H$ meaning that $J$ is not an independent set.  Additionally, as above, $\vol_H(J)=|I|$. Therefore, there exists an independent set $J$ in $H$ with $\vol_H(J)\geq k$ iff there exists an independent set $I$ in $G$ with $|I|\geq k$, concluding the argument. 
+\end{proof}
