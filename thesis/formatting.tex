@@ -92,8 +92,7 @@ citecolor=darkblue
 }
 
 \newcommand{\midmatterstyling}{%
-%\onehalfspacing
-%\newgeometry{twoside,margin=1.2in}
+\onehalfspacing
 %\doublespacing
 \headingstyle
 \pagenumbering{arabic}
@@ -104,13 +103,15 @@ citecolor=darkblue
 }
 
 \newcommand{\chapterquote}[2]{
-\begin{adjustwidth}{12em}{2em}
+{\singlespacing
+\begin{adjustwidth}{16em}{2em}
+\textit{#1} 
+%\vspace{0.1cm}
 \begin{flushright}
-\textit{#1} \\
-\vspace{0.1cm}
 --- #2
 \end{flushright}
 \end{adjustwidth}
+}
 }
 
 

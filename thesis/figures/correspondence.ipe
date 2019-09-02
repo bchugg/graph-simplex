@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE ipe SYSTEM "ipe.dtd">
 <ipe version="70206" creator="Ipe 7.2.7">
-<info created="D:20190809164846" modified="D:20190809165844"/>
+<info created="D:20190809164846" modified="D:20190901115552"/>
 <ipestyle name="basic">
 <symbol name="arrow/arc(spx)">
 <path stroke="sym-stroke" fill="sym-stroke" pen="sym-pen">
@@ -267,15 +267,15 @@ h
 224 400 m
 64.4981 0 0 64.4981 256 344 224 288 a
 </path>
-<text matrix="1.62857 0 0 1.56578 76.1282 -228.266" transformations="translations" pos="224 400" stroke="black" type="label" width="20.157" height="11.766" depth="2.58" valign="baseline" size="LARGE">$\mathcal{S}_G$</text>
-<text matrix="1.62857 0 0 1.56578 79.2217 -231.289" transformations="translations" pos="224 272" stroke="black" type="label" width="21.319" height="13.737" depth="3.83" valign="baseline" size="LARGE">$\mathcal{S}_G^+$</text>
-<text matrix="1.62857 0 0 1.56578 91.0015 -230.02" transformations="translations" pos="112 336" stroke="black" type="label" width="19.144" height="16.938" depth="0" valign="baseline" size="Huge">$G$</text>
-<text matrix="1.62857 0 0 1.56578 92.1684 -232.525" transformations="translations" pos="192 336" stroke="black" type="label" width="20.157" height="11.806" depth="4.26" valign="baseline" size="LARGE">$\mathcal{S}_G^*$</text>
+<text matrix="1.62857 0 0 1.56578 76.1282 -228.266" transformations="translations" pos="224 400" stroke="black" type="label" width="20.157" height="11.766" depth="2.58" valign="baseline" size="LARGE" style="math">\mathcal{S}_G</text>
+<text matrix="1.62857 0 0 1.56578 79.2217 -231.289" transformations="translations" pos="224 272" stroke="black" type="label" width="21.319" height="13.737" depth="3.83" valign="baseline" size="LARGE" style="math">\mathcal{S}_G^+</text>
+<text matrix="1.62857 0 0 1.56578 91.0015 -230.02" transformations="translations" pos="112 336" stroke="black" type="label" width="19.144" height="16.938" depth="0" valign="baseline" size="Huge" style="math">G</text>
+<text matrix="1.62857 0 0 1.56578 92.1684 -232.525" transformations="translations" pos="192 336" stroke="black" type="label" width="20.157" height="11.806" depth="4.26" valign="baseline" size="LARGE" style="math">\mathcal{S}_G^*</text>
 <path matrix="1.62857 0 0 1.56578 89.1429 -233.892" stroke="black" pen="heavier" arrow="normal/normal">
 224 288 m
 64.4981 0 0 64.4981 192 344 224 400 a
 </path>
-<text matrix="1 0 0 1 271.025 -41.9055" transformations="translations" pos="240 336" stroke="black" type="label" width="39.988" height="13.733" depth="4.29" valign="baseline" size="LARGE">$(\mathcal{S}_G^+)^*$</text>
+<text matrix="1 0 0 1 271.025 -41.9055" transformations="translations" pos="240 336" stroke="black" type="label" width="39.988" height="13.733" depth="4.29" valign="baseline" size="LARGE" style="math">(\mathcal{S}_G^+)^*</text>
 <path matrix="1.62857 0 0 1.56578 89.1429 -233.892" stroke="black" pen="heavier" arrow="normal/normal" rarrow="normal/normal">
 224 400 m
 128 352 l
@@ -288,10 +288,10 @@ h
 192 352 m
 96 400 l
 </path>
-<text matrix="1.62857 0 0 1.56578 -42.1613 -232.884" transformations="translations" pos="80 400" stroke="black" type="label" width="20.157" height="14.949" depth="2.58" valign="baseline" size="LARGE">$\widehat{\mathcal{S}}_G$</text>
-<text matrix="1.62857 0 0 1.56578 -29.1127 -232.643" transformations="translations" pos="80 272" stroke="black" type="label" width="21.319" height="14.95" depth="3.83" valign="baseline" size="LARGE">$\widehat{\mathcal{S}}_G^+$</text>
-<text matrix="1.62857 0 0 1.56578 -73.841 -168.958" transformations="translations" pos="80 320" stroke="black" type="label" width="39.988" height="14.946" depth="4.29" valign="baseline" size="LARGE">$(\widehat{\mathcal{S}}_G^+)^*$</text>
-<text matrix="1.62857 0 0 1.56578 -15.0857 -283.997" transformations="translations" pos="80 352" stroke="black" type="label" width="20.157" height="14.942" depth="4.26" valign="baseline" size="LARGE">$\widehat{\mathcal{S}}_G^*$</text>
+<text matrix="1.62857 0 0 1.56578 -42.1613 -232.884" transformations="translations" pos="80 400" stroke="black" type="label" width="20.157" height="14.949" depth="2.58" valign="baseline" size="LARGE" style="math">\widehat{\mathcal{S}}_G</text>
+<text matrix="1.62857 0 0 1.56578 -29.1127 -232.643" transformations="translations" pos="80 272" stroke="black" type="label" width="21.319" height="14.95" depth="3.83" valign="baseline" size="LARGE" style="math">\widehat{\mathcal{S}}_G^+</text>
+<text matrix="1.62857 0 0 1.56578 -73.841 -168.958" transformations="translations" pos="80 320" stroke="black" type="label" width="39.988" height="14.946" depth="4.29" valign="baseline" size="LARGE" style="math">(\widehat{\mathcal{S}}_G^+)^*</text>
+<text matrix="1.62857 0 0 1.56578 -15.0857 -283.997" transformations="translations" pos="80 352" stroke="black" type="label" width="20.157" height="14.942" depth="4.26" valign="baseline" size="LARGE" style="math">\widehat{\mathcal{S}}_G^*</text>
 <path matrix="1.62857 0 0 1.56578 -41.1429 -233.892" stroke="black" pen="heavier" arrow="normal/normal" rarrow="normal/normal">
 96 400 m
 73.7564 0 0 -73.7564 40 352 112 336 a
@@ -300,10 +300,6 @@ h
 96 288 m
 50.5964 0 0 -50.5964 112 336 64 352 a
 </path>
-<text matrix="1.62857 0 0 1.56578 -45.9234 -232.627" transformations="translations" pos="224 384" stroke="black" type="label" width="61.17" height="11.336" depth="2.15" valign="baseline" size="Large">$\Sigma^t \Sigma=L_G$</text>
-<text matrix="1.46411 0.685686 -0.713185 1.40766 196.84 -320.329" transformations="translations" pos="208 288" stroke="black" type="label" width="88.59" height="11.58" depth="3.59" valign="baseline" size="Large">$(\Sigma^+)^t \Sigma^+=L_G^+$</text>
-<text matrix="1.62857 0 0 1.56578 -35.0832 -224.108" transformations="translations" pos="128 288" stroke="black" type="label" width="88.59" height="12.982" depth="3.59" valign="baseline" size="Large">$(\widehat{\Sigma}^+)^t  \widehat{\Sigma}^+=\widehat{L}_G^+$</text>
-<text matrix="1.62857 0 0 1.56578 -30.7974 -233.059" transformations="translations" pos="128 384" stroke="black" type="label" width="61.17" height="12.988" depth="2.15" valign="baseline" size="Large">$\widehat{\Sigma}^t \widehat{\Sigma}=\widehat{L}_G$</text>
 <text matrix="1 0 0 1 -16 0" transformations="translations" pos="16 368" stroke="black" type="label" width="78.497" height="11.955" depth="0" valign="baseline" size="LARGE">Normalized</text>
 <text matrix="1 0 0 1 -16 0" transformations="translations" pos="16 352" stroke="black" type="label" width="63.953" height="11.954" depth="3.35" valign="baseline" size="LARGE">Simplices</text>
 <text matrix="1 0 0 1 -32 0" transformations="translations" pos="528 368" stroke="black" type="label" width="98.592" height="11.955" depth="0" valign="baseline" size="LARGE">Combinatorial</text>

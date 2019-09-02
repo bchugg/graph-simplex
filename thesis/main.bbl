@@ -94,10 +94,6 @@ Otfried Cheong.
 \newblock The ipe extensible drawing editor.
 \newblock {\em Online: http://ipe. otfried. org}, 2014.
 
-\bibitem[Chu19]{chugg2019graph}
-Ben Chugg.
-\newblock Graph-simplex correspondence software, 2019.
-
 \bibitem[CK78]{chaiken1978matrix}
 Seth Chaiken and Daniel~J Kleitman.
 \newblock Matrix tree theorems.
@@ -112,7 +108,7 @@ Stephen~A Cook.
 
 \bibitem[CZ07]{chen2007resistance}
 Haiyan Chen and Fuji Zhang.
-\newblock Resistance distance and the normalized laplacian spectrum.
+\newblock Resistance distance and the normalized { L}aplacian spectrum.
 \newblock {\em Discrete Applied Mathematics}, 155(5):654--661, 2007.
 
 \bibitem[CZC18]{cai2018comprehensive}
@@ -123,13 +119,13 @@ Hongyun Cai, Vincent~W Zheng, and Kevin Chen-Chuan Chang.
   30(9):1616--1637, 2018.
 
 \bibitem[DFPP90]{de1990draw}
-Hubert De~Fraysseix, J{'a}nos Pach, and Richard Pollack.
+Hubert De~Fraysseix, J{\'a}nos Pach, and Richard Pollack.
 \newblock How to draw a planar graph on a grid.
 \newblock {\em Combinatorica}, 10(1):41--51, 1990.
 
 \bibitem[DG03]{dasgupta2003elementary}
 Sanjoy Dasgupta and Anupam Gupta.
-\newblock An elementary proof of a theorem of johnson and lindenstrauss.
+\newblock An elementary proof of a theorem of {J}ohnson and {L}indenstrauss.
 \newblock {\em Random Structures \& Algorithms}, 22(1):60--65, 2003.
 
 \bibitem[DH97]{dean1997rectangle}
@@ -156,28 +152,27 @@ Cesim Erten, Stephen~G Kobourov, Vu~Le, and Armand Navabi.
 
 \bibitem[Ell11]{ellens2011effective}
 Wendy Ellens.
-\newblock {\em Effective resistance and other graph measures for network
-  robustness}.
-\newblock PhD thesis, Master thesis, Leiden University, 2011.
+\newblock Effective resistance and other graph measures for network robustness.
+\newblock Master's thesis, Leiden University, 2011.
 
 \bibitem[ELM16]{evans2016simultaneous}
 William~S Evans, Giuseppe Liotta, and Fabrizio Montecchiani.
 \newblock Simultaneous visibility representations of plane st-graphs using
-  l-shapes.
+  {L}-shapes.
 \newblock {\em Theoretical Computer Science}, 645:100--111, 2016.
 
 \bibitem[Fie54]{fiedler1954geometry}
-M~Fiedler.
+Miroslav Fiedler.
 \newblock Geometry of the simplex in en, part i.
 \newblock {\em Casopis Pest. Mat}, 79:297--320, 1954.
 
 \bibitem[Fie55]{fiedler1955geometry}
-M~Fiedler.
+Miroslav Fiedler.
 \newblock Geometry of the simplex in {$E_n$}, part iii.
 \newblock {\em Casopis Pest. Mat}, 80:462--476, 1955.
 
 \bibitem[Fie56]{fiedler1956geometry}
-M~Fiedler.
+Miroslav Fiedler.
 \newblock Geometry of the simplex in en, part iii.
 \newblock {\em Casopis Pest. Mat}, 81:182--223, 1956.
 
@@ -193,7 +188,7 @@ Miroslav Fiedler.
 \newblock {\em Czechoslovak Mathematical Journal}, 25(4):619--633, 1975.
 
 \bibitem[Fie76]{fiedler1976aggregation}
-M~Fiedler.
+Miroslav Fiedler.
 \newblock Aggregation in graphs.
 \newblock {\em Coll. Math. Soc. J. Bolyai}, 18:315--330, 1976.
 
@@ -204,13 +199,14 @@ Miroslav Fiedler.
 
 \bibitem[Fie93]{fiedler1993geometric}
 Miroslav Fiedler.
-\newblock A geometric approach to the laplacian matrix of a graph.
+\newblock A geometric approach to the {L}aplacian matrix of a graph.
 \newblock In {\em Combinatorial and Graph-Theoretical Problems in Linear
   Algebra}, pages 73--98. Springer, 1993.
 
 \bibitem[Fie95]{fiedler1995moore}
 Miroslav Fiedler.
-\newblock Moore-penrose involutions in the classes of laplacians and simplices.
+\newblock Moore-{P}enrose involutions in the classes of {L}aplacians and
+  simplices.
 \newblock {\em Linear and Multilinear Algebra}, 39(1-2):171--178, 1995.
 
 \bibitem[Fie98]{fiedler1998some}
@@ -220,7 +216,7 @@ Miroslav Fiedler.
 
 \bibitem[Fie05]{fiedler2005geometry}
 Miroslav Fiedler.
-\newblock Geometry of the laplacian.
+\newblock Geometry of the {L}aplacian.
 \newblock {\em Linear algebra and its applications}, 403:409--413, 2005.
 
 \bibitem[Fie11]{fiedler2011matrices}
@@ -266,7 +262,7 @@ Thomas Hawkins.
 
 \bibitem[JL84]{johnson1984extensions}
 William~B Johnson and Joram Lindenstrauss.
-\newblock Extensions of lipschitz mappings into a hilbert space.
+\newblock Extensions of {L}ipschitz mappings into a {H}ilbert space.
 \newblock {\em Contemporary mathematics}, 26(189-206):1, 1984.
 
 \bibitem[Jol11]{jolliffe2011principal}
@@ -291,8 +287,8 @@ Gustav Kirchhoff.
   suchung der linearen verteilung galvanischer strijme gefuhrt wird.
 \newblock {\em Ann. Phys. Chem.}, 72:497--508, 1847.
 
-\bibitem[KK{\etalchar{+}}89]{kamada1989algorithm}
-Tomihisa Kamada, Satoru Kawai, et~al.
+\bibitem[KK89]{kamada1989algorithm}
+Tomihisa Kamada and Satoru Kawai.
 \newblock An algorithm for drawing general undirected graphs.
 \newblock {\em Information processing letters}, 31(1):7--15, 1989.
 
@@ -339,7 +335,7 @@ Joseph~B Kruskal and Myron Wish.
 
 \bibitem[MACO91]{mohar1991laplacian}
 Bojan Mohar, Y~Alavi, G~Chartrand, and OR~Oellermann.
-\newblock The laplacian spectrum of graphs.
+\newblock The {L}aplacian spectrum of graphs.
 \newblock {\em Graph theory, combinatorics, and applications}, 2(871-898):12,
   1991.
 
@@ -355,7 +351,7 @@ Karl Menger.
 
 \bibitem[Men31]{menger1931new}
 Karl Menger.
-\newblock New foundation of euclidean geometry.
+\newblock New foundation of {E}uclidean geometry.
 \newblock {\em American Journal of Mathematics}, 53(4):721--745, 1931.
 
 \bibitem[Mer94]{merris1994laplacian}
@@ -436,12 +432,11 @@ Andrew~James Stothers.
 \newblock On the complexity of matrix multiplication.
 \newblock 2010.
 
-\bibitem[Syl51]{sylvester1851xxxvii}
-James~Joseph Sylvester.
-\newblock Xxxvii. on the relation between the minor determinants of linearly
-  equivalent quadratic functions.
-\newblock {\em The London, Edinburgh, and Dublin Philosophical Magazine and
-  Journal of Science}, 1(4):295--305, 1851.
+\bibitem[Syl]{sylvester1relation}
+James~J Sylvester.
+\newblock On the relation between the minor determinants of linearly equivalent
+  quadratic functions, philos. mug.(4) 1: 295-305(1851).
+\newblock {\em Collected mathematical papers}, 1:241--250.
 
 \bibitem[Tam13]{tamassia2013handbook}
 Roberto Tamassia.
@@ -450,7 +445,7 @@ Roberto Tamassia.
 
 \bibitem[TCER19]{torres2019geometric}
 Leo Torres, Kevin~S Chan, and Tina Eliassi-Rad.
-\newblock Geometric laplacian eigenmap embedding.
+\newblock Geometric {L}aplacian eigenmap embedding.
 \newblock {\em arXiv preprint arXiv:1905.09763}, 2019.
 
 \bibitem[Tet91]{tetali1991random}
@@ -460,7 +455,7 @@ Prasad Tetali.
 
 \bibitem[Vav95]{vavvrin1995miroslav}
 Zden{\vaccent{e}}k Vav{\vaccent{r}}{\'\i}n.
-\newblock Miroslav fiedler and vlastimil pt{\'a}k: life and work.
+\newblock Miroslav {F}iedler and {V}lastimil {P}t{\'a}k: life and work.
 \newblock {\em Linear algebra and its applications}, 223:3--29, 1995.
 
 \bibitem[VM13]{van2013double}
@@ -470,12 +465,12 @@ P~Van~Mieghem.
 
 \bibitem[VMDC17]{van2017pseudoinverse}
 Piet Van~Mieghem, Karel Devriendt, and H~Cetinay.
-\newblock Pseudoinverse of the laplacian and best spreader node in a network.
+\newblock Pseudoinverse of the {L}aplacian and best spreader node in a network.
 \newblock {\em Physical Review E}, 96(3):032311, 2017.
 
 \bibitem[Wil12]{williams2012multiplying}
 Virginia~Vassilevska Williams.
-\newblock Multiplying matrices faster than coppersmith-winograd.
+\newblock Multiplying matrices faster than {c}oppersmith-{w}inograd.
 \newblock In {\em STOC}, volume~12, pages 887--898. Citeseer, 2012.
 
 \bibitem[WMRB15]{wu2015emergent}

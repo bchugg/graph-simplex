@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE ipe SYSTEM "ipe.dtd">
 <ipe version="70206" creator="Ipe 7.2.7">
-<info created="D:20190610185614" modified="D:20190610185614"/>
+<info created="D:20190610185614" modified="D:20190901113214"/>
 <ipestyle name="basic">
 <symbol name="arrow/arc(spx)">
 <path stroke="sym-stroke" fill="sym-stroke" pen="sym-pen">
@@ -254,42 +254,43 @@ h
 <page>
 <layer name="alpha"/>
 <view layers="alpha" active="alpha"/>
-<use layer="alpha" name="mark/disk(sx)" pos="128 320" size="large" stroke="black"/>
-<use name="mark/disk(sx)" pos="160 352" size="large" stroke="black"/>
-<path stroke="black">
-128 320 m
-160 352 l
+<use layer="alpha" matrix="1 0 0 1 48 0" name="mark/disk(sx)" pos="64 464" size="large" stroke="black"/>
+<use matrix="1 0 0 1 48 0" name="mark/disk(sx)" pos="160 464" size="large" stroke="black"/>
+<use matrix="1 0 0 1 48 0" name="mark/disk(sx)" pos="160 464" size="large" stroke="black"/>
+<use name="mark/disk(sx)" pos="240 432" size="large" stroke="black"/>
+<use name="mark/disk(sx)" pos="352 432" size="large" stroke="black"/>
+<use name="mark/disk(sx)" pos="256 496" size="large" stroke="black"/>
+<use matrix="1 0 0 1 -32 0" name="mark/disk(sx)" pos="416 432" size="large" stroke="black"/>
+<use matrix="1 0 0 1 -48 0" name="mark/disk(sx)" pos="480 496" size="large" stroke="black"/>
+<use matrix="1 0 0 1 -64 0" name="mark/disk(sx)" pos="544 432" size="large" stroke="black"/>
+<use matrix="1 0 0 1 -64 16" name="mark/disk(sx)" pos="592 448" size="large" stroke="black"/>
+<path matrix="1 0 0 1 48 0" stroke="black" pen="ultrafat">
+64 464 m
+160 464 l
 </path>
-<path stroke="black">
-224 368 m
-208 320 l
-272 320 l
-224 368 l
+<path stroke="black" pen="ultrafat">
+256 496 m
+240 432 l
+352 432 l
+256 496 l
 </path>
-<use name="mark/disk(sx)" pos="224 368" size="large" stroke="black"/>
-<use name="mark/disk(sx)" pos="208 320" size="large" stroke="black"/>
-<use name="mark/disk(sx)" pos="272 320" size="large" stroke="black"/>
-<use matrix="1 0 0 1 -16 16" name="mark/disk(sx)" pos="352 368" size="large" stroke="black"/>
-<path matrix="1 0 0 1 -16 16" stroke="black">
-352 368 m
-320 320 l
-368 304 l
-352 368 l
-400 352 l
+<path matrix="1 0 0 1 -64 0" stroke="black" pen="ultrafat">
+448 432 m
+496 496 l
+544 432 l
+448 432 l
 </path>
-<path matrix="1 0 0 1 -16 16" stroke="black">
-368 304 m
-400 352 l
+<path matrix="1 0 0 1 -64 0" stroke="black" pen="ultrafat">
+544 432 m
+592 464 l
+496 496 l
 </path>
-<path matrix="1 0 0 1 -16 16" stroke="black">
-320 320 m
-400 352 l
+<path matrix="1 0 0 1 -64 0" stroke="black" pen="ultrafat">
+448 432 m
+592 464 l
 </path>
-<use matrix="1 0 0 1 -16 16" name="mark/disk(sx)" pos="320 320" size="large" stroke="black"/>
-<use matrix="1 0 0 1 -16 16" name="mark/disk(sx)" pos="368 304" size="large" stroke="black"/>
-<use matrix="1 0 0 1 -16 16" name="mark/disk(sx)" pos="400 352" size="large" stroke="black"/>
-<text transformations="translations" pos="208 288" stroke="black" type="label" width="64.142" height="9.479" depth="2.32" valign="baseline" size="large">$R^2$: Triangle</text>
-<text transformations="translations" pos="304 288" stroke="black" type="label" width="84.952" height="9.475" depth="0" valign="baseline" size="large">$R^3$: Tetrahedron</text>
-<text transformations="translations" pos="112 288" stroke="black" type="label" width="44.467" height="9.475" depth="0" valign="baseline" size="large">$R^1$: Line</text>
+<text matrix="1 0 0 1 -10.0264 -0.0495067" transformations="translations" pos="128 400" stroke="black" type="label" width="72.658" height="16.744" depth="0" valign="baseline" size="huge">$R^1$: Line</text>
+<text transformations="translations" pos="240 400" stroke="black" type="label" width="104.36" height="16.743" depth="4.02" valign="baseline" size="huge">$R^2$: Triangle</text>
+<text matrix="1 0 0 1 8.76529 0.211055" transformations="translations" pos="384 400" stroke="black" type="label" width="138.186" height="16.744" depth="0" valign="baseline" size="huge">$R^3$: Tetrahedron</text>
 </page>
 </ipe>

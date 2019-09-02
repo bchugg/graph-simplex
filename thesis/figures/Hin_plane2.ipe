@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE ipe SYSTEM "ipe.dtd">
 <ipe version="70206" creator="Ipe 7.2.7">
-<info created="D:20190810144703" modified="D:20190811100952"/>
+<info created="D:20190810144703" modified="D:20190901115116"/>
 <ipestyle name="basic">
 <symbol name="arrow/arc(spx)">
 <path stroke="sym-stroke" fill="sym-stroke" pen="sym-pen">
@@ -281,9 +281,9 @@ h
 266.411 334.046 m
 211.223 290.461 l
 </path>
-<text matrix="1 0 0 1 0 -6.40323" transformations="translations" pos="330.035 338.748" stroke="black" type="label" width="11.915" height="9.085" depth="2.15" valign="baseline" size="Large">$\widehat{\sigma}_i$</text>
-<text matrix="1 0 0 1 -11.732 3.25" transformations="translations" pos="265.168 387.763" stroke="black" type="label" width="13.155" height="9.082" depth="4.09" valign="baseline" size="Large">$\widehat{\sigma}_j$</text>
-<text transformations="translations" pos="304.692 291.11" stroke="turquoise" type="label" width="17.287" height="12.985" depth="4.09" valign="baseline" size="Large">$\widehat{\mathcal{H}}_j$</text>
-<text transformations="translations" pos="195.435 338.197" stroke="turquoise" type="label" width="16.046" height="12.988" depth="2.15" valign="baseline" size="Large">$\widehat{\mathcal{H}}_i$</text>
+<text matrix="1 0 0 1 0 -6.40323" transformations="translations" pos="330.035 338.748" stroke="black" type="label" width="16.79" height="12.078" depth="3.1" valign="baseline" size="huge" style="math">\widehat{\sigma}_i</text>
+<text matrix="1 0 0 1 -11.732 3.25" transformations="translations" pos="265.168 387.763" stroke="black" type="label" width="18.616" height="12.078" depth="5.89" valign="baseline" size="huge" style="math">\widehat{\sigma}_j</text>
+<text matrix="1 0 0 1 2.06625 -5.20602" transformations="translations" pos="304.692 291.11" stroke="turquoise" type="label" width="24.567" height="17.301" depth="5.89" valign="baseline" size="huge" style="math">\widehat{\mathcal{H}}_j</text>
+<text matrix="1 0 0 1 -5.06011 0" transformations="translations" pos="195.435 338.197" stroke="turquoise" type="label" width="22.74" height="17.301" depth="3.1" valign="baseline" size="huge" style="math">\widehat{\mathcal{H}}_i</text>
 </page>
 </ipe>

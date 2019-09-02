@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE ipe SYSTEM "ipe.dtd">
 <ipe version="70206" creator="Ipe 7.2.7">
-<info created="D:20190821121528" modified="D:20190821133614"/>
+<info created="D:20190821121528" modified="D:20190901114144"/>
 <ipestyle name="basic">
 <symbol name="arrow/arc(spx)">
 <path stroke="sym-stroke" fill="sym-stroke" pen="sym-pen">
@@ -275,9 +275,10 @@ h
 <path stroke="purple" pen="ultrafat">
 105.276 0 0 105.276 239.861 668.119 e
 </path>
-<text transformations="translations" pos="192.746 697.904" stroke="black" type="label" width="13.752" height="11.764" depth="0" valign="baseline" size="LARGE">$\mathcal{T}$</text>
+<text transformations="translations" pos="192.746 697.904" stroke="black" type="label" width="13.752" height="11.764" depth="0" valign="baseline" size="LARGE" style="math">\mathcal{T}</text>
 <text transformations="translations" pos="346.134 756.486" stroke="orange" type="label" width="100.942" height="9.962" depth="2.79" valign="baseline" size="Large">Steiner Ellipsoid</text>
 <text transformations="translations" pos="354.342 630.121" stroke="purple" type="label" width="88.653" height="9.963" depth="0" valign="baseline" size="Large">Circumscribed</text>
 <text transformations="translations" pos="355.405 613.589" stroke="purple" type="label" width="41.361" height="9.962" depth="2.79" valign="baseline" size="Large">Sphere</text>
+<use matrix="1 0 0 1 1.12042 -2.96519" name="mark/disk(sx)" pos="240 672" size="large" stroke="purple"/>
 </page>
 </ipe>

@@ -15,7 +15,7 @@ A level-1 auxiliary file: conclusion.aux
 The style file: alpha.bst
 A level-1 auxiliary file: appendix.aux
 Database file #1: ref.bib.bib
-Repeated entry---line 492 of file ref.bib.bib
+Repeated entry---line 489 of file ref.bib.bib
  : @article{alev2017graph
  :                       ,
 I'm skipping whatever remains of this entry
@@ -26,45 +26,46 @@ Warning--empty school in kant1993algorithms
 Warning--can't use both volume and number fields in penrose1955generalized
 Warning--can't use both volume and number fields in penrose1956best
 Warning--empty journal in stothers2010complexity
-You've used 91 entries,
+Warning--empty year in sylvester1relation
+You've used 90 entries,
             2543 wiz_defined-function locations,
-            1084 strings with 16859 characters,
-and the built_in function-call counts, 34706 in all, are:
-= -- 3546
-> -- 1412
-< -- 70
-+ -- 467
-- -- 452
-* -- 2413
-:= -- 5643
-add.period$ -- 284
-call.type$ -- 91
-change.case$ -- 514
-chr.to.int$ -- 91
+            1079 strings with 16768 characters,
+and the built_in function-call counts, 34406 in all, are:
+= -- 3519
+> -- 1398
+< -- 69
++ -- 462
+- -- 447
+* -- 2394
+:= -- 5594
+add.period$ -- 282
+call.type$ -- 90
+change.case$ -- 510
+chr.to.int$ -- 90
 cite$ -- 98
-duplicate$ -- 1462
-empty$ -- 2616
-format.name$ -- 585
-if$ -- 7098
+duplicate$ -- 1450
+empty$ -- 2590
+format.name$ -- 579
+if$ -- 7036
 int.to.chr$ -- 1
 int.to.str$ -- 0
 missing$ -- 103
-newline$ -- 458
-num.names$ -- 273
-pop$ -- 481
+newline$ -- 454
+num.names$ -- 270
+pop$ -- 475
 preamble$ -- 1
-purify$ -- 623
+purify$ -- 617
 quote$ -- 0
-skip$ -- 1195
+skip$ -- 1180
 stack$ -- 0
-substring$ -- 2103
-swap$ -- 219
-text.length$ -- 70
-text.prefix$ -- 45
+substring$ -- 2096
+swap$ -- 217
+text.length$ -- 69
+text.prefix$ -- 44
 top$ -- 0
-type$ -- 664
-warning$ -- 7
-while$ -- 355
-width$ -- 92
-write$ -- 1174
+type$ -- 656
+warning$ -- 8
+while$ -- 353
+width$ -- 91
+write$ -- 1163
 (There was 1 error message)

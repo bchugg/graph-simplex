@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE ipe SYSTEM "ipe.dtd">
 <ipe version="70206" creator="Ipe 7.2.7">
-<info created="D:20190809203452" modified="D:20190810141328"/>
+<info created="D:20190809203452" modified="D:20190901114956"/>
 <ipestyle name="basic">
 <symbol name="arrow/arc(spx)">
 <path stroke="sym-stroke" fill="sym-stroke" pen="sym-pen">
@@ -292,8 +292,8 @@ h
 256 320 m
 208 272 l
 </path>
-<text transformations="translations" pos="303.234 289.879" stroke="black" type="label" width="9.01" height="4.294" depth="1.49" valign="baseline">$\sigma_i$</text>
-<text matrix="1 0 0 1 0.455852 5.83984" transformations="translations" pos="230.392 330.63" stroke="black" type="label" width="21.247" height="6.81" depth="3.54" valign="baseline">$\mathcal{S}_{\{i\}^c}$</text>
-<text transformations="translations" pos="198.84 353.906" stroke="black" type="label" width="11.73" height="6.812" depth="1.49" valign="baseline">$\mathcal{H}_i$</text>
+<text transformations="translations" pos="303.234 289.879" stroke="black" type="label" width="11.915" height="6.179" depth="2.15" valign="baseline" size="Large" style="math">\sigma_i</text>
+<text matrix="1 0 0 1 0.455852 5.83984" transformations="translations" pos="230.392 330.63" stroke="black" type="label" width="26.639" height="9.804" depth="5.02" valign="baseline" size="Large" style="math">\mathcal{S}_{\{i\}^c}</text>
+<text transformations="translations" pos="198.84 353.906" stroke="black" type="label" width="16.046" height="9.805" depth="2.15" valign="baseline" size="Large" style="math">\mathcal{H}_i</text>
 </page>
 </ipe>

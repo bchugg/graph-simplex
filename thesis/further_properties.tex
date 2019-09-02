@@ -16,7 +16,7 @@ That  an equivalent property  holds for arbitrary simplices is therefore highly 
 	Let $\ssplx\subset\R^{n-1}$ be an arbitrary centred  simplex, and $\ssplx^\du$ its dual. Put $\Sv=\Sv(\ssplx)=(\bgamma_i)$ and $\Sv^\du=\Sv(\ssplx)=(\bgamma_i^\du)$ as usual. Then $\Sv^\du\Sv^\tp = \Sv(\Sv^\du)^\tp=\I$ and $(\Sv^\du)^\tp\Sv^\du$ is the Moore-Penrose pseudoinverse of $\Sv^\tp\Sv$. 
 \end{lemma}
 \begin{proof}
-	First we inquire into the relationship between $\Sv$ and $\Sv^\du$. Put $\M=(\bgamma_1-\bgamma_n,\dots,\bgamma_{n-1}-\bgamma_n)$ and $\Q = (\bgamma^\du_1,\dots,\bgamma_{n-1}^\du)$. By definition, $\{\bgamma_i^\du\}$ is the dual  basis to $\{\bgamma_i-\bgamma_n\}$. Thus, by Observation~\ref{obs:bi-orthogonal_unique}, $\Q^\tp=\M^{-1}$ (we are working in $\R^{n-1}$), so  $\M\Q^\tp=\I$. The $(i,j)$-th component of this matrix product can therefore be expressed as 
+	First we inquire into the relationship between $\Sv$ and $\Sv^\du$. Put $\M=(\bgamma_i-\bgamma_n)$, $i\in[n-1]$, and $\Q = (\bgamma^\du_1,\dots,\bgamma_{n-1}^\du)$. By definition, $\{\bgamma_i^\du\}$ is the dual  basis to $\{\bgamma_i-\bgamma_n\}$. Thus, by Observation~\ref{obs:bi-orthogonal_unique}, $\Q^\tp=\M^{-1}$ (we are working in $\R^{n-1}$), so  $\M\Q^\tp=\I$. The $(i,j)$-th component of this matrix product can therefore be expressed as 
 	\begin{align}
 	\delta_{ij} = \M\Q^\tp(i,j) &= \sum_{\ell=1}^{n-1} (\bgamma_\ell(i) - \bgamma_n(i))\bgamma_\ell^\du(j) = \sum_{\ell=1}^{n-1} \bgamma_\ell(i)\bgamma^\du_\ell(j) - \bgamma_n(i)\sum_{\ell=1}^{n-1}\bgamma^\du_\ell(j).\label{eq:lem_dual_pseudoinverse1}
 	\end{align}
@@ -24,7 +24,7 @@ That  an equivalent property  holds for arbitrary simplices is therefore highly 
 	\begin{equation*}
 	0=	(\Sv^\du\one)(j) = \sum_{\ell\in[n]} \bgamma_\ell^\du(j),
 	\end{equation*}
-	implying that $\sum_{\ell=1}^{n-1}\bgamma_\ell^\du(j) = - \bgamma_n^\du(j)$. Equation~\eqref{eq:lem_dual_pseudoinverse1} can then be written as 
+	implying that $\sum_{\ell=1}^{n-1}\bgamma_\ell^\du(j) = - \bgamma_n^\du(j)$. Equation~\eqref{eq:lem_dual_pseudoinverse1} can then be written 
 	$
 	\sum_{\ell=1}^{n} \bgamma_\ell(i)\bgamma_\ell^\du(j)=\delta_{ij},
 	$
@@ -170,7 +170,7 @@ We can now strengthen  Lemma~\ref{lem:block_inverse_simplex} to all simplices,  
 	\end{pmatrix} \begin{pmatrix}
 	\bxi^\tp\Q\bxi + 4\bar{d}  &  -(\Q\bxi  + \frac{2}{n}\one)^\tp  \\
 	-(\Q\bxi  + \frac{2}{n}\one) &  \Q
-	\end{pmatrix},\] and demonstrating that it equals $-2\I$. Instead of leverage  the relationship $\Reff_G=\one\bD^\tp+\bD\one^\tp - 2\L_G^+$ as was done  in that case, we use the more general equation $\D_\ssplx = \one\bxi^\tp+\bxi\one^\tp - 2\Sv^\tp\Sv$ given by Lemma~\ref{lem:distance_matrix}. However, since that proof  was given  in the appendix we will give this one here.  The top left corner of  the product of these two matrices is $-\one^\tp\Q\bxi-2/n \one^\tp\one = -2$ as $\one^\tp\Q = \one^\tp(\Sv^\du)^\tp\Sv^\du$ since $\ssplx^\du$ is centred by definition. Likewise,  the top right  hand corner is zero.  After expanding $\D_\ssplx$  in accordance with Lemma~\ref{lem:distance_matrix} the bottom left  corner becomes 
+	\end{pmatrix},\] and demonstrating that it equals $-2\I$. Instead of leveraging  the relationship $\Reff_G=\one\bD^\tp+\bD\one^\tp - 2\L_G^+$ as was done  in that case, we use the more general equation $\D_\ssplx = \one\bxi^\tp+\bxi\one^\tp - 2\Sv^\tp\Sv$ given by Lemma~\ref{lem:distance_matrix}. However, since that proof  was given  in the appendix we will give this one here.  The top left corner of  the product of these two matrices is $-\one^\tp\Q\bxi-2/n \one^\tp\one = -2$ as $\one^\tp\Q = \one^\tp(\Sv^\du)^\tp\Sv^\du$ since $\ssplx^\du$ is centred by definition. Likewise,  the top right  hand corner is zero.  After expanding $\D_\ssplx$  in accordance with Lemma~\ref{lem:distance_matrix} the bottom left  corner becomes 
 	\begin{align}
 	&\one\bxi^\tp\Q\bxi+4\bar{d}\one - (\one\bxi^\tp+\bxi\one^\tp - 2\Sv^\tp\Sv)\Q\bxi -\frac{2}{n}\D_\ssplx\one = 4\bar{d}\one + 2\Sv^\tp\Sv\Q\bxi  -\frac{2}{n}\D_\ssplx\one. \label{eq:lem_block_general_simplex1}
 	\end{align}
@@ -193,9 +193,9 @@ We can now strengthen  Lemma~\ref{lem:block_inverse_simplex} to all simplices,  
 	\end{align*}
 	The  final two equations follow via similar computations: 
 	\begin{align*}
-	\Q\D_\ssplx\Q = \Q(\one\bxi^\tp+\bxi\one^\tp-2\Sv^\tp\Sv)\Q = -2\Q\Sv^\tp\Sv\Q = -2\Sv^\tp\Sv,
+	\Q\D_\ssplx\Q = \Q(\one\bxi^\tp+\bxi\one^\tp-2\Sv^\tp\Sv)\Q = -2\Q\Sv^\tp\Sv\Q = -2\Q,
 	\end{align*}
-	due to properties of the pseudoinverse (Lemma~\ref{lem:pseudoinverse_properties}), and if $\x\perp\one$ then 
+	due to properties of the pseudoinverse (Definition~\ref{def:pseudoinverse}), and if $\x\perp\one$ then 
 	\begin{align*}
 	\D_\ssplx \Q\D_\ssplx \x = \D_\ssplx \Q(\one\bxi^\tp  +\bxi\one^\tp - 2\Sv^\tp\Sv)\x = -2\D_\ssplx\Q \Sv^\tp\Sv\x = -2\D_\ssplx\bigg(\I-\frac{\J}{n}\bigg) \x = -2\D_\ssplx,
 	\end{align*}
@@ -661,7 +661,7 @@ This allows us to give explicit formulas for the semi-axes of $\El(\splx)$.
  
  \begin{lemma}
  	The semi-axes of the Steiner Ellipsoids  $\El(\splx_G)$ and $\El(\splx_G^+)$ are, respectively, 
- 	\[\e_i\cdot \lambda_i\bigg(\frac{n-1}{n}\bigg)^{1/2}\quad\text{and}\quad\frac{\e_i}{\sqrt{\lambda_i} }\cdot \bigg(\frac{n}{n-1}\bigg)^{1/2}, \] 
+ 	\[\e_i\cdot \sqrt{\lambda_i}\bigg(\frac{n-1}{n}\bigg)^{1/2}\quad\text{and}\quad\frac{\e_i}{\sqrt{\lambda_i} }\cdot \bigg(\frac{n}{n-1}\bigg)^{1/2}, \] 
  	for $i=1,\dots,n-1$. 
  \end{lemma}
 \begin{proof}
@@ -671,7 +671,7 @@ This allows us to give explicit formulas for the semi-axes of $\El(\splx)$.
 \begin{figure}
 	\centering
 	\includegraphics[scale=0.4]{ellipsoid_and_sphere}
-	\caption{A simplex $\ssplx\subset\R^2$ and  its corresponding Steiner circumscribed ellipsoid in orange (light) and circumscribed sphere in purple (dark). The arrows illustrate the semi-axes of the ellipsoid.}
+	\caption{A simplex $\ssplx\subset\R^2$ and  its corresponding Steiner circumscribed ellipsoid in orange (light) and circumscribed sphere in purple (dark). The arrows illustrate the semi-axes of the ellipsoid. The purple point is  the  centre of the sphere---note  that it does  not  necessarily coincide with the origin of the ellipsoid.}
 	\label{fig:ellipsoid_and_sphere}
 \end{figure}
 
@@ -700,7 +700,7 @@ The ratio  of $\vol(\El(\splx_G^+))$ to $\vol(\splx^+_G)$ is the same as above.
 
 
 
-Next we investigate the circumscribed sphere of the combinatorial  simplex. Similarly to the circumscribed ellipsoid, the \emph{cirscumscribed sphere  of a convex body $\P$} is the sphere whose boundary contains all the vertices of $\P$. The circumscribed sphere does not exist in general. However, just as it is possible to always draw a circle containing the endpoints  of a triangle, so the circumscribed sphere of a hyperacute simplex always exists  as is demonstrated  by the following lemma.  
+Next we investigate the circumscribed sphere of the combinatorial  simplex. Similarly to the circumscribed ellipsoid, the \emph{circumscribed sphere  of a convex body $\P$} is the sphere whose boundary contains all the vertices of $\P$. The circumscribed sphere does not exist in general. However, just as it is possible to always draw a circle containing the endpoints  of a triangle, so the circumscribed sphere of a hyperacute simplex always exists  as is demonstrated  by the following lemma.  
 
 \begin{lemma}[\cite{fiedler1993geometric}]
 	\label{lem:circ_sphere}
@@ -856,12 +856,12 @@ e^{-\lambda_1 t}  & &\\
 	\end{minipage}
 	\begin{minipage}{0.32\textwidth}
 		\centering
-		\includegraphics[scale=0.4]{dynamics3}
+		\includegraphics[scale=0.3]{dynamics3}
 		\subcaption{}
 	\end{minipage}
 	\begin{minipage}{0.32\textwidth}
 		\centering
-		\includegraphics[scale=0.6]{dynamics2}
+		\includegraphics[scale=0.5]{dynamics2}
 		\subcaption{}
 	\end{minipage}
 	\caption{Random walk dynamics plotted as points  in the simplex. Figures (a) and (b) are plotted using the normalized simplex;  figure (c) uses  the normalized simplex. The  underlying graph of Figure (a) has edges $(1,2)$, $(2,3)$, $(3,4)$, $(2,4)$, that underlying (b) edges $(1,2)$ and $(2,3)$ and that of (c) is the complete graph  $K_4$. }

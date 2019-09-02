@@ -12,7 +12,7 @@ For the benefit of the reader unfamiliar with computational complexity and reduc
 \section{Preliminaries}
 \label{sec:algorithmics_prelims}
 \paragraph{Asymptotics.}
-Asymptotic notation will be used to analyze the running time of various algorithms. We use the standard definitions---see any reference text on algorithm design for more background (e.g., \cite{kleinberg2006algorithm}). Let $f,g:U\subset \R \to \R$ be functions. Write $f=O(g)$ (or $f(n)=O(g(n))$) if $\limsup_{x\to \infty}|f(x)/g(x)|<\infty$, and $f=\Omega(g)$ if $g=O(f)$. Write $f=o(g)$ as $x\to c$ if $\lim_{x\to \infty}|f(x)/g(x)|=0$ and $f=\omega(g)$ if $g=o(f)$. If $f=O(g)$ and $f=\Omega(g)$ we write $f=\Theta(g)$. We will also use the tilde to hide polylog factors. Say $f=\tO(g)$ if $f(n) = O(g(n) \log^c n)$ and $f=\tOmega(g)$ if $f(n) = \Omega(g(n) \log^{-c}n)$, for some $c\geq 0$. 
+Asymptotic notation will be used to analyze the running time of various algorithms. We use the standard definitions---see any reference text on algorithm design for more background (e.g., \cite{kleinberg2006algorithm}). Let $f,g:U\subset \R \to \R$ be functions. Write $f=O(g)$ (or $f(n)=O(g(n))$) if $\limsup_{x\to \infty}|f(x)/g(x)|<\infty$, and $f=\Omega(g)$ if $g=O(f)$. Write $f=o(g)$  if $\lim_{x\to \infty}|f(x)/g(x)|=0$ and $f=\omega(g)$ if $g=o(f)$. If $f=O(g)$ and $f=\Omega(g)$ we write $f=\Theta(g)$. We will also use the tilde to hide polylog factors. Say $f=\tO(g)$ if $f(n) = O(g(n) \log^c n)$ and $f=\tOmega(g)$ if $f(n) = \Omega(g(n) \log^{-c}n)$, for some $c\geq 0$. 
 
 
 \paragraph{Simplex representations.}
@@ -34,7 +34,7 @@ Such a technique will be used extensively throughout the next few sections.
 \paragraph{The complexity classes \NP, \NP-hard, and \NP-Complete.}
 For brevity, we restrict ourselves to a very brief presentation of these concepts. The interested reader can find more background in any reference  on computational  complexity theory. 
 
-The class \NP  is  the set of all decision problems\footnote{That is,  problems  to which we seek a yes/no answer.} which have solutions which are \emph{verifiable} in polynomial time. It is possible, for example, to check  in polynomial time whether  a given  set is in fact an independent set of a certain size. Thus the decision variant of \iset lies in \NP. \NP stands for ``non-deterministic polynomial time'', as it is formally the set of all  decision problems solvable by a non-deterministic Turing  machine in polynomial time~\cite{papadimitriou2003computational}. 
+The class \NP  is  the set of all decision problems\footnote{That is,  problems  to which we seek a yes/no answer.} which have solutions which are \emph{verifiable} in polynomial time. It is possible, for example, to check  in polynomial time whether  a given  set is in fact an independent set of a certain size. Thus the decision variant of \iset  lies in \NP. \NP stands for ``non-deterministic polynomial time'', as it is formally the set of all  decision problems solvable by a non-deterministic Turing  machine in polynomial time~\cite{papadimitriou2003computational}. 
 
 The class \NP-hard comprises all the problems to  which  any problem in \NP can be reduced in polynomial time (see above). That is, $P\in\NP$-hard iff for all  $Q\in\NP$,  $Q$ can be  reduced to $P$ in polynomial time. Thus,  to show that $P\in\NP$-hard, it suffices to reduce another problem $R\in\NP$-hard to  $P$ (in polynomial time) since,  in this  case, if all problems in \NP are  reducible  to  $R$  they are in turn  reducible  to  $P$. We  tend to think of \NP as the set of ``hard'' problems. 
 
@@ -59,7 +59,7 @@ It was first stated by Devriendt and Van Mieghem~\cite{devriendt2018simplex} for
 	Computing the altitude of minimum length in any simplex is \NP-hard. 
 \end{lemma}
 \begin{proof}
-	The relationship $\norm{\alt(\splx^+_U)}_2^2 = w(\partial U)^{-1}$ (Lemma \ref{lem:alt}) for the inverse simplex of a graph $G$ demonstrates that the problem of computing a minimum length altitude in any hyperacute simplex is \NP-hard, because computing the  maximum weight cut in any weighted graph is \NP-hard~\cite{karp1972reducibility}.  Since the  class  of all hyperacute simplices is contained in the class of all simplices, the result follows.  (We note that formally, we have reduced the maximum  cute problem to the minimum altitude problem.) 
+	The relationship $\norm{\alt(\splx^+_U)}_2^2 = w(\partial U)^{-1}$ (Lemma \ref{lem:alt}) for the inverse simplex of a graph $G$ demonstrates that the problem of computing a minimum length altitude in any hyperacute simplex is \NP-hard, because computing the  maximum weight cut in any weighted graph is \NP-hard~\cite{karp1972reducibility}.  Since the  class  of all hyperacute simplices is contained in the class of all simplices, the result follows.  (We note that formally, we have reduced the maximum  cut problem to the minimum altitude problem.) 
 \end{proof}
 
 \begin{remark} In  the above statement and its proof, the description of the polytope and simplex was not specified. This is due to the fact that---as discussed above---for simplices there is a polynomial time algorithm to translate between the various descriptions. With regard to \NP-completeness therefore, the description makes no difference. Consequently, we will continue to ignore this distinction for the remainder of this section. 
@@ -86,7 +86,7 @@ so
 \end{align*}
 where the second inequality again follows from the fact that $I$ is an independent set. 
 
-The \iset problem involves finding the largest independent set in a given  graph or,  in  the decision variant,  whether there exists an independent  set of size at least  $k$ for a given $k$.  
+The \iset problem involves finding the largest independent set in a given  graph or,  in  the decision variant,  whether there exists an independent  set of size at least  $k$ for a given $k$.  The decision variant  is  \NP-complete while the optimization version is \NP-hard~\cite{karp1972reducibility}.  
 Suppose we assign each vertex $i$ a weight $f(i)\geq 0$. The \mwis problem consists of maximizing $f(I)\equiv \sum_{i\in I}f(i)$ over all independent sets $I$. Clearly \mwis is \NP-hard in general, seeing as it reduces to the usual independent set maximization problem by taking $f(i)=1$ for all $i$. If $f$ is a linear function of the weights so that $f(i)=\alpha w(i)$ for all $i$ and some $\alpha> 0$, we call the corresponding problem $\alpha$-\vwis. We will focus on the case $\alpha=1$ for clarity, and call the  corresponding problem just \vwis. The difficulty of this problem is not immediately clear, since it is more structured than simply \mwis. The next lemma removes any doubt as to the problem's tractability.   
 
 \begin{figure}
@@ -117,7 +117,7 @@ Suppose we assign each vertex $i$ a weight $f(i)\geq 0$. The \mwis problem consi
 \begin{proof}
 	First we note that \vwis is in \NP. Indeed, the size of a given set $I$  can be  checked  in  $O(|I|)$ time and it can be verified to be an independent set by checking in time $O(|I|^2)$ whether  any pair  in $|I|$ has an edge  in the  graph. 
 	
-	We  reduce from \iset.  Let a graph  $G$ and  a parameter $k$ be  given. The intuition behind  the following reduction is the following. We construct a  graph  $H$ with  $V(H)\supset  V(G)$ such that each vertex $v\in  V(G)$ has constant degree  in $H$.  Each independent $I$ in $G$ therefore has volume proportional to $|I|$ in $H$. The trick is then to ensure that each independent set in  $H$ also corresponds to an  independent set  in $I$. Let us proceed with the formalities. 
+	To see that is  it \NP-hard, we  reduce from \iset.  Let a graph  $G$ and  a parameter $k$ be  given. The intuition behind  the following reduction is the following. We construct a  graph  $H$ with  $V(H)\supset  V(G)$ such that each vertex $v\in  V(G)$ has constant degree  in $H$.  Each independent $I$ in $G$ therefore has volume proportional to $|I|$ in $H$. The trick is then to ensure that each independent set in  $H$ also corresponds to an  independent set  in $I$. Let us proceed with the formalities. 
 	
 	Let $m=\max_i\deg_G(i)$  be the maximum degree of any vertex in $G$. Construct $H$ as follows. For each vertex $u\in V(G)$,  define  $\alpha(u)=m-\deg_G(u)$ new vertices  $u_1,\dots,u_\alpha$ and take \[V(H)=V(G)\cup \bigcup_{u\in V(G)} \{u_1,\dots,u_\alpha\}.\]  
 	We call the vertices which  were originally in $V(G)$ \emph{real},  and the  newly created vertices \emph{fake}. We  add to $E(H)$ the original  edges in $G$ and several sets  of new  edges. First, we add an edge  between  each real  vertex and all its corresponding fake  vertices ($(u,u_i)$ for $i=1,\dots,\alpha(u)$  and all  $u\in V(G)$), and between all fake vertices  corresponding to a single  vertex. Thus,  each  vertex $u$ and  its  fake  vertices $u_1,\dots,u_\alpha$  form a clique. 
@@ -197,19 +197,28 @@ A \emph{clique} in a graph $G$ is a complete subgraph of $G$. The \maxclique pro
 
 Next we extract a result based on the most (in)famous problem in computational graph theory: Graph isomorphism. An \emph{isomorphism} between two graphs $G_1$ and $G_2$ is a bijection $f:V(G_1)\to V(G_2)$ such that $(u,v)\in E(G_1)$ iff $(f(u),f(v))\in E(G_2)$. We write $G_1\cong G_2$ if $G_1$ is isomorphic to $G_2$. The \graphiso problem asks, given $G_1,G_2$, whether they are isomorphic. 
 It's clear that $\graphiso\in\NP$, but whether it is \NP-complete remains an open question~\cite{mckay2014practical}. L{\'a}szl{\'o} Babai recently claims to have solved the problem in  quasipolynomial time~\cite{babai2016graph}; the work is still being verified. 
-Accordingly, we call a problem \emph{Graph Isomorphism Hard} if it can be reduced to to \graphiso. 
-The more general problem of \emph{subgraph} isomorphism, which asks whether $G_1$ has a subgraph isomorphic to $G_2$, is \NP-complete~\cite{cook1971complexity, karp1972reducibility}. We are interested in the relationship between graph isomorphism and polytope congruence.  
+Accordingly, we call a problem \emph{Graph-Isomorphism-Hard} if it can be reduced to to \graphiso in polynomial  time, demonstrating that said problem is  polynomial time equivalent to \graphiso.  
+%The more general problem of \emph{subgraph} isomorphism, which asks whether $G_1$ has a subgraph isomorphic to $G_2$, is \NP-complete~\cite{cook1971complexity, karp1972reducibility}. 
+We are interested in the relationship between graph isomorphism and polytope congruence.  
 
 \begin{theorem}
-	\label{thm:simplex_congruence}
-Deciding whether two hyperacute simplices are congruent is Graph Isomorphism Hard. Moreover, given two hyperacute simplices $\splx_1\in\R^d$ and $\splx_2\in\R^k$, deciding whether there exists $k$-dimensional face of $\splx_1$ congruent to $\splx_2$ is \NP-hard. 
+\label{thm:simplex_congruence}
+Deciding whether two hyperacute simplices are congruent is Graph Isomorphism Hard. 
+%Moreover, given two hyperacute simplices $\splx_1\in\R^d$ and $\splx_2\in\R^k$, deciding whether there exists $k$-dimensional face of $\splx_1$ congruent to $\splx_2$ is \NP-hard. 
 \end{theorem}
 \begin{proof}
-	Let two graphs $G_1$ and $G_2$ be given. Compute their corresponding inverse simplices $\splx_1^+$ and $\splx_2^+$ (which  takes polynomial time  by  computing  the eigencomposition of both graphs---see Section~\ref{sec:algorithmics_transitions}). 
-	We claim that $\splx_1^+\cong\splx_2^+$ iff $G_1\cong G_2$. If $\splx_1^+\cong\splx_2^+$ then because they are both centred at the origin there exists a rotation matrix $\Q$ such that $\Q\Sv_1^+=\Sv_2^+$. Since a rotation matrix does not change the relationship between the inner product of vectors\footnote{A rotation matrix $\Q$ obeys $\Q^\tp\Q=\I$, hence $\la \Q\u,\Q\v\ra = \u^\tp \Q^\tp \Q\v=\la \u,\v\ra$.}, we see that $(\Sv_1^+)^\tp\Sv_1^+$ and $(\Sv_2^+)^\tp\Sv_2^+$ define the same Laplacian. Hence $G_1$ is isomorphic to $G_2$. Conversely, if $G_1\cong G_2$, then there exists a  relabelling of the vertices such that their Laplacian matrices are identical, as are the simplices. This completes  the proof of the first statement. The  follows by a similar reduction, and the fact that $\subgraphiso\in\NP$-complete.
+	Let two graphs $G_1$ and $G_2$ be given. Compute their corresponding inverse simplices $\splx_1^+$ and $\splx_2^+$ (which  takes cubic time  by  computing  the eigencomposition of both graphs---see Section~\ref{sec:algorithmics_transitions}). 
+	We claim that $\splx_1^+$ and $\splx_2^+$ are congruent iff $G_1\cong G_2$. If $\splx_1^+$ and $\splx_2^+$ are congruent, then they must be rotationally congruent since they are both centred at the origin. That is, there exists a rotation matrix $\Q$ such that $\Q\Sv_1^+=\Sv_2^+$. 
+	Recalling that $\Q$ obeys $\Q^\tp\Q=\I$, 
+	\begin{equation*}
+	\L_{G_2}^+=(\Sv_2^+)^\tp\Sv_2^+ =  (\Q\Sv_1^+)^\tp (\Q\Sv_1^+) = (\Sv_1^+)^\tp \Q^\tp \Q\Sv_1^+  = (\Sv_1)^+ \Sv_1^+ = \L_{G_1}^+,
+	\end{equation*}
+	so $G_1$ and $G_2$ share the same pseudoinverse Laplacian. Since the pseudoinverse is unique (Lemma~\ref{lem:pseudoinverse_properties}), $G_1$ and $G_2$ share the same Laplacian and are therefore isomorphic.  
+	Conversely, if $G_1\cong G_2$, then there exists a  relabelling of the vertices such that their Laplacian matrices are identical, implying that the simplices  are  congruent. 
+	%The second follows by a similar reduction. Namely,  given $G_1$ on $d$ vertices and $G_2$ on $k$ vertices, we construct $\splx_1^+$ and $\splx_2^+$. and the fact that $\subgraphiso\in\NP$-complete.
 \end{proof}
 
-Kaibel and Schwarz~\cite{kaibel2008complexity} investigated the problem of polytope isomorphism. They define two polytopes as isomorphic if they have the same \emph{face-lattice}---the lattice in which the nodes correspond to subsets of the vertices, and the lattice ordering is by face inclusion. Since congruent simplices share the same face  lattice up to labelling, Theorem \ref{thm:simplex_congruence} implies their result. 
+Kaibel and Schwarz~\cite{kaibel2008complexity} investigated the problem of polytope isomorphism and  demonstrate that it is Graph-Isomorphism-Hard. They define two polytopes as isomorphic if they have the same \emph{face-lattice}---the lattice in which the nodes correspond to subsets of the vertices, and the lattice ordering is by face inclusion. Since congruent simplices share the same face  lattice up to labelling, Theorem \ref{thm:simplex_congruence} implies their result. 
 
 
 \section{There and Back Again: A Tale of Graphs and Simplices}
@@ -218,11 +227,11 @@ In this section we investigate the computational aspects of transitioning betwee
 As we will see, if we are prepared to compute  eigendecompositions, then we can compute all the objects from one another. 
 However, since solving the eigendecomposition is expensive in general (see below), we are mainly interested in circumstances in which a transition can be computed without resorting to this. Unfortunately, it will become clear that the complexity of  computing a Laplacian eigendecomposition is actually a lower bound to computing many of the transitions. 
  
-Let $M(n)$ denote the complexity of the eigendecomposition problem. It is known that  $M(n)=\tOmega(n^3 + n\log^2 \log \eps)$ to obtain a relative error\footnote{We note that the relative error is a necessary parameter of any algorithm because eigenvalues may be irrational.} of $2^{-\eps}$, while there exists algorithms which run in time $O(n^3 + n\log^2 \log \eps)$~\cite{pan1999complexity}.  
+Let $M(n)$ denote the complexity of the eigendecomposition problem. It is known that  $M(n)=\tOmega(n^3 + n\log^2 \log \eps)$ to obtain a relative error\footnote{We note that the relative error is a necessary parameter of any algorithm because eigenvalues may be irrational.} of $2^{-\eps}$, and there exist algorithms which run in time $O(n^3 + n\log^2 \log \eps)$~\cite{pan1999complexity}.  
 Let \lapdecomp refer to the problem of computing the eigendecomposition of the Laplacian (either the combinatorial or normalized)of a graph, i.e., computing its eigenvalues and eigenvectors. The complexity of \lapdecomp does not seem to be known  in general, and we thus denote the lower bound by $\Omega(n^\tau)$ for some $\tau$. We will assume, based on the difficulty of general eigendecomposition that $\tau>2$. 
 
 
-Observe that given $G$, we can compute the combinatorial and nornalized simplices (and their inverses) by first constructing the combinatorial or normalized Laplacian in $O(n^2)$, performing an eigendecomposition in time $O(n^\tau)$, and constructing the vertices of the simplices from the eigenvalues and eigenvectors in time $O(n^2)$. Using our  assumption that $\tau>2$, this takes total time $O(n^\tau)$.  Moreover, starting with a simplex with vertex set $\Sv$, one can compute $\Sv^\tp\Sv$ in the time required for matrix multiplication, which is currently $O(n^{2.3727})$~\cite{williams2012multiplying} and whose lower bound is $\Theta(n^\kappa)$ for some $2\leq \kappa\leq 2.3727$~\cite{stothers2010complexity}. If the simplex is the simplex of a graph then this yields the Laplacian (or its pseudoinverse) in time $O(n^{2.3727})$,  and from here any of its simplices  in time $O(n^\tau)$. Hence, we can transition between the various simplices in time $O(n^{\max\{2.3727,\tau\}})$.  In what follows therefore, we attempt to beat the barrier of $O(n^\tau)$. 
+Observe that given $G$, we can compute the combinatorial and normalized simplices (and their inverses) by first constructing the combinatorial or normalized Laplacian in $O(n^2)$, performing an eigendecomposition in time $O(n^\tau)$, and constructing the vertices of the simplices from the eigenvalues and eigenvectors in time $O(n^2)$. Using our  assumption that $\tau>2$, this takes total time $O(n^\tau)$.  Moreover, starting with a simplex with vertex set $\Sv$, one can compute $\Sv^\tp\Sv$ in the time required for matrix multiplication, which is currently $O(n^{2.3727})$~\cite{williams2012multiplying} and whose lower bound is $\Theta(n^\kappa)$ for some $2\leq \kappa\leq 2.3727$~\cite{stothers2010complexity}. If the simplex is the simplex of a graph then this yields the Laplacian (or its pseudoinverse) in time $O(n^{2.3727})$,  and from here any of its simplices  in time $O(n^\tau)$. Hence, we can transition between the various simplices in time $O(n^{\max\{2.3727,\tau\}})$.  In what follows therefore, we attempt to beat the barrier of $O(n^\tau)$. 
 
 Besides  the question  of transitioning between various objects, we might be interested in the issue of \emph{certification}. That is, verifying whether  a given simplex is one of the combinatorial or normalized simplices of a graph. We will investigate  this question at  the end of this  section. 
 
@@ -312,7 +321,7 @@ hence knowledge of $\{\sv_i\}$ and $\{\sv_i^+\}$ yields knowledge of the eigende
 \end{lemma}
 
 An alternate way of seeing that constructing the inverse simplex from its dual is computationally challenging is to recall from Section \ref{sec:S_G} that $\splx_\ic$ is contained in the hyperplane $\{\x\in\R^{n-1}:\la \x,\sv_i^+\ra = -1/n\}$ (Lemma \ref{lem:SUsubset})
- and that $\sv_i^+$ is perpendicular to $\splx_\ic$ (Lemma \ref{lem:S_G_basic_properties}). Hence, computing the inverse simplex would imply that we had computed normal vectors to $n$ hyperplanes, the typical procedure which typically involves computing an $n\times n$ determinant and requires  $O(n^3)$ time. 
+ and that $\sv_i^+$ is perpendicular to $\splx_\ic$ (Lemma \ref{lem:S_G_basic_properties}). Hence, computing the inverse simplex would imply that we had computed normal vectors to $n$ hyperplanes. The typical procedure for this involves computing an $n\times n$ determinant and requires  $O(n^3)$ time. 
  
  We now consider transitioning between different descriptions of $\splx$ and $\splx^+$. Let us recall that the \hdesc of $\splx$ and $\splx^+$ yield immediate insight into the vertices of its inverse as $\splx=\cap_i \{\x:\la \x,\sv_i^+\ra \geq -1/n\}$ and $\splx^+=\cap_i\{\x:\la\x,\sv_i\ra \geq -1/n\}$ (Equations \eqref{eq:splx_bigcapH_i} and \eqref{eq:splx^+_bigcapH_i}). Consequently, given a \hdesc of one of these simplices, the vertices of its inverse are recoverable in quadratic time. This observation will be used several times and is  worth encoding. 
  
@@ -352,36 +361,22 @@ which can be computed  in $O(n)$  time. Then, as per Equation~\eqref{eq:decomp_f
 	If the \vdesc of the combinatorial simplex, the normalized simplex, or their  inverses can be generated from a graph $G$ in $O(g(n))$ time, then \lapdecomp can be solved in time $O(g(n) + n^2)$ for arbitrary weighted graphs. Consequently $g(n) = \Omega(n^\tau)$. 
 \end{lemma}
 
-The prospects are  equally  as bleak for generating an \hdesc from $G$. The argument is  similar. 
+The prospects are  equally  bleak for generating an \hdesc from $G$. The argument is  similar. 
 
 \begin{lemma}
-	Given a graph $G$ suppose an \hdesc of $\splx$ (resp., $\splx^+$) can be generated in time $g(n)$. Then a \vdesc of $\splx^+$ (resp., $\splx$ can be obtained in time $O(g(n) + n^2)$ by Observation~\ref{obs:HtoV}. Consequently, by Lemma \ref{lem:G_to_S_and_Sn}, $g(n)=\Omega(n^\tau)$. 
+	Given a graph $G$ suppose an \hdesc of $\splx$ (resp., $\splx^+$) can be generated in time $g(n)$. Then a \vdesc of $\splx^+$ (resp., $\splx$) can be obtained in time $O(g(n) + n^2)$ by Observation~\ref{obs:HtoV}. Consequently, by Lemma \ref{lem:G_to_S_and_Sn}, $g(n)=\Omega(n^\tau)$. 
 \end{lemma}
 
-\todo 
-Next we examine generating the graph  from various simplices. We first require the following result. It is intuitively  obvious but we err on  the side of verifying it. 
+The problem of generating the graph  from various simplices is more complicated. We note first that  we can  generate $G$ from a \vdesc of $\splx$ in  cubic time. Given $\{\sv_i\}$ we can compute the weight between vertex $i$ and  $j$ as  $\la \sv_i,\sv_j\ra=-w(i,j)$ which  requires linear time. Performing the computation for all pairs and thus obtaining all the edge information takes $O(n^3)$. 
+
+It's less  clear whether cubic time is also a lower bound for generating $G$ from the vertices $\{\sv_i\}$. Using  the  following observation, any algorithm which does so in  sub-cubic time does not compute one of the dot products $\la \sv_i,\sv_j\ra$. 
 
 \begin{observation}
+	\label{obs:dot_product_time}
 	Any algorithm which  determines whether two vertices in  $\R^n$ are  orthogonal requires  $\Omega(n)$ time. 
 \end{observation}
-\begin{proof}
-	Let $\mA$ be a purported sublinear time algorithm which performs this  task. Let $\x,\y\in\R^n$ be  two inputs  to  $\mA$. Assume they  both  contain no zero entries ($\mA$ claims to work  for  all vectors). Since  $\mA$ is sublinear, there exists some $i\in[n]$ such that $\mA $ does not  examine $x(i)$. Therefore,  we may  vary $x(i)$ without changing  $\mA$'s  output. If $\mA$ output ``yes'', meaning that it believes $\x$ and $\y$ to be orthogonal, put 
-	\[x(i) = \frac{1-\sum_{j\neq i}x(j)y(j)}{y(i)}.\]
-	Then  $\la \x,\y\ra =1$, so they are are not orthogonal. Similarly,  if $\mA$ output ``no'', then put 
-	\[x(i) = -\frac{\sum_{j\neq i}x(j)y(j)}{y(j)},\]
-	so  that $\la\x,\y\ra=0$. Therefore, $\mA$ cannot  be  correct on all inputs.  
-\end{proof}
 
-This allows us to give the precise complexity required for  generating the graph from its  combinatorial  simplex.  
-
-\begin{lemma}
-	Given a  \vdesc  of  $\splx_G$,  computing the underlying graph  $G$ requires $\Omega(n^3)$ time. It can be done in time $O(n^3)$. 
-\end{lemma}
-\begin{proof}
-	We begin with the second statement. Given $\{\sv_i\}$ we can compute the weight between vertex $i$ and  $j$ as  $\la \sv_i,\sv_j\ra=-w(i,j)$ which  requires linear time. Performing the computation for all pairs and thus obtaining all the edge information takes $O(n^3)$  time. 
-	The lower  bound 
-\end{proof}
-
+The proof is found in Appendix~\ref{sec:app_proofs_alg}. However,  it seems possible (if unlikely) that  an algorithm could infer the edge  weights  of the graph  without computing $\Omega(n^2)$ dot products. We leave the question  as an open problem. 
 
 
 
@@ -415,7 +410,7 @@ Finally, we note that in cubic time we can check whether all the angles $\theta_
 
 \section{Approximations} 
 \label{sec:algorithmics_approximations}
-Here we are concerned  with  approximations of various sorts. We begin  with an eye towards the problem of  dimensionality. Specifically, Theorem ~\ref{thm:graph-simplex} yields simplices of dimension $n-1$ for a graph on $n$ vertices. In  many application areas, graphs may have thousands  to  millions of vertices. Working in a Euclidean space  of  this  size can be unwieldy. Our first two  sections,  therefore, attempt dimensionality reduction. The first  considers the problem of reducing the dimensionality of the simplex itself. The second considers low rank approximations of  the Laplacian which are  shown to yield polytopes on  $n$ vertices. We see that, depending on the rank of the  approximation and the eigenvalues of the Laplacian, certain properties of this polytope approximate  those of the simplex. As we will see, this provides some  theoretical justification for  the  recent work of Torres \etal~\cite{torres2019geometric}. 
+Here we are concerned  with  approximations of various sorts. We begin  with an eye towards the problem of  dimensionality. Specifically, Theorem ~\ref{thm:graph-simplex} yields simplices of dimension $n-1$ for a graph on $n$ vertices. In  many application areas, graphs may have thousands  to  millions of vertices. Working in a Euclidean space  of  this  size can be unwieldy. Our first two  sections,  therefore, attempt dimensionality reduction. The first  considers the problem of reducing the dimensionality of the simplex itself. The second considers low rank approximations of  the Laplacian which are  shown to yield polytopes on  $n$ vertices in  low  dimensional spaces. We see that, depending on the rank of the  approximation and the eigenvalues of the Laplacian, certain properties of this polytope approximate  those of the simplex. As we will see, this provides some  theoretical justification for  the  recent work of Torres \etal~\cite{torres2019geometric}. 
 
 \subsection{Dimensionality  Reduction: \texorpdfstring{$\splx^+$}{the inverse simplex}}
 \label{sec:algorithmics_JL}
@@ -540,14 +535,14 @@ Next, we  investigate the relative distances between  the vertex vectors. The di
 &\leq \lambda_{k+1} \sum_{\ell=k+1}^{n-1} |\vp_\ell(i)-\vp_\ell(j)|^2.
 \end{align*}
 The  goal is  thus to bound the final summation in  terms of some function of $n$ or $k$, so that we may provide sufficient conditions on $\lambda_{k+1}$ in order for $\norm{\sv_i^\k-\sv_j^\k}_2^2$ to approximate $\norm{\sv_i-\sv_j}_2^2$. We proceed as follows. 
-\begin{align*}
-\sum_{\ell=k+1}^{n-1} |\vp_\ell(i)-\vp_\ell(j)|^2 &= \bigg|\sum_{\ell=k+1}^{n-1} |\vp_\ell(i)-\vp_\ell(j)|^2\bigg| \\
-&= \bigg|\sum_{\ell={k+1}}^{n-1} \vp_\ell(i)^2 + \vp_\ell(j)^2 - 2\vp_\ell(i)\vp_\ell(j) \bigg|\\
-&\leq \sum_{\ell=k+1}^{n-1} \vp_\ell(i)^2 + \sum_{\ell=k+1}^{n-1} \vp_\ell(j)^2 + 2\bigg|\sum_{\ell=k+1}^{n-1} \vp_\ell(i)\vp_\ell(j)\bigg| \\
-&\leq \sum_{\ell=k+1}^{n-1} \vp_\ell(i)^2 + \sum_{\ell=k+1}^{n-1} \vp_\ell(j)^2 + 2\bigg(\sum_{\ell=k+1}^{n-1}\vp_\ell(i)^2\sum_{m=k+1}^{n-1}\vp_m(j)^2\bigg) ^{1/2} \\
-&\leq \sum_{\ell\in[n]} \vp_\ell(i)^2 + \sum_{\ell\in[n]}^{n-1} \vp_\ell(j)^2 + 2\bigg(\sum_{\ell\in[n]}^{n-1}\vp_\ell(i)^2\sum_{m=k+1}^{n-1}\vp_m(j)^2\bigg) ^{1/2}. 
-\end{align*} 
-Now,  recall that due to double orthogonality of the eigenvector matrix we  have $\sum_{\ell=1}^n \vp_\ell(i)\vp_\ell(j) = \delta_{ij}$.  The above quantity is therefore  equal to 6. Consequently, combining the previous few equations yields 
+\begin{align}
+\sum_{\ell=k+1}^{n-1} |\vp_\ell(i)-\vp_\ell(j)|^2 &= \bigg|\sum_{\ell=k+1}^{n-1} |\vp_\ell(i)-\vp_\ell(j)|^2\bigg| \notag \\
+&= \bigg|\sum_{\ell={k+1}}^{n-1} \vp_\ell(i)^2 + \vp_\ell(j)^2 - 2\vp_\ell(i)\vp_\ell(j) \bigg|\notag \\
+&\leq \sum_{\ell=k+1}^{n-1} \vp_\ell(i)^2 + \sum_{\ell=k+1}^{n-1} \vp_\ell(j)^2 + 2\bigg|\sum_{\ell=k+1}^{n-1} \vp_\ell(i)\vp_\ell(j)\bigg| \notag  \\
+&\leq \sum_{\ell=k+1}^{n-1} \vp_\ell(i)^2 + \sum_{\ell=k+1}^{n-1} \vp_\ell(j)^2 + 2\bigg(\sum_{\ell=k+1}^{n-1}\vp_\ell(i)^2\sum_{m=k+1}^{n-1}\vp_m(j)^2\bigg) ^{1/2} \notag \\
+&\leq \sum_{\ell\in[n]} \vp_\ell(i)^2 + \sum_{\ell\in[n]}^{n-1} \vp_\ell(j)^2 + 2\bigg(\sum_{\ell\in[n]}^{n-1}\vp_\ell(i)^2\sum_{m=k+1}^{n-1}\vp_m(j)^2\bigg) ^{1/2}. \label{eq:sum_kn}
+\end{align} 
+Now,  recall that due to double orthogonality of the eigenvector matrix we  have \[\sum_{\ell=1}^n \vp_\ell(i)\vp_\ell(j) = \delta_{ij}.\]  The right  hand side of \eqref{eq:sum_kn} is therefore  equal to 6. Consequently, combining the previous few equations yields 
 \begin{equation*}
 \bigg| \norm{\sv_i-\sv_j}_2^2 - \norm{\sv_i^\k-\sv_j^\k}_2^2\leq 6\lambda_{k+1}=O(\lambda_{k+1}). 
 \end{equation*}
@@ -556,7 +551,7 @@ Now,  recall that due to double orthogonality of the eigenvector matrix we  have
 	If $\lambda_{k+1}=o(1)$ then $\bigg| \norm{\sv_i-\sv_j}_2^2 - \norm{\sv_i^\k-\sv_j^\k}_2^2= o(1)$. 
 \end{lemma}
 
-Summarizing, we see  that under assumptions on the sizes of the eigenvalues (which relates  directly to  how good of an approximation $\L_k$ is to $\L_G$), the features of the  polytope $\P_k$  will  approximate  those of $\splx_G$. As we stated previously, this could help explain in part the success of the experiments run by Torres \etal~\cite{torres2019geometric}.  In their work, they assume they are given  $\P_k$ and  attempt to reconstruct certain  graph  features,  most notably its connectivity.  Since  the connectivity of  a  graph  is related to  the centroids of $\splx_G$ (Section~\ref{sec:S_G}), if $k$ is sufficiently small then  the centroids $\P_k$ will approximately  recover the edge relations. 
+Summarizing, we see  that under assumptions on the sizes of the eigenvalues (which relates  directly to  how good of an approximation $\L_k$ is to $\L_G$), the features of the  polytope $\P_k$  will  approximate  those of $\splx_G$. As we stated previously, this could help explain in part the success of the experiments run by Torres \etal~\cite{torres2019geometric} on  a new Laplacian eigenmap method.  In their work, they assume they are given  $\P_k$ and  attempt to reconstruct certain  graph  features,  most notably its connectivity.  Since  the connectivity of  a  graph  is related to  the centroids of $\splx_G$ (Section~\ref{sec:S_G}), if $k$ is sufficiently small then  the centroids $\P_k$ will approximately  recover the edge relations. 
 
 
 
@@ -583,11 +578,9 @@ assuming $r=O(1)$. Note that we can compute a single effective resistance in tim
 
 Ideally, after computing  $\widetilde{\Reff}$, we'd like to compute vertices which (approximately) obey the  distances represented by $\widetilde{\Reff}$ (note  that $\widetilde{\Reff}$ may not be a valid distance matrix since it  is only an approximation). The usual approach to generating points from a (true) distance matrix $\D$ is \emph{Multidimensional Scaling (MDS)}~\cite{kruskal1978multidimensional}. Typically, practitioners are interested  in  generating points which approximately  obey the pairwise distance in  $\D$, but  lie in a lower dimensional space. 
 While  this sounds promising, MDS relies on the the eigendecomposition of the distance matrix which requires cubic time. Of  course, this is too slow for our  purposes:  If we allow cubic time, then we can simply perform an  eigendecomposition of $\L_G$ and recover the vertices of $\splx_G^+$ exactly. Moreover, it's unclear whether MDS works when  the given distances are  only approximate. 
-
-
 We therefore  leave the reader with  the  following open problem:  
 
-\textbf{Problem:} Given an approximate Euclidean distance matrix $\tD$ and a parameter  $\eps>0$, can a set of vertices be computed which  obey  the distances given by $\tD$ within an additive factor of $\eps$  in sub-cubic time? 
+\noindent\textbf{Problem:} Given an approximate Euclidean distance matrix $\tD$ and a parameter  $\eps>0$, can a set of vertices be computed which  obey  the distances given by $\tD$ within an additive factor of $\eps$  in sub-cubic time? 
 
 
 

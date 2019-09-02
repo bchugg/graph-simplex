@@ -1,81 +1,82 @@
-\contentsline {section}{Abstract}{i}{chapter*.2}
-\contentsline {section}{Lay Summary}{ii}{chapter*.3}
-\contentsline {section}{Acknowledgements}{iii}{chapter*.4}
-\contentsline {section}{Table of Contents}{v}{chapter*.5}
-\contentsline {section}{List of Figures}{vi}{section*.6}
-\contentsline {section}{Nomenclature}{ix}{chapter*.8}
+\contentsline {section}{Abstract}{iii}{chapter*.2}
+\contentsline {section}{Lay Summary}{v}{chapter*.3}
+\contentsline {section}{Acknowledgements}{vii}{chapter*.4}
+\contentsline {section}{Table of Contents}{x}{chapter*.5}
+\contentsline {section}{List of Figures}{xi}{section*.6}
+\contentsline {section}{Nomenclature}{xv}{chapter*.8}
 \contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}
 \contentsline {section}{\numberline {1.1}Prior Work}{2}{section.1.1}
-\contentsline {section}{\numberline {1.2}Contribution}{3}{section.1.2}
+\contentsline {section}{\numberline {1.2}Contribution}{4}{section.1.2}
 \contentsline {section}{\numberline {1.3}Organization}{7}{section.1.3}
-\contentsline {chapter}{\numberline {2}Background and Fundamentals}{8}{chapter.2}
-\contentsline {section}{\numberline {2.1}General Notation}{8}{section.2.1}
-\contentsline {section}{\numberline {2.2}Linear Algebra}{9}{section.2.2}
-\contentsline {subsection}{\numberline {2.2.1}Pseudoinverse}{11}{subsection.2.2.1}
-\contentsline {section}{\numberline {2.3}Spectral Graph Theory}{11}{section.2.3}
-\contentsline {subsection}{\numberline {2.3.1}Laplacian Matrices}{12}{subsection.2.3.1}
-\contentsline {paragraph}{Pseudoinverse of $\vb *{L}_G$ and $\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle \vb *{L}$}\mathaccent "0362{\vb *{L}}_G$.}{14}{lemma.2.6}
-\contentsline {paragraph}{Kirchoff's Theorem. }{14}{equation.2.3.15}
-\contentsline {section}{\numberline {2.4}Electrical Flows}{15}{section.2.4}
-\contentsline {section}{\numberline {2.5}Simplices}{16}{section.2.5}
-\contentsline {paragraph}{Affine Independence.}{16}{section.2.5}
-\contentsline {paragraph}{The simplex.}{16}{lemma.2.10}
-\contentsline {paragraph}{Centroids and altitudes.}{18}{figure.caption.13}
-\contentsline {paragraph}{Centred simplex.}{18}{equation.2.5.21}
-\contentsline {subsection}{\numberline {2.5.1}Dual Simplex}{19}{subsection.2.5.1}
-\contentsline {subsection}{\numberline {2.5.2}Angles in a Simplex}{22}{subsection.2.5.2}
-\contentsline {chapter}{\numberline {3}The Graph-Simplex Correspondence}{23}{chapter.3}
-\contentsline {section}{\numberline {3.1}Convex Polyhedra of Matrices}{23}{section.3.1}
-\contentsline {subsection}{\numberline {3.1.1}The Inverse Polytope}{24}{subsection.3.1.1}
-\contentsline {section}{\numberline {3.2}A Bijection Between Graphs and Simplices}{25}{section.3.2}
-\contentsline {subsection}{\numberline {3.2.1}The Simplices of a Graph}{26}{subsection.3.2.1}
-\contentsline {subsection}{\numberline {3.2.2}The Graph of a Simplex}{27}{subsection.3.2.2}
-\contentsline {section}{\numberline {3.3}Examples \& Simplices of Special Graphs}{29}{section.3.3}
-\contentsline {paragraph}{Simplex of complement graph, $G^c$.}{29}{section.3.3}
-\contentsline {paragraph}{Subgraphs.}{30}{section.3.3}
-\contentsline {paragraph}{Product graphs.}{30}{section.3.3}
-\contentsline {subsection}{\numberline {3.3.1}Examples}{31}{subsection.3.3.1}
-\contentsline {paragraph}{The complete graph, $K_n$.}{31}{subsection.3.3.1}
-\contentsline {paragraph}{The Cycle graph, $C_n$.}{31}{subsection.3.3.1}
-\contentsline {paragraph}{The probability simplex.}{32}{subsection.3.3.1}
-\contentsline {section}{\numberline {3.4}Properties of $\mathcal {S}_G$ and $\mathcal {S}_G^+$}{32}{section.3.4}
-\contentsline {paragraph}{Centroids and altitudes.}{36}{figure.caption.17}
-\contentsline {section}{\numberline {3.5}Properties of $\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle \mathcal {S}$}\mathaccent "0362{\mathcal {S}}_G$ and $\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle \mathcal {S}$}\mathaccent "0362{\mathcal {S}}_G^+$}{41}{section.3.5}
-\contentsline {paragraph}{Centroids and altitudes.}{43}{corollary.3.2}
-\contentsline {paragraph}{Alternate descriptions and duals.}{44}{equation.3.5.17}
-\contentsline {paragraph}{What is $\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle \mathcal {S}$}\mathaccent "0362{\mathcal {S}}_G^*$ and and $(\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle \mathcal {S}$}\mathaccent "0362{\mathcal {S}}_G^+)^*$?}{45}{figure.caption.21}
-\contentsline {chapter}{\numberline {4}Further Properties of the Correspondence}{48}{chapter.4}
-\contentsline {section}{\numberline {4.1}A General Property of the Dual Simplex }{48}{section.4.1}
-\contentsline {section}{\numberline {4.2}Block Matrix Equations}{49}{section.4.2}
-\contentsline {subsection}{\numberline {4.2.1}Applications}{53}{subsection.4.2.1}
-\contentsline {section}{\numberline {4.3}Inequalities}{61}{section.4.3}
-\contentsline {section}{\numberline {4.4}Quadrics}{62}{section.4.4}
-\contentsline {section}{\numberline {4.5}Resistive Polytope}{65}{section.4.5}
-\contentsline {section}{\numberline {4.6}Continuous Time Random Walks}{68}{section.4.6}
-\contentsline {chapter}{\numberline {5}Algorithmics}{71}{chapter.5}
-\contentsline {section}{\numberline {5.1}Preliminaries}{72}{section.5.1}
-\contentsline {paragraph}{Asymptotics.}{72}{section.5.1}
-\contentsline {paragraph}{Simplex representations.}{72}{section.5.1}
-\contentsline {paragraph}{Reductions.}{72}{section.5.1}
-\contentsline {paragraph}{The complexity classes {\normalfont \textsf {NP}\xspace }\xspace , {\normalfont \textsf {NP}\xspace }\xspace -hard, and {\normalfont \textsf {NP}\xspace }\xspace -Complete.}{73}{section.5.1}
-\contentsline {section}{\numberline {5.2}Computational Complexity}{74}{section.5.2}
-\contentsline {section}{\numberline {5.3}There and Back Again: A Tale of Graphs and Simplices}{78}{section.5.3}
-\contentsline {paragraph}{Between $\mathcal {S}$ and $\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle \mathcal {S}$}\mathaccent "0362{\mathcal {S}}$.}{80}{figure.caption.27}
-\contentsline {paragraph}{$\mathcal {S}$ and $\mathcal {S}^+$.}{81}{lemma.5.7}
-\contentsline {paragraph}{Between $G$ and $\mathcal {S}$ or $\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle \mathcal {S}$}\mathaccent "0362{\mathcal {S}}$.}{82}{lemma.5.10}
-\contentsline {paragraph}{Between different descriptions of the simplices.}{84}{lemma.5.13}
-\contentsline {paragraph}{Verification.}{84}{lemma.5.14}
-\contentsline {section}{\numberline {5.4}Approximations}{84}{section.5.4}
-\contentsline {subsection}{\numberline {5.4.1}Dimensionality Reduction: $\mathcal {S}^+$}{85}{subsection.5.4.1}
-\contentsline {subsection}{\numberline {5.4.2}Dimensionality Reduction: $\vb *{L}_G$}{87}{subsection.5.4.2}
-\contentsline {subsection}{\numberline {5.4.3}Distance Matrix of $\mathcal {S}_G^+$}{89}{subsection.5.4.3}
-\contentsline {chapter}{\numberline {6}Conclusion}{91}{chapter.6}
-\contentsline {section}{\numberline {6.1}Open Problems and Future Directions}{92}{section.6.1}
-\contentsline {chapter}{Bibliography}{94}{section.6.1}
-\contentsline {chapter}{Appendix}{99}{chapter*.28}
-\contentsline {chapter}{\numberline {A}Omitted Proofs}{100}{appendix.A}
-\contentsline {section}{\numberline {A.1}Chapter\nobreakspace {}\ref {chap:background}}{100}{section.A.1}
-\contentsline {section}{\numberline {A.2}Chapter\nobreakspace {}\ref {chap:correspondence}}{105}{section.A.2}
-\contentsline {section}{\numberline {A.3}Chapter\nobreakspace {}\ref {chap:further_properties}}{106}{section.A.3}
-\contentsline {chapter}{\numberline {B}Intuition Behind Effective Resistance}{112}{appendix.B}
-\contentsline {chapter}{\numberline {C}Figures}{114}{appendix.C}
+\contentsline {chapter}{\numberline {2}Background and Fundamentals}{9}{chapter.2}
+\contentsline {section}{\numberline {2.1}General Notation}{9}{section.2.1}
+\contentsline {section}{\numberline {2.2}Linear Algebra}{10}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}Pseudoinverse}{12}{subsection.2.2.1}
+\contentsline {section}{\numberline {2.3}Spectral Graph Theory}{13}{section.2.3}
+\contentsline {subsection}{\numberline {2.3.1}Laplacian Matrices}{14}{subsection.2.3.1}
+\contentsline {paragraph}{Pseudoinverse of $\vb *{L}_G$ and $\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle \vb *{L}$}\mathaccent "0362{\vb *{L}}_G$.}{16}{lemma.2.6}
+\contentsline {paragraph}{Kirchoff's Theorem. }{16}{equation.2.3.15}
+\contentsline {section}{\numberline {2.4}Electrical Flows}{17}{section.2.4}
+\contentsline {section}{\numberline {2.5}Simplices}{18}{section.2.5}
+\contentsline {paragraph}{Affine Independence.}{18}{section.2.5}
+\contentsline {paragraph}{The simplex.}{18}{lemma.2.10}
+\contentsline {paragraph}{Centroids and altitudes.}{21}{figure.caption.13}
+\contentsline {paragraph}{Centred simplex.}{21}{equation.2.5.21}
+\contentsline {subsection}{\numberline {2.5.1}Dual Simplex}{21}{subsection.2.5.1}
+\contentsline {subsection}{\numberline {2.5.2}Angles in a Simplex}{25}{subsection.2.5.2}
+\contentsline {chapter}{\numberline {3}The Graph-Simplex Correspondence}{27}{chapter.3}
+\contentsline {section}{\numberline {3.1}Convex Polyhedra of Matrices}{27}{section.3.1}
+\contentsline {subsection}{\numberline {3.1.1}The Inverse Polytope}{28}{subsection.3.1.1}
+\contentsline {section}{\numberline {3.2}A Bijection Between Graphs and Simplices}{30}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}The Simplices of a Graph}{30}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.2}The Graph of a Simplex}{32}{subsection.3.2.2}
+\contentsline {section}{\numberline {3.3}Examples \& Simplices of Special Graphs}{34}{section.3.3}
+\contentsline {paragraph}{Simplex of complement graph, $G^c$.}{34}{section.3.3}
+\contentsline {paragraph}{Subgraphs.}{35}{section.3.3}
+\contentsline {paragraph}{Product graphs.}{35}{section.3.3}
+\contentsline {subsection}{\numberline {3.3.1}Examples}{36}{subsection.3.3.1}
+\contentsline {paragraph}{The complete graph, $K_n$.}{36}{subsection.3.3.1}
+\contentsline {paragraph}{The Cycle graph, $C_n$.}{37}{subsection.3.3.1}
+\contentsline {paragraph}{The probability simplex.}{37}{subsection.3.3.1}
+\contentsline {section}{\numberline {3.4}Properties of $\mathcal {S}_G$ and $\mathcal {S}_G^+$}{38}{section.3.4}
+\contentsline {paragraph}{Centroids and altitudes.}{42}{figure.caption.17}
+\contentsline {section}{\numberline {3.5}Properties of $\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle \mathcal {S}$}\mathaccent "0362{\mathcal {S}}_G$ and $\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle \mathcal {S}$}\mathaccent "0362{\mathcal {S}}_G^+$}{47}{section.3.5}
+\contentsline {paragraph}{Centroids and altitudes.}{50}{corollary.3.2}
+\contentsline {paragraph}{Alternate descriptions and duals.}{51}{equation.3.5.17}
+\contentsline {paragraph}{What is $\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle \mathcal {S}$}\mathaccent "0362{\mathcal {S}}_G^*$ and and $(\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle \mathcal {S}$}\mathaccent "0362{\mathcal {S}}_G^+)^*$?}{52}{figure.caption.21}
+\contentsline {chapter}{\numberline {4}Further Properties of the Correspondence}{55}{chapter.4}
+\contentsline {section}{\numberline {4.1}A General Property of the Dual Simplex }{55}{section.4.1}
+\contentsline {section}{\numberline {4.2}Block Matrix Equations}{56}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}Applications}{61}{subsection.4.2.1}
+\contentsline {section}{\numberline {4.3}Inequalities}{70}{section.4.3}
+\contentsline {section}{\numberline {4.4}Quadrics}{71}{section.4.4}
+\contentsline {section}{\numberline {4.5}Resistive Polytope}{75}{section.4.5}
+\contentsline {section}{\numberline {4.6}Continuous Time Random Walks}{77}{section.4.6}
+\contentsline {chapter}{\numberline {5}Algorithmics}{81}{chapter.5}
+\contentsline {section}{\numberline {5.1}Preliminaries}{82}{section.5.1}
+\contentsline {paragraph}{Asymptotics.}{82}{section.5.1}
+\contentsline {paragraph}{Simplex representations.}{82}{section.5.1}
+\contentsline {paragraph}{Reductions.}{82}{section.5.1}
+\contentsline {paragraph}{The complexity classes {\normalfont \textsf {NP}\xspace }\xspace , {\normalfont \textsf {NP}\xspace }\xspace -hard, and {\normalfont \textsf {NP}\xspace }\xspace -Complete.}{83}{section.5.1}
+\contentsline {section}{\numberline {5.2}Computational Complexity}{84}{section.5.2}
+\contentsline {section}{\numberline {5.3}There and Back Again: A Tale of Graphs and Simplices}{90}{section.5.3}
+\contentsline {paragraph}{Between $\mathcal {S}$ and $\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle \mathcal {S}$}\mathaccent "0362{\mathcal {S}}$.}{91}{figure.caption.27}
+\contentsline {paragraph}{$\mathcal {S}$ and $\mathcal {S}^+$.}{93}{lemma.5.7}
+\contentsline {paragraph}{Between $G$ and $\mathcal {S}$ or $\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle \mathcal {S}$}\mathaccent "0362{\mathcal {S}}$.}{94}{lemma.5.10}
+\contentsline {paragraph}{Between different descriptions of the simplices.}{95}{observation.5.2}
+\contentsline {paragraph}{Verification.}{96}{lemma.5.13}
+\contentsline {section}{\numberline {5.4}Approximations}{96}{section.5.4}
+\contentsline {subsection}{\numberline {5.4.1}Dimensionality Reduction: $\mathcal {S}^+$}{96}{subsection.5.4.1}
+\contentsline {subsection}{\numberline {5.4.2}Dimensionality Reduction: $\vb *{L}_G$}{98}{subsection.5.4.2}
+\contentsline {subsection}{\numberline {5.4.3}Distance Matrix of $\mathcal {S}_G^+$}{102}{subsection.5.4.3}
+\contentsline {chapter}{\numberline {6}Conclusion}{103}{chapter.6}
+\contentsline {section}{\numberline {6.1}Open Problems and Future Directions}{104}{section.6.1}
+\contentsline {chapter}{Bibliography}{106}{section.6.1}
+\contentsline {chapter}{Appendix}{112}{chapter*.28}
+\contentsline {chapter}{\numberline {A}Omitted Proofs}{113}{appendix.A}
+\contentsline {section}{\numberline {A.1}Chapter\nobreakspace {}\ref {chap:background}}{113}{section.A.1}
+\contentsline {section}{\numberline {A.2}Chapter\nobreakspace {}\ref {chap:correspondence}}{118}{section.A.2}
+\contentsline {section}{\numberline {A.3}Chapter\nobreakspace {}\ref {chap:further_properties}}{119}{section.A.3}
+\contentsline {section}{\numberline {A.4}Chapter\nobreakspace {}\ref {chap:algorithmics}}{125}{section.A.4}
+\contentsline {chapter}{\numberline {B}Intuition Behind Effective Resistance}{127}{appendix.B}
+\contentsline {chapter}{\numberline {C}Figures}{129}{appendix.C}

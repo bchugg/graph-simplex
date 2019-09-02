@@ -10,17 +10,24 @@ This chapter is devoted to introducing the  pre-requisite knowledge necessary to
 \label{sec:background_general}
 We use the standard notation for sets of numbers: $\R$ (reals), $\N$ (naturals), $\Z$ (integers).  
 %We use the subscript $\geq 0$ (resp., $>0$) to restrict a relevant set to its non-negative (resp., positive) elements ($\R_{\geq 0}$, for example). 
-We will often introduce new notation or definitions by using the notation $\equiv$. The complement of a set $U$ (with respect to what will be clear from context) is denoted $U^c$. 
-Given a set of scalars $K$, we let $K^{n\times m}$ denote the set of $n\times m$ matrices ($n$ rows and $m$ columns) with elements in $K$. Matrices will typically be denoted by uppercase letters in boldface, e.g., $\Q\in K^{n\times m}$. Matrices will also often be referred to as linear transformations and written, for example, as $\Q:K^m \to K^n$. 
+%We will often introduce new notation or definitions by using the notation $\equiv$. 
+For any $n\in\N$, set $[n]\equiv \{1,2,\dots,n\}$. 
+The complement of a set $U$ (with respect to what will be clear from context) is denoted $U^c$. 
+We let $\R^{n\times m}$ denote the set of $n\times m$ matrices ($n$ rows and $m$ columns) with entries in $\R$. Matrices will typically be denoted by uppercase letters in boldface, e.g., $\Q\in \R^{n\times m}$. Matrices may also be referred to as linear transformations and written, for example, as $\Q:\R^m \to \R^n$. 
 We let $\Q(i,\cdot)$ (resp., $\Q(\cdot,i)$) denote the $i$-th row (resp., column) of the matrix $\Q$. 
-For a set $U$, $K^U$ denotes the set of all functions from $U$ to $K$.  Elements of $K^U$ are also called vectors. For any $n\in\N$, set $[n]\equiv \{1,2,\dots,n\}$. As usual, we let $K^n=K^{[n]}$. Vectors will typically be denoted by lowercase boldcase letters. Lowercase  greek letters will often be used for scalars. It will often  be intuitively useful to identity vectors with their endpoints, rather than the traditional ``arrow'' originating from the origin. When this is the case, we will often use the word point instead of vector. We emphasize that they are formally the same object. 
+Similarly, for sets $B_1,B_2$, we let  $\Q(B_1,B_2)$ be the submatrix of $\Q$ indexed  by the rows  $B_1$ and columns $B_2$. We take $\Q_{-i,-j}$ to mean  $\Q(\{i\}^c,\{j\}^c)$. 
+%For a set $U$, $K^U$ denotes the set of all functions from $U$ to $K$.  
+
+We work with  $\R^n$ as a  vector space. 
+%As usual, we let $K^n=K^{[n]}$. 
+Vectors will typically be denoted by lowercase boldcase letters. It will often  be intuitively useful to identify vectors with their endpoints, rather than the traditional ``arrow'' originating from the origin. When this is the case, we will often use the word point instead of vector. We emphasize that they are formally the same object. 
 
 
-The standard inner product on $\R^d$ is denoted as $\la\cdot,\cdot\ra$, that is, $\la \x,\y\ra = \sum_i x(i)y(i)$. Elementary properties of the inner product will often be used without justification, such as its bilinearity: $\la \x,\alpha\y_1+\y_2\ra  = \la \x,\alpha\y_1\ra + \la \x,\y_2\ra$ for $\alpha\in\R$. 
-For $n\in \N$, let $\zero_n\in\R^n$ and $\one_n\in\R^n$ be the vectors of all zeroes and all ones. Let $\I_n$ and $\J_n$  refer to the $n\times n$ identity matrix and all-ones matrix respectively (so $\J_n=\one_n\one_n^\tp)$. When the dimension $n$ is understood from context, will typically omit it as a subscript. We use $\chi(E)$ or $\chi_E$ as the indicator of an event $E$, i.e., $\chi(E)=1$ if $E$ occurs, and 0 otherwise. For example, $\chi(i\in U)=1$ if $i\in U$, and 0 if $i\in U^c$.  Similarly, for $U\subset K$,  $\bchi_U\in\R^K$ is the indicator vector of the set $U$, so $\bchi_U(i)=\chi(i\in U)$. We  also set $\bchi_i=\bchi_{\{\i\}}$.
+The standard inner product on $\R^d$ is denoted as $\la\cdot,\cdot\ra$, that is, $\la \x,\y\ra = \sum_i x(i)y(i)$. Elementary properties of the inner product will often be used without justification, such as its bilinearity: $\la \x,\alpha\y_1+\y_2\ra  = \alpha\la \x,\y_1\ra + \la \x,\y_2\ra$ for $\alpha\in\R$. 
+For $n\in \N$, let $\zero_n\in\R^n$ and $\one_n\in\R^n$ be the vectors of all zeroes and all ones. Let $\I_n$ and $\J_n$  refer to the $n\times n$ identity matrix and all-ones matrix respectively (so $\J_n=\one_n\one_n^\tp)$. When the dimension $n$ is understood from context, will typically omit it as a subscript. We use $\chi(E)$ or $\chi_E$ as the indicator of an event $E$, i.e., $\chi(E)=1$ if $E$ occurs, and 0 otherwise. For example, $\chi(i\in U)=1$ if $i\in U$, and 0 if $i\in U^c$.  Similarly, for $U\subset K$,  $\bchi_U\in\R^K$ is the indicator vector of the set $U$, so $\bchi_U(i)=\chi(i\in U)$. We  also set $\bchi_i=\bchi_{\{i\}}$.
 
 
-By $\diag(x_1,x_2,\dots,x_n)$ we mean the $n\times n$ matrix $\Q$ entries $\Q(i,i)=x_i$ and $\Q(i,j)=0$ for $i\neq j$. Given vectors $\v_1,\dots,\v_n$, we will often denote by $(\v_1,\dots,\v_n)$  or  $(\v_i)$ the matrix whose $i$-th column is $\v_i$. 
+By $\diag(y_1,y_2,\dots,y_n)$ we mean the $n\times n$ matrix $\Q$ entries $\Q(i,i)=y_i$ and $\Q(i,j)=0$ for $i\neq j$. Given vectors $\x_1,\dots,\x_n$, we will often denote by $(\x_1,\dots,\x_n)$  or  simply $(\x_i)$ the matrix whose $i$-th column is $\x_i$. 
 The  \emph{Gram matrix} of a set  of vectors $\x_1,\dots,\x_n$ is the matrix with $(i,j)$-th entry $\la \x_i,\x_j\ra$. 
 The $i$-th coordinate of a vector $\x$ will be denoted either by $\x(i)$ or simply $x(i)$. We  also set $\x^{1/2}=\sqrt{\x}=(\sqrt{x(1)},\dots,\sqrt{x(n)})$. 
 
@@ -87,7 +94,7 @@ It's easily verified that $(\M^{1/2})^2 = \M$. The following basic  result will 
 	For any $\M:\R^n\to\R^m$, $\rank(\M) = \rank(\M^\tp\M)$. 
 \end{lemma}
 
-We conclude with a formula for  the determinant of a minor of an invertible matrix.  It is often referred to as (a special  case of) \emph{Sylvester's identity}~\cite{sylvester1851xxxvii}. We state the version described by Viktor Prasolov~\cite{prasolov1994problems}. 
+We conclude with a formula for  the determinant of a minor of an invertible matrix.  It is often referred to as (a special  case of) \emph{Sylvester's identity}~\cite{sylvester1relation}. We state the version described by Viktor Prasolov~\cite{prasolov1994problems}. 
 
 \begin{lemma}
 	\label{lem:sylvester}
@@ -146,10 +153,10 @@ where $\lambda_i$, $1\leq i\leq k$ are the non-zero eigenvalues of $\M$ with cor
 Similarly to  Section \ref{sec:background_linear}, the results in this section can be found in any self-contained reference on (spectral) graph theory (see e.g., \cite{spielman2009spectral,chung1997spectral}).
 
 We begin with basic graph theory. 
-We denote a \emph{graph} by a triple $G=(V,E,w_G)$ where $V$ is the \emph{vertex set}, $E\subset V\times V$ is the \emph{edge set} and $w_G:V\times V\to\R_{\geq0}$ (the non-negative reals) a \emph{weight function}. We will always  drop the subscript on  $w_G$  unless we are dealing with multiple graphs.  We let the domain of $w=w_G$ be $V\times V$ for convenience; for $(i,j)\notin E$ we have $w(i,j)=0$. We call $G$ \emph{unweighted} if $w(i,j)=\chi_{(i,j)\in E}$ for all $i,j$. In this case, we may omit the weight function and simply write $G=(V,E)$. Throughout, we  let $\w=(w(1),\dots,w(n))$  be the vector of weights.  
+We denote a \emph{graph} by a triple $G=(V,E,w_G)$ where $V$ is the \emph{vertex set}, $E\subset V\times V$ is the \emph{edge set} and $w_G:V\times V\to\R_{\geq0}$ (the non-negative reals) a \emph{weight function}. We will always  drop the subscript on  $w_G$  unless we are dealing with multiple graphs.  We let the domain of $w=w_G$ be $V\times V$ for convenience; for $(i,j)\notin E$ we have $w(i,j)=0$. We call $G$ \emph{unweighted} if $w(i,j)=\chi_{(i,j)\in E}$ for all $i,j$. In this case, we may omit the weight function and simply write $G=(V,E)$. We typically denote by  $\w$ the vector  $(w(1),\dots,w(n))$ of weights. 
 Throughout this manuscript, $G$ will  always be undirected 
 (edges do not have  directions),  connected (each vertex is reachable from every other vertex),  and simple ($w(i,i)=0$ for all $i$). 
-We will typically take $V=[n]$ for simplicity. For a  vertex $i\in V$, we denote the set of its neighbours by 
+We will usually take $V=[n]$ for simplicity. For a  vertex $i\in V$, we denote the set of its neighbours by 
 \begin{equation}
 \label{eq:delta(i)}
 \partial_G(i) \equiv  \{j\in V:w(i,j)>0\},
@@ -172,13 +179,13 @@ We will also appeal to the so-called ``handshaking lemma'' for unweighted graphs
 
 \subsection{Laplacian Matrices}
 \label{sec:background_laplacian}
-Here we introduce various matrices of graphs, including the combinatorial and normalized Laplacians. See  the survey by Merris~\cite{merris1994laplacian} for an excellent overview of the combinatorial Laplacian, and that by Mohar~\cite{mohar1991laplacian} for an overview of its spectrum. 
+Here we introduce various matrices associated to graphs, including the combinatorial and normalized Laplacians. See  the survey by Merris~\cite{merris1994laplacian} for an excellent overview of the combinatorial Laplacian, and that by Mohar~\cite{mohar1991laplacian} for an overview of its spectrum. 
 
 
 Let $G=(V,E,w)$ be a graph, with $V=[n]$ and $|E|=m$. 
 Let $\W_G$ be the \emph{weight matrix} of $G$, i.e., $\W_G=\diag(w(1),w(2),\dots,w(n))$. 
-The \emph{degree matrix} of $G$ is $\diag(\deg(1),\deg(2),\dots,\deg(n))$. 
-The \emph{adjacency matrix} of $G$ encodes the edge relations, namely, $\A_G(i,j)=w((i,j))$ for all $i\neq j$, and $\A_G(i,i)=0$ for all $i$. Notice that (for undirected graphs) $\A_G$ is symmetric.  Note that if $G$ is unweighted, then $\W_G$ and the degree matrix are equivalent. 
+The \emph{degree matrix} of $G$ is the diagonal matrix $\diag(\deg(1),\deg(2),\dots,\deg(n))$. 
+The \emph{adjacency matrix} of $G$ encodes the edge relations, namely, $\A_G(i,j)=w(i,j)$ for all $i\neq j$, and $\A_G(i,i)=0$ for all $i$. Notice that $\A_G$ is symmetric and that if $G$ is unweighted, then $\W_G$ and the degree matrix are equivalent. 
 The \emph{combinatorial Laplacian} of $G$ is the matrix 
 \begin{equation}
 \label{eq:L_G}
@@ -283,7 +290,7 @@ We will make use  of the following Theorem, often  called the \emph{Kirchhoff tr
 \label{sec:background_er}
 
 One of  the most successful physical interpretations of a graph arises from considering it as an electrical network~\cite{ellens2011effective,tetali1991random}. 
-We imagine placing a resistor of resistance $1/w(i,j)$ on each edge $(i,j)\in E(G)$. Injecting current at one or more of the vertices results in an \emph{electrical flow} in the graph. While this physical interpretation  is intuitively useful, it is  not necessary for understanding  the notions of electrical flows. Consequently, we move a more involved discussion on electrical flows to Appendix~\ref{sec:app_er} and present only the required definitions  and results here. The key concept is that of the ``effective resistance'' between  two vertices:  
+We imagine placing a resistor of resistance $1/w(i,j)$ on each edge $(i,j)\in E(G)$. Injecting current at one or more of the vertices results in an \emph{electrical flow} in the graph. While this physical interpretation  is intuitively useful, it is  not necessary for understanding  the notion of electrical flows. Consequently, we move a more involved discussion on electrical flows to Appendix~\ref{sec:app_er} and present only the required definitions  and results here. The key concept is that of the ``effective resistance'' between  two vertices:  
 
 
 \begin{definition}
@@ -357,19 +364,18 @@ The following lemma demonstrates that if we form a matrix of size $(n-1)\times n
 We jump straight into the definition; see Figure~\ref{fig:simplices} for several examples. 
 \begin{figure}
 	\centering
-	\begin{minipage}{0.45\textwidth}
-		\includegraphics[scale=0.6]{simplices}
+	\begin{minipage}{0.5\textwidth}
+		\includegraphics[scale=0.34]{simplices}
 		\subcaption{}
 		\label{fig:simplices}
 	\end{minipage}
-	\hspace{0.08\textwidth}
 	\begin{minipage}{0.45\textwidth}
 		\flushright
-		\includegraphics[scale=0.6]{affine_independence}
+		\includegraphics[scale=0.27]{affine_independence}
 		\subcaption{}
 		\label{fig:affine_independence}
 	\end{minipage}
-	\caption{(a) Simplices in dimensions one, two, and three. We wish the reader luck in visualizing a simplex (or anything really) in more than three dimensions. (b) Example of affine dependence and independence.  Here $x_1,x_2,x_3$ are not affinely independent, as evidenced by the fact that $x_2-x_1$ and $x_2-x_3$ are parallel. $y_1,y_2,y_3$ on the other hand, are affinely independent; one can easily visualize the triangle formed by their convex hull. We emphasize that the arrows representing the difference between two vectors, e.g., $x_2-x_1$, represent their \emph{direction only} and  not their absolute position.} 
+	\caption{(a) Simplices in dimensions one, two, and three. (b) Example of affine dependence and independence.  Here $x_1,x_2,x_3$ are not affinely independent, as evidenced by the fact that $x_2-x_1$ and $x_2-x_3$ are parallel. $y_1,y_2,y_3$ on the other hand, are affinely independent; one can easily visualize the triangle formed by their convex hull. We emphasize that the arrows representing the difference between two vectors, e.g., $x_2-x_1$, represent their \emph{direction only} and  not their absolute position.} 
 	\label{fig:simplex+independence}
 \end{figure}
 
@@ -390,7 +396,9 @@ As is illustrated in two and three dimensions by the triangle and the tetrahedro
 \label{eq:T_U}
     \ssplx\restriction_U \equiv \{\Sv\x: \x\geq 0,\;\norm{\x}_1=1,\;x(i)=0\text{ for all }i\in U^c\}.
 \end{equation}
-If $|U|=n-1$, we call $\ssplx\restriction_U$ a \emph{facet}. Figure~\ref{fig:faces} illustrates a two-dimensional   facet and one-dimensional  face of a simplex in $\R^3$. The following observation demonstrates that $\ssplx\restriction_U$ is a well-defined simplex. 
+If $|U|=n-1$, we call $\ssplx\restriction_U$ a \emph{facet}. Figure~\ref{fig:faces} illustrates a two-dimensional   facet and one-dimensional  face of a simplex in $\R^3$. 
+If $\x$ is the  barycentric coordinate for a point  $\p\in\ssplx\restriction_U$, we  may write $\x_{U}$ to emphasize that $\x(U^c)=0$. 
+The following observation demonstrates that $\ssplx\restriction_U$ is a well-defined simplex. 
 \begin{observation}
 	\label{obs:subset_affinely_independent}
 	Any subset of an affinely independent set of vectors is again affinely independent. 
@@ -398,7 +406,7 @@ If $|U|=n-1$, we call $\ssplx\restriction_U$ a \emph{facet}. Figure~\ref{fig:fac
 
 Depending on the situation we may adopt different notation for the faces of a simplex. Oftentimes the vertical restriction symbol will be dropped and we will write only $\splx_U$; other times we will write $\splx[U]$, especially when the space reserved a subscript is being used for other purposes. 
 
-In  our study of simplices we will be mainly concerned with their relative properties (e.g., volume, angles, shape, etc.) as opposed to their absolute  positions in space. Thus, it will often  be convenient to identify simplices which share the same relative properties, but are simply rotated and/or translated versions of one  another. We will call  such simplices \emph{congruent},  or occasionally \emph{isomorphic}. 
+In  our study of simplices we will be mainly concerned with their relative properties (e.g., volume, angles, shape, etc.) as opposed to their absolute  positions in space. Thus, it will often  be convenient to identify simplices which share the same relative properties, but are simply rotated and/or translated versions of one  another. We will call  such simplices \emph{congruent}.
 Unfortunately for notational simplicity's sake, it will be  required to  sometimes differentiate between simplices  which are congruent by translation only, and simplices which are congruent by translation \emph{and} rotation. Let us  call the former type of congruence \emph{translational congruence},  and  the latter \emph{rotational congruence}. 
 %Thus, the set of translationally congruent simplices to a simplex $\ssplx$ is a subset of  those simplices which are congruent to $\ssplx$. 
 We use the symbol $\cong$ to denote translational congruency between simplices; so $\ssplx_1\cong\ssplx_2$ iff $\Sv(\splx_1)=\Sv(\splx_2) + \balpha\one^\tp$ for some $\balpha\in\R^{n-1}$. We will also occasionally make use of the following \emph{translational congruence class of simplices}: 
@@ -481,7 +489,9 @@ We may also refer to $\ssplx_0$ as the \emph{centred version of $\ssplx$} in ord
 	\caption{An example of a simplex $\ssplx\subset\R^2$ (in black) and its dual, $\ssplx^\du$  (in gray).  The blue lines serve to emphasize the  fact that the dual vertex $\bgamma_1^\du$ is orthogonal to the face $\ssplx_{2,3}$ just as $\bgamma_3$ is to $\ssplx^\du_{1,2}$. }
 	\label{fig:dual_simplex}
 \end{figure}
-Here we introduce the notion of the dual simplex of a given simplex. Even  though we provide a novel treatment  of  the object, the proofs in this section   are  relatively elementary. As such, they have been moved to Appendix~\ref{sec:app_proofs_background}. 
+Here we introduce the notion of the dual simplex of a given simplex.
+The inspiration for  the construction comes from Fiedler's treatment of what he calls the  ``Gramian of a Graph''~\cite{fiedler1993geometric}.  
+The proofs in this section   are  relatively elementary. As such, most of  them have been moved to Appendix~\ref{sec:app_proofs_background}. 
 
 Let $\Sv=(\bgamma_1,\dots,\bgamma_n)\in\R^{n-1\times n}$ be the vertex matrix of a simplex $\ssplx\subset\R^{n-1}$. For each $i\in[n-1]$, put $\v_i=\bgamma_n-\bgamma_i$. Then $\{\v_1,\dots,\v_{n-1}\}$ is a linearly independent set, and thus admits a sister basis $\{\bgamma^\du_1,\dots,\bgamma^\du_{n-1}\}$ which together form biorthogonal bases of $\R^{n-1}$ (Lemma \ref{lem:bi-orthogonal_bases}). Put $\bgamma^\du_n = -\sum_{i=1}^{n-1}\bgamma^\du_i$.  
 
@@ -577,7 +587,7 @@ We end  this section  on dual simplices by giving a necessary condition of the r
 
 \begin{lemma}
 	\label{lem:dual_faces_orthogonal}
-	Let $\ssplx^\du$ be the dual of the simplex $\ssplx\in\R^{n-1}$. For all $U\subset[n]$, $\emptyset\neq U\neq[n]$, $\ssplx_U$ is orthogonal to $\ssplx_{U^c}^\du$.  
+	Let $\ssplx^\du$ be the dual of the simplex $\ssplx\subset\R^{n-1}$. For all $U\subset[n]$, $\emptyset\neq U\neq[n]$, $\ssplx_U$ is orthogonal to $\ssplx_{U^c}^\du$.  
 \end{lemma}
 
 \subsection{Angles in a Simplex}

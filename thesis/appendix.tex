@@ -28,7 +28,7 @@
 \end{proof}
 
 \begin{proof}[Proof of Lemma~\ref{lem:rank(QtQ)}]
-	It suffices to show that $\dim\ker\Q = \dim\ker\Q^\tp \Q$, by rank-nullity. Clearly $\ker\Q \subset \ker\Q^\tp\Q$ since $\Q\f=\zero$ implies $\Q^\tp\Q\f=\zero$. Conversely, if $\Q^\tp\Q\f=\zero$ then $0=\f^\tp \Q^\tp \Q\f = \norm{\Q\f}_2^2$, implying that $\Q\f=\zero$.  
+	It suffices to show that $\dim\ker\M = \dim\ker\M^\tp \M$, by rank-nullity. Clearly $\ker\M \subset \ker\M^\tp\M$ since $\M\f=\zero$ implies $\M^\tp\M\f=\zero$. Conversely, if $\M^\tp\M\f=\zero$ then $0=\f^\tp \M^\tp \M\f = \norm{\M\f}_2^2$, implying that $\M\f=\zero$.  
 \end{proof}
 
 \begin{proof}[Proof of Lemma~\ref{lem:pseudoinverse_eigendecomposition}]
@@ -40,7 +40,7 @@
 	= \sum_{i=1}^k \vp_i\vp_i^\tp = \vb{Q}\M.
 	\end{align*}
 	Performing a similar computation then demonstrates that 
-	\[\M\vb{Q}\M = \sum_{i=1}^k \vp_i\vp_i^\tp \sum_{j=1}^k \lambda_j\vp_j\vp_j^\tp=\sum_{i,j=1}\lambda_i \vp_i\vp_i^\tp\vp_j\vp_j^\tp=\sum_{i=1}^k \lambda_i \vp_i\vp_i^\tp =\M,\]
+	\[\M\vb{Q}\M = \sum_{i=1}^k \vp_i\vp_i^\tp \sum_{j=1}^k \lambda_j\vp_j\vp_j^\tp=\sum_{i,j=1}^k\lambda_i \vp_i\vp_i^\tp\vp_j\vp_j^\tp=\sum_{i=1}^k \lambda_i \vp_i\vp_i^\tp =\M,\]
 	and similarly, $\vb{Q}\M\vb{Q}=\vb{Q}$. Moreover, $\vp_i\vp_i^\tp (k,\ell)=\vp_i(k)\vp_i(\ell)=\vp_i(\ell)\vp_i(k)=(\vp_i\vp_i^\tp)^\tp (k,\ell)$ implying that $\vp_i\vp_i^\tp=(\vp_i\vp_i^\tp)^\tp$, so 
 	\[(\vb{Q}\M)^\tp=(\M\vb{Q})^\tp =\bigg(\sum_{i=1}^k \vp_i\vp_i^\tp \bigg)^\tp = \sum_{i=1}^k (\vp_i\vp_i^\tp)^\tp = \sum_{i=1}^k \vp_i\vp_i^\tp=\M\vb{Q}=\vb{Q}\M,\]
 	so both required conditions hold, and we conclude that $\vb{Q}=\M^+$. 
@@ -65,7 +65,9 @@
 \end{proof}
 
 \begin{proof}[Proof of Lemma~\ref{lem:laplacian_props}]
-	Focus for the moment on the combinatorial Laplacian  $\L_G$, with eigenvalues $\lambda_1\geq \lambda_2\geq \dots \geq \lambda_n$ and corresponding orthonormal eigenfunctions $\vp_1,\dots,\vp_n$. It is a straightforward consequence of Equation \eqref{eq:L=BTB} is that all eigenvalues of $\L_G$ are non-negative. Let $\lambda$ be an eigenvalue with (unit) eigenvector $\vp$. Then,  
+	Focus for the moment on the combinatorial Laplacian  $\L_G$, with eigenvalues $\lambda_1\geq \lambda_2\geq \dots \geq \lambda_n$ and corresponding orthonormal eigenfunctions $\vp_1,\dots,\vp_n$.
+	To see the non-negativity of the eigenvalues, we appeal  to  the \emph{incidence matrix} of $G$,  $\B_G$. This is defined in Appendix~\ref{sec:app_er}. It is easily verified  that  $\L_G=\B_G^\tp\B_G$. 
+	Therefore,  for $\lambda$ an eigenvalue with (unit) eigenvector $\vp$,
 	\begin{equation*}
 	\lambda = \lambda\la \vp,\vp\ra = \la \lambda \vp,\vp\ra = \la \L_G\vp,\vp\ra = \la \B_G^\tp \B_G\vp,\vp\ra = \la \B_G\vp,\B_G\vp\ra =\norm{\B_G\vp}_2^2 \geq 0.
 	\end{equation*}
@@ -75,7 +77,7 @@
 	implying that there exists $\ell\in[k]$ such that $\vp(i)\neq\vp(j)$ for some $i,j\in V_\ell$. Hence, $\Lf(\vp)>0$ and so $\L\vp\neq 0$. Therefore, there are no other linearly independent eigenfunctions corresponding to the zero eigenvalue.  
 	We have thus shown that 0 is an eigenvalue of $\L$ with multiplicity one, and $\ker(\L)=\spn(\one)$. 
 	
-	A similar analysis holds for the normalized Laplacian. Using the same argument but replacing $\B$ with $\Bn$ demonstrates that its eigenvalues are non-negative. Its kernel can be determined as follows. For any eigenfunction $\vp$ of $\L$ corresponding to the zero eigenvalue, observe that 
+	A similar analysis holds for the normalized Laplacian. Using the same argument but replacing $\B$ with $\Bn=\W^{-1/2}\B\W^{-1/2}$ demonstrates that its eigenvalues are non-negative. Its kernel can be determined as follows. For any eigenfunction $\vp$ of $\L$ corresponding to the zero eigenvalue, observe that 
 	\[\Ln\W^{1/2}\vp = \W^{-1/2}\L\W^{-1/2}\W^{1/2}\vp = \W^{-1/2}\L\vp = \zero,\]
 	so $\W^{1/2}\one$ lies in the kernel of $\Ln$.
 	Conversely, if $\vp\in\ker(\Ln)$, define $\vp'$ such that $\vp=\W^{1/2}\vp'$ (this is possible because $\W^{1/2}$ is diagonal---we simply factor out $\sqrt{w(i)}$ from $\vp(i)$ to obtain $\vp'(i)$). Then 
@@ -123,7 +125,7 @@
 	\begin{align*}
 	\frac{1}{2}\one \bD^\tp \L_G + \frac{1}{n}\one\one^\tp - \frac{1}{2}\Reff\L_G &= \frac{1}{n}\J + \bigg(\I-\frac{1}{n}\J\bigg) = \I.
 	\end{align*}
-	This demonstrates that \eqref{eq:lem_block_matrix} holds. We now show that $\L_G \Reff\L_G = -2 \L_G$ and that $\Reff\L_G\Reff\x = -2\Reff\x$ for all $\x\in\spn(\one)^\perp$, which will complete the proof. Applying Equation \eqref{eq:lem_block_matrix2} we have 
+	This demonstrates that \eqref{eq:lem_block_matrix} holds. We now show that $\L_G \Reff\L_G = -2 \L_G$ and $\Reff\L_G\Reff\x = -2\Reff\x$ for all $\x\in\spn(\one)^\perp$, which will complete the proof. Applying Equation \eqref{eq:lem_block_matrix2} we have 
 	\begin{align*}
 	\L_G\Reff\L_G = \L_G\one \bD^\tp\L_G = -2\L_G+ \frac{2}{n}\L_G\one\one^\tp = -2\L_G.
 	\end{align*}
@@ -261,7 +263,7 @@
 	Put 
 	\[\Q = \begin{pmatrix}
 	\alpha & \r\\ \r& \L_G
-	\end{pmatrix}\in\R^{n+1\times n+1}.\]
+	\end{pmatrix}\in\R^{(n+1)\times (n+1)}.\]
 	First we carry out a cofactor expansion along the first row, which yields 
 	\begin{align*}
 	\det(\Q) = \alpha \det(\L_G) + \sum_{j=2}^{n+1}(-1)^{1+j}r({j-1}) \det(\Q_{-1,-j}) = \sum_{j=1}^n (-1)^j r(j) \det(\Q_{-1,-j+1}).
@@ -301,7 +303,7 @@
 	\end{align*}
 	For $k=\ell$, we have $\bS_T(k,\ell)=0$ and $\bS_T(k,i)=\bS_T(\ell,i) = 1/w(i,\ell)$. It  follows that the above sum is $-2$, as desired. 
 	Now consider $k\neq \ell$. 
-	Fix $i\in \delta(\ell)$ and let $P=(k=v_1,\dots,v_r=\ell)$ be the unique path between $k$  and $\ell$. First, suppose that $i\in P$ so that $i=v_{r-1}$. Then $\bS_T(k,\ell) - \bS_T(k,i) = \sum_{s=1}^{r-1}1/w(v_s,v_{s+1}) - \sum_{s=1}^{r-2} 1/w(v_s,v_{s+1}) = 1/w(v_{r-1},v_r) = 1/w(i,\ell)$. Otherwise,  if $i\in P$ then the unique path  between $i$ and $k$ in $T$ is $P\cup\{\ell\} = (v_1,\dots,v_r,i)$. In  this case  $\bS_T(k,ell) - \bS_T(k,i) = \sum_{s=1}^{r-1}1/w(v_s,v_{s+1}) - (\sum_{s=1}^{r-1} 1/w(v_s,v_{s+1}) + 1/w(i,\ell)) = - 1/w(i,\ell)$. Finally, we note that there can be at most one neighbour of $\ell$ which is on the shortest path between $k$ and $\ell$. Therefore, 
+	Fix $i\in \delta(\ell)$ and let $P=(k=v_1,\dots,v_r=\ell)$ be the unique path between $k$  and $\ell$. First, suppose that $i\in P$ so that $i=v_{r-1}$. Then $\bS_T(k,\ell) - \bS_T(k,i) = \sum_{s=1}^{r-1}1/w(v_s,v_{s+1}) - \sum_{s=1}^{r-2} 1/w(v_s,v_{s+1}) = 1/w(v_{r-1},v_r) = 1/w(i,\ell)$. Otherwise,  if $i\in P$ then the unique path  between $i$ and $k$ in $T$ is $P\cup\{\ell\} = (v_1,\dots,v_r,i)$. In  this case  $\bS_T(k,\ell) - \bS_T(k,i) = \sum_{s=1}^{r-1}1/w(v_s,v_{s+1}) - (\sum_{s=1}^{r-1} 1/w(v_s,v_{s+1}) + 1/w(i,\ell)) = - 1/w(i,\ell)$. Finally, we note that there can be at most one neighbour of $\ell$ which is on the shortest path between $k$ and $\ell$. Therefore, 
 	$\sum_{i\in\delta(\ell)}w(i,\ell)(\bS_T(k,\ell)-\bS_T(k,i)) = 1-(|\delta(\ell)|-1) = 2 - \deg(\ell)$, demonstrating that the $(k,\ell)$-th component is zero, completing the proof. 
 \end{proof}
 
@@ -316,7 +318,7 @@
 	&= (\bchi_{F^+}-\one + \bchi_{F^+})^\tp(\Sv^+)^\tp \Sv f \\
 	&=2\bchi_{F^+}^\tp (\Sv^+)^\tp \Sv f - (\Sv^+\one)^\tp \Sv f \\
 	&= 2\la \Sv^+\bchi_{F^+}, \bchi_{F^+}^\tp (\Sv^+)^\tp \Sv f \ra &&\text{since }\Sv^+\one =\zero\\
-	&\leq 2\norm{\Sv\chi_{F^+}}_2 \cdot \norm{\Sv^+ f}_2 &&\text{by Cauchy-Schwartz\footnote{Recall that the Cauchy inequality says $\la |\u,\v\ra| \leq \norm{\u}_2\norm{\v}_2$ for any vectors $\u$ and $\v$.}}\\
+	&\leq 2\norm{\Sv\chi_{F^+}}_2 \cdot \norm{\Sv^+ f}_2 &&\text{by Cauchy-Schwartz}\\
 	&= 2\left(\bchi_{F^+}\L^+\bchi_{F^+}\cdot f^\tp \L f\right)^{1/2}.
 	\end{align*}
 	Squaring both sides and recalling that $\chi_{F^+}\L^+\chi_{F^+} = w(\delta^+F^+)$ gives the desired result. 
@@ -363,7 +365,7 @@
 	&\qquad - \sum_{i,j} (\alpha_i-\zeta_i)(\alpha_j-\zeta_j)\norm{\sv_i-\sv_j}_2^2 \bigg)\notag \\
 	&= -\frac{1}{2}\sum_{i,j} (\alpha_i-\zeta_i)(\alpha_j-\zeta_j)\norm{\sv_i-\sv_j}_2^2. \label{eq:lem_circ_sphere}
 	\end{align} 
-	Recalling the block matrix equation \eqref{eq:block_inverse_er} for hyperacute simplices, for all $i$ we have $\one (\bD^\tp \L_G\bD + 4\Rtot_G/n^2) - \D(\L_G\bD + 2\one /n) = \zero$, i.e., $r\one -2\D =\zero$. Hence 
+	Recalling the block matrix equation \eqref{eq:block_inverse_er} for hyperacute simplices, for all $i$ we have \[\one (\bD^\tp \L_G\bD + 4\Rtot_G/n^2) - \D(\L_G\bD + 2\one /n) = \zero,\] i.e., $r\one -2\D =\zero$. Hence 
 	\[\la \D(i,\cdot),\bzeta\ra = \frac{r}{2}.\]
 	Using this, we rewrite the summation on the right hand side of \eqref{eq:lem_circ_sphere} as 
 	\begin{align*}
@@ -377,8 +379,15 @@
 
 
 
-
-
+\section{Chapter~\ref{chap:algorithmics}}
+\label{sec:app_proofs_alg}
+\begin{proof}[Proof of Observation~\ref{obs:dot_product_time}]
+	Let $\mA$ be a purported sublinear time algorithm which performs this  task. Let $\x,\y\in\R^n$ be  two inputs  to  $\mA$. Assume they  both  contain no zero entries ($\mA$ claims to work  for  all vectors). Since  $\mA$ is sublinear, there exists some $i\in[n]$ such that $\mA $ does not  examine $x(i)$. Therefore,  we may  vary $x(i)$ without changing  $\mA$'s  output. If $\mA$ output ``yes'', meaning that it believes $\x$ and $\y$ to be orthogonal, put 
+	\[x(i) = \frac{1-\sum_{j\neq i}x(j)y(j)}{y(i)}.\]
+	Then  $\la \x,\y\ra =1$, so they are are not orthogonal. Similarly,  if $\mA$ output ``no'', then put 
+	\[x(i) = -\frac{\sum_{j\neq i}x(j)y(j)}{y(j)},\]
+	so  that $\la\x,\y\ra=0$. Therefore, $\mA$ cannot  be  correct on all inputs.  
+\end{proof}
 
 
 \chapter{Intuition Behind Effective Resistance}
@@ -456,7 +465,7 @@ Note that here we've relied on the fact that $\bchi_i-\bchi_j\perp \one$. This g
 \end{subfigure}
 \begin{subfigure}[b]{0.16\textwidth}
 	\centering
-	\includegraphics[scale=0.3]{g2_comb}
+	\includegraphics[scale=0.25]{g2_comb}
 \end{subfigure}
 \begin{subfigure}[b]{0.16\textwidth}
 	\centering

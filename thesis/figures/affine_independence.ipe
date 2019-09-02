@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE ipe SYSTEM "ipe.dtd">
 <ipe version="70206" creator="Ipe 7.2.7">
-<info created="D:20190809151630" modified="D:20190809151630"/>
+<info created="D:20190809151630" modified="D:20190901121623"/>
 <ipestyle name="basic">
 <symbol name="arrow/arc(spx)">
 <path stroke="sym-stroke" fill="sym-stroke" pen="sym-pen">
@@ -254,37 +254,37 @@ h
 <page>
 <layer name="alpha"/>
 <view layers="alpha" active="alpha"/>
-<path layer="alpha" matrix="0.679439 0.00362699 -0.00359882 0.701885 52.0618 222.992" stroke="black" arrow="normal/normal">
+<path layer="alpha" matrix="1.27294 0.389105 -0.372945 1.21749 232.974 -265.342" stroke="black" pen="ultrafat" arrow="normal/normal">
 128 768 m
 176 736 l
 </path>
-<path matrix="0.674198 0 0 0.674361 65.6944 234.766" stroke="black" arrow="normal/normal">
+<path matrix="1.26501 0.379853 -0.351833 1.1717 252.41 -237.203" stroke="black" pen="ultrafat" arrow="normal/normal">
 224 704 m
 176 736 l
 </path>
-<use name="mark/disk(sx)" pos="128 768" size="large" stroke="darkcyan"/>
-<use name="mark/disk(sx)" pos="176 736" size="large" stroke="darkcyan"/>
-<use name="mark/disk(sx)" pos="224 704" size="large" stroke="darkcyan"/>
-<text transformations="translations" pos="136.929 776.53" stroke="darkcyan" type="label" width="11.384" height="5.151" depth="1.79" valign="baseline" size="large">$x_1$</text>
-<text transformations="translations" pos="181.826 742.957" stroke="darkcyan" type="label" width="11.384" height="5.151" depth="1.79" valign="baseline" size="large">$x_2$</text>
-<text transformations="translations" pos="228.102 710.592" stroke="darkcyan" type="label" width="11.384" height="5.151" depth="1.79" valign="baseline" size="large">$x_3$</text>
-<text matrix="1 0 0 1 -8.12692 -11.4178" transformations="translations" pos="185.112 717.698" stroke="black" type="label" width="37.381" height="6.977" depth="1.79" valign="baseline" size="large">$x_2-x_3$</text>
-<text matrix="1 0 0 1 -2.74111 -9.28121" transformations="translations" pos="126.645 748.408" stroke="black" type="label" width="37.381" height="6.977" depth="1.79" valign="baseline" size="large">$x_2-x_1$</text>
-<path matrix="-0.123749 -0.517999 0.357302 0.135772 19.9284 732.473" stroke="black" arrow="normal/normal">
+<use matrix="1.87632 0.563413 -0.521727 1.73749 251.63 -682.119" name="mark/disk(sx)" pos="128 768" size="large" stroke="darkcyan"/>
+<use matrix="1.87632 0.563413 -0.521727 1.73749 251.63 -682.119" name="mark/disk(sx)" pos="176 736" size="large" stroke="darkcyan"/>
+<use matrix="1.87632 0.563413 -0.521727 1.73749 251.63 -682.119" name="mark/disk(sx)" pos="224 704" size="large" stroke="darkcyan"/>
+<text matrix="1.87632 0.563413 -0.521727 1.73749 251.63 -682.119" transformations="translations" pos="136.929 776.53" stroke="darkcyan" type="label" width="19.019" height="8.896" depth="3.1" valign="baseline" size="huge" style="math">x_1</text>
+<text matrix="1.87632 0.563413 -0.521727 1.73749 251.63 -682.119" transformations="translations" pos="181.826 742.957" stroke="darkcyan" type="label" width="19.019" height="8.896" depth="3.1" valign="baseline" size="huge" style="math">x_2</text>
+<text matrix="1.87632 0.563413 -0.521727 1.73749 251.63 -682.119" transformations="translations" pos="228.102 710.592" stroke="darkcyan" type="label" width="19.019" height="8.896" depth="3.1" valign="baseline" size="huge" style="math">x_3</text>
+<text matrix="1.87632 0.563413 -0.521727 1.73749 242.338 -706.535" transformations="translations" pos="185.112 717.698" stroke="black" type="label" width="63.292" height="12.053" depth="3.1" valign="baseline" size="huge" style="math">x_2-x_3</text>
+<text matrix="1.87632 0.563413 -0.521727 1.73749 251.329 -699.789" transformations="translations" pos="126.645 748.408" stroke="black" type="label" width="63.292" height="12.053" depth="3.1" valign="baseline" size="huge" style="math">x_2-x_1</text>
+<path matrix="-0.565369 -0.788794 0.741696 -0.0230398 -47.0663 866.125" stroke="black" pen="ultrafat" arrow="normal/normal">
 128 768 m
 176 736 l
 </path>
-<path matrix="0.674198 0 0 0.674361 145.694 234.766" stroke="black" arrow="normal/normal">
+<path matrix="1.32081 0 0 1.22338 166.592 -211.249" stroke="black" pen="ultrafat" arrow="normal/normal">
 224 704 m
 176 736 l
 </path>
-<use matrix="-0.184847 -0.763404 0.508112 0.189525 -83.7531 729.955" name="mark/disk(sx)" pos="128 768" size="large" stroke="darkcyan"/>
-<use matrix="1 0 0 1 80 0" name="mark/disk(sx)" pos="176 736" size="large" stroke="darkcyan"/>
-<use matrix="1 0 0 1 80 0" name="mark/disk(sx)" pos="224 704" size="large" stroke="darkcyan"/>
-<text transformations="translations" pos="244.775 740.518" stroke="darkcyan" type="label" width="10.44" height="5.152" depth="2.32" valign="baseline" size="large">$y_2$</text>
-<text transformations="translations" pos="293.618 777.46" stroke="darkcyan" type="label" width="10.44" height="5.152" depth="2.32" valign="baseline" size="large">$y_1$</text>
-<text transformations="translations" pos="307.407 712.255" stroke="darkcyan" type="label" width="10.44" height="5.152" depth="2.32" valign="baseline" size="large">$y_3$</text>
-<text transformations="translations" pos="274.003 747.84" stroke="black" type="label" width="35.492" height="6.978" depth="2.32" valign="baseline" size="large">$y_2-y_1$</text>
-<text transformations="translations" pos="277.562 728.084" stroke="black" type="label" width="35.492" height="6.978" depth="2.32" valign="baseline" size="large">$y_2-y_3$</text>
+<use matrix="-0.837731 -1.16074 1.05242 -0.0387756 -238.134 935.203" name="mark/disk(sx)" pos="128 768" size="large" stroke="darkcyan"/>
+<use matrix="1.95908 0 0 1.81413 37.8927 -637.144" name="mark/disk(sx)" pos="176 736" size="large" stroke="darkcyan"/>
+<use matrix="1.95908 0 0 1.81413 37.8927 -637.144" name="mark/disk(sx)" pos="224 704" size="large" stroke="darkcyan"/>
+<text matrix="1.95908 0 0 1.81413 -118.834 -637.144" transformations="translations" pos="244.775 740.518" stroke="darkcyan" type="label" width="17.387" height="8.894" depth="4.02" valign="baseline" size="huge" style="math">y_2</text>
+<text matrix="1.82693 -0.707335 0.655 1.69176 -563.243 -358.942" transformations="translations" pos="293.618 777.46" stroke="darkcyan" type="label" width="17.387" height="8.894" depth="4.02" valign="baseline" size="huge" style="math">y_1</text>
+<text matrix="1.95908 0 0 1.81413 -118.834 -637.144" transformations="translations" pos="307.407 712.255" stroke="darkcyan" type="label" width="17.387" height="8.894" depth="4.02" valign="baseline" size="huge" style="math">y_3</text>
+<text matrix="1.82693 -0.707335 0.655 1.69176 -563.243 -358.942" transformations="translations" pos="274.003 747.84" stroke="black" type="label" width="60.027" height="12.051" depth="4.02" valign="baseline" size="huge" style="math">y_2-y_1</text>
+<text matrix="1.95908 0 0 1.81413 -118.834 -637.144" transformations="translations" pos="277.562 728.084" stroke="black" type="label" width="60.027" height="12.051" depth="4.02" valign="baseline" size="huge" style="math">y_2-y_3</text>
 </page>
 </ipe>
